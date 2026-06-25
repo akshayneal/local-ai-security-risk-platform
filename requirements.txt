@@ -1,0 +1,10 @@
+fastapi[standard]
+streamlit
+ollama
+pydantic
+pandas
+python-dotenv
+requests
+plotly
+pytest
+ruff

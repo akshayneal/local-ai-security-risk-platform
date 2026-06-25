@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="black" />
+    </marker>
+  </defs>
+  <style>
+    .title { font: bold 26px Arial, sans-serif; }
+    .subtitle { font: 15px Arial, sans-serif; }
+    .box { fill: white; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .box2 { fill: #f5f5f5; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .text { font: 14px Arial, sans-serif; }
+    .small { font: 12px Arial, sans-serif; }
+    .label { font: italic 12px Arial, sans-serif; }
+    .arrow { stroke: black; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke: black; stroke-width: 2; fill: none; stroke-dasharray: 7 5; marker-end: url(#arrow); }
+  </style>
+  <text x="600.0" y="36" text-anchor="middle" class="title">Audit Logs Viewing Flow</text>
+  <text x="600" y="62" text-anchor="middle" class="subtitle">Flow when the user selects Audit Logs in Streamlit.</text>
+  <rect x="80" y="110" width="300" height="95" class="box" />
+  <text x="230.0" y="134" text-anchor="middle" class="text" font-weight="bold">Streamlit Audit Logs mode</text>
+  <text x="230.0" y="158" text-anchor="middle" class="small">User selects Audit Logs from sidebar</text>
+  <rect x="450" y="110" width="300" height="95" class="box" />
+  <text x="600.0" y="134" text-anchor="middle" class="text" font-weight="bold">GET /logs</text>
+  <text x="600.0" y="158" text-anchor="middle" class="small">Streamlit sends requests.get() to</text>
+  <text x="600.0" y="173" text-anchor="middle" class="small">FastAPI</text>
+  <rect x="820" y="110" width="300" height="95" class="box" />
+  <text x="970.0" y="134" text-anchor="middle" class="text" font-weight="bold">app/main.py</text>
+  <text x="970.0" y="158" text-anchor="middle" class="small">logs_endpoint(limit=50) receives</text>
+  <text x="970.0" y="173" text-anchor="middle" class="small">request</text>
+  <rect x="820" y="285" width="300" height="95" class="box" />
+  <text x="970.0" y="309" text-anchor="middle" class="text" font-weight="bold">audit_logger.py</text>
+  <text x="970.0" y="333" text-anchor="middle" class="small">read_audit_logs(limit)</text>
+  <rect x="450" y="285" width="300" height="95" class="box" />
+  <text x="600.0" y="309" text-anchor="middle" class="text" font-weight="bold">logs/audit_log.jsonl</text>
+  <text x="600.0" y="333" text-anchor="middle" class="small">Local JSONL file containing past</text>
+  <text x="600.0" y="348" text-anchor="middle" class="small">analysis records</text>
+  <rect x="80" y="285" width="300" height="95" class="box" />
+  <text x="230.0" y="309" text-anchor="middle" class="text" font-weight="bold">Parsed log dictionaries</text>
+  <text x="230.0" y="333" text-anchor="middle" class="small">JSON lines converted into Python</text>
+  <text x="230.0" y="348" text-anchor="middle" class="small">dictionaries</text>
+  <rect x="450" y="480" width="300" height="95" class="box" />
+  <text x="600.0" y="504" text-anchor="middle" class="text" font-weight="bold">FastAPI response</text>
+  <text x="600.0" y="528" text-anchor="middle" class="small">{ &#x27;logs&#x27;: [...] }</text>
+  <rect x="80" y="480" width="300" height="95" class="box" />
+  <text x="230.0" y="504" text-anchor="middle" class="text" font-weight="bold">Streamlit table</text>
+  <text x="230.0" y="528" text-anchor="middle" class="small">st.dataframe(logs) displays audit</text>
+  <text x="230.0" y="543" text-anchor="middle" class="small">history</text>
+  <rect x="820" y="480" width="300" height="95" class="box" />
+  <text x="970.0" y="504" text-anchor="middle" class="text" font-weight="bold">No model call</text>
+  <text x="970.0" y="528" text-anchor="middle" class="small">This mode does not call Ollama or</text>
+  <text x="970.0" y="543" text-anchor="middle" class="small">qwen3:8b</text>
+  <path d="M380,157 L450,157" class="arrow" />
+  <text x="415.0" y="151.0" text-anchor="middle" class="label">requests.get</text>
+  <path d="M750,157 L820,157" class="arrow" />
+  <text x="785.0" y="151.0" text-anchor="middle" class="label">route</text>
+  <path d="M970,205 L970,285" class="arrow" />
+  <text x="970.0" y="239.0" text-anchor="middle" class="label">read logs</text>
+  <path d="M820,332 L750,332" class="arrow" />
+  <text x="785.0" y="326.0" text-anchor="middle" class="label">open file</text>
+  <path d="M450,332 L380,332" class="arrow" />
+  <text x="415.0" y="326.0" text-anchor="middle" class="label">parse JSONL</text>
+  <path d="M230,380 L600,480" class="arrow" />
+  <text x="415.0" y="424.0" text-anchor="middle" class="label">return list</text>
+  <path d="M450,527 L380,527" class="arrow" />
+  <text x="415.0" y="521.0" text-anchor="middle" class="label">display</text>
+  <path d="M750,527 L820,527" class="arrow" />
+  <text x="785.0" y="521.0" text-anchor="middle" class="label">important note</text>
+
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="1050" viewBox="0 0 1200 1050" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="black" />
+    </marker>
+  </defs>
+  <style>
+    .title { font: bold 26px Arial, sans-serif; }
+    .subtitle { font: 15px Arial, sans-serif; }
+    .box { fill: white; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .box2 { fill: #f5f5f5; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .text { font: 14px Arial, sans-serif; }
+    .small { font: 12px Arial, sans-serif; }
+    .label { font: italic 12px Arial, sans-serif; }
+    .arrow { stroke: black; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke: black; stroke-width: 2; fill: none; stroke-dasharray: 7 5; marker-end: url(#arrow); }
+  </style>
+  <text x="600.0" y="36" text-anchor="middle" class="title">Overall Project Architecture</text>
+  <text x="600" y="62" text-anchor="middle" class="subtitle">How the local dashboard, backend API, validation layer, model connector, and audit log fit together.</text>
+  <rect x="420" y="90" width="360" height="75" class="box" />
+  <text x="600.0" y="114" text-anchor="middle" class="text" font-weight="bold">User</text>
+  <text x="600.0" y="138" text-anchor="middle" class="small">Types request into browser dashboard</text>
+  <rect x="420" y="200" width="360" height="85" class="box" />
+  <text x="600.0" y="224" text-anchor="middle" class="text" font-weight="bold">dashboard/streamlit_app.py</text>
+  <text x="600.0" y="248" text-anchor="middle" class="small">Collects form input and sends HTTP requests</text>
+  <rect x="420" y="325" width="360" height="85" class="box" />
+  <text x="600.0" y="349" text-anchor="middle" class="text" font-weight="bold">app/main.py</text>
+  <text x="600.0" y="373" text-anchor="middle" class="small">FastAPI routes: /analyze/governance,</text>
+  <text x="600.0" y="388" text-anchor="middle" class="small">/analyze/soc-alert, /logs</text>
+  <rect x="80" y="455" width="300" height="90" class="box" />
+  <text x="230.0" y="479" text-anchor="middle" class="text" font-weight="bold">app/schemas.py</text>
+  <text x="230.0" y="503" text-anchor="middle" class="small">Validates incoming request data and</text>
+  <text x="230.0" y="518" text-anchor="middle" class="small">outgoing model result</text>
+  <rect x="450" y="455" width="300" height="90" class="box" />
+  <text x="600.0" y="479" text-anchor="middle" class="text" font-weight="bold">Analyzer layer</text>
+  <text x="600.0" y="503" text-anchor="middle" class="small">governance_analyzer.py or</text>
+  <text x="600.0" y="518" text-anchor="middle" class="small">soc_analyzer.py</text>
+  <rect x="820" y="455" width="300" height="90" class="box" />
+  <text x="970.0" y="479" text-anchor="middle" class="text" font-weight="bold">app/prompts.py</text>
+  <text x="970.0" y="503" text-anchor="middle" class="small">Builds workflow-specific model</text>
+  <text x="970.0" y="518" text-anchor="middle" class="small">instructions</text>
+  <rect x="450" y="595" width="300" height="90" class="box" />
+  <text x="600.0" y="619" text-anchor="middle" class="text" font-weight="bold">app/ollama_client.py</text>
+  <text x="600.0" y="643" text-anchor="middle" class="small">Sends prompt + JSON schema to local</text>
+  <text x="600.0" y="658" text-anchor="middle" class="small">Ollama</text>
+  <rect x="450" y="735" width="300" height="90" class="box" />
+  <text x="600.0" y="759" text-anchor="middle" class="text" font-weight="bold">Ollama + qwen3:8b</text>
+  <text x="600.0" y="783" text-anchor="middle" class="small">Local model generates structured JSON</text>
+  <rect x="80" y="865" width="300" height="85" class="box" />
+  <text x="230.0" y="889" text-anchor="middle" class="text" font-weight="bold">app/audit_logger.py</text>
+  <text x="230.0" y="913" text-anchor="middle" class="small">Writes result/failure to</text>
+  <text x="230.0" y="928" text-anchor="middle" class="small">logs/audit_log.jsonl</text>
+  <rect x="820" y="865" width="300" height="85" class="box" />
+  <text x="970.0" y="889" text-anchor="middle" class="text" font-weight="bold">FastAPI response</text>
+  <text x="970.0" y="913" text-anchor="middle" class="small">Validated JSON returned to Streamlit</text>
+  <path d="M600,165 L600,200" class="arrow" />
+  <text x="600.0" y="176.5" text-anchor="middle" class="label">browser form</text>
+  <path d="M600,285 L600,325" class="arrow" />
+  <text x="600.0" y="299.0" text-anchor="middle" class="label">JSON payload</text>
+  <path d="M420,370 L380,500" class="arrow" />
+  <text x="400.0" y="429.0" text-anchor="middle" class="label">request validation</text>
+  <path d="M600,410 L600,455" class="arrow" />
+  <text x="600.0" y="426.5" text-anchor="middle" class="label">route to workflow</text>
+  <path d="M750,500 L820,500" class="arrow" />
+  <text x="785.0" y="494.0" text-anchor="middle" class="label">build prompt</text>
+  <path d="M600,545 L600,595" class="arrow" />
+  <text x="600.0" y="564.0" text-anchor="middle" class="label">prompt + schema</text>
+  <path d="M600,685 L600,735" class="arrow" />
+  <text x="600.0" y="704.0" text-anchor="middle" class="label">local model call</text>
+  <path d="M600,825 L600,865" class="arrow" />
+  <text x="600.0" y="839.0" text-anchor="middle" class="label">raw JSON result</text>
+  <path d="M450,905 L380,905" class="arrow" />
+  <text x="415.0" y="899.0" text-anchor="middle" class="label">write audit log</text>
+  <path d="M750,905 L820,905" class="arrow" />
+  <text x="785.0" y="899.0" text-anchor="middle" class="label">return validated result</text>
+  <path d="M970,865 L970,245" class="dashed" />
+  <text x="970.0" y="549.0" text-anchor="middle" class="label">display result</text>
+  <path d="M380,500 L450,500" class="arrow" />
+  <text x="415.0" y="494.0" text-anchor="middle" class="label">validated request</text>
+  <path d="M600,865 L380,500" class="dashed" />
+  <text x="490.0" y="676.5" text-anchor="middle" class="label">response validation</text>
+
+</svg>

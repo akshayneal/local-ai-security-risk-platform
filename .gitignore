@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Logs
+logs/*.jsonl
+!logs/.gitkeep
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/
+
+# Test/cache folders
+.pytest_cache/
+.ruff_cache/
+
+# OS files
+.DS_Store
+Thumbs.db

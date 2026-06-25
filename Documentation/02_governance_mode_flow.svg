@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="1000" viewBox="0 0 1200 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="black" />
+    </marker>
+  </defs>
+  <style>
+    .title { font: bold 26px Arial, sans-serif; }
+    .subtitle { font: 15px Arial, sans-serif; }
+    .box { fill: white; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .box2 { fill: #f5f5f5; stroke: black; stroke-width: 2; rx: 12; ry: 12; }
+    .text { font: 14px Arial, sans-serif; }
+    .small { font: 12px Arial, sans-serif; }
+    .label { font: italic 12px Arial, sans-serif; }
+    .arrow { stroke: black; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke: black; stroke-width: 2; fill: none; stroke-dasharray: 7 5; marker-end: url(#arrow); }
+  </style>
+  <text x="600.0" y="36" text-anchor="middle" class="title">AI Governance Risk Intake Flow</text>
+  <text x="600" y="62" text-anchor="middle" class="subtitle">Flow when the user selects AI Governance Risk Intake in Streamlit.</text>
+  <rect x="80" y="100" width="300" height="100" class="box" />
+  <text x="230.0" y="124" text-anchor="middle" class="text" font-weight="bold">Streamlit governance form</text>
+  <text x="230.0" y="148" text-anchor="middle" class="small">System name, purpose, data types,</text>
+  <text x="230.0" y="163" text-anchor="middle" class="small">users, integrations, human review,</text>
+  <text x="230.0" y="178" text-anchor="middle" class="small">business impact</text>
+  <rect x="450" y="100" width="300" height="100" class="box" />
+  <text x="600.0" y="124" text-anchor="middle" class="text" font-weight="bold">JSON payload</text>
+  <text x="600.0" y="148" text-anchor="middle" class="small">GovernanceRiskRequest-shaped data</text>
+  <rect x="820" y="100" width="300" height="100" class="box" />
+  <text x="970.0" y="124" text-anchor="middle" class="text" font-weight="bold">POST /analyze/governance</text>
+  <text x="970.0" y="148" text-anchor="middle" class="small">FastAPI endpoint in app/main.py</text>
+  <rect x="820" y="255" width="300" height="95" class="box" />
+  <text x="970.0" y="279" text-anchor="middle" class="text" font-weight="bold">schemas.py</text>
+  <text x="970.0" y="303" text-anchor="middle" class="small">FastAPI validates input as</text>
+  <text x="970.0" y="318" text-anchor="middle" class="small">GovernanceRiskRequest</text>
+  <rect x="450" y="255" width="300" height="95" class="box" />
+  <text x="600.0" y="279" text-anchor="middle" class="text" font-weight="bold">governance_analyzer.py</text>
+  <text x="600.0" y="303" text-anchor="middle" class="small">Runs analyze_governance_risk(request)</text>
+  <rect x="80" y="255" width="300" height="95" class="box" />
+  <text x="230.0" y="279" text-anchor="middle" class="text" font-weight="bold">prompts.py</text>
+  <text x="230.0" y="303" text-anchor="middle" class="small">build_governance_prompt(request)</text>
+  <rect x="80" y="420" width="300" height="95" class="box" />
+  <text x="230.0" y="444" text-anchor="middle" class="text" font-weight="bold">ollama_client.py</text>
+  <text x="230.0" y="468" text-anchor="middle" class="small">call_model_json(prompt,</text>
+  <text x="230.0" y="483" text-anchor="middle" class="small">GovernanceRiskResponse schema)</text>
+  <rect x="450" y="420" width="300" height="95" class="box" />
+  <text x="600.0" y="444" text-anchor="middle" class="text" font-weight="bold">Ollama + qwen3:8b</text>
+  <text x="600.0" y="468" text-anchor="middle" class="small">Local model analyzes governance risk</text>
+  <rect x="820" y="420" width="300" height="95" class="box" />
+  <text x="970.0" y="444" text-anchor="middle" class="text" font-weight="bold">GovernanceRiskResponse</text>
+  <text x="970.0" y="468" text-anchor="middle" class="small">Risk level, decision, risks,</text>
+  <text x="970.0" y="483" text-anchor="middle" class="small">controls, human review, logs,</text>
+  <text x="970.0" y="498" text-anchor="middle" class="small">evidence gaps</text>
+  <rect x="820" y="595" width="300" height="95" class="box" />
+  <text x="970.0" y="619" text-anchor="middle" class="text" font-weight="bold">audit_logger.py</text>
+  <text x="970.0" y="643" text-anchor="middle" class="small">Writes mode=governance and result</text>
+  <text x="970.0" y="658" text-anchor="middle" class="small">summary</text>
+  <rect x="450" y="595" width="300" height="95" class="box" />
+  <text x="600.0" y="619" text-anchor="middle" class="text" font-weight="bold">FastAPI returns JSON</text>
+  <text x="600.0" y="643" text-anchor="middle" class="small">Validated response sent back to</text>
+  <text x="600.0" y="658" text-anchor="middle" class="small">dashboard</text>
+  <rect x="80" y="595" width="300" height="95" class="box" />
+  <text x="230.0" y="619" text-anchor="middle" class="text" font-weight="bold">Streamlit displays result</text>
+  <text x="230.0" y="643" text-anchor="middle" class="small">Risk metric, decision metric,</text>
+  <text x="230.0" y="658" text-anchor="middle" class="small">summary, full JSON</text>
+  <rect x="450" y="760" width="300" height="95" class="box" />
+  <text x="600.0" y="784" text-anchor="middle" class="text" font-weight="bold">logs/audit_log.jsonl</text>
+  <text x="600.0" y="808" text-anchor="middle" class="small">Persistent local audit trail</text>
+  <path d="M380,150 L450,150" class="arrow" />
+  <text x="415.0" y="144.0" text-anchor="middle" class="label">form values</text>
+  <path d="M750,150 L820,150" class="arrow" />
+  <text x="785.0" y="144.0" text-anchor="middle" class="label">requests.post</text>
+  <path d="M970,200 L970,255" class="arrow" />
+  <text x="970.0" y="221.5" text-anchor="middle" class="label">validate</text>
+  <path d="M820,302 L750,302" class="arrow" />
+  <text x="785.0" y="296.0" text-anchor="middle" class="label">validated request</text>
+  <path d="M450,302 L380,302" class="arrow" />
+  <text x="415.0" y="296.0" text-anchor="middle" class="label">build prompt</text>
+  <path d="M230,350 L230,420" class="arrow" />
+  <text x="230.0" y="379.0" text-anchor="middle" class="label">prompt</text>
+  <path d="M380,467 L450,467" class="arrow" />
+  <text x="415.0" y="461.0" text-anchor="middle" class="label">local call</text>
+  <path d="M750,467 L820,467" class="arrow" />
+  <text x="785.0" y="461.0" text-anchor="middle" class="label">JSON</text>
+  <path d="M970,515 L970,595" class="arrow" />
+  <text x="970.0" y="549.0" text-anchor="middle" class="label">log success/failure</text>
+  <path d="M820,642 L750,642" class="arrow" />
+  <text x="785.0" y="636.0" text-anchor="middle" class="label">return</text>
+  <path d="M450,642 L380,642" class="arrow" />
+  <text x="415.0" y="636.0" text-anchor="middle" class="label">display</text>
+  <path d="M970,690 L600,760" class="arrow" />
+  <text x="785.0" y="719.0" text-anchor="middle" class="label">append log</text>
+
+</svg>
