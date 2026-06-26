@@ -1,0 +1,174 @@
+[
+  {
+    "source_id": "MITRE-TA0001",
+    "title": "MITRE ATT&CK - Initial Access",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "initial access",
+      "valid accounts",
+      "external remote services",
+      "vpn",
+      "ssh",
+      "remote login",
+      "successful login"
+    ],
+    "content": "Initial Access describes adversary behavior used to gain an initial foothold in an environment. A successful unauthorized login to a remote service may indicate possible initial access, especially when preceded by suspicious authentication activity."
+  },
+  {
+    "source_id": "MITRE-TA0002",
+    "title": "MITRE ATT&CK - Execution",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "execution",
+      "powershell",
+      "command line",
+      "script",
+      "process",
+      "encoded command"
+    ],
+    "content": "Execution describes adversary behavior that runs malicious code on a local or remote system. Suspicious PowerShell commands, encoded commands, unusual script execution, and unexpected process launches may indicate execution activity."
+  },
+  {
+    "source_id": "MITRE-TA0003",
+    "title": "MITRE ATT&CK - Persistence",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "persistence",
+      "new account",
+      "admin account",
+      "scheduled task",
+      "startup",
+      "service"
+    ],
+    "content": "Persistence describes adversary behavior that maintains access to systems across restarts, credential changes, or other interruptions. Unexpected account creation, scheduled tasks, services, or startup modifications may indicate persistence."
+  },
+  {
+    "source_id": "MITRE-TA0005",
+    "title": "MITRE ATT&CK - Defense Evasion",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "defense evasion",
+      "encoded command",
+      "obfuscation",
+      "disable logging",
+      "clear logs",
+      "powershell"
+    ],
+    "content": "Defense Evasion describes adversary behavior used to avoid detection. Encoded commands, obfuscation, disabled logging, log clearing, and suspicious changes to security controls may indicate defense evasion."
+  },
+  {
+    "source_id": "MITRE-TA0006",
+    "title": "MITRE ATT&CK - Credential Access",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "credential access",
+      "brute force",
+      "password",
+      "failed login",
+      "authentication",
+      "ssh",
+      "mfa fatigue",
+      "password spraying"
+    ],
+    "content": "Credential Access describes adversary behavior used to steal account names, passwords, tokens, or other credentials. Brute force activity, password spraying, suspicious authentication failures, and MFA fatigue may indicate credential access attempts."
+  },
+  {
+    "source_id": "MITRE-TA0007",
+    "title": "MITRE ATT&CK - Discovery",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "discovery",
+      "whoami",
+      "net user",
+      "ipconfig",
+      "systeminfo",
+      "enumeration",
+      "reconnaissance"
+    ],
+    "content": "Discovery describes adversary behavior used to learn about a system or network after gaining access. Commands that enumerate users, groups, network configuration, processes, or domain information may indicate discovery activity."
+  },
+  {
+    "source_id": "MITRE-TA0011",
+    "title": "MITRE ATT&CK - Command and Control",
+    "framework": "MITRE ATT&CK",
+    "reference_type": "tactic",
+    "tags": [
+      "command and control",
+      "c2",
+      "beacon",
+      "outbound connection",
+      "unknown domain",
+      "external ip",
+      "callback"
+    ],
+    "content": "Command and Control describes adversary behavior used to communicate with systems under their control. Suspicious outbound connections, beaconing behavior, unknown domains, and repeated callbacks may indicate command and control activity."
+  },
+  {
+    "source_id": "SOC-IR-CONTAINMENT",
+    "title": "SOC Checklist - Containment Principles",
+    "framework": "Local SOC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "containment",
+      "isolate host",
+      "disable account",
+      "block ip",
+      "incident response",
+      "triage"
+    ],
+    "content": "Containment recommendations should be proportional to the evidence. Common containment steps include disabling or resetting affected accounts, isolating impacted hosts, blocking confirmed malicious indicators, preserving evidence, and escalating for human approval before destructive or irreversible action."
+  },
+  {
+    "source_id": "SOC-EVIDENCE-GAPS",
+    "title": "SOC Checklist - Common Evidence Gaps",
+    "framework": "Local SOC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "evidence gaps",
+      "logs",
+      "edr",
+      "vpn",
+      "mfa",
+      "user confirmation",
+      "process tree",
+      "timeline"
+    ],
+    "content": "Common evidence gaps in SOC triage include missing endpoint telemetry, missing authentication history, missing VPN or MFA logs, missing process tree information, missing user confirmation, missing asset criticality, and missing timeline context."
+  },
+  {
+    "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+    "title": "SOC Checklist - Brute Force Followed by Successful Login",
+    "framework": "Local SOC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "brute force",
+      "successful login",
+      "ssh",
+      "failed password",
+      "credential compromise",
+      "account compromise"
+    ],
+    "content": "For brute force followed by successful login, review authentication history, confirm whether the login was expected, check MFA or VPN context if available, inspect post-login activity, review privilege changes, check for persistence, and consider disabling the account until legitimacy is verified."
+  },
+  {
+    "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+    "title": "SOC Checklist - Suspicious PowerShell",
+    "framework": "Local SOC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "powershell",
+      "encoded command",
+      "script block",
+      "command line",
+      "execution",
+      "defense evasion"
+    ],
+    "content": "For suspicious PowerShell activity, review the full command line, parent process, user context, script block logs, network connections, file writes, encoded content, and whether the activity matches approved administrative behavior."
+  }
+]

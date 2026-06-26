@@ -1,0 +1,74 @@
+[
+  {
+    "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+    "title": "General Checklist - Evidence Gaps",
+    "framework": "Local Security and Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "evidence gaps",
+      "missing information",
+      "uncertainty",
+      "follow up",
+      "documentation"
+    ],
+    "content": "When information is incomplete, the system should identify evidence gaps instead of making unsupported claims. Useful evidence gaps include missing logs, missing owner information, missing policy context, missing business impact, missing data classification, missing approval records, or missing user confirmation."
+  },
+  {
+    "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+    "title": "General Checklist - Human-in-the-Loop Review",
+    "framework": "Local Security and Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "human review",
+      "approval",
+      "oversight",
+      "analyst review",
+      "manual validation"
+    ],
+    "content": "AI-generated recommendations should be reviewed by a human before operational, compliance, or high-impact decisions are made. The system should support decision-making, not replace accountable human judgment."
+  },
+  {
+    "source_id": "LOCAL-AUDITABILITY",
+    "title": "General Checklist - Auditability",
+    "framework": "Local Security and Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "auditability",
+      "audit log",
+      "traceability",
+      "records",
+      "reviewability",
+      "logging"
+    ],
+    "content": "Security and governance workflows should preserve enough information to understand what was reviewed, when it was reviewed, what model or system was used, what recommendation was produced, whether it succeeded or failed, and what evidence supported the result."
+  },
+  {
+    "source_id": "LOCAL-SAFE-CONTAINMENT",
+    "title": "General Checklist - Safe Containment Language",
+    "framework": "Local Security and Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "containment",
+      "safe response",
+      "approval",
+      "isolation",
+      "disable account",
+      "block indicator"
+    ],
+    "content": "Containment recommendations should be framed for analyst review. The system should not present destructive, irreversible, or business-disruptive actions as automatic steps. Actions like account disablement, host isolation, or blocking indicators should be recommended with appropriate validation and approval language."
+  },
+  {
+    "source_id": "LOCAL-SUPPORTED-CLAIMS",
+    "title": "General Checklist - Supported Claims",
+    "framework": "Local Security and Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "supported claims",
+      "hallucination",
+      "source grounding",
+      "evidence",
+      "inference"
+    ],
+    "content": "The system should distinguish between observed evidence, reasonable inference, and unsupported claims. It should not claim that an IP, domain, hash, CVE, control, or policy exists unless that information appears in the user input or retrieved reference context."
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "source_id": "AI-RMF-GOVERN",
+    "title": "NIST AI RMF - Govern Function",
+    "framework": "NIST AI RMF",
+    "reference_type": "function",
+    "tags": [
+      "govern",
+      "governance",
+      "policy",
+      "accountability",
+      "roles",
+      "risk management",
+      "oversight"
+    ],
+    "content": "The Govern function focuses on organizational policies, processes, roles, responsibilities, and practices that support AI risk management across the AI lifecycle."
+  },
+  {
+    "source_id": "AI-RMF-MAP",
+    "title": "NIST AI RMF - Map Function",
+    "framework": "NIST AI RMF",
+    "reference_type": "function",
+    "tags": [
+      "map",
+      "context",
+      "use case",
+      "stakeholders",
+      "impact",
+      "data",
+      "purpose",
+      "risk profile"
+    ],
+    "content": "The Map function focuses on understanding the context, intended purpose, stakeholders, impacts, data, and risk profile of an AI system before and during deployment."
+  },
+  {
+    "source_id": "AI-RMF-MEASURE",
+    "title": "NIST AI RMF - Measure Function",
+    "framework": "NIST AI RMF",
+    "reference_type": "function",
+    "tags": [
+      "measure",
+      "testing",
+      "evaluation",
+      "monitoring",
+      "metrics",
+      "performance",
+      "bias",
+      "accuracy"
+    ],
+    "content": "The Measure function focuses on evaluating, testing, analyzing, benchmarking, and monitoring AI risks, system behavior, and performance characteristics."
+  },
+  {
+    "source_id": "AI-RMF-MANAGE",
+    "title": "NIST AI RMF - Manage Function",
+    "framework": "NIST AI RMF",
+    "reference_type": "function",
+    "tags": [
+      "manage",
+      "controls",
+      "mitigation",
+      "risk treatment",
+      "deployment",
+      "monitoring",
+      "response"
+    ],
+    "content": "The Manage function focuses on prioritizing, responding to, mitigating, and monitoring AI risks based on risk assessments, organizational tolerance, and system context."
+  },
+  {
+    "source_id": "GRC-HUMAN-REVIEW",
+    "title": "AI Governance Checklist - Human Review",
+    "framework": "Local AI Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "human review",
+      "human oversight",
+      "approval",
+      "override",
+      "decision support",
+      "high impact",
+      "accountability"
+    ],
+    "content": "AI systems that affect employees, customers, access to services, benefits, security decisions, legal rights, or high-impact business decisions should include clear human review, escalation, override, and accountability procedures."
+  },
+  {
+    "source_id": "GRC-AI-LOGGING",
+    "title": "AI Governance Checklist - Logging and Traceability",
+    "framework": "Local AI Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "logging",
+      "audit",
+      "traceability",
+      "monitoring",
+      "records",
+      "model version",
+      "prompt logging"
+    ],
+    "content": "AI systems should log enough information to support reviewability and accountability, including timestamps, system version, model version, input category, output category, user role, decision status, and human approval where applicable."
+  },
+  {
+    "source_id": "GRC-DATA-MINIMIZATION",
+    "title": "AI Governance Checklist - Data Minimization",
+    "framework": "Local AI Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "data minimization",
+      "privacy",
+      "personal data",
+      "sensitive data",
+      "retention",
+      "access control"
+    ],
+    "content": "AI systems should limit data collection, retention, and processing to what is necessary for the stated purpose. Sensitive or personal data should have access controls, retention limits, and documented handling requirements."
+  },
+  {
+    "source_id": "GRC-HIGH-IMPACT-USE",
+    "title": "AI Governance Checklist - High-Impact Use",
+    "framework": "Local AI Governance Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "high impact",
+      "employment",
+      "hr",
+      "screening",
+      "education",
+      "finance",
+      "health",
+      "legal",
+      "benefits"
+    ],
+    "content": "AI use cases involving employment, education, finance, healthcare, legal rights, benefits, security decisions, or access to important services should be treated as higher-risk and should require stronger review, testing, monitoring, and documentation."
+  },
+  {
+    "source_id": "GRC-RISK-REGISTER",
+    "title": "GRC Checklist - Risk Register Entry",
+    "framework": "Local GRC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "risk register",
+      "risk title",
+      "risk description",
+      "impact",
+      "likelihood",
+      "controls",
+      "risk owner"
+    ],
+    "content": "A useful risk register entry should include a risk title, risk description, affected system or process, likelihood, impact, risk level, existing controls, control gaps, recommended controls, risk owner, evidence needed, and next steps."
+  },
+  {
+    "source_id": "GRC-EVIDENCE-REQUEST",
+    "title": "GRC Checklist - Evidence Request",
+    "framework": "Local GRC Checklist",
+    "reference_type": "checklist",
+    "tags": [
+      "evidence",
+      "audit",
+      "control",
+      "documentation",
+      "owner",
+      "date range",
+      "proof"
+    ],
+    "content": "A useful evidence request should identify the control or risk being tested, the system or process owner, the required date range, acceptable evidence examples, expected format, and follow-up questions if evidence is incomplete."
+  }
+]
