@@ -32,13 +32,33 @@ def post_to_api(endpoint: str, payload: dict):
     url = f"{API_BASE_URL}{endpoint}"
 
     try:
-        response = requests.post(url, json=payload, timeout=120)
+        response = requests.post(url, json=payload, timeout=300)
         response.raise_for_status()
         return response.json(), None
 
     except requests.exceptions.RequestException as exc:
         return None, str(exc)
 
+def display_source_references(result: dict) -> None:
+    """
+    Displays source references returned by the backend.
+    """
+    sources = result.get("source_references", [])
+
+    st.subheader("Source References")
+
+    if not sources:
+        st.info("No source references returned for this response.")
+        return
+
+    for source in sources:
+        source_id = source.get("source_id", "unknown")
+        title = source.get("title", "Untitled source")
+        framework = source.get("framework", "Unknown framework")
+        relevance = source.get("relevance", "No relevance explanation provided.")
+
+        st.write(f"- **{source_id}** — {title} ({framework})")
+        st.caption(relevance)
 
 if mode == "AI Governance Risk Intake":
     st.header("AI Governance Risk Intake")
@@ -136,6 +156,8 @@ if mode == "AI Governance Risk Intake":
             for step in result.get("recommended_next_steps", []):
                 st.write(f"- {step}")
 
+            display_source_references(result)
+
             with st.expander("Full JSON response"):
                 st.json(result)
 
@@ -228,6 +250,8 @@ elif mode == "SOC Alert Triage":
             for gap in result.get("evidence_gaps", []):
                 st.write(f"- {gap}")
 
+            display_source_references(result)
+
             with st.expander("Full JSON response"):
                 st.json(result)
 
@@ -248,3 +272,4 @@ elif mode == "Audit Logs":
 
     except requests.exceptions.RequestException as exc:
         st.error(f"Could not load logs: {exc}")
+

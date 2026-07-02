@@ -1,10 +1,23 @@
 from pydantic import BaseModel, Field
 
 
+class SourceReference(BaseModel):
+    source_id: str = Field(..., description="Unique ID of the local reference card.")
+    title: str = Field(..., description="Title of the local reference card.")
+    framework: str = Field(..., description="Framework, checklist, or source family.")
+    relevance: str = Field(
+        ...,
+        description="Brief explanation of why this source was relevant to the response.",
+    )
+
+
 class GovernanceRiskRequest(BaseModel):
     system_name: str = Field(..., description="Name of the proposed AI system.")
     system_purpose: str = Field(..., description="What the AI system is supposed to do.")
-    data_types: list[str] = Field(default_factory=list, description="Types of data used by the system.")
+    data_types: list[str] = Field(
+        default_factory=list,
+        description="Types of data used by the system.",
+    )
     users: list[str] = Field(default_factory=list, description="Who will use the system.")
     external_integrations: list[str] = Field(
         default_factory=list,
@@ -31,6 +44,10 @@ class GovernanceRiskResponse(BaseModel):
     logging_requirements: list[str]
     evidence_gaps: list[str]
     recommended_next_steps: list[str]
+    source_references: list[SourceReference] = Field(
+        default_factory=list,
+        description="Local reference cards that influenced the response.",
+    )
 
 
 class SocAlertRequest(BaseModel):
@@ -60,6 +77,10 @@ class SocAlertResponse(BaseModel):
     false_positive_considerations: list[str]
     evidence_gaps: list[str]
     analyst_note: str
+    source_references: list[SourceReference] = Field(
+        default_factory=list,
+        description="Local reference cards that influenced the response.",
+    )
 
 
 class AuditLogEntry(BaseModel):
@@ -70,3 +91,4 @@ class AuditLogEntry(BaseModel):
     result_summary: str
     success: bool
     error: str | None = None
+    source_ids: list[str] = Field(default_factory=list)

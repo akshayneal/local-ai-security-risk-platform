@@ -10,22 +10,24 @@ from app.schemas import (
 )
 from app.soc_analyzer import analyze_soc_alert
 
+
 app = FastAPI(
     title="Local AI Security Risk & SOC Triage Platform",
-    description="Local AI project for AI governance risk intake and SOC alert triage.",
-    version="0.1.0",
+    description="Local AI security and governance workflow platform using Ollama.",
+    version="2.2.0",
 )
 
 
 @app.get("/")
-def root():
+def root() -> dict:
     return {
-        "message": "Local AI Security Risk & SOC Triage Platform API is running."
+        "message": "Local AI Security Risk & SOC Triage Platform",
+        "version": "2.2.0",
     }
 
 
 @app.get("/health")
-def health_check():
+def health() -> dict:
     return {
         "status": "ok",
         "service": "local-ai-security-risk-platform",
@@ -33,7 +35,7 @@ def health_check():
 
 
 @app.post("/analyze/governance", response_model=GovernanceRiskResponse)
-def governance_endpoint(request: GovernanceRiskRequest):
+def governance_endpoint(request: GovernanceRiskRequest) -> GovernanceRiskResponse:
     try:
         result = analyze_governance_risk(request)
 
@@ -42,6 +44,9 @@ def governance_endpoint(request: GovernanceRiskRequest):
             input_summary=request.system_name,
             result_summary=f"{result.risk_level} / {result.decision}",
             success=True,
+            source_ids=[
+                source.source_id for source in result.source_references
+            ],
         )
 
         return result
@@ -59,7 +64,7 @@ def governance_endpoint(request: GovernanceRiskRequest):
 
 
 @app.post("/analyze/soc-alert", response_model=SocAlertResponse)
-def soc_alert_endpoint(request: SocAlertRequest):
+def soc_alert_endpoint(request: SocAlertRequest) -> SocAlertResponse:
     try:
         result = analyze_soc_alert(request)
 
@@ -68,6 +73,9 @@ def soc_alert_endpoint(request: SocAlertRequest):
             input_summary=f"{request.alert_id}: {request.alert_type}",
             result_summary=f"{result.severity} / {result.likely_incident_type}",
             success=True,
+            source_ids=[
+                source.source_id for source in result.source_references
+            ],
         )
 
         return result
@@ -85,14 +93,14 @@ def soc_alert_endpoint(request: SocAlertRequest):
 
 
 @app.get("/logs")
-def logs_endpoint(limit: int = 50):
+def logs_endpoint(limit: int = 50) -> dict:
     return {
-        "logs": read_audit_logs(limit=limit)
+        "logs": read_audit_logs(limit=limit),
     }
 
 
 @app.get("/schemas")
-def schemas_endpoint():
+def schemas_endpoint() -> dict:
     return {
         "governance_request": GovernanceRiskRequest.model_json_schema(),
         "governance_response": GovernanceRiskResponse.model_json_schema(),
