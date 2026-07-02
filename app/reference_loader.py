@@ -133,3 +133,138 @@ def format_references_for_prompt(references: list[dict[str, Any]]) -> str:
         formatted_blocks.append(block)
 
     return "\n\n---\n\n".join(formatted_blocks)
+
+def get_reference_ids(references: list[dict[str, Any]]) -> set[str]:
+    """
+    Returns the set of source_id values from retrieved reference cards.
+    """
+    return {
+        reference["source_id"]
+        for reference in references
+        if "source_id" in reference
+    }
+
+
+def get_reference_lookup(references: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """
+    Builds a lookup table from source_id to the full trusted reference card.
+    """
+    return {
+        reference["source_id"]: reference
+        for reference in references
+        if "source_id" in reference
+    }
+
+
+def sanitize_source_references(
+    returned_sources: list[dict[str, Any]],
+    retrieved_references: list[dict[str, Any]],
+) -> list[dict[str, str]]:
+    """
+    Keeps only source references that were actually retrieved for the request.
+
+    The model is allowed to explain relevance, but the trusted title and framework
+    are taken from the local reference card instead of trusting model-generated
+    metadata.
+    """
+    reference_lookup = get_reference_lookup(retrieved_references)
+    sanitized_sources = []
+
+    for source in returned_sources:
+        source_id = source.get("source_id")
+
+        if source_id not in reference_lookup:
+            continue
+
+        trusted_reference = reference_lookup[source_id]
+
+        sanitized_sources.append(
+            {
+                "source_id": source_id,
+                "title": trusted_reference.get("title", ""),
+                "framework": trusted_reference.get("framework", ""),
+                "relevance": source.get(
+                    "relevance",
+                    "The model identified this retrieved local reference as relevant.",
+                ),
+            }
+        )
+
+    return sanitized_sources
+
+def remove_inline_source_citations(
+    text: str,
+    source_ids: set[str],
+) -> str:
+    """
+    Removes inline source IDs and parenthetical source citations from normal text fields.
+
+    Example:
+    "Implement data minimization (per GRC-DATA-MINIMIZATION)."
+
+    becomes:
+    "Implement data minimization."
+    """
+    cleaned_text = text
+
+    for source_id in source_ids:
+        patterns = [
+            rf"\s*\(per {re.escape(source_id)}\)",
+            rf"\s*\({re.escape(source_id)}\)",
+            rf"\s*per {re.escape(source_id)}",
+        ]
+
+        for pattern in patterns:
+            cleaned_text = re.sub(
+                pattern,
+                "",
+                cleaned_text,
+                flags=re.IGNORECASE,
+            )
+
+    cleaned_text = re.sub(r"\s+\.", ".", cleaned_text)
+    cleaned_text = re.sub(r"\s+,", ",", cleaned_text)
+    cleaned_text = re.sub(r"\s{2,}", " ", cleaned_text)
+
+    return cleaned_text.strip()
+
+
+def clean_inline_source_citations(
+    raw_result: dict[str, Any],
+    source_ids: set[str],
+    fields_to_clean: list[str],
+) -> dict[str, Any]:
+    """
+    Removes inline source citations from selected response fields.
+
+    This keeps source IDs in source_references, but removes them from normal
+    user-facing response fields.
+    """
+    cleaned_result = raw_result.copy()
+
+    for field in fields_to_clean:
+        value = cleaned_result.get(field)
+
+        if isinstance(value, str):
+            cleaned_result[field] = remove_inline_source_citations(
+                text=value,
+                source_ids=source_ids,
+            )
+
+        elif isinstance(value, list):
+            cleaned_items = []
+
+            for item in value:
+                if isinstance(item, str):
+                    cleaned_items.append(
+                        remove_inline_source_citations(
+                            text=item,
+                            source_ids=source_ids,
+                        )
+                    )
+                else:
+                    cleaned_items.append(item)
+
+            cleaned_result[field] = cleaned_items
+
+    return cleaned_result

@@ -12,6 +12,7 @@ def test_governance_prompt_includes_reference_context():
         external_integrations=["applicant tracking system"],
         human_review_process="Recruiters review all AI recommendations before decisions.",
         business_impact="High impact because the system may affect hiring opportunities.",
+        
     )
 
     references = get_relevant_references(
@@ -31,6 +32,8 @@ def test_governance_prompt_includes_reference_context():
     assert "Source ID:" in prompt
     assert "Internal Resume Screening Assistant" in prompt
     assert "candidate resumes" in prompt
+    assert "source_references" in prompt
+    assert "Only include source_references" in prompt
 
 
 def test_soc_prompt_includes_reference_context():
@@ -61,3 +64,5 @@ def test_soc_prompt_includes_reference_context():
     assert "Source ID:" in prompt
     assert "SSH brute force followed by successful login" in prompt
     assert "185.22.10.4" in prompt
+    assert "source_references" in prompt
+    assert "Only include source_references" in prompt

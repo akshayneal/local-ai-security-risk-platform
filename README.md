@@ -2,35 +2,37 @@
 
 A local AI security project that uses Python, FastAPI, Streamlit, Ollama, and an 8B open-weight model to support two practical workflows: AI governance risk intake and SOC alert triage.
 
-The goal of this project is to show how a local LLM can be used as part of a structured security analysis workflow without relying on external AI APIs. User inputs are validated, passed through a backend API, enriched with local reference context, analyzed by a locally running model, returned as structured JSON, and written to a local audit log.
+The goal of this project is to show how a local LLM can be used as part of a structured security analysis workflow without relying on external AI APIs. User inputs are validated, passed through a backend API, enriched with local reference context, analyzed by a locally running model, returned as structured JSON, displayed in a Streamlit dashboard, and written to a local audit log.
 
 ## Overview
 
 This project has two main modes:
 
 1. **AI Governance Risk Intake**
-   Reviews a proposed AI system and produces a structured risk assessment, including key risks, required controls, human review requirements, logging requirements, evidence gaps, and recommended next steps.
+   Reviews a proposed AI system and produces a structured risk assessment, including key risks, required controls, human review requirements, logging requirements, evidence gaps, recommended next steps, and local source references.
 
 2. **SOC Alert Triage**
-   Reviews a security alert and produces a structured triage report, including severity, likely incident type, MITRE-style mapping, containment steps, investigation steps, false positive considerations, evidence gaps, and an analyst note.
+   Reviews a security alert and produces a structured triage report, including severity, likely incident type, MITRE-style mapping, containment steps, investigation steps, false positive considerations, evidence gaps, an analyst note, and local source references.
 
 The project is intentionally local-first. The model runs through Ollama on the user's machine, and the application does not send analysis requests to an external AI provider.
 
-## Version 2.1 Update: Curated Local Reference Grounding
+## Version 2.2 Update: Source-Aware Outputs
 
-Version 2.1 adds a curated local reference layer. Before the model generates a response, the backend retrieves relevant local reference cards from JSON files and injects them into the model prompt.
+Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.
 
-This gives the model more useful context for security and governance workflows while still keeping the project local and offline.
+In Version 2.1, the backend retrieved relevant local reference cards and inserted them into the model prompt. In Version 2.2, the model response now includes a structured `source_references` field that identifies which local reference cards influenced the response.
 
-Current reference materials include:
+Version 2.2 also adds backend safeguards to make source-aware outputs more reliable:
 
-* MITRE-style SOC tactic cards
-* Local SOC triage checklists
-* NIST AI RMF-style governance cards
-* Local AI governance checklists
-* General auditability, evidence gap, and human-review guidance
+* The model is instructed to cite only local references that were actually provided in the prompt.
+* Returned source references are sanitized against the references retrieved by the backend.
+* Fake or unretrieved source IDs are removed before the response is validated.
+* Source IDs are kept out of ordinary response fields and placed only in `source_references`.
+* Inline source citations such as `(per SOURCE-ID)` are cleaned from normal user-facing fields.
+* Audit logs now record the source IDs used for each successful analysis.
+* Streamlit now displays a dedicated **Source References** section for governance and SOC results.
 
-This is not full vector RAG yet. The current reference retrieval system uses simple keyword and tag matching over curated local JSON files. Full vector RAG over larger documents is planned as a future improvement.
+This gives the project a stronger responsible-AI structure: the model can use local reference context, but the backend enforces the source-reference contract before returning the result.
 
 ## Features
 
@@ -42,11 +44,15 @@ This is not full vector RAG yet. The current reference retrieval system uses sim
 * SOC alert triage workflow
 * Curated local reference packs for SOC and governance workflows
 * Reference-grounded prompts using local security and governance snippets
-* Structured JSON outputs
-* Local JSONL audit logging
+* Source-aware structured outputs through `source_references`
+* Backend validation and sanitization of returned source IDs
+* Inline citation cleanup for normal response fields
+* Streamlit Source References display
+* Local JSONL audit logging with source IDs
 * Evidence gap identification
 * Human-review and responsible-AI framing
-* Basic pytest coverage for schema validation, reference loading, and prompt/reference integration
+* Pytest coverage for schemas, reference loading, prompt integration, source validation, and audit logging
+* Ruff-based code quality checks
 
 ## Tech Stack
 
@@ -94,9 +100,11 @@ local-ai-security-risk-platform/
 │   └── soc_alerts.csv
 │
 ├── tests/
-│   ├── test_schemas.py
+│   ├── test_audit_logger.py
+│   ├── test_prompt_reference_integration.py
 │   ├── test_reference_loader.py
-│   └── test_prompt_reference_integration.py
+│   ├── test_schemas.py
+│   └── test_source_reference_validation.py
 │
 ├── .env.example
 ├── .gitignore
@@ -124,14 +132,20 @@ Prompt builder with reference context
         ↓
 Ollama local model
         ↓
-Validated JSON response
+Raw structured JSON response
         ↓
-Audit log
+Source reference sanitization
         ↓
-Streamlit display
+Inline citation cleanup
+        ↓
+Pydantic response validation
+        ↓
+Audit log with source IDs
+        ↓
+Streamlit display with Source References
 ```
 
-Streamlit handles the user interface. FastAPI handles the backend routes. Pydantic validates inputs and outputs. The reference loader retrieves relevant local guidance cards. Ollama runs the local model. The audit logger records each completed or failed analysis.
+Streamlit handles the user interface. FastAPI handles the backend routes. Pydantic validates inputs and outputs. The reference loader retrieves relevant local guidance cards. Ollama runs the local model. The backend sanitizes source references and removes inline source IDs from normal fields. The audit logger records each completed or failed analysis, including source IDs when available.
 
 ## Information Flow
 
@@ -148,15 +162,19 @@ reference_loader.py retrieves relevant governance reference cards
         ↓
 prompts.py builds a governance prompt with local reference context
         ↓
-ollama_client.py sends the prompt to qwen3:8b
+ollama_client.py sends the prompt and response schema to qwen3:8b
         ↓
 The model returns structured JSON
         ↓
-Pydantic validates the response
+The backend sanitizes returned source references
         ↓
-audit_logger.py records the result
+The backend removes inline source citations from normal fields
         ↓
-Streamlit displays the output
+Pydantic validates the final response
+        ↓
+audit_logger.py records the result and source IDs
+        ↓
+Streamlit displays the output and Source References section
 ```
 
 ### SOC Alert Triage
@@ -172,15 +190,19 @@ reference_loader.py retrieves relevant SOC reference cards
         ↓
 prompts.py builds a SOC prompt with local reference context
         ↓
-ollama_client.py sends the prompt to qwen3:8b
+ollama_client.py sends the prompt and response schema to qwen3:8b
         ↓
 The model returns structured JSON
         ↓
-Pydantic validates the response
+The backend sanitizes returned source references
         ↓
-audit_logger.py records the result
+The backend removes inline source citations from normal fields
         ↓
-Streamlit displays the output
+Pydantic validates the final response
+        ↓
+audit_logger.py records the result and source IDs
+        ↓
+Streamlit displays the output and Source References section
 ```
 
 ## Running the Project Locally
@@ -296,6 +318,7 @@ The output includes:
 * Logging requirements
 * Evidence gaps
 * Recommended next steps
+* Source references
 
 Example use cases:
 
@@ -329,6 +352,7 @@ The output includes:
 * False positive considerations
 * Evidence gaps
 * Analyst note
+* Source references
 
 Example alert types:
 
@@ -373,6 +397,33 @@ The retrieved reference cards are formatted and inserted into the model prompt b
 
 This allows the model to produce answers that are more aligned with the project’s selected security, governance, and auditability guidance.
 
+## Source-Aware Outputs
+
+Version 2.2 adds structured source references to both main workflows.
+
+Each response can include:
+
+```json
+"source_references": [
+  {
+    "source_id": "GRC-HIGH-IMPACT-USE",
+    "title": "AI Governance Checklist - High-Impact Use",
+    "framework": "Local AI Governance Checklist",
+    "relevance": "System involves employment or benefits-related use requiring stronger review."
+  }
+]
+```
+
+The backend performs two important cleanup steps:
+
+1. **Source reference sanitization**
+   The model may only cite source IDs that were actually retrieved for the request. If the model returns an unretrieved or fake source ID, the backend removes it before validation.
+
+2. **Inline citation cleanup**
+   Source IDs are kept out of ordinary response fields such as summaries, risks, controls, containment steps, and recommendations. Source attribution is kept in the dedicated `source_references` field.
+
+This keeps the user-facing output clean while still preserving source awareness and auditability.
+
 ## Testing
 
 Run the test suite with:
@@ -383,10 +434,14 @@ python -m pytest
 
 The tests currently cover:
 
+* Basic schema validation
+* SourceReference schema support
 * Reference file loading
 * Reference retrieval behavior
 * Prompt/reference integration
-* Basic schema validation
+* Source reference sanitization
+* Inline citation cleanup
+* Audit logger support for source IDs
 
 Run Ruff to check code quality:
 
@@ -417,6 +472,17 @@ The log records:
 * Result summary
 * Success or failure
 * Error message, if applicable
+* Source IDs used in the response
+
+Example audit field:
+
+```json
+"source_ids": [
+  "SOC-BRUTE-FORCE-SUCCESS",
+  "MITRE-TA0006",
+  "MITRE-TA0001"
+]
+```
 
 Real log files are ignored by Git. The `logs/.gitkeep` file exists only so the logs folder remains visible in the repository.
 
@@ -430,7 +496,8 @@ Current limitations:
 * The model does not query live threat intelligence.
 * The model does not verify IPs, domains, hashes, CVEs, or threat actors externally.
 * The current reference-grounding layer uses keyword and tag matching, not full semantic vector search.
-* The model receives local reference context, but Version 2.1 does not yet return explicit source citations in the output schema.
+* Source references are based on retrieved local reference cards, not live external sources.
+* The model may still make imperfect recommendations, so the backend includes validation and cleanup steps to enforce cleaner output structure.
 * Recommendations are based on the provided input, structured prompts, retrieved local reference cards, and the model's pretrained knowledge.
 * Outputs should be reviewed by a human analyst before being used for real operational or governance decisions.
 
@@ -438,8 +505,6 @@ Current limitations:
 
 Planned or possible improvements include:
 
-* Add explicit `source_references` fields to model outputs
-* Validate that returned source IDs match retrieved reference cards
 * Add full local vector RAG using ChromaDB and Ollama embeddings
 * Add local knowledge base ingestion for security and governance documents
 * Add a SOC case file builder
@@ -452,9 +517,10 @@ Planned or possible improvements include:
 * Add exportable incident reports and governance reports
 * Add screenshots and architecture diagrams
 * Add retrieval quality evaluation cases
+* Add optional report export in Markdown or JSON
 
 ## Why I Built This
 
 I built this project to practice combining cybersecurity analysis, AI governance concepts, local AI tooling, and structured backend development in a practical application.
 
-This project focuses on structured workflows, validated outputs, auditability, reference-grounded prompts, and responsible use of local AI in security and governance contexts.
+This project focuses on structured workflows, validated outputs, auditability, source-aware responses, local reference grounding, and responsible use of local AI in security and governance contexts.
