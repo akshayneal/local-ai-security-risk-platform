@@ -16,6 +16,10 @@ env/
 logs/*.jsonl
 !logs/.gitkeep
 
+# Knowledge base generated files
+knowledge_base/chroma_db/
+knowledge_base/processed/*.jsonl
+
 # VS Code
 .vscode/
 
