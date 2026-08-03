@@ -35,7 +35,10 @@ def test_build_chunk_preview_lines_reports_empty_directory(tmp_path) -> None:
     assert f"Raw docs directory: {raw_docs_dir}" in lines
     assert "Loaded documents: 0" in lines
     assert "Created chunks: 0" in lines
-    assert "No supported documents found. Add .txt or .md files to the raw docs directory." in lines
+    assert (
+        "No supported documents found. Add .txt, .md, or .pdf files "
+        "to the raw docs directory."
+    ) in lines
 
 
 def test_build_chunk_preview_lines_reports_loaded_documents_and_chunks(tmp_path) -> None:

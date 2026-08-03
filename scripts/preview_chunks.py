@@ -48,7 +48,10 @@ def build_chunk_preview_lines(
     ]
 
     if not documents:
-        lines.append("No supported documents found. Add .txt or .md files to the raw docs directory.")
+        lines.append(
+            "No supported documents found. Add .txt, .md, or .pdf files "
+            "to the raw docs directory."
+        )
         return lines
 
     lines.append("")
@@ -87,7 +90,7 @@ def parse_args() -> Namespace:
         "raw_docs_dir",
         nargs="?",
         default="knowledge_base/raw_docs",
-        help="Directory containing raw .txt and .md documents.",
+        help="Directory containing raw .txt, .md, and .pdf documents.",
     )
 
     parser.add_argument(

@@ -8,3 +8,4 @@ requests
 plotly
 pytest
 ruff
+pypdf>=6.0,<7.0
