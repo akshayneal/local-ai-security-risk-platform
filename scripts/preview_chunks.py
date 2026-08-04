@@ -59,6 +59,8 @@ def build_chunk_preview_lines(
 
     for document in documents:
         lines.append(f"- {document.document_id}")
+        lines.append(f"  version: {document.document_version_id}")
+        lines.append(f"  content hash: {document.content_hash}")
         lines.append(f"  title: {document.title}")
         lines.append(f"  source: {document.source_path}")
         lines.append(f"  type: {document.file_type}")
@@ -70,6 +72,7 @@ def build_chunk_preview_lines(
 
     for chunk in chunks:
         lines.append(f"- {chunk.chunk_id}")
+        lines.append(f"  document version: {chunk.document_version_id}")
         lines.append(f"  source: {chunk.source_path}")
         lines.append(f"  title: {chunk.title}")
         lines.append(f"  index: {chunk.chunk_index}")

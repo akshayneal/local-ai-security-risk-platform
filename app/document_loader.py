@@ -1,10 +1,14 @@
 from dataclasses import dataclass, field
-from hashlib import sha256
 from pathlib import Path
 
 from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
+from app.document_identity import (
+    build_document_id,
+    build_document_version_id,
+    calculate_file_sha256,
+)
 from app.document_limits import DEFAULT_DOCUMENT_LIMITS, DocumentLimits
 
 
@@ -20,6 +24,8 @@ class LoadedDocument:
     """Represents one local source document loaded from the knowledge base."""
 
     document_id: str
+    document_version_id: str
+    content_hash: str
     source_path: str
     title: str
     file_type: str
@@ -116,13 +122,6 @@ def get_relative_source_path(path: Path, root_dir: Path) -> str:
         ) from exc
 
 
-def build_document_id(source_path: str) -> str:
-    """Create a stable document ID from the document source path."""
-
-    digest = sha256(source_path.encode("utf-8")).hexdigest()[:12]
-    return f"doc_{digest}"
-
-
 def build_document_title(path: Path) -> str:
     """Create a readable document title from the file name."""
 
@@ -163,6 +162,51 @@ def has_pdf_signature(path: Path) -> bool:
     return PDF_SIGNATURE in initial_bytes
 
 
+def create_loaded_document(
+    resolved_path: Path,
+    resolved_root: Path,
+    file_type: str,
+    text: str,
+    extraction_method: str,
+    additional_metadata: dict[str, str] | None = None,
+) -> LoadedDocument:
+    """Create a loaded document with source and content identity."""
+
+    source_path = get_relative_source_path(
+        resolved_path,
+        resolved_root,
+    )
+    document_id = build_document_id(source_path)
+    content_hash = calculate_file_sha256(resolved_path)
+    document_version_id = build_document_version_id(
+        document_id,
+        content_hash,
+    )
+
+    metadata = {
+        "file_name": resolved_path.name,
+        "source_path": source_path,
+        "file_size_bytes": str(resolved_path.stat().st_size),
+        "extraction_method": extraction_method,
+        "content_hash": content_hash,
+        "document_version_id": document_version_id,
+    }
+
+    if additional_metadata:
+        metadata.update(additional_metadata)
+
+    return LoadedDocument(
+        document_id=document_id,
+        document_version_id=document_version_id,
+        content_hash=content_hash,
+        source_path=source_path,
+        title=build_document_title(resolved_path),
+        file_type=file_type,
+        text=text,
+        metadata=metadata,
+    )
+
+
 def load_text_document(
     path: Path | str,
     root_dir: Path | str | None = None,
@@ -189,21 +233,18 @@ def load_text_document(
             f"Text document must use UTF-8 encoding: {resolved_path}"
         ) from exc
 
-    normalized_text = validate_extracted_text(raw_text, resolved_path, limits)
-    source_path = get_relative_source_path(resolved_path, resolved_root)
+    normalized_text = validate_extracted_text(
+        raw_text,
+        resolved_path,
+        limits,
+    )
 
-    return LoadedDocument(
-        document_id=build_document_id(source_path),
-        source_path=source_path,
-        title=build_document_title(resolved_path),
+    return create_loaded_document(
+        resolved_path=resolved_path,
+        resolved_root=resolved_root,
         file_type=resolved_path.suffix.lower().lstrip("."),
         text=normalized_text,
-        metadata={
-            "file_name": resolved_path.name,
-            "source_path": source_path,
-            "file_size_bytes": str(resolved_path.stat().st_size),
-            "extraction_method": "utf-8",
-        },
+        extraction_method="utf-8",
     )
 
 
@@ -273,20 +314,15 @@ def load_pdf_document(
         resolved_path,
         limits,
     )
-    source_path = get_relative_source_path(resolved_path, resolved_root)
 
-    return LoadedDocument(
-        document_id=build_document_id(source_path),
-        source_path=source_path,
-        title=build_document_title(resolved_path),
+    return create_loaded_document(
+        resolved_path=resolved_path,
+        resolved_root=resolved_root,
         file_type="pdf",
         text=normalized_text,
-        metadata={
-            "file_name": resolved_path.name,
-            "source_path": source_path,
-            "file_size_bytes": str(resolved_path.stat().st_size),
+        extraction_method="pypdf",
+        additional_metadata={
             "page_count": str(page_count),
-            "extraction_method": "pypdf",
         },
     )
 

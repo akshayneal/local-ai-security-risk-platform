@@ -67,3 +67,6 @@ def test_build_chunk_preview_lines_reports_loaded_documents_and_chunks(tmp_path)
     assert "title: Governance Notes" in joined_output
     assert "source: governance_notes.md" in joined_output
     assert "preview: # Governance Notes Human review is required" in joined_output
+    assert "version: doc_" in joined_output
+    assert "content hash:" in joined_output
+    assert "document version: doc_" in joined_output

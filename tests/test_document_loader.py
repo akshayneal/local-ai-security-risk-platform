@@ -82,7 +82,18 @@ def test_load_text_document_loads_markdown_file(tmp_path: Path) -> None:
     assert document.metadata["file_name"] == "ai_governance_notes.md"
     assert document.metadata["source_path"] == "ai_governance_notes.md"
     assert document.metadata["extraction_method"] == "utf-8"
-
+    assert len(document.content_hash) == 64
+    assert document.document_version_id.startswith(
+        f"{document.document_id}_v_"
+    )
+    assert (
+        document.metadata["content_hash"]
+        == document.content_hash
+    )
+    assert (
+        document.metadata["document_version_id"]
+        == document.document_version_id
+    )
 
 def test_load_documents_loads_supported_files_only(tmp_path: Path) -> None:
     raw_docs_dir = tmp_path / "raw_docs"
@@ -356,3 +367,60 @@ def test_document_limits_reject_nonpositive_values() -> None:
         match="max_pdf_pages must be greater than 0",
     ):
         DocumentLimits(max_pdf_pages=0)
+
+def test_same_content_at_different_paths_has_different_document_ids(
+    tmp_path: Path,
+) -> None:
+    raw_docs_dir = tmp_path / "raw_docs"
+    raw_docs_dir.mkdir()
+
+    first_path = raw_docs_dir / "first.md"
+    second_path = raw_docs_dir / "second.md"
+
+    first_path.write_text("Identical content.", encoding="utf-8")
+    second_path.write_text("Identical content.", encoding="utf-8")
+
+    first_document = load_text_document(
+        first_path,
+        root_dir=raw_docs_dir,
+    )
+    second_document = load_text_document(
+        second_path,
+        root_dir=raw_docs_dir,
+    )
+
+    assert first_document.document_id != second_document.document_id
+    assert first_document.content_hash == second_document.content_hash
+    assert (
+        first_document.document_version_id
+        != second_document.document_version_id
+    )
+
+
+def test_changed_content_preserves_document_id_but_changes_version(
+    tmp_path: Path,
+) -> None:
+    raw_docs_dir = tmp_path / "raw_docs"
+    raw_docs_dir.mkdir()
+
+    document_path = raw_docs_dir / "policy.md"
+    document_path.write_text("Version one.", encoding="utf-8")
+
+    first_document = load_text_document(
+        document_path,
+        root_dir=raw_docs_dir,
+    )
+
+    document_path.write_text("Version two.", encoding="utf-8")
+
+    second_document = load_text_document(
+        document_path,
+        root_dir=raw_docs_dir,
+    )
+
+    assert first_document.document_id == second_document.document_id
+    assert first_document.content_hash != second_document.content_hash
+    assert (
+        first_document.document_version_id
+        != second_document.document_version_id
+    )
