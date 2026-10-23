@@ -33,3 +33,6 @@ knowledge_base/processed/*.jsonl
 # OS files
 .DS_Store
 Thumbs.db
+
+# Generated local document registry
+knowledge_base/registry/*.db*
