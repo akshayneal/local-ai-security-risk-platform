@@ -1,7 +1,6 @@
 from hashlib import sha256
 from pathlib import Path
 
-
 FILE_HASH_BLOCK_SIZE = 64 * 1024
 SHA256_HEX_LENGTH = 64
 VERSION_HASH_PREFIX_LENGTH = 12

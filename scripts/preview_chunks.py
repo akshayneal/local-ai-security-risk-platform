@@ -4,7 +4,6 @@ from pathlib import Path
 from app.chunker import DEFAULT_CHUNK_OVERLAP, DEFAULT_CHUNK_SIZE, chunk_documents
 from app.document_loader import load_documents
 
-
 DEFAULT_PREVIEW_CHARS = 180
 
 

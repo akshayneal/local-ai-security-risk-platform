@@ -8,5 +8,5 @@ python-dotenv
 requests
 plotly
 pytest
-ruff
+ruff==0.17.2
 pypdf>=6.0,<7.0

@@ -1,9 +1,9 @@
 from app.reference_loader import (
+    clean_inline_source_citations,
     get_reference_ids,
     get_reference_lookup,
+    remove_inline_source_citations,
     sanitize_source_references,
-    clean_inline_source_citations,
-    remove_inline_source_citations
 )
 
 

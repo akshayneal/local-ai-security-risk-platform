@@ -10,7 +10,6 @@ from app.schemas import (
 )
 from app.soc_analyzer import analyze_soc_alert
 
-
 app = FastAPI(
     title="Local AI Security Risk & SOC Triage Platform",
     description="Local AI security and governance workflow platform using Ollama.",

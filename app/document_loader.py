@@ -11,7 +11,6 @@ from app.document_identity import (
 )
 from app.document_limits import DEFAULT_DOCUMENT_LIMITS, DocumentLimits
 
-
 SUPPORTED_TEXT_EXTENSIONS = {".txt", ".md"}
 SUPPORTED_DOCUMENT_EXTENSIONS = SUPPORTED_TEXT_EXTENSIONS | {".pdf"}
 

@@ -1,9 +1,10 @@
 import sqlite3
+from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path
-from typing import Iterable
+from typing import Self
 
 from app.chunker import DocumentChunk, build_chunk_id
 from app.document_identity import (
@@ -11,7 +12,6 @@ from app.document_identity import (
     is_valid_sha256_digest,
 )
 from app.document_loader import LoadedDocument
-
 
 DEFAULT_REGISTRY_PATH = Path(
     "knowledge_base/registry/document_registry.db"
@@ -77,7 +77,7 @@ class RegistrationResult:
 def utc_now_iso() -> str:
     """Return a timezone-aware UTC timestamp in ISO 8601 format."""
 
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def parse_nonnegative_metadata_integer(
@@ -203,7 +203,7 @@ class DocumentRegistry:
 
         self.connection.close()
 
-    def __enter__(self) -> "DocumentRegistry":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(

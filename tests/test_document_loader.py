@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
@@ -24,7 +25,7 @@ class FakePdfPage:
 
 
 class FakePdfReader:
-    pages_to_return = [
+    pages_to_return: ClassVar[list[FakePdfPage]] = [
         FakePdfPage("First PDF page."),
         FakePdfPage("Second PDF page."),
     ]
@@ -337,7 +338,7 @@ def test_load_pdf_document_rejects_excessive_page_count(
     pdf_path.write_bytes(b"%PDF-1.7\nfake large content")
 
     class LargeFakePdfReader(FakePdfReader):
-        pages_to_return = [
+        pages_to_return: ClassVar[list[FakePdfPage]] = [
             FakePdfPage("Page one."),
             FakePdfPage("Page two."),
         ]

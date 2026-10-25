@@ -2,7 +2,6 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
 
-
 MAX_LABEL_LENGTH = 256
 MAX_DESCRIPTION_LENGTH = 10_000
 MAX_RAW_LOG_LENGTH = 100_000

@@ -1,6 +1,5 @@
 from app.schemas import GovernanceRiskRequest, SocAlertRequest
 
-
 SYSTEM_PROMPT = """
 You are a local AI security assistant.
 

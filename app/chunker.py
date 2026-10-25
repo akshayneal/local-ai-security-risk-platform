@@ -4,7 +4,6 @@ from dataclasses import dataclass, field
 from app.document_limits import DEFAULT_DOCUMENT_LIMITS, DocumentLimits
 from app.document_loader import LoadedDocument
 
-
 DEFAULT_CHUNK_SIZE = 1_000
 DEFAULT_CHUNK_OVERLAP = 200
 MINIMUM_BREAK_FRACTION = 0.60

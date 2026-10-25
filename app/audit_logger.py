@@ -4,7 +4,6 @@ from pathlib import Path
 
 from app.ollama_client import OLLAMA_MODEL
 
-
 LOG_DIR = Path("logs")
 LOG_FILE = LOG_DIR / "audit_log.jsonl"
 

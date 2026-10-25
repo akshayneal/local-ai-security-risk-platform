@@ -3,7 +3,6 @@ import re
 from pathlib import Path
 from typing import Any
 
-
 REFERENCE_DIR = Path("reference_material")
 
 REFERENCE_FILES = {

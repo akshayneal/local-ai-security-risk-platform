@@ -18,7 +18,6 @@ from app.schemas import (
     SourceReference,
 )
 
-
 GOVERNANCE_INPUT = {
     "system_name": "Synthetic policy assistant",
     "system_purpose": "Draft policy answers.",
