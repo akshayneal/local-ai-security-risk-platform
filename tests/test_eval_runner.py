@@ -113,3 +113,16 @@ def test_cli_writes_report_and_returns_security_failure(monkeypatch, tmp_path):
     reports = list(tmp_path.glob("*.json"))
     assert len(reports) == 1
     assert json.loads(reports[0].read_text())["total_cases"] == 1
+
+
+def test_bad_request_is_recorded_without_calling_model(monkeypatch):
+    case = runner.load_suite()[0].cases[0].model_copy(update={"input": {}})
+
+    def unexpected_call(*args, **kwargs):
+        pytest.fail("Invalid requests must not reach the analyzer")
+
+    monkeypatch.setattr(runner, "analyze_soc_alert", unexpected_call)
+    result = runner.run_case(case)
+    assert not result.passed
+    assert "ValidationError" in result.error
+    assert result.response is None

@@ -32,19 +32,24 @@ def analyze_soc_alert(
         response_schema=SocAlertResponse.model_json_schema(),
     )
 
-    source_ids = get_reference_ids(references)
+    source_ids = get_reference_ids(references) | get_reference_ids(
+        raw_result.get("source_references", [])
+    )
 
     raw_result = clean_inline_source_citations(
         raw_result=raw_result,
         source_ids=source_ids,
         fields_to_clean=[
             "summary",
+            "likely_incident_type",
             "mitre_mapping",
             "recommended_containment",
             "recommended_investigation_steps",
             "false_positive_considerations",
             "evidence_gaps",
             "analyst_note",
+            "observed_evidence",
+            "analyst_inferences",
         ],
     )
 

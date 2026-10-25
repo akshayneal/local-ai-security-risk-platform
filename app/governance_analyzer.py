@@ -32,7 +32,9 @@ def analyze_governance_risk(
         response_schema=GovernanceRiskResponse.model_json_schema(),
     )
 
-    source_ids = get_reference_ids(references)
+    source_ids = get_reference_ids(references) | get_reference_ids(
+        raw_result.get("source_references", [])
+    )
 
     raw_result = clean_inline_source_citations(
         raw_result=raw_result,

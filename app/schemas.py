@@ -112,6 +112,14 @@ class SocAlertResponse(BaseModel):
     false_positive_considerations: list[str]
     evidence_gaps: list[str]
     analyst_note: str
+    observed_evidence: list[str] = Field(
+        default_factory=list,
+        description="Concise observations supported by supplied evidence, not unsupported conclusions.",
+    )
+    analyst_inferences: list[str] = Field(
+        default_factory=list,
+        description="Concise analyst findings with appropriate uncertainty, not hidden reasoning.",
+    )
     source_references: list[SourceReference] = Field(
         default_factory=list,
         description="Local reference cards that influenced the response.",

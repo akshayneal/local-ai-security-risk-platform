@@ -39,6 +39,7 @@ def post_to_api(endpoint: str, payload: dict):
     except requests.exceptions.RequestException as exc:
         return None, str(exc)
 
+
 def display_source_references(result: dict) -> None:
     """
     Displays source references returned by the backend.
@@ -59,6 +60,7 @@ def display_source_references(result: dict) -> None:
 
         st.write(f"- **{source_id}** — {title} ({framework})")
         st.caption(relevance)
+
 
 if mode == "AI Governance Risk Intake":
     st.header("AI Governance Risk Intake")
@@ -105,9 +107,7 @@ if mode == "AI Governance Risk Intake":
             "data_types": [
                 item.strip() for item in data_types.splitlines() if item.strip()
             ],
-            "users": [
-                item.strip() for item in users.splitlines() if item.strip()
-            ],
+            "users": [item.strip() for item in users.splitlines() if item.strip()],
             "external_integrations": [
                 item.strip()
                 for item in external_integrations.splitlines()
@@ -202,9 +202,7 @@ elif mode == "SOC Alert Triage":
             "affected_asset": affected_asset,
             "raw_log": raw_log,
             "known_indicators": [
-                item.strip()
-                for item in known_indicators.splitlines()
-                if item.strip()
+                item.strip() for item in known_indicators.splitlines() if item.strip()
             ],
             "observed_behavior": observed_behavior,
         }
@@ -226,6 +224,14 @@ elif mode == "SOC Alert Triage":
 
             st.subheader("Summary")
             st.write(result.get("summary", ""))
+
+            st.subheader("Observed Evidence")
+            for item in result.get("observed_evidence", []):
+                st.write(f"- {item}")
+
+            st.subheader("Analyst Inferences")
+            for item in result.get("analyst_inferences", []):
+                st.write(f"- {item}")
 
             st.subheader("Analyst Note")
             st.write(result.get("analyst_note", ""))
@@ -272,4 +278,3 @@ elif mode == "Audit Logs":
 
     except requests.exceptions.RequestException as exc:
         st.error(f"Could not load logs: {exc}")
-

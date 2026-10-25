@@ -40,6 +40,17 @@ def test_duplicate_ids_rejected():
         EvaluationSuite(cases=[case, case])
 
 
+def test_suite_hash_tracks_actual_case_file_bytes(tmp_path):
+    from evals.runner import CASE_PATH
+
+    path = tmp_path / "suite.json"
+    data = CASE_PATH.read_bytes()
+    path.write_bytes(data)
+    original = load_suite(path)[1]
+    path.write_bytes(data + b"\n")
+    assert load_suite(path)[1] != original
+
+
 @pytest.mark.parametrize(
     "check",
     [

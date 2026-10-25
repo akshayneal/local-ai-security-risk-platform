@@ -48,3 +48,16 @@ def test_hash_mismatch_refused():
 def test_filtered_case_sets_cannot_be_compared():
     with pytest.raises(ValueError, match="case sets differ"):
         compare_reports(make_report([True]), make_report([True, True]))
+
+
+def test_comparison_cli_writes_machine_readable_output(tmp_path):
+    import json
+
+    from evals.compare import main
+
+    before, after = tmp_path / "before.json", tmp_path / "after.json"
+    output = tmp_path / "comparison.json"
+    before.write_text(make_report([False]).model_dump_json(), encoding="utf-8")
+    after.write_text(make_report([True]).model_dump_json(), encoding="utf-8")
+    assert main([str(before), str(after), "--output", str(output)]) == 0
+    assert json.loads(output.read_text())["percentage_point_change"] == 100

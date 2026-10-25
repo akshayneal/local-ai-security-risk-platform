@@ -133,6 +133,7 @@ def format_references_for_prompt(references: list[dict[str, Any]]) -> str:
 
     return "\n\n---\n\n".join(formatted_blocks)
 
+
 def get_reference_ids(references: list[dict[str, Any]]) -> set[str]:
     """
     Returns the set of source_id values from retrieved reference cards.
@@ -140,7 +141,7 @@ def get_reference_ids(references: list[dict[str, Any]]) -> set[str]:
     return {
         reference["source_id"]
         for reference in references
-        if "source_id" in reference
+        if isinstance(reference.get("source_id"), str) and reference["source_id"]
     }
 
 
@@ -168,14 +169,16 @@ def sanitize_source_references(
     """
     reference_lookup = get_reference_lookup(retrieved_references)
     sanitized_sources = []
+    seen_source_ids: set[str] = set()
 
     for source in returned_sources:
         source_id = source.get("source_id")
 
-        if source_id not in reference_lookup:
+        if source_id not in reference_lookup or source_id in seen_source_ids:
             continue
 
         trusted_reference = reference_lookup[source_id]
+        seen_source_ids.add(source_id)
 
         sanitized_sources.append(
             {
@@ -190,6 +193,7 @@ def sanitize_source_references(
         )
 
     return sanitized_sources
+
 
 def remove_inline_source_citations(
     text: str,
@@ -206,11 +210,12 @@ def remove_inline_source_citations(
     """
     cleaned_text = text
 
-    for source_id in source_ids:
+    for source_id in sorted(source_ids, key=lambda item: (-len(item), item)):
         patterns = [
             rf"\s*\(per {re.escape(source_id)}\)",
             rf"\s*\({re.escape(source_id)}\)",
-            rf"\s*per {re.escape(source_id)}",
+            rf"\bper {re.escape(source_id)}(?![\w-])",
+            rf"(?<![\w-]){re.escape(source_id)}(?![\w-])",
         ]
 
         for pattern in patterns:
@@ -221,6 +226,21 @@ def remove_inline_source_citations(
                 flags=re.IGNORECASE,
             )
 
+    # Unknown source-style IDs can also be echoed from user text without ever
+    # appearing in structured sources. Only target explicit citation contexts;
+    # do not strip arbitrary hosts, commands, URLs, or standard CVE indicators.
+    citation_pattern = (
+        r"\b(?P<label>(?i:per|references|cites?|citing|source_id|source id|reference id))"
+        r"\s*[:=]?\s*(?P<identifier>[A-Z][A-Z0-9]*(?:-[A-Z0-9]+){2,})\b"
+    )
+
+    def replace_untrusted_citation(match: re.Match[str]) -> str:
+        identifier = match.group("identifier")
+        if re.fullmatch(r"CVE-\d{4}-\d{4,}", identifier):
+            return match.group(0)
+        return f"{match.group('label')} an unverified reference"
+
+    cleaned_text = re.sub(citation_pattern, replace_untrusted_citation, cleaned_text)
     cleaned_text = re.sub(r"\s+\.", ".", cleaned_text)
     cleaned_text = re.sub(r"\s+,", ",", cleaned_text)
     cleaned_text = re.sub(r"\s{2,}", " ", cleaned_text)
