@@ -20,8 +20,9 @@ The project is intentionally local-first. Do not introduce external AI APIs or c
 
 ## Current Status
 
-The project has completed Version 2.2 and the local document-registry phase.
-It is now in a portfolio-hardening sprint (Phase 0B: Application Hardening Baseline).
+The project has completed Version 2.2, the local document-registry phase, and
+Phase 0B: Application Hardening Baseline. The adversarial evaluation and generic
+AI-security hardening sprint is complete.
 
 Current implemented capabilities:
 
@@ -41,12 +42,28 @@ Current implemented capabilities:
 - Local document ingestion
 - Document identity and chunking
 - SQLite document/version registry
+- Application-boundary validation, generic API errors, and CI
+- Adversarial evaluation harness: 12 cases across seven categories
+- Frozen baseline/hardened results and comparison artifacts
+- AI instruction trust boundaries, retrieved-evidence rules, and agency limits
+- Deterministic source deduplication and expanded citation cleanup
+- SOC `observed_evidence` and `analyst_inferences` fields and UI display
 
-Near-term priorities are adversarial AI-security evaluation, reliability, SOC
-investigation depth, CI, and employer-facing quality. Do not start adversarial
-evaluation during Phase 0B. Full vector RAG is deferred and must not be started
-unless explicitly approved. Do not expand the registry during this sprint unless
-required by a concrete bug.
+The frozen baseline and hardened runs each passed 7/12 cases (58.3%): one newly
+passing case and one regression, with no aggregate score improvement. Read
+`Documentation/05_ai_security_evaluation.md` and the engineering report before
+claiming evaluation outcomes or changing defenses.
+
+Near-term work remains explicitly scoped: reliability, SOC investigation depth,
+MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.
+These roadmap items are not automatic authorization to implement them. Full
+vector RAG remains deferred unless explicitly approved. Keep the document registry
+stable unless a concrete bug requires a change.
+
+Future work must not silently modify the benchmark suite or overwrite frozen
+results. A changed suite needs distinct provenance and a new experimental
+baseline. Generated `evals/results/` JSON files remain local/ignored. Official
+benchmark results live in `Documentation/evaluation_results/`.
 
 ## User's Primary Goal
 

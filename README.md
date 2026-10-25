@@ -16,6 +16,44 @@ This project has two main modes:
 
 The project is intentionally local-first. The model runs through Ollama on the user's machine, and the application does not send analysis requests to an external AI provider.
 
+## Adversarial AI-Security Evaluation
+
+The project includes an application-level benchmark with **12 cases across seven
+threat categories**: direct and indirect prompt injection, retrieval poisoning,
+source integrity, conflicting evidence, excessive agency, and unsupported claims.
+It exercises the real analyzers, local Ollama, source cleanup, and Pydantic output
+validation. Deterministic pytest checks run separately without a live model.
+
+<!-- EVAL_RESULTS -->
+The frozen local `qwen3:8b` runs both scored **7/12 passed, 5 failed (58.3%)**;
+measured change was **0.0 percentage points** with identical suite hashes.
+`SOC-IPI-001` newly passed; `SOC-CONFLICT-002` regressed. Four other cases still
+fail. The saved outputs and evaluation document describe these findings and the
+limits of the checks; no general security improvement is claimed from this pair.
+<!-- /EVAL_RESULTS -->
+
+Run from the repository root with local Ollama and `qwen3:8b` available:
+
+```powershell
+.\.venv\Scripts\python.exe -m evals.runner
+.\.venv\Scripts\python.exe -m evals.runner --case SOC-DPI-001
+.\.venv\Scripts\python.exe -m evals.compare `
+  Documentation/evaluation_results/baseline.json `
+  Documentation/evaluation_results/hardened.json
+```
+
+Trial reports are ignored under `evals/results/`; frozen official results are in
+`Documentation/evaluation_results/`. A failed adversarial assertion returns exit
+code 1 after writing the report. Comparison refuses different suite hashes or
+executed case sets. See the [evaluation methodology and results](Documentation/05_ai_security_evaluation.md)
+and [bottom-up system walkthrough](Documentation/07_current_system_walkthrough.md).
+
+SOC output separates observed evidence from analyst inferences. Explicit prompt
+trust boundaries and deterministic source controls support human review, while
+retrieval remains **keyword/tag retrieval, not vector RAG**. This remains a
+**portfolio/research system, not production SOC infrastructure**; passing this
+small benchmark does not establish general resistance to prompt injection.
+
 ## Version 2.2 Update: Source-Aware Outputs
 
 Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.
@@ -27,7 +65,7 @@ Version 2.2 also adds backend safeguards to make source-aware outputs more relia
 * The model is instructed to cite only local references that were actually provided in the prompt.
 * Returned source references are sanitized against the references retrieved by the backend.
 * Fake or unretrieved source IDs are removed before the response is validated.
-* Source IDs are kept out of ordinary response fields and placed only in `source_references`.
+* Prompts require source IDs only in `source_references`; deterministic cleanup handles supported inline citation forms.
 * Inline source citations such as `(per SOURCE-ID)` are cleaned from normal user-facing fields.
 * Audit logs now record the source IDs used for each successful analysis.
 * Streamlit now displays a dedicated **Source References** section for governance and SOC results.
@@ -134,9 +172,9 @@ Ollama local model
         ↓
 Raw structured JSON response
         ↓
-Source reference sanitization
-        ↓
 Inline citation cleanup
+        ↓
+Source reference sanitization
         ↓
 Pydantic response validation
         ↓
@@ -166,9 +204,9 @@ ollama_client.py sends the prompt and response schema to qwen3:8b
         ↓
 The model returns structured JSON
         ↓
-The backend sanitizes returned source references
-        ↓
 The backend removes inline source citations from normal fields
+        ↓
+The backend sanitizes returned source references
         ↓
 Pydantic validates the final response
         ↓
@@ -194,9 +232,9 @@ ollama_client.py sends the prompt and response schema to qwen3:8b
         ↓
 The model returns structured JSON
         ↓
-The backend sanitizes returned source references
-        ↓
 The backend removes inline source citations from normal fields
+        ↓
+The backend sanitizes returned source references
         ↓
 Pydantic validates the final response
         ↓
@@ -352,6 +390,7 @@ The output includes:
 * False positive considerations
 * Evidence gaps
 * Analyst note
+* Observed evidence and analyst inferences
 * Source references
 
 Example alert types:
@@ -420,7 +459,7 @@ The backend performs two important cleanup steps:
    The model may only cite source IDs that were actually retrieved for the request. If the model returns an unretrieved or fake source ID, the backend removes it before validation.
 
 2. **Inline citation cleanup**
-   Source IDs are kept out of ordinary response fields such as summaries, risks, controls, containment steps, and recommendations. Source attribution is kept in the dedicated `source_references` field.
+   Supported inline citation forms are cleaned from selected ordinary response fields. Prompts require source attribution in `source_references`; cleanup is not a guarantee against every invented ID or citation format.
 
 This keeps the user-facing output clean while still preserving source awareness and auditability.
 
@@ -505,8 +544,8 @@ Current limitations:
 
 Planned or possible improvements include:
 
-* Add full local vector RAG using ChromaDB and Ollama embeddings
-* Add local knowledge base ingestion for security and governance documents
+* Consider semantic/vector retrieval only as separately approved later work
+* Build on the existing bounded document ingestion and SQLite version registry through separately scoped work
 * Add a SOC case file builder
 * Add AI governance risk register entry generation
 * Add control mapping workflows
