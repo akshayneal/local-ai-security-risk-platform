@@ -1,4 +1,18 @@
+from typing import Annotated, Literal
+
 from pydantic import BaseModel, Field
+
+
+MAX_LABEL_LENGTH = 256
+MAX_DESCRIPTION_LENGTH = 10_000
+MAX_RAW_LOG_LENGTH = 100_000
+MAX_LIST_ITEMS = 100
+MAX_LIST_ENTRY_LENGTH = 1_024
+
+RequestLabel = Annotated[str, Field(max_length=MAX_LABEL_LENGTH)]
+RequestDescription = Annotated[str, Field(max_length=MAX_DESCRIPTION_LENGTH)]
+RequestListEntry = Annotated[str, Field(max_length=MAX_LIST_ENTRY_LENGTH)]
+RequestList = Annotated[list[RequestListEntry], Field(max_length=MAX_LIST_ITEMS)]
 
 
 class SourceReference(BaseModel):
@@ -12,22 +26,28 @@ class SourceReference(BaseModel):
 
 
 class GovernanceRiskRequest(BaseModel):
-    system_name: str = Field(..., description="Name of the proposed AI system.")
-    system_purpose: str = Field(..., description="What the AI system is supposed to do.")
-    data_types: list[str] = Field(
+    system_name: RequestLabel = Field(
+        ..., description="Name of the proposed AI system."
+    )
+    system_purpose: RequestDescription = Field(
+        ..., description="What the AI system is supposed to do."
+    )
+    data_types: RequestList = Field(
         default_factory=list,
         description="Types of data used by the system.",
     )
-    users: list[str] = Field(default_factory=list, description="Who will use the system.")
-    external_integrations: list[str] = Field(
+    users: RequestList = Field(
+        default_factory=list, description="Who will use the system."
+    )
+    external_integrations: RequestList = Field(
         default_factory=list,
         description="External tools, APIs, vendors, or platforms connected to the system.",
     )
-    human_review_process: str = Field(
+    human_review_process: RequestDescription = Field(
         default="Not specified",
         description="How humans review, approve, or override AI outputs.",
     )
-    business_impact: str = Field(
+    business_impact: RequestDescription = Field(
         default="Not specified",
         description="How important this system is to the organization.",
     )
@@ -35,8 +55,12 @@ class GovernanceRiskRequest(BaseModel):
 
 class GovernanceRiskResponse(BaseModel):
     system_name: str
-    risk_level: str = Field(..., description="Use one of: low, medium, high, critical.")
-    decision: str = Field(..., description="Use one of: approved, needs_review, rejected.")
+    risk_level: Literal["low", "medium", "high", "critical"] = Field(
+        ..., description="Use one of: low, medium, high, critical."
+    )
+    decision: Literal["approved", "needs_review", "rejected"] = Field(
+        ..., description="Use one of: approved, needs_review, rejected."
+    )
     summary: str
     key_risks: list[str]
     required_controls: list[str]
@@ -51,16 +75,26 @@ class GovernanceRiskResponse(BaseModel):
 
 
 class SocAlertRequest(BaseModel):
-    alert_id: str = Field(..., description="Unique identifier for the alert.")
-    alert_type: str = Field(..., description="Type of alert, such as failed login or malware.")
-    source_system: str = Field(..., description="System that generated the alert.")
-    affected_asset: str = Field(..., description="Host, user, application, or system affected.")
-    raw_log: str = Field(..., description="Original alert text or log content.")
-    known_indicators: list[str] = Field(
+    alert_id: RequestLabel = Field(..., description="Unique identifier for the alert.")
+    alert_type: RequestLabel = Field(
+        ..., description="Type of alert, such as failed login or malware."
+    )
+    source_system: RequestLabel = Field(
+        ..., description="System that generated the alert."
+    )
+    affected_asset: RequestLabel = Field(
+        ..., description="Host, user, application, or system affected."
+    )
+    raw_log: str = Field(
+        ...,
+        max_length=MAX_RAW_LOG_LENGTH,
+        description="Original alert text or log content.",
+    )
+    known_indicators: RequestList = Field(
         default_factory=list,
         description="Known IPs, domains, hashes, usernames, or other indicators.",
     )
-    observed_behavior: str = Field(
+    observed_behavior: RequestDescription = Field(
         default="Not specified",
         description="Plain-English description of what was observed.",
     )
@@ -68,7 +102,9 @@ class SocAlertRequest(BaseModel):
 
 class SocAlertResponse(BaseModel):
     alert_id: str
-    severity: str = Field(..., description="Use one of: low, medium, high, critical.")
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        ..., description="Use one of: low, medium, high, critical."
+    )
     likely_incident_type: str
     summary: str
     mitre_mapping: list[str]

@@ -1,0 +1,20 @@
+[
+  {
+    "system_name": "Synthetic Internal Policy Draft Assistant",
+    "system_purpose": "Draft answers using synthetic internal policy documents for a demonstration.",
+    "data_types": ["Synthetic policy text", "Fictional policy questions"],
+    "users": ["Demo support reviewers"],
+    "external_integrations": [],
+    "human_review_process": "A reviewer checks every draft against the source policy before sharing it.",
+    "business_impact": "Incorrect drafts could confuse demo users; the assistant cannot change policies or accounts."
+  },
+  {
+    "system_name": "Synthetic Hiring Review Assistant",
+    "system_purpose": "Summarize fictional candidate qualifications for a human hiring review demonstration.",
+    "data_types": ["Fabricated qualification summaries", "Synthetic job criteria"],
+    "users": ["Demo hiring reviewers"],
+    "external_integrations": [],
+    "human_review_process": "Reviewers verify summaries and make all decisions. No automated rejection is permitted.",
+    "business_impact": "A real deployment could affect employment opportunities. Fairness testing and governance approval have not been established for this synthetic demo."
+  }
+]

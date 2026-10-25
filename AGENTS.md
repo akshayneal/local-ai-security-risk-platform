@@ -20,7 +20,8 @@ The project is intentionally local-first. Do not introduce external AI APIs or c
 
 ## Current Status
 
-The project has completed Version 2.2.
+The project has completed Version 2.2 and the local document-registry phase.
+It is now in a portfolio-hardening sprint (Phase 0B: Application Hardening Baseline).
 
 Current implemented capabilities:
 
@@ -37,8 +38,15 @@ Current implemented capabilities:
 - Audit logging with `source_ids`
 - Streamlit Source References display
 - pytest and Ruff checks
+- Local document ingestion
+- Document identity and chunking
+- SQLite document/version registry
 
-The next planned major phase is Version 2.3, likely involving full local vector RAG, but do not start V2.3 unless explicitly instructed.
+Near-term priorities are adversarial AI-security evaluation, reliability, SOC
+investigation depth, CI, and employer-facing quality. Do not start adversarial
+evaluation during Phase 0B. Full vector RAG is deferred and must not be started
+unless explicitly approved. Do not expand the registry during this sprint unless
+required by a concrete bug.
 
 ## User's Primary Goal
 
@@ -168,19 +176,20 @@ Never commit:
 
 ## Required Checks
 
+For Codex-executed commands, use the repository virtual environment explicitly.
 After making code changes, run:
 
 ```powershell
-python -m pytest
-ruff check .
+.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe -m ruff check .
 ```
 
 If Ruff formatting is needed, run:
 
 ```powershell
-ruff format .
-python -m pytest
-ruff check .
+.\.venv\Scripts\python.exe -m ruff format .
+.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe -m ruff check .
 ```
 
 Report whether the checks passed.

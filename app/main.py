@@ -60,7 +60,9 @@ def governance_endpoint(request: GovernanceRiskRequest) -> GovernanceRiskRespons
             error=str(exc),
         )
 
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=500, detail="Analysis failed. See local logs for details."
+        ) from exc
 
 
 @app.post("/analyze/soc-alert", response_model=SocAlertResponse)
@@ -89,7 +91,9 @@ def soc_alert_endpoint(request: SocAlertRequest) -> SocAlertResponse:
             error=str(exc),
         )
 
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=500, detail="Analysis failed. See local logs for details."
+        ) from exc
 
 
 @app.get("/logs")
