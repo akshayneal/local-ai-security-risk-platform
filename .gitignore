@@ -36,3 +36,7 @@ Thumbs.db
 
 # Generated local document registry
 knowledge_base/registry/*.db*
+
+# Experimental evaluation reports; official reports live in Documentation.
+evals/results/*.json
+!evals/results/.gitkeep

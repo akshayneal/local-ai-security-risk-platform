@@ -1,3 +1,5 @@
+from typing import Any
+
 from app.ollama_client import call_model_json
 from app.prompts import build_governance_prompt
 from app.reference_loader import (
@@ -10,14 +12,13 @@ from app.reference_loader import (
 from app.schemas import GovernanceRiskRequest, GovernanceRiskResponse
 
 
-def analyze_governance_risk(request: GovernanceRiskRequest) -> GovernanceRiskResponse:
+def analyze_governance_risk(
+    request: GovernanceRiskRequest, *, references: list[dict[str, Any]] | None = None
+) -> GovernanceRiskResponse:
     query = request.model_dump_json()
 
-    references = get_relevant_references(
-        mode="governance",
-        query=query,
-        limit=6,
-    )
+    if references is None:
+        references = get_relevant_references(mode="governance", query=query, limit=6)
 
     reference_context = format_references_for_prompt(references)
 

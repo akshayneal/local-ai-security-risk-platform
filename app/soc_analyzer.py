@@ -1,3 +1,5 @@
+from typing import Any
+
 from app.ollama_client import call_model_json
 from app.prompts import build_soc_prompt
 from app.reference_loader import (
@@ -10,14 +12,13 @@ from app.reference_loader import (
 from app.schemas import SocAlertRequest, SocAlertResponse
 
 
-def analyze_soc_alert(request: SocAlertRequest) -> SocAlertResponse:
+def analyze_soc_alert(
+    request: SocAlertRequest, *, references: list[dict[str, Any]] | None = None
+) -> SocAlertResponse:
     query = request.model_dump_json()
 
-    references = get_relevant_references(
-        mode="soc_alert",
-        query=query,
-        limit=5,
-    )
+    if references is None:
+        references = get_relevant_references(mode="soc_alert", query=query, limit=5)
 
     reference_context = format_references_for_prompt(references)
 
