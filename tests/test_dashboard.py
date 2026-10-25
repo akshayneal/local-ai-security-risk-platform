@@ -1,3 +1,4 @@
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -24,7 +25,8 @@ def test_soc_dashboard_displays_findings_and_accepts_older_results(
 
     monkeypatch.setattr(requests, "post", post)
     dashboard = AppTest.from_file(
-        "dashboard/streamlit_app.py", default_timeout=15
+        Path(__file__).resolve().parents[1] / "dashboard" / "streamlit_app.py",
+        default_timeout=15,
     ).run()
     dashboard.sidebar.selectbox[0].select("SOC Alert Triage").run()
     dashboard.button[0].click().run()
