@@ -21,8 +21,10 @@ The project is intentionally local-first. Do not introduce external AI APIs or c
 ## Current Status
 
 The project has completed Version 2.2, the local document-registry phase, and
-Phase 0B: Application Hardening Baseline. The adversarial evaluation and generic
-AI-security hardening sprint is complete.
+Phase 0B: Application Hardening Baseline. The V1 adversarial evaluation and generic
+AI-security hardening sprint is complete. The Evaluation V2 repeated-trial
+current-state baseline is also complete; it measures existing behavior without a
+subsequent production hardening iteration.
 
 Current implemented capabilities:
 
@@ -48,11 +50,30 @@ Current implemented capabilities:
 - AI instruction trust boundaries, retrieved-evidence rules, and agency limits
 - Deterministic source deduplication and expanded citation cleanup
 - SOC `observed_evidence` and `analyst_inferences` fields and UI display
+- Evaluation V2: 15 cases across eight categories, three sequential trials per case
+- No-model V2 preflight, byte/semantic suite hashes, runtime provenance and manifest
+- Exact IPv4, SHA-256, and synthetic CVE-style evidence-fidelity cases
+- Structured-output stability and local inference timing diagnostics
+- Frozen V2 current-state report and evidence-backed failure-triage documentation
 
 The frozen baseline and hardened runs each passed 7/12 cases (58.3%): one newly
 passing case and one regression, with no aggregate score improvement. Read
 `Documentation/05_ai_security_evaluation.md` and the engineering report before
 claiming evaluation outcomes or changing defenses.
+
+V1 is frozen historical evidence. V2 completed all 45 planned local model calls
+with zero application/runtime errors: 28/45 trials passed (62.2%), with five
+stable-pass, two stable-fail, and eight mixed cases. All three fidelity cases were
+mixed because required observed-evidence fields were empty in failing trials.
+Three trials are preliminary stability measurement, not statistical confidence.
+V1 and V2 aggregate percentages are not directly equivalent.
+
+Read `Documentation/08_evaluation_v2_reliability.md`,
+`Documentation/evaluation_v2/failure_triage.md`, and
+`Documentation/09_evaluation_v2_sprint_report.md` before the next production
+hardening sprint. Drive that separately authorized work from stable V2 evidence
+and diagnosis of important mixed behavior. Recommendations are not automatic
+authorization to implement controls.
 
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.
@@ -60,10 +81,14 @@ These roadmap items are not automatic authorization to implement them. Full
 vector RAG remains deferred unless explicitly approved. Keep the document registry
 stable unless a concrete bug requires a change.
 
-Future work must not silently modify the benchmark suite or overwrite frozen
-results. A changed suite needs distinct provenance and a new experimental
-baseline. Generated `evals/results/` JSON files remain local/ignored. Official
-benchmark results live in `Documentation/evaluation_results/`.
+Future work must not silently modify either benchmark suite or overwrite frozen
+V1 or V2 official artifacts. Changed V2 suites/checks require new byte and semantic
+hashes, distinct provenance/versioned experiments, and a new experimental baseline.
+Keep the frozen V1 report models/comparison command compatible. Generated
+`evals/results/` JSON files remain local/ignored. Official tracked benchmark
+artifacts live under `Documentation/evaluation_results/` (V1) and
+`Documentation/evaluation_v2/` (V2). Full vector RAG remains deferred, and the
+document registry stays stable unless a concrete bug requires change.
 
 ## User's Primary Goal
 

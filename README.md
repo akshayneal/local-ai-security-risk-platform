@@ -54,6 +54,31 @@ retrieval remains **keyword/tag retrieval, not vector RAG**. This remains a
 **portfolio/research system, not production SOC infrastructure**; passing this
 small benchmark does not establish general resistance to prompt injection.
 
+## Evaluation V2: Repeated Reliability Baseline
+
+V2 separately freezes the current application across **15 cases, eight categories,
+and three sequential trials per case: 45 attempted and completed local model
+calls**, with no runtime errors. **28/45 trials passed (62.2%)**: five cases were
+stable-pass, two stable-fail, and eight mixed. Three trials provide preliminary
+stability evidence, not statistical confidence or a general safety guarantee.
+
+V2 adds exact IPv4, SHA-256, and synthetic CVE-style evidence-fidelity checks,
+structured-output variability diagnostics, timing, runtime provenance, and a
+no-model preflight. All three fidelity cases were mixed; their failures were
+empty observed-evidence fields. V1's frozen **7/12 (58.3%)** before/after results
+remain unchanged; the methodologies and aggregate percentages are not directly
+equivalent. No production hardening followed the V2 measurement.
+
+See [V2 methodology and results](Documentation/08_evaluation_v2_reliability.md)
+and the [failure-triage backlog](Documentation/evaluation_v2/failure_triage.md).
+Official V2 artifacts are tracked under `Documentation/evaluation_v2/`; generated
+local reports remain ignored under `evals/results/`.
+
+```powershell
+.\.venv\Scripts\python.exe -m evals.reliability_runner --trials 3 --dry-run
+.\.venv\Scripts\python.exe -m evals.reliability_runner --trials 3
+```
+
 ## Version 2.2 Update: Source-Aware Outputs
 
 Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.
