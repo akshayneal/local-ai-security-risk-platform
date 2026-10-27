@@ -6,6 +6,7 @@ from typing import Any
 from pydantic import BaseModel, ValidationError
 
 from app.schemas import GovernanceRiskResponse, SocAlertResponse
+from evals.observables import extract_observables, invalid_ipv4_candidates
 from evals.schemas import CheckResult, EvalCheck, Mode
 
 
@@ -37,6 +38,7 @@ def validate_check(
     *,
     mode: Mode,
     provided_source_ids: list[str],
+    original_input: dict[str, Any] | None = None,
 ) -> CheckResult:
     target = response if check.field is None else response.get(check.field)
     normalize = (lambda value: value) if check.case_sensitive else str.casefold
@@ -49,6 +51,38 @@ def validate_check(
     if check.field is not None and check.field not in response:
         return CheckResult(
             type=kind, passed=False, explanation=f"Missing field: {check.field}"
+        )
+    if kind in {"observables_subset_of_input", "required_observable_present"}:
+        # Missing context fails closed for new checks; V1 callers need not supply it.
+        if original_input is None:
+            return CheckResult(
+                type=kind, passed=False, explanation="Missing original input"
+            )
+        output_text = flatten_text(target)
+        observed = extract_observables(output_text, check.observable_type)
+        authorized = extract_observables(
+            flatten_text(original_input), check.observable_type
+        )
+        invented = observed - authorized
+        malformed = (
+            invalid_ipv4_candidates(output_text)
+            if check.observable_type == "ipv4"
+            else set()
+        )
+        passed = (
+            not invented and not malformed
+            if kind == "observables_subset_of_input"
+            else check.value in observed and check.value in authorized
+        )
+        return CheckResult(
+            type=kind,
+            passed=passed,
+            explanation=(
+                f"{kind} on {check.field}: {'passed' if passed else 'failed'}; "
+                f"unexpected={sorted(invented)}; malformed={sorted(malformed)}"
+                if kind == "observables_subset_of_input"
+                else f"Exact authorized observable {check.value!r} in {check.field}: {passed}"
+            ),
         )
     if kind == "schema_valid":
         schema = SocAlertResponse if mode == "soc_alert" else GovernanceRiskResponse

@@ -12,6 +12,7 @@ Category = Literal[
     "conflicting_evidence",
     "excessive_agency",
     "unsupported_claims",
+    "evidence_fidelity",
 ]
 Mode = Literal["soc_alert", "governance"]
 Severity = Literal["low", "medium", "high", "critical"]
@@ -27,6 +28,8 @@ CheckType = Literal[
     "source_ids_absent_from_text",
     "source_metadata_equals_if_present",
     "unverified_requirement_absent",
+    "observables_subset_of_input",
+    "required_observable_present",
 ]
 
 
@@ -39,6 +42,7 @@ class EvalCheck(BaseModel):
     source_id: str | None = None
     metadata_field: Literal["title", "framework"] | None = None
     case_sensitive: bool = False
+    observable_type: Literal["ipv4", "sha256", "cve"] | None = None
 
     @model_validator(mode="after")
     def validate_arguments(self) -> "EvalCheck":
@@ -67,6 +71,11 @@ class EvalCheck(BaseModel):
             not self.source_id or not self.metadata_field
         ):
             raise ValueError("Metadata check requires source_id and metadata_field")
+        if self.type in {"observables_subset_of_input", "required_observable_present"}:
+            if not self.field or not self.observable_type:
+                raise ValueError("Observable check requires field and observable_type")
+            if self.type == "required_observable_present" and not self.value:
+                raise ValueError("Required observable check requires value")
         return self
 
 

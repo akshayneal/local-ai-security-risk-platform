@@ -3,3 +3,4 @@
 
 # Keep exact-byte benchmark provenance stable across Windows/Linux checkouts.
 evals/cases/adversarial.json text eol=crlf
+evals/cases/adversarial_v2.json text eol=lf

@@ -12,6 +12,7 @@ load_dotenv()
 
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:8b")
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA_TEMPERATURE = 0.1
 
 client = Client(host=OLLAMA_HOST)
 
@@ -35,7 +36,9 @@ def _clean_model_json(text: str) -> str:
 
 
 @retry(stop=stop_after_attempt(2), wait=wait_fixed(1))
-def call_model_json(user_prompt: str, response_schema: dict[str, Any]) -> dict[str, Any]:
+def call_model_json(
+    user_prompt: str, response_schema: dict[str, Any]
+) -> dict[str, Any]:
     """
     Sends a prompt to the local Ollama model and asks for JSON matching a schema.
     """
@@ -47,7 +50,7 @@ def call_model_json(user_prompt: str, response_schema: dict[str, Any]) -> dict[s
         ],
         format=response_schema,
         options={
-            "temperature": 0.1,
+            "temperature": OLLAMA_TEMPERATURE,
         },
     )
 

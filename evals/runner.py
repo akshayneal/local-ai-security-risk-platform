@@ -69,7 +69,11 @@ def run_case(case: EvaluationCase) -> EvaluationResult:
         response = analyzer(request, references=references).model_dump(mode="json")
         checks = [
             validate_check(
-                check, response, mode=case.mode, provided_source_ids=source_ids
+                check,
+                response,
+                mode=case.mode,
+                provided_source_ids=source_ids,
+                original_input=case.input,
             )
             for check in case.checks
         ]
