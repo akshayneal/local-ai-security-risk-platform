@@ -138,7 +138,7 @@ Pre-commit gate: **1,270 passed**, one existing warning, **55.53s**; full-reposi
 Ruff and `git diff --check HEAD` passed. Changed Python files also pass a scoped
 format check; frozen files were not reformatted. New documentation local links
 resolve. The 102-file preservation test and all existing artifact checks pass.
-Hosted verification is recorded in the closeout section after push.
+Hosted verification is recorded in the closeout section below.
 
 ## Remaining release tasks and limits
 
@@ -159,3 +159,25 @@ retain known scorer false positives/missed defects. Three unseeded synthetic
 trials provide no statistical safety guarantee. The demo has no authentication
 or multi-user boundary. No cloud calls, external integrations or deferred roadmap
 features were introduced.
+
+## Commit and hosted closeout
+
+Implementation and product documentation commit:
+`efa2b14bf47934add15dddc0f78da037660961b3` — **Build analyst product experience**,
+pushed to `feature/portfolio-hardening`.
+[Hosted CI 40785826248](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40785826248)
+completed successfully: dependency setup, full pytest and Ruff all passed on
+Ubuntu/Python 3.13. The subsequent documentation packaging commit records this
+verification without changing product code. Final-HEAD verification is also
+reported in the implementation handoff.
+
+The implementation worktree was clean after push; explicit Git comparisons
+against the starting commit found no change to frozen evaluation folders,
+`evals/`, analyzers, prompts, validators, original schemas, trace implementation,
+retrieval, Ollama client, audit logger or dependencies. Temporary Streamlit and
+FastAPI smoke servers were stopped; the existing Ollama service/configuration
+was left intact. No generated logs or local-only files were staged.
+
+Release-polish recommendation: **ready**, with visual QA/screenshots and the
+documented reliability limits remaining explicit. No merge to `main`, branch
+deletion, force push, tag or final release was performed.
