@@ -233,7 +233,19 @@ Additional results files: `Documentation/evaluation_v3/{semantic_baseline_3trial
 
 ### Results checkpoint and hosted CI
 
-Framework commit and its initial hosted CI failure are recorded above. The results checkpoint uses message `Record semantic grounding V3 baseline`. Hosted verification of that pushed checkpoint and its immutable commit ID are recorded in the subsequent documentation-only verification checkpoint; no score or behavior changes accompany that record.
+Framework commit and its initial hosted CI failure are recorded above. Results
+commit: `49415c112052850f31e449299d75406aee53937c`,
+`Record semantic grounding V3 baseline`, pushed to `feature/portfolio-hardening`.
+Hosted Linux [CI run 40637087087](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40637087087)
+completed successfully: tests and Ruff both passed. This confirms the runtime
+isolation and cross-platform Git-blob preservation corrections without installing
+Ollama or making a live model call in pytest.
+
+This documentation-only verification checkpoint records the results SHA and
+verified hosted CI after the immutable results commit existed. It changes no
+suite, scorer, report, provenance, manual finding or production behavior. Both
+sprint checkpoints and this verification record remain on the feature branch;
+nothing was merged to main and no history was rewritten.
 
 ## Exact reproduction commands
 
