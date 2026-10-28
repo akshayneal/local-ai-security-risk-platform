@@ -782,4 +782,3 @@ The explicitly established HTTPS protocol is stated confidently. Source/destinat
 > Confirmed synthetic network event: source_ip=192.0.2.60 destination_ip=203.0.113.88 destination_port=8443 protocol=HTTPS
 
 Scope note: Network Discovery labels in trials 2/3 are not established by the single flow; mapping quality is outside the configured endpoint/protocol checks. Closed record does not establish real-world absence of ongoing activity.
-

@@ -308,7 +308,11 @@ Results additions: `Documentation/evaluation_v3_1/{semantic_baseline_3trial.json
 
 ## Commits and CI
 
-Framework commit `41465cd522d0ea2a45b3891f09aff98694e80514` and its successful hosted CI are recorded above. Results commit uses message `Record calibrated semantic grounding baseline` and is pushed to the feature branch. Its immutable SHA and verified hosted CI are recorded in the subsequent documentation-only verification checkpoint, without changing scores or behavior.
+Framework commit `41465cd522d0ea2a45b3891f09aff98694e80514` and its successful hosted CI are recorded above. Results commit: `b2c73a256de97028329e3823e9a97171af0eb26a`, `Record calibrated semantic grounding baseline`, pushed to `feature/portfolio-hardening`.
+
+Hosted Linux [results CI 40652119412](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40652119412) passed all 673 tests and Ruff. No Ollama installation or live generation is required by pytest.
+
+The staged whitespace check found an extra final blank line in the new review Markdown, but the PowerShell native-command sequence continued to the results commit. The documentation verification checkpoint removes that one blank line and records the results SHA/hosted CI. A full `git diff --check 41465cd` then passes. No JSON evidence, review finding, suite, scorer or production behavior changes. This is a packaging correction during the sprint, not a rescore or historical V1/V2/V3 artifact change. No history is rewritten and nothing is merged to main.
 
 ## No-model official replay
 
