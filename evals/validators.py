@@ -5,8 +5,9 @@ from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
-from app.schemas import GovernanceRiskResponse, SocAlertResponse
+from app.schemas import GovernanceRiskResponse
 from evals.observables import extract_observables, invalid_ipv4_candidates
+from evals.response_contracts import BenchmarkSocAlertResponse
 from evals.schemas import CheckResult, EvalCheck, Mode
 
 
@@ -85,7 +86,9 @@ def validate_check(
             ),
         )
     if kind == "schema_valid":
-        schema = SocAlertResponse if mode == "soc_alert" else GovernanceRiskResponse
+        schema = (
+            BenchmarkSocAlertResponse if mode == "soc_alert" else GovernanceRiskResponse
+        )
         try:
             schema.model_validate(response)
             passed = True

@@ -1,4 +1,7 @@
+import json
+
 from app.schemas import GovernanceRiskRequest, SocAlertRequest
+from app.untrusted_content import neutralize_content, neutralize_text
 
 SYSTEM_PROMPT = """
 You are a local AI security assistant.
@@ -84,12 +87,12 @@ approved, needs_review, rejected
 
 Local reference context:
 BEGIN UNTRUSTED REFERENCE CONTEXT
-{reference_context}
+{neutralize_text(reference_context)}
 END UNTRUSTED REFERENCE CONTEXT
 
 Input:
 BEGIN UNTRUSTED USER INPUT
-{request.model_dump_json(indent=2)}
+{json.dumps(neutralize_content(request.model_dump(mode="json")), indent=2)}
 END UNTRUSTED USER INPUT
 """
 
@@ -115,7 +118,7 @@ Containment recommendations should be conditional when legitimacy is not yet con
 Be precise about account names and observed event sequence. If failed login attempts target one account and the successful login uses a different account, do not imply that the first account was successfully compromised. Describe the sequence exactly, then state the security concern as a possible or suspected compromise.
 Separate observed facts from analyst inference. The summary should not make stronger claims than the raw log supports.
 When raw_log and observed_behavior conflict, describe the raw event sequence accurately and identify unsupported narrative conclusions as unverified. Do not rewrite events to fit the narrative.
-observed_evidence must contain concise facts directly supported by the supplied events; attribute reference-only claims rather than presenting them as measured events.
+observed_evidence is required and must contain at least one nonblank concise fact directly supported by the supplied events; attribute reference-only claims rather than presenting them as measured events. Preserve exact IPv4, SHA-256, and CVE-style tokens when reporting them; never invent or alter these values.
 analyst_inferences must contain concise bounded findings derived from evidence, with uncertainty language where appropriate. These are analyst-facing findings, not hidden reasoning traces.
 The application only recommends actions for human review and never executes containment or other operational changes. Do not claim actions were performed in response to this request.
 
@@ -148,11 +151,11 @@ Credential Access, Initial Access, Persistence, Execution, Defense Evasion, Disc
 
 Local reference context:
 BEGIN UNTRUSTED REFERENCE CONTEXT
-{reference_context}
+{neutralize_text(reference_context)}
 END UNTRUSTED REFERENCE CONTEXT
 
 Input:
 BEGIN UNTRUSTED USER INPUT
-{request.model_dump_json(indent=2)}
+{json.dumps(neutralize_content(request.model_dump(mode="json")), indent=2)}
 END UNTRUSTED USER INPUT
 """

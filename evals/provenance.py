@@ -20,6 +20,10 @@ BEHAVIOR_FILES = (
     "app/reference_loader.py",
     "app/soc_analyzer.py",
     "app/governance_analyzer.py",
+    "app/analysis_trace.py",
+    "app/untrusted_content.py",
+    "app/output_policy.py",
+    "app/observables.py",
     "reference_material/soc_references.json",
     "reference_material/governance_references.json",
     "reference_material/local_checklists.json",
@@ -31,6 +35,9 @@ BEHAVIOR_FILES = (
     "evals/reliability_runner.py",
     "evals/reliability_schemas.py",
     "evals/provenance.py",
+    "evals/response_contracts.py",
+    "evals/reliability_compare.py",
+    "evals/diagnostic_runner.py",
     ".gitattributes",
 )
 V1_FILES = (

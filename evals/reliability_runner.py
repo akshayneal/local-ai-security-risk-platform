@@ -3,6 +3,7 @@
 import argparse
 import json
 from collections import Counter
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from statistics import mean, median
@@ -10,6 +11,7 @@ from time import perf_counter
 from typing import Any
 from unittest.mock import patch
 
+from app.analysis_trace import AnalysisTrace
 from app.ollama_client import client
 from app.reference_loader import get_relevant_references
 from app.schemas import (
@@ -194,6 +196,7 @@ def summarize_case(
 
 def run_trial(case: EvaluationCase, number: int) -> TrialResult:
     calls = []
+    trace = AnalysisTrace()
     original_chat = client.chat
 
     def timed_chat(*args: Any, **kwargs: Any) -> Any:
@@ -206,16 +209,25 @@ def run_trial(case: EvaluationCase, number: int) -> TrialResult:
                     duration_seconds=perf_counter() - start,
                     completed=False,
                     error_type=type(exc).__name__,
+                    generation="repair" if trace.repair_attempted else "initial",
                 )
             )
             raise
-        calls.append(ModelCall(duration_seconds=perf_counter() - start, completed=True))
+        calls.append(
+            ModelCall(
+                duration_seconds=perf_counter() - start,
+                completed=True,
+                generation="repair" if trace.repair_attempted else "initial",
+            )
+        )
         return response
 
     # Evaluation-only instrumentation; no production retry/sampling changes.
     with patch.object(client, "chat", timed_chat):
-        result = run_case(case)
-    return TrialResult(trial=number, result=result, model_calls=calls)
+        result = run_case(case, trace=trace)
+    return TrialResult(
+        trial=number, result=result, model_calls=calls, analysis_trace=asdict(trace)
+    )
 
 
 def build_report(

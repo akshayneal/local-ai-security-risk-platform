@@ -1,6 +1,6 @@
 """V2-only repeated reports. Frozen V1 report fields retain their meaning."""
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -35,6 +35,7 @@ class ModelCall(V2Model):
     duration_seconds: float = Field(ge=0, allow_inf_nan=False)
     completed: bool
     error_type: str | None = None
+    generation: Literal["initial", "repair"] = "initial"
 
     @model_validator(mode="after")
     def consistent_error(self) -> "ModelCall":
@@ -49,6 +50,7 @@ class TrialResult(V2Model):
     trial: int = Field(ge=1)
     result: EvaluationResult
     model_calls: list[ModelCall] = Field(default_factory=list)
+    analysis_trace: dict[str, Any] | None = None
 
     @model_validator(mode="after")
     def valid_outcome(self) -> "TrialResult":

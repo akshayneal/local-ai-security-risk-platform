@@ -12,6 +12,7 @@ def test_soc_dashboard_displays_findings_and_accepts_older_results(
     monkeypatch, with_findings
 ):
     result = SOC_RESPONSE.copy()
+    result.pop("observed_evidence")  # Exercise historical UI payload compatibility.
     if with_findings:
         result.update(
             observed_evidence=["Failed login recorded."],

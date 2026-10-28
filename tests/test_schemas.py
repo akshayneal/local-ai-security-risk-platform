@@ -52,6 +52,7 @@ SOC_RESPONSE = {
     "false_positive_considerations": [],
     "evidence_gaps": [],
     "analyst_note": "Verify authentication context.",
+    "observed_evidence": ["A failed authentication event was supplied."],
 }
 
 
@@ -245,6 +246,9 @@ def test_soc_response_supports_source_references():
         false_positive_considerations=["Legitimate admin maintenance activity"],
         evidence_gaps=["No MFA context provided"],
         analyst_note="Verify whether the successful admin login was expected.",
+        observed_evidence=[
+            "Failed SSH logins preceded successful admin authentication."
+        ],
         source_references=[
             SourceReference(
                 source_id="SOC-BRUTE-FORCE-SUCCESS",

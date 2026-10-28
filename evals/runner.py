@@ -7,6 +7,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from time import perf_counter
 
+from app.analysis_trace import AnalysisTrace
 from app.governance_analyzer import analyze_governance_risk
 from app.ollama_client import OLLAMA_MODEL
 from app.reference_loader import get_reference_ids, get_relevant_references
@@ -47,7 +48,9 @@ def select_cases(
     return cases
 
 
-def run_case(case: EvaluationCase) -> EvaluationResult:
+def run_case(
+    case: EvaluationCase, *, trace: AnalysisTrace | None = None
+) -> EvaluationResult:
     start = perf_counter()
     source_ids: list[str] = []
     try:
@@ -66,7 +69,10 @@ def run_case(case: EvaluationCase) -> EvaluationResult:
         analyzer = (
             analyze_soc_alert if case.mode == "soc_alert" else analyze_governance_risk
         )
-        response = analyzer(request, references=references).model_dump(mode="json")
+        options = {"trace": trace} if trace is not None else {}
+        response = analyzer(request, references=references, **options).model_dump(
+            mode="json"
+        )
         checks = [
             validate_check(
                 check,
