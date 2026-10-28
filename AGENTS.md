@@ -96,11 +96,24 @@ six trials with suspected false-positive failures and five with missed defects,
 including four official passes. Read `Documentation/12_semantic_grounding_v3_baseline.md`,
 `Documentation/evaluation_v3/manual_review.md`, `failure_triage.md` in that directory,
 and `Documentation/13_semantic_v3_sprint_report.md` before separately authorized
-semantic hardening. Rerun the exact frozen V3 suite for any treatment; preserve
-suite/check meanings and official artifacts. Changed checks need distinct hashes,
+semantic hardening. Preserve the exact frozen V3 suite, historical replay,
+check meanings and official artifacts. Changed checks need distinct hashes,
 provenance and a new experimental baseline. Do not add benchmark-specific production
 filters or tune against evaluator false positives. V1/V2 remain frozen, and this
 sprint performed no production semantic hardening. Unrelated roadmap work stays deferred.
+
+Semantic Evaluation V3.1 is now frozen under `Documentation/evaluation_v3_1/`:
+13 cases, four categories, three trials each; 37/39 passed (94.9%), zero application
+errors, 11 stable-pass, zero stable-fail and two mixed. Manual review identifies
+two suspected false-positive failures, two missed consistency/support-scope defects
+(one moderate confidence), and a malformed IP in an excluded investigation step.
+Read `Documentation/14_semantic_evaluation_v3_1.md`, the V3.1 manual review/triage,
+and `Documentation/15_semantic_v3_1_sprint_report.md` before separately authorized
+production semantic work. Future semantic treatments must rerun the exact V3.1
+suite; changed scorers/checks require another versioned baseline. V1/V2/V3 and
+V3.1 official artifacts remain frozen. No benchmark-specific hardening or tuning
+against scorer false positives is allowed. Next production scope must be explicitly
+authorized and driven by V3.1 triage; this sprint performed no product hardening.
 
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.

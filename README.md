@@ -123,6 +123,24 @@ See the [V3 methodology/results](Documentation/12_semantic_grounding_v3_baseline
 .\.venv\Scripts\python.exe -m evals.semantic_runner --trials 3 --dry-run
 ```
 
+## Semantic Evaluation V3.1 Calibration
+
+V3 remains frozen historical evidence. The separate calibrated V3.1 baseline
+contains **13 cases, four categories and 39 sequential trials**: **37/39 passed
+(94.9%)**, zero application errors, 11 stable-pass and two mixed cases. Manual
+review identifies two suspected false-positive failures, two missed consistency
+defects (one moderate confidence), and an IP mutation in an excluded investigation
+step. V3/V3.1 percentages are not directly interchangeable, and production behavior
+was unchanged.
+
+See [V3.1 methodology/results](Documentation/14_semantic_evaluation_v3_1.md),
+[triage](Documentation/evaluation_v3_1/failure_triage.md) and
+[engineering handoff](Documentation/15_semantic_v3_1_sprint_report.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m evals.semantic_runner_v31 --trials 3 --dry-run
+```
+
 ## Version 2.2 Update: Source-Aware Outputs
 
 Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.

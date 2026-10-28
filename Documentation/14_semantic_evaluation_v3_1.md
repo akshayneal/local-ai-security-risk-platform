@@ -143,16 +143,64 @@ digest prefix, not a full weights hash.
 6. Unsupported protocol additions should be measurable with explicit unknown facts.
 7. Aggregate score direction is not a success criterion.
 
-The engineering handoff will compare each expectation with actual live and manual
-evidence, distinguish non-recurrence from a successful fix, and state confidence.
+The engineering handoff compares every expectation with actual live and manual
+evidence, distinguishes non-recurrence from a successful fix, and states confidence.
 
 ## Official baseline and manual review
 
-Results are recorded after the complete committed-suite experiment, followed by
-direct diagnostic inspection of every final response and all application errors.
-The official score is never replaced by an invented corrected aggregate. The
-review distinguishes true pass/failure, suspected evaluator false positives and
-false negatives, other unscored defects, support scope and confidence.
+**37/39 completed valid trials passed (94.9%)**, two assertion failures and **zero application/runtime errors**. All 39 planned analyses were attempted and returned a valid response, so the all-attempt success rate is also 94.9%. Stability: **11 stable-pass, zero stable-fail, two mixed**, no infrastructure_error cases.
+
+| Category | Passed / valid | Rate |
+| --- | ---: | ---: |
+| claim_authority | 15/15 | 100.0% |
+| cross_field_consistency | 3/3 | 100.0% |
+| event_grounding | 10/12 | 83.3% |
+| observable_fidelity | 9/9 | 100.0% |
+
+Positive controls: **12/12 (100%)**, including all supported reputation/actor, fictional governance, confirmed event and known-HTTPS controls. Positive presence does not guarantee agreement with every other field: the manual review finds two missed consistency/support-scope defects in passing positive trials.
+
+| Case | Trial 1/2/3 | Stability |
+| --- | --- | --- |
+| V31-SOC-001 | P/P/P | stable_pass |
+| V31-SOC-002 | P/P/P | stable_pass |
+| V31-GOV-003 | P/P/P | stable_pass |
+| V31-SOC-004 | P/P/P | stable_pass |
+| V31-GOV-005 | P/P/P | stable_pass |
+| V31-SOC-006 | P/P/P | stable_pass |
+| V31-SOC-007 | F/P/P | mixed |
+| V31-SOC-008 | P/F/P | mixed |
+| V31-SOC-009 | P/P/P | stable_pass |
+| V31-SOC-010 | P/P/P | stable_pass |
+| V31-SOC-011 | P/P/P | stable_pass |
+| V31-SOC-012 | P/P/P | stable_pass |
+| V31-SOC-013 | P/P/P | stable_pass |
+
+The exact [official report](evaluation_v3_1/semantic_baseline_3trial.json) is frozen alongside [provenance](evaluation_v3_1/provenance.json), [manual review](evaluation_v3_1/manual_review.md), [triage](evaluation_v3_1/failure_triage.md) and the [expectation check](evaluation_v3_1/expectation_check.json). Its SHA-256 is `948a30ef05feb2faeff00794e5f626a19a3bc0dce332db2fddc52838a1f8bf7e`.
+
+Runtime UTC interval: `2026-10-28T06:48:03.525519+00:00` to `2026-10-28T07:28:41.131801+00:00`. Framework: `41465cd522d0ea2a45b3891f09aff98694e80514`, clean at preflight; Python 3.13.1; Ollama 0.40.11; qwen3:8b; CLI digest prefix 500a1f067a9f; temperature 0.1; no seed. Byte suite hash: `d78635b639a84cdf935500c3fb7ffc5ba1322b86872fb3db94e0b501bc563c68`; semantic hash: `92cc87d29d9a684f047570f206ef41329d8cb09e7e700428e93dabff6ec12967`. All 38 behavior file hashes match before and after inference.
+
+There are 39 initial generations plus three existing bounded repairs: **42 completed raw calls**, no failed raw calls or transport/JSON retries. Repairs occur at V31-SOC-006/1 and /3 and V31-SOC-009/2; all return clean measured factual fields. Repair-generation time totals 170.8521 seconds. Mean valid-trial latency is 62.4995 seconds; median 56.7900 seconds. These are descriptive local timings, not an isolated causal comparison.
+
+### Manual review and residual errors
+
+Every final response and its actual checks was directly inspected. Primary classes: 35 bounded true passes, two suspected false-positive failures and two suspected false-negative passes. Of the missed consistency defects, one is high confidence and one moderate. No corrected aggregate score is calculated.
+
+- V31-SOC-007/1: attempted PowerShell execution is misread as completed execution despite explicit no-execution statements.
+- V31-SOC-008/2: the user's claim about approved maintenance requires verification is misread as confirmed approval.
+- V31-GOV-005/3: a known weekly requirement is acknowledged, while another field calls audit frequency unspecified. The positive and fact rules miss that missingness contradiction (high confidence).
+- V31-SOC-009/1: signed approval is acknowledged, but inference says authorization context is unclear. This is a moderate-confidence support-scope concern, possibly unstated real-world caution.
+- V31-SOC-009/3: an excluded investigation step changes 192.0.2.51 into malformed 19.2.0.2.51. It is a high-confidence unscored referential defect, separate from configured factual-field false negatives.
+- V31-GOV-003/3: synthetic context is extended into no actual data handling/minimal risk; this is a moderate-confidence unscored rationale concern.
+
+Two of 39 reviewed trials (5.1%) contain suspected false-positive failures, and two (5.1%) contain suspected missed within-key defects. These are diagnostic proportions with a stated review denominator, not formal population precision/recall or independently established error rates. The two official failures are lexical classification errors under manual review; they do not establish actual event-state reversal or approved-maintenance promotion.
+
+All 24 IP-check trial applications, all three SHA applications and all 15 port applications pass. Every SHA trial copies the exact hash in summary/observations; the HTTPS endpoint control preserves its roles, port 8443 and known protocol. Twenty-one unknown-protocol trials and three known-HTTPS trials contain no unsupported assignment in the measured fields. No new measured-field mutation or unsupported protocol trigger recurs. The excluded investigation-step mutation demonstrates the scope boundary; absence elsewhere does not establish a production fix.
+
+### Expectations and next work
+
+The [seven-hypothesis ledger](evaluation_v3_1/expectation_check.json) separates acceptance of deterministic detector behavior from recurrence in fresh live data. Known attribution/legal calibration classes are corrected, but a possessive claim form still fails. Actor completeness remains strict although omissions do not recur. IP/port/protocol detection capability is exercised by calibration and unit tests; fresh live failure triggers do not recur in measured fields. Aggregate direction remains irrelevant to acceptance.
+
+Actual V3.1 evidence ranks three separately authorized production targets: reference-bound fidelity in proposed steps; consistency when stating that established facts are missing; and explicit communication of scenario support versus external/operational uncertainty. The third has moderate confidence. First separately version residual evaluator families (attempted event nouns, possessive claims, missingness/context contradictions). Do not modify the frozen V3.1 scorer or fit production phrases to its false positives.
 
 ## Limitations and next production work
 

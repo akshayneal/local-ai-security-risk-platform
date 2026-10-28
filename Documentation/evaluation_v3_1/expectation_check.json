@@ -1,0 +1,60 @@
+{
+  "hypotheses": [
+    {
+      "hypothesis": 1,
+      "expected": "Attributed and qualified SOC claims should produce fewer false-positive failures.",
+      "actual": "Authority cases score 15/15; no attribution false positive is found there. A new possessive noun-claim form in V31-SOC-008/2 still generates a false positive. Historical diagnostic resolves all seven known false-positive checks.",
+      "assessment": "Partially met; known families calibrate successfully, but attribution is not universally solved.",
+      "likely_reason": "Sentence-local source reporting handles the old examples, while user's claim about ... requires verification escapes its bounded grammar.",
+      "confidence": "high for reviewed examples; no population-level confidence"
+    },
+    {
+      "hypothesis": 2,
+      "expected": "Established fictional legal requirements and weekly audit paraphrases should be recognized.",
+      "actual": "Supported governance is 3/3, with affirmative scenario-local requirements recognized in every trial. Trial 3 nevertheless calls known audit frequency unspecified elsewhere.",
+      "assessment": "Met for positive recognition; consistency remains incomplete.",
+      "likely_reason": "Broader legal/weekly and required-controls forms recognize the positives; missingness statements are not a corresponding contrary proposition.",
+      "confidence": "high"
+    },
+    {
+      "hypothesis": 3,
+      "expected": "Supported actor omission must remain a genuine completeness failure class.",
+      "actual": "Frozen-V3 diagnostic retains all three operator-omission failures; generic-entity tests also fail omission. The new live actor control states its supported operator in all three trials and passes.",
+      "assessment": "Rule preserved; omission does not recur in this live sample.",
+      "likely_reason": "The scorer still requires affirmative entity-linked presence. Changed scenario text and unseeded output variation can change model content; no cause is isolated.",
+      "confidence": "high for rule and observed presence; low for causal explanation"
+    },
+    {
+      "hypothesis": 4,
+      "expected": "A repeated IP mutation in a measured factual field should become an official failure across applicable SOC cases.",
+      "actual": "All applicable cases have four-field IP coverage and calibration detects all three historical high-confidence IP misses. No live mutation recurs in those fields. V31-SOC-009/3 instead corrupts an IP in an excluded investigation step.",
+      "assessment": "Capability validated; fresh live failure trigger not observed; excluded-field blind spot remains.",
+      "likely_reason": "Coverage is enforced by preflight, while recommendations/questions remain outside token scanning by deliberate scope.",
+      "confidence": "high for bounded detector/coverage; preliminary for recurrence"
+    },
+    {
+      "hypothesis": 5,
+      "expected": "An explicit port mutation should become an official failure.",
+      "actual": "Calibration detects the historical 443-to-433 mutation and generic endpoint/port variants. All live measured ports remain faithful, including 8443 in the three new positive endpoint trials.",
+      "assessment": "Capability validated; no new live port mutation to test in situ.",
+      "likely_reason": "Contextual port extraction and tuple checks work on defined forms; this sample does not recreate the earlier mutation.",
+      "confidence": "high for fixtures; preliminary for live recurrence"
+    },
+    {
+      "hypothesis": 6,
+      "expected": "Unsupported protocol assignments should be measurable with explicit unknown protocol facts.",
+      "actual": "Twenty-one unknown-protocol trials avoid unsupported assignments in measured fields; three known-HTTPS positive trials affirm the supported protocol. Unsupported and supported protocol test families pass.",
+      "assessment": "Instrument criterion met; no unsupported live protocol trigger occurs.",
+      "likely_reason": "Explicit protocol keys remove the historical ambiguity and the positive control permits grounded confidence.",
+      "confidence": "high for fact/check mapping; preliminary beyond this sample"
+    },
+    {
+      "hypothesis": 7,
+      "expected": "Aggregate score may move in either direction; direction is not success.",
+      "actual": "Official result is 37/39 (94.9%), with no score/scenario changes after the framework commit, no selective rerun and no production change. V3 remains 27/36 (75.0%).",
+      "assessment": "Met; no directly interchangeable aggregate comparison is claimed.",
+      "likely_reason": "New checks, explicit protocol evidence, an additional case and sampled model outputs differ. The score is a new ruler baseline, not a treatment effect.",
+      "confidence": "high"
+    }
+  ]
+}
