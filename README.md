@@ -146,13 +146,25 @@ See [V3.1 methodology/results](Documentation/14_semantic_evaluation_v3_1.md),
 V3.2 is the final calibrated semantic baseline for this phase: **14 cases,
 42 trials, 32/42 passes (76.2%)**, zero application errors; eight stable-pass,
 two stable-fail and four mixed. Scores across versions are not directly
-interchangeable. Production semantic treatment has not yet occurred.
+interchangeable. Production behavior was unchanged during calibration.
 
 See [methodology/results](Documentation/16_semantic_evaluation_v3_2.md),
 [review/triage](Documentation/evaluation_v3_2/failure_triage.md) and
 [engineering report](Documentation/17_semantic_v3_2_sprint_report.md). Future
 authorized treatment must rerun the exact frozen V3.2 suite/scorer; ordinary
 residual wording ambiguity remains in manual review.
+
+The subsequent exact-suite production treatment passed **37/41 valid analyses
+(90.2%)**, with one fail-closed error in 42 attempts, versus baseline 32/42
+(76.2%). Supported actor and governance facts improve; full SOC identity/endpoint
+checks now apply to both initial and repaired output. Four scored failures appear
+to be lexical scorer mismatches. Availability cost, moderate scope ambiguity and
+unscored identifier/formatting defects remain documented. The scoped semantic
+phase is closed; productization is recommended next and has not begun.
+
+See [treatment details](Documentation/18_semantic_production_hardening.md),
+[treatment triage](Documentation/evaluation_v3_2/treatment_failure_triage.md) and
+[engineering handoff](Documentation/19_semantic_hardening_sprint_report.md).
 
 ## Version 2.2 Update: Source-Aware Outputs
 

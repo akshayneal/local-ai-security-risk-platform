@@ -1,0 +1,652 @@
+{
+  "comparison_version": "3.2-treatment",
+  "suite_byte_sha256": "b55be3f59c6cce919f489d3fadbf72663d35c58c6b701ae76293e73e72c396f5",
+  "suite_semantic_sha256": "fd197cc340994633bad71ce5a7fd4853dd10dceca51310c445c05de7ab1a5018",
+  "scorer_version": "3.2",
+  "baseline_runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "12779e3f1d9cf03cd2a2e61c962e4e702d151ac2",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "treatment_runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "302374913eff06f90dc8cec80ae41443256bb696",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "before": {
+    "totals": {
+      "trials_requested": 42,
+      "trials_attempted": 42,
+      "trials_completed": 42,
+      "trials_passed": 32,
+      "trials_failed": 10,
+      "application_error_count": 0,
+      "pass_rate": 76.19047619047619
+    },
+    "stability": {
+      "stable_pass": 8,
+      "stable_fail": 2,
+      "mixed": 4,
+      "infrastructure_error": 0
+    },
+    "categories": {
+      "claim_authority": {
+        "trials_requested": 15,
+        "trials_attempted": 15,
+        "trials_completed": 15,
+        "trials_passed": 11,
+        "trials_failed": 4,
+        "application_error_count": 0,
+        "pass_rate": 73.33333333333333
+      },
+      "cross_field_consistency": {
+        "trials_requested": 6,
+        "trials_attempted": 6,
+        "trials_completed": 6,
+        "trials_passed": 2,
+        "trials_failed": 4,
+        "application_error_count": 0,
+        "pass_rate": 33.333333333333336
+      },
+      "event_grounding": {
+        "trials_requested": 12,
+        "trials_attempted": 12,
+        "trials_completed": 12,
+        "trials_passed": 10,
+        "trials_failed": 2,
+        "application_error_count": 0,
+        "pass_rate": 83.33333333333333
+      },
+      "observable_fidelity": {
+        "trials_requested": 9,
+        "trials_attempted": 9,
+        "trials_completed": 9,
+        "trials_passed": 9,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    "positive_controls": {
+      "trials_requested": 15,
+      "trials_attempted": 15,
+      "trials_completed": 15,
+      "trials_passed": 9,
+      "trials_failed": 6,
+      "application_error_count": 0,
+      "pass_rate": 60.0
+    },
+    "initial_generations": 42,
+    "repair_generations": 4,
+    "repair_attempted_trials": 4,
+    "repair_failed_trials": 0,
+    "raw_calls": 46,
+    "failed_raw_calls": 0,
+    "mean_trial_seconds": 65.31163491904763,
+    "median_trial_seconds": 58.69559224999966,
+    "repair_generation_seconds": 211.1669084999985
+  },
+  "after": {
+    "totals": {
+      "trials_requested": 42,
+      "trials_attempted": 42,
+      "trials_completed": 41,
+      "trials_passed": 37,
+      "trials_failed": 4,
+      "application_error_count": 1,
+      "pass_rate": 90.2439024390244
+    },
+    "stability": {
+      "stable_pass": 10,
+      "stable_fail": 0,
+      "mixed": 4,
+      "infrastructure_error": 0
+    },
+    "categories": {
+      "claim_authority": {
+        "trials_requested": 15,
+        "trials_attempted": 15,
+        "trials_completed": 15,
+        "trials_passed": 13,
+        "trials_failed": 2,
+        "application_error_count": 0,
+        "pass_rate": 86.66666666666667
+      },
+      "cross_field_consistency": {
+        "trials_requested": 6,
+        "trials_attempted": 6,
+        "trials_completed": 6,
+        "trials_passed": 4,
+        "trials_failed": 2,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      },
+      "event_grounding": {
+        "trials_requested": 12,
+        "trials_attempted": 12,
+        "trials_completed": 11,
+        "trials_passed": 11,
+        "trials_failed": 0,
+        "application_error_count": 1,
+        "pass_rate": 100.0
+      },
+      "observable_fidelity": {
+        "trials_requested": 9,
+        "trials_attempted": 9,
+        "trials_completed": 9,
+        "trials_passed": 9,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    "positive_controls": {
+      "trials_requested": 15,
+      "trials_attempted": 15,
+      "trials_completed": 15,
+      "trials_passed": 13,
+      "trials_failed": 2,
+      "application_error_count": 0,
+      "pass_rate": 86.66666666666667
+    },
+    "initial_generations": 42,
+    "repair_generations": 6,
+    "repair_attempted_trials": 6,
+    "repair_failed_trials": 1,
+    "raw_calls": 48,
+    "failed_raw_calls": 0,
+    "mean_trial_seconds": 81.29471499285695,
+    "median_trial_seconds": 67.92587784999978,
+    "repair_generation_seconds": 555.622292199997
+  },
+  "pass_rate_percentage_point_change": 14.053426248548206,
+  "mean_trial_seconds_change": 15.983080073809319,
+  "median_trial_seconds_change": 9.230285600000116,
+  "case_transitions": [
+    {
+      "case_id": "V32-SOC-001",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-002",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-GOV-003",
+      "before": "mixed",
+      "after": "mixed",
+      "before_outcomes": [
+        "pass",
+        "fail",
+        "pass"
+      ],
+      "after_outcomes": [
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      }
+    },
+    {
+      "case_id": "V32-SOC-004",
+      "before": "stable_fail",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "fail",
+        "fail",
+        "fail"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 0,
+        "trials_failed": 3,
+        "application_error_count": 0,
+        "pass_rate": 0.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-GOV-005",
+      "before": "stable_pass",
+      "after": "mixed",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      }
+    },
+    {
+      "case_id": "V32-SOC-006",
+      "before": "mixed",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "fail"
+      ],
+      "after_outcomes": [
+        "error",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 2,
+        "trials_passed": 2,
+        "trials_failed": 0,
+        "application_error_count": 1,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-007",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-008",
+      "before": "mixed",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-009",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-010",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-011",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-SOC-012",
+      "before": "mixed",
+      "after": "mixed",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "fail"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "fail"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      }
+    },
+    {
+      "case_id": "V32-SOC-013",
+      "before": "stable_pass",
+      "after": "stable_pass",
+      "before_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "after_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 3,
+        "trials_failed": 0,
+        "application_error_count": 0,
+        "pass_rate": 100.0
+      }
+    },
+    {
+      "case_id": "V32-GOV-014",
+      "before": "stable_fail",
+      "after": "mixed",
+      "before_outcomes": [
+        "fail",
+        "fail",
+        "fail"
+      ],
+      "after_outcomes": [
+        "pass",
+        "fail",
+        "pass"
+      ],
+      "before_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 0,
+        "trials_failed": 3,
+        "application_error_count": 0,
+        "pass_rate": 0.0
+      },
+      "after_totals": {
+        "trials_requested": 3,
+        "trials_attempted": 3,
+        "trials_completed": 3,
+        "trials_passed": 2,
+        "trials_failed": 1,
+        "application_error_count": 0,
+        "pass_rate": 66.66666666666667
+      }
+    }
+  ],
+  "changed_behavior_files": [
+    "app/observables.py",
+    "app/output_policy.py",
+    "app/prompts.py",
+    "app/soc_analyzer.py"
+  ],
+  "interpretation": "One unseeded three-trial local before/after comparison, no ablation or population confidence. Official scores retain frozen lexical imperfections; manual review does not replace the aggregate. Runtime differences are recorded, not isolated causally."
+}

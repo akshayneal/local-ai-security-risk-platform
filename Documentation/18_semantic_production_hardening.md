@@ -153,3 +153,67 @@ otherwise recommend productization without starting it here.
 The [engineering report](19_semantic_hardening_sprint_report.md) records the final
 gate, committed treatment, official results, exhaustive review and closeout
 decision after the single run.
+
+## Frozen official outcome and comparison
+
+The [treatment report](evaluation_v3_2/semantic_treatment_3trial.json) records
+42 attempted analyses, 41 valid responses, **37/41 official passes (90.2%)**,
+four assertion failures and one application error. Baseline is 32/42 (76.2%):
+**+14.05 percentage points over valid analyses**. Over all requested attempts,
+treatment passes 37/42 (88.1%) and returns 41/42 responses (97.6%). No error is
+hidden in the valid-trial denominator or treated as a pass.
+
+Stability changes **8/2/4 -> 10/0/4** stable-pass/stable-fail/mixed. The
+stable-pass-labelled 006 case has two valid passes and an error; nine treatment
+cases return three passing responses. Positive controls improve **9/15 -> 13/15**.
+Actor-positive 004 changes 0/3 -> 3/3; governance-positive 014 changes 0/3 -> 2/3
+officially while all three responses retain the mandate/charter/cadence. Its
+remaining failure is a suspected passive-voice scorer mismatch. No replacement
+official aggregate is calculated.
+
+All 32 returned SOC responses pass the full production contract. Six initial
+guard violations trigger repair; five succeed and one fails closed. The error
+repairs observations but corrupts containment, directly confirming the broader
+repair postcondition. Other successful repairs remove an invented containment IP,
+comma-corrupted evidence-gap/inference IPs and an unsupported source endpoint.
+Protected SHA/CVE mutation paths are verified in deterministic tests; they do
+not freshly trigger in the live run. All 23 valid protocol-grounding checks pass,
+including three supported HTTPS responses; the baseline unsupported SSH assertion
+does not recur in returned factual fields. This remains prompt-guided protocol
+behavior, not a deterministic semantic guarantee.
+
+The [comparison](evaluation_v3_2/treatment_comparison.json) records 42 initial
+plus six repair generations (48 raw calls), zero raw failures/retries, versus
+42 plus four repairs at baseline. All-attempt mean rises **65.3116 -> 81.2947
+seconds (+15.9831)**; median **58.6956 -> 67.9259 (+9.2303)**. One attempt loses
+availability after 162.36 seconds. Repair generation time rises 211.1669 ->
+555.6223 seconds. These are real costs with uncontrolled load/sampling, not
+isolated causal performance effects.
+
+The [exhaustive review](evaluation_v3_2/treatment_manual_review.md) records
+36 bounded true passes, four suspected false-positive trials/five checks, one
+moderate suspected support-scope false negative and one application error.
+No genuine targeted semantic failure is identified in returned responses.
+The four official assertion failures concern lacks/lack-of absence wording,
+reference-context scope and a passive legal mandate. Frozen scoring remains
+unchanged. One proposed governance statute-ID mutation and escaped list-separator
+text are high-confidence out-of-key quality defects; moderate missing-protocol
+reasoning and provisional classifications also remain documented.
+
+## Phase closeout
+
+**This bounded major semantic-hardening phase is complete; recommend separately
+authorized productization next.** No stable high-confidence targeted blocker was
+identified. Exact critical-identity and endpoint postconditions, the shared repair
+contract, supported actor/legal retention and negative claim boundaries satisfy
+the scoped closeout criteria on this evidence. Existing security regression
+tests pass, and no major pre-existing control regression was identified.
+
+This is not certification of general semantic correctness or deployment readiness.
+Availability loss, finite recognition/field/type coverage, governance-ID fidelity,
+string-list presentation and moderate reasoning/scope concerns remain limitations.
+The [triage](evaluation_v3_2/treatment_failure_triage.md) and
+[expectation ledger](evaluation_v3_2/treatment_expectation_check.json) retain these
+distinctions. No further corrective sprint is justified solely by the frozen
+scorer's lexical imperfections. Do not create V3.3 or retune production after
+these outcomes. Baseline and treatment are frozen; productization is not begun.

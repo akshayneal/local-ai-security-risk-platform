@@ -1,0 +1,79 @@
+{
+  "version": "3.2-treatment",
+  "pre_live_source": "Documentation/evaluation_v3_2/treatment_expectations_pre_live.json at production commit 302374913eff06f90dc8cec80ae41443256bb696",
+  "no_replacement_aggregate": true,
+  "hypotheses": [
+    {
+      "hypothesis": 1,
+      "expected": "Supported actor-positive control should improve substantially from 0/3, ideally 3/3.",
+      "actual": "V32-SOC-004 official 0/3 -> 3/3; all three preserve the supported actor and reputation within scenario scope.",
+      "assessment": "met",
+      "likely_reason": "Explicit supported named-identity retention and external-scope distinction plausibly help; bundled treatment and unseeded sampling prevent isolated causal attribution.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    },
+    {
+      "hypothesis": 2,
+      "expected": "Supported governance/legal control should improve substantially from 0/3, retaining mandate scope and supplied cadence.",
+      "actual": "V32-GOV-014 official 0/3 -> 2/3; all three responses explicitly preserve the fictional charter mandate and weekly cadence. Trial 2 is a suspected passive-voice scorer false positive, with official score unchanged.",
+      "assessment": "met",
+      "likely_reason": "The prompt distinguishes the provided internal/fictional mandate from external verification, retains cadence and separates unknown methodology. Frozen grammar misses one affirmative passive form.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    },
+    {
+      "hypothesis": 3,
+      "expected": "Mutated reference-bound IP/hash/CVE in protected output must be repaired or fail closed rather than returned.",
+      "actual": "All 32 returned SOC responses pass the full ten-field production contract. Six initial identity/endpoint violations trigger repair; five repair successfully and one is withheld after a different protected field remains invalid. No live SHA/CVE mutation trigger occurs; deterministic tests cover these kinds.",
+      "assessment": "met",
+      "likely_reason": "Deterministic exact-membership and endpoint checks apply across ten fields before any response is returned. The failed repair confirms that shifting corruption to another field cannot evade the full postcondition, within recognition bounds.",
+      "confidence": "high for tested contracts and recorded traces; no universal coverage claim"
+    },
+    {
+      "hypothesis": 4,
+      "expected": "Repair must pass the same complete production contract as initial output.",
+      "actual": "Both generations use shared _validate_generation/validate_soc_output. Live 006/1 fixes observations but corrupts containment and is rejected after the second full check; no third generation.",
+      "assessment": "met",
+      "likely_reason": "One processing/schema/policy function is called for generation 0 and generation 1; trace acceptance requires no violations after all stages.",
+      "confidence": "high for tested contracts and recorded traces; no universal coverage claim"
+    },
+    {
+      "hypothesis": 5,
+      "expected": "Unsupported protocol assignment should decrease.",
+      "actual": "Baseline has one unsupported SSH assignment in 21 unknown-protocol trials. Treatment has zero assignments in 20 returned unknown-protocol responses, with one planned response withheld; supported HTTPS remains 3/3.",
+      "assessment": "met",
+      "likely_reason": "Explicit epistemic guidance discourages protocol inference from event wording/ports. This is a prompt effect hypothesis, not deterministic protocol enforcement or a population-level probability claim.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    },
+    {
+      "hypothesis": 6,
+      "expected": "Negative actor/reputation/legal cases must not regress into overclaiming.",
+      "actual": "No actor/reputation/legal promotion identified in nine returned negative authority trials; claimed maintenance stays unverified. An unscored proposed governance statute-ID typo is separately documented rather than called authority promotion.",
+      "assessment": "met",
+      "likely_reason": "Positive record scope is distinguished from unverified allegations/references rather than generalized plaintext trust. Likely-type wording and other scope concerns remain documented.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    },
+    {
+      "hypothesis": 7,
+      "expected": "Existing injection/source-integrity/agency controls must remain intact.",
+      "actual": "All pre-existing injection/source/agency/API regression tests pass, and manual treatment review finds no executed-action claim or source allowlist/metadata violation. No fresh live V1/V2 experiment is claimed.",
+      "assessment": "met",
+      "likely_reason": "The new treatment leaves quarantine, source membership/metadata processing, action limits, routes and audit behavior intact; regression fixtures exercise them. Live suite scope is finite.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    },
+    {
+      "hypothesis": 8,
+      "expected": "Repair frequency and latency may rise; assess this as an expected cost rather than automatic regression.",
+      "actual": "Repairs increase 4 -> 6, one fails closed; all-attempt mean rises 65.3116 -> 81.2947 seconds, median 58.6956 -> 67.9259. Availability decreases by one response among 42 attempts.",
+      "assessment": "met for bounded property; availability cost recorded",
+      "likely_reason": "Broader rejection coverage invokes extra regeneration and withholds an invalid repaired response. Actual latency also includes uncontrolled load, longer prompts and sampling, so not all delta is causally assigned.",
+      "confidence": "high for tested contracts and recorded traces; no universal coverage claim"
+    },
+    {
+      "hypothesis": 9,
+      "expected": "No stable high-confidence targeted semantic failure should remain if the phase is ready to close.",
+      "actual": "No stable high-confidence targeted semantic failure remains; four official assertion failures are suspected scorer false positives. One moderate support-scope miss and explicit out-of-key quality defects remain. Recommend closing the scoped phase and moving to productization, without implementing it.",
+      "assessment": "met for scoped phase; bounded engineering judgment",
+      "likely_reason": "The defined closeout criteria concern targeted semantic properties. High-confidence unscored governance-ID and formatting defects are not hidden, but are outside those critical SOC/authority-retention contracts and do not justify scorer tuning or another major semantic sprint.",
+      "confidence": "moderate for causal explanation/closeout; high for observed records"
+    }
+  ]
+}

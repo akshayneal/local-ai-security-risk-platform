@@ -121,13 +121,27 @@ trials each; 32/42 passed (76.2%), zero application errors, eight stable-pass,
 two stable-fail and four mixed. Manual review records two suspected lexical false
 positives and one moderate suspected support-scope false negative. Read
 `Documentation/16_semantic_evaluation_v3_2.md`, the V3.2 review/triage and
-`Documentation/17_semantic_v3_2_sprint_report.md` before the next major phase,
-production semantic hardening, which requires separate explicit authorization.
+`Documentation/17_semantic_v3_2_sprint_report.md` for the frozen methodology.
+The subsequently authorized production treatment is recorded below.
 Rerun the exact frozen V3.2 suite/scorer unchanged after treatment and verify both
 suite hashes. Do not create V3.3 for ordinary lexical imperfections; document
 residual ambiguity manually. Further evaluator versioning requires an objective
 defect that makes the intended production comparison scientifically
 uninterpretable. V1/V2/V3/V3.1 remain frozen; no production hardening occurred here.
+
+The semantic production treatment is complete at implementation commit
+`302374913eff06f90dc8cec80ae41443256bb696`. Exact V3.2 treatment: 37/41 valid
+analyses (90.2%), one fail-closed application error in 42 attempts; 10 stable-pass,
+zero stable-fail and four mixed (one stable-pass case has two valid passes/error).
+Baseline and treatment artifacts and exact suite/scorer remain frozen. Read
+`Documentation/18_semantic_production_hardening.md`, the treatment review/triage
+under `Documentation/evaluation_v3_2/`, and
+`Documentation/19_semantic_hardening_sprint_report.md` before new work.
+The scoped major semantic-hardening phase is closed; next recommended phase is
+separately authorized productization. Remaining availability, scope, formatting
+and out-of-key identifier limitations must stay visible. No productization or
+unrelated deferred roadmap work was implemented. Evaluator changes and another
+semantic sprint are not automatic authorization; no V3.3 for ordinary wording.
 
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.
