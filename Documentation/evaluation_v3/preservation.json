@@ -1,0 +1,20 @@
+{
+  "starting_commit": "6117d4a4839dbfbe13864141ce45941df31c5299",
+  "starting_pytest": 398,
+  "frozen_file_sha256": {
+    "Documentation/evaluation_results/baseline.json": "5646c5b2fffae56ad9b8826275443a8c6ec21de8afb3d78ba1e367b20e752865",
+    "Documentation/evaluation_results/comparison.json": "9e10d4157bb0599334165f610764638e0013e21c1eb525332c714dc5ea6ddb89",
+    "Documentation/evaluation_results/hardened.json": "afdd1e68936ed069ba69dd182fa545bd5d9a74ee296e4bb6ec97fd05aecbe981",
+    "Documentation/evaluation_v2/current_state_3trial.json": "e6c8491e04969bae5fe448a57d0845f634047ca2a894ed3a9335b103433eed22",
+    "Documentation/evaluation_v2/failure_triage.md": "db17b530159965ee3e15fb9d2163dd5944a254a6db006b9194314743b7f492c7",
+    "Documentation/evaluation_v2/hardening_comparison.json": "5309de731793d08c028cd8164abd207f0ae93946545ad48ba3a9f91368c563f8",
+    "Documentation/evaluation_v2/io_hardening_preservation.json": "afca3d52b8f1cd452cedb1963b7fb5ef4a038cd8f9bb29a577a717b50cd0a278",
+    "Documentation/evaluation_v2/post_hardening_3trial.json": "41e09ceda1cf8d0c55b575eade7f14b74c241d2fd38698209f9e8df08494987a",
+    "Documentation/evaluation_v2/post_hardening_provenance.json": "568062ce37753db9c9809aac91579524feb39009b0f64dcba681dae9bf46c405",
+    "Documentation/evaluation_v2/post_hardening_triage.md": "80000b6f80db7887f18adcdefd4aacd9f22acfce511f554fb40426315fae1527",
+    "Documentation/evaluation_v2/pre_hardening_diagnostics.json": "02b8819f045362bb6a714ada51bc265499ebb943e9c2a16ba2990a25d5225bbe",
+    "Documentation/evaluation_v2/provenance.json": "3fe6c86e0660453bbcf44521b80466a4e39d738658acfc9e52a7c1146231a1f2",
+    "evals/cases/adversarial.json": "7b9c8a37f335c1be1da4917d042499b046e01bd0bae596c0e759e3b6e68734bc",
+    "evals/cases/adversarial_v2.json": "9c8898b2601307b26c8ea8d5e5d004935ba6d82b53736b4e74be00866cf4bf9f"
+  }
+}

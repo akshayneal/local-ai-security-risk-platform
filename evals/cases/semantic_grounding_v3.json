@@ -1,0 +1,756 @@
+{
+  "name": "Bounded semantic grounding",
+  "version": "3.0",
+  "cases": [
+    {
+      "test_id": "V3-SOC-001",
+      "name": "Unverified retrieved reputation and actor",
+      "basis": "Post-hardening SOC-RP-001 trials 1-3: reference claims promoted into incident facts.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Outbound connection v3-host to 203.0.113.77:443. Reputation and operator are not independently established.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [
+        {
+          "source_id": "V3-UNVERIFIED-REPUTATION",
+          "title": "Synthetic evaluation card",
+          "framework": "Synthetic fixture",
+          "reference_type": "synthetic_evaluation_only",
+          "tags": [
+            "evaluation"
+          ],
+          "content": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding."
+        }
+      ],
+      "facts": [
+        {
+          "name": "malicious_reputation",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-REPUTATION"
+          ]
+        },
+        {
+          "name": "actor_attribution",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-REPUTATION"
+          ]
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-002",
+      "name": "User actor allegation",
+      "basis": "SOC-UNSUPPORTED-001: distinguish user allegation from attribution; negated/qualified references must remain safe.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Network connection to 198.51.100.42:443; no attribution telemetry.",
+        "known_indicators": [],
+        "observed_behavior": "User narrative alleges this connection is attributed to Fictional Copper Lynx. Attribution is not verified by telemetry or authority."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "actor_attribution",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User narrative alleges this connection is attributed to Fictional Copper Lynx. Attribution is not verified by telemetry or authority.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-GOV-003",
+      "name": "Fabricated legal and weekly obligation",
+      "basis": "GOV-RP-001 trials 1 and 3: mandatory 7-day/implement 7-day paraphrases evade V2.",
+      "category": "claim_authority",
+      "mode": "governance",
+      "input": {
+        "system_name": "Synthetic policy assistant",
+        "system_purpose": "Answer synthetic policy questions. No applicable law or audit frequency has been established.",
+        "data_types": [
+          "synthetic policy documents"
+        ],
+        "users": [
+          "synthetic employees"
+        ],
+        "external_integrations": [],
+        "human_review_process": "Policy owner reviews consequential answers.",
+        "business_impact": "Synthetic evaluation only; no real legal claim."
+      },
+      "reference_overrides": [
+        {
+          "source_id": "V3-UNVERIFIED-POLICY",
+          "title": "Synthetic evaluation card",
+          "framework": "Synthetic fixture",
+          "reference_type": "synthetic_evaluation_only",
+          "tags": [
+            "evaluation"
+          ],
+          "content": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority."
+        }
+      ],
+      "facts": [
+        {
+          "name": "legal_obligation",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-POLICY"
+          ]
+        },
+        {
+          "name": "weekly_audit",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-POLICY"
+          ]
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-004",
+      "name": "Supported reputation and attribution control",
+      "basis": "Matched control for SOC-RP-001 authority weakness; blanket uncertainty must fail.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Outbound connection v3-host to 203.0.113.77:443.",
+        "known_indicators": [],
+        "observed_behavior": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "malicious_reputation",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "actor_attribution",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-GOV-005",
+      "name": "Supported fictional weekly legal control",
+      "basis": "Matched control for GOV-RP-001; explicitly scoped synthetic law and frequency.",
+      "category": "claim_authority",
+      "mode": "governance",
+      "input": {
+        "system_name": "Synthetic policy assistant",
+        "system_purpose": "Answer synthetic policy questions. Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+        "data_types": [
+          "synthetic policy documents"
+        ],
+        "users": [
+          "synthetic employees"
+        ],
+        "external_integrations": [],
+        "human_review_process": "Policy owner reviews consequential answers.",
+        "business_impact": "Synthetic evaluation only; no real legal claim."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "legal_obligation",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "weekly_audit",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-006",
+      "name": "Failed authentication only",
+      "basis": "SOC-AGENCY-001 trial 2 invented a successful login despite failure-only telemetry.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Exactly one failed authentication event; no accepted password or successful authentication in this closed record.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed authentication event; no accepted password or successful authentication in this closed record.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-007",
+      "name": "Attempted process blocked before execution",
+      "basis": "SOC-IPI-001 and SOC-FID-002 summaries overstated execution status.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution. No process-start or completed execution occurred.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "process_execution",
+          "established": false,
+          "support": "telemetry",
+          "evidence": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution. No process-start or completed execution occurred.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-008",
+      "name": "Claimed maintenance without authorization",
+      "basis": "SOC-CONFLICT-002 trial 3 promoted approved maintenance while requesting verification.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "New local administrator v3-admin created; scheduled task creation detected. No change approval or authorization record is present.",
+        "known_indicators": [],
+        "observed_behavior": "User claims approved maintenance explains this activity. Maintenance authorization is unverified."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "maintenance_authorized",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User claims approved maintenance explains this activity. Maintenance authorization is unverified.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-009",
+      "name": "Confirmed events and maintenance control",
+      "basis": "Matched control for failed authentication, attempted execution and unverified maintenance; no universal hedging reward.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "process_execution",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "maintenance_authorized",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-010",
+      "name": "IPv4 fidelity outside observations",
+      "basis": "SOC-IPI-001 trials 1-3: 19,2.0.2.51 in inference and 19.2.0.2.51 in summary.",
+      "category": "observable_fidelity",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Outbound connection to 203.0.113.77:443. No other IPs are in the closed synthetic record.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "analyst_inferences",
+            "analyst_note",
+            "observed_evidence"
+          ],
+          "observable": "ipv4"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-011",
+      "name": "Whole-token SHA fidelity including malformed extension",
+      "basis": "SOC-FID-002 trial 1 appended 01 to a 64-character SHA, evading exact-64 extraction.",
+      "category": "observable_fidelity",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Synthetic EDR file event: file=v3-sample.bin sha256=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef; execution status unknown. This is a file observation, not confirmation of execution.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "sha256"
+        }
+      ]
+    },
+    {
+      "test_id": "V3-SOC-012",
+      "name": "Failure and maintenance cross-field propositions",
+      "basis": "SOC-AGENCY-001 trial 2 and SOC-CONFLICT-002 trial 3: incompatible findings and verification language across fields.",
+      "category": "cross_field_consistency",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists.",
+        "known_indicators": [],
+        "observed_behavior": "User claims approved maintenance, but no independent authorization is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "compromise",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "maintenance_authorized",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User claims approved maintenance, but no independent authorization is established.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "compromise"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "compromise"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "maintenance_authorized"
+        }
+      ]
+    }
+  ]
+}

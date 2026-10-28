@@ -7,3 +7,7 @@ evals/cases/adversarial_v2.json text eol=lf
 
 # Preserve frozen V2 report/manifest bytes without checkout newline conversion.
 Documentation/evaluation_v2/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# V3 is a distinct frozen experiment; preserve suite and report identity.
+evals/cases/semantic_grounding_v3.json text eol=lf
+Documentation/evaluation_v3/*.json -text
