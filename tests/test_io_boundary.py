@@ -273,6 +273,7 @@ def test_valid_response_needs_no_repair(monkeypatch):
         "source_sanitized",
         "output_policy",
         "policy_violations",
+        "contract_accepted",
         "final_response",
     ]
 

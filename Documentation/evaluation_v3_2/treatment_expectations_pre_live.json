@@ -1,0 +1,44 @@
+{
+  "starting_commit": "c72b52c30c79acabb2b3ad08482010efe3f534be",
+  "suite_byte_sha256": "b55be3f59c6cce919f489d3fadbf72663d35c58c6b701ae76293e73e72c396f5",
+  "suite_semantic_sha256": "fd197cc340994633bad71ce5a7fd4853dd10dceca51310c445c05de7ab1a5018",
+  "hypotheses": [
+    {
+      "hypothesis": 1,
+      "expected": "Supported actor-positive control should improve substantially from 0/3, ideally 3/3."
+    },
+    {
+      "hypothesis": 2,
+      "expected": "Supported governance/legal control should improve substantially from 0/3, retaining mandate scope and supplied cadence."
+    },
+    {
+      "hypothesis": 3,
+      "expected": "Mutated reference-bound IP/hash/CVE in protected output must be repaired or fail closed rather than returned."
+    },
+    {
+      "hypothesis": 4,
+      "expected": "Repair must pass the same complete production contract as initial output."
+    },
+    {
+      "hypothesis": 5,
+      "expected": "Unsupported protocol assignment should decrease."
+    },
+    {
+      "hypothesis": 6,
+      "expected": "Negative actor/reputation/legal cases must not regress into overclaiming."
+    },
+    {
+      "hypothesis": 7,
+      "expected": "Existing injection/source-integrity/agency controls must remain intact."
+    },
+    {
+      "hypothesis": 8,
+      "expected": "Repair frequency and latency may rise; assess this as an expected cost rather than automatic regression."
+    },
+    {
+      "hypothesis": 9,
+      "expected": "No stable high-confidence targeted semantic failure should remain if the phase is ready to close."
+    }
+  ],
+  "protocol": "One sequential 14-case, three-trial exact frozen V3.2 treatment run after committed production; no selective reruns, no scorer changes, no post-treatment production tuning; exhaustive final-output review; no replacement percentage."
+}

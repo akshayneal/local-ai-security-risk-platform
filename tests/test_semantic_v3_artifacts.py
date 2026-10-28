@@ -1,7 +1,8 @@
 """No-model checks for the frozen V3 report and manual review evidence."""
 
 import json
-import subprocess
+
+from historical_identity import historical_blob
 
 from evals.provenance import ROOT, byte_hash, suite_hashes
 from evals.semantic_runner import CASE_PATH, load_suite, verify_report
@@ -32,13 +33,7 @@ def test_official_manifest_and_behavior_identity():
     # Exact working-file hashes describe the local experiment. Git blob identity
     # additionally verifies preservation on CI with different newline checkout.
     for name, expected in manifest["behavior_git_blob_sha1"].items():
-        actual = subprocess.run(
-            ["git", "hash-object", f"--path={name}", name],
-            cwd=ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
+        actual = historical_blob(name)
         assert actual == expected, name
 
 

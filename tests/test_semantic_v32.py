@@ -1,10 +1,10 @@
 """V3.2 calibration, independent metadata and replay tests; no Ollama required."""
 
 import json
-import subprocess
 from copy import deepcopy
 
 import pytest
+from historical_identity import historical_blob
 from pydantic import ValidationError
 
 from evals.provenance import ROOT, suite_hashes
@@ -533,9 +533,7 @@ def test_historical_git_blobs_unchanged():
         (ROOT / "Documentation/evaluation_v3_1/preservation.json").read_bytes()
     )
     for name, expected in inventory["git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        actual = historical_blob(name)
         assert actual == expected, name
 
 

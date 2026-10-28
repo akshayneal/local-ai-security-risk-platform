@@ -1,9 +1,9 @@
 """V3 deterministic measurement tests; no Ollama dependency."""
 
 import json
-import subprocess
 
 import pytest
+from historical_identity import historical_blob
 from pydantic import ValidationError
 
 from evals.provenance import ROOT, suite_hashes
@@ -324,13 +324,7 @@ def test_frozen_git_blobs_preserved():
     # Exact local starting bytes remain in the manifest and are checked at freeze.
     # Git clean-filtered blob identities also work with Linux LF checkout rules.
     for name, expected in preservation["frozen_git_blob_sha1"].items():
-        actual = subprocess.run(
-            ["git", "hash-object", f"--path={name}", name],
-            cwd=ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
+        actual = historical_blob(name)
         assert actual == expected, name
 
 

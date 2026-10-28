@@ -1,17 +1,15 @@
 import json
 from typing import Any
 
-from pydantic import ValidationError
-
 from app.analysis_trace import AnalysisTrace
-from app.observables import critical_observables
+from app.observables import critical_observables, network_endpoints
 from app.ollama_client import call_model_json
 from app.output_policy import (
     OutputPolicyError,
     replace_untrusted_source_ids,
-    soc_contract_violations,
     text_values,
     untrusted_source_ids,
+    validate_soc_output,
 )
 from app.prompts import build_soc_prompt
 from app.reference_loader import (
@@ -56,43 +54,38 @@ def analyze_soc_alert(
                 response_schema=SocAlertResponse.model_json_schema(),
             )
         except Exception:
-            if trace is not None and generation == 1:
-                trace.repair_failed = True
+            if trace is not None:
+                if generation == 1:
+                    trace.repair_failed = True
+                trace.capture(
+                    "final_failure", "model generation failed", generation=generation
+                )
             raise
 
-        processed = _process_output(raw_result, references, blocked, trace, generation)
-        violations = soc_contract_violations(processed, original_input)
-        response = None
-        if not violations:
-            try:
-                response = SocAlertResponse.model_validate(processed)
-            except ValidationError as exc:
-                if generation == 1:
-                    if trace is not None:
-                        trace.repair_failed = True
-                    raise OutputPolicyError(
-                        ["repaired response failed schema validation"]
-                    ) from exc
-                if any(
-                    error["loc"][0] != "observed_evidence" for error in exc.errors()
-                ):
-                    raise
-                violations = ["observed_evidence failed item/count bounds"]
+        response, violations = _validate_generation(
+            raw_result, references, blocked, trace, generation, original_input
+        )
 
         if trace is not None:
             trace.capture("policy_violations", violations, generation=generation)
         if response is not None:
             if trace is not None:
                 trace.repair_failed = False
+                trace.capture("contract_accepted", True, generation=generation)
                 trace.capture(
                     "final_response",
                     response.model_dump(mode="json"),
                     generation=generation,
                 )
             return response
+        if trace is not None:
+            trace.capture("contract_rejected", violations, generation=generation)
         if generation == 1:
             if trace is not None:
                 trace.repair_failed = True
+                trace.capture(
+                    "final_failure", "OutputPolicyError", generation=generation
+                )
             raise OutputPolicyError(violations)
         if trace is not None:
             trace.repair_attempted = True
@@ -112,13 +105,41 @@ def analyze_soc_alert(
                 + json.dumps(violations)
                 + "\n"
                 "Supply at least one nonblank supported observed_evidence item. "
-                "Only repeat critical observables exactly as supplied in the original request; "
-                "do not correct, invent, or substitute values. Observables need not all be repeated.\n"
+                "Across every analyst-facing field, including investigation and containment steps, "
+                "only repeat critical observables exactly as supplied in the original request; "
+                "do not correct, invent, or substitute values. Preserve explicit endpoint/port relationships. "
+                "Generic hours, counts and standard-port guidance need not repeat case values. "
+                "Observables need not all be repeated. Preserve established event, identity and approval "
+                "facts within the supplied record, while attributing unverified claims and distinguishing "
+                "external verification. Do not infer protocol from event wording or port numbers. "
+                "The regenerated JSON must satisfy the full schema, source, observation, identity "
+                "and endpoint contracts, even if the previous violation was in another field.\n"
                 "Authoritative input observables (not reputation or vulnerability verification):\n"
                 + json.dumps(authoritative, sort_keys=True)
+                + "\nAuthoritative explicit input endpoint pairs:\n"
+                + json.dumps(
+                    sorted(network_endpoints("\n".join(text_values(original_input))))
+                )
             )
         )
     raise AssertionError("Bounded generation loop exhausted unexpectedly")
+
+
+def _validate_generation(
+    raw_result: dict[str, Any],
+    references: list[dict[str, Any]],
+    blocked: set[str],
+    trace: AnalysisTrace | None,
+    generation: int,
+    original_input: dict[str, Any],
+) -> tuple[SocAlertResponse | None, list[str]]:
+    try:
+        processed = _process_output(raw_result, references, blocked, trace, generation)
+    except (TypeError, AttributeError, ValueError):
+        # Malformed model JSON/source shapes are invalid on either generation.
+        # Fixed machine descriptions only; never refeed the malformed payload.
+        return None, ["response failed source/citation processing contract"]
+    return validate_soc_output(processed, original_input)
 
 
 def _process_output(

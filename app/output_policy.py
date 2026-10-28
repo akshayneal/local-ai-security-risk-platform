@@ -3,7 +3,23 @@
 import re
 from typing import Any
 
-from app.observables import observable_violations
+from pydantic import ValidationError
+
+from app.observables import endpoint_violations, observable_violations
+from app.schemas import SocAlertResponse
+
+SOC_FACTUAL_FIELDS = (
+    "summary",
+    "likely_incident_type",
+    "mitre_mapping",
+    "observed_evidence",
+    "analyst_inferences",
+    "analyst_note",
+    "recommended_investigation_steps",
+    "recommended_containment",
+    "false_positive_considerations",
+    "evidence_gaps",
+)
 
 # Context is required. Generic punctuation is not evidence of a reference ID.
 SOURCE_CONTEXT = re.compile(
@@ -98,8 +114,29 @@ def soc_contract_violations(
     result: dict[str, Any], original_input: dict[str, Any]
 ) -> list[str]:
     observations = result.get("observed_evidence")
+    violations = []
     if not isinstance(observations, list) or not observations:
-        return ["observed_evidence must be a nonempty list of supported observations"]
-    if not all(isinstance(item, str) and item.strip() for item in observations):
-        return ["observed_evidence items must be nonblank strings"]
-    return observable_violations(observations, "\n".join(text_values(original_input)))
+        violations.append(
+            "observed_evidence must be a nonempty list of supported observations"
+        )
+    elif not all(isinstance(item, str) and item.strip() for item in observations):
+        violations.append("observed_evidence items must be nonblank strings")
+    original = "\n".join(text_values(original_input))
+    for field in SOC_FACTUAL_FIELDS:
+        texts = text_values(result.get(field))
+        violations.extend(observable_violations(texts, original, field=field))
+        violations.extend(endpoint_violations("\n".join(texts), original, field=field))
+    return violations
+
+
+def validate_soc_output(
+    result: dict[str, Any], original_input: dict[str, Any]
+) -> tuple[SocAlertResponse | None, list[str]]:
+    """One postcondition for both generations, after citation/source processing."""
+    violations = soc_contract_violations(result, original_input)
+    try:
+        response = SocAlertResponse.model_validate(result)
+    except ValidationError:
+        violations.append("response failed schema validation")
+        response = None
+    return (None if violations else response), violations

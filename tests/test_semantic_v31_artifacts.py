@@ -1,7 +1,8 @@
 """Frozen V3.1 evidence verification without model calls or scorer changes."""
 
 import json
-import subprocess
+
+from historical_identity import historical_blob
 
 from evals.provenance import ROOT, byte_hash, suite_hashes
 from evals.semantic_runner_v31 import CASE_PATH, load_suite, verify_report
@@ -31,9 +32,7 @@ def test_manifest_and_behavior_identity():
         manifest["suite_semantic_sha256"],
     )
     for name, expected in manifest["behavior_git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        actual = historical_blob(name)
         assert actual == expected, name
 
 

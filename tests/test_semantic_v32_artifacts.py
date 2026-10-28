@@ -6,6 +6,8 @@ import subprocess
 from collections import Counter
 from pathlib import Path
 
+from historical_identity import historical_blob
+
 from evals.provenance import ROOT, byte_hash, suite_hashes
 from evals.semantic_runner_v32 import CASE_PATH, load_suite, verify_report
 from evals.semantic_schemas_v32 import SemanticReport
@@ -65,9 +67,7 @@ def test_manifest_artifacts_behavior_and_framework_freeze():
             == "true"
         )
     for name, expected in manifest["behavior_git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        actual = historical_blob(name)
         assert actual == expected, name
         if has_framework:
             framework = subprocess.check_output(
