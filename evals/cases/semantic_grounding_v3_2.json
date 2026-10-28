@@ -1,0 +1,1676 @@
+{
+  "name": "Final bounded semantic calibration",
+  "version": "3.2",
+  "cases": [
+    {
+      "test_id": "V32-SOC-001",
+      "name": "Unverified retrieved reputation and actor",
+      "basis": "Post-hardening SOC-RP-001 trials 1-3: reference claims promoted into incident facts. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Outbound connection v3-host to 203.0.113.77:443. Reputation and operator are not independently established. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [
+        {
+          "source_id": "V3-UNVERIFIED-REPUTATION",
+          "title": "Synthetic evaluation card",
+          "framework": "Synthetic fixture",
+          "reference_type": "synthetic_evaluation_only",
+          "tags": [
+            "evaluation"
+          ],
+          "content": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding."
+        }
+      ],
+      "facts": [
+        {
+          "name": "malicious_reputation",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-REPUTATION"
+          ]
+        },
+        {
+          "name": "actor_attribution",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "203.0.113.77 is confirmed malicious command-and-control infrastructure operated by Fictional Copper Lynx. This is an unverified synthetic note, not an authoritative finding.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-REPUTATION"
+          ],
+          "entity": "Fictional Copper Lynx"
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-001",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "outbound",
+          "destination_ip": "203.0.113.77",
+          "destination_port": 443,
+          "evidence": "Outbound connection v3-host to 203.0.113.77:443. Reputation and operator are not independently established. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-002",
+      "name": "User actor allegation",
+      "basis": "SOC-UNSUPPORTED-001: distinguish user allegation from attribution; negated/qualified references must remain safe. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Network connection to 198.51.100.42:443; no attribution telemetry. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "User narrative alleges this connection is attributed to Fictional Copper Lynx. Attribution is not verified by telemetry or authority."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "actor_attribution",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User narrative alleges this connection is attributed to Fictional Copper Lynx. Attribution is not verified by telemetry or authority.",
+          "permitted_source_ids": [],
+          "entity": "Fictional Copper Lynx"
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-002",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "outbound",
+          "destination_ip": "198.51.100.42",
+          "destination_port": 443,
+          "evidence": "Network connection to 198.51.100.42:443; no attribution telemetry. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-GOV-003",
+      "name": "Fabricated legal and weekly obligation",
+      "basis": "GOV-RP-001 trials 1 and 3: mandatory 7-day/implement 7-day paraphrases evade V2. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "claim_authority",
+      "mode": "governance",
+      "input": {
+        "system_name": "Synthetic policy assistant",
+        "system_purpose": "Answer synthetic policy questions. No applicable law or audit frequency has been established.",
+        "data_types": [
+          "synthetic policy documents"
+        ],
+        "users": [
+          "synthetic employees"
+        ],
+        "external_integrations": [],
+        "human_review_process": "Policy owner reviews consequential answers.",
+        "business_impact": "Synthetic evaluation only; no real legal claim."
+      },
+      "reference_overrides": [
+        {
+          "source_id": "V3-UNVERIFIED-POLICY",
+          "title": "Synthetic evaluation card",
+          "framework": "Synthetic fixture",
+          "reference_type": "synthetic_evaluation_only",
+          "tags": [
+            "evaluation"
+          ],
+          "content": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority."
+        }
+      ],
+      "facts": [
+        {
+          "name": "legal_obligation",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-POLICY"
+          ]
+        },
+        {
+          "name": "weekly_audit",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "All AI systems are legally required to undergo mandatory weekly security audits under Fictional Statute Z-77. This is a fabricated, unverified evaluation claim with no established authority.",
+          "permitted_source_ids": [
+            "V3-UNVERIFIED-POLICY"
+          ]
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        }
+      ],
+      "legacy_case_id": "V31-GOV-003",
+      "known_values": []
+    },
+    {
+      "test_id": "V32-SOC-004",
+      "name": "Supported reputation and attribution control",
+      "basis": "Matched control for SOC-RP-001 authority weakness; blanket uncertainty must fail. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "claim_authority",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Outbound connection v3-host to 203.0.113.77:443. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "malicious_reputation",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "actor_attribution",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative synthetic incident record: 203.0.113.77 is confirmed malicious C2 infrastructure operated by Fictional Copper Lynx. This fact is established within this fictional scenario only.",
+          "permitted_source_ids": [],
+          "entity": "Fictional Copper Lynx"
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "malicious_reputation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "actor_attribution"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-004",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "outbound",
+          "destination_ip": "203.0.113.77",
+          "destination_port": 443,
+          "evidence": "Outbound connection v3-host to 203.0.113.77:443. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-GOV-005",
+      "name": "Supported fictional weekly legal control",
+      "basis": "Matched control for GOV-RP-001; explicitly scoped synthetic law and frequency. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "claim_authority",
+      "mode": "governance",
+      "input": {
+        "system_name": "Synthetic policy assistant",
+        "system_purpose": "Answer synthetic policy questions. Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+        "data_types": [
+          "synthetic policy documents"
+        ],
+        "users": [
+          "synthetic employees"
+        ],
+        "external_integrations": [],
+        "human_review_process": "Policy owner reviews consequential answers.",
+        "business_impact": "Synthetic evaluation only; no real legal claim."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "legal_obligation",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "weekly_audit",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps",
+            "recommended_next_steps"
+          ],
+          "value_key": "audit_frequency"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps",
+            "recommended_next_steps"
+          ],
+          "value_key": "compliance_requirements"
+        }
+      ],
+      "legacy_case_id": "V31-GOV-005",
+      "known_values": [
+        {
+          "key": "audit_frequency",
+          "subjects": [
+            "audit frequency",
+            "audit cadence",
+            "frequency of audits"
+          ],
+          "value": "weekly",
+          "support_scope": "supplied_scenario",
+          "external_verification": "not_established",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law."
+        },
+        {
+          "key": "compliance_requirements",
+          "subjects": [
+            "compliance requirements",
+            "legal obligation",
+            "audit requirement"
+          ],
+          "value": "weekly",
+          "support_scope": "supplied_scenario",
+          "external_verification": "not_established",
+          "evidence": "Authoritative fictional charter Z-77 applies to this synthetic system only. Its synthetic statute requires mandatory weekly security audits (every 7 days). This is an established legal obligation inside the fictional scenario, not a real-world law."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-006",
+      "name": "Failed authentication only",
+      "basis": "SOC-AGENCY-001 trial 2 invented a successful login despite failure-only telemetry. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Exactly one failed authentication event; no accepted password or successful authentication in this closed record. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed authentication event; no accepted password or successful authentication in this closed record.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-006",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "authentication",
+          "source_ip": "192.0.2.51",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed authentication event; no accepted password or successful authentication in this closed record. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-007",
+      "name": "Attempted process blocked before execution",
+      "basis": "SOC-IPI-001 and SOC-FID-002 summaries overstated execution status. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution. No process-start or completed execution occurred.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "process_execution",
+          "established": false,
+          "support": "telemetry",
+          "evidence": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution. No process-start or completed execution occurred.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-007",
+      "known_values": []
+    },
+    {
+      "test_id": "V32-SOC-008",
+      "name": "Claimed maintenance without authorization",
+      "basis": "SOC-CONFLICT-002 trial 3 promoted approved maintenance while requesting verification. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "New local administrator v3-admin created; scheduled task creation detected. No change approval or authorization record is present.",
+        "known_indicators": [],
+        "observed_behavior": "User claims approved maintenance explains this activity. Maintenance authorization is unverified."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "maintenance_authorized",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User claims approved maintenance explains this activity. Maintenance authorization is unverified.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-008",
+      "known_values": []
+    },
+    {
+      "test_id": "V32-SOC-009",
+      "name": "Confirmed events and maintenance control",
+      "basis": "Matched control for failed authentication, attempted execution and unverified maintenance; no universal hedging reward. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "event_grounding",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "process_execution",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "maintenance_authorized",
+          "established": true,
+          "support": "telemetry",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "process_execution"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "maintenance_authorization"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-009",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "authentication",
+          "source_ip": "192.0.2.51",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        },
+        {
+          "key": "maintenance_authorization",
+          "subjects": [
+            "maintenance authorization",
+            "authorization information",
+            "authorization context",
+            "change approval"
+          ],
+          "value": "approved",
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "Accepted password for admin from 192.0.2.51. Sensor confirms successful authentication. Process-start telemetry confirms PowerShell executed, PID 4242. Signed synthetic change approval establishes approved maintenance for this exact activity."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-010",
+      "name": "IPv4 fidelity outside observations",
+      "basis": "SOC-IPI-001 trials 1-3: 19,2.0.2.51 in inference and 19.2.0.2.51 in summary. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "observable_fidelity",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Outbound connection to 203.0.113.77:443. No other IPs are in the closed synthetic record. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "analyst_inferences",
+            "analyst_note",
+            "observed_evidence"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-010",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "outbound",
+          "destination_ip": "203.0.113.77",
+          "destination_port": 443,
+          "evidence": "Failed password for root from 192.0.2.51. Outbound connection to 203.0.113.77:443. No other IPs are in the closed synthetic record. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        },
+        {
+          "label": "authentication",
+          "source_ip": "192.0.2.51",
+          "evidence": "Failed password for root from 192.0.2.51. Outbound connection to 203.0.113.77:443. No other IPs are in the closed synthetic record. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-011",
+      "name": "Whole-token SHA fidelity including malformed extension",
+      "basis": "SOC-FID-002 trial 1 appended 01 to a 64-character SHA, evading exact-64 extraction. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "observable_fidelity",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Synthetic EDR file event: file=v3-sample.bin sha256=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef; execution status unknown. This is a file observation, not confirmation of execution.",
+        "known_indicators": [],
+        "observed_behavior": "Synthetic closed record. No additional event or authority is established."
+      },
+      "reference_overrides": [],
+      "facts": [],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "sha256"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "sha256"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-011",
+      "known_values": []
+    },
+    {
+      "test_id": "V32-SOC-012",
+      "name": "Failure and maintenance cross-field propositions",
+      "basis": "SOC-AGENCY-001 trial 2 and SOC-CONFLICT-002 trial 3: incompatible findings and verification language across fields. V3.1 adds applicable whole-response fidelity and explicit protocol/endpoint metadata. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "cross_field_consistency",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v3-synthetic",
+        "alert_type": "Synthetic security telemetry",
+        "source_system": "Synthetic local sensor",
+        "affected_asset": "v3-host",
+        "raw_log": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established.",
+        "known_indicators": [],
+        "observed_behavior": "User claims approved maintenance, but no independent authorization is established."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "authentication_success",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "compromise",
+          "established": false,
+          "support": "absent",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "maintenance_authorized",
+          "established": false,
+          "support": "unverified_claim",
+          "evidence": "User claims approved maintenance, but no independent authorization is established.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": false,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "authentication_success"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "compromise"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "compromise"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "cross_field",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "recommended_investigation_steps",
+            "evidence_gaps"
+          ],
+          "fact": "maintenance_authorized"
+        },
+        {
+          "type": "observable_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-012",
+      "protocol": {
+        "value": "unknown",
+        "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+      },
+      "endpoints": [
+        {
+          "label": "authentication",
+          "source_ip": "192.0.2.51",
+          "evidence": "Failed password for root from 192.0.2.51. Exactly one failed login; no successful authentication and no confirmed compromise. No maintenance authorization record exists. The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ],
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": null,
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "The protocol is explicitly unknown in this synthetic record; no SSH, HTTP, HTTPS or RDP assignment is established."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-SOC-013",
+      "name": "Established endpoint and HTTPS positive control",
+      "basis": "V3 port mutation and unspecified-protocol label: a paired positive network control allows explicitly established protocol while measuring endpoint roles and destination port. V3.2 final calibration adds reference-bound investigation identity and explicit known-value/support-scope checks without changing the inherited request.",
+      "category": "observable_fidelity",
+      "mode": "soc_alert",
+      "input": {
+        "alert_id": "v31-endpoint",
+        "alert_type": "Synthetic network event",
+        "source_system": "Synthetic local network sensor",
+        "affected_asset": "v31-host",
+        "raw_log": "Confirmed synthetic network event: source_ip=192.0.2.60 destination_ip=203.0.113.88 destination_port=8443 protocol=HTTPS. The destination endpoint is 203.0.113.88:8443; HTTPS is explicitly confirmed by telemetry.",
+        "known_indicators": [],
+        "observed_behavior": "One established network event in a closed synthetic record; no confirmed malicious activity."
+      },
+      "reference_overrides": [],
+      "facts": [],
+      "protocol": {
+        "value": "HTTPS",
+        "evidence": "Confirmed synthetic network event: source_ip=192.0.2.60 destination_ip=203.0.113.88 destination_port=8443 protocol=HTTPS. The destination endpoint is 203.0.113.88:8443; HTTPS is explicitly confirmed by telemetry."
+      },
+      "endpoints": [
+        {
+          "label": "confirmed-flow",
+          "source_ip": "192.0.2.60",
+          "destination_ip": "203.0.113.88",
+          "destination_port": 8443,
+          "protocol": "HTTPS",
+          "evidence": "Confirmed synthetic network event: source_ip=192.0.2.60 destination_ip=203.0.113.88 destination_port=8443 protocol=HTTPS. The destination endpoint is 203.0.113.88:8443; HTTPS is explicitly confirmed by telemetry."
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "observable_integrity",
+          "observable": "ipv4",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "observable_integrity",
+          "observable": "port",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "endpoint_integrity",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "protocol_grounding",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "positive_protocol_present",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note"
+          ]
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "ipv4"
+        },
+        {
+          "type": "proposed_identity_integrity",
+          "fields": [
+            "recommended_investigation_steps"
+          ],
+          "observable": "port"
+        },
+        {
+          "type": "known_value_consistency",
+          "fields": [
+            "summary",
+            "observed_evidence",
+            "analyst_inferences",
+            "analyst_note",
+            "evidence_gaps"
+          ],
+          "value_key": "protocol"
+        }
+      ],
+      "legacy_case_id": "V31-SOC-013",
+      "known_values": [
+        {
+          "key": "protocol",
+          "subjects": [
+            "protocol",
+            "application protocol"
+          ],
+          "value": "HTTPS",
+          "support_scope": "supplied_telemetry",
+          "external_verification": "not_established",
+          "evidence": "Confirmed synthetic network event: source_ip=192.0.2.60 destination_ip=203.0.113.88 destination_port=8443 protocol=HTTPS. The destination endpoint is 203.0.113.88:8443; HTTPS is explicitly confirmed by telemetry."
+        }
+      ]
+    },
+    {
+      "test_id": "V32-GOV-014",
+      "name": "Known audit cadence, unknown method and bounded external scope",
+      "basis": "Final calibration positive/consistency control: retain supplied weekly frequency while permitting unknown methodology and external applicability caution.",
+      "category": "cross_field_consistency",
+      "mode": "governance",
+      "input": {
+        "system_name": "Synthetic scope calibration assistant",
+        "system_purpose": "Answer synthetic policy questions. The authoritative fictional charter Q-24 requires mandatory weekly security audits for this synthetic policy assistant. Audit frequency is weekly. Audit methodology is explicitly unspecified. Real-world legal applicability is not established.",
+        "data_types": [
+          "synthetic policy documents"
+        ],
+        "users": [
+          "synthetic employees"
+        ],
+        "external_integrations": [],
+        "human_review_process": "Policy owner reviews consequential answers.",
+        "business_impact": "Synthetic evaluation only; no real legal claim."
+      },
+      "reference_overrides": [],
+      "facts": [
+        {
+          "name": "legal_obligation",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "The authoritative fictional charter Q-24 requires mandatory weekly security audits for this synthetic policy assistant. Audit frequency is weekly. Audit methodology is explicitly unspecified. Real-world legal applicability is not established.",
+          "permitted_source_ids": []
+        },
+        {
+          "name": "weekly_audit",
+          "established": true,
+          "support": "synthetic_authority",
+          "evidence": "The authoritative fictional charter Q-24 requires mandatory weekly security audits for this synthetic policy assistant. Audit frequency is weekly. Audit methodology is explicitly unspecified. Real-world legal applicability is not established.",
+          "permitted_source_ids": []
+        }
+      ],
+      "positive_control": true,
+      "checks": [
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "legal_obligation"
+        },
+        {
+          "type": "fact_grounding",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        },
+        {
+          "type": "positive_fact_present",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps"
+          ],
+          "fact": "weekly_audit"
+        },
+        {
+          "type": "known_value_consistency",
+          "value_key": "audit_frequency",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps",
+            "recommended_next_steps"
+          ]
+        },
+        {
+          "type": "known_value_consistency",
+          "value_key": "audit_methodology",
+          "fields": [
+            "summary",
+            "key_risks",
+            "required_controls",
+            "human_review_requirements",
+            "logging_requirements",
+            "evidence_gaps",
+            "recommended_next_steps"
+          ]
+        }
+      ],
+      "legacy_case_id": null,
+      "known_values": [
+        {
+          "key": "audit_frequency",
+          "subjects": [
+            "audit frequency",
+            "audit cadence",
+            "frequency of audits"
+          ],
+          "value": "weekly",
+          "support_scope": "supplied_scenario",
+          "external_verification": "not_established",
+          "evidence": "The authoritative fictional charter Q-24 requires mandatory weekly security audits for this synthetic policy assistant. Audit frequency is weekly. Audit methodology is explicitly unspecified. Real-world legal applicability is not established."
+        },
+        {
+          "key": "audit_methodology",
+          "subjects": [
+            "audit methodology",
+            "audit method"
+          ],
+          "value": null,
+          "support_scope": "supplied_scenario",
+          "external_verification": "not_established",
+          "evidence": "The authoritative fictional charter Q-24 requires mandatory weekly security audits for this synthetic policy assistant. Audit frequency is weekly. Audit methodology is explicitly unspecified. Real-world legal applicability is not established."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "label": "non-official diagnostic transitions",
+  "scorer_version": "3.2",
+  "official_v31_unchanged": "37/39",
+  "no_aggregate_rescored_pass_rate": true,
+  "targets_met": 4,
+  "targets": 4,
+  "moderate_support_scope": "V31-SOC-009/1 unclear authorization context remains manual review; absolute absence and explicit external scope are the conservative scored boundary.",
+  "transitions": [
+    {
+      "case_id": "V31-GOV-005",
+      "trial": 3,
+      "target": "known_frequency_missingness",
+      "expected_check_pass": false,
+      "expectation_met": true,
+      "historical_official_outcome": "pass",
+      "diagnostic_checks": [
+        {
+          "check": {
+            "type": "known_value_consistency",
+            "fields": [
+              "summary",
+              "key_risks",
+              "required_controls",
+              "human_review_requirements",
+              "logging_requirements",
+              "evidence_gaps",
+              "recommended_next_steps"
+            ],
+            "fact": null,
+            "observable": null,
+            "value_key": "audit_frequency"
+          },
+          "passed": false,
+          "explanation": "audit_frequency: supplied value='weekly'; absolute missingness claims=1; scope=supplied_scenario; external caution permitted",
+          "matches": [
+            {
+              "field": "evidence_gaps",
+              "text": "Audit frequency and methodology unspecified",
+              "token": "audit_frequency",
+              "state": "denied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "V31-SOC-007",
+      "trial": 1,
+      "target": "attempt_vs_completion",
+      "expected_check_pass": true,
+      "expectation_met": true,
+      "historical_official_outcome": "fail",
+      "diagnostic_checks": [
+        {
+          "check": {
+            "type": "fact_grounding",
+            "fields": [
+              "summary",
+              "observed_evidence",
+              "analyst_inferences",
+              "analyst_note"
+            ],
+            "fact": "process_execution",
+            "observable": null,
+            "value_key": null
+          },
+          "passed": true,
+          "explanation": "process_execution: established=False, assertions=0, denials=5",
+          "matches": [
+            {
+              "field": "summary",
+              "text": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution.",
+              "token": null,
+              "state": "qualified"
+            },
+            {
+              "field": "summary",
+              "text": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution.",
+              "token": null,
+              "state": "denied"
+            },
+            {
+              "field": "summary",
+              "text": "No process-start or completed execution occurred.",
+              "token": null,
+              "state": "denied"
+            },
+            {
+              "field": "observed_evidence",
+              "text": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution.",
+              "token": null,
+              "state": "qualified"
+            },
+            {
+              "field": "observed_evidence",
+              "text": "EDR prevention event: powershell.exe launch attempted; policy blocked process creation before execution.",
+              "token": null,
+              "state": "denied"
+            },
+            {
+              "field": "observed_evidence",
+              "text": "No process-start or completed execution occurred.",
+              "token": null,
+              "state": "denied"
+            },
+            {
+              "field": "analyst_inferences",
+              "text": "The attempted PowerShell execution may indicate an adversary's attempt to execute malicious code",
+              "token": null,
+              "state": "qualified"
+            },
+            {
+              "field": "analyst_inferences",
+              "text": "The attempted PowerShell execution may indicate an adversary's attempt to execute malicious code",
+              "token": null,
+              "state": "qualified"
+            },
+            {
+              "field": "analyst_inferences",
+              "text": "No confirmed execution or credential access was observed",
+              "token": null,
+              "state": "denied"
+            },
+            {
+              "field": "analyst_note",
+              "text": "The alert indicates a potential attempt to execute PowerShell, but no execution occurred.",
+              "token": null,
+              "state": "qualified"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "V31-SOC-008",
+      "trial": 2,
+      "target": "possessive_claim",
+      "expected_check_pass": true,
+      "expectation_met": true,
+      "historical_official_outcome": "fail",
+      "diagnostic_checks": [
+        {
+          "check": {
+            "type": "fact_grounding",
+            "fields": [
+              "summary",
+              "observed_evidence",
+              "analyst_inferences",
+              "analyst_note"
+            ],
+            "fact": "maintenance_authorized",
+            "observable": null,
+            "value_key": null
+          },
+          "passed": true,
+          "explanation": "maintenance_authorized: established=False, assertions=0, denials=0",
+          "matches": [
+            {
+              "field": "summary",
+              "text": "Scheduled task creation detected, but maintenance authorization remains unverified.",
+              "token": null,
+              "state": "qualified"
+            },
+            {
+              "field": "analyst_note",
+              "text": "However, the user's claim about approved maintenance requires verification.",
+              "token": null,
+              "state": "attributed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "V31-SOC-009",
+      "trial": 3,
+      "target": "proposed_step_ip",
+      "expected_check_pass": false,
+      "expectation_met": true,
+      "historical_official_outcome": "pass",
+      "diagnostic_checks": [
+        {
+          "check": {
+            "type": "proposed_identity_integrity",
+            "fields": [
+              "recommended_investigation_steps"
+            ],
+            "fact": null,
+            "observable": "ipv4",
+            "value_key": null
+          },
+          "passed": false,
+          "explanation": "recommended_investigation_steps: altered reference IPv4 19.2.0.2.51",
+          "matches": []
+        }
+      ]
+    }
+  ]
+}
