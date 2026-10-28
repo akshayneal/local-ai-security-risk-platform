@@ -1,11 +1,12 @@
 """V3 deterministic measurement tests; no Ollama dependency."""
 
 import json
+import subprocess
 
 import pytest
 from pydantic import ValidationError
 
-from evals.provenance import ROOT, byte_hash, suite_hashes
+from evals.provenance import ROOT, suite_hashes
 from evals.reliability_runner import verify_report as verify_v2
 from evals.reliability_schemas import RepeatedEvaluationReport
 from evals.semantic_runner import CASE_PATH, load_suite, main, preflight
@@ -21,6 +22,23 @@ from evals.semantic_validators import (
     score_response,
     validate_semantic,
 )
+
+
+@pytest.fixture(autouse=True)
+def isolated_runtime(monkeypatch):
+    from evals.reliability_schemas import RuntimeProvenance
+
+    runtime = RuntimeProvenance(
+        python_version="3.13.1",
+        ollama_version="synthetic test runtime",
+        model="qwen3:8b",
+        model_digest="0" * 12,
+        model_digest_kind="ollama_ls_short_id",
+        git_commit="0" * 40,
+        git_dirty=False,
+        temperature=0.1,
+    )
+    monkeypatch.setattr("evals.semantic_runner.collect_provenance", lambda: runtime)
 
 
 @pytest.fixture
@@ -299,12 +317,21 @@ def test_frozen_v2_recomputes(name):
     assert report.totals.trials_passed == (28 if name.startswith("current") else 43)
 
 
-def test_frozen_bytes_preserved():
+def test_frozen_git_blobs_preserved():
     preservation = json.loads(
         (ROOT / "Documentation/evaluation_v3/preservation.json").read_bytes()
     )
-    for name, expected in preservation["frozen_file_sha256"].items():
-        assert byte_hash(ROOT / name) == expected, name
+    # Exact local starting bytes remain in the manifest and are checked at freeze.
+    # Git clean-filtered blob identities also work with Linux LF checkout rules.
+    for name, expected in preservation["frozen_git_blob_sha1"].items():
+        actual = subprocess.run(
+            ["git", "hash-object", f"--path={name}", name],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        assert actual == expected, name
 
 
 @pytest.mark.parametrize(

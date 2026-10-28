@@ -89,6 +89,19 @@ and semantic validator blind spots. Recommendations are not automatic
 authorization to implement controls. Do not add benchmark-specific production
 filters or tune controls against frozen outcomes.
 
+The Semantic Grounding V3 baseline is frozen under `Documentation/evaluation_v3/`:
+12 cases, four categories, three trials each; 27/36 passed (75.0%), zero application
+errors, seven stable-pass, two stable-fail and three mixed. Manual review records
+six trials with suspected false-positive failures and five with missed defects,
+including four official passes. Read `Documentation/12_semantic_grounding_v3_baseline.md`,
+`Documentation/evaluation_v3/manual_review.md`, `failure_triage.md` in that directory,
+and `Documentation/13_semantic_v3_sprint_report.md` before separately authorized
+semantic hardening. Rerun the exact frozen V3 suite for any treatment; preserve
+suite/check meanings and official artifacts. Changed checks need distinct hashes,
+provenance and a new experimental baseline. Do not add benchmark-specific production
+filters or tune against evaluator false positives. V1/V2 remain frozen, and this
+sprint performed no production semantic hardening. Unrelated roadmap work stays deferred.
+
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.
 These roadmap items are not automatic authorization to implement them. Full

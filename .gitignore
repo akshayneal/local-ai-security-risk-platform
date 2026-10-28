@@ -39,4 +39,5 @@ knowledge_base/registry/*.db*
 
 # Experimental evaluation reports; official reports live in Documentation.
 evals/results/*.json
+evals/results/*.jsonl
 !evals/results/.gitkeep

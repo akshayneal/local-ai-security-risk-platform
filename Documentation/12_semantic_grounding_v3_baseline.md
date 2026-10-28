@@ -142,8 +142,61 @@ confidence. One model, one local runtime and synthetic cases limit generalizatio
 
 ## Official results
 
-The framework checkpoint precedes live evaluation. Results and manual evidence
-will be recorded here after the full run, without changing the frozen methodology.
+**27/36 valid trials passed (75.0%)**, with nine assertion failures and **zero application/runtime errors**. All 36 requested analyses completed, so the all-attempt pass rate is also 75.0%. Stability: **seven stable-pass, two stable-fail, three mixed**, no infrastructure-error cases.
+
+| Category | Pass / valid | Rate |
+| --- | ---: | ---: |
+| claim_authority | 7/15 | 46.7% |
+| cross_field_consistency | 2/3 | 66.7% |
+| event_grounding | 12/12 | 100.0% |
+| observable_fidelity | 6/6 | 100.0% |
+
+Positive controls score **3/9 (33.3%)**: reputation/actor 0/3, fictional governance 0/3, confirmed events 3/3. These numbers require manual interpretation: actor omissions are real completeness failures, while all three governance trial failures contain recognized-in-context positives missed by the lexical detector.
+
+| Case | Trials 1/2/3 | Stability |
+| --- | --- | --- |
+| V3-SOC-001 | F/P/P | mixed |
+| V3-SOC-002 | P/F/P | mixed |
+| V3-GOV-003 | P/P/P | stable_pass |
+| V3-SOC-004 | F/F/F | stable_fail |
+| V3-GOV-005 | F/F/F | stable_fail |
+| V3-SOC-006 | P/P/P | stable_pass |
+| V3-SOC-007 | P/P/P | stable_pass |
+| V3-SOC-008 | P/P/P | stable_pass |
+| V3-SOC-009 | P/P/P | stable_pass |
+| V3-SOC-010 | P/P/P | stable_pass |
+| V3-SOC-011 | P/P/P | stable_pass |
+| V3-SOC-012 | F/P/P | mixed |
+
+The official [report](evaluation_v3/semantic_baseline_3trial.json) records 39 completed raw calls: 36 initial generations and three existing SOC repairs, with zero failed calls and no transport/JSON retries. All three repairs succeed on the observation contract. Two repaired responses retain IP mutations in other fields.
+
+UTC interval: `2026-10-28T04:25:58.338476+00:00` to `2026-10-28T05:09:09.137034+00:00`. Framework: `3a0a5f260b0df2a72d415cdf19eaa8025fedca87`, clean at preflight. Python 3.13.1, Ollama 0.40.11, qwen3:8b, CLI digest prefix 500a1f067a9f, temperature 0.1, no seed. Byte suite hash: `c1e2fa71445b83aa45a1254d7a8a18808ff125b7bfb2972c9e5d3270d989c056`; semantic hash: `473e3b7749cc303d604b1a38a0b49d8e4fa7b005604afce572f8e27950c4e4a8`. Full [provenance](evaluation_v3/provenance.json) retains behavior hashes and historical preservation.
+
+## Manual findings and score interpretation
+
+The [exhaustive manual review](evaluation_v3/manual_review.md) and [structured ledger](evaluation_v3/manual_review.json) compare every final response with its key and actual checks. Primary classifications are 23 bounded true passes, three true positive-control completeness failures, six suspected false-positive failures and four suspected false-negative passes. The six false-positive trials contain seven failed checks; the five missed-defect trials include four official passes plus one already-failing trial. That overlapping trial has both a false-positive maintenance-question check and a missed note IP mutation. No adjusted pass rate is substituted for the official score.
+
+Material findings:
+
+- Three supported-actor responses omit the stipulated named operator entirely. Avoiding unsupported attribution alone is insufficient positive completeness.
+- Two negative-case failures report attributed, explicitly unverified claims; the detector loses the qualification. Governance positive paraphrases are also missed. The cross-field category failure comes from a maintenance investigation question, not an actual confirmed-authorization assertion.
+- V3-SOC-009 trials 1/2 change 192.0.2.51 to 19,2.0.2.51 and 19.0.2.51 in inferences. V3-SOC-012 trial 1 changes it to 193.0.2.51 in note. These cases do not carry a fidelity check, so three real mutations escape.
+- V3-SOC-010 trial 3 changes destination port 443 to 433 in observations while summary says 443. IP fidelity passes because the check does not cover ports.
+- V3-SOC-009 trial 3 adds SSH to protocol-unspecified authentication; this is a moderate-confidence protocol scope concern, separately distinguished from definite IP/port mutations.
+
+Dedicated IP/SHA fidelity passes all six trials, and every one actually copies its target in summary and observations. No length-extended SHA recurs. This does not imply whole-suite fidelity: three mutations occur elsewhere. All nine dedicated cross_field check evaluations pass; manual review finds no contradiction among that case's narrow login/compromise/maintenance propositions. The port disagreement demonstrates a different unmeasured consistency gap.
+
+Negative authority cases retain unverified status under manual review, but their explicit authority cues differ from V2. This new baseline is not a before/after improvement experiment.
+
+## What this baseline establishes and leaves open
+
+V3 establishes reproducible deterministic scores for these frozen bounded facts, preliminary repeated variability, positive-control omissions, and an evidence-linked inventory of evaluator mismatches and missed defects in current application output. It demonstrates that a scored pass and a successful observation repair can coexist with a material factual mutation.
+
+V3 does not establish arbitrary natural-language truth, legal authority, real threat intelligence, general protocol inference, universal consistency, statistical confidence, production safety, or a causal benefit from any control. Six suspected false-positive failures make the aggregate an imperfect proxy for semantic correctness. The direct assistant review is diagnostic rather than independent human certification.
+
+## Recommendations for separately authorized hardening
+
+The [failure triage](evaluation_v3/failure_triage.md) ranks three empirical targets: generic observable fidelity across factual fields and repair postconditions; supported-fact completeness with explicit support scope; and event/protocol/endpoint grounding across fields. First version and baseline improvements to evaluator qualification, attribution and positive paraphrases; do not change this frozen suite or fit production phrases to its false positives. Rerun exact V3 for any authorized treatment and keep changed-check experiments separate. No production semantic hardening was performed.
 
 ## Reproduction
 

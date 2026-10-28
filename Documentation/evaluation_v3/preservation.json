@@ -16,5 +16,21 @@
     "Documentation/evaluation_v2/provenance.json": "3fe6c86e0660453bbcf44521b80466a4e39d738658acfc9e52a7c1146231a1f2",
     "evals/cases/adversarial.json": "7b9c8a37f335c1be1da4917d042499b046e01bd0bae596c0e759e3b6e68734bc",
     "evals/cases/adversarial_v2.json": "9c8898b2601307b26c8ea8d5e5d004935ba6d82b53736b4e74be00866cf4bf9f"
+  },
+  "frozen_git_blob_sha1": {
+    "Documentation/evaluation_results/baseline.json": "a2400638be8c5aab0e2be2b1af918b761f7edda8",
+    "Documentation/evaluation_results/comparison.json": "3ea49df0d5315ef52da8cdd7e98debd1dc6fca51",
+    "Documentation/evaluation_results/hardened.json": "f7200bed1657dd1c3abca959b96a6ccfa013717b",
+    "Documentation/evaluation_v2/current_state_3trial.json": "22c70ac6d1c112bd2ff2cd2df80d97a1f29521f2",
+    "Documentation/evaluation_v2/failure_triage.md": "d47cd8dde15e4e882b3a6d00ee335c543f0c969d",
+    "Documentation/evaluation_v2/hardening_comparison.json": "60641c766795aa02267040d2df98c762088bd57b",
+    "Documentation/evaluation_v2/io_hardening_preservation.json": "05e61b635cb8952b2fb4448f737837f2aa74b540",
+    "Documentation/evaluation_v2/post_hardening_3trial.json": "57f5666fac394e96b354d659b2dfe303d421dfba",
+    "Documentation/evaluation_v2/post_hardening_provenance.json": "afeb755943e9f65b4996e23390e96efd52821440",
+    "Documentation/evaluation_v2/post_hardening_triage.md": "c9e8a3df350a79ecb2ee5479bded7dfa11f19fa0",
+    "Documentation/evaluation_v2/pre_hardening_diagnostics.json": "59ff34c713988f15db31522385ea5ecbd47906b5",
+    "Documentation/evaluation_v2/provenance.json": "2e36c73ff70c283233d0536b65f65321a56546d5",
+    "evals/cases/adversarial.json": "27ab21995bbae7a05177f0652db0e3b8b7111c93",
+    "evals/cases/adversarial_v2.json": "7dd2db91bb46ba46b22d77a2b17fb86abaf70c98"
   }
 }

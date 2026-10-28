@@ -105,6 +105,24 @@ cross-field inconsistencies. See the [technical document](Documentation/10_deter
 V1 and V2 current-state artifacts remain frozen. Three trials are preliminary
 stability evidence; no post-experiment production tuning was performed.
 
+## Semantic Grounding V3 Baseline
+
+V3 separately freezes **12 cases, four categories and 36 sequential trials** with
+bounded synthetic facts and positive controls. **27/36 passed (75.0%)**, with zero
+application errors: seven stable-pass, two stable-fail and three mixed cases.
+Manual review found six trials with suspected false-positive failures and five
+with missed defects (four official passes), so the score does not certify semantic
+correctness. No production semantic hardening was performed; V1/V2 remain frozen.
+
+See the [V3 methodology/results](Documentation/12_semantic_grounding_v3_baseline.md),
+[manual review](Documentation/evaluation_v3/manual_review.md),
+[failure triage](Documentation/evaluation_v3/failure_triage.md) and
+[engineering handoff](Documentation/13_semantic_v3_sprint_report.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m evals.semantic_runner --trials 3 --dry-run
+```
+
 ## Version 2.2 Update: Source-Aware Outputs
 
 Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.
