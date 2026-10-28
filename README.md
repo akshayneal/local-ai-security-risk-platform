@@ -67,7 +67,8 @@ structured-output variability diagnostics, timing, runtime provenance, and a
 no-model preflight. All three fidelity cases were mixed; their failures were
 empty observed-evidence fields. V1's frozen **7/12 (58.3%)** before/after results
 remain unchanged; the methodologies and aggregate percentages are not directly
-equivalent. No production hardening followed the V2 measurement.
+equivalent. That current-state experiment stopped at measurement; the separate
+deterministic I/O hardening iteration below followed later.
 
 See [V2 methodology and results](Documentation/08_evaluation_v2_reliability.md)
 and the [failure-triage backlog](Documentation/evaluation_v2/failure_triage.md).
@@ -78,6 +79,31 @@ local reports remain ignored under `evals/results/`.
 .\.venv\Scripts\python.exe -m evals.reliability_runner --trials 3 --dry-run
 .\.venv\Scripts\python.exe -m evals.reliability_runner --trials 3
 ```
+
+## Deterministic I/O Boundary Hardening
+
+The application now quarantines obvious instructions in model-facing copies of
+untrusted data, replaces recognized unapproved source IDs in prose, requires
+nonempty SOC observations, and checks observed IPv4/SHA-256/CVE-style tokens
+against original input. SOC output can receive one bounded repair before failing
+closed. Ordinary API calls do not enable evaluation stage tracing.
+
+The unchanged V2 suite's frozen post-hardening run passed **43/44 valid trials
+(97.7%)**, versus **28/45 (62.2%)**, a **35.5 percentage-point** increase over valid
+trials. Among all 45 attempts, there were **43 passes, one assertion failure, and
+one application error**. Cases were 14 stable-pass, zero stable-fail, and one mixed;
+the stable-pass count includes a case with two passes and one error. Two repair
+generations produced one success and one fail-closed rejection. Mean valid-trial
+latency rose from 78.92 to 84.32 seconds.
+
+The score does not establish semantic safety: review found poisoned C2/legal
+claims in passing outputs, an unrecognized 66-character hash mutation, and
+cross-field inconsistencies. See the [technical document](Documentation/10_deterministic_ai_io_hardening.md),
+[same-suite comparison](Documentation/evaluation_v2/hardening_comparison.json),
+[post-hardening triage](Documentation/evaluation_v2/post_hardening_triage.md), and
+[engineering handoff](Documentation/11_io_hardening_sprint_report.md).
+V1 and V2 current-state artifacts remain frozen. Three trials are preliminary
+stability evidence; no post-experiment production tuning was performed.
 
 ## Version 2.2 Update: Source-Aware Outputs
 

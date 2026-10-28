@@ -23,8 +23,8 @@ The project is intentionally local-first. Do not introduce external AI APIs or c
 The project has completed Version 2.2, the local document-registry phase, and
 Phase 0B: Application Hardening Baseline. The V1 adversarial evaluation and generic
 AI-security hardening sprint is complete. The Evaluation V2 repeated-trial
-current-state baseline is also complete; it measures existing behavior without a
-subsequent production hardening iteration.
+current-state baseline is also complete and remains frozen. A subsequent bounded
+deterministic I/O hardening iteration and same-suite V2 comparison are complete.
 
 Current implemented capabilities:
 
@@ -55,6 +55,9 @@ Current implemented capabilities:
 - Exact IPv4, SHA-256, and synthetic CVE-style evidence-fidelity cases
 - Structured-output stability and local inference timing diagnostics
 - Frozen V2 current-state report and evidence-backed failure-triage documentation
+- Model-facing untrusted-instruction quarantine and deterministic source-ID prose policy
+- Required nonempty SOC observations, critical-observable subset validation, and one bounded repair
+- Opt-in evaluation stage tracing and frozen post-hardening V2 comparison/triage
 
 The frozen baseline and hardened runs each passed 7/12 cases (58.3%): one newly
 passing case and one regression, with no aggregate score improvement. Read
@@ -68,12 +71,23 @@ mixed because required observed-evidence fields were empty in failing trials.
 Three trials are preliminary stability measurement, not statistical confidence.
 V1 and V2 aggregate percentages are not directly equivalent.
 
-Read `Documentation/08_evaluation_v2_reliability.md`,
-`Documentation/evaluation_v2/failure_triage.md`, and
-`Documentation/09_evaluation_v2_sprint_report.md` before the next production
-hardening sprint. Drive that separately authorized work from stable V2 evidence
-and diagnosis of important mixed behavior. Recommendations are not automatic
-authorization to implement controls.
+Hardening implementation commit `8efe3ec6348cd704cbb1c82abb5965cc8fcc606d` is
+followed by frozen `Documentation/evaluation_v2/post_hardening_3trial.json` and
+`hardening_comparison.json`. The unchanged-suite run passed 43/44 valid trials
+(97.7%), with one assertion failure and one application error in 45 attempts.
+There are 14 valid-trial stable-pass cases, zero stable-fail, and one mixed; one
+stable-pass-labelled case has two valid passes and an error. Two repair generations
+yielded one success and one fail-closed rejection. Passing scores still miss
+poisoned claims, out-of-field fidelity errors, and a length-extended hash mutation.
+
+Read `Documentation/10_deterministic_ai_io_hardening.md`,
+`Documentation/evaluation_v2/post_hardening_triage.md`, and
+`Documentation/11_io_hardening_sprint_report.md` before the next production
+hardening sprint, alongside the frozen current-state methodology and triage.
+Drive separately authorized work from those observations, including availability
+and semantic validator blind spots. Recommendations are not automatic
+authorization to implement controls. Do not add benchmark-specific production
+filters or tune controls against frozen outcomes.
 
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.
@@ -82,7 +96,7 @@ vector RAG remains deferred unless explicitly approved. Keep the document regist
 stable unless a concrete bug requires a change.
 
 Future work must not silently modify either benchmark suite or overwrite frozen
-V1 or V2 official artifacts. Changed V2 suites/checks require new byte and semantic
+V1, V2 current-state, or V2 post-hardening official artifacts. Changed V2 suites/checks require new byte and semantic
 hashes, distinct provenance/versioned experiments, and a new experimental baseline.
 Keep the frozen V1 report models/comparison command compatible. Generated
 `evals/results/` JSON files remain local/ignored. Official tracked benchmark
