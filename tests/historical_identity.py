@@ -12,6 +12,11 @@ from evals.provenance import ROOT
 
 
 def historical_blob(name: str) -> str:
+    productization = json.loads(
+        (ROOT / "Documentation/productization_preservation.json").read_bytes()
+    )
+    if name in productization["authorized_prior_source_git_blob_sha1"]:
+        return productization_blob(name)
     preservation = json.loads(
         (
             ROOT / "Documentation/evaluation_v3_2/semantic_hardening_preservation.json"
@@ -24,6 +29,24 @@ def historical_blob(name: str) -> str:
             text=True,
         ).strip()
         assert value == preservation["authorized_prior_source_git_blob_sha1"][name]
+        return value
+    return subprocess.check_output(
+        ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
+    ).strip()
+
+
+def productization_blob(name: str) -> str:
+    """Only authorized UI/plumbing paths use history; frozen evidence stays live-checked."""
+    manifest = json.loads(
+        (ROOT / "Documentation/productization_preservation.json").read_bytes()
+    )
+    if name in manifest["authorized_prior_source_git_blob_sha1"]:
+        value = subprocess.check_output(
+            ["git", "rev-parse", f"{manifest['starting_commit']}:{name}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert value == manifest["authorized_prior_source_git_blob_sha1"][name]
         return value
     return subprocess.check_output(
         ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True

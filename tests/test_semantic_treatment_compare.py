@@ -1,9 +1,9 @@
 """Comparison is derived from frozen scores; no model or new scoring rules."""
 
 import json
-import subprocess
 
 import pytest
+from historical_identity import productization_blob
 
 from evals.provenance import ROOT
 from evals.semantic_runner_v32 import build_report, load_suite
@@ -83,7 +83,5 @@ def test_frozen_artifacts_scorers_and_unrelated_production_preserved():
         ).read_bytes()
     )
     for name, expected in data["frozen_git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        actual = productization_blob(name)
         assert actual == expected, name

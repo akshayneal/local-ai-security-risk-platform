@@ -16,6 +16,34 @@ This project has two main modes:
 
 The project is intentionally local-first. The model runs through Ollama on the user's machine, and the application does not send analysis requests to an external AI provider.
 
+## Analyst Product Experience
+
+The dashboard now offers **SOC Investigation**, **Governance Review**,
+**Evaluation Lab**, **Activity**, and **About**. Load validated synthetic samples,
+separate observed evidence from inference, inspect bounded SOC integrity/repair
+metadata, and download JSON analyses or Markdown briefs. Governance displays
+schema/source checks without claiming the SOC factual-integrity contract.
+Evaluation Lab reads frozen evidence, including the exact-suite V3.2 comparison;
+cross-version percentages are not directly comparable.
+
+With the existing virtual environment and local configuration, run these in
+separate terminals from the repository root:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1
+```
+
+Open `http://localhost:8501`. Evaluation Lab and About work without FastAPI or
+Ollama; analysis submissions require both. Existing `/analyze/*` endpoints remain
+compatible; the dashboard uses separate `/ui/analyze/*` envelopes. The model
+proposes, the application checks bounded properties, and humans decide.
+
+See the [product experience](Documentation/20_analyst_product_experience.md),
+[sprint report](Documentation/21_productization_sprint_report.md), and
+[demo walkthrough](Documentation/demo_walkthrough.md). Productization is complete;
+final portfolio release polish, merge and tagging remain deferred.
+
 ## Adversarial AI-Security Evaluation
 
 The project includes an application-level benchmark with **12 cases across seven
@@ -160,7 +188,7 @@ The subsequent exact-suite production treatment passed **37/41 valid analyses
 checks now apply to both initial and repaired output. Four scored failures appear
 to be lexical scorer mismatches. Availability cost, moderate scope ambiguity and
 unscored identifier/formatting defects remain documented. The scoped semantic
-phase is closed; productization is recommended next and has not begun.
+phase is closed; the subsequent analyst product experience is documented above.
 
 See [treatment details](Documentation/18_semantic_production_hardening.md),
 [treatment triage](Documentation/evaluation_v3_2/treatment_failure_triage.md) and
@@ -663,12 +691,9 @@ Planned or possible improvements include:
 * Add control mapping workflows
 * Add evidence request generation for GRC workflows
 * Add policy gap review workflows
-* Add sample data loading in the Streamlit dashboard
 * Add SQLite storage for audit logs
-* Add exportable incident reports and governance reports
-* Add screenshots and architecture diagrams
+* Capture final screenshots and a recorded demo during release polish
 * Add retrieval quality evaluation cases
-* Add optional report export in Markdown or JSON
 
 ## Why I Built This
 
