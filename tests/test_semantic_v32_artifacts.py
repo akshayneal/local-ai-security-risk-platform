@@ -45,17 +45,37 @@ def test_manifest_artifacts_behavior_and_framework_freeze():
         manifest["suite_byte_sha256"],
         manifest["suite_semantic_sha256"],
     )
+    # Actions checks out depth one. Always verify every current source blob
+    # against the recorded manifest; compare the original tree as well when
+    # history is available. Missing history is permitted only in a shallow repo.
+    has_framework = (
+        subprocess.run(
+            ["git", "cat-file", "-e", f"{manifest['framework_commit']}^{{commit}}"],
+            cwd=ROOT,
+            capture_output=True,
+            check=False,
+        ).returncode
+        == 0
+    )
+    if not has_framework:
+        assert (
+            subprocess.check_output(
+                ["git", "rev-parse", "--is-shallow-repository"], cwd=ROOT, text=True
+            ).strip()
+            == "true"
+        )
     for name, expected in manifest["behavior_git_blob_sha1"].items():
         actual = subprocess.check_output(
             ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
         ).strip()
         assert actual == expected, name
-        framework = subprocess.check_output(
-            ["git", "rev-parse", f"{manifest['framework_commit']}:{name}"],
-            cwd=ROOT,
-            text=True,
-        ).strip()
-        assert framework == expected, name
+        if has_framework:
+            framework = subprocess.check_output(
+                ["git", "rev-parse", f"{manifest['framework_commit']}:{name}"],
+                cwd=ROOT,
+                text=True,
+            ).strip()
+            assert framework == expected, name
 
 
 def test_complete_review_exact_quotes_keys_and_classifications():

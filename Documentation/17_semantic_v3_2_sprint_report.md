@@ -259,3 +259,28 @@ V3.2 is frozen for the separately authorized production-treatment comparison.
 Keep both suite hashes and scorer unchanged; document ordinary residual ambiguity
 manually. No production hardening was performed. This calibration sprint stops
 after results packaging and hosted CI verification.
+
+## Hosted CI portability correction
+
+Results commit `3276c7944b9b9d585a676c56accc3f758341e37b` was pushed with all
+993 local tests passing. Hosted [results CI 40762579652](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40762579652)
+then passed 992 tests and failed the new framework-tree artifact check because
+Actions' depth-one checkout lacks the older framework commit object. This was
+an avoidable history-availability assumption in the packaging test, not a model,
+scorer or evidence failure.
+
+The follow-up changes only the new artifact test and this report. Every current
+behavior blob is still checked against recorded manifest identities in all
+checkouts; direct comparison to the framework tree is additionally enforced when
+that commit object is available. Missing history is accepted only in a verified
+shallow repository; a full repository missing the framework commit still fails.
+The full local repository independently verifies all 37 framework-tree identities.
+No network fetch is added to pytest, and no workflow configuration, suite, scorer,
+official JSON, review judgment or production behavior changes. No inference is
+rerun and no frozen score is altered. Final hosted CI is verified on the
+follow-up commit in the handoff.
+
+After this portability correction the full local gate again passes: **993 passed**,
+one existing warning, **28.06 seconds**; Ruff and full-sprint whitespace checks
+pass. The official V3.2 evidence directory has an empty diff from the results
+commit, and suite/scorer/production still have empty framework diffs.
