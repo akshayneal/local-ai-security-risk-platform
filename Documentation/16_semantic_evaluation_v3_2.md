@@ -179,3 +179,48 @@ separate authorization and is not part of this sprint.
 
 Results, exhaustive review and priorities are recorded in the
 [engineering report](17_semantic_v3_2_sprint_report.md) after the one official run.
+
+## Frozen official baseline
+
+Framework `12779e3f1d9cf03cd2a2e61c962e4e702d151ac2` was pushed before inference
+and passed hosted CI. The [official report](evaluation_v3_2/semantic_baseline_3trial.json)
+records 42 requested/attempted/completed valid analyses, **32/42 passed (76.2%)**,
+ten assertion failures and zero application errors. Stability is eight stable-pass,
+two stable-fail and four mixed. Positive-control case trials are **9/15**.
+
+| Category | Passed / valid |
+| --- | ---: |
+| Claim authority | 11/15 |
+| Event grounding | 10/12 |
+| Observable fidelity | 9/9 |
+| Cross-field consistency | 2/6 |
+
+UTC start: `2026-10-28T19:27:27.256350+00:00`; end:
+`2026-10-28T20:13:10.528080+00:00`. Local qwen3:8b, CLI ID prefix
+`500a1f067a9f`, Ollama 0.40.12, temperature 0.1 and no configured seed. There are
+46 completed raw calls: 42 initial and four existing successful repairs, with
+zero failed raw calls or transport/JSON retries. Four-factual-field fidelity is
+42/42 check applications; proposed identity fidelity is 41/42, with a genuine
+copied-IP failure. These check denominators differ from whole-trial pass rates.
+
+[Manual review](evaluation_v3_2/manual_review.md) classifies 31 bounded true passes,
+eight genuine semantic-failure trials (one moderate confidence), two suspected
+false positives and one moderate suspected false negative. A separate moderate
+authentication-method missingness concern is unscored. No replacement aggregate
+is calculated. The [triage](evaluation_v3_2/failure_triage.md) explains every
+failure family and residual boundary.
+
+All seven [expectations](evaluation_v3_2/expectation_check.json) are met within
+their stated instrument boundaries; H6 freeze suitability is provisional,
+moderate-confidence engineering judgment. The evaluator is suitable to freeze
+for the bounded treatment comparison, with ordinary lexical false positives and
+support-scope ambiguity documented. No V3.3 is recommended. No production
+semantic hardening occurred. V1/V2/V3/V3.1 remain frozen.
+
+Suite byte SHA-256:
+`b55be3f59c6cce919f489d3fadbf72663d35c58c6b701ae76293e73e72c396f5`.
+Suite semantic SHA-256:
+`fd197cc340994633bad71ce5a7fd4853dd10dceca51310c445c05de7ab1a5018`.
+The [manifest](evaluation_v3_2/provenance.json) records exact report/artifact bytes,
+all 37 behavior-file byte hashes and normalized Git identities. Use the exact
+suite/scorer and verify both suite hashes for the separately authorized treatment.

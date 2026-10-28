@@ -1,0 +1,63 @@
+{
+  "version": "3.2",
+  "pre_live_hypotheses_source": "Documentation/16_semantic_evaluation_v3_2.md at framework commit 12779e3f1d9cf03cd2a2e61c962e4e702d151ac2",
+  "no_replacement_aggregate": true,
+  "hypotheses": [
+    {
+      "hypothesis": 1,
+      "expected": "The two known V3.1 lexical false-positive families should be corrected in diagnostic replay.",
+      "actual": "Both diagnostic false-positive transitions meet the expectation (2/2). Live review finds two different ordinary wording false positives: requires verification of and claim of ... requires validation.",
+      "assessment": "met",
+      "explanation": "Pre-live bounded attempt and possessive that/about rules correct the motivating examples; this does not imply universal grammar recognition. Residual ordinary variants stay in manual review under the stop rule.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    },
+    {
+      "hypothesis": 2,
+      "expected": "The V3.1 known weekly/unspecified contradiction should be detected.",
+      "actual": "The frozen V31-GOV-005/3 frequency contradiction fails the new consistency check as intended. No fresh live weekly/unspecified contradiction occurs; one new positive case instead omits cadence and fails completeness.",
+      "assessment": "met",
+      "explanation": "Literal known-value subjects and explicit missingness forms measure the motivating contradiction; independent positive checks still detect omission. Absence of a fresh contradiction is not a product fix.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    },
+    {
+      "hypothesis": 3,
+      "expected": "The V3.1 proposed-step IP mutation should be detected.",
+      "actual": "The frozen V31-SOC-009/3 proposed-step corruption is detected. Fresh V32-SOC-006/3 copies the IP as 19,2.0.2.51 after repair and fails the new investigation check.",
+      "assessment": "met",
+      "explanation": "New reference-bound investigation coverage reaches the formerly excluded field while preserving unrelated numeric recommendations.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    },
+    {
+      "hypothesis": 4,
+      "expected": "Supported actor/governance/event facts should remain positively measurable.",
+      "actual": "Positive cases remain mandatory and are 9/15 live case trials. Three actor omissions and three legal mandate omissions fail, including one weekly omission. Positive fact checks are 20/27 and HTTPS checks 3/3; event facts in the positive SOC control remain present.",
+      "assessment": "met",
+      "explanation": "The ruler still demands affirmative supported facts rather than accepting blanket uncertainty; model completeness is not the success criterion for calibration.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    },
+    {
+      "hypothesis": 5,
+      "expected": "Generic unrelated recommendation numbers should not trigger identity fidelity failures.",
+      "actual": "Generalized hours/days/PIDs/count/date/CVE and hypothetical/example tests pass. No live proposed-identity false positive is identified; its only failure is a genuine IP mutation. Actual PID 4242 in an investigation step is accepted.",
+      "assessment": "met",
+      "explanation": "Extraction requires reference similarity or identity/endpoint context rather than parsing arbitrary scalar numbers. Live non-trigger evidence is narrower than fixture generalization.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    },
+    {
+      "hypothesis": 6,
+      "expected": "No known high-confidence evaluator blind spot should prevent measuring the bounded production controls planned next.",
+      "actual": "Deterministic fixtures and all four V3.1 transitions work; live actor/legal omissions, proposed IP corruption and unsupported SSH are measurable. Review identifies no high-confidence missed within-key defect preventing the bounded comparison. Two lexical false positives and one moderate support-scope miss remain documented; finite scope is explicit.",
+      "assessment": "met for bounded comparison; provisional",
+      "explanation": "Suitability is limited to the declared subject aliases, fields, numeric/protocol vocabularies and comparison claims. Ordinary residual ambiguity does not justify V3.3. No scientific blocking defect is known, but review is not independent human adjudication or universal coverage proof.",
+      "confidence": "moderate"
+    },
+    {
+      "hypothesis": 7,
+      "expected": "Aggregate score direction is irrelevant.",
+      "actual": "Official 32/42 (76.2%) is recorded without rescore, rerun or post-live tuning. V3 stays 27/36 and V3.1 stays 37/39. Production is unchanged; scorer/suite scope and Ollama version differ across baselines.",
+      "assessment": "met",
+      "explanation": "A new ruler, one additional scenario, sampled unseeded outputs and Ollama 0.40.12 versus 0.40.11 prevent causal cross-version percentage claims. There is no production treatment.",
+      "confidence": "high for observed fixtures/responses; no population inference"
+    }
+  ]
+}

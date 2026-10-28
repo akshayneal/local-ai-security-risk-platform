@@ -109,11 +109,25 @@ two suspected false-positive failures, two missed consistency/support-scope defe
 (one moderate confidence), and a malformed IP in an excluded investigation step.
 Read `Documentation/14_semantic_evaluation_v3_1.md`, the V3.1 manual review/triage,
 and `Documentation/15_semantic_v3_1_sprint_report.md` before separately authorized
-production semantic work. Future semantic treatments must rerun the exact V3.1
-suite; changed scorers/checks require another versioned baseline. V1/V2/V3 and
+production semantic work. V3.1 remains a historical baseline with its original
+suite, scorer and check meanings. V1/V2/V3 and
 V3.1 official artifacts remain frozen. No benchmark-specific hardening or tuning
 against scorer false positives is allowed. Next production scope must be explicitly
 authorized and driven by V3.1 triage; this sprint performed no product hardening.
+
+Semantic Evaluation V3.2 is the final calibrated semantic baseline for this phase,
+frozen under `Documentation/evaluation_v3_2/`: 14 cases, four categories, three
+trials each; 32/42 passed (76.2%), zero application errors, eight stable-pass,
+two stable-fail and four mixed. Manual review records two suspected lexical false
+positives and one moderate suspected support-scope false negative. Read
+`Documentation/16_semantic_evaluation_v3_2.md`, the V3.2 review/triage and
+`Documentation/17_semantic_v3_2_sprint_report.md` before the next major phase,
+production semantic hardening, which requires separate explicit authorization.
+Rerun the exact frozen V3.2 suite/scorer unchanged after treatment and verify both
+suite hashes. Do not create V3.3 for ordinary lexical imperfections; document
+residual ambiguity manually. Further evaluator versioning requires an objective
+defect that makes the intended production comparison scientifically
+uninterpretable. V1/V2/V3/V3.1 remain frozen; no production hardening occurred here.
 
 Near-term work remains explicitly scoped: reliability, SOC investigation depth,
 MITRE ATT&CK STIX validation, containerization, and employer-facing documentation.

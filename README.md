@@ -141,6 +141,19 @@ See [V3.1 methodology/results](Documentation/14_semantic_evaluation_v3_1.md),
 .\.venv\Scripts\python.exe -m evals.semantic_runner_v31 --trials 3 --dry-run
 ```
 
+## Final Semantic Calibration V3.2
+
+V3.2 is the final calibrated semantic baseline for this phase: **14 cases,
+42 trials, 32/42 passes (76.2%)**, zero application errors; eight stable-pass,
+two stable-fail and four mixed. Scores across versions are not directly
+interchangeable. Production semantic treatment has not yet occurred.
+
+See [methodology/results](Documentation/16_semantic_evaluation_v3_2.md),
+[review/triage](Documentation/evaluation_v3_2/failure_triage.md) and
+[engineering report](Documentation/17_semantic_v3_2_sprint_report.md). Future
+authorized treatment must rerun the exact frozen V3.2 suite/scorer; ordinary
+residual wording ambiguity remains in manual review.
+
 ## Version 2.2 Update: Source-Aware Outputs
 
 Version 2.2 expands the local reference-grounding system by making source usage visible and auditable.
