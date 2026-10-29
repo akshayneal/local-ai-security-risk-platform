@@ -19,7 +19,7 @@ def evaluation_page() -> None:
         "This page summarizes the frozen evaluations used to test and harden this platform."
     )
     st.caption(
-        "Platform assurance ? development and evaluation history for this application"
+        "Platform assurance: development and evaluation history for this application"
     )
     st.info(CROSS_VERSION_CAVEAT)
     st.caption(
@@ -164,7 +164,7 @@ def about_page() -> None:
     )
     st.subheader("Architecture")
     stages = (
-        ("1. Request", "Streamlit input ? FastAPI ? Pydantic request validation"),
+        ("1. Request", "Streamlit input, FastAPI and Pydantic request validation"),
         ("2. Context", "Local reference retrieval and untrusted-content handling"),
         ("3. Inference", "Configured local Ollama model; qwen3:8b by default"),
     )

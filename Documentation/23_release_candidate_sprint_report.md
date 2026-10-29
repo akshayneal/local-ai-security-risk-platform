@@ -12,6 +12,13 @@ This sprint is restricted to professional presentation, release-candidate
 documentation and conservative reproduction/CI housekeeping. It does not merge,
 tag, implement planned workflows or change semantic analysis behavior.
 
+On resuming the interrupted run, `feature/portfolio-hardening` was synchronized
+with the remote at `a20386087861d9dc92a1387f69ab4cd1898a35e5` (the completed
+product-experience commit). Four modified files and two new attribute files
+contained the Windows checkout correction and its test/documentation. There
+were no staged changes. All inherited work was preserved; no reset, clean,
+revert, history rewrite or branch recreation was used.
+
 ## Changes
 
 - Native `st.navigation` with default Overview, Workflows and Platform groups.
@@ -47,6 +54,7 @@ tag, implement planned workflows or change semantic analysis behavior.
 New: `app/version.py`, `dashboard/navigation.py`, six files under
 `dashboard/pages/`, `tests/test_release_candidate.py`,
 `requirements-windows-py313.lock.txt`, the release-candidate guide and this report.
+Two parent-level `.gitattributes` files preserve frozen V3.2 checkout bytes.
 
 Updated: `app/main.py` naming/version only; Streamlit entrypoint, workflow/product
 pages, presentation/error/export helpers and catalog caveat; associated dashboard,
@@ -80,16 +88,16 @@ tested package set succeeded; `pip check` reported no broken requirements.
 This avoids manufacturing versions or upgrading packages for freshness. The
 primary `.venv`, `.env`, logs and model configuration were not changed.
 
-The independent snapshot replay in a clean candidate checkout, full pytest/Ruff,
-hosted CI and exact commit identities are recorded in closeout after execution.
+The independent snapshot replay and hosted CI results are recorded below.
 The snapshot is explicitly Windows/CPython scoped; no cross-platform or artifact
 hash lock is claimed. Ubuntu CI uses the unchanged readable direct manifest.
 
-The Node 20 action warning is addressed by the two Node 24 action updates, subject
-to hosted confirmation. The independent Starlette/httpx Python deprecation warning
+The Node 20 action warning is addressed by the two Node 24 action updates.
+Both action steps succeeded in hosted CI; no Node 20 deprecation warning was
+found in the retrieved job logs. The independent Starlette/httpx Python warning
 is documented, not suppressed or fixed through a new transport dependency.
 
-## Visual inspection and remaining issues
+## Clean-checkout correction and validation
 
 The first independent replay at `a20386087861d9dc92a1387f69ab4cd1898a35e5`
 installed the snapshot successfully and matched all 79 package pins exactly.
@@ -105,8 +113,33 @@ This was reported before correction. Two new parent-level `.gitattributes` files
 set LF for the affected paths; no existing frozen suite, report, review,
 historical attribute file, manifest or hash is edited. A deterministic effective
 attribute regression check was added, bringing the suite to **1,287 tests**.
-The corrected commit is independently checked out with `core.autocrlf=true` and
-tested again using the fresh snapshot environment; results follow in closeout.
+Commit `b09112a7f17cd4820af70879444222821074ec9c` records this correction.
+A new full clone was checked out at that exact commit with local
+`core.autocrlf=true`. It reused the independently created snapshot environment
+from the first replay, without installing or changing packages. All 79 installed
+pins matched the snapshot, `pip check` passed, and the suite's original byte
+hash was restored. Full pytest passed **1,287 tests**, one existing warning,
+**49.77s**; Ruff and whitespace checks passed and Git status was clean.
+
+On resume, the primary checkout also passed **1,287 tests** in **46.98s**, with
+the same warning, and Ruff/whitespace checks passed. The final copy audit found
+three stray question marks in an evaluation caption, request-flow description
+and analysis spinner. These were corrected with plain punctuation; the 29
+dashboard/release tests passed in **6.20s**. No workflow behavior changed.
+
+Hosted Ubuntu/Python 3.13 CI passed for both the product implementation
+([run 40792634598](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40792634598),
+1,286 tests) and the checkout correction
+([run 40794514940](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/40794514940),
+1,287 tests in 7.64s). Retrieved correction-job logs contained no Node 20
+deprecation or Starlette warning. The Windows snapshot's existing Starlette
+warning remains documented; no dependency upgrade was made to suppress it.
+
+The final packaging commit contains the copy corrections and this closeout.
+Its exact SHA, final local gate and hosted run are reported in the delivery
+message rather than embedding a self-referential commit hash here.
+
+## Visual inspection and remaining issues
 
 Browser inventory reported **The browser access host is unavailable**, with no
 available browser surface. The existing Windows Firefox path was already known
@@ -117,8 +150,9 @@ claimed. AppTest confirms structure/execution only.
 The white architecture graphic is gone. About and Overview use theme-inheriting
 native components without fixed graphic backgrounds, custom colors or HTML/CSS
 layout. Desktop/narrow viewport layout, overflow, clipping, spacing and actual
-dark/light appearance remain for the user's visual inspection. No deterministic
-functional defect was identified in the checks completed so far.
+dark/light appearance remain for the user's visual inspection. Browser access
+was checked again after resuming and was still unavailable. The reproducibility
+defect above is fixed; no test failures remain in the completed checks.
 
 Existing product limits remain: finite identifier grammar, prompt-guided risk
 semantics, provisional model classifications, residual support/formatting issues,
@@ -127,7 +161,8 @@ backend cancellation, no authentication and no live threat verification.
 
 ## Release recommendation
 
-Ready for final human visual approval after the recorded validation gates pass.
+Ready for final human visual approval, subject to the final packaging gate
+reported in the delivery message.
 This is not visual approval or an operational safety claim. The remaining steps
 are human desktop/narrow and dark/light review, any specifically requested visual
 corrections, optional screenshots/demo capture, then separately authorized merge

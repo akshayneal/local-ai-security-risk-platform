@@ -216,7 +216,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
                 "Some input fields are invalid or too long. Review the form and submit again."
             )
         else:
-            with st.spinner("Analyzing with the local model?"):
+            with st.spinner("Analyzing with the local model..."):
                 body, error = post_analysis(
                     base_url,
                     "/ui/analyze/soc-alert" if soc else "/ui/analyze/governance",
