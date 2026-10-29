@@ -16,7 +16,12 @@ def expansion_blob(name: str) -> str:
     sprint3 = json.loads(
         (ROOT / "Documentation/expansion_sprint_3_preservation.json").read_bytes()
     )
-    if name in sprint3["authorized_prior_source_git_blob_sha1"]:
+    if name in sprint3["authorized_prior_source_git_blob_sha1"] and name not in {
+        "app/soc_analyzer.py",
+        "app/governance_analyzer.py",
+        "dashboard/workflows.py",
+        "dashboard/sample_loader.py",
+    }:
         value = subprocess.check_output(
             ["git", "rev-parse", f"{sprint3['starting_commit']}:{name}"],
             cwd=ROOT,

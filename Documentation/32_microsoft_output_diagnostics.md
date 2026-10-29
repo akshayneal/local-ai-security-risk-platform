@@ -58,3 +58,28 @@ Generic text endpoint and role checks retain their previous behavior. Missing
 Protocol stays absent, explicit Tcp stays exact, and protocol interpretation remains
 outside this deterministic legacy recognizer. These prove format incompatibility
 independently, without claiming the discarded live pair was valid.
+
+## Structured compatibility treatment
+
+`app/microsoft_evidence.py` recognizes only the existing Microsoft input profile,
+re-parses its bounded canonical bundle, and verifies case identity. Additional
+endpoint authorization comes from valid IPv4/port fields on individual
+DeviceNetworkEvents rows. Local/remote roles, exact original values, optional fields
+and row indices remain available; string ports such as `00443` retain their original
+spelling in source/inventory while numeric relationship comparison accepts 443.
+Malformed/boolean/out-of-range ports authorize no new pair. No protocol, reputation,
+causality or maliciousness is inferred. Local/remote does not imply direction.
+
+The legacy textual recognizer is unchanged. Its input authority is supplemented by
+the validated row pairs, while bounded local/remote labels and JSON endpoint objects
+are separately checked. A JSON projection must match one original event, so individually
+valid endpoints cannot be combined from unrelated rows. Duplicate JSON endpoint keys,
+role reversals, cross-row ports and invented pairs are rejected. Unrecognized prose
+remains a documented grammar limitation; this is not universal relationship entailment.
+Legacy explicit source/destination checks and critical-token fidelity remain active.
+
+The same full validator runs after repair, and the repair prompt now includes the
+structured pairs rather than an empty legacy extraction. Deterministic controls prove
+a previously rejected valid pair now returns first-pass and that fixing observations
+while introducing a bad pair in another field still fails closed after exactly one
+repair. Generic SOC behavior retains its original path.

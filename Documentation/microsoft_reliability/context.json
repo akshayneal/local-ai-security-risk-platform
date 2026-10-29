@@ -1,0 +1,864 @@
+{
+  "identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "08edf9209ae17812fe4b55ed05730f2bfe77932a",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "phase": "context",
+  "started_utc": "2026-10-29T17:22:29.860831+00:00",
+  "records": [
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 1,
+      "request_sha256": "a04424de13d61c3822a661659a49c0e02c800921a38ad34ee930dca471ceb3ed",
+      "original_bundle_utf8_bytes": 193,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 193,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 8023,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": null,
+        "size": null,
+        "size_vram": null
+      },
+      "result": null,
+      "checks": null,
+      "error": "OutputPolicyError",
+      "latency_ms": 221741.08349999005,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7dd136ec15ef95673552a831148abf665b1ee76722fc3a067e5c8ed4b9c18ea7",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2061.02
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "summary"
+              },
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "observed_evidence"
+              }
+            ],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "failed",
+            "observations": "passed",
+            "elapsed_ms": 97671.867
+          },
+          {
+            "generation": 1,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 97672.044
+          },
+          {
+            "generation": 1,
+            "stage": "validation",
+            "violations": [
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "summary"
+              },
+              {
+                "code": "IP_SHAPE",
+                "field": "observed_evidence"
+              },
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "observed_evidence"
+              }
+            ],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "failed",
+            "endpoints": "failed",
+            "observations": "passed",
+            "elapsed_ms": 221741.033
+          },
+          {
+            "generation": 1,
+            "stage": "outcome",
+            "status": "withheld",
+            "elapsed_ms": 221741.041
+          }
+        ],
+        "repair_attempted": true,
+        "repair_failed": true
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 4096,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8023,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 2226,
+          "eval_count": 1010,
+          "total_duration": 93543656300,
+          "load_duration": 8329422000,
+          "prompt_eval_duration": 2604607000,
+          "eval_duration": 82582313000,
+          "elapsed_ms": 95601.946,
+          "context_status": "unknown"
+        },
+        {
+          "configured_num_ctx": 4096,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9331,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 2477,
+          "eval_count": 1403,
+          "total_duration": 124060869400,
+          "load_duration": 13274700,
+          "prompt_eval_duration": 413280000,
+          "eval_duration": 123594097000,
+          "elapsed_ms": 124062.799,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 2,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-013",
+      "trial": 1,
+      "request_sha256": "8604f554c2569a064f2a5a6bb0d70617d617aae5f75dd1b1368780672152a90f",
+      "original_bundle_utf8_bytes": 9329,
+      "rows": 12,
+      "canonical_raw_utf8_bytes": 9285,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 17473,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "alert_id": "SOC-2023-001",
+        "severity": "low",
+        "likely_incident_type": "benign_process_activity",
+        "summary": "Repetitive status.exe process creation on synthetic-lab-a appears to be routine system maintenance rather than malicious activity. No indicators of compromise detected.",
+        "mitre_mapping": [
+          "MITRE_T1059.001"
+        ],
+        "recommended_containment": [
+          "Verify if status.exe processes are part of scheduled maintenance tasks",
+          "Check system logs for unusual process creation patterns",
+          "Ensure no unauthorized changes to process execution permissions"
+        ],
+        "recommended_investigation_steps": [
+          "Review scheduled tasks on synthetic-lab-a for status.exe execution",
+          "Check for any unauthorized modifications to wbadmin.exe usage",
+          "Monitor for unexpected process creation patterns in DeviceProcessEvents"
+        ],
+        "false_positive_considerations": [
+          "status.exe is a legitimate system utility",
+          "wbadmin.exe is a standard Windows backup tool",
+          "Repetitive process creation may indicate scheduled maintenance"
+        ],
+        "evidence_gaps": [
+          "Missing authentication logs for device synthetic-lab-a",
+          "No network activity or user context associated with process creation",
+          "Lack of indicators linking to known malicious campaigns"
+        ],
+        "analyst_note": "The repetitive status.exe process creation appears to be routine system maintenance rather than malicious activity. No evidence of exploitation or unauthorized access detected. Further investigation into scheduled tasks is recommended to confirm benign intent.",
+        "observed_evidence": [
+          "12 instances of status.exe process creation with command line 'status.exe --check'",
+          "Single instance of wbadmin.exe process creation with command line 'wbadmin.exe delete catalog -quiet'",
+          "All processes executed on synthetic-lab-a"
+        ],
+        "analyst_inferences": [],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "low"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 88752.16270000965,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "d7c42a3ff6b524383d7971c6070388dbe4e95ad5228a6f0f4a81afb9b88336d3",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2053.671
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 88750.368
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 88750.379
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 4096,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 17473,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 3934,
+          "eval_count": 893,
+          "total_duration": 86666909300,
+          "load_duration": 11412900,
+          "prompt_eval_duration": 2437796000,
+          "eval_duration": 84180509000,
+          "elapsed_ms": 86668.489,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-014",
+      "trial": 1,
+      "request_sha256": "d580c852ae86db74dff6f63b1e5f7769a777f1c07abbef84acc2372d7ccfb5c1",
+      "original_bundle_utf8_bytes": 36620,
+      "rows": 45,
+      "canonical_raw_utf8_bytes": 36444,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 45622,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "alert_id": "THREAT-20231010-001",
+        "severity": "high",
+        "likely_incident_type": "malicious_process_spawning",
+        "summary": "Multiple instances of status.exe (932-943) and wbadmin.exe (999) executed on synthetic-lab-a with repetitive status records. This pattern suggests potential botnet activity or automated script exploitation.",
+        "mitre_mapping": [
+          "T1059.001 (Command and Scripting Interpreter - PowerShell)",
+          "T1059.003 (Command and Scripting Interpreter - Batch)",
+          "T1059.004 (Command and Scripting Interpreter - VBScript)"
+        ],
+        "recommended_containment": [
+          "Isolate synthetic-lab-a from the network",
+          "Block all outbound connections from the device",
+          "Disable scheduled tasks and services associated with status.exe",
+          "Perform full system scan with updated antivirus definitions"
+        ],
+        "recommended_investigation_steps": [
+          "Check for unauthorized process execution patterns",
+          "Analyze network traffic for C2 communication",
+          "Verify system integrity with disk imaging",
+          "Review Windows Event Logs for suspicious activity (Event IDs 4104, 4688, 4697)"
+        ],
+        "false_positive_considerations": [
+          "Verify if synthetic-lab-a is a legitimate test environment",
+          "Check for legitimate backup operations using wbadmin.exe",
+          "Confirm if status.exe is a known system utility"
+        ],
+        "evidence_gaps": [
+          "Missing timestamps for process creation events",
+          "No user context associated with process execution",
+          "Lack of network traffic analysis"
+        ],
+        "analyst_note": "The repetitive nature of the status records and the simultaneous execution of multiple processes suggest potential automated exploitation. While wbadmin.exe is a legitimate tool, its combination with status.exe in this context raises red flags. Further analysis is required to determine if this is a false positive or an active attack vector.",
+        "observed_evidence": [
+          "45 DeviceProcessEvents (discrepancy between reported count and actual JSON entries)",
+          "Repetitive status record messages in process details",
+          "Sequential process IDs (932-943) with identical command lines",
+          "wbadmin.exe execution with delete catalog command"
+        ],
+        "analyst_inferences": [],
+        "source_references": []
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 119170.23449999397,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "21a411c8177031f5543e8825d36d6d4585198369acdc50744a0c9ae376f51671",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2056.497
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 119162.513
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 119162.527
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 4096,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 45622,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 2050,
+          "eval_count": 1326,
+          "total_duration": 116996330900,
+          "load_duration": 9102800,
+          "prompt_eval_duration": 2197049000,
+          "eval_duration": 114570659000,
+          "elapsed_ms": 116998.046,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 2,
+      "request_sha256": "a04424de13d61c3822a661659a49c0e02c800921a38ad34ee930dca471ceb3ed",
+      "original_bundle_utf8_bytes": 193,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 193,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 8023,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": null,
+      "checks": null,
+      "error": "OutputPolicyError",
+      "latency_ms": 275043.67430000275,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7dd136ec15ef95673552a831148abf665b1ee76722fc3a067e5c8ed4b9c18ea7",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2059.548
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [
+              {
+                "code": "IP_SHAPE",
+                "field": "false_positive_considerations"
+              }
+            ],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "failed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 103023.294
+          },
+          {
+            "generation": 1,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 103023.49
+          },
+          {
+            "generation": 1,
+            "stage": "validation",
+            "violations": [
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "summary"
+              },
+              {
+                "code": "IP_SHAPE",
+                "field": "observed_evidence"
+              },
+              {
+                "code": "ENDPOINT_PAIR",
+                "field": "observed_evidence"
+              }
+            ],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "failed",
+            "endpoints": "failed",
+            "observations": "passed",
+            "elapsed_ms": 275043.629
+          },
+          {
+            "generation": 1,
+            "stage": "outcome",
+            "status": "withheld",
+            "elapsed_ms": 275043.64
+          }
+        ],
+        "repair_attempted": true,
+        "repair_failed": true
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8023,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 2226,
+          "eval_count": 823,
+          "total_duration": 100955805100,
+          "load_duration": 5908259900,
+          "prompt_eval_duration": 2873712000,
+          "eval_duration": 92140796000,
+          "elapsed_ms": 100957.669,
+          "context_status": "unknown"
+        },
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9234,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 2463,
+          "eval_count": 1477,
+          "total_duration": 172010815300,
+          "load_duration": 15605000,
+          "prompt_eval_duration": 545226000,
+          "eval_duration": 171404756000,
+          "elapsed_ms": 172012.993,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 2,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-013",
+      "trial": 2,
+      "request_sha256": "8604f554c2569a064f2a5a6bb0d70617d617aae5f75dd1b1368780672152a90f",
+      "original_bundle_utf8_bytes": 9329,
+      "rows": 12,
+      "canonical_raw_utf8_bytes": 9285,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 17473,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-013",
+        "severity": "low",
+        "likely_incident_type": "Suspicious Process Activity",
+        "summary": "Multiple ProcessCreated events detected on synthetic-lab-a involving status.exe and wbadmin.exe. No clear authentication anomalies or unauthorized access indicators observed.",
+        "mitre_mapping": [
+          "Execution",
+          "Credential Access"
+        ],
+        "recommended_containment": [
+          "Monitor system for unusual process activity",
+          "Check for unexpected process execution patterns",
+          "Verify legitimacy of status.exe and wbadmin.exe usage",
+          "Review authentication logs for associated account activity"
+        ],
+        "recommended_investigation_steps": [
+          "Examine process execution timelines",
+          "Check for unusual command line parameters",
+          "Verify if processes are associated with known legitimate operations",
+          "Review system logs for related security events"
+        ],
+        "false_positive_considerations": [
+          "Processes may be part of legitimate maintenance operations",
+          "wbadmin.exe commands could be routine system tasks",
+          "status.exe might be a legitimate monitoring tool"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/VPN context",
+          "Missing timeline context",
+          "Missing asset criticality information"
+        ],
+        "analyst_note": "The observed process activity appears routine but requires verification. No clear indicators of compromise detected. Human review recommended before taking containment actions.",
+        "observed_evidence": [
+          "12 ProcessCreated events on synthetic-lab-a",
+          "status.exe executed with --check parameter",
+          "wbadmin.exe delete catalog command executed"
+        ],
+        "analyst_inferences": [
+          "Repetitive status.exe processes may indicate monitoring activity",
+          "wbadmin.exe command suggests potential system maintenance",
+          "No evidence of failed authentication attempts or unauthorized access"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and timeline context"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for verifying account legitimacy and post-login activity"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Prevents unsupported claims about process legitimacy"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 86626.8296000053,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "d7c42a3ff6b524383d7971c6070388dbe4e95ad5228a6f0f4a81afb9b88336d3",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2045.962
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 86625.009
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 86625.02
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 17473,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 3934,
+          "eval_count": 680,
+          "total_duration": 84547024900,
+          "load_duration": 9658400,
+          "prompt_eval_duration": 2663902000,
+          "eval_duration": 81839701000,
+          "elapsed_ms": 84548.862,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-014",
+      "trial": 2,
+      "request_sha256": "d580c852ae86db74dff6f63b1e5f7769a777f1c07abbef84acc2372d7ccfb5c1",
+      "original_bundle_utf8_bytes": 36620,
+      "rows": 45,
+      "canonical_raw_utf8_bytes": 36444,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 45622,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "THREAT-20231010-001",
+        "severity": "high",
+        "likely_incident_type": "compromised_device",
+        "summary": "Repetitive status.exe process creation and wbadmin.exe catalog deletion detected on synthetic-lab-a",
+        "mitre_mapping": [
+          "T1059.001 (Command and Scripting Interpreter)",
+          "T1486 (System Services)",
+          "T1489 (File and Directory Discovery)"
+        ],
+        "recommended_containment": [
+          "Isolate synthetic-lab-a from network",
+          "Disable non-essential services",
+          "Perform full system integrity check"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if status.exe is a legitimate monitoring tool",
+          "Check for unauthorized wbadmin.exe operations",
+          "Analyze process creation patterns for botnet activity",
+          "Verify device authenticity and network access"
+        ],
+        "false_positive_considerations": [
+          "Status.exe might be a legitimate system utility",
+          "wbadmin.exe operations could be part of scheduled backups"
+        ],
+        "evidence_gaps": [
+          "Missing user context for process initiations",
+          "No network traffic analysis provided",
+          "Lack of system configuration baseline"
+        ],
+        "analyst_note": "The repetitive execution of status.exe with identical command-line arguments and the wbadmin.exe catalog deletion suggest potential botnet activity or data exfiltration. While the known indicators are legitimate tools, their unusual execution patterns and frequency warrant further investigation. The synthetic-lab-a device's name implies a potential honeypot or compromised system. Additional context about user activity, network connections, and system configurations is required to confirm malicious intent.",
+        "observed_evidence": [
+          "44 instances of status.exe --check process creation",
+          "1 instance of wbadmin.exe delete catalog -quiet",
+          "All processes executed on synthetic-lab-a"
+        ],
+        "analyst_inferences": [
+          "The repetitive status.exe executions may indicate botnet C2 communication",
+          "wbadmin.exe catalog deletion could be part of data exfiltration or cleanup",
+          "The device name suggests potential compromise or honeypot activity"
+        ],
+        "source_references": []
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 143144.95159999933,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "21a411c8177031f5543e8825d36d6d4585198369acdc50744a0c9ae376f51671",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2049.686
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 143137.897
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 143137.913
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 45622,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "prompt_eval_count": 4098,
+          "eval_count": 1048,
+          "total_duration": 140991262600,
+          "load_duration": 11757500,
+          "prompt_eval_duration": 4842225000,
+          "eval_duration": 135752100000,
+          "elapsed_ms": 140993.245,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    }
+  ],
+  "finished_utc": "2026-10-29T17:38:16.648282+00:00",
+  "metrics": {
+    "attempts": 6,
+    "returned": 4,
+    "withheld": 2,
+    "first_pass_valid": 4,
+    "repair_attempted": 2,
+    "repair_succeeded": 0,
+    "transport_json_retries": 0,
+    "coverage_proxy_matched_groups": 4,
+    "coverage_proxy_returned_groups": 4,
+    "checks_failed_by_name": {},
+    "latency_ms_median_all_attempts": 131157.59304999665,
+    "latency_ms_total": 934478.936200001,
+    "per_case": {
+      "REL-SOC-006": [
+        "withheld",
+        "withheld"
+      ],
+      "REL-SOC-013": [
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-014": [
+        "returned",
+        "returned"
+      ]
+    },
+    "semantic_metrics": "manual review required; no overall pass score"
+  }
+}

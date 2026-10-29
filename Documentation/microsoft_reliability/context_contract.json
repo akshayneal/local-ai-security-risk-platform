@@ -1,0 +1,214 @@
+{
+  "plan": {
+    "version": "ollama-context-contract-v1",
+    "purpose": "Verify installed server behavior for truncate=false and shift=false; not a replacement for the six frozen context/quality probes",
+    "model": "qwen3:8b",
+    "temperature": 0.1,
+    "trials_per_cell": 1,
+    "probes": [
+      {
+        "id": "short-4096",
+        "case_id": "REL-SOC-006",
+        "num_ctx": 4096,
+        "num_predict": 32,
+        "expected": "response"
+      },
+      {
+        "id": "short-8192",
+        "case_id": "REL-SOC-006",
+        "num_ctx": 8192,
+        "num_predict": 32,
+        "expected": "response"
+      },
+      {
+        "id": "large-4096",
+        "case_id": "REL-SOC-014",
+        "num_ctx": 4096,
+        "num_predict": 32,
+        "expected": "input_capacity_rejection"
+      },
+      {
+        "id": "large-8192",
+        "case_id": "REL-SOC-014",
+        "num_ctx": 8192,
+        "num_predict": 32,
+        "expected": "input_capacity_rejection"
+      },
+      {
+        "id": "generation-capacity-4096",
+        "case_id": "REL-SOC-013",
+        "num_ctx": 4096,
+        "num_predict": 1024,
+        "expected": "capacity_failure_or_bounded_stop_without_context_shift"
+      }
+    ],
+    "persistence": "numeric usage/status only; no generated content, prompt, telemetry or exception messages",
+    "scope": "new local API capability diagnosis; frozen reliability cases, scorer, plan and runner remain unchanged",
+    "sources": [
+      "https://github.com/ollama/ollama/blob/v0.40.12/api/types.go",
+      "https://github.com/ollama/ollama/blob/v0.40.12/server/routes.go",
+      "https://github.com/ollama/ollama/blob/v0.40.12/llm/llama_server.go"
+    ]
+  },
+  "source_sha256": {
+    "plan.json": "130cb592dae60ea12464dd5900486f80c8e1621336dcb03932d7036e3f159304",
+    "runner.py": "4ca39c9c65ea5fad1b31d4058a4cbd6d94cff846a8d42559de847805b371ac3e"
+  },
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "a4fd3e2a191ba6b85d01767a9e07c59ade5b24dd",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "records": [
+    {
+      "probe": {
+        "id": "short-4096",
+        "case_id": "REL-SOC-006",
+        "num_ctx": 4096,
+        "num_predict": 32,
+        "expected": "response"
+      },
+      "user_utf8_bytes": 8023,
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "http_status": 200,
+      "status": "response",
+      "done_reason": "length",
+      "usage": {
+        "prompt_eval_count": 2226,
+        "eval_count": 32,
+        "total_duration": 10314439200,
+        "load_duration": 5485509100,
+        "prompt_eval_duration": 2590041000,
+        "eval_duration": 2203943000
+      },
+      "elapsed_ms": 12349.723600011203,
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      }
+    },
+    {
+      "probe": {
+        "id": "short-8192",
+        "case_id": "REL-SOC-006",
+        "num_ctx": 8192,
+        "num_predict": 32,
+        "expected": "response"
+      },
+      "user_utf8_bytes": 8023,
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "http_status": 200,
+      "status": "response",
+      "done_reason": "length",
+      "usage": {
+        "prompt_eval_count": 2226,
+        "eval_count": 32,
+        "total_duration": 10566529100,
+        "load_duration": 5201593700,
+        "prompt_eval_duration": 2842314000,
+        "eval_duration": 2508449000
+      },
+      "elapsed_ms": 10568.44170000113,
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      }
+    },
+    {
+      "probe": {
+        "id": "large-4096",
+        "case_id": "REL-SOC-014",
+        "num_ctx": 4096,
+        "num_predict": 32,
+        "expected": "input_capacity_rejection"
+      },
+      "user_utf8_bytes": 45622,
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "http_status": 400,
+      "status": "other_server_error",
+      "elapsed_ms": 5306.623899989063,
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      }
+    },
+    {
+      "probe": {
+        "id": "large-8192",
+        "case_id": "REL-SOC-014",
+        "num_ctx": 8192,
+        "num_predict": 32,
+        "expected": "input_capacity_rejection"
+      },
+      "user_utf8_bytes": 45622,
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "http_status": 400,
+      "status": "other_server_error",
+      "elapsed_ms": 5275.344599998789,
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      }
+    },
+    {
+      "probe": {
+        "id": "generation-capacity-4096",
+        "case_id": "REL-SOC-013",
+        "num_ctx": 4096,
+        "num_predict": 1024,
+        "expected": "capacity_failure_or_bounded_stop_without_context_shift"
+      },
+      "user_utf8_bytes": 17473,
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "http_status": 200,
+      "status": "response",
+      "done_reason": "length",
+      "usage": {
+        "prompt_eval_count": 3934,
+        "eval_count": 162,
+        "total_duration": 23862742000,
+        "load_duration": 5263083300,
+        "prompt_eval_duration": 4371474000,
+        "eval_duration": 14212834000
+      },
+      "elapsed_ms": 23864.766200000304,
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      }
+    }
+  ]
+}

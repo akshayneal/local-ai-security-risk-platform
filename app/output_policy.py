@@ -5,6 +5,7 @@ from typing import Any
 
 from pydantic import ValidationError
 
+from app.microsoft_evidence import microsoft_evidence, structured_endpoint_violations
 from app.observables import endpoint_violations, observable_violations
 from app.schemas import SocAlertResponse
 
@@ -122,10 +123,20 @@ def soc_contract_violations(
     elif not all(isinstance(item, str) and item.strip() for item in observations):
         violations.append("observed_evidence items must be nonblank strings")
     original = "\n".join(text_values(original_input))
+    structured = microsoft_evidence(original_input)
     for field in SOC_FACTUAL_FIELDS:
         texts = text_values(result.get(field))
         violations.extend(observable_violations(texts, original, field=field))
-        violations.extend(endpoint_violations("\n".join(texts), original, field=field))
+        if structured is None:
+            violations.extend(
+                endpoint_violations("\n".join(texts), original, field=field)
+            )
+        else:
+            violations.extend(
+                structured_endpoint_violations(
+                    "\n".join(texts), original, structured, field=field
+                )
+            )
     return violations
 
 

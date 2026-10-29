@@ -84,12 +84,14 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "dashboard/workflows.py",
         "dashboard/sample_loader.py",
         "app/ollama_client.py",
+        "app/output_policy.py",
     }
     additions = {
         "app/soc_inputs.py",
         "dashboard/microsoft_input.py",
         "app/local_diagnostics.py",
         "app/model_metrics.py",
+        "app/microsoft_evidence.py",
     }
     assert all(
         name.startswith("app/retrieval/") or name in integration | additions

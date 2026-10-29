@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 from app.analysis_trace import AnalysisTrace
+from app.microsoft_evidence import microsoft_evidence
 from app.observables import critical_observables, network_endpoints
 from app.ollama_client import call_model_json
 from app.output_policy import (
@@ -112,6 +113,10 @@ def analyze_soc_alert(
                 "\n".join(text_values(original_input))
             ).items()
         }
+        endpoints = network_endpoints("\n".join(text_values(original_input)))
+        structured = microsoft_evidence(original_input)
+        if structured is not None:
+            endpoints |= structured.pairs()
         # Use the already neutralized original prompt, never raw failed output.
         generation_prompt = (
             prompt
@@ -134,9 +139,7 @@ def analyze_soc_alert(
                 "Authoritative input observables (not reputation or vulnerability verification):\n"
                 + json.dumps(authoritative, sort_keys=True)
                 + "\nAuthoritative explicit input endpoint pairs:\n"
-                + json.dumps(
-                    sorted(network_endpoints("\n".join(text_values(original_input))))
-                )
+                + json.dumps(sorted(endpoints))
             )
         )
     raise AssertionError("Bounded generation loop exhausted unexpectedly")

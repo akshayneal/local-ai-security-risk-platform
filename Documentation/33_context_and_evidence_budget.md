@@ -49,3 +49,65 @@ These mechanics probes do not replace the original six quality/context cells.
 The outcome will determine whether native fail-closed capacity controls are a
 better supported treatment than an approximate byte/token budget. No production
 transport or setting is changed merely because source inspection suggests support.
+
+## Six completed context probes
+
+Exact [context report](microsoft_reliability/context.json), clean launch `08edf92`,
+same local model identifier/temperature, one trial per cell. All records match the
+journal and the predeclared schedule. Byte measures describe different stages:
+
+| Rows | Canonical evidence bytes | Initial user-prompt bytes | Reference bytes |
+| ---: | ---: | ---: | ---: |
+| 1 | 193 | 8,023 | 2,111 |
+| 12 | 9,285 | 17,473 | 2,111 |
+| 45 | 36,444 | 45,622 | 2,111 |
+
+System instructions add 3,505 serialized UTF-8 bytes; the schema request adds 2,515.
+Schema bytes are not claimed to be prompt tokens: format/grammar handling is a
+separate provider operation. Every original row remained in canonical evidence and
+the submitted prompt; no application selection occurred.
+
+| Context | Rows | Actual initial prompt tokens | Outcome | Analyzer seconds |
+| ---: | ---: | ---: | --- | ---: |
+| 4096 | 1 | 2226 | Withheld after repair, endpoint check | 221.741 |
+| 4096 | 12 | 3934 | Returned | 88.752 |
+| 4096 | 45 | 2050 | Returned | 119.170 |
+| 8192 | 1 | 2226 | Withheld after repair, endpoint check | 275.044 |
+| 8192 | 12 | 3934 | Returned | 86.627 |
+| 8192 | 45 | 4098 | Returned | 143.145 |
+
+The 12-row 8192 response retains its correct alert ID and row count; 4096 invents an
+ID and counts. Both retain the deletion command, and 8192 still adds unsupported
+Credential Access. Both 45-row responses invent alert IDs and unsupported botnet/
+compromise claims; neither a returned schema nor a larger context establishes
+complete evidence representation. All four returns pass the narrow frozen checks.
+No replacement semantic score is assigned to this tiny mechanics comparison.
+
+Reported total residency rises 5,986,561,554 -> 6,599,978,515 bytes; VRAM residency
+is 4,206,582,824 -> 4,190,623,498 bytes. These are snapshots, not peak memory or
+isolated allocations. Latency varies with generated length, repair, loading and
+unseeded sampling; the single cells do not isolate a causal speed penalty.
+
+## Native capacity contract observations
+
+The five separately predeclared [API probes](microsoft_reliability/context_contract.json)
+completed at clean `a4fd3e2`, without response-content persistence or reruns. Short
+controls return HTTP 200 at both contexts with their requested 32-token cap. Both
+45-row requests with truncation/shift disabled return HTTP 400 in about 5.3 seconds.
+Their exact error did not match the fixed diagnostic allowlist and remains
+`other_server_error`; do not retrospectively relabel it as a captured capacity code.
+The same large inputs returned under the default behavior in the six-cell experiment.
+This is evidence of rejection under the protected mode, with a classification limit.
+
+The 12-row pressure request at 4096 returns `done_reason=length`, 3934 prompt tokens
+and 162 generated tokens despite a requested 1024 generation cap: exactly 4096
+total. Together with the tagged server contract, this directly supports bounded
+generation without context shifting. It does not certify semantic completeness.
+
+The selected treatment will use native no-truncation/no-shift requests for Microsoft
+analyses at measured context 8192, reject length-limited/incomplete results, and
+withhold server-rejected requests with a safe message. This avoids treating byte
+estimates as exact token counts. The 12-row input fits this capacity with output
+room; the 45-row input is intentionally withheld. Generic SOC/governance and the
+released demo retain their ordinary generation configuration. Unsupported runtimes
+must fail closed rather than silently falling back to truncating behavior.

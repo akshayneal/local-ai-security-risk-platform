@@ -83,3 +83,29 @@ def test_manual_review_complete_quotes_bound_and_prior_judgments_preserved():
     )
     assert review["reviews"][: len(prior["reviews"])] == prior["reviews"]
     assert review["judgment_revisions"] == []
+
+
+def test_context_and_native_contract_artifacts_are_exact_and_separate():
+    manifest = json.loads((DIRECTORY / "context_provenance.json").read_bytes())
+    for name, expected in manifest.items():
+        assert hashlib.sha256((DIRECTORY / name).read_bytes()).hexdigest() == expected
+    report = json.loads((DIRECTORY / "context.json").read_bytes())
+    assert report["identity"] == identity()
+    assert [(r["case_id"], r["trial"]) for r in report["records"]] == [
+        (key, trial)
+        for trial in (1, 2)
+        for key in ("REL-SOC-006", "REL-SOC-013", "REL-SOC-014")
+    ]
+    assert [
+        r["model_attempts"][0]["configured_num_ctx"] for r in report["records"]
+    ] == [4096] * 3 + [8192] * 3
+    assert not report["runtime"]["git_dirty"]
+    contract = json.loads((DIRECTORY / "context_contract.json").read_bytes())
+    assert [r["probe"] for r in contract["records"]] == contract["plan"]["probes"]
+    assert [r["http_status"] for r in contract["records"]] == [200, 200, 400, 400, 200]
+    assert [r["status"] for r in contract["records"]][2:4] == ["other_server_error"] * 2
+    pressure = contract["records"][-1]
+    assert pressure["done_reason"] == "length"
+    assert (
+        pressure["usage"]["prompt_eval_count"] + pressure["usage"]["eval_count"] == 4096
+    )
