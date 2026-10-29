@@ -195,7 +195,10 @@ function Test-DemoOwnedProcess($Paths, $Record) {
 function Get-DemoRecords($Paths) {
     $file = Join-Path $Paths.Runtime 'processes.json'
     if (-not (Test-Path -LiteralPath $file)) { return @() }
-    return @(Get-Content -Raw -LiteralPath $file | ConvertFrom-Json)
+    # Windows PowerShell 5.1 emits JSON arrays as a single pipeline object.
+    # Enumerate explicitly so callers always receive individual PID records.
+    $decoded = Get-Content -Raw -LiteralPath $file | ConvertFrom-Json
+    foreach ($record in $decoded) { Write-Output $record }
 }
 
 function Stop-DemoOwnedProcesses($Paths) {

@@ -87,6 +87,13 @@ def test_shortcuts_use_copied_bootstrap():
         """,
         """
         $paths = Get-DemoPaths
+        Initialize-DemoRoot $paths
+        ConvertTo-Json -InputObject @(@{process_id=1}, @{process_id=2}) | Set-Content (Join-Path $paths.Runtime 'processes.json')
+        $records = @(Get-DemoRecords $paths)
+        if ($records.Count -ne 2 -or $records[0].process_id -ne 1) { throw 'nested PID records' }
+        """,
+        """
+        $paths = Get-DemoPaths
         New-Item -ItemType Directory $paths.Root | Out-Null
         try { Initialize-DemoRoot $paths; throw 'accepted unmarked' }
         catch { if ($_.Exception.Message -eq 'accepted unmarked') { throw } }
