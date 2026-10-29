@@ -4,9 +4,13 @@ from app.analysis_trace import AnalysisTrace
 from app.ollama_client import call_model_json
 from app.output_policy import replace_untrusted_source_ids, untrusted_source_ids
 from app.prompts import build_governance_prompt
+from app.reference_authority import (
+    GUIDANCE_INSTRUCTIONS,
+    format_guidance_for_prompt,
+    restore_guidance_sources,
+)
 from app.reference_loader import (
     clean_inline_source_citations,
-    format_references_for_prompt,
     get_reference_ids,
     get_relevant_references,
     sanitize_source_references,
@@ -36,7 +40,7 @@ def analyze_governance_risk(
         )
 
     if reference_context is None:
-        reference_context = format_references_for_prompt(references)
+        reference_context = format_guidance_for_prompt(references)
 
     prompt = build_governance_prompt(
         request=request,
@@ -44,6 +48,8 @@ def analyze_governance_risk(
     )
     if evidence is not None:
         prompt = EVIDENCE_INSTRUCTIONS + prompt
+    else:
+        prompt = GUIDANCE_INSTRUCTIONS + prompt
 
     if trace is not None:
         trace.capture("generation_started", None)
@@ -82,6 +88,8 @@ def analyze_governance_risk(
     )
     if evidence is not None:
         restore_evidence_sources(raw_result, evidence)
+    else:
+        restore_guidance_sources(raw_result, references)
 
     if trace is not None:
         trace.capture("source_sanitized", raw_result)

@@ -71,3 +71,45 @@ remain checked against current Git-filtered bytes. Stable main and peeled v2.3.0
 stay at `fde00d0ca5d21eecbc6973cc784550ed453edb7a`. No merge, tag or release.
 
 Results and final validation will be recorded after the two once-only phases.
+
+## Implemented deterministic boundaries
+
+`app/soc_query.py` now supplies every original table row plus schema-derived process,
+network-connection or authentication modality terms. Routing case IDs are excluded:
+offline inspection showed the optional tokenizer split SOC routing IDs into `soc`,
+matching checklist source IDs despite no authentication terms. This is field-level
+query construction, not a stopword list or an authentication exclusion filter.
+The request's case ID, full raw bundle, known indicators and adapter warnings remain
+unchanged in the actual model prompt. Supplied negative mentions and vendor labels
+remain query evidence; no claim of universal relevance or negation understanding.
+
+The [offline controls](grounding_stabilization/query_controls.json) compare old full
+requests with the implemented helper. All eight tested old queries returned the
+authentication checklist in both backends. With factual queries, only the true
+authentication control retains it in the top five in both backends. Original three
+diagnostic controls score 6 → 0 against the checklist; fresh network/dump also 6 → 0,
+quoted/vendor note 12 → 3, approved deletion 6 → 1, and genuine authentication 13 → 7.
+Nonzero scores from actual input terms remain legitimate ranking observations,
+not semantic support or abstention guarantees. Separate tests cover coded Entra and
+DeviceLogonEvents without English outcome descriptions, grant injection, generic
+query identity, unchanged evidence/warnings and shadow isolation.
+
+`app/reference_authority.py` wraps legacy governance reference content with
+application-owned authority/provenance. Equality with an exact current curated card,
+not source ID or a self-asserted policy field, establishes local/framework guidance
+classification. Arbitrary/altered cards are unverified; none acquires policy scope
+from its prose. After existing allowlisting, source relevance is replaced by fixed
+topic/provenance metadata, including `binding_by_retrieval=false` and unresolved
+applicability. This removes useful-looking but unverifiable free-form model relevance
+as an intentional tradeoff; trusted titles/topics remain. Optional lexical provenance
+and trusted scoped-policy metadata handling are unchanged.
+
+The Microsoft prompt adds a short modality/vendor-label boundary, including genuine
+credential-dumping support without sign-in events and case versus vendor identity.
+SYSTEM_PROMPT and generic SOC prompt bytes stay unchanged. No new semantic rejection
+rule or extra repair was added. Existing full-response source, observation, endpoint,
+critical-identifier and post-repair validation remains the final production guard.
+
+Before the live treatment, all 1,657 then-collected tests passed with one existing
+Starlette/httpx deprecation warning; targeted query/authority and preservation checks
+also passed. Final count includes later artifact replay tests, recorded at closeout.

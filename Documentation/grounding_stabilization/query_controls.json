@@ -1,0 +1,325 @@
+{
+  "scope": "Offline ranking diagnosis/regression, not semantic support or abstention scoring. Prior query serialization versus actual treatment helper. Original Sprint 3 diagnostic results unchanged.",
+  "records": [
+    {
+      "case_id": "GS35-NET",
+      "request_sha256": "ec22a6862a3712baf121e21241dde8d88eb72495fe296db7173cc268834cf32d",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "8c39fc0cc03bff0080a8c83ebbff56e4653116d241869c3ebbc120c64335dbe0",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-IR-CONTAINMENT",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "0db2adf7ecb9e12ec286248cecb4bf7882a849925bf95a6036d9e26b6f69df32",
+          "authentication_card_keyword_score": 0,
+          "legacy_top5": [
+            "MITRE-TA0007",
+            "MITRE-TA0011",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "lexical_top5": [
+            "MITRE-TA0011",
+            "MITRE-TA0007",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "GS35-NOTE",
+      "request_sha256": "90be4078159a37dbae39f1f21566af220d9c6b390332c04178b1e9f242797c33",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "e617afc4beeb1c5a8bd880044103d55f85075546f9cfa0a8ccd2a489570dd633",
+          "authentication_card_keyword_score": 12,
+          "legacy_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "MITRE-TA0006",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-SUPPORTED-CLAIMS"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-AUDITABILITY",
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "SOC-EVIDENCE-GAPS"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "a5f172604ec606a5d7ef3c3fc03bc592962c6dbe45fd906e1196b1abc5014f3e",
+          "authentication_card_keyword_score": 3,
+          "legacy_top5": [
+            "MITRE-TA0006",
+            "MITRE-TA0002",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "MITRE-TA0001",
+            "MITRE-TA0003"
+          ],
+          "lexical_top5": [
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "MITRE-TA0001",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-AUDITABILITY",
+            "MITRE-TA0006"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "GS35-AUTH",
+      "request_sha256": "f6a20521917e743d5ee8bfbe8001c606ce569881bb1565e67915c4ae190a821e",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "1a8f8833a19da329c880d3c38d2ad5e9c2466503aeb0021a97979c71a993d1c8",
+          "authentication_card_keyword_score": 13,
+          "legacy_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0006",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0006",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "4c217dffca1ae030d823a3d9b1899d8157f629e656d1ba719bd297feda37fa19",
+          "authentication_card_keyword_score": 7,
+          "legacy_top5": [
+            "MITRE-TA0006",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0001",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0006",
+            "MITRE-TA0001",
+            "LOCAL-AUDITABILITY",
+            "SOC-EVIDENCE-GAPS"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "GS35-DUMP",
+      "request_sha256": "8ec24e45520d2671fd1ea8248842f0783b1b6f5ad4bc02085351fe6b4b2885e0",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "ef3778194c83752697a40b850a05380cf25c5d777162d39167b200a0bc566776",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-IR-CONTAINMENT",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "7a25e633d969fca1efcd38239bf3e35c94a1db7ffdfd72511e83ca277f35ae01",
+          "authentication_card_keyword_score": 0,
+          "legacy_top5": [
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "lexical_top5": [
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "GS35-DELETE",
+      "request_sha256": "f53579825ede757e31f2298f045174fd188af396a6fdb1c80905d4bfa41d9cc0",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "511967d9342c5322fd53da9d4971fba84a938b7a67de53f863c4b637af9acaa6",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-AUDITABILITY",
+            "LOCAL-SUPPORTED-CLAIMS"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-AUDITABILITY",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-IR-CONTAINMENT"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "b8aa78f127f510097ea95bff9b32c9bedfacd2664a4f2ec69efe2b24b889600c",
+          "authentication_card_keyword_score": 1,
+          "legacy_top5": [
+            "MITRE-TA0002",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "MITRE-TA0005",
+            "MITRE-TA0011",
+            "SOC-EVIDENCE-GAPS"
+          ],
+          "lexical_top5": [
+            "MITRE-TA0002",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "LOCAL-AUDITABILITY",
+            "SOC-EVIDENCE-GAPS",
+            "MITRE-TA0011"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "REL-SOC-002",
+      "request_sha256": "aa0db19b5268bf5667ee3b4ad496c32cb08ff8244df150f424853048504b0ac9",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "972d52d19952484008eab1ad82796cbf742696e60f52edd209bc11c3308ecc9a",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-IR-CONTAINMENT",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "f301f88c7b9152cfd1c2f7026107dada33b89ae3b1b0250283e8a9bdd9e44eb8",
+          "authentication_card_keyword_score": 0,
+          "legacy_top5": [
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "lexical_top5": [
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "MITRE-TA0001",
+            "MITRE-TA0007"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "request_sha256": "bb713ba059a0eee82ab819761aa17f961b0869a991e37caf04e8b774955028f3",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "4cf6b9b8fc49479c1141f90d7bbf51b181f1053ed91db649de2415ce38bea689",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-IR-CONTAINMENT",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "b2ca786552be86b7ef631c0577c93ac625ba6f8a48e7ffeb9133e41b3f558beb",
+          "authentication_card_keyword_score": 0,
+          "legacy_top5": [
+            "MITRE-TA0007",
+            "MITRE-TA0011",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "lexical_top5": [
+            "MITRE-TA0011",
+            "MITRE-TA0007",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "request_sha256": "fb055424d84044eab6becc7dbb5178960dbb1a2e60a9f8f4ffd493c5acfaa3d7",
+      "variants": {
+        "prior_full_request": {
+          "query_sha256": "24c452fbcfdb0b6986a19cc5edc28e672799781a5ec4100fbf1a8125a7c29ef5",
+          "authentication_card_keyword_score": 6,
+          "legacy_top5": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "lexical_top5": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-IR-CONTAINMENT",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "factual_tables": {
+          "query_sha256": "0d75ca6866e277ba1811d84ed819d4aa46be0d29f3c141a3b9699f73ef298cc3",
+          "authentication_card_keyword_score": 0,
+          "legacy_top5": [
+            "MITRE-TA0002",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "SOC-EVIDENCE-GAPS"
+          ],
+          "lexical_top5": [
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "MITRE-TA0001",
+            "MITRE-TA0007"
+          ]
+        }
+      }
+    }
+  ]
+}
