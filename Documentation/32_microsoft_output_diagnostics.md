@@ -46,3 +46,15 @@ rejection versus invented relationship is inconclusive for this live trial. The
 historical trial remains undiagnosable. Never label either as proven validator
 false rejection from this trace alone. Deterministic structured-field probes are
 the appropriate independent way to demonstrate compatibility defects.
+
+## Deterministic compatibility probes
+
+`tests/test_microsoft_endpoint_probes.py` isolates the unchanged legacy recognizer.
+Four valid repetitions (remote IP:port, local IP:port, destination field labels,
+and to-IP-on-port prose) falsely reject against supplied Microsoft JSON. Cross-row,
+local-port-on-remote-IP and unrelated-IP pairs correctly reject. A JSON field/value
+mutation is unrecognized and passes that narrow check, demonstrating a blind spot.
+Generic text endpoint and role checks retain their previous behavior. Missing
+Protocol stays absent, explicit Tcp stays exact, and protocol interpretation remains
+outside this deterministic legacy recognizer. These prove format incompatibility
+independently, without claiming the discarded live pair was valid.

@@ -74,7 +74,7 @@ def test_release_implementation_and_frozen_evidence_preserved():
     names = subprocess.check_output(
         ["git", "diff", "v2.3.0", "--name-only", "--", *protected], cwd=ROOT, text=True
     ).splitlines()
-    # This sprint authorizes the input profile and two analyzer retrieval hooks.
+    # Explicit expansion integration and machine-only diagnostic instrumentation.
     # Prior implementation identities stay checked at the foundation checkpoint.
     from historical_identity import expansion_blob
 
@@ -83,8 +83,14 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "app/governance_analyzer.py",
         "dashboard/workflows.py",
         "dashboard/sample_loader.py",
+        "app/ollama_client.py",
     }
-    additions = {"app/soc_inputs.py", "dashboard/microsoft_input.py"}
+    additions = {
+        "app/soc_inputs.py",
+        "dashboard/microsoft_input.py",
+        "app/local_diagnostics.py",
+        "app/model_metrics.py",
+    }
     assert all(
         name.startswith("app/retrieval/") or name in integration | additions
         for name in names
