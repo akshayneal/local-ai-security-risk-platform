@@ -13,6 +13,17 @@ from evals.provenance import ROOT
 
 def expansion_blob(name: str) -> str:
     """Four explicitly authorized integration paths retain their prior identity."""
+    sprint3 = json.loads(
+        (ROOT / "Documentation/expansion_sprint_3_preservation.json").read_bytes()
+    )
+    if name in sprint3["authorized_prior_source_git_blob_sha1"]:
+        value = subprocess.check_output(
+            ["git", "rev-parse", f"{sprint3['starting_commit']}:{name}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert value == sprint3["authorized_prior_source_git_blob_sha1"][name]
+        return value
     manifest = json.loads(
         (ROOT / "Documentation/expansion_sprint_2_preservation.json").read_bytes()
     )

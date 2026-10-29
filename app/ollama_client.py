@@ -1,11 +1,13 @@
 import json
 import os
+import time
 from typing import Any
 
 from dotenv import load_dotenv
 from ollama import Client
 from tenacity import retry, stop_after_attempt, wait_fixed
 
+from app.model_metrics import configured_context, finish_attempt, start_attempt
 from app.prompts import SYSTEM_PROMPT
 
 load_dotenv()
@@ -42,6 +44,11 @@ def call_model_json(
     """
     Sends a prompt to the local Ollama model and asks for JSON matching a schema.
     """
+    record = start_attempt(user_prompt, response_schema)
+    started = time.perf_counter()
+    options = {"temperature": OLLAMA_TEMPERATURE}
+    if configured_context() is not None:
+        options["num_ctx"] = configured_context()
     response = client.chat(
         model=OLLAMA_MODEL,
         messages=[
@@ -49,10 +56,9 @@ def call_model_json(
             {"role": "user", "content": user_prompt},
         ],
         format=response_schema,
-        options={
-            "temperature": OLLAMA_TEMPERATURE,
-        },
+        options=options,
     )
+    finish_attempt(record, response, started)
 
     content = response["message"]["content"]
     cleaned = _clean_model_json(content)
@@ -60,4 +66,6 @@ def call_model_json(
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError as exc:
-        raise ValueError(f"Model returned invalid JSON: {cleaned[:500]}") from exc
+        if record is not None:
+            record["status"] = "invalid_json"
+        raise ValueError("Model returned invalid JSON") from exc

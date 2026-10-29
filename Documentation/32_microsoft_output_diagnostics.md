@@ -29,3 +29,20 @@ diagnostic implementation is committed:
 Only machine diagnostics are written to ignored
 `evals/results/microsoft_port_diagnosis.json`. No rejected output is persisted.
 Reproduction results and compatibility probes will be recorded separately.
+
+## Controlled reproduction result
+
+At clean diagnostic implementation `f8159d21d15699040dfd38ae2b197ae1c96e9a44`,
+one unseeded trial, qwen3:8b identifier `500a1f067a9f`, Ollama 0.40.12, temperature
+0.1, legacy retrieval, server-default context: withheld after 245.185 seconds.
+Initial validation: `IP_SHAPE`, `observed_evidence`; schema passed. Repair:
+`ENDPOINT_PAIR`, `summary`; schema and observable membership passed. Exactly one
+repair; no final response. Only safe codes were retained in the ignored report.
+
+Classification: **reproduced availability failure with known rejection stages**.
+Initial malformed-identifier detection and repair endpoint rejection are established.
+The final pair's actual values are deliberately unavailable, so valid-pair false
+rejection versus invented relationship is inconclusive for this live trial. The
+historical trial remains undiagnosable. Never label either as proven validator
+false rejection from this trace alone. Deterministic structured-field probes are
+the appropriate independent way to demonstrate compatibility defects.
