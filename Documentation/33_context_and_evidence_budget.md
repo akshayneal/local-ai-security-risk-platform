@@ -28,3 +28,24 @@ evidence, initial prompt size, reference overhead, system/schema overhead, proce
 tokens, generation tokens, residency and latency are separately retained. No
 pre-inference exact tokenizer is available. Measurements and selected production
 policy follow after the complete untreated baseline and controlled probes.
+
+## Provider behavior investigation
+
+The installed SDK's `Client.chat` signature and ChatRequest fields do not expose
+`truncate` or `shift`. The matching server release does: see tagged
+[request types](https://github.com/ollama/ollama/blob/v0.40.12/api/types.go),
+[chat routing](https://github.com/ollama/ollama/blob/v0.40.12/server/routes.go), and
+[llama-server adapter](https://github.com/ollama/ollama/blob/v0.40.12/llm/llama_server.go).
+Its default oversized-prompt path preserves a prefix and suffix while discarding
+intervening tokens to approximately half the context. Generation can also shift
+context. This explains a plausible mechanism for the observed 2050-token count at
+context 4096; the count alone does not identify which rows or instructions survived.
+
+A separate five-call API contract plan is committed under `evals/context_contract/`
+before results. It tests `truncate=false`, `shift=false` at both measured contexts,
+including input overflow and generation-capacity pressure. Only fixed statuses,
+allowlisted numeric usage and residency are saved. No raw generated text is saved.
+These mechanics probes do not replace the original six quality/context cells.
+The outcome will determine whether native fail-closed capacity controls are a
+better supported treatment than an approximate byte/token budget. No production
+transport or setting is changed merely because source inspection suggests support.
