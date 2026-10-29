@@ -104,3 +104,30 @@ def test_disabled_by_default(monkeypatch):
         soc_analyzer, "call_model_json", lambda **kw: deepcopy(SOC_RESPONSE)
     )
     soc_analyzer.analyze_soc_alert(SocAlertRequest(**SOC_INPUT), references=[])
+
+
+@pytest.mark.parametrize("ui", [False, True])
+def test_api_and_activity_never_receive_local_diagnostics(monkeypatch, ui):
+    from fastapi.testclient import TestClient
+
+    from app import main
+
+    audits = []
+    monkeypatch.setattr(main, "write_audit_log", lambda **kw: audits.append(kw))
+    monkeypatch.setattr(
+        soc_analyzer, "call_model_json", lambda **kw: deepcopy(SOC_RESPONSE)
+    )
+
+    def analyze(request, *, trace=None):
+        assert not isinstance(trace, LocalDiagnosticTrace)
+        return soc_analyzer.analyze_soc_alert(request, references=[], trace=trace)
+
+    monkeypatch.setattr(main, "analyze_soc_alert", analyze)
+    with TestClient(main.app) as client:
+        response = client.post(
+            ("/ui" if ui else "") + "/analyze/soc-alert", json=SOC_INPUT
+        )
+    assert response.status_code == 200
+    serialized = response.text + json.dumps(audits)
+    for key in ("identity_sha256", "events", "violations", "diagnostics", "elapsed_ms"):
+        assert key not in serialized
