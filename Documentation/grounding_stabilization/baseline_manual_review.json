@@ -1,0 +1,91 @@
+{
+  "status": "partial baseline review before treatment",
+  "reviewer": "implementation assistant; unblinded, not independent adjudication",
+  "rubric": "evals/grounding_stabilization/rubric.md",
+  "judgment_revisions": [],
+  "reviews": [
+    {
+      "case_id": "GS35-NET",
+      "record_sha256": "bcebdad92dc12e8dd2d93ad563d09d4e64e4ab922677c8719e13a97ef8bd50d4",
+      "incorrect_incident_classification": "ambiguous",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A successful TCP connection was established from lab-router-35 (192.0.2.73:52931) to 198.51.100.73:7443. No evidence of compromise or malicious activity is present in the telemetry."
+        },
+        {
+          "field": "likely_incident_type",
+          "value": "Legitimate network connection"
+        }
+      ],
+      "rationale": "Exact TCP connection and endpoint roles retained, no login/brute-force sequence invented. Incident title calls it legitimate although investigation still asks whether expected; this is an ambiguous benign inference, not established legitimacy. No automatic containment. Authentication/MFA guidance and source rationale remain only weakly applicable to network-only input. No absent-telemetry claim is treated as proof that no login ever occurred."
+    },
+    {
+      "case_id": "GS35-NOTE",
+      "record_sha256": "9cca5cb212ba71abea3ecfd61bbaf9abb5e8fdb4f7e70a6c9669bc688a5ddff4",
+      "incorrect_incident_classification": "present",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "ambiguous",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "mitre_mapping",
+          "value": [
+            "Credential Access"
+          ]
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for notepad.exe on lab-training-35",
+            "Alert note indicating training document example with vssadmin.exe"
+          ]
+        },
+        {
+          "field": "alert_id",
+          "value": "SYN-VENDOR-35"
+        }
+      ],
+      "rationale": "Notepad event and training-only command context retained without asserting deletion execution. Credential Access mapping nevertheless follows the unsupported vendor label, while body says no credential evidence. False-positive classification versus High severity is ambiguous. Alert identity is replaced by the vendor alert ID, separately caught by the frozen exact-identity machine check. Source applicability is overstated for credential-access/login guidance. No device is explicitly used as an account to disable."
+    },
+    {
+      "case_id": "GS35-AUTH",
+      "record_sha256": "594409b053f6430c40774149892564068b551e320c76274d0d31a37cc5dc81d7",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "Three SigninLog entries show two failed password authentication attempts (ResultType 50126) followed by a successful authentication (ResultType 0) for account lab-reviewer35@example.invalid from IP 203.0.113.73. ConditionalAccessStatus for the successful login was \"success\"."
+        },
+        {
+          "field": "false_positive_considerations",
+          "value": [
+            "The IP 203.0.113.73 is a private IP address",
+            "ConditionalAccessStatus \"success\" may indicate legitimate authentication"
+          ]
+        },
+        {
+          "field": "analyst_inferences",
+          "value": [
+            "The pattern of failed attempts followed by a successful login may indicate a brute force attack",
+            "The ConditionalAccessStatus \"success\" suggests some form of authentication verification was applied",
+            "The private IP address 203.0.113.73 may indicate internal network activity"
+          ]
+        }
+      ],
+      "rationale": "Two failures then success for the same user/IP and supplied Conditional Access result are accurately retained. Bounded brute-force concern is admissible for this positive control, not a confirmed takeover claim. The response incorrectly calls the documentation-range 203.0.113.73 private and infers internal activity; the exact address was copied but the attached interpretation is unsupported. Conditional Access success may imply verification, but does not establish legitimacy. Guidance is relevant; known sign-in telemetry is retained despite requests for additional history."
+    }
+  ]
+}
