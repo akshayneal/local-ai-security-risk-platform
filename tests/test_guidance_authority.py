@@ -39,7 +39,6 @@ def test_curated_authority_comes_from_application_catalog_not_claimed_fields():
 
 def test_legacy_source_relevance_cannot_upgrade_guidance_even_without_keywords():
     from app.reference_authority import restore_guidance_sources
-
     from app.reference_loader import sanitize_source_references
 
     refs = [curated("GRC-AI-LOGGING")]
