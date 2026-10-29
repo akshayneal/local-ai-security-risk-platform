@@ -1,0 +1,20 @@
+{
+  "version": "microsoft-reliability-v1",
+  "cases": 24,
+  "soc_cases": 14,
+  "governance_cases": 10,
+  "baseline_attempts": 32,
+  "treatment_attempts": 32,
+  "repeated_case_ids": ["REL-SOC-001", "REL-SOC-006", "REL-GOV-001", "REL-GOV-005"],
+  "repeated_trials": 3,
+  "other_trials": 1,
+  "model": "qwen3:8b",
+  "temperature": 0.1,
+  "seed": null,
+  "retrieval": "legacy",
+  "baseline_context": "server default; no application num_ctx override",
+  "treatment_rule": "Only evidence-backed changes after the complete baseline. No evaluator changes or selective reruns.",
+  "context_probe": {"contexts": [4096, 8192], "rows": [1, 12, 45], "trials_per_cell": 1},
+  "metrics": ["availability", "first_pass_validity", "repair_rate", "post_repair_validity", "critical_evidence_coverage_proxy", "manual_material_omission", "manual_unsupported_factual_claim", "manual_unsupported_authority", "manual_overclaiming", "source_discipline", "endpoint_identifier_fidelity", "latency"],
+  "overall_score": false
+}
