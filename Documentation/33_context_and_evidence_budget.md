@@ -153,3 +153,21 @@ The 8192 choice is an intentional Microsoft-only treatment variable, with roughl
 45-row case is expected to be withheld, which counts against availability. Input
 capacity remains content-dependent, not a promised fixed number of rows or bytes.
 Generic/AI-risk large-input context behavior is outside this bounded treatment.
+
+## Observed treatment capacity outcomes
+
+The unchanged treatment's 12-row SOC-013 request processed 4,805 prompt tokens and
+generated 1,362 tokens at context 8192, retaining the supplied deletion command and
+the correct request identity. Its source count is nevertheless wrong (12 status
+events plus one deletion event instead of 11 plus one), and its incident label
+borrows an unsupported authentication scenario. Adequate measured capacity does
+not establish semantic comprehension or counting accuracy.
+
+The 45-row SOC-014 request was withheld with `EvidenceBudgetError`, one rejected
+model request, no policy repair, no returned result and no processed-token count.
+Its actual initial user prompt is 56,043 UTF-8 bytes, including the inventory;
+canonical raw evidence remains 36,444 bytes. The frozen runner's separate prompt
+measurement precedes analyzer-added inventory, so actual model-request metrics are
+the right overhead measurement. The provider rejection took 4.687 seconds. No rows
+were selected out or represented as having received a complete analysis. This
+costs availability compared with the baseline's flawed returned large-case output.

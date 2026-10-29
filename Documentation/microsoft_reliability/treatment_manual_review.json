@@ -487,6 +487,94 @@
         }
       ],
       "rationale": "Correctly distinguishes auto-send after 30 seconds unless vetoed from affirmative approval. Escalation/evidence-validation gaps may describe absent evidence, hence ambiguous rather than established absent controls. Source relevance overgeneralizes checklist advice to a mandate for all systems affecting user interactions, without supplied authority. No actual malicious ticket or breach asserted."
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 2,
+      "record_sha256": "36773467690fc698151782b930a4227d7c556750e98fc90530c7be9464c84fc0",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "present",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system automatically sends helpdesk replies after 30 seconds unless a reviewer vetoes it. This lacks explicit human approval mechanisms for high-impact business decisions, creating operational and governance risks."
+        },
+        {
+          "field": "source_references",
+          "text": "Mandatory human review for systems affecting users"
+        }
+      ],
+      "rationale": "Default auto-send and risk of unreviewed advice retained. High-impact business decisions language may be a generic control condition rather than an asserted function, so factual/overclaim scope is ambiguous; actual harm is not invented. Missing logs are unprovided rather than established absent. Source relevance asserts mandatory review for systems affecting users, exceeding the supplied checklist scope. Proposed affirmative approval is reasonable advice, not evidence it already exists."
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 3,
+      "record_sha256": "17ee6a47292246e888f315148515a67c8a274ce84ba491f8fc3b978261cf2fa4",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "present",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system automates helpdesk reply generation with a 30-second veto window for human review. Risks include potential for unreviewed advice to reach users, lack of explicit approval mechanisms, and insufficient evidence for business impact assessment."
+        },
+        {
+          "field": "source_references",
+          "text": "Human review required for systems affecting users"
+        }
+      ],
+      "rationale": "Default auto-send/veto distinction and unreviewed advice risk retained. Asking for documented impact analysis is not denial of the supplied staff-time impact; documentation absence remains ambiguous. Source relevance upgrades general review advice to required for systems affecting users without a binding applicability basis. Recommended affirmative approval changes are proposals rather than a claim that the current system gates delivery."
+    },
+    {
+      "case_id": "REL-GOV-006",
+      "trial": 1,
+      "record_sha256": "430b4f38dbd54d296e5209d496ebdf44ec9904e7047cc811c48251a762e36d3d",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system processes customer messages with human review for summary approvals, but lacks specified data retention policies, vendor secondary use details, and impact assessment. Potential confidentiality risks require additional controls."
+        },
+        {
+          "field": "human_review_requirements",
+          "text": "Verify vendor secondary use agreements"
+        }
+      ],
+      "rationale": "Missing vendor retention and secondary-use terms are now explicitly retained with vendor agreement verification rather than only internal policies. No actual vendor training or disclosure is invented. Confidentiality risk is grounded; applying the high-impact-use checklist to unspecified confidentiality impact remains an ambiguous applicability concern, not proof of a high-impact decision function. Proposed controls are not a verified external mandate."
+    },
+    {
+      "case_id": "REL-GOV-007",
+      "trial": 1,
+      "record_sha256": "73a4a2a7e089ff5c650b80081025eb21af253c8b3a16d7f1c74291c836979631",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system handles public catalog data with minimal risk due to local-only processing, 14-day retention, and human review. No high-impact use or external integrations are present."
+        },
+        {
+          "field": "key_risks",
+          "text": "Data retention duration without secondary use verification"
+        },
+        {
+          "field": "evidence_gaps",
+          "text": "No external integration security controls"
+        }
+      ],
+      "rationale": "Known local-only processing and 14-day retention retained in summary and logging. Baseline invented sensitive-data risk is gone. Secondary use is supplied as absent, but response calls for verification; this could mean enforcement evidence rather than policy absence, so factual support is ambiguous. External integration controls as a gap are weakly applicable when no integration exists, an ambiguous proportionality concern. No vendor processing, legal mandate or high-impact decision is asserted."
     }
   ]
 }

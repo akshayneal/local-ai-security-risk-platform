@@ -83,3 +83,16 @@ structured pairs rather than an empty legacy extraction. Deterministic controls 
 a previously rejected valid pair now returns first-pass and that fixing observations
 while introducing a bad pair in another field still fails closed after exactly one
 repair. Generic SOC behavior retains its original path.
+
+## Unchanged treatment observations
+
+All five network-only attempts (SOC-006 three times, SOC-007, SOC-008) returned
+with supplied endpoint relationships after treatment, including the three attempts
+withheld in baseline. SOC-006/2 needed one repair after `IP_SHAPE` in observations;
+the repaired response passed the full validator. No rejected raw value is available
+to classify that initial defect more specifically. Four network responses returned
+first-pass. These observations support availability for this bounded sample, not a
+universal endpoint-accuracy rate. Unsupported MITRE classifications still occur in
+some network responses despite correct endpoint fields. Unknown application
+protocol remains unknown; hypothetical HTTPS examples are not counted as observed
+protocol claims. Full semantic review lives in the separate treatment ledger.
