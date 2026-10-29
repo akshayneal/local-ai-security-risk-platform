@@ -44,6 +44,165 @@
         }
       ],
       "rationale": "Supplied TCP connection and endpoint relationships retained; no invented authentication sequence. However C2 mapping is not supported by a single connection without beaconing, reputation or other malicious evidence. This negative-control classification is a false positive despite careful body caveats and a neutral incident title; medium severity alone is not the defect. PowerShell checklist reference explains absent PowerShell rather than applicable process evidence. This is a factual/classification regression versus the baseline ambiguous legitimacy wording, not a query-contamination failure."
+    },
+    {
+      "case_id": "GS35-NOTE",
+      "record_sha256": "4acd8310b7616cacab08687b271b1411f3c0daed8226153b1b5435bcf5b16038",
+      "incorrect_incident_classification": "present",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "ambiguous",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "mitre_mapping",
+          "value": [
+            "Initial Access"
+          ]
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for notepad.exe on lab-training-35",
+            "Alert note indicating the vssadmin.exe example was not executed",
+            "No credential access or sign-in events observed"
+          ]
+        },
+        {
+          "field": "evidence_gaps",
+          "value": [
+            "No observed credential access events or sign-in attempts.",
+            "No indication of unauthorized access or suspicious authentication activity.",
+            "Missing details about the notepad.exe process's command-line arguments or purpose.",
+            "No network traffic or remote access evidence to support the alert's title."
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "MITRE-TA0001",
+              "title": "MITRE ATT&CK - Initial Access",
+              "framework": "MITRE ATT&CK",
+              "relevance": "The alert's title suggests possible initial access, but no direct evidence of unauthorized login is present"
+            },
+            {
+              "source_id": "MITRE-TA0006",
+              "title": "MITRE ATT&CK - Credential Access",
+              "framework": "MITRE ATT&CK",
+              "relevance": "The alert's title implies credential theft, but no direct evidence of credential access is observed"
+            },
+            {
+              "source_id": "LOCAL-SUPPORTED-CLAIMS",
+              "title": "General Checklist - Supported Claims",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "The analysis must distinguish between observed evidence and unsupported claims, ensuring no assumptions are made about IP, domain, or credential status without explicit data"
+            }
+          ]
+        }
+      ],
+      "rationale": "Correct case identity now retained, and the training example is explicitly not executed. Actual notepad process and vendor-allegation distinction preserved. Initial Access mapping remains unsupported, replacing the baseline unsupported Credential Access mapping. Missing command-line arguments is false: they are supplied. High severity versus False Positive label remains an ambiguous benign-control judgment, as in baseline; severity alone is not scored. Reference relevance infers possible Initial Access from the vendor title despite no observed entry mechanism, an applicability defect. No confirmed credential theft or device-as-account claim."
+    },
+    {
+      "case_id": "GS35-AUTH",
+      "record_sha256": "2ac4de62fe1703abe90ad96f4f4826177c571a3a407e080e6456ee14fbebdd10",
+      "incorrect_incident_classification": "ambiguous",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "Multiple failed password authentication attempts followed by a successful login to account lab-reviewer35@example.invalid from IP 203.0.113.73. The successful login had ConditionalAccessStatus: success but no MFA context provided."
+        },
+        {
+          "field": "likely_incident_type",
+          "value": "Brute Force Attempt"
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "3 SigninLog entries for lab-reviewer35@example.invalid from 203.0.113.73",
+            "2 failed password attempts (ResultType 50126)",
+            "1 successful authentication (ResultType 0) with ConditionalAccessStatus: success"
+          ]
+        },
+        {
+          "field": "analyst_inferences",
+          "value": [
+            "The sequence suggests potential credential access attempt",
+            "The successful login's legitimacy is unverified without MFA/Conditional Access context"
+          ]
+        }
+      ],
+      "rationale": "Actual two failures then success for same named user/IP and CA status retained; appropriate authentication guidance remains selected. Baseline incorrect private-IP/internal-network claim is gone. Brute Force Attempt title is stronger than the body possible-attempt wording; attack interpretation remains ambiguous rather than a proven malicious takeover or an invented event sequence. CA status is acknowledged, while complete policy/MFA logs remain unknown; request for those details is not automatically denial of supplied status. Positive control preserved without treating CA success as legitimacy proof."
+    },
+    {
+      "case_id": "GS35-DUMP",
+      "record_sha256": "052a4b969206249f79d2b8377d12ba2ba1d5398474b90059f3fec6e881c90de1",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process creation event was detected on lab-memory-35 executing procdump.exe with a memory dump command targeting lsass.exe. The command line indicates potential credential dumping activity."
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event on lab-memory-35",
+            "Execution of procdump.exe with memory dump command targeting lsass.exe",
+            "SHA256 hash 7373737373737373737373737373737373737373737373737373737373737373"
+          ]
+        },
+        {
+          "field": "analyst_inferences",
+          "value": [
+            "Suspicious memory extraction activity targeting lsass.exe",
+            "Potential credential dumping attempt",
+            "Unverified legitimacy of the process execution"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "MITRE-TA0002",
+              "title": "MITRE ATT&CK - Execution",
+              "framework": "MITRE ATT&CK",
+              "relevance": "The execution of procdump.exe aligns with MITRE ATT&CK Execution tactics"
+            },
+            {
+              "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+              "title": "SOC Checklist - Suspicious PowerShell",
+              "framework": "Local SOC Checklist",
+              "relevance": "The command line warrants review of full command line, parent process, and script block logs as per checklist"
+            },
+            {
+              "source_id": "SOC-EVIDENCE-GAPS",
+              "title": "SOC Checklist - Common Evidence Gaps",
+              "framework": "Local SOC Checklist",
+              "relevance": "The analysis highlights gaps in process tree, authentication history, and timeline context"
+            }
+          ]
+        },
+        {
+          "field": "recommended_containment",
+          "value": [
+            "Isolate lab-memory-35 from the network pending investigation",
+            "Review account privileges for AccountName associated with the process",
+            "Check for additional suspicious process creations"
+          ]
+        }
+      ],
+      "rationale": "LSASS dump command intent, device and exact hash preserved with potential/attempt qualification, without claiming successful dump, actual credential loss, exfiltration or Persistence. Execution mapping does not erase the credential-dumping interpretation in title/summary; exact tactic label is not a required answer key. Generic AccountName wording is a placeholder, not a device-as-account assertion. PowerShell-specific checklist partially supports command/parent-process review but script-block logs are weakly applicable, hence ambiguity. Immediate isolation pending investigation is stronger than a conditional proposal and remains a proportionality limitation outside these six counted dimensions; no executed action is claimed."
     }
   ]
 }
