@@ -36,8 +36,8 @@ The tracked `retrieval_evaluation/lexical_checkpoint.json` records full rankings
 scores, metadata, metrics, source/fixture hashes, runtime provenance and timings.
 Both candidates use exactly the same cases. Lexical improves first-hit ranking
 without improving aggregate recall; all eight violation counters are zero for both.
-Final four-candidate results and architecture decision are added after the local
-dense/hybrid experiment. Generation model calls and historical suite reruns: zero.
+The final four-candidate results and architecture decision follow below.
+Generation model calls and historical live suite reruns: zero.
 
 ## Final measured comparison
 
