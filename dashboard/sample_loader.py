@@ -8,6 +8,7 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from app.schemas import GovernanceRiskRequest, SocAlertRequest
+from app.soc_inputs import parse_json_bundle
 
 ROOT = Path(__file__).resolve().parents[1]
 Sample = SocAlertRequest | GovernanceRiskRequest
@@ -15,6 +16,23 @@ Sample = SocAlertRequest | GovernanceRiskRequest
 
 class SampleLoadError(ValueError):
     pass
+
+
+def load_microsoft_samples(
+    directory: Path = ROOT / "sample_data/microsoft",
+) -> dict[str, dict]:
+    try:
+        samples = [
+            parse_json_bundle(path.read_bytes())
+            for path in sorted(directory.glob("*.json"))
+        ]
+        if not samples or len({s["case_id"] for s in samples}) != len(samples):
+            raise ValueError("empty or duplicate samples")
+        return {s["case_id"]: s for s in samples}
+    except (OSError, ValueError) as exc:
+        raise SampleLoadError(
+            "Synthetic Microsoft samples are unavailable or invalid."
+        ) from exc
 
 
 def load_soc_samples(

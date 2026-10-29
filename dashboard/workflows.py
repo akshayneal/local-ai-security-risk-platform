@@ -148,6 +148,18 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
         else "Assess an AI system or proposed AI use case for governance, security, privacy and operational risk."
     )
     st.caption("Human review required · local inference · recommendations only")
+    if soc:
+        from dashboard.microsoft_input import clear_soc_profile, microsoft_workspace
+
+        profile = st.selectbox(
+            "Input profile",
+            ["Generic / normalized SOC input", "Microsoft Security telemetry"],
+            key="soc_input_profile",
+            on_change=clear_soc_profile,
+        )
+        if profile == "Microsoft Security telemetry":
+            microsoft_workspace(base_url)
+            return
     try:
         samples = load_soc_samples() if soc else load_governance_samples()
     except SampleLoadError as exc:
