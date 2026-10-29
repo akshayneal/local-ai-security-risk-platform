@@ -1,0 +1,4586 @@
+{
+  "identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "92e8ee3038715071389b8ff95c4b6f65f7ce7da8",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "phase": "treatment",
+  "started_utc": "2026-10-29T17:56:12.977521+00:00",
+  "records": [
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 1,
+      "request_sha256": "1c96d4dbf3b5120837e3d2eadbdef55f67c59fd9035626f7bd27074f16d95797",
+      "original_bundle_utf8_bytes": 379,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 378,
+      "reference_utf8_bytes": 1974,
+      "initial_user_prompt_utf8_bytes": 9862,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": null,
+        "size": null,
+        "size_vram": null
+      },
+      "result": {
+        "alert_id": "REL-SOC-001",
+        "severity": "medium",
+        "likely_incident_type": "Execution",
+        "summary": "Two suspicious process creations detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed compromise detected.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Investigate the origin and purpose of the PowerShell script (C:\\Lab\\stage.ps1)",
+          "Verify if the wmic.exe command aligns with known maintenance procedures",
+          "Check for unusual account activity or privilege changes",
+          "Monitor for subsequent suspicious behavior"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history and MFA status for synthetic-lab-a",
+          "Analyze the contents of C:\\Lab\\stage.ps1 for malicious patterns",
+          "Check process tree relationships between the observed processes",
+          "Verify if the device has any scheduled maintenance or script execution policies"
+        ],
+        "false_positive_considerations": [
+          "The processes could be part of legitimate maintenance tasks",
+          "The script path (C:\\Lab\\) might be a misconfigured or test environment",
+          "wmic shadowcopy deletion might be part of system cleanup procedures"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing process tree information",
+          "Missing MFA/Conditional Access context",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed processes exhibit characteristics of potential execution and defense evasion tactics, but no confirmed compromise has been identified. Further investigation is required to determine legitimacy.",
+        "observed_evidence": [
+          "ProcessCreated event for powershell.exe with command line: powershell.exe -File C:\\Lab\\stage.ps1",
+          "ProcessCreated event for wmic.exe with command line: wmic.exe shadowcopy delete /nointeractive",
+          "DeviceId: synthetic-lab-a"
+        ],
+        "analyst_inferences": [
+          "The PowerShell script execution may indicate potential execution activity",
+          "The wmic shadowcopy deletion could suggest defense evasion attempts",
+          "No confirmed unauthorized access or compromise detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to the suspicious PowerShell script execution"
+          },
+          {
+            "source_id": "MITRE-TA0005",
+            "title": "MITRE ATT&CK - Defense Evasion",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to the wmic shadowcopy deletion command"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to authentication context verification"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 114788.75629999675,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "821b8b171d1157a2f901297339868c2228f5725499581aaa6ba33165781b75e0",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2073.698
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 114788.149
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 114788.159
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9862,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2615,
+          "eval_count": 919,
+          "total_duration": 110642068700,
+          "load_duration": 4027388400,
+          "prompt_eval_duration": 3414153000,
+          "eval_duration": 103187263000,
+          "elapsed_ms": 112704.791,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 2,
+      "request_sha256": "1c96d4dbf3b5120837e3d2eadbdef55f67c59fd9035626f7bd27074f16d95797",
+      "original_bundle_utf8_bytes": 379,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 378,
+      "reference_utf8_bytes": 1974,
+      "initial_user_prompt_utf8_bytes": 9862,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-001",
+        "severity": "medium",
+        "likely_incident_type": "Potential Execution and Defense Evasion",
+        "summary": "Two process creation events detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed compromise, but suspicious activity warrants investigation.",
+        "mitre_mapping": [
+          "Execution",
+          "Defense Evasion"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account pending verification",
+          "Review authentication history and MFA/VPN context",
+          "Inspect post-login activity for privilege changes"
+        ],
+        "recommended_investigation_steps": [
+          "Check script contents (C:\\Lab\\stage.ps1) for malicious code",
+          "Verify legitimacy of the login and account ownership",
+          "Review process tree and network connections",
+          "Check for persistence mechanisms",
+          "Examine Conditional Access status and access controls"
+        ],
+        "false_positive_considerations": [
+          "Scripts may be legitimate maintenance tasks",
+          "Unfamiliar IP/location does not confirm compromise",
+          "Process creation alone does not prove malicious intent"
+        ],
+        "evidence_gaps": [
+          "Missing timestamp information",
+          "Missing authentication history",
+          "Missing user confirmation",
+          "Missing process tree context"
+        ],
+        "analyst_note": "The observed process creations show potential for execution and defense evasion techniques. However, without additional telemetry or user confirmation, no definitive conclusions about compromise can be drawn. Containment actions should be reviewed by an analyst before implementation.",
+        "observed_evidence": [
+          "ProcessCreated event for powershell.exe -File C:\\Lab\\stage.ps1",
+          "ProcessCreated event for wmic.exe shadowcopy delete /nointeractive"
+        ],
+        "analyst_inferences": [
+          "Suspicious script execution via PowerShell",
+          "Potential defense evasion through shadowcopy deletion",
+          "No confirmed unauthorized access or compromise"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to PowerShell script execution"
+          },
+          {
+            "source_id": "MITRE-TA0005",
+            "title": "MITRE ATT&CK - Defense Evasion",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to potential shadowcopy deletion as defense evasion"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for account verification and containment"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing telemetry and authentication context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 116487.07020000438,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "821b8b171d1157a2f901297339868c2228f5725499581aaa6ba33165781b75e0",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2027.273
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 116486.188
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 116486.196
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9862,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2615,
+          "eval_count": 985,
+          "total_duration": 112398624100,
+          "load_duration": 10156800,
+          "prompt_eval_duration": 279327000,
+          "eval_duration": 112097602000,
+          "elapsed_ms": 114450.265,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 3,
+      "request_sha256": "1c96d4dbf3b5120837e3d2eadbdef55f67c59fd9035626f7bd27074f16d95797",
+      "original_bundle_utf8_bytes": 379,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 378,
+      "reference_utf8_bytes": 1974,
+      "initial_user_prompt_utf8_bytes": 9862,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-001",
+        "severity": "medium",
+        "likely_incident_type": "Potential Execution and Defense Evasion",
+        "summary": "Two process creation events detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed authentication compromise, but suspicious command patterns observed.",
+        "mitre_mapping": [
+          "Execution",
+          "Defense Evasion"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account pending verification",
+          "Review script contents and user activity",
+          "Check for additional suspicious processes"
+        ],
+        "recommended_investigation_steps": [
+          "Examine C:\\Lab\\stage.ps1 for malicious content",
+          "Verify if the login was expected and check MFA status",
+          "Review post-login activity and privilege changes"
+        ],
+        "false_positive_considerations": [
+          "Scripts may be legitimate maintenance tasks",
+          "Commands could be part of routine system management"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing timeline context"
+        ],
+        "analyst_note": "Suspicious process creation patterns detected but no confirmed compromise. Further investigation required.",
+        "observed_evidence": [
+          "ProcessCreated: powershell.exe -File C:\\Lab\\stage.ps1",
+          "ProcessCreated: wmic.exe shadowcopy delete /nointeractive"
+        ],
+        "analyst_inferences": [
+          "Potential execution of unknown script",
+          "Possible defense evasion via shadowcopy deletion"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to PowerShell script execution"
+          },
+          {
+            "source_id": "MITRE-TA0005",
+            "title": "MITRE ATT&CK - Defense Evasion",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to shadowcopy deletion"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to account legitimacy verification"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 103934.92909999622,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "821b8b171d1157a2f901297339868c2228f5725499581aaa6ba33165781b75e0",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2027.915
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 103934.409
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 103934.415
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9862,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2615,
+          "eval_count": 881,
+          "total_duration": 99869303600,
+          "load_duration": 10568500,
+          "prompt_eval_duration": 347482000,
+          "eval_duration": 99500425000,
+          "elapsed_ms": 101901.589,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-002",
+      "trial": 1,
+      "request_sha256": "c4163888327f8c62cd333831eeacf2301e145fb406c5160373786451aa0817d2",
+      "original_bundle_utf8_bytes": 207,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 208,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9563,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-002",
+        "severity": "medium",
+        "likely_incident_type": "Unspecified",
+        "summary": "A process creation event was detected on synthetic-lab-a involving vss,admin.exe executing \"vssadmin.exe list shadows\". No clear malicious intent identified.",
+        "mitre_mapping": [],
+        "recommended_containment": [],
+        "recommended_investigation_steps": [
+          "Verify if this process is part of legitimate backup operations",
+          "Check authentication logs for suspicious activity around the event time",
+          "Review conditional access status and MFA compliance for the account",
+          "Inspect system logs for additional suspicious process creations"
+        ],
+        "false_positive_considerations": [
+          "The process may be part of legitimate system maintenance",
+          "No clear indicators of compromise or malicious intent observed"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/conditional access context",
+          "Missing post-login activity monitoring"
+        ],
+        "analyst_note": "The observed event shows a process creation but lacks contextual evidence to confirm malicious intent. Further investigation is required to determine legitimacy.",
+        "observed_evidence": [
+          "ProcessCreated event for vssadmin.exe on synthetic-lab-a"
+        ],
+        "analyst_inferences": [
+          "The process creation may be related to backup operations",
+          "No evidence of unauthorized access or compromise detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Missing authentication history and MFA context"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Recommends reviewing authentication history and MFA context for similar events"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 79351.81750000629,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "34373212aaa57dde51c039500f264b0488e3f4745016c91e7292ca2b371524f3",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2030.872
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 79351.359
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 79351.366
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9563,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2505,
+          "eval_count": 652,
+          "total_duration": 75277185300,
+          "load_duration": 9518300,
+          "prompt_eval_duration": 1160181000,
+          "eval_duration": 73928265000,
+          "elapsed_ms": 77315.294,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-003",
+      "trial": 1,
+      "request_sha256": "0fb69678446e954a87b0b0801dca4d77582932fad296112a53589777cc588303",
+      "original_bundle_utf8_bytes": 216,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 219,
+      "reference_utf8_bytes": 2031,
+      "initial_user_prompt_utf8_bytes": 9318,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-003",
+        "severity": "low",
+        "likely_incident_type": "Suspicious Command Execution",
+        "summary": "Contextual evidence notes a quoted string containing wmic.exe shadowcopy delete /nointeractive command, but no process event or execution confirmation is provided. No authentication history, MFA status, or process telemetry is available for verification.",
+        "mitre_mapping": [],
+        "recommended_containment": [
+          "Review raw_log for missing process creation events",
+          "Verify if wmic.exe command was actually executed",
+          "Check for related process telemetry and authentication history",
+          "Consider human review before taking action"
+        ],
+        "recommended_investigation_steps": [
+          "Examine raw_log for missing process creation events",
+          "Verify if wmic.exe command was executed",
+          "Review MFA/Conditional Access status",
+          "Check for related process telemetry"
+        ],
+        "false_positive_considerations": [
+          "The command may be part of legitimate maintenance",
+          "No authentication history or MFA context provided"
+        ],
+        "evidence_gaps": [
+          "Missing endpoint telemetry",
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing process creation events"
+        ],
+        "analyst_note": "The observed evidence contains a quoted string with a suspicious command, but no confirmed execution or process telemetry is available. Further investigation is required to determine legitimacy.",
+        "observed_evidence": [
+          "\"Training note quotes wmic.exe shadowcopy delete /nointeractive; this is a quoted string, no process event supplied.\""
+        ],
+        "analyst_inferences": [
+          "The quoted string contains a suspicious command that may require further investigation",
+          "No confirmed execution or process telemetry is available",
+          "Missing context about authentication history and MFA status"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to missing endpoint telemetry and authentication history"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Relevant to missing logs and policy context"
+          },
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Potential execution tactic if command was executed"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to checking authentication history and MFA context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 115903.82580000733,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "ecd3da5d341a24bc78fb4b09910ccbe158a383bdacb4cb07e66e3ec1f0520c88",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2042.524
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 115902.939
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 115902.952
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9318,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2448,
+          "eval_count": 972,
+          "total_duration": 111797932300,
+          "load_duration": 10030300,
+          "prompt_eval_duration": 1249558000,
+          "eval_duration": 110229938000,
+          "elapsed_ms": 113851.87,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-004",
+      "trial": 1,
+      "request_sha256": "8b8d6b7f3564de49da6b8a073f18167625467d1ecb4afdbe2ea13ed489ca0d32",
+      "original_bundle_utf8_bytes": 393,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 389,
+      "reference_utf8_bytes": 2061,
+      "initial_user_prompt_utf8_bytes": 9968,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-004",
+        "severity": "medium",
+        "likely_incident_type": "Suspicious Process Chain",
+        "summary": "Two process creations observed on synthetic-lab-a: cmd.exe executing audit.cmd followed by whoami.exe /all. No confirmed compromise, but potential discovery activity noted.",
+        "mitre_mapping": [
+          "Discovery"
+        ],
+        "recommended_containment": [
+          "Review authentication history for synthetic-lab-a",
+          "Verify MFA/Conditional Access status for account associated with DeviceId synthetic-lab-a",
+          "Consider disabling the account pending verification if login legitimacy is uncertain"
+        ],
+        "recommended_investigation_steps": [
+          "Check for associated failed login attempts",
+          "Review VPN/MFA logs for synthetic-lab-a",
+          "Inspect post-login activity and privilege changes",
+          "Verify if audit.cmd is a legitimate maintenance script"
+        ],
+        "false_positive_considerations": [
+          "Commands may represent legitimate system maintenance",
+          "Process creation could be part of authorized script execution"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/VPN context",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed process chain suggests potential discovery activity, but no confirmed compromise. Further investigation is required to determine legitimacy.",
+        "observed_evidence": [
+          "ProcessCreated: cmd.exe /c audit.cmd",
+          "ProcessCreated: whoami.exe /all"
+        ],
+        "analyst_inferences": [
+          "Potential adversary discovery activity using whoami.exe /all",
+          "Uncertain legitimacy of account associated with synthetic-lab-a"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant for evaluating account legitimacy after suspicious process activity"
+          },
+          {
+            "source_id": "MITRE-TA0007",
+            "title": "MITRE ATT&CK - Discovery",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Mapping observed whoami.exe /all command to discovery tactic"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifying gaps in authentication and MFA context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 100004.0680999955,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "ab5ba0f8c2ae66478c53335c03417874416e8a3a008624c87a57785045f2f53a",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2040.963
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 100003.512
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 100003.519
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9968,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2638,
+          "eval_count": 843,
+          "total_duration": 95928047900,
+          "load_duration": 8419300,
+          "prompt_eval_duration": 1095957000,
+          "eval_duration": 94321204000,
+          "elapsed_ms": 97956.411,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-005",
+      "trial": 1,
+      "request_sha256": "b554ce5db38ebfa297deb885cb7742f68958c02e253816171836c05eafd5f7ed",
+      "original_bundle_utf8_bytes": 434,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 429,
+      "reference_utf8_bytes": 2026,
+      "initial_user_prompt_utf8_bytes": 10147,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-005",
+        "severity": "medium",
+        "likely_incident_type": "Suspicious Process Activity",
+        "summary": "Two process creation events detected: cmd.exe /c report.cmd on synthetic-lab-a and whoami.exe /all on synthetic-lab-b. No confirmed compromise detected.",
+        "mitre_mapping": [
+          "Discovery"
+        ],
+        "recommended_containment": [
+          "Review authentication history and MFA context for both devices",
+          "Consider disabling accounts pending verification if suspicious activity is confirmed",
+          "Check for unusual network connections or persistence mechanisms"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if these processes are part of legitimate maintenance scripts",
+          "Check for associated failed login attempts or MFA bypass indicators",
+          "Review process tree relationships and network activity",
+          "Confirm if these devices have elevated privileges or access to sensitive data"
+        ],
+        "false_positive_considerations": [
+          "Processes may be part of scheduled maintenance or legitimate administrative tasks",
+          "No confirmed unauthorized access or data exfiltration detected"
+        ],
+        "evidence_gaps": [
+          "Missing MFA/Conditional Access status",
+          "Missing process tree information",
+          "Missing network connection telemetry",
+          "Missing authentication history"
+        ],
+        "analyst_note": "Process creation events alone do not confirm malicious activity. Verify if these processes are part of expected operations. Check for additional indicators like failed login attempts or unusual network activity that might indicate compromise.",
+        "observed_evidence": [
+          "ProcessCreated event on synthetic-lab-a with cmd.exe /c report.cmd",
+          "ProcessCreated event on synthetic-lab-b with whoami.exe /all"
+        ],
+        "analyst_inferences": [
+          "Possible adversary discovery activity using whoami.exe /all",
+          "No confirmed unauthorized access or data exfiltration detected",
+          "Lack of network connection telemetry prevents confirmation of external communication"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0007",
+            "title": "MITRE ATT&CK - Discovery",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to the use of whoami.exe /all for system information gathering"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to checking authentication context and account legitimacy"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing telemetry and authentication history as evidence gaps"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 114000.0532999984,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "c66b73d6c7c5740d161cd2f7f8a278f1ba21810f5c53850bc6cd4655f0df117f",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2039.884
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 113999.444
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 113999.451
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10147,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2677,
+          "eval_count": 956,
+          "total_duration": 109901422900,
+          "load_duration": 11865400,
+          "prompt_eval_duration": 1245950000,
+          "eval_duration": 108355946000,
+          "elapsed_ms": 111953.17,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 1,
+      "request_sha256": "a04424de13d61c3822a661659a49c0e02c800921a38ad34ee930dca471ceb3ed",
+      "original_bundle_utf8_bytes": 193,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 193,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9525,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-006",
+        "severity": "low",
+        "likely_incident_type": "Network Connection",
+        "summary": "A single network connection was observed between 192.0.2.25:51234 and 203.0.113.91:8443 with status 'ConnectionSuccess'. No authentication events or process creation telemetry are available for analysis.",
+        "mitre_mapping": [
+          "Initial Access"
+        ],
+        "recommended_containment": [
+          "Monitor for additional network activity or authentication events related to this connection",
+          "Verify if the remote IP (203.0.113.91) is associated with authorized remote access or service endpoints"
+        ],
+        "recommended_investigation_steps": [
+          "Check authentication logs for any failed or successful login attempts associated with this connection",
+          "Review Conditional Access policies and MFA status for the account associated with this device",
+          "Inspect process creation events for any suspicious activity post-connection"
+        ],
+        "false_positive_considerations": [
+          "The connection could be legitimate remote access or a service endpoint",
+          "No authentication events suggest this may not be a credential-based access attempt"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing process creation telemetry",
+          "Missing asset criticality context"
+        ],
+        "analyst_note": "The observed connection lacks contextual evidence to confirm malicious intent. Human review is required to determine legitimacy and assess potential risks.",
+        "observed_evidence": [
+          "ConnectionSuccess between 192.0.2.25:51234 and 203.0.113.91:8443",
+          "No authentication events or process creation telemetry available"
+        ],
+        "analyst_inferences": [
+          "The connection appears to be a single network event without associated authentication activity",
+          "Unable to confirm if the remote IP is associated with authorized access or malicious activity"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and process telemetry as critical gaps"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant for evaluating authentication context and post-connection activity"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Guidance on distinguishing observed evidence from unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 143404.96690000873,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7dd136ec15ef95673552a831148abf665b1ee76722fc3a067e5c8ed4b9c18ea7",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2025.313
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 143404.294
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 143404.3
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9525,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2558,
+          "eval_count": 1216,
+          "total_duration": 139342276600,
+          "load_duration": 9287000,
+          "prompt_eval_duration": 1059053000,
+          "eval_duration": 137880280000,
+          "elapsed_ms": 141371.976,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 2,
+      "request_sha256": "a04424de13d61c3822a661659a49c0e02c800921a38ad34ee930dca471ceb3ed",
+      "original_bundle_utf8_bytes": 193,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 193,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9525,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-006",
+        "severity": "low",
+        "likely_incident_type": "Network Connection",
+        "summary": "A successful network connection was observed between 192.0.2.25:51234 and 203.0.113.91:8443. No evidence of compromise or malicious activity is present in the telemetry.",
+        "mitre_mapping": [
+          "Network Connection"
+        ],
+        "recommended_containment": [
+          "Verify if the connection aligns with expected network behavior and asset criticality.",
+          "Review authentication context (e.g., MFA/Conditional Access status) for the associated account if available.",
+          "Monitor for additional connections from these IPs or unusual activity patterns."
+        ],
+        "recommended_investigation_steps": [
+          "Confirm whether the connection was expected based on user activity or policy.",
+          "Check for associated process creation or command-line activity linked to this connection.",
+          "Validate if the remote IP (203.0.113.91) is associated with known infrastructure or services.",
+          "Review conditional access logs to determine if the connection was authorized."
+        ],
+        "false_positive_considerations": [
+          "The connection could represent legitimate traffic if the IPs are part of normal operations.",
+          "Missing authentication context or user confirmation may indicate a false positive."
+        ],
+        "evidence_gaps": [
+          "Missing authentication history or user confirmation for the connection.",
+          "Missing process tree or command-line context for the connection.",
+          "Missing asset criticality or business impact assessment."
+        ],
+        "analyst_note": "The observed connection lacks contextual evidence to confirm malicious intent. Further investigation is required to validate legitimacy.",
+        "observed_evidence": [
+          "IPv4: 192.0.2.25",
+          "IPv4: 203.0.113.91",
+          "LocalPort: 51234",
+          "RemotePort: 8443"
+        ],
+        "analyst_inferences": [
+          "The connection success does not inherently indicate compromise without additional contextual evidence.",
+          "The absence of MFA/Conditional Access verification may suggest a potential risk, but this requires further confirmation."
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identified missing authentication history, user confirmation, and asset criticality as evidence gaps."
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevance to verifying connection legitimacy and checking MFA/Conditional Access context."
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 280084.15900000546,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7dd136ec15ef95673552a831148abf665b1ee76722fc3a067e5c8ed4b9c18ea7",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2024.141
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [
+              {
+                "code": "IP_SHAPE",
+                "field": "observed_evidence"
+              }
+            ],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "failed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 112575.43
+          },
+          {
+            "generation": 1,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 112575.739
+          },
+          {
+            "generation": 1,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 280083.499
+          },
+          {
+            "generation": 1,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 280083.507
+          }
+        ],
+        "repair_attempted": true,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9525,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2558,
+          "eval_count": 953,
+          "total_duration": 108508731500,
+          "load_duration": 9796900,
+          "prompt_eval_duration": 393188000,
+          "eval_duration": 108094120000,
+          "elapsed_ms": 110544.371,
+          "context_status": "unknown"
+        },
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10769,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2833,
+          "eval_count": 1379,
+          "total_duration": 165481849100,
+          "load_duration": 10768700,
+          "prompt_eval_duration": 594468000,
+          "eval_duration": 164865278000,
+          "elapsed_ms": 167500.328,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 2,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 3,
+      "request_sha256": "a04424de13d61c3822a661659a49c0e02c800921a38ad34ee930dca471ceb3ed",
+      "original_bundle_utf8_bytes": 193,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 193,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9525,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-006",
+        "severity": "medium",
+        "likely_incident_type": "Network Connection",
+        "summary": "A ConnectionSuccess event was observed between 192.0.2.25:51234 and 203.0.113.91:8443. No authentication context or login attempts were recorded in the provided telemetry.",
+        "mitre_mapping": [
+          "Initial Access",
+          "Network Discovery"
+        ],
+        "recommended_containment": [
+          "Verify if the connection aligns with expected network behavior",
+          "Check MFA/Conditional Access status for associated accounts if available",
+          "Consider disabling the account for 192.0.2.25 pending verification if suspicious activity is detected"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for accounts associated with 192.0.2.25",
+          "Inspect post-connection activity for unusual process creation or privilege changes",
+          "Validate if the remote IP (203.0.113.91) is part of known trusted networks"
+        ],
+        "false_positive_considerations": [
+          "The connection could be legitimate business traffic",
+          "Missing authentication context may indicate incomplete telemetry",
+          "Port 8443 could correspond to legitimate services like HTTPS or custom applications"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "No login attempt or password event recorded",
+          "Lack of process creation telemetry",
+          "Missing asset criticality context"
+        ],
+        "analyst_note": "The observed connection lacks authentication context and login events. Human review is required to determine legitimacy and potential compromise.",
+        "observed_evidence": [
+          "ConnectionSuccess event between 192.0.2.25:51234 and 203.0.113.91:8443",
+          "No authentication history or login attempts recorded"
+        ],
+        "analyst_inferences": [
+          "The connection may represent an attempted initial access but lacks confirmation",
+          "Missing MFA/Conditional Access context prevents verification of legitimacy",
+          "The remote IP appears to be a public IP with no known reputation in the provided context"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and endpoint telemetry"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for verifying legitimacy of connections with potential authentication context"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Prevents unsupported claims about IP legitimacy or protocol inference"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 123338.91429999494,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7dd136ec15ef95673552a831148abf665b1ee76722fc3a067e5c8ed4b9c18ea7",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2038.926
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 123338.285
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 123338.292
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9525,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2558,
+          "eval_count": 1041,
+          "total_duration": 119266880000,
+          "load_duration": 9590900,
+          "prompt_eval_duration": 562492000,
+          "eval_duration": 118683406000,
+          "elapsed_ms": 121292.574,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-007",
+      "trial": 1,
+      "request_sha256": "09773b43da7c42d34e3cc5e76ce4a283b40685f52928ee9a58e9312fdb6241e2",
+      "original_bundle_utf8_bytes": 212,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 211,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9565,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-007",
+        "severity": "medium",
+        "likely_incident_type": "Network Connection",
+        "summary": "A successful TCP connection was established between 192.0.2.25:51234 and 203.0.113.91:8443. No user account context or process details are available.",
+        "mitre_mapping": [
+          "Network Discovery"
+        ],
+        "recommended_containment": [
+          "Verify if the connection aligns with expected network behavior",
+          "Check MFA/Conditional Access status for associated accounts",
+          "Monitor for subsequent unusual activity",
+          "Consider disabling the account if legitimacy cannot be confirmed"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for the involved accounts",
+          "Check for associated VPN or MFA logs",
+          "Inspect post-connection activity",
+          "Verify if the connection aligns with known business operations"
+        ],
+        "false_positive_considerations": [
+          "The connection could be legitimate business traffic",
+          "No user account context is available to confirm malicious intent"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing user confirmation",
+          "Missing asset criticality context",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed connection lacks contextual evidence to confirm malicious intent. Further investigation is required to determine legitimacy.",
+        "observed_evidence": [
+          "ConnectionSuccess event between 192.0.2.25:51234 and 203.0.113.91:8443 using TCP"
+        ],
+        "analyst_inferences": [
+          "The connection lacks contextual evidence to confirm malicious intent",
+          "No user account information is available to assess legitimacy"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies gaps in authentication context and timeline"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Guidance on distinguishing observed evidence from unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 108048.79359999904,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "8d3d33e81d76dd80c310ab01de823d9423c4f9a1ead0ad75aaea7191d9522ecf",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2040.048
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 108048.231
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 108048.241
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9565,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2568,
+          "eval_count": 901,
+          "total_duration": 103943616000,
+          "load_duration": 9597600,
+          "prompt_eval_duration": 758604000,
+          "eval_duration": 103163911000,
+          "elapsed_ms": 105999.638,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-008",
+      "trial": 1,
+      "request_sha256": "b7a0df9a9c8c019182a500fdc76abdbb7cfef7dd06a2261de5c78128441fe4e1",
+      "original_bundle_utf8_bytes": 327,
+      "rows": 2,
+      "canonical_raw_utf8_bytes": 324,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9903,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-008",
+        "severity": "medium",
+        "likely_incident_type": "Network Connection Monitoring",
+        "summary": "Two connection success events detected from local IPs 192.0.2.25 and 192.0.2.26 to remote IPs 203.0.113.91 and 203.0.113.92 on non-standard ports 8443 and 9443. No authentication context or user confirmation provided.",
+        "mitre_mapping": [
+          "Initial Access"
+        ],
+        "recommended_containment": [
+          "Verify if these connections are part of expected outbound traffic patterns",
+          "Check for associated authentication history or MFA status in related logs",
+          "Monitor for subsequent suspicious activity or lateral movement patterns"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for these accounts",
+          "Check Conditional Access policy enforcement status",
+          "Inspect process tree and command line arguments for initiating processes",
+          "Validate if these connections align with known business applications"
+        ],
+        "false_positive_considerations": [
+          "Non-standard ports may indicate legitimate secure protocols",
+          "Connections could represent routine maintenance or software updates",
+          "Lack of MFA context may indicate normal operations"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history for associated accounts",
+          "No user confirmation or business context provided",
+          "Missing process tree or command line details",
+          "No asset criticality or data classification information"
+        ],
+        "analyst_note": "The observed connections lack contextual verification. Non-standard ports require closer examination but do not inherently indicate compromise. Recommendations focus on validating legitimacy through available authentication and policy context.",
+        "observed_evidence": [
+          "ConnectionSuccess event from 192.0.2.25 to 203.0.113.91 on port 8443",
+          "ConnectionSuccess event from 192.0.2.26 to 203.0.113.92 on port 9443"
+        ],
+        "analyst_inferences": [
+          "Non-standard ports suggest potential for secure protocols but require verification",
+          "Lack of MFA context indicates need for additional authentication validation",
+          "Connections may represent legitimate outbound traffic without confirmed compromise"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and MFA context as critical gaps"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for verifying connection legitimacy and checking post-login activity"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Emphasizes distinguishing observed evidence from unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true,
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 137106.8876999925,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "eaac2debee0e0a1f0807ff566fe2b25668abbd69d1b1dad761b490bbf5ee17ee",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2047.924
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 137106.148
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 137106.154
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9903,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2722,
+          "eval_count": 1144,
+          "total_duration": 133028366100,
+          "load_duration": 8045500,
+          "prompt_eval_duration": 1296885000,
+          "eval_duration": 131711410000,
+          "elapsed_ms": 135050.527,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-009",
+      "trial": 1,
+      "request_sha256": "4ced622092b6bcb3a2c436c6d7da8b39458a315e69362da968b773ec38a0081c",
+      "original_bundle_utf8_bytes": 207,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 208,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9559,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-009",
+        "severity": "low",
+        "likely_incident_type": "Benign process execution",
+        "summary": "A single process creation event was observed on synthetic-lab-a where ping.exe executed a command to test connectivity to example.invalid. No additional telemetry or authentication context is available.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Monitor for additional process creation activity on synthetic-lab-a",
+          "Verify if the ping.exe command was authorized by the account owner",
+          "Check for unusual network traffic patterns from synthetic-lab-a"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for synthetic-lab-a",
+          "Check for MFA/VPN context associated with the process creation",
+          "Inspect process tree relationships to identify potential lateral movement",
+          "Verify if the ping.exe command aligns with known operational procedures"
+        ],
+        "false_positive_considerations": [
+          "The ping.exe command is commonly used for network diagnostics",
+          "The target domain (example.invalid) may be a placeholder or test domain",
+          "No authentication failure or success indicators were observed"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history for the account",
+          "No MFA/VPN context associated with the event",
+          "Lack of process tree information",
+          "No timeline context for the command execution"
+        ],
+        "analyst_note": "The observed event appears to be a benign network diagnostic command. However, the absence of contextual verification requires further investigation to rule out potential compromise.",
+        "observed_evidence": [
+          "ProcessCreated event for ping.exe on synthetic-lab-a",
+          "Command line: ping.exe -n 1 example.invalid",
+          "No authentication success/failure indicators present"
+        ],
+        "analyst_inferences": [
+          "The command may represent a legitimate network diagnostic activity",
+          "The absence of MFA/VPN context suggests potential for further verification",
+          "No evidence of lateral movement or persistence mechanisms detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and process tree information"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for verifying account legitimacy and checking post-login activity"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Prevents unsupported claims about protocol usage or account compromise"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 119080.6542000064,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "ab05f0d2ff83a56470b13b4de0151f81b59003b57e1213ebada482679db91700",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2037.868
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 119079.838
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 119079.845
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9559,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2503,
+          "eval_count": 999,
+          "total_duration": 115003719700,
+          "load_duration": 10137800,
+          "prompt_eval_duration": 877734000,
+          "eval_duration": 114104409000,
+          "elapsed_ms": 117035.869,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "trial": 1,
+      "request_sha256": "a670507092991b8a8ec99e0486a5d607734d547a70e669fa73bbb408d4a259ac",
+      "original_bundle_utf8_bytes": 322,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 321,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9805,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-010",
+        "severity": "medium",
+        "likely_incident_type": "Potential Credential Access",
+        "summary": "A process creation event was detected on synthetic-lab-a where rundll32.exe executed a command to create a memory dump targeting lsass.exe (Process ID 624). The alert requires investigation to determine legitimacy.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Monitor authentication history for synthetic-lab-a",
+          "Verify MFA/Conditional Access status for associated accounts",
+          "Review post-login activity for unusual behavior",
+          "Consider disabling the account pending verification if suspicious activity persists"
+        ],
+        "recommended_investigation_steps": [
+          "Check authentication history for synthetic-lab-a",
+          "Verify if the login was expected",
+          "Inspect MFA/VPN context if available",
+          "Review privilege changes and persistence indicators",
+          "Analyze process tree for unusual relationships"
+        ],
+        "false_positive_considerations": [
+          "Legitimate system processes may use rundll32.exe for maintenance tasks",
+          "The command line could represent a benign memory dump for debugging purposes"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/VPN context",
+          "Missing process tree information",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed event shows a process creation with rundll32.exe targeting lsass.exe, which could indicate a memory dump attempt. However, without confirmed execution or malicious intent, this remains a potential indicator requiring further investigation.",
+        "observed_evidence": [
+          "ProcessCreated action on synthetic-lab-a",
+          "rundll32.exe executed command: rundll32.exe C:\\Windows\\System32\\comsvcs.dll, MiniDump 624 C:\\Lab\\memory.dmp full",
+          "Target process: lsass.exe (Process ID 624)"
+        ],
+        "analyst_inferences": [
+          "Suspected memory dump attempt targeting lsass.exe",
+          "Potential credential access or persistence mechanism",
+          "Unverified legitimacy of the process execution"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevance to evidence gaps and containment recommendations"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevance to investigation steps and containment recommendations"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Relevance to distinguishing observed evidence from unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 121796.22659999586,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "5812f0a46896134a0cb4842b07a50acf327ca7165a5b25f0b1a2cc10749ec0bb",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2040.464
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 121795.332
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 121795.34
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9805,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2600,
+          "eval_count": 1027,
+          "total_duration": 117695231600,
+          "load_duration": 11190500,
+          "prompt_eval_duration": 845902000,
+          "eval_duration": 116826248000,
+          "elapsed_ms": 119745.027,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-011",
+      "trial": 1,
+      "request_sha256": "38432eeb9e4bdf0f71b2aa20d137005410796fb9f7d12a5249fd7d4fbef97852",
+      "original_bundle_utf8_bytes": 464,
+      "rows": 3,
+      "canonical_raw_utf8_bytes": 466,
+      "reference_utf8_bytes": 2245,
+      "initial_user_prompt_utf8_bytes": 10203,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-011",
+        "severity": "high",
+        "likely_incident_type": "Maintenance Activity",
+        "summary": "A process creation event for backup.exe occurred on synthetic-lab-a during an approved maintenance window. The alert shows conflicting severity levels (High vs. Low) and lacks authentication context.",
+        "mitre_mapping": [],
+        "recommended_containment": [
+          "Verify maintenance window authorization (CHG-SYN-9)",
+          "Monitor for unusual post-process activity",
+          "Do not disable accounts without further verification"
+        ],
+        "recommended_investigation_steps": [
+          "Check authentication history for synthetic-lab-a",
+          "Verify if backup.exe --verify is part of scheduled maintenance",
+          "Review conditional access status for account access"
+        ],
+        "false_positive_considerations": [
+          "Process creation is explicitly authorized by maintenance window",
+          "No failed login attempts or MFA context provided"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/conditional access logs",
+          "Missing process tree context",
+          "Severity discrepancy between AlertInfo and SecurityIncident"
+        ],
+        "analyst_note": "The process creation aligns with an approved maintenance window, suggesting legitimate activity. However, the high severity alert conflicts with the low severity incident status. Further verification of authentication context and process behavior is needed.",
+        "observed_evidence": [
+          "ProcessCreated event for backup.exe --verify on synthetic-lab-a",
+          "Alert severity conflict (High vs. Low)",
+          "Maintenance window authorization noted in DeviceProcessEvents"
+        ],
+        "analyst_inferences": [
+          "Activity matches scheduled maintenance window",
+          "No evidence of unauthorized access detected",
+          "Severity discrepancy requires further investigation"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Missing authentication context and severity discrepancy"
+          },
+          {
+            "source_id": "SOC-IR-CONTAINMENT",
+            "title": "SOC Checklist - Containment Principles",
+            "framework": "Local SOC Checklist",
+            "relevance": "Containment recommendations based on evidence proportionality"
+          },
+          {
+            "source_id": "LOCAL-SAFE-CONTAINMENT",
+            "title": "General Checklist - Safe Containment Language",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Avoiding destructive actions without verification"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true,
+          true,
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 113593.04649999831,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "17811c5673e8e63fe6fb981ea203f0f723e0e0e847974b72c82de6460442fbcb",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2036.436
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 113592.406
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 113592.412
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10203,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2652,
+          "eval_count": 953,
+          "total_duration": 109504844200,
+          "load_duration": 10480200,
+          "prompt_eval_duration": 1130230000,
+          "eval_duration": 108046808000,
+          "elapsed_ms": 111549.076,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-012",
+      "trial": 1,
+      "request_sha256": "d0389fc841625289c2dfb7ac7bcb3c8612264762ec01b41b22c2fd3e1f5b7ed4",
+      "original_bundle_utf8_bytes": 387,
+      "rows": 1,
+      "canonical_raw_utf8_bytes": 386,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 9902,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-012",
+        "severity": "medium",
+        "likely_incident_type": "Process Creation",
+        "summary": "A process named tool.exe was created on device synthetic-lab-a with command line \"tool.exe --inventory\". No clear malicious indicators were observed.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account pending verification of legitimacy"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if the login was expected",
+          "Check MFA/Conditional Access status",
+          "Review authentication history",
+          "Inspect post-login activity",
+          "Check for privilege changes"
+        ],
+        "false_positive_considerations": [
+          "The process may be legitimate inventory tool",
+          "No clear malicious indicators observed"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing timeline context",
+          "Missing asset criticality"
+        ],
+        "analyst_note": "The observed process creation lacks clear malicious indicators. Further investigation is needed to confirm legitimacy.",
+        "observed_evidence": [
+          "ProcessCreated event on synthetic-lab-a",
+          "tool.exe executed with --inventory command",
+          "SHA256 hash b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7"
+        ],
+        "analyst_inferences": [
+          "Unverified process execution context",
+          "No evidence of unauthorized access",
+          "No confirmed malicious intent"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant for verifying login legitimacy"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing context for verification"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Supports decision-making for account disablement"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 96128.54720000178,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "5073d6e272ab420b0d76d819de1ed888f9ad8f7b7f5fce73ce4bdb81bc90aa8e",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2027.319
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 96128.051
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 96128.058
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9902,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2728,
+          "eval_count": 801,
+          "total_duration": 92063930300,
+          "load_duration": 9248700,
+          "prompt_eval_duration": 607864000,
+          "eval_duration": 90915847000,
+          "elapsed_ms": 94095.086,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-013",
+      "trial": 1,
+      "request_sha256": "8604f554c2569a064f2a5a6bb0d70617d617aae5f75dd1b1368780672152a90f",
+      "original_bundle_utf8_bytes": 9329,
+      "rows": 12,
+      "canonical_raw_utf8_bytes": 9285,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 21228,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "alert_id": "REL-SOC-013",
+        "severity": "low",
+        "likely_incident_type": "Brute Force Followed by Successful Login",
+        "summary": "Multiple process creation events observed on synthetic-lab-a, including repeated execution of status.exe --check and wbadmin.exe delete catalog -quiet commands. No clear malicious indicators detected in raw telemetry.",
+        "mitre_mapping": [
+          "Credential Access"
+        ],
+        "recommended_containment": [
+          "Review authentication history for synthetic-lab-a",
+          "Check MFA/Conditional Access status for accounts associated with these processes",
+          "Inspect post-login activity if available",
+          "Consider disabling the account pending verification if suspicious behavior is confirmed"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if the status.exe --check commands are part of legitimate maintenance scripts",
+          "Check for associated privilege changes or persistence mechanisms",
+          "Review conditional access policies for synthetic-lab-a",
+          "Validate if wbadmin.exe activity aligns with documented backup procedures"
+        ],
+        "false_positive_considerations": [
+          "The status.exe --check commands may represent legitimate system monitoring",
+          "wbadmin.exe delete catalog -quiet is a known legitimate administrative command",
+          "Process creation events alone do not confirm malicious execution"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing process tree information",
+          "Missing user confirmation of account legitimacy"
+        ],
+        "analyst_note": "The observed process creation events appear to be routine system operations. However, the repeated execution of status.exe --check warrants further investigation to confirm legitimacy. No confirmed compromise detected.",
+        "observed_evidence": [
+          "12 ProcessCreated events for status.exe --check on synthetic-lab-a",
+          "1 ProcessCreated event for wbadmin.exe delete catalog -quiet on synthetic-lab-a",
+          "All events occurred on synthetic-lab-a with no external IP involvement"
+        ],
+        "analyst_inferences": [
+          "Repeated status.exe --check commands may indicate automated system checks",
+          "wbadmin.exe activity suggests potential backup catalog management",
+          "No evidence of unauthorized access or privilege escalation detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to review authentication history and MFA context for potential brute force activity"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history and MFA context as evidence gaps"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Guidance to distinguish observed evidence from unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ],
+        "identifier_membership": true,
+        "recognized_endpoint_membership": true,
+        "nonempty_observations": true
+      },
+      "latency_ms": 192489.85589999938,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "d7c42a3ff6b524383d7971c6070388dbe4e95ad5228a6f0f4a81afb9b88336d3",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2028.58
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 192487.96
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 192487.97
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 21228,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 4805,
+          "eval_count": 1362,
+          "total_duration": 188389834000,
+          "load_duration": 10088300,
+          "prompt_eval_duration": 3736030000,
+          "eval_duration": 184628494000,
+          "elapsed_ms": 190430.073,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-SOC-014",
+      "trial": 1,
+      "request_sha256": "d580c852ae86db74dff6f63b1e5f7769a777f1c07abbef84acc2372d7ccfb5c1",
+      "original_bundle_utf8_bytes": 36620,
+      "rows": 45,
+      "canonical_raw_utf8_bytes": 36444,
+      "reference_utf8_bytes": 2111,
+      "initial_user_prompt_utf8_bytes": 56043,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": null,
+      "checks": null,
+      "error": "EvidenceBudgetError",
+      "latency_ms": 4687.409700010903,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "21a411c8177031f5543e8825d36d6d4585198369acdc50744a0c9ae376f51671",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2087.002
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "withheld",
+            "elapsed_ms": 4687.394
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 56043,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "request_failed",
+          "complete_context_required": true,
+          "context_status": "request_rejected",
+          "elapsed_ms": 2599.578000008478
+        }
+      ],
+      "after_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 1,
+      "request_sha256": "bea57e3bc4f0b191a5e2b85abd63336876554432f0256825539ad5053f6a68b2",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2319,
+      "initial_user_prompt_utf8_bytes": 6111,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 8192,
+        "size": 6599978515,
+        "size_vram": 4190623498
+      },
+      "result": {
+        "system_name": "Synthetic lab system 1",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system operates with low-impact informational purposes, limited data scope, and human review. Risks are mitigated through data minimization and auditability controls, though some evidence gaps exist.",
+        "key_risks": [
+          "Insufficient data classification documentation",
+          "Missing audit logs for review processes",
+          "Potential gaps in access control verification"
+        ],
+        "required_controls": [
+          "Data minimization for public pages",
+          "Human review of AI-generated outputs",
+          "Documentation of data handling requirements"
+        ],
+        "human_review_requirements": [
+          "Staff must verify answers against source pages"
+        ],
+        "logging_requirements": [
+          "Record review timestamps and decision outcomes"
+        ],
+        "evidence_gaps": [
+          "Missing data classification",
+          "Missing approval records",
+          "Missing user confirmation"
+        ],
+        "recommended_next_steps": [
+          "Document data classification for public pages",
+          "Implement audit logs for review processes",
+          "Verify access control documentation"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Directly applies to data collection limits"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies missing documentation requirements"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires human review for decision validation"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Mandates logging of review processes"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 86790.36139999516,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "4a7e13fd128275de9c30792106ca5a3932cb9d81c59b4ab75ad14b6d21e2a889",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2039.491
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6111,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1818,
+          "eval_count": 907,
+          "total_duration": 82676078500,
+          "load_duration": 6300448600,
+          "prompt_eval_duration": 2075395000,
+          "eval_duration": 74252238000,
+          "elapsed_ms": 84747.028,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 2,
+      "request_sha256": "bea57e3bc4f0b191a5e2b85abd63336876554432f0256825539ad5053f6a68b2",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2319,
+      "initial_user_prompt_utf8_bytes": 6111,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 1",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system operates with low-impact informational purposes, limited data scope, and human review. Risks are mitigated through data minimization and auditability controls, though some evidence gaps remain.",
+        "key_risks": [
+          "Data minimization compliance",
+          "Auditability of human review process"
+        ],
+        "required_controls": [
+          "Implement data minimization for approved public pages",
+          "Ensure human review process documentation",
+          "Maintain audit logs of review activities"
+        ],
+        "human_review_requirements": [
+          "Staff must verify answers against source pages"
+        ],
+        "logging_requirements": [
+          "Record review timestamps and outcomes"
+        ],
+        "evidence_gaps": [
+          "Missing data classification details",
+          "Missing approval records for data use"
+        ],
+        "recommended_next_steps": [
+          "Define data classification for public pages",
+          "Document approval processes for data access"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Applies to data collection limits"
+          },
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Excludes system from high-impact categories"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies missing data classification and approval records"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires human review for operational decisions"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Mandates review activity logging"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 79591.7383999913,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "4a7e13fd128275de9c30792106ca5a3932cb9d81c59b4ab75ad14b6d21e2a889",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2037.073
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6111,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1818,
+          "eval_count": 928,
+          "total_duration": 77549346400,
+          "load_duration": 15857900,
+          "prompt_eval_duration": 249418000,
+          "eval_duration": 77245669000,
+          "elapsed_ms": 77551.463,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 3,
+      "request_sha256": "bea57e3bc4f0b191a5e2b85abd63336876554432f0256825539ad5053f6a68b2",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2319,
+      "initial_user_prompt_utf8_bytes": 6111,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 1",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system meets low-risk criteria with appropriate data minimization and human review processes. No high-impact use cases or personal data handling. However, auditability and evidence gaps require attention.",
+        "key_risks": [
+          "Missing audit logs for review activities",
+          "No documented approval records for data handling",
+          "Potential gaps in evidence for data classification"
+        ],
+        "required_controls": [
+          "Implement data minimization for public pages",
+          "Ensure human review process is documented",
+          "Maintain records of staff verification activities"
+        ],
+        "human_review_requirements": [
+          "Staff must verify answers against source pages"
+        ],
+        "logging_requirements": [
+          "Record review timestamps and verification outcomes"
+        ],
+        "evidence_gaps": [
+          "Missing logs",
+          "Missing owner information",
+          "Missing policy context",
+          "Missing data classification"
+        ],
+        "recommended_next_steps": [
+          "Define logging requirements for review processes",
+          "Document data handling approval records",
+          "Verify data classification for public pages"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "high"
+          },
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "low"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "high"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "high"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "high"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 68736.43799999263,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "4a7e13fd128275de9c30792106ca5a3932cb9d81c59b4ab75ad14b6d21e2a889",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2023.183
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6111,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1818,
+          "eval_count": 812,
+          "total_duration": 66709889400,
+          "load_duration": 11973400,
+          "prompt_eval_duration": 208736000,
+          "eval_duration": 66463418000,
+          "elapsed_ms": 66710.5,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-002",
+      "trial": 1,
+      "request_sha256": "0e20054329f92dd3dc6354fb3e8084a72370e5099b48beb50737ac2991bb47ae",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2334,
+      "initial_user_prompt_utf8_bytes": 6107,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 2",
+        "risk_level": "high",
+        "decision": "needs_review",
+        "summary": "The system handles sensitive HR data (salary records, disability accommodation data) with potential for significant employee harm. Requires enhanced controls for data minimization, auditability, and high-impact use management.",
+        "key_risks": [
+          "High-impact HR data access with potential for employee harm",
+          "Insufficient logging for accountability",
+          "Lack of explicit data retention policies",
+          "Missing encryption for sensitive data storage"
+        ],
+        "required_controls": [
+          "Data minimization with access controls",
+          "Comprehensive logging of system version, input/output, user role, and human approval",
+          "Auditability controls for review processes",
+          "High-impact use verification for HR data handling"
+        ],
+        "human_review_requirements": [
+          "HR verification of all outputs",
+          "Explicit documentation of human approval processes"
+        ],
+        "logging_requirements": [
+          "Timestamps",
+          "System version",
+          "Model version",
+          "Input category",
+          "Output category",
+          "User role",
+          "Decision status",
+          "Human approval records"
+        ],
+        "evidence_gaps": [
+          "Missing data classification details",
+          "Unclear encryption methodology",
+          "Undefined data retention limits",
+          "No third-party review requirements",
+          "Incomplete approval record documentation"
+        ],
+        "recommended_next_steps": [
+          "Define specific data retention policies",
+          "Implement encryption for sensitive data storage",
+          "Establish third-party review requirements",
+          "Document all human approval workflows",
+          "Enhance logging to include additional contextual metadata"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "System handles HR data with high business impact"
+          },
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Sensitive data requires access controls and retention limits"
+          },
+          {
+            "source_id": "GRC-AI-LOGGING",
+            "title": "AI Governance Checklist - Logging and Traceability",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "System requires detailed logging for accountability"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Review processes need auditability controls"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "System requires identification of missing documentation and controls"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 95495.07869999798,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "e9c1bceb39520228e910ce30a6ca71c2f5f2c496459efd23e7a39d44bbf0be12",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2026.483
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6107,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1810,
+          "eval_count": 1112,
+          "total_duration": 93462166100,
+          "load_duration": 9515300,
+          "prompt_eval_duration": 878959000,
+          "eval_duration": 92421211000,
+          "elapsed_ms": 93463.8,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-003",
+      "trial": 1,
+      "request_sha256": "534a221b81728a3f022e91948da8a508dd0f027e505f25a048e008a1a241a610",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2008,
+      "initial_user_prompt_utf8_bytes": 5749,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 3",
+        "risk_level": "high",
+        "decision": "needs_review",
+        "summary": "The AI system ranks job applicants and recommends interview shortlists, impacting employment decisions. This falls under high-risk use cases per internal governance checklists.",
+        "key_risks": [
+          "Data privacy risks from CV processing",
+          "Bias in recommendation algorithm",
+          "Impact on employment opportunities"
+        ],
+        "required_controls": [
+          "NIST AI RMF Map function for risk profiling",
+          "NIST AI RMF Measure function for risk testing",
+          "NIST AI RMF Manage function for risk mitigation",
+          "Auditability controls for review tracking"
+        ],
+        "human_review_requirements": [
+          "Recruiters must verify recommendations",
+          "Human oversight required for final shortlisting decisions"
+        ],
+        "logging_requirements": [
+          "Record recommendation outputs",
+          "Track human review actions",
+          "Document system performance metrics"
+        ],
+        "evidence_gaps": [
+          "No specific encryption requirements provided",
+          "Missing third-party bias testing details",
+          "No defined risk ownership or cadence"
+        ],
+        "recommended_next_steps": [
+          "Create detailed risk register entry",
+          "Implement audit logging for recommendations",
+          "Define bias testing protocols"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Directly applies to employment-related AI use"
+          },
+          {
+            "source_id": "GRC-RISK-REGISTER",
+            "title": "GRC Checklist - Risk Register Entry",
+            "framework": "Local GRC Checklist",
+            "relevance": "Required structure for risk documentation"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Mandatory logging requirements"
+          },
+          {
+            "source_id": "AI-RMF-MAP",
+            "title": "NIST AI RMF - Map Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Risk profiling requirements"
+          },
+          {
+            "source_id": "AI-RMF-MEASURE",
+            "title": "NIST AI RMF - Measure Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Risk testing mandates"
+          },
+          {
+            "source_id": "AI-RMF-MANAGE",
+            "title": "NIST AI RMF - Manage Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Risk mitigation framework"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 75820.9566000005,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "7ae9db888eb60381099f1a67932bbec37e468b8f4b3a753c6460dc32778a1d8d",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2044.498
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 5749,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1785,
+          "eval_count": 897,
+          "total_duration": 73770653900,
+          "load_duration": 9643300,
+          "prompt_eval_duration": 592677000,
+          "eval_duration": 72990192000,
+          "elapsed_ms": 73772.422,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-004",
+      "trial": 1,
+      "request_sha256": "da2a9762da992fb3a57d80a2c557f2f321a48aef65d89423fe35453640991d17",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2273,
+      "initial_user_prompt_utf8_bytes": 6041,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 4",
+        "risk_level": "medium",
+        "decision": "approved",
+        "summary": "The system drafts helpdesk replies requiring mandatory human approval before sending. Key aspects include synthetic ticket text processing, synthetic staff users, and no external integrations. Business impact is limited to potential staff time waste from incorrect advice.",
+        "key_risks": [
+          "Incorrect advice from synthetic data processing",
+          "Lack of detailed logging for accountability",
+          "Potential human review errors in approval process"
+        ],
+        "required_controls": [
+          "Mandatory affirmative approval process",
+          "Logging of timestamps, model version, input/output categories, user role, and decision status",
+          "NIST AI RMF Map function for risk profiling"
+        ],
+        "human_review_requirements": [
+          "Clear escalation and override procedures",
+          "Accountability mechanisms for approval decisions",
+          "Human-in-the-loop review before operational decisions"
+        ],
+        "logging_requirements": [
+          "Timestamps",
+          "Model version tracking",
+          "Input/output category logging",
+          "User role recording",
+          "Decision status tracking",
+          "Human approval status logging"
+        ],
+        "evidence_gaps": [
+          "Data sensitivity classification not specified",
+          "Third-party review requirements not mentioned",
+          "NIST RMF Map function implementation details missing"
+        ],
+        "recommended_next_steps": [
+          "Create risk register entry with likelihood/impact analysis",
+          "Validate data sensitivity classification",
+          "Implement detailed logging as specified in",
+          "Conduct NIST RMF Map function risk profiling"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Mandatory human review before operational decisions"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Human review required for high-impact business decisions"
+          },
+          {
+            "source_id": "GRC-AI-LOGGING",
+            "title": "AI Governance Checklist - Logging and Traceability",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Logging requirements for accountability and reviewability"
+          },
+          {
+            "source_id": "AI-RMF-MAP",
+            "title": "NIST AI RMF - Map Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Risk profiling for AI system deployment"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 102533.79309999582,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "84c3361352361416d9426d650de1a599bd1ae3eeb30e493cd2a01b74ed0f749e",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2023.881
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6041,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1810,
+          "eval_count": 1196,
+          "total_duration": 100504526400,
+          "load_duration": 10848600,
+          "prompt_eval_duration": 961576000,
+          "eval_duration": 99356084000,
+          "elapsed_ms": 100506.005,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 1,
+      "request_sha256": "e221f2a1c21969b47ac090f8ffee006cbd10fc49c7ae2ed2ed826b23b04c6bb7",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2497,
+      "initial_user_prompt_utf8_bytes": 6272,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 5",
+        "risk_level": "high",
+        "decision": "needs_review",
+        "summary": "The system automatically sends helpdesk replies after 30 seconds unless a reviewer vetoes it. This creates operational risk due to potential incorrect advice reaching users without explicit human approval. The lack of clear escalation procedures and evidence validation mechanisms increases governance and security exposure.",
+        "key_risks": [
+          "Automated reply without explicit human approval",
+          "Potential for incorrect advice to reach users",
+          "Lack of clear escalation procedures for veto decisions",
+          "Insufficient evidence validation for synthetic ticket content"
+        ],
+        "required_controls": [
+          "Human review process with clear veto authority",
+          "Logging of all veto decisions and system actions",
+          "Evidence validation for synthetic ticket content before automated replies"
+        ],
+        "human_review_requirements": [
+          "Reviewer must have clear authority to veto within 30 seconds",
+          "Documentation of veto criteria and escalation paths",
+          "Explicit approval process for high-impact decisions"
+        ],
+        "logging_requirements": [
+          "Record all veto decisions and reasons",
+          "Log system actions including reply timestamps",
+          "Track user interactions with the system"
+        ],
+        "evidence_gaps": [
+          "Missing criteria for veto decisions",
+          "Unclear training data for synthetic ticket analysis",
+          "No defined consequences for unvetted replies",
+          "Missing data classification for synthetic ticket text"
+        ],
+        "recommended_next_steps": [
+          "Define explicit human review criteria and escalation procedures",
+          "Implement evidence validation checks for synthetic ticket content",
+          "Document veto decision impact analysis",
+          "Request clarification on data classification and training data sources"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires human review for high-impact decisions"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Mandates human review for systems affecting user interactions"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires identification of evidence gaps in system operations"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Prevents unsupported claims about system operations"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 105609.03630001121,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "e452c0f1c3e42e415ade9e5f47c98d1f5052c20fa50d1057d89cef96ed6d7715",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2058.714
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6272,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1838,
+          "eval_count": 1192,
+          "total_duration": 103541689700,
+          "load_duration": 8377300,
+          "prompt_eval_duration": 611871000,
+          "eval_duration": 102748612000,
+          "elapsed_ms": 103543.552,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 2,
+      "request_sha256": "e221f2a1c21969b47ac090f8ffee006cbd10fc49c7ae2ed2ed826b23b04c6bb7",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2497,
+      "initial_user_prompt_utf8_bytes": 6272,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 5",
+        "risk_level": "high",
+        "decision": "needs_review",
+        "summary": "The system automatically sends helpdesk replies after 30 seconds unless a reviewer vetoes it. This lacks explicit human approval mechanisms for high-impact business decisions, creating operational and governance risks.",
+        "key_risks": [
+          "Lack of mandatory human review before sending replies",
+          "Potential for incorrect advice to reach users automatically",
+          "No explicit approval process for high-impact decisions"
+        ],
+        "required_controls": [
+          "Implement explicit human approval workflow before sending replies",
+          "Ensure veto action is clearly documented and enforced",
+          "Define business impact thresholds for automated decisions"
+        ],
+        "human_review_requirements": [
+          "Mandatory review process for all replies before dispatch",
+          "Clear escalation procedures for veto actions",
+          "Accountability for approval decisions"
+        ],
+        "logging_requirements": [
+          "Record all review actions and veto decisions",
+          "Log system-generated replies before dispatch",
+          "Track user confirmation of received advice"
+        ],
+        "evidence_gaps": [
+          "Missing data classification for synthetic ticket text",
+          "No logs of review process or veto actions",
+          "No user confirmation records for received advice"
+        ],
+        "recommended_next_steps": [
+          "Define explicit human approval workflow",
+          "Implement logging for all review actions",
+          "Establish data classification for synthetic ticket text"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires human review for high-impact decisions"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Mandatory human review for systems affecting users"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies missing logs and user confirmation as evidence gaps"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 75808.53840000054,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "e452c0f1c3e42e415ade9e5f47c98d1f5052c20fa50d1057d89cef96ed6d7715",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2023.029
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6272,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1838,
+          "eval_count": 846,
+          "total_duration": 73778098000,
+          "load_duration": 9825400,
+          "prompt_eval_duration": 249409000,
+          "eval_duration": 73494717000,
+          "elapsed_ms": 73779.827,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 3,
+      "request_sha256": "e221f2a1c21969b47ac090f8ffee006cbd10fc49c7ae2ed2ed826b23b04c6bb7",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2497,
+      "initial_user_prompt_utf8_bytes": 6272,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 5",
+        "risk_level": "medium",
+        "decision": "needs_review",
+        "summary": "The system automates helpdesk reply generation with a 30-second veto window for human review. Risks include potential for unreviewed advice to reach users, lack of explicit approval mechanisms, and insufficient evidence for business impact assessment.",
+        "key_risks": [
+          "Automated advice delivery without explicit approval",
+          "Limited human review window (30 seconds)",
+          "No documented data classification for synthetic ticket text",
+          "Insufficient business impact analysis"
+        ],
+        "required_controls": [
+          "Human-in-the-loop review for high-impact decisions",
+          "Explicit approval workflow for automated actions",
+          "Documentation of veto process and decision rationale"
+        ],
+        "human_review_requirements": [
+          "Veto process must include clear approval criteria",
+          "Reviewers must confirm final action before automated delivery"
+        ],
+        "logging_requirements": [
+          "Track veto actions and system outputs",
+          "Log synthetic ticket text processing decisions"
+        ],
+        "evidence_gaps": [
+          "Missing data classification for synthetic ticket text",
+          "No documented business impact assessment",
+          "Lack of policy context for veto process"
+        ],
+        "recommended_next_steps": [
+          "Define explicit approval workflow",
+          "Classify synthetic ticket data",
+          "Conduct business impact assessment",
+          "Document veto process requirements"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Human review required for high-impact decisions"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Human review required for systems affecting users"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identify missing data classification and business impact assessment"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Distinguish between evidence and unsupported claims"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 80940.74599999294,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "e452c0f1c3e42e415ade9e5f47c98d1f5052c20fa50d1057d89cef96ed6d7715",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2014.447
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6272,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1838,
+          "eval_count": 917,
+          "total_duration": 78921646600,
+          "load_duration": 9267700,
+          "prompt_eval_duration": 205504000,
+          "eval_duration": 78685186000,
+          "elapsed_ms": 78923.005,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-006",
+      "trial": 1,
+      "request_sha256": "889a0b8a90ddcf34bfcd48676a59bb3d5b47553fd6c6deb43b46b8d477c6df94",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2276,
+      "initial_user_prompt_utf8_bytes": 5983,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 6",
+        "risk_level": "medium",
+        "decision": "needs_review",
+        "summary": "The system processes customer messages with human review for summary approvals, but lacks specified data retention policies, vendor secondary use details, and impact assessment. Potential confidentiality risks require additional controls.",
+        "key_risks": [
+          "Unclear data retention policies",
+          "Unspecified vendor secondary use",
+          "Potential confidentiality impact"
+        ],
+        "required_controls": [
+          "Implement data minimization for customer messages",
+          "Document human review process for summary approvals",
+          "Establish data classification and access controls"
+        ],
+        "human_review_requirements": [
+          "Review data retention policies",
+          "Verify vendor secondary use agreements",
+          "Confirm confidentiality impact assessment"
+        ],
+        "logging_requirements": [
+          "Track data access and modification logs",
+          "Record human review decisions"
+        ],
+        "evidence_gaps": [
+          "Missing data retention policies",
+          "Undefined vendor use parameters",
+          "Insufficient impact assessment"
+        ],
+        "recommended_next_steps": [
+          "Define data retention and deletion policies",
+          "Assess confidentiality impact level",
+          "Document vendor secondary use agreements"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Data collection limits required for customer messages"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Human approval required for summaries"
+          },
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Confidentiality impact requires stronger review"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Missing data retention and vendor use details"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true,
+          true
+        ]
+      },
+      "latency_ms": 77433.53519999073,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "36b1bce534b8a5987e6bb5fcbd3ea67deb84cf414dc03f399e600f2975d3627a",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2039.922
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 5983,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1798,
+          "eval_count": 897,
+          "total_duration": 75388973800,
+          "load_duration": 12272900,
+          "prompt_eval_duration": 760019000,
+          "eval_duration": 74323411000,
+          "elapsed_ms": 75390.544,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-007",
+      "trial": 1,
+      "request_sha256": "9e9795d2963004db07d697f0ef1c3f8fa4acf52141c5de9179ab263da1457309",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 1983,
+      "initial_user_prompt_utf8_bytes": 5772,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 7",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system handles public catalog data with minimal risk due to local-only processing, 14-day retention, and human review. No high-impact use or external integrations are present.",
+        "key_risks": [
+          "Data retention duration without secondary use verification",
+          "Limited human review structure beyond staff validation"
+        ],
+        "required_controls": [
+          "Data minimization for public catalog entries",
+          "Human-in-the-loop review for operational decisions",
+          "Risk assessment per NIST AI RMF Map function"
+        ],
+        "human_review_requirements": [
+          "Staff validation of answers",
+          "Documentation of review processes"
+        ],
+        "logging_requirements": [
+          "14-day request-log retention",
+          "Audit logs for access and modifications"
+        ],
+        "evidence_gaps": [
+          "No detailed risk assessment methodology",
+          "No external integration security controls",
+          "No legal/compliance framework applicability verification"
+        ],
+        "recommended_next_steps": [
+          "Conduct NIST AI RMF Map function risk assessment",
+          "Document data minimization implementation details",
+          "Verify retention policy compliance with internal policies"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Directly applies to data retention and handling"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Applies to human review requirements"
+          },
+          {
+            "source_id": "AI-RMF-MAP",
+            "title": "NIST AI RMF - Map Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Applies to system context and risk assessment"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 101576.6852000088,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "98381a31121d7e4421a6dfb66434d6afac4202213874b95d82ab55360368ff07",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2051.345
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 5772,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1782,
+          "eval_count": 1158,
+          "total_duration": 99520941900,
+          "load_duration": 9055300,
+          "prompt_eval_duration": 652591000,
+          "eval_duration": 98585623000,
+          "elapsed_ms": 99522.6,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-008",
+      "trial": 1,
+      "request_sha256": "cc98b6f4e0bf1c6448d121984c2345642d564941527bae1aa38f829b52ce0427",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2338,
+      "initial_user_prompt_utf8_bytes": 6104,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 8",
+        "risk_level": "medium",
+        "decision": "needs_review",
+        "summary": "The Synthetic lab system 8 processes synthetic procurement notes for internal recommendation support. The fictional Lab Charter LC-12 requires monthly access reviews, but lacks documented logging, data sensitivity classification, and explicit high-impact use designation. Human review is implemented but needs formalization.",
+        "key_risks": [
+          "High-impact use without explicit classification",
+          "Insufficient logging for auditability",
+          "Data sensitivity classification gap",
+          "Lack of documented access review procedures"
+        ],
+        "required_controls": [
+          "Human review by procurement staff per Lab Charter LC-12",
+          "Logging of system version, input/output, and human approval"
+        ],
+        "human_review_requirements": [
+          "Monthly access reviews per Lab Charter LC-12",
+          "Formal documentation of human review process"
+        ],
+        "logging_requirements": [
+          "Timestamps, system version, input/output categories, user role, decision status, and human approval fields"
+        ],
+        "evidence_gaps": [
+          "Data sensitivity classification",
+          "Explicit high-impact use designation",
+          "Logging implementation status"
+        ],
+        "recommended_next_steps": [
+          "Define logging architecture and retention policies",
+          "Classify data sensitivity",
+          "Formalize human review procedures",
+          "Confirm high-impact use classification"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "System affects internal business decisions requiring human review"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "AI-generated recommendations require human review for internal decisions"
+          },
+          {
+            "source_id": "GRC-AI-LOGGING",
+            "title": "AI Governance Checklist - Logging and Traceability",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Logging requirements for accountability"
+          },
+          {
+            "source_id": "GRC-HIGH-IMPACT-USE",
+            "title": "AI Governance Checklist - High-Impact Use",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Procurement decisions may qualify as high-impact"
+          },
+          {
+            "source_id": "LOCAL-AUDITABILITY",
+            "title": "General Checklist - Auditability",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Auditability requirements for reviewable decisions"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true,
+          true
+        ]
+      },
+      "latency_ms": 123100.60459999659,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "1507d46250a0310190b6966dce7083164f6c30e6bb0131272f5799dc64677f08",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2024.677
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6104,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1810,
+          "eval_count": 1377,
+          "total_duration": 121068913000,
+          "load_duration": 10542100,
+          "prompt_eval_duration": 968646000,
+          "eval_duration": 119911399000,
+          "elapsed_ms": 121070.914,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-009",
+      "trial": 1,
+      "request_sha256": "d68f0bf47d308c760a97642710ea3c73c5496c588f3b8549c1839acfae246e33",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2323,
+      "initial_user_prompt_utf8_bytes": 6121,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 9",
+        "risk_level": "low",
+        "decision": "needs_review",
+        "summary": "The system processes public trail maps with minimal data sensitivity. Key risks include unverified regulatory claims and incomplete governance documentation. Human review and auditability controls are required but lack specific implementation details.",
+        "key_risks": [
+          "Unverified fictional Act ZZ-42 audit requirement",
+          "Missing system ownership documentation",
+          "Lack of detailed human review process"
+        ],
+        "required_controls": [
+          "Document system ownership and policy applicability",
+          "Implement auditability controls per GRC checklist",
+          "Define human review process parameters"
+        ],
+        "human_review_requirements": [
+          "Verify Act ZZ-42 regulatory applicability",
+          "Confirm system ownership and policy context",
+          "Validate human review process effectiveness"
+        ],
+        "logging_requirements": [
+          "Record review dates and outcomes",
+          "Track evidence sources for auditability",
+          "Document control implementation details"
+        ],
+        "evidence_gaps": [
+          "Unverified Act ZZ-42 legal requirement",
+          "Missing system owner information",
+          "Incomplete human review process definition"
+        ],
+        "recommended_next_steps": [
+          "Verify Act ZZ-42 regulatory applicability",
+          "Document system ownership and policy context",
+          "Define detailed human review process parameters"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies missing policy context and owner information"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Prevents unsupported regulatory claims"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Requires human review for high-impact decisions"
+          },
+          {
+            "source_id": "GRC-EVIDENCE-REQUEST",
+            "title": "GRC Checklist - Evidence Request",
+            "framework": "Local GRC Checklist",
+            "relevance": "Specifies evidence requirements for controls"
+          },
+          {
+            "source_id": "AI-RMF-GOVERN",
+            "title": "NIST AI RMF - Govern Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Emphasizes policy and process governance"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": []
+      },
+      "latency_ms": 78201.13620000484,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "b7a939e7db5891e491b443cb588438949af0f887660603fcc6e7dcb0e3f6d48b",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2060.604
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6121,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1818,
+          "eval_count": 908,
+          "total_duration": 76134156500,
+          "load_duration": 12825400,
+          "prompt_eval_duration": 848760000,
+          "eval_duration": 74930674000,
+          "elapsed_ms": 76135.757,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    },
+    {
+      "case_id": "REL-GOV-010",
+      "trial": 1,
+      "request_sha256": "e90bf3749e90ad230e63a4d5161c41e58978d2e9646e1c8674ad36d982d9079c",
+      "original_bundle_utf8_bytes": 2,
+      "rows": 0,
+      "canonical_raw_utf8_bytes": 0,
+      "reference_utf8_bytes": 2341,
+      "initial_user_prompt_utf8_bytes": 6236,
+      "input_selection": "none; all canonical evidence submitted; model retention not proven",
+      "before_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "result": {
+        "system_name": "Synthetic lab system 10",
+        "risk_level": "high",
+        "decision": "needs_review",
+        "summary": "Conflicting system purpose descriptions (public FAQ vs payroll updates) and unresolved data classification create significant governance and operational risks. The technical design's automatic payroll updates without approval violate containment principles and human review requirements for high-impact business decisions.",
+        "key_risks": [
+          "Conflicting system purpose descriptions (public FAQ vs payroll updates)",
+          "Unresolved data classification (public FAQ vs employee payroll data)",
+          "Automatic payroll updates without affirmative approval",
+          "Lack of documented human review process for high-impact business decisions"
+        ],
+        "required_controls": [
+          "Resolve conflicting system purpose descriptions",
+          "Implement data classification controls for payroll data",
+          "Establish human review process for payroll updates",
+          "Document risk register entry per GRC checklist"
+        ],
+        "human_review_requirements": [
+          "Human review required for payroll updates",
+          "Escalation procedures for payroll changes",
+          "Override mechanisms for critical payroll decisions"
+        ],
+        "logging_requirements": [
+          "Track all payroll data modifications",
+          "Log system purpose changes and data type classifications"
+        ],
+        "evidence_gaps": [
+          "Unresolved data type conflict",
+          "Missing approval records for payroll updates",
+          "Lack of documented human review process",
+          "Missing business impact assessment"
+        ],
+        "recommended_next_steps": [
+          "Resolve conflicting system purpose descriptions",
+          "Conduct data classification assessment",
+          "Define human review process for payroll updates",
+          "Create risk register entry per GRC checklist"
+        ],
+        "source_references": [
+          {
+            "source_id": "AI-RMF-MAP",
+            "title": "NIST AI RMF - Map Function",
+            "framework": "NIST AI RMF",
+            "relevance": "Conflicting system purpose descriptions require risk profiling"
+          },
+          {
+            "source_id": "LOCAL-SAFE-CONTAINMENT",
+            "title": "General Checklist - Safe Containment Language",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Automatic payroll updates without approval violate containment principles"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Payroll updates require human review for high-impact business decisions"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Unresolved data type conflict constitutes an evidence gap"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "source_membership": true,
+        "source_ids_absent_from_prose": true,
+        "canary_absent": true,
+        "coverage_groups": [
+          true
+        ]
+      },
+      "latency_ms": 85833.72729999246,
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "13d71d54a0620e45a622190b42dd7272f40206430c8f60d55786a074687f7ef2",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 2022.508
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      },
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6236,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1839,
+          "eval_count": 986,
+          "total_duration": 83805681900,
+          "load_duration": 8365400,
+          "prompt_eval_duration": 831133000,
+          "eval_duration": 82663999000,
+          "elapsed_ms": 83807.573,
+          "context_status": "unknown"
+        }
+      ],
+      "after_runtime": {
+        "context_length": 4096,
+        "size": 5986561554,
+        "size_vram": 4206582824
+      },
+      "manual_review": "pending",
+      "generation_count": 1,
+      "retry_count": 0
+    }
+  ],
+  "finished_utc": "2026-10-29T18:54:20.493059+00:00",
+  "metrics": {
+    "attempts": 32,
+    "returned": 31,
+    "withheld": 1,
+    "first_pass_valid": 30,
+    "repair_attempted": 1,
+    "repair_succeeded": 1,
+    "transport_json_retries": 0,
+    "coverage_proxy_matched_groups": 34,
+    "coverage_proxy_returned_groups": 34,
+    "checks_failed_by_name": {},
+    "latency_ms_median_all_attempts": 103234.36109999602,
+    "latency_ms_total": 3421702.3572999896,
+    "per_case": {
+      "REL-GOV-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-002": [
+        "returned"
+      ],
+      "REL-GOV-003": [
+        "returned"
+      ],
+      "REL-GOV-004": [
+        "returned"
+      ],
+      "REL-GOV-005": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-006": [
+        "returned"
+      ],
+      "REL-GOV-007": [
+        "returned"
+      ],
+      "REL-GOV-008": [
+        "returned"
+      ],
+      "REL-GOV-009": [
+        "returned"
+      ],
+      "REL-GOV-010": [
+        "returned"
+      ],
+      "REL-SOC-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-002": [
+        "returned"
+      ],
+      "REL-SOC-003": [
+        "returned"
+      ],
+      "REL-SOC-004": [
+        "returned"
+      ],
+      "REL-SOC-005": [
+        "returned"
+      ],
+      "REL-SOC-006": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-007": [
+        "returned"
+      ],
+      "REL-SOC-008": [
+        "returned"
+      ],
+      "REL-SOC-009": [
+        "returned"
+      ],
+      "REL-SOC-010": [
+        "returned"
+      ],
+      "REL-SOC-011": [
+        "returned"
+      ],
+      "REL-SOC-012": [
+        "returned"
+      ],
+      "REL-SOC-013": [
+        "returned"
+      ],
+      "REL-SOC-014": [
+        "withheld"
+      ]
+    },
+    "semantic_metrics": "manual review required; no overall pass score"
+  }
+}

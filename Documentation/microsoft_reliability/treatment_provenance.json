@@ -1,0 +1,38 @@
+{
+  "application_sha": "92e8ee3038715071389b8ff95c4b6f65f7ce7da8",
+  "baseline_application_sha": "3f33cca014ff7865981afcedacdc69107bb5f6d2",
+  "suite_identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "official_artifact_sha256": {
+    "treatment.json": "b8fc3a27a5784b177dce4a932b64f42478cefe49ad63dac6ad6537aede12e3cd",
+    "comparison.json": "33c2a8d83004845234e3f12af5c273ebae735f3bc200f3f8dffe44c1fc39006d",
+    "manual_comparison.json": "caeba90cdf7d08660c87ffb5999c4b9732ec4fc8ae6b580849b19416cc6db28c",
+    "treatment_manual_review.json": "2c238466f2bb4fdd5b3c2cfd926fd32a7ee9d1a8ece6da1a115f3ac706c255cb",
+    "entity_identifier_review.json": "5c924d27f7324acebc7032f565f9761af8d132ce11c544e16329e4d7f98d2550"
+  },
+  "original_report_path": "evals\\results\\microsoft_reliability_treatment.json",
+  "journal_bytes": 130360,
+  "journal_sha256": "590836be7dff98cc7f3dbad6141d330595e55fda22df959b34c410b0a2bce8ae",
+  "journal_records_equal_final_report": true,
+  "recovery_prefix_verified": true,
+  "exact_schedule_request_identity_verified_by_frozen_compare": true,
+  "executing_source_changes_during_treatment": [],
+  "source_paths_checked": [
+    "app",
+    "dashboard",
+    "evals/microsoft_reliability",
+    "reference_material",
+    "requirements.txt"
+  ],
+  "intentional_configuration_change": "Microsoft native complete-context requests at 8192, truncate false, shift false; governance default SDK unchanged",
+  "full_manifest_model_digest_observed_during_recovery": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "model_digest_caveat": "Launch reports record the same Ollama ls short ID; full manifest digest is a separate recovery observation."
+}

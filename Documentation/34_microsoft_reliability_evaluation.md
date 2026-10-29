@@ -160,3 +160,85 @@ Changing query construction would also require carefully recording actual retrie
 source authorization; the current frozen scorer reconstructs the original query.
 Do not retune its checks or silently reinterpret this comparison. Default retrieval
 and all historical retrieval metrics remain unchanged.
+
+## Completed unchanged-suite treatment
+
+The treatment ran once from clean implementation
+`92e8ee3038715071389b8ff95c4b6f65f7ce7da8`, October 29, 2026,
+17:56:12–18:54:20 UTC. All 32 records equal the journal, preserve the recovery
+prefix and match baseline schedule/request hashes, source byte hashes and semantic
+identity. Model identifier, temperature, seed state and retrieval settings match.
+Microsoft complete-context 8192 is the intentional configuration change. Later
+commits changed only tests, review and documentation, not executing source.
+
+The byte-exact [treatment report](microsoft_reliability/treatment.json) SHA-256 is
+`b8fc3a27a5784b177dce4a932b64f42478cefe49ad63dac6ad6537aede12e3cd`.
+The [comparison](microsoft_reliability/comparison.json) replays the unchanged frozen
+comparison function; [provenance](microsoft_reliability/treatment_provenance.json)
+binds official artifacts and original journal bytes. No attempt was selectively rerun.
+
+| Measurement | Baseline | Treatment |
+| --- | ---: | ---: |
+| Returned / requested | 29/32 (90.6%) | 31/32 (96.9%) |
+| Withheld | 3/32 | 1/32 |
+| First-pass valid / requested | 29/32 | 30/32 |
+| Policy repairs attempted | 3/32 | 1/32 |
+| Returned after repair / repairs | 0/3 | 1/1 |
+| Completed model calls | 35 | 32 |
+| Rejected model requests | 0 | 1 |
+| Transport/JSON retries | 0 | 0 |
+| Narrow returned-response machine check failures | 0 | 0 |
+| Lexical coverage groups matched / returned groups | 29/31 | 34/34 |
+| Median latency, all attempts | 90.583 s | 103.234 s |
+| Total analyzer latency | 3289.066 s | 3421.702 s |
+
+Three network responses gained availability; the largest case lost availability
+through safe request rejection. There are 28 common returned attempts. Their median
+latency increased from 85.995 to 102.055 seconds, so the fast rejected large request
+must not be marketed as a speed improvement. Thirty-three treatment model requests
+include 32 completed responses and one rejected request, separate from policy repair.
+
+The [complete treatment review](microsoft_reliability/treatment_manual_review.json)
+preserves early committed judgments. The [manual comparison](microsoft_reliability/manual_comparison.json)
+records every paired transition, with separate returned and unassessable denominators.
+
+| Manual dimension | Baseline present / ambiguous / absent (29 returned) | Treatment present / ambiguous / absent (31 returned) |
+| --- | ---: | ---: |
+| Material omission | 1 / 1 / 27 | 0 / 0 / 31 |
+| Unsupported factual claim/inference | 8 / 8 / 13 | 10 / 8 / 13 |
+| Unsupported authority/policy claim | 3 / 4 / 22 | 7 / 4 / 20 |
+| Overclaiming/proportionality | 8 / 6 / 15 | 4 / 15 / 12 |
+| Source applicability concern | 4 / 9 / 16 | 3 / 16 / 12 |
+
+Three baseline and one treatment withheld outputs are unassessable for each
+dimension, excluded above. These are subjective overlapping review judgments, not
+machine-proven semantic rates. In the 28 common returns, factual concerns labelled
+present remain 7/28 in both phases: three present-to-absent improvements, three
+absent-to-present regressions, and other ambiguous transitions. Authority concerns
+increase from 3/28 to 7/28. Present omission and ambiguous vendor-term coverage each
+become absent. Overclaiming often shifts into ambiguity rather than a clear absence.
+The experiment therefore does **not** establish broad semantic-claim reduction.
+
+Notable improvements: supplied parent-child relation now represented; connection-only
+trial two no longer invents a brute-force/login sequence; maintenance no longer maps
+to Credential Access or labels a device as an account; public catalog no longer
+invents sensitive data; hiring no longer restricts recruiter override; missing vendor
+terms are explicitly checked. Deletion-command and LSASS-dump evidence remain present.
+
+Residuals/regressions: training-note command still becomes an execution label;
+network rows receive unsupported Initial Access/Discovery classifications; the LSASS
+positive control adds a weakly supported Persistence hypothesis; process-only hash
+case proposes account disablement without account evidence. The medium case fits
+measured capacity yet borrows a brute-force/login label and miscounts rows. The
+scoped LC-12 case extends charter authority and adds an unsupported high-impact
+classification. More governance relevance prose calls checklist advice mandatory;
+the conflicting-description case calls a design a containment-policy violation.
+Public museum cases still preserve nonsensitive scope, but missing-documentation
+versus absent-control ambiguity remains. Withholding the large defective baseline
+output is an availability tradeoff, not a semantic correction among returns.
+
+No new scorer, changed truth condition, overall pass score or statistical confidence
+claim is introduced. Manual review remains unblinded implementation-assistant review;
+independent adjudication is a release-readiness follow-up. The query diagnosis and
+these results motivate a separately authorized held-out query/support experiment,
+not additional treatment within this frozen comparison.

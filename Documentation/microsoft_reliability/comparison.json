@@ -1,0 +1,209 @@
+{
+  "identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "baseline_sha": "3f33cca014ff7865981afcedacdc69107bb5f6d2",
+  "treatment_sha": "92e8ee3038715071389b8ff95c4b6f65f7ce7da8",
+  "baseline": {
+    "attempts": 32,
+    "returned": 29,
+    "withheld": 3,
+    "first_pass_valid": 29,
+    "repair_attempted": 3,
+    "repair_succeeded": 0,
+    "transport_json_retries": 0,
+    "coverage_proxy_matched_groups": 29,
+    "coverage_proxy_returned_groups": 31,
+    "checks_failed_by_name": {},
+    "latency_ms_median_all_attempts": 90582.81134999925,
+    "latency_ms_total": 3289066.076200004,
+    "per_case": {
+      "REL-GOV-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-002": [
+        "returned"
+      ],
+      "REL-GOV-003": [
+        "returned"
+      ],
+      "REL-GOV-004": [
+        "returned"
+      ],
+      "REL-GOV-005": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-006": [
+        "returned"
+      ],
+      "REL-GOV-007": [
+        "returned"
+      ],
+      "REL-GOV-008": [
+        "returned"
+      ],
+      "REL-GOV-009": [
+        "returned"
+      ],
+      "REL-GOV-010": [
+        "returned"
+      ],
+      "REL-SOC-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-002": [
+        "returned"
+      ],
+      "REL-SOC-003": [
+        "returned"
+      ],
+      "REL-SOC-004": [
+        "returned"
+      ],
+      "REL-SOC-005": [
+        "returned"
+      ],
+      "REL-SOC-006": [
+        "returned",
+        "returned",
+        "withheld"
+      ],
+      "REL-SOC-007": [
+        "withheld"
+      ],
+      "REL-SOC-008": [
+        "withheld"
+      ],
+      "REL-SOC-009": [
+        "returned"
+      ],
+      "REL-SOC-010": [
+        "returned"
+      ],
+      "REL-SOC-011": [
+        "returned"
+      ],
+      "REL-SOC-012": [
+        "returned"
+      ],
+      "REL-SOC-013": [
+        "returned"
+      ],
+      "REL-SOC-014": [
+        "returned"
+      ]
+    },
+    "semantic_metrics": "manual review required; no overall pass score"
+  },
+  "treatment": {
+    "attempts": 32,
+    "returned": 31,
+    "withheld": 1,
+    "first_pass_valid": 30,
+    "repair_attempted": 1,
+    "repair_succeeded": 1,
+    "transport_json_retries": 0,
+    "coverage_proxy_matched_groups": 34,
+    "coverage_proxy_returned_groups": 34,
+    "checks_failed_by_name": {},
+    "latency_ms_median_all_attempts": 103234.36109999602,
+    "latency_ms_total": 3421702.3572999896,
+    "per_case": {
+      "REL-GOV-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-002": [
+        "returned"
+      ],
+      "REL-GOV-003": [
+        "returned"
+      ],
+      "REL-GOV-004": [
+        "returned"
+      ],
+      "REL-GOV-005": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-GOV-006": [
+        "returned"
+      ],
+      "REL-GOV-007": [
+        "returned"
+      ],
+      "REL-GOV-008": [
+        "returned"
+      ],
+      "REL-GOV-009": [
+        "returned"
+      ],
+      "REL-GOV-010": [
+        "returned"
+      ],
+      "REL-SOC-001": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-002": [
+        "returned"
+      ],
+      "REL-SOC-003": [
+        "returned"
+      ],
+      "REL-SOC-004": [
+        "returned"
+      ],
+      "REL-SOC-005": [
+        "returned"
+      ],
+      "REL-SOC-006": [
+        "returned",
+        "returned",
+        "returned"
+      ],
+      "REL-SOC-007": [
+        "returned"
+      ],
+      "REL-SOC-008": [
+        "returned"
+      ],
+      "REL-SOC-009": [
+        "returned"
+      ],
+      "REL-SOC-010": [
+        "returned"
+      ],
+      "REL-SOC-011": [
+        "returned"
+      ],
+      "REL-SOC-012": [
+        "returned"
+      ],
+      "REL-SOC-013": [
+        "returned"
+      ],
+      "REL-SOC-014": [
+        "withheld"
+      ]
+    },
+    "semantic_metrics": "manual review required; no overall pass score"
+  },
+  "semantic_comparison": "See separate unchanged-rubric manual review"
+}

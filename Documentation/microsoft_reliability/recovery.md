@@ -84,3 +84,17 @@ the pending experiment, not a restart or a duplicate.
 The first continuation's full Windows test gate passed **1,534 tests**, with the
 existing Starlette/httpx deprecation warning. No desktop-control capability was
 invoked during either continuation. Visual QA remains **USER VISUAL QA PENDING**.
+
+## Final recovery disposition
+
+The six pending context probes completed once, followed by the separately frozen
+five-call native contract experiment. Production treatment was committed cleanly at
+`92e8ee3038715071389b8ff95c4b6f65f7ce7da8` before the unchanged 32-attempt run.
+That original treatment command completed normally, with 31 returns and one safe
+complete-context rejection; it was never restarted or duplicated. Its journal
+equals the final report and the first-eight-record byte/hash recovery prefix is
+preserved. All 32 baseline and treatment attempts now have manual review. The
+executing-source diff from treatment launch is empty; subsequent changes are tests,
+documentation and offline diagnosis. Historical snapshot status strings above
+describe their capture time, not a currently active process. See the
+[closeout](../36_expansion_sprint_3_report.md) for final validation and limitations.

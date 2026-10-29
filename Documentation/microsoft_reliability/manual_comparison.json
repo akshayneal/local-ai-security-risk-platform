@@ -1,0 +1,475 @@
+{
+  "method": "Unchanged-rubric implementation-assistant review; overlapping dimensions; no overall semantic score. Withheld outputs are unassessable. Unseeded bundled treatment and subjective support-scope judgments limit causal claims.",
+  "baseline_returned": 29,
+  "treatment_returned": 31,
+  "common_returned_attempts": 28,
+  "baseline_all_attempts": {
+    "material_omission": {
+      "absent": 27,
+      "present": 1,
+      "unassessable": 3,
+      "ambiguous": 1
+    },
+    "unsupported_factual_claim": {
+      "ambiguous": 8,
+      "absent": 13,
+      "present": 8,
+      "unassessable": 3
+    },
+    "unsupported_authority_claim": {
+      "absent": 22,
+      "unassessable": 3,
+      "ambiguous": 4,
+      "present": 3
+    },
+    "overclaiming": {
+      "ambiguous": 6,
+      "absent": 15,
+      "present": 8,
+      "unassessable": 3
+    },
+    "source_applicability": {
+      "absent": 16,
+      "present": 4,
+      "ambiguous": 9,
+      "unassessable": 3
+    }
+  },
+  "treatment_all_attempts": {
+    "material_omission": {
+      "absent": 31,
+      "unassessable": 1
+    },
+    "unsupported_factual_claim": {
+      "absent": 13,
+      "present": 10,
+      "unassessable": 1,
+      "ambiguous": 8
+    },
+    "unsupported_authority_claim": {
+      "absent": 20,
+      "unassessable": 1,
+      "ambiguous": 4,
+      "present": 7
+    },
+    "overclaiming": {
+      "absent": 12,
+      "ambiguous": 15,
+      "present": 4,
+      "unassessable": 1
+    },
+    "source_applicability": {
+      "ambiguous": 16,
+      "absent": 12,
+      "present": 3,
+      "unassessable": 1
+    }
+  },
+  "common_returned_transitions": {
+    "material_omission": {
+      "absent -> absent": 26,
+      "present -> absent": 1,
+      "ambiguous -> absent": 1
+    },
+    "unsupported_factual_claim": {
+      "ambiguous -> absent": 4,
+      "absent -> absent": 6,
+      "present -> present": 3,
+      "present -> absent": 3,
+      "absent -> present": 3,
+      "ambiguous -> ambiguous": 3,
+      "ambiguous -> present": 1,
+      "absent -> ambiguous": 4,
+      "present -> ambiguous": 1
+    },
+    "unsupported_authority_claim": {
+      "absent -> absent": 17,
+      "ambiguous -> ambiguous": 4,
+      "present -> present": 3,
+      "absent -> present": 4
+    },
+    "overclaiming": {
+      "ambiguous -> absent": 1,
+      "ambiguous -> ambiguous": 5,
+      "absent -> absent": 10,
+      "present -> present": 3,
+      "present -> ambiguous": 3,
+      "absent -> ambiguous": 4,
+      "present -> absent": 1,
+      "absent -> present": 1
+    },
+    "source_applicability": {
+      "absent -> ambiguous": 6,
+      "present -> ambiguous": 3,
+      "ambiguous -> ambiguous": 5,
+      "ambiguous -> absent": 3,
+      "present -> present": 1,
+      "absent -> present": 1,
+      "absent -> absent": 8,
+      "ambiguous -> present": 1
+    }
+  },
+  "availability_transitions": {
+    "returned -> returned": 28,
+    "withheld -> returned": 3,
+    "returned -> withheld": 1
+  },
+  "common_returned_latency_ms_median": {
+    "baseline": 85995.43754999831,
+    "treatment": 102055.23915000231
+  },
+  "paired_review": [
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> absent",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 2,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> ambiguous",
+        "source_applicability": "present -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 3,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> ambiguous",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-002",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "ambiguous -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-003",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> present",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> present",
+        "source_applicability": "ambiguous -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-004",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "present -> absent",
+        "unsupported_factual_claim": "present -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> ambiguous",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-005",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> ambiguous",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> present",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "ambiguous -> ambiguous",
+        "source_applicability": "present -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 2,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> ambiguous",
+        "source_applicability": "present -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 3,
+      "transitions": {
+        "material_omission": "unassessable -> absent",
+        "unsupported_factual_claim": "unassessable -> present",
+        "unsupported_authority_claim": "unassessable -> absent",
+        "overclaiming": "unassessable -> ambiguous",
+        "source_applicability": "unassessable -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-007",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "unassessable -> absent",
+        "unsupported_factual_claim": "unassessable -> present",
+        "unsupported_authority_claim": "unassessable -> absent",
+        "overclaiming": "unassessable -> ambiguous",
+        "source_applicability": "unassessable -> absent"
+      }
+    },
+    {
+      "case_id": "REL-SOC-008",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "unassessable -> absent",
+        "unsupported_factual_claim": "unassessable -> present",
+        "unsupported_authority_claim": "unassessable -> absent",
+        "overclaiming": "unassessable -> ambiguous",
+        "source_applicability": "unassessable -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-009",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> present",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "absent -> ambiguous",
+        "source_applicability": "ambiguous -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-SOC-011",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> ambiguous",
+        "source_applicability": "ambiguous -> absent"
+      }
+    },
+    {
+      "case_id": "REL-SOC-012",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> present",
+        "source_applicability": "present -> present"
+      }
+    },
+    {
+      "case_id": "REL-SOC-013",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> present",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> present",
+        "source_applicability": "absent -> present"
+      }
+    },
+    {
+      "case_id": "REL-SOC-014",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> unassessable",
+        "unsupported_factual_claim": "present -> unassessable",
+        "unsupported_authority_claim": "absent -> unassessable",
+        "overclaiming": "present -> unassessable",
+        "source_applicability": "absent -> unassessable"
+      }
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> ambiguous",
+        "unsupported_authority_claim": "ambiguous -> ambiguous",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 2,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> ambiguous",
+        "unsupported_authority_claim": "ambiguous -> ambiguous",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 3,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> ambiguous",
+        "unsupported_authority_claim": "ambiguous -> ambiguous",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-002",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "ambiguous -> present",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "absent -> ambiguous",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-003",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "present -> present",
+        "overclaiming": "present -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-004",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> present",
+        "unsupported_authority_claim": "ambiguous -> ambiguous",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> ambiguous",
+        "unsupported_authority_claim": "absent -> present",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "ambiguous -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 2,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> ambiguous",
+        "unsupported_authority_claim": "absent -> present",
+        "overclaiming": "absent -> ambiguous",
+        "source_applicability": "ambiguous -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 3,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> ambiguous",
+        "unsupported_authority_claim": "absent -> present",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "ambiguous -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-006",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "ambiguous -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "ambiguous -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-GOV-007",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "present -> ambiguous",
+        "unsupported_authority_claim": "absent -> absent",
+        "overclaiming": "present -> ambiguous",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-008",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> present",
+        "unsupported_authority_claim": "present -> present",
+        "overclaiming": "absent -> present",
+        "source_applicability": "absent -> ambiguous"
+      }
+    },
+    {
+      "case_id": "REL-GOV-009",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> absent",
+        "unsupported_authority_claim": "present -> present",
+        "overclaiming": "absent -> absent",
+        "source_applicability": "absent -> absent"
+      }
+    },
+    {
+      "case_id": "REL-GOV-010",
+      "trial": 1,
+      "transitions": {
+        "material_omission": "absent -> absent",
+        "unsupported_factual_claim": "absent -> ambiguous",
+        "unsupported_authority_claim": "absent -> present",
+        "overclaiming": "absent -> ambiguous",
+        "source_applicability": "ambiguous -> present"
+      }
+    }
+  ]
+}
