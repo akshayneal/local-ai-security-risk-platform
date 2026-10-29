@@ -1,0 +1,49 @@
+{
+  "status": "partial treatment review; implementation frozen",
+  "application_sha": "b9b1a2447f75075d9c9b92df2f630b918bc369dc",
+  "reviewer": "implementation assistant; unblinded, not independent adjudication",
+  "rubric": "evals/grounding_stabilization/rubric.md",
+  "judgment_revisions": [],
+  "reviews": [
+    {
+      "case_id": "GS35-NET",
+      "record_sha256": "cba866a8dc0ebfc5b0aa958641861754794109f9ed92ae50a076738ff4654697",
+      "incorrect_incident_classification": "present",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "present",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A successful TCP connection was established from lab-router-35 (192.0.2.73) to 198.51.100.73 on port 7443. No associated account activity or process details were observed."
+        },
+        {
+          "field": "mitre_mapping",
+          "value": [
+            "Command and Control"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "MITRE-TA0011",
+              "title": "MITRE ATT&CK - Command and Control",
+              "framework": "MITRE ATT&CK",
+              "relevance": "The connection could represent command and control activity, though additional evidence is needed to confirm"
+            },
+            {
+              "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+              "title": "SOC Checklist - Suspicious PowerShell",
+              "framework": "Local SOC Checklist",
+              "relevance": "No PowerShell activity was observed in this event"
+            }
+          ]
+        }
+      ],
+      "rationale": "Supplied TCP connection and endpoint relationships retained; no invented authentication sequence. However C2 mapping is not supported by a single connection without beaconing, reputation or other malicious evidence. This negative-control classification is a false positive despite careful body caveats and a neutral incident title; medium severity alone is not the defect. PowerShell checklist reference explains absent PowerShell rather than applicable process evidence. This is a factual/classification regression versus the baseline ambiguous legitimacy wording, not a query-contamination failure."
+    }
+  ]
+}
