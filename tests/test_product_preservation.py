@@ -4,6 +4,8 @@ import json
 import subprocess
 from pathlib import Path
 
+from historical_identity import expansion_blob
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -18,9 +20,7 @@ def test_frozen_artifacts_scorers_and_analysis_implementation_unchanged():
     }
     assert manifest["starting_commit"] == "c5e187e4e9bb02f5e1ce666b84716fa72e66c820"
     for name, expected in manifest["unchanged_git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        actual = expansion_blob(name)
         assert actual == expected, name
     for name, expected in manifest["authorized_prior_source_git_blob_sha1"].items():
         actual = subprocess.check_output(

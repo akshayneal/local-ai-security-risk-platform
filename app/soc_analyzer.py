@@ -19,6 +19,8 @@ from app.reference_loader import (
     get_relevant_references,
     sanitize_source_references,
 )
+from app.retrieval.orchestration import retrieve_for_analysis
+from app.retrieval.serialization import EVIDENCE_INSTRUCTIONS, restore_evidence_sources
 from app.schemas import SocAlertRequest, SocAlertResponse
 
 
@@ -29,16 +31,27 @@ def analyze_soc_alert(
     trace: AnalysisTrace | None = None,
 ) -> SocAlertResponse:
     query = request.model_dump_json()
-
+    evidence = None
+    reference_context = None
     if references is None:
-        references = get_relevant_references(mode="soc_alert", query=query, limit=5)
+        selected = retrieve_for_analysis(
+            "soc_alert", query, 5, legacy_loader=get_relevant_references
+        )
+        references, evidence, reference_context = (
+            selected.cards,
+            selected.evidence,
+            selected.context,
+        )
 
-    reference_context = format_references_for_prompt(references)
+    if reference_context is None:
+        reference_context = format_references_for_prompt(references)
 
     prompt = build_soc_prompt(
         request=request,
         reference_context=reference_context,
     )
+    if evidence is not None:
+        prompt = EVIDENCE_INSTRUCTIONS + prompt
 
     original_input = request.model_dump(mode="json")
     blocked = untrusted_source_ids(original_input, get_reference_ids(references))
@@ -69,6 +82,10 @@ def analyze_soc_alert(
         if trace is not None:
             trace.capture("policy_violations", violations, generation=generation)
         if response is not None:
+            if evidence is not None:
+                restored = response.model_dump(mode="json")
+                restore_evidence_sources(restored, evidence)
+                response = SocAlertResponse.model_validate(restored)
             if trace is not None:
                 trace.repair_failed = False
                 trace.capture("contract_accepted", True, generation=generation)

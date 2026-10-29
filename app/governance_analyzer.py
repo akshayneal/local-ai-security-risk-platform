@@ -11,6 +11,8 @@ from app.reference_loader import (
     get_relevant_references,
     sanitize_source_references,
 )
+from app.retrieval.orchestration import retrieve_for_analysis
+from app.retrieval.serialization import EVIDENCE_INSTRUCTIONS, restore_evidence_sources
 from app.schemas import GovernanceRiskRequest, GovernanceRiskResponse
 
 
@@ -21,16 +23,27 @@ def analyze_governance_risk(
     trace: AnalysisTrace | None = None,
 ) -> GovernanceRiskResponse:
     query = request.model_dump_json()
-
+    evidence = None
+    reference_context = None
     if references is None:
-        references = get_relevant_references(mode="governance", query=query, limit=6)
+        selected = retrieve_for_analysis(
+            "governance", query, 6, legacy_loader=get_relevant_references
+        )
+        references, evidence, reference_context = (
+            selected.cards,
+            selected.evidence,
+            selected.context,
+        )
 
-    reference_context = format_references_for_prompt(references)
+    if reference_context is None:
+        reference_context = format_references_for_prompt(references)
 
     prompt = build_governance_prompt(
         request=request,
         reference_context=reference_context,
     )
+    if evidence is not None:
+        prompt = EVIDENCE_INSTRUCTIONS + prompt
 
     if trace is not None:
         trace.capture("generation_started", None)
@@ -67,6 +80,8 @@ def analyze_governance_risk(
         returned_sources=raw_result.get("source_references", []),
         retrieved_references=references,
     )
+    if evidence is not None:
+        restore_evidence_sources(raw_result, evidence)
 
     if trace is not None:
         trace.capture("source_sanitized", raw_result)

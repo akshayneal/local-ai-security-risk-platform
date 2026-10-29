@@ -74,7 +74,28 @@ def test_release_implementation_and_frozen_evidence_preserved():
     names = subprocess.check_output(
         ["git", "diff", "v2.3.0", "--name-only", "--", *protected], cwd=ROOT, text=True
     ).splitlines()
-    assert all(name.startswith("app/retrieval/") for name in names), names
+    # This sprint authorizes the input profile and two analyzer retrieval hooks.
+    # Prior implementation identities stay checked at the foundation checkpoint.
+    from historical_identity import expansion_blob
+
+    integration = {
+        "app/soc_analyzer.py",
+        "app/governance_analyzer.py",
+        "dashboard/workflows.py",
+        "dashboard/sample_loader.py",
+    }
+    additions = {"app/soc_inputs.py", "dashboard/microsoft_input.py"}
+    assert all(
+        name.startswith("app/retrieval/") or name in integration | additions
+        for name in names
+    ), names
+    for name in integration:
+        assert (
+            expansion_blob(name)
+            == subprocess.check_output(
+                ["git", "rev-parse", f"v2.3.0:{name}"], cwd=ROOT, text=True
+            ).strip()
+        )
     # Frozen output-evaluation directories and standalone scorers/runners are
     # still checked against the actual released tree, not relaxed manifests.
     names = subprocess.check_output(
