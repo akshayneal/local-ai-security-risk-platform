@@ -1,0 +1,21 @@
+{
+  "version": "ollama-context-contract-v1",
+  "purpose": "Verify installed server behavior for truncate=false and shift=false; not a replacement for the six frozen context/quality probes",
+  "model": "qwen3:8b",
+  "temperature": 0.1,
+  "trials_per_cell": 1,
+  "probes": [
+    {"id":"short-4096","case_id":"REL-SOC-006","num_ctx":4096,"num_predict":32,"expected":"response"},
+    {"id":"short-8192","case_id":"REL-SOC-006","num_ctx":8192,"num_predict":32,"expected":"response"},
+    {"id":"large-4096","case_id":"REL-SOC-014","num_ctx":4096,"num_predict":32,"expected":"input_capacity_rejection"},
+    {"id":"large-8192","case_id":"REL-SOC-014","num_ctx":8192,"num_predict":32,"expected":"input_capacity_rejection"},
+    {"id":"generation-capacity-4096","case_id":"REL-SOC-013","num_ctx":4096,"num_predict":1024,"expected":"capacity_failure_or_bounded_stop_without_context_shift"}
+  ],
+  "persistence": "numeric usage/status only; no generated content, prompt, telemetry or exception messages",
+  "scope": "new local API capability diagnosis; frozen reliability cases, scorer, plan and runner remain unchanged",
+  "sources": [
+    "https://github.com/ollama/ollama/blob/v0.40.12/api/types.go",
+    "https://github.com/ollama/ollama/blob/v0.40.12/server/routes.go",
+    "https://github.com/ollama/ollama/blob/v0.40.12/llm/llama_server.go"
+  ]
+}
