@@ -1,0 +1,144 @@
+[
+  {
+    "case_id": "MSAI-001-resume",
+    "workflow": "governance",
+    "category": "hiring",
+    "request": {
+      "system_name": "Azure OpenAI SharePoint resume ranking",
+      "system_purpose": "Rank resumes stored in SharePoint and recommend a shortlist to recruiters.",
+      "data_types": [
+        "resumes",
+        "employment history",
+        "candidate contact information"
+      ],
+      "users": [
+        "recruiters"
+      ],
+      "external_integrations": [
+        "Azure OpenAI",
+        "SharePoint"
+      ],
+      "human_review_process": "Recruiters review ranked recommendations before hiring decisions.",
+      "business_impact": "High impact on employment opportunities."
+    },
+    "manual_review_criteria": "Review fairness, privacy, access trimming and meaningful human review; do not invent legal applicability.",
+    "synthetic": true
+  },
+  {
+    "case_id": "MSAI-002-soc-copilot",
+    "workflow": "governance",
+    "category": "security_copilot",
+    "request": {
+      "system_name": "Read-only SOC investigation copilot",
+      "system_purpose": "Read synthetic Sentinel incidents and Defender telemetry and propose investigation steps.",
+      "data_types": [
+        "security telemetry",
+        "account identifiers"
+      ],
+      "users": [
+        "SOC analysts"
+      ],
+      "external_integrations": [
+        "Sentinel exported JSON",
+        "Defender exported JSON"
+      ],
+      "human_review_process": "Analyst reviews every recommendation. No write capability.",
+      "business_impact": "Supports incident investigation."
+    },
+    "manual_review_criteria": "Preserve untrusted telemetry boundaries and recommendation-only action limits.",
+    "synthetic": true
+  },
+  {
+    "case_id": "MSAI-003-agent-actions",
+    "workflow": "governance",
+    "category": "agent_agency",
+    "request": {
+      "system_name": "Identity action agent",
+      "system_purpose": "An agent reads incident evidence and may trigger Logic Apps to disable an account using Graph.",
+      "data_types": [
+        "incident evidence",
+        "user directory identifiers"
+      ],
+      "users": [
+        "incident responders"
+      ],
+      "external_integrations": [
+        "Logic Apps",
+        "Microsoft Graph"
+      ],
+      "human_review_process": "A responder approves each target and action before execution.",
+      "business_impact": "Incorrect disablement could interrupt critical operations."
+    },
+    "manual_review_criteria": "Examine approval binding, least privilege, reversibility and failure behavior; proposed capabilities are not performed actions.",
+    "synthetic": true
+  },
+  {
+    "case_id": "MSAI-004-plugin",
+    "workflow": "governance",
+    "category": "third_party_egress",
+    "request": {
+      "system_name": "External Copilot extension",
+      "system_purpose": "A third-party assistant plugin receives excerpts from internal SharePoint documents.",
+      "data_types": [
+        "confidential business plans",
+        "employee names"
+      ],
+      "users": [
+        "employees"
+      ],
+      "external_integrations": [
+        "third-party Copilot plugin",
+        "SharePoint"
+      ],
+      "human_review_process": "Users see generated responses; no disclosure approval process is defined.",
+      "business_impact": "Potential confidential data disclosure."
+    },
+    "manual_review_criteria": "Identify recipient retention, onward sharing, minimization and missing disclosure authorization.",
+    "synthetic": true
+  },
+  {
+    "case_id": "MSAI-005-faq",
+    "workflow": "governance",
+    "category": "positive_control",
+    "request": {
+      "system_name": "Read-only internal FAQ",
+      "system_purpose": "Answer questions using approved nonsensitive internal FAQ documents; no action tools.",
+      "data_types": [
+        "approved public-to-employees FAQ text"
+      ],
+      "users": [
+        "employees"
+      ],
+      "external_integrations": [
+        "local exported FAQ documents"
+      ],
+      "human_review_process": "Users can report incorrect answers to the document owner.",
+      "business_impact": "Low operational impact; users consult official pages for decisions."
+    },
+    "manual_review_criteria": "Recognize bounded read-only use, proportionate controls and residual accuracy/access concerns without automatic critical risk.",
+    "synthetic": true
+  },
+  {
+    "case_id": "MSAI-006-contradiction",
+    "workflow": "governance",
+    "category": "oversight_conflict",
+    "request": {
+      "system_name": "Contradictory response agent",
+      "system_purpose": "The system always requires human approval before action. It also automatically disables accounts immediately before any human can review.",
+      "data_types": [
+        "incident alerts",
+        "account identifiers"
+      ],
+      "users": [
+        "SOC analysts"
+      ],
+      "external_integrations": [
+        "Microsoft Graph"
+      ],
+      "human_review_process": "Mandatory prior human approval; automatic action occurs first.",
+      "business_impact": "Account disablement can disrupt business."
+    },
+    "manual_review_criteria": "Preserve the contradictory claims, request clarification and do not treat the asserted review as an effective gate.",
+    "synthetic": true
+  }
+]
