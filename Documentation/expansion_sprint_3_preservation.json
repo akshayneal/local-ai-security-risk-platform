@@ -3,7 +3,11 @@
   "authorized_prior_source_git_blob_sha1": {
     "app/ollama_client.py": "e13f50b7c2d786579dd0b07d5db0e06321abecd4",
     "app/soc_analyzer.py": "16e8b75880c639a390260a094b2f891fcbdf54da",
-    "app/output_policy.py": "7928590863c7a8c047db31d27b424fc29c602910"
+    "app/output_policy.py": "7928590863c7a8c047db31d27b424fc29c602910",
+    "app/prompts.py": "e666897bc3fe22f1f5c4fbceab4b601ba86ff4fc",
+    "app/main.py": "57c2a8415545524379f7abaccf976708e479da19",
+    "dashboard/api_client.py": "c858ad5b4c7aabdfed1a20aac8d30139df3ec03a",
+    "dashboard/microsoft_input.py": "c5ad469c08e63bf51fb00fafafd2b5803272ef25"
   },
   "frozen_git_blob_sha1": {
     "Documentation/evaluation_results/baseline.json": "a2400638be8c5aab0e2be2b1af918b761f7edda8",

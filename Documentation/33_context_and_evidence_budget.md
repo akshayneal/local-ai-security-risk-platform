@@ -111,3 +111,45 @@ estimates as exact token counts. The 12-row input fits this capacity with output
 room; the 45-row input is intentionally withheld. Generic SOC/governance and the
 released demo retain their ordinary generation configuration. Unsupported runtimes
 must fail closed rather than silently falling back to truncating behavior.
+
+## Implemented complete-context boundary
+
+`microsoft_model_context` applies only after the canonical Microsoft profile has
+been validated. Each initial/repair model request uses `num_ctx=8192`,
+`truncate=false`, `shift=false`, the same temperature and the same response schema.
+The bridge uses the existing requests dependency against a plain loopback HTTP host,
+with environment proxies and redirects disabled. It requires a server version at
+least 0.40.12, whose native contract was inspected and tested. Unsupported/credentialed
+or remote hosts fail before inference. Generic SOC and governance still use the
+ordinary SDK options; the isolated released demo and its launcher are unchanged.
+
+HTTP 400/413 is a rejected complete-context request, without echoing or inferring
+its raw error body. A length-limited or unfinished generation is also withheld,
+even if its partial JSON could parse. These failures are not retried into an
+alternative truncating mode and do not trigger another policy generation. Ordinary
+transport/JSON retries remain bounded at two; SOC policy repair remains exactly
+one and still receives the full final validation. Both API variants return a safe
+422 `complete_context_unavailable` message and the dashboard maps only the fixed
+code to fixed text. Other generic error behavior is unchanged. No diagnostics are
+added to ordinary analysis, exports or Activity records.
+
+There is no estimated-token admission formula or pre-inference exact count claim.
+The provider checks its rendered prompt and actual generation capacity. System,
+reference, repair and format overhead travel with the actual request, so they
+cannot be omitted from a client-side byte heuristic. Byte measures remain byte
+measures; usage counts are retained only in explicit local metric scopes.
+
+No rows are selected or silently discarded by this treatment. Canonical raw_log
+remains exact in the original request and exports. The inventory names its projected
+fields and includes a table/row entry for every source row, retaining original
+values without asserting success or maliciousness. Existing prompt-only instruction
+quarantine still removes matching hostile spans; that separate security behavior
+does not become a context-budget selection. Returned output can still omit facts
+or make semantic errors; preventing context eviction is not proof of comprehension.
+
+The 8192 choice is an intentional Microsoft-only treatment variable, with roughly
+0.61 GB additional reported residency in these observations. It gives the measured
+12-row case room for output and avoids an unmeasured large context increase. The
+45-row case is expected to be withheld, which counts against availability. Input
+capacity remains content-dependent, not a promised fixed number of rows or bytes.
+Generic/AI-risk large-input context behavior is outside this bounded treatment.

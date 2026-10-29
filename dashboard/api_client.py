@@ -9,6 +9,10 @@ POLICY_ERROR = (
     "Analysis withheld. The generated response failed required checks after one repair attempt. "
     "No analyst result was returned."
 )
+CONTEXT_ERROR = (
+    "Complete analysis withheld by the local runtime's context or generation limits. "
+    "No analyst result was returned. Use a smaller, clearly scoped bundle and check the supported local runtime."
+)
 UNAVAILABLE = (
     "FastAPI is unavailable. Start the local backend to analyze cases or view Activity."
 )
@@ -17,6 +21,11 @@ UNAVAILABLE = (
 def safe_error(status: int, body: object) -> str:
     if isinstance(body, dict):
         detail = body.get("detail")
+        if (
+            isinstance(detail, dict)
+            and detail.get("code") == "complete_context_unavailable"
+        ):
+            return CONTEXT_ERROR
         if (
             isinstance(detail, dict)
             and detail.get("code") == "integrity_validation_failed"

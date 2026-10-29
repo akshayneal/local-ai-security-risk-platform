@@ -29,6 +29,9 @@ def microsoft_workspace(base_url: str) -> None:
     from dashboard.workflows import display_source_references, soc_result, trust_panel
 
     st.caption("SYNTHETIC EXAMPLES · local JSON / CSV · no Microsoft connection")
+    st.caption(
+        "Valid uploads must also fit a complete local analysis. Oversized analyses are withheld; input rows are never silently selected out."
+    )
     try:
         samples = load_microsoft_samples()
     except SampleLoadError as exc:

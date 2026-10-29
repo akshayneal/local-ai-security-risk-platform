@@ -111,3 +111,26 @@ Treatment should address the objective endpoint compatibility and context-loss
 risks, with bounded support-scope instructions and an observation inventory where
 justified. The baseline does not justify a broad governance prompt rewrite or a
 regex semantic truth engine. Cases, judgment rubric and scorer remain frozen.
+
+## Pre-live treatment declaration
+
+The treatment combines structured endpoint compatibility, a source-field inventory,
+native no-eviction context behavior for Microsoft at measured 8192, a short
+Microsoft evidence-interpretation paragraph, and a short governance support-scope
+paragraph. Governance schema validation remains the existing contract; no semantic
+validator or governance repair is claimed. Generic SOC prompt bytes and SDK options
+are preserved by regression tests. No retrieval backend or reference pack changes.
+
+Before treatment results, expectations are: valid structured endpoint forms should
+be accepted while mutated relationships still reject; the long case should withhold
+rather than return an incomplete-context result; the medium case should fit 8192;
+unsupported scenario borrowing and entity-type confusion should decrease among
+returned analyses; credential/hiring/scoped-mandate positive facts should remain.
+Availability and latency can regress and must be reported separately. Unseeded
+sampling and the bundled intervention prevent causal attribution to individual
+components. The same rubric applies to all returned outputs, including regressions.
+
+The exact 32-attempt treatment schedule, cases and frozen scorer are unchanged.
+The implementation must be committed cleanly before `--phase treatment`; every
+trial, rejection and repair is retained. No selective reruns, scorer tuning or
+replacement overall score is permitted.

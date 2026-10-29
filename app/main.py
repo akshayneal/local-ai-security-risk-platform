@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 
 from app.audit_logger import read_audit_logs, write_audit_log
 from app.governance_analyzer import analyze_governance_risk
+from app.inference_context import EVIDENCE_BUDGET_MESSAGE, EvidenceBudgetError
 from app.ollama_client import OLLAMA_MODEL
 from app.output_policy import OutputPolicyError
 from app.schemas import (
@@ -117,6 +118,14 @@ def _run_soc(
                 detail={
                     "code": "integrity_validation_failed",
                     "message": INTEGRITY_FAILURE_MESSAGE,
+                },
+            ) from exc
+        if isinstance(exc, EvidenceBudgetError):
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "code": "complete_context_unavailable",
+                    "message": EVIDENCE_BUDGET_MESSAGE,
                 },
             ) from exc
         raise HTTPException(

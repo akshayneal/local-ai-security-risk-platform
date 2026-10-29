@@ -85,6 +85,9 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "dashboard/sample_loader.py",
         "app/ollama_client.py",
         "app/output_policy.py",
+        "app/prompts.py",
+        "app/main.py",
+        "dashboard/api_client.py",
     }
     additions = {
         "app/soc_inputs.py",
@@ -92,6 +95,7 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "app/local_diagnostics.py",
         "app/model_metrics.py",
         "app/microsoft_evidence.py",
+        "app/inference_context.py",
     }
     assert all(
         name.startswith("app/retrieval/") or name in integration | additions

@@ -7,6 +7,7 @@ from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import dataclass, field
 
+from app.inference_context import MICROSOFT_CONTEXT, complete_context_required
 from app.prompts import SYSTEM_PROMPT
 
 _USAGE = (
@@ -47,7 +48,9 @@ def local_model_metrics(*, num_ctx: int | None = None) -> Iterator[ModelMetrics]
 
 def configured_context() -> int | None:
     metrics = _ACTIVE.get()
-    return metrics.num_ctx if metrics else None
+    if metrics is not None and metrics.num_ctx is not None:
+        return metrics.num_ctx
+    return MICROSOFT_CONTEXT if complete_context_required() else None
 
 
 def start_attempt(user_prompt: str, schema: dict) -> dict | None:
@@ -55,13 +58,14 @@ def start_attempt(user_prompt: str, schema: dict) -> dict | None:
     if metrics is None or len(metrics.attempts) >= 8:
         return None
     record = {
-        "configured_num_ctx": metrics.num_ctx,
+        "configured_num_ctx": configured_context(),
         "system_utf8_bytes": len(SYSTEM_PROMPT.encode()),
         "user_utf8_bytes": len(user_prompt.encode()),
         "schema_json_utf8_bytes": len(json.dumps(schema).encode()),
         "byte_counts_are_token_counts": False,
         "prompt_retention": "not_proven",
         "status": "request_failed",
+        "complete_context_required": complete_context_required(),
     }
     metrics.attempts.append(record)
     return record

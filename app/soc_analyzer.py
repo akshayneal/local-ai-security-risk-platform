@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 from app.analysis_trace import AnalysisTrace
+from app.inference_context import microsoft_model_context
 from app.microsoft_evidence import microsoft_evidence
 from app.observables import critical_observables, network_endpoints
 from app.ollama_client import call_model_json
@@ -55,6 +56,7 @@ def analyze_soc_alert(
         prompt = EVIDENCE_INSTRUCTIONS + prompt
 
     original_input = request.model_dump(mode="json")
+    structured = microsoft_evidence(original_input)
     blocked = untrusted_source_ids(original_input, get_reference_ids(references))
     generation_prompt = prompt
     for generation in range(2):
@@ -63,10 +65,11 @@ def analyze_soc_alert(
             if generation == 1:
                 trace.repair_failed = True  # Cleared only on a valid final response.
         try:
-            raw_result = call_model_json(
-                user_prompt=generation_prompt,
-                response_schema=SocAlertResponse.model_json_schema(),
-            )
+            with microsoft_model_context(structured is not None):
+                raw_result = call_model_json(
+                    user_prompt=generation_prompt,
+                    response_schema=SocAlertResponse.model_json_schema(),
+                )
         except Exception:
             if trace is not None:
                 if generation == 1:
@@ -114,7 +117,6 @@ def analyze_soc_alert(
             ).items()
         }
         endpoints = network_endpoints("\n".join(text_values(original_input)))
-        structured = microsoft_evidence(original_input)
         if structured is not None:
             endpoints |= structured.pairs()
         # Use the already neutralized original prompt, never raw failed output.
