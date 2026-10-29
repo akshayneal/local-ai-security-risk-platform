@@ -1,0 +1,23 @@
+{
+  "case_id": "MSFT-001-entra-mfa",
+  "tables": {
+    "SigninLogs": [
+      {
+        "TimeGenerated": "2026-10-20T12:00:00Z",
+        "UserPrincipalName": "alex@example.invalid",
+        "IPAddress": "198.51.100.23",
+        "AppDisplayName": "SharePoint Online",
+        "AuthenticationRequirement": "multiFactorAuthentication",
+        "AuthenticationDetails": "[{\"authenticationMethod\":\"Authenticator App\",\"succeeded\":true}]",
+        "ConditionalAccessStatus": "success",
+        "ResultType": "0",
+        "RiskLevelDuringSignIn": "medium",
+        "Location": "ZZ",
+        "DeviceDetail": {
+          "isCompliant": false
+        },
+        "CorrelationId": "00000000-0000-4000-8000-000000000001"
+      }
+    ]
+  }
+}

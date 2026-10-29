@@ -1,0 +1,55 @@
+{
+  "case_id": "MSFT-006-multistage",
+  "tables": {
+    "AlertInfo": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "AlertId": "SYN-ALERT-006",
+        "Title": "Encoded process followed by outbound connection",
+        "Severity": "High",
+        "Category": "Execution"
+      }
+    ],
+    "AlertEvidence": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "AlertId": "SYN-ALERT-006",
+        "EntityType": "File",
+        "SHA256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+        "AccountUpn": "alex@example.invalid",
+        "EvidenceRole": "Impacted"
+      }
+    ],
+    "DeviceProcessEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ProcessCreated",
+        "FileName": "powershell.exe",
+        "ProcessCommandLine": "powershell.exe -EncodedCommand U3ludGhldGlj",
+        "ProcessId": 4400,
+        "ProcessCreationTime": "2026-10-20T12:00:00Z",
+        "SHA256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+        "InitiatingProcessFileName": "winword.exe"
+      }
+    ],
+    "DeviceNetworkEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ConnectionSuccess",
+        "RemoteIP": "203.0.113.66",
+        "RemotePort": 8443,
+        "Protocol": "Tcp",
+        "RemoteUrl": "callback.example.invalid",
+        "InitiatingProcessId": 4400,
+        "InitiatingProcessCreationTime": "2026-10-20T12:00:00Z",
+        "InitiatingProcessSHA256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+      }
+    ]
+  }
+}

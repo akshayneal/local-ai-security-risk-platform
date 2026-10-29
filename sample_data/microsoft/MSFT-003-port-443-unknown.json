@@ -1,0 +1,18 @@
+{
+  "case_id": "MSFT-003-port-443-unknown",
+  "tables": {
+    "DeviceNetworkEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ConnectionSuccess",
+        "RemoteIP": "203.0.113.44",
+        "RemotePort": 443,
+        "LocalIP": "192.0.2.10",
+        "LocalPort": 50123,
+        "InitiatingProcessFileName": "utility.exe"
+      }
+    ]
+  }
+}

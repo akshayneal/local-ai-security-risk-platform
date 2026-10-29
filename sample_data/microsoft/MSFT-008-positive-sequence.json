@@ -1,0 +1,50 @@
+{
+  "case_id": "MSFT-008-positive-sequence",
+  "tables": {
+    "DeviceProcessEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ProcessCreated",
+        "FileName": "vssadmin.exe",
+        "ProcessCommandLine": "vssadmin.exe delete shadows /all /quiet",
+        "AccountName": "svc_backup",
+        "ProcessId": 5500
+      },
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ProcessCreated",
+        "FileName": "rundll32.exe",
+        "ProcessCommandLine": "rundll32.exe C:\\Users\\Public\\payload.dll,Start",
+        "AccountName": "svc_backup",
+        "ProcessId": 5501,
+        "SHA256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+      }
+    ],
+    "DeviceNetworkEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ConnectionSuccess",
+        "InitiatingProcessId": 5501,
+        "InitiatingProcessFileName": "rundll32.exe",
+        "RemoteIP": "203.0.113.88",
+        "RemotePort": 9001,
+        "Protocol": "Tcp"
+      }
+    ],
+    "AlertInfo": [
+      {
+        "AlertId": "SYN-ALERT-008",
+        "Title": "Possible destructive activity",
+        "Severity": "High",
+        "Category": "Impact",
+        "Timestamp": "2026-10-20T12:00:00Z"
+      }
+    ]
+  }
+}

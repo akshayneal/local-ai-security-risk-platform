@@ -1,0 +1,26 @@
+{
+  "case_id": "MSFT-005-admin-maintenance",
+  "tables": {
+    "DeviceProcessEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "ProcessCreated",
+        "FileName": "powershell.exe",
+        "ProcessCommandLine": "powershell.exe -File C:\\Maintenance\\Inventory.ps1",
+        "AccountName": "svc_inventory",
+        "InitiatingProcessFileName": "taskeng.exe"
+      }
+    ],
+    "SecurityIncident": [
+      {
+        "IncidentName": "SYN-INC-005",
+        "Severity": "Low",
+        "Status": "Closed",
+        "Classification": "BenignPositive",
+        "Description": "Operator claims scheduled inventory; independent change approval record not supplied."
+      }
+    ]
+  }
+}

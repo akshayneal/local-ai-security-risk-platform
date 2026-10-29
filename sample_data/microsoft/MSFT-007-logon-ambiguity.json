@@ -1,0 +1,29 @@
+{
+  "case_id": "MSFT-007-logon-ambiguity",
+  "tables": {
+    "DeviceLogonEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "DeviceId": "synthetic-device-001",
+        "DeviceName": "workstation-01.example.invalid",
+        "ActionType": "LogonSuccess",
+        "LogonType": "Network",
+        "AccountName": "alex",
+        "AccountDomain": "EXAMPLE",
+        "RemoteIP": "198.51.100.77",
+        "IsLocalAdmin": true,
+        "LogonId": 8822
+      }
+    ],
+    "SigninLogs": [
+      {
+        "TimeGenerated": "2026-10-20T12:00:00Z",
+        "UserPrincipalName": "alex@example.invalid",
+        "UserId": "00000000-0000-4000-8000-000000000007",
+        "IPAddress": "198.51.100.78",
+        "ResultType": "0",
+        "CorrelationId": "00000000-0000-4000-8000-000000000008"
+      }
+    ]
+  }
+}

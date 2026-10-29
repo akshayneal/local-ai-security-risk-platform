@@ -1,0 +1,32 @@
+{
+  "case_id": "MSFT-004-severity-conflict",
+  "tables": {
+    "AlertInfo": [
+      {
+        "Timestamp": "2026-10-20T12:00:00Z",
+        "AlertId": "SYN-ALERT-004",
+        "Title": "Unusual service launch",
+        "Severity": "Medium"
+      }
+    ],
+    "SecurityIncident": [
+      {
+        "TimeGenerated": "2026-10-20T12:00:00Z",
+        "IncidentName": "00000000-0000-4000-8000-000000000004",
+        "IncidentNumber": 4,
+        "ProviderIncidentId": "SYN-INC-004",
+        "ProviderName": "Microsoft Sentinel",
+        "Title": "Correlated service activity",
+        "Description": "Synthetic vendor aggregation, not verified maliciousness.",
+        "Severity": "High",
+        "Status": "Active",
+        "AlertIds": [
+          "SYN-ALERT-004"
+        ],
+        "Owner": {
+          "assignedTo": "analyst@example.invalid"
+        }
+      }
+    ]
+  }
+}
