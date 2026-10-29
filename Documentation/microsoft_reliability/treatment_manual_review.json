@@ -147,6 +147,132 @@
         }
       ],
       "rationale": "Exact row-backed local and remote pairs now appear in returned prose. The body explicitly says no authentication events are available and invents no login sequence. Initial Access remains an unsupported incident mapping for a connection alone; this is a characterization concern, not a claim the body asserts successful authentication. Lack of authentication as exculpatory support remains a moderate reasoning concern."
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 2,
+      "record_sha256": "5f1c4613ac1df176539cd3387af84ccb4ad6afadbe981d664a39fa2c01ab8bbc",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A successful network connection was observed between 192.0.2.25:51234 and 203.0.113.91:8443. No evidence of compromise or malicious activity is present in the telemetry."
+        },
+        {
+          "field": "mitre_mapping",
+          "text": "Network Connection"
+        }
+      ],
+      "rationale": "Repair corrected an IPv4-shape rejection; final response retains both exact pairs. No brute-force/login sequence is inferred, unlike baseline trial 2. Missing MFA context as possible risk/false-positive support is a moderate reasoning limitation, not an asserted authentication event. Network Connection is a neutral event label rather than an invented ATT&CK finding."
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 3,
+      "record_sha256": "256ffb899d64f8892b51c4f972cca3a63acb772367cbccd843f6d1af8ec89d13",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A ConnectionSuccess event was observed between 192.0.2.25:51234 and 203.0.113.91:8443. No authentication context or login attempts were recorded in the provided telemetry."
+        },
+        {
+          "field": "mitre_mapping",
+          "text": "Initial Access"
+        }
+      ],
+      "rationale": "Previously withheld baseline trial now returns correct row-backed pairs and explicitly says no login events were recorded. Initial Access/Network Discovery mappings and the attempted-initial-access inference lack supporting access-attempt or scan behavior; this is an unsupported characterization, not an asserted successful login. HTTPS appears only as a possible service example, not an established protocol. Account advice remains conditional and weakly grounded."
+    },
+    {
+      "case_id": "REL-SOC-007",
+      "trial": 1,
+      "record_sha256": "d5b78de5bbe22dad564a780d8df6146387b008501b3f4a1ed1d9582725f88eca",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A successful TCP connection was established between 192.0.2.25:51234 and 203.0.113.91:8443. No user account context or process details are available."
+        },
+        {
+          "field": "mitre_mapping",
+          "text": "Network Discovery"
+        }
+      ],
+      "rationale": "Previously withheld explicit-protocol case now retains TCP and exact local/remote pairs without inferring HTTPS. Network Discovery is an unsupported mapping without scan/discovery behavior; moderate-confidence characterization concern, not a claim that the body reports a discovered scan. Conditional account-disablement advice remains weakly grounded."
+    },
+    {
+      "case_id": "REL-SOC-008",
+      "trial": 1,
+      "record_sha256": "f14660c8bfc50a6a94149e2121d5b3a5e5cab54eda315aa99957940f08cfe2e7",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two connection success events detected from local IPs 192.0.2.25 and 192.0.2.26 to remote IPs 203.0.113.91 and 203.0.113.92 on non-standard ports 8443 and 9443. No authentication context or user confirmation provided."
+        },
+        {
+          "field": "analyst_inferences",
+          "text": "Non-standard ports suggest potential for secure protocols but require verification"
+        }
+      ],
+      "rationale": "Both independent network rows are retained with correct local/remote IPs and remote ports; no cross-row pairing. Initial Access remains an unsupported mapping, without any asserted login sequence. Secure protocols are framed only as a possibility requiring verification, not an established protocol. Generic post-login/MFA guidance remains weakly relevant."
+    },
+    {
+      "case_id": "REL-SOC-009",
+      "trial": 1,
+      "record_sha256": "1a8059750f7d4b20669474cd2a5e6372e756e4d9db431e6a0d0d997eedabd94f",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A single process creation event was observed on synthetic-lab-a where ping.exe executed a command to test connectivity to example.invalid. No additional telemetry or authentication context is available."
+        },
+        {
+          "field": "analyst_inferences",
+          "text": "The command may represent a legitimate network diagnostic activity"
+        }
+      ],
+      "rationale": "Ping connectivity-test evidence is preserved without credential theft or compromise claims. A possible legitimate diagnostic interpretation is appropriately bounded. Authentication and post-login guidance remains generic, not proof a login occurred."
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "trial": 1,
+      "record_sha256": "07b1a688014ff9fb2bc8a2a82679be0fb3dc577dfcfca52dcfc0b087933ab4cd",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A process creation event was detected on synthetic-lab-a where rundll32.exe executed a command to create a memory dump targeting lsass.exe (Process ID 624). The alert requires investigation to determine legitimacy."
+        },
+        {
+          "field": "analyst_inferences",
+          "text": "Suspected memory dump attempt targeting lsass.exe"
+        }
+      ],
+      "rationale": "LSASS dump command, target and PID are retained as a suspected attempt; no completed dump or exfiltration is claimed. Potential persistence mechanism is an added unsupported hypothesis without persistence evidence, a moderate regression from the baseline positive control. Without confirmed execution is ambiguous about process launch versus dump completion; it does not erase the explicit ProcessCreated observations."
     }
   ]
 }
