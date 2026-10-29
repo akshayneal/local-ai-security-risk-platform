@@ -1,0 +1,9 @@
+{
+  "semantic_case_sha256": "eb919232e5428640c1d7f2d51006ddab42c4c72c2811b2ba7e7c58c2cd744028",
+  "source_sha256": {
+    "cases.json": "20877e270ab1c34d8ca1588423a71b39d27da407d505298a71407888b439cffc",
+    "plan.json": "5efcb57b8be3d9e01a23d7c3c58ca97a7d02aa1572f4716ebecf54a1e3529c0c",
+    "rubric.md": "925f18207364611727e7472cd6740eeaf629b9b22dbe2737cfda6fbf2f5b3877",
+    "runner.py": "c610e8683d95303bbb21437e8dc05b0f03ad5a6010eca51857db5f15a10d9be3"
+  }
+}

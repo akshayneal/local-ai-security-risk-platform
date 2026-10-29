@@ -1,0 +1,14 @@
+{
+  "version": "grounding-stabilization-v1",
+  "cases": 8,
+  "trials_per_case_per_phase": 1,
+  "maximum_case_trials": 16,
+  "model": "qwen3:8b",
+  "temperature": 0.1,
+  "seed": null,
+  "retrieval": "legacy",
+  "shadow": false,
+  "microsoft_context": 8192,
+  "baseline_production": "73fd92cb8445ac39beab50ee13b8b47c5aa09e47",
+  "treatment_intent": "Microsoft factual retrieval query excludes adapter instructions; application-owned guidance authority/context/source metadata; bounded Microsoft observation-versus-guidance interpretation. No new fail-closed semantic rules or identifier grammar."
+}

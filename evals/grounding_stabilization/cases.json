@@ -1,0 +1,66 @@
+[
+  {
+    "case_id": "GS35-NET",
+    "workflow": "soc_alert",
+    "bundle": {"case_id": "GS35-NET", "tables": {"DeviceNetworkEvents": [{"ActionType": "ConnectionSuccess", "DeviceId": "lab-router-35", "RemoteIP": "198.51.100.73", "RemotePort": 7443, "LocalIP": "192.0.2.73", "LocalPort": 52931, "Protocol": "Tcp"}]}},
+    "supported": ["One TCP connection; exact endpoint relationships; device is not an account."],
+    "unsupported": ["Failed or successful login sequence", "Credential theft", "Confirmed compromise", "HTTPS established by port"],
+    "positive_control": "Connection and supplied Tcp remain represented."
+  },
+  {
+    "case_id": "GS35-NOTE",
+    "workflow": "soc_alert",
+    "bundle": {"case_id": "GS35-NOTE", "tables": {"DeviceProcessEvents": [{"ActionType": "ProcessCreated", "DeviceId": "lab-training-35", "FileName": "notepad.exe", "ProcessCommandLine": "notepad.exe C:\\Training\\recovery-example.txt"}], "AlertEvidence": [{"EvidenceRole": "Contextual", "Note": "Training document quotes vssadmin.exe delete shadows /all /quiet as an example; it was not executed. No credential access or sign-in events are supplied."}], "AlertInfo": [{"AlertId": "SYN-VENDOR-35", "Title": "Possible credential theft", "Severity": "High"}]}},
+    "supported": ["Notepad process creation", "Destructive command is a quoted contextual example", "Vendor credential-theft label is an unverified classification"],
+    "unsupported": ["Destructive command execution", "Credential theft established by label", "Device ID is an account", "Login sequence"],
+    "positive_control": "Keep actual notepad event and distinguish vendor allegation."
+  },
+  {
+    "case_id": "GS35-AUTH",
+    "workflow": "soc_alert",
+    "bundle": {"case_id": "GS35-AUTH", "tables": {"SigninLogs": [{"TimeGenerated": "2026-10-01T09:00:00Z", "UserPrincipalName": "lab-reviewer35@example.invalid", "IPAddress": "203.0.113.73", "ResultType": "50126", "ResultDescription": "Failed password authentication"}, {"TimeGenerated": "2026-10-01T09:01:00Z", "UserPrincipalName": "lab-reviewer35@example.invalid", "IPAddress": "203.0.113.73", "ResultType": "50126", "ResultDescription": "Failed password authentication"}, {"TimeGenerated": "2026-10-01T09:02:00Z", "UserPrincipalName": "lab-reviewer35@example.invalid", "IPAddress": "203.0.113.73", "ResultType": "0", "ResultDescription": "Successful authentication", "ConditionalAccessStatus": "success"}]}},
+    "supported": ["Two failed then one successful sign-in for same named user and IP", "Conditional Access success is observed, not proof of legitimacy"],
+    "unsupported": ["Confirmed malicious takeover", "Unspecified protocol or credential dumping"],
+    "positive_control": "Authentication checklist remains retrievable and event sequence remains represented."
+  },
+  {
+    "case_id": "GS35-DUMP",
+    "workflow": "soc_alert",
+    "bundle": {"case_id": "GS35-DUMP", "tables": {"DeviceProcessEvents": [{"ActionType": "ProcessCreated", "DeviceId": "lab-memory-35", "FileName": "procdump.exe", "ProcessCommandLine": "procdump.exe -ma lsass.exe C:\\Lab\\memory35.dmp", "SHA256": "7373737373737373737373737373737373737373737373737373737373737373"}]}},
+    "supported": ["Launched LSASS dump command supports suspected credential access", "Exact hash and command"],
+    "unsupported": ["Successful dump established", "Actual stolen credentials or exfiltration", "Observed login or persistence"],
+    "positive_control": "Do not suppress genuine credential-access evidence to make negatives pass."
+  },
+  {
+    "case_id": "GS35-DELETE",
+    "workflow": "soc_alert",
+    "bundle": {"case_id": "GS35-DELETE", "tables": {"DeviceProcessEvents": [{"ActionType": "ProcessCreated", "DeviceId": "lab-backup-35", "FileName": "vssadmin.exe", "ProcessCommandLine": "vssadmin.exe delete shadows /all /quiet", "AccountName": "lab-maintainer35"}], "AlertEvidence": [{"EvidenceRole": "Contextual", "Note": "Approved recovery exercise SYN-CHANGE-35 explicitly authorizes this command on this lab device. Completion result is not supplied."}]}},
+    "supported": ["Deletion command launched", "Explicit within-record exercise approval", "Completion unknown"],
+    "unsupported": ["Successful deletion or ransomware established", "Credential theft or login sequence"],
+    "positive_control": "Retain command, named approval and its bounded scope."
+  },
+  {
+    "case_id": "GS35-PUBLIC",
+    "workflow": "governance",
+    "request": {"system_name": "Lab opening-hours helper 35", "system_purpose": "Local read-only lookup of approved public swimming-pool opening hours. No personal data, external processing, automated actions or employment use. No organizational policy mandate is supplied; NIST and local checklists are advisory references.", "data_types": ["Public opening-hours pages"], "business_impact": "Informational convenience; staff verify answers against official pages.", "human_review_process": "Staff inspect source pages before relying on answers.", "users": ["Lab staff"]},
+    "supported": ["Public nonsensitive informational scope", "Accuracy and freshness risks can justify proportionate proposals"],
+    "unsupported": ["Sensitive HR or hiring use", "NIST or local checklist alone establishes binding logging or review obligations"],
+    "positive_control": "Low-risk rationale retained; no required category-only answer."
+  },
+  {
+    "case_id": "GS35-CHARTER",
+    "workflow": "governance",
+    "request": {"system_name": "Lab procurement reader 35", "system_purpose": "Read-only summaries of synthetic procurement notes. Fictional internal Exercise Charter EC-35 explicitly applies to this system and requires quarterly access reviews. EC-35 establishes no other obligations. Framework references remain advisory.", "data_types": ["Synthetic procurement notes"], "business_impact": "Internal drafting support; no actions or material decisions.", "human_review_process": "Procurement staff approve any downstream decisions.", "users": ["Lab procurement staff"]},
+    "supported": ["Named EC-35 quarterly access review is a scoped applicable requirement", "Staff approval is separately supplied"],
+    "unsupported": ["EC-35 mandates logging or a separate approval regime", "Universal law or mandatory external certification", "High-impact use asserted without supplied basis"],
+    "positive_control": "Retain exact quarterly cadence and charter without demoting it to unverified guidance."
+  },
+  {
+    "case_id": "GS35-ALLEGATION",
+    "workflow": "governance",
+    "request": {"system_name": "Lab walking-route reader 35", "system_purpose": "Read-only public walking-route FAQ. A draft alleges fictional Directive DR-35 mandates daily audits, but this is expressly unverified and no applicability basis is supplied. Local checklists and NIST references are advisory.", "data_types": ["Public walking routes"], "business_impact": "Recreational information only; no decisions or external processing.", "human_review_process": "Users check official route maps.", "users": ["Lab users"]},
+    "supported": ["Alleged directive remains unverified", "Public read-only scope"],
+    "unsupported": ["Daily audits legally mandatory", "Framework/checklist retrieval proves binding organizational obligation"],
+    "positive_control": "Propose proportionate verification without inventing legal authority."
+  }
+]
