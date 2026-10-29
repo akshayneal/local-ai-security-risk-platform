@@ -53,3 +53,34 @@ the evaluation process was left running. The earlier session's browser attempt w
 blocked by the tool's Windows URL-policy limitation and did not complete visual QA.
 Visual/dark-light inspection remains **USER VISUAL QA PENDING**. The continuation
 does not repeat or work around that interaction.
+
+## Second continuation
+
+Recovered local and origin HEAD were both `58304d0e81562156b2d9ae7db3bf1da1c613daaa`.
+The sole uncommitted file was the manual-review ledger: formatting changes plus
+four additional SOC reviews. Existing judgments were preserved exactly as JSON
+objects; no review revision was hidden. Application, model-call, reference and
+frozen experiment source still had an empty diff from launch `3f33cca`.
+
+The original process had finished. Its final report contains all 32 scheduled
+attempts in exact order, with exact request hashes and no duplicates. Every record
+equals the append-only journal; the earlier recorded byte prefix and record hashes
+still match. Launch-time provenance is clean at `3f33cca`, qwen3:8b identifier
+`500a1f067a9f`, temperature 0.1, no seed and no explicit context override. All
+32 after-runtime snapshots show context 4096. No trials were resumed or rerun.
+
+Baseline: 29 returned first-pass analyses, three withheld after one failed repair
+each, zero transport/JSON retries. The completed report is preserved byte-for-byte
+as `baseline.json`; provenance and offline replay tests verify it. All 32 attempts
+have separate manual review, including three unassessable withheld outputs.
+
+The parent shell attempted the context phase after baseline completion. It failed
+the clean-worktree precondition because the review ledger was uncommitted, before
+creating any context artifact or making any context call. Thus zero of six probes
+had run at second recovery. After the review/artifact checkpoint is clean, the
+six predeclared probes can run once through the unchanged frozen runner. This is
+the pending experiment, not a restart or a duplicate.
+
+The first continuation's full Windows test gate passed **1,534 tests**, with the
+existing Starlette/httpx deprecation warning. No desktop-control capability was
+invoked during either continuation. Visual QA remains **USER VISUAL QA PENDING**.

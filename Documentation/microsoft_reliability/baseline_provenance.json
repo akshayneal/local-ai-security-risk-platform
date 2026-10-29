@@ -1,0 +1,18 @@
+{
+  "baseline_sha256": "4296d7e5a341fdbb5e918efa2d24ac94a36bd6220c1cce88486df65360789b68",
+  "baseline_application_sha": "3f33cca014ff7865981afcedacdc69107bb5f6d2",
+  "suite_identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "inherited_snapshot_prefix_preserved": true,
+  "executing_source_changes_during_baseline": [],
+  "context_status": "not started; clean-worktree precondition rejected before any context trial",
+  "review_prior_judgments_preserved": true
+}
