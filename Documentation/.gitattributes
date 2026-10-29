@@ -1,0 +1,2 @@
+# Frozen V3.2 readable reviews/triage have recorded LF byte hashes.
+evaluation_v3_2/*.md text eol=lf

@@ -153,6 +153,15 @@ changing the test transport dependency is not needed for this candidate.
 
 ## Preservation and approval boundary
 
+Clean Windows checkout testing exposed missing newline rules for the frozen
+V3.2 suite and four readable review/triage files. With `core.autocrlf=true`, Git
+converted their recorded LF bytes to CRLF and six preservation/replay tests
+failed. New parent-level `evals/.gitattributes` and
+`Documentation/.gitattributes` set LF only for those paths. Existing frozen files,
+historical attribute files, manifests, hashes and scorer meanings are unchanged.
+The correction preserves the original bytes during checkout rather than changing
+the evidence or accommodating different scores.
+
 Semantic production behavior, prompts, deterministic output policy, analyzers,
 schema models, source processing, reference packs, registry and all frozen
 V1/V2/V3/V3.1/V3.2 evidence/suites/scorers remain unchanged. Analysis APIs, safe UI

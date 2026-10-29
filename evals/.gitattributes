@@ -1,0 +1,2 @@
+# Preserve the frozen V3.2 suite bytes on Windows checkouts.
+cases/semantic_grounding_v3_2.json text eol=lf

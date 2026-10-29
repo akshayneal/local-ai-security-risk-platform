@@ -91,6 +91,23 @@ is documented, not suppressed or fixed through a new transport dependency.
 
 ## Visual inspection and remaining issues
 
+The first independent replay at `a20386087861d9dc92a1387f69ab4cd1898a35e5`
+installed the snapshot successfully and matched all 79 package pins exactly.
+Full pytest then reported **1,280 passed, six failed**, one warning, **53.94s**;
+Ruff passed and Git status was clean. This was an objective Windows checkout
+defect: `core.autocrlf=true` changed the frozen V3.2 suite and four Markdown
+review/triage files from LF to CRLF. The suite byte hash changed from recorded
+`b55be3f59c6cce919f489d3fadbf72663d35c58c6b701ae76293e73e72c396f5`
+to checkout-only `3400375d68a1568c760455beea2974a833c4ffaa575e854115f85a68445a8bce`.
+Recorded review hashes also mismatched solely through newline conversion.
+
+This was reported before correction. Two new parent-level `.gitattributes` files
+set LF for the affected paths; no existing frozen suite, report, review,
+historical attribute file, manifest or hash is edited. A deterministic effective
+attribute regression check was added, bringing the suite to **1,287 tests**.
+The corrected commit is independently checked out with `core.autocrlf=true` and
+tested again using the fresh snapshot environment; results follow in closeout.
+
 Browser inventory reported **The browser access host is unavailable**, with no
 available browser surface. The existing Windows Firefox path was already known
 to lack supported URL-policy enforcement, so no bypass was attempted. No new

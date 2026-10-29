@@ -113,7 +113,7 @@ Open `http://localhost:8501`; API documentation is at `http://127.0.0.1:8000/doc
 
 ## Testing
 
-The current deterministic suite has **1,286 tests** and requires no Ollama, internet connection or running application server:
+The current deterministic suite has **1,287 tests** and requires no Ollama, internet connection or running application server:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest

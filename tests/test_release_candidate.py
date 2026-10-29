@@ -1,6 +1,7 @@
 """Release presentation checks; analysis and frozen scorers stay covered separately."""
 
 import re
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -177,3 +178,18 @@ def test_exact_snapshot_covers_unchanged_readable_direct_manifest():
         if line and not line.startswith("#"):
             name = re.split(r"[<>=\[]", line)[0].lower().replace("_", "-")
             assert name in names
+
+
+def test_frozen_v32_files_override_windows_newline_conversion():
+    paths = [
+        "evals/cases/semantic_grounding_v3_2.json",
+        "Documentation/evaluation_v3_2/manual_review.md",
+        "Documentation/evaluation_v3_2/failure_triage.md",
+        "Documentation/evaluation_v3_2/treatment_manual_review.md",
+        "Documentation/evaluation_v3_2/treatment_failure_triage.md",
+    ]
+    attributes = subprocess.check_output(
+        ["git", "check-attr", "eol", "--", *paths], cwd=ROOT, text=True
+    ).splitlines()
+    assert len(attributes) == len(paths)
+    assert all(line.endswith(": eol: lf") for line in attributes)
