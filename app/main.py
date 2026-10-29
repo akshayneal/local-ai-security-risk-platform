@@ -19,19 +19,20 @@ from app.ui_schemas import (
     SocAnalysisEnvelope,
     SocMetadata,
 )
+from app.version import APPLICATION_VERSION
 
 app = FastAPI(
-    title="Local AI Security Risk & SOC Triage Platform",
+    title="Local AI Security Risk Platform",
     description="Local AI security and governance workflow platform using Ollama.",
-    version="2.2.0",
+    version=APPLICATION_VERSION,
 )
 
 
 @app.get("/")
 def root() -> dict:
     return {
-        "message": "Local AI Security Risk & SOC Triage Platform",
-        "version": "2.2.0",
+        "message": "Local AI Security Risk Platform",
+        "version": APPLICATION_VERSION,
     }
 
 

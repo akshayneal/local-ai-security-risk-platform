@@ -41,15 +41,13 @@ LIST_FIELDS = {"known_indicators", "data_types", "users", "external_integrations
 def section(title: str, items: list[str]) -> None:
     st.subheader(title)
     if not items:
-        st.caption(
-            "None provided. This does not establish absence of risk or evidence."
-        )
+        st.caption("None provided.")
     for item in items:
         st.text(f"• {item}")
 
 
 def display_source_references(result: dict) -> None:
-    st.subheader("Source References")
+    st.subheader("Sources")
     st.caption(SOURCE_CAVEAT)
     sources = result.get("source_references", [])
     if not sources:
@@ -63,24 +61,17 @@ def display_source_references(result: dict) -> None:
 
 def trust_panel(metadata: dict, *, soc: bool) -> None:
     with st.container(border=True):
-        st.subheader("Trust & Integrity" if soc else "Validation & Review")
+        st.subheader("Response checks" if soc else "Validation")
         st.dataframe(
             integrity_rows(metadata, soc=soc), hide_index=True, width="stretch"
         )
         st.caption(f"Local model: {metadata.get('model', 'Unavailable')}")
-        if soc and metadata.get("repair_attempted"):
-            st.info(
-                "A repair generation was used. The final response passed the same bounded SOC contract."
-            )
-        if not soc:
-            st.caption(
-                "Governance semantic support and factual accuracy remain prompt-guided and require review. The SOC identity/endpoint contract does not apply here."
-            )
-        with st.expander("What these checks mean"):
+        with st.expander("About these checks"):
             st.write(TRUST_CAVEAT)
-            st.write(
-                "SOC checks recognize a finite set of critical IPv4, SHA-256, CVE-style and endpoint forms. They do not verify external reputation, completeness, protocol or every claim's support."
-            )
+            if not soc:
+                st.write(
+                    "AI-system risk analysis is prompt-guided. The SOC identifier and endpoint contract does not apply."
+                )
 
 
 def soc_result(result: dict) -> None:
@@ -95,9 +86,7 @@ def soc_result(result: dict) -> None:
         section("Observed Evidence", result.get("observed_evidence", []))
     with inferences:
         section("Analyst Inferences", result.get("analyst_inferences", []))
-    investigate, actions, context = st.tabs(
-        ["Investigation", "Response recommendations", "Context & mapping"]
-    )
+    investigate, actions, context = st.tabs(["Investigation", "Response", "Context"])
     with investigate:
         section("Evidence Gaps", result.get("evidence_gaps", []))
         section(
@@ -123,14 +112,12 @@ def soc_result(result: dict) -> None:
 def governance_result(result: dict) -> None:
     risk, decision = st.columns(2)
     risk.metric("Risk level", result["risk_level"].upper())
-    decision.metric("Proposed decision", result["decision"].replace("_", " ").title())
-    st.caption(
-        "A model recommendation; approval requires an authorized human reviewer."
-    )
+    decision.metric("Review decision", result["decision"].replace("_", " ").title())
+    st.caption("The decision is proposed and requires human review.")
     st.subheader("Summary")
     st.text(result["summary"])
     concerns, controls, oversight = st.tabs(
-        ["Risk & missing evidence", "Required controls", "Oversight & next steps"]
+        ["Risks & evidence", "Controls", "Human oversight"]
     )
     with concerns:
         section("Key Risks", result.get("key_risks", []))
@@ -154,11 +141,11 @@ def _load_sample(prefix: str, samples: list, label: str) -> None:
 
 def workflow_page(base_url: str, *, soc: bool) -> None:
     prefix = "soc" if soc else "gov"
-    st.header("SOC Investigation" if soc else "Governance Review")
+    st.title("SOC Investigation" if soc else "AI System Risk Review")
     st.write(
-        "Turn supplied evidence into a reviewable investigation brief."
+        "Analyze security telemetry and prepare investigation and conditional response guidance."
         if soc
-        else "Review a proposed AI system's risks, controls and missing evidence."
+        else "Assess an AI system or proposed AI use case for governance, security, privacy and operational risk."
     )
     st.caption("Human review required · local inference · recommendations only")
     try:
@@ -188,7 +175,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
     for field, _ in fields:
         st.session_state.setdefault(f"{prefix}_{field}", defaults[field])
     with (
-        st.expander("Case input" if soc else "System intake", expanded=True),
+        st.expander("Case input" if soc else "System input", expanded=True),
         st.form(f"{prefix}_form"),
     ):
         values = {}
@@ -209,7 +196,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             )
             values[field] = widget(title, key=f"{prefix}_{field}")
         submitted = st.form_submit_button(
-            "Analyze SOC alert" if soc else "Review governance risk", type="primary"
+            "Analyze SOC alert" if soc else "Review AI system", type="primary"
         )
     if submitted:
         st.session_state.pop(f"{prefix}_result", None)
@@ -229,9 +216,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
                 "Some input fields are invalid or too long. Review the form and submit again."
             )
         else:
-            with st.spinner(
-                "Analyzing with the local model. A bounded SOC repair may add latency..."
-            ):
+            with st.spinner("Analyzing with the local model?"):
                 body, error = post_analysis(
                     base_url,
                     "/ui/analyze/soc-alert" if soc else "/ui/analyze/governance",
@@ -266,10 +251,8 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
         with integrity_column:
             trust_panel(saved["envelope"]["metadata"], soc=soc)
         display_source_references(result)
-        st.subheader("Export brief")
-        st.caption(
-            "Exports contain the submitted case identity and analysis. Review before sharing."
-        )
+        st.subheader("Exports")
+        st.caption("Submitted case identity and analysis; review before sharing.")
         json_column, md_column = st.columns(2)
         json_column.download_button(
             "Download JSON analysis",

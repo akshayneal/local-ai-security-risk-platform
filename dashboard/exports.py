@@ -51,7 +51,7 @@ def export_document(
         analysis, GovernanceRiskResponse
     ):
         identity = {"system_name": request.system_name}
-        workflow = "Governance Review"
+        workflow = "AI System Risk Review"
     else:
         raise TypeError("Request and analysis workflows must match.")
     return {

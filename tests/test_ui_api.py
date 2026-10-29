@@ -185,7 +185,7 @@ def test_status_does_not_call_model(api, monkeypatch):
     client, audits = api
     assert client.get("/ui/status").json() == {
         "status": "ok",
-        "version": "2.2.0",
+        "version": main.app.version,
         "model": main.OLLAMA_MODEL,
     }
     assert not audits

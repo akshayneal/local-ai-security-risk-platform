@@ -3,30 +3,27 @@
 from app.ui_schemas import COMMON_CHECKS, SOC_CHECKS
 
 TRUST_CAVEAT = (
-    "These checks enforce bounded application contracts. They do not guarantee "
-    "that every model statement is correct. Human review is required."
+    "These checks enforce specific application contracts. They do not independently "
+    "verify every analytical conclusion."
 )
-SOURCE_CAVEAT = (
-    "Retrieved sources provide context and guidance; retrieval alone does not "
-    "make every source claim authoritative."
-)
+SOURCE_CAVEAT = "Sources provide context; retrieval does not establish claim authority."
 
 
 def integrity_rows(metadata: dict, *, soc: bool) -> list[dict[str, str]]:
     checks = metadata.get("checks", [])
     rows = []
     labels = {
-        "schema validation": "Schema validation",
+        "schema validation": "Schema",
         "source-reference sanitization": "Source references",
-        "critical identity integrity": "Critical SOC identities (bounded grammar)",
-        "endpoint integrity": "Recognized endpoint relationships",
-        "observed-evidence contract": "Nonempty observed-evidence contract",
+        "critical identity integrity": "Critical identifiers",
+        "endpoint integrity": "Endpoint relationships",
+        "observed-evidence contract": "Nonempty observations",
     }
     if soc:
         rows.append(
             {
-                "Check": "Final SOC integrity contract",
-                "Status": "PASSED"
+                "Check": "Final contract",
+                "Status": "Passed"
                 if metadata.get("integrity_status") == "passed"
                 else "Unavailable",
             }
@@ -36,9 +33,9 @@ def integrity_rows(metadata: dict, *, soc: bool) -> list[dict[str, str]]:
             {
                 "Check": labels[check],
                 "Status": (
-                    "SANITIZED"
+                    "Validated"
                     if check == "source-reference sanitization"
-                    else "APPLIED"
+                    else "Passed"
                 )
                 if check in checks
                 else "Unavailable",
@@ -54,7 +51,7 @@ def integrity_rows(metadata: dict, *, soc: bool) -> list[dict[str, str]]:
         ):
             repair = "Successful repair"
         rows.append({"Check": "Repair", "Status": repair})
-    rows.append({"Check": "Human review", "Status": "REQUIRED"})
+    rows.append({"Check": "Human review", "Status": "Required"})
     return rows
 
 
@@ -72,7 +69,10 @@ def audit_rows(
         rows.append(
             {
                 "Timestamp": log.get("timestamp", ""),
-                "Workflow": log.get("mode", ""),
+                "Workflow": {
+                    "soc_alert": "SOC Investigation",
+                    "governance": "AI System Risk Review",
+                }.get(log.get("mode", ""), log.get("mode", "")),
                 "Model": log.get("model", ""),
                 "Input": log.get("input_summary", ""),
                 "Result": log.get("result_summary", "")

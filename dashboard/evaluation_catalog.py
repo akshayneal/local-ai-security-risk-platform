@@ -7,8 +7,8 @@ from pydantic import BaseModel, Field, ValidationError
 
 ROOT = Path(__file__).resolve().parents[1] / "Documentation"
 CROSS_VERSION_CAVEAT = (
-    "Cross-version percentages are NOT directly comparable: suites, checks and "
-    "denominators changed. Only unchanged-suite comparisons support direct before/after interpretation."
+    "Results from different evaluation versions measure different properties "
+    "and are not directly comparable."
 )
 CATALOG = (
     (

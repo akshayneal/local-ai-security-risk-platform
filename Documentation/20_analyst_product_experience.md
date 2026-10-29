@@ -1,10 +1,11 @@
 # Analyst product experience
 
-The dashboard now presents five workspaces: **SOC Investigation**, **Governance
-Review**, **Evaluation Lab**, **Activity**, and **About**. It remains a local
-analyst aid: the model proposes, the application checks bounded properties, and
-humans decide. This sprint adds presentation and API plumbing without changing
-the semantic treatment, frozen evaluators, reference retrieval or registry.
+The 2.3.0rc1 dashboard opens on **Overview**, then groups **SOC Investigation**
+and **AI System Risk Review** under Workflows, and **Platform Evaluation**,
+**Activity** and **About** under Platform. Overview shows two active and two
+planned workflow families. Planned cards have no forms or analysis routes.
+The release-candidate wording and native architecture are documented in
+[professional release candidate](22_professional_release_candidate.md).
 
 ## Run and explore
 
@@ -20,7 +21,7 @@ In another terminal:
 .\.venv\Scripts\python.exe -m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1
 ```
 
-Open `http://localhost:8501`. Evaluation Lab and About need neither FastAPI nor
+Open `http://localhost:8501`. Platform Evaluation and About need neither FastAPI nor
 Ollama. The input pages load bundled synthetic data without inference. An
 analysis submission requires the backend and the configured Ollama model. The
 sidebar's **Check backend status** checks FastAPI readiness only, not model
@@ -41,7 +42,7 @@ steps, containment, false-positive considerations, MITRE-style mapping and analy
 note. Mapping is model-proposed, not STIX-validated. Recommendations execute no
 actions. Model/input prose is rendered as text, without active Markdown links.
 
-The **Trust & Integrity** panel sits beside the analysis. It exposes the final
+The **Response checks** panel sits beside the analysis. It exposes the final
 SOC contract, recognized identity/endpoint checks, source sanitization, schema
 and nonempty-observation checks, repair usage and required human review. Its
 expander explains that bounded contracts do not establish every statement's
@@ -55,7 +56,7 @@ Loading another sample or submitting another analysis clears the previous result
 a failure cannot leave a stale downloadable success presented as the new result.
 This is session state, not a saved case-management database.
 
-## Governance Review
+## AI System Risk Review
 
 Two synthetic use cases come from `sample_data/ai_use_cases.json`, validated using
 `GovernanceRiskRequest`. Loading fills purpose, data, users, integrations,
@@ -63,7 +64,7 @@ oversight and business impact. Results distinguish proposed risk/decision,
 concerns and missing evidence, required controls/logging, and human oversight/
 next steps. A proposed `approved` decision still requires authorized human review.
 
-The **Validation & Review** panel claims only schema validation and source
+The **Validation** panel claims only schema validation and source
 sanitization. Authority, applicability, support scope and factual accuracy remain
 prompt-guided. The SOC identity/endpoint contract does not apply to governance.
 
@@ -132,7 +133,7 @@ identity includes system name. Exports omit raw input logs, internal prompts,
 diagnostics and traces. Markdown escapes model/input markup. Analysis prose can
 still contain sensitive supplied facts; review exports before sharing.
 
-## Evaluation Lab
+## Platform Evaluation
 
 The read-only catalog loads explicitly named tracked frozen JSON artifacts. It
 does not import evaluators, run models, rerun suites or rescore outputs. It shows
@@ -163,11 +164,9 @@ success/failure and source IDs. Stored internal error strings never enter the
 normal page; failed rows use fixed language. Existing `/logs` compatibility and
 on-disk error storage remain unchanged.
 
-About contains a lightweight architecture graph using Streamlit's existing
-capabilities. It shows request validation, retrieval, quarantine, local model,
+About uses native Streamlit columns and bordered containers for its architecture. It shows request validation, retrieval, quarantine, local model,
 source processing, separate SOC/governance paths, full SOC contract, bounded
-repair/fail closed, audit and human review. It explains local-first inference,
-no cloud AI calls and recommendation-only behavior. There is no authentication
+repair/fail closed, audit and human review. It lists local inference, human review and operational boundaries. There is no authentication
 or multi-user boundary; run this demo locally.
 
 ## Preservation and release boundary
@@ -181,5 +180,4 @@ remain intact. No semantic hardening, V3.3, dependency, registry or roadmap feat
 was introduced.
 
 See the [sprint report](21_productization_sprint_report.md) and
-[demo walkthrough](demo_walkthrough.md). Final release screenshots, recruiter
-README polish, merge and tagging remain separately authorized work.
+[demo walkthrough](demo_walkthrough.md). Release-candidate README restructuring is complete. Human visual approval, screenshots, merge and tagging remain pending.

@@ -9,13 +9,19 @@ from dashboard.evaluation_catalog import (
     catalog_rows,
     same_suite_comparison,
 )
+from dashboard.navigation import WORKFLOW_MAP
 from dashboard.presentation import audit_rows
 
 
 def evaluation_page() -> None:
-    st.header("Evaluation Lab")
-    st.write("Frozen experiments, measured tradeoffs, visible limits.")
-    st.warning(CROSS_VERSION_CAVEAT)
+    st.title("Platform Evaluation")
+    st.write(
+        "This page summarizes the frozen evaluations used to test and harden this platform."
+    )
+    st.caption(
+        "Platform assurance ? development and evaluation history for this application"
+    )
+    st.info(CROSS_VERSION_CAVEAT)
     st.caption(
         "Read-only tracked evidence. Opening this page does not run or rescore an evaluation."
     )
@@ -23,7 +29,7 @@ def evaluation_page() -> None:
         [
             "Evaluation history",
             "V3.2 same-suite comparison",
-            "Security story & limitations",
+            "Test coverage & limitations",
         ]
     )
     with history:
@@ -40,7 +46,7 @@ def evaluation_page() -> None:
         except ArtifactUnavailable as exc:
             st.warning(str(exc))
         else:
-            st.subheader("Integrity and availability tradeoff")
+            st.subheader("V3.2 treatment comparison")
             baseline, treatment = comparison["metrics"]
             st.dataframe(
                 [
@@ -56,7 +62,7 @@ def evaluation_page() -> None:
                 width="stretch",
             )
             st.write(
-                "The exact frozen suite/scorer improved from 32/42 to 37/41 valid passes. Across all attempts the treatment passed 37/42. One response was withheld after failed repair; it is an availability loss, never a pass. Mean attempt latency increased from about 65.31 to 81.29 seconds."
+                "Treatment passed 37/41 valid analyses and 37/42 attempts, compared with 32/42 at baseline. One analysis was withheld after failed repair. Mean attempt latency increased from 65.31 to 81.29 seconds."
             )
             st.caption(
                 "One bundled, unseeded comparison cannot isolate individual controls or hardware effects. Four treatment failures are suspected lexical scorer mismatches; official scores remain unchanged."
@@ -91,13 +97,22 @@ def evaluation_page() -> None:
 
 
 def activity_page(base_url: str) -> None:
-    st.header("Activity")
-    st.write("Recent local analysis outcomes and source usage.")
+    st.title("Activity")
+    st.write(
+        "Platform activity: recent analysis submissions, outcomes and source usage."
+    )
     st.caption(
-        "Up to 100 most recent entries. Stored internal errors are omitted from this view."
+        "Latest 100 audit entries. This view is not an incident-management queue."
     )
     left, right = st.columns(2)
-    workflow = left.selectbox("Workflow", ["All", "soc_alert", "governance"])
+    workflow = left.selectbox(
+        "Workflow",
+        ["All", "soc_alert", "governance"],
+        format_func=lambda value: {
+            "soc_alert": "SOC Investigation",
+            "governance": "AI System Risk Review",
+        }.get(value, value),
+    )
     outcome = right.selectbox("Outcome", ["All", "Success", "Failure"])
     data, error = get_data(base_url, "/logs?limit=100")
     if error:
@@ -112,51 +127,80 @@ def activity_page(base_url: str) -> None:
         )
 
 
-def about_page() -> None:
-    st.header("About the platform")
-    st.write("Local AI analyst support for SOC investigation and AI governance review.")
-    with st.container(border=True):
-        st.subheader(
-            "The model proposes. The application checks bounded properties. Humans decide."
-        )
-        st.write(
-            "Results support investigation and review. The application does not execute containment, approve deployments or contact external services for threat verification."
-        )
-    st.subheader("Architecture")
-    st.graphviz_chart("""digraph architecture {
-        rankdir=LR; node [shape=box, style="rounded", fontname="Arial"];
-        UI [label="Streamlit analyst workspace"];
-        API [label="FastAPI + Pydantic requests"];
-        Retrieval [label="Local reference retrieval"];
-        Prompt [label="Untrusted-content quarantine"];
-        Model [label="Local Ollama / qwen3:8b"];
-        Sources [label="Citation cleanup + source sanitization"];
-        SOC [label="SOC: full bounded integrity contract"];
-        Repair [label="At most one policy repair"];
-        Withheld [label="Failed repair: no analyst result"];
-        Governance [label="Governance: response schema; semantics prompt-guided"];
-        Result [label="Audit + analyst result + human review"];
-        UI -> API -> Retrieval -> Prompt -> Model -> Sources;
-        Sources -> SOC; Sources -> Governance;
-        SOC -> Result [label="pass"]; SOC -> Repair [label="initial reject"];
-        Repair -> SOC [label="recheck full contract"]; SOC -> Withheld [label="repair reject"];
-        Governance -> Result;
-    }""")
-    st.caption(
-        "The policy repair uses the neutralized original prompt and fixed machine reasons; failed raw output is not fed back. Transport/JSON retries remain separate from the single policy repair."
-    )
-    privacy, review = st.columns(2)
-    with privacy:
-        st.subheader("Local-first privacy")
-        st.write(
-            "Model inference runs locally through Ollama with no cloud AI API calls. Curated references and JSONL audit logs remain local. Inputs, summaries and exported briefs can contain sensitive information; review local files before sharing."
-        )
-    with review:
-        st.subheader("Human review")
-        st.write(
-            "No truth, hallucination or safety percentage is assigned to a result. SOC identity membership does not prove claim support. Governance decisions and MITRE-style mapping are model proposals, not independently verified certifications."
-        )
-    st.subheader("Demo boundary")
+def overview_page() -> None:
+    st.title("Overview")
     st.write(
-        "A local demonstration, without authentication or a multi-user access boundary. No live threat intelligence, STIX validation, vector RAG, SIEM, ticketing or autonomous actions. Evaluation Lab and this page work without FastAPI or Ollama."
+        "Local analyst-support platform for security-event investigation and AI-system risk review."
     )
+    technical, governance = st.columns(2)
+    technical.subheader("Technical")
+    governance.subheader("Policy / governance")
+    for row in WORKFLOW_MAP:
+        st.caption(row["domain"])
+        for column, category in zip(
+            st.columns(2), ("technical", "governance"), strict=True
+        ):
+            card = row[category]
+            with column, st.container(border=True):
+                st.caption(card["status"])
+                st.subheader(card["title"])
+                st.write(card["description"])
+                if card["status"] == "Active":
+                    st.page_link(card["page"], label="Open workflow")
+    st.caption(
+        "Planned workflows communicate platform direction and are not included in this release."
+    )
+    st.subheader("Platform views")
+    st.write(
+        "Platform Evaluation summarizes this application's frozen test history. Activity shows local audit entries. About explains architecture and operational boundaries."
+    )
+
+
+def about_page() -> None:
+    st.title("About")
+    st.subheader("Product scope")
+    st.write(
+        "Local AI Security Risk Platform supports security-event investigation and AI-system risk review using structured requests, local references and Ollama inference."
+    )
+    st.subheader("Architecture")
+    stages = (
+        ("1. Request", "Streamlit input ? FastAPI ? Pydantic request validation"),
+        ("2. Context", "Local reference retrieval and untrusted-content handling"),
+        ("3. Inference", "Configured local Ollama model; qwen3:8b by default"),
+    )
+    for column, (title, description) in zip(st.columns(3), stages, strict=True):
+        with column, st.container(border=True):
+            st.markdown(f"**{title}**")
+            st.write(description)
+    soc, risk = st.columns(2)
+    with soc, st.container(border=True):
+        st.markdown("**4. SOC Investigation response**")
+        st.write(
+            "Source sanitization and schema validation. Bounded identifier, endpoint and observation checks. One policy repair; analysis withheld if the repaired response fails."
+        )
+    with risk, st.container(border=True):
+        st.markdown("**4. AI System Risk Review response**")
+        st.write(
+            "Source sanitization and schema validation. Prompt-guided risk analysis; no SOC identifier/endpoint contract."
+        )
+    with st.container(border=True):
+        st.markdown("**5. Result**")
+        st.write(
+            "Local audit entry, analyst-facing result and optional brief export. Human review required."
+        )
+    st.subheader("Current release")
+    st.write(
+        "SOC Investigation and AI System Risk Review are active. Overview shows the two planned workflows."
+    )
+    st.subheader("Operational boundaries")
+    left, right = st.columns(2)
+    left.markdown(
+        "- Local Ollama inference; no cloud AI API\n- No automatic containment or other actions\n- No live threat-intelligence verification"
+    )
+    right.markdown(
+        "- No authentication or multi-user boundary\n- Human review required\n- Local audit summaries and exports may contain sensitive input"
+    )
+    with st.expander("Validation limits"):
+        st.write(
+            "SOC checks recognize a finite set of IPv4, SHA-256, CVE-style and endpoint forms. They do not prove every conclusion, preserve every identifier or establish completeness. Governance semantics and MITRE-style mapping require review. Local inference can be slow; repair and withheld output affect availability. A UI timeout does not cancel backend work."
+        )

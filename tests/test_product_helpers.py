@@ -12,9 +12,10 @@ from app.schemas import (
     SocAlertRequest,
     SocAlertResponse,
 )
-from app.ui_schemas import COMMON_CHECKS, INTEGRITY_FAILURE_MESSAGE, SOC_CHECKS
+from app.ui_schemas import COMMON_CHECKS, SOC_CHECKS
 from dashboard.api_client import (
     GENERIC_ERROR,
+    POLICY_ERROR,
     UNAVAILABLE,
     get_data,
     post_analysis,
@@ -168,7 +169,7 @@ def test_catalog_all_versions_and_real_counts():
         "37/41",
     ]
     assert [r["Application errors"] for r in rows] == [0, 0, 0, 1, 0, 0, 0, 1]
-    assert "NOT directly comparable" in CROSS_VERSION_CAVEAT
+    assert "not directly comparable" in CROSS_VERSION_CAVEAT
     assert all((ROOT / p).is_file() for _, p, _, _ in CATALOG)
     assert (ROOT / COMPARISON_PATH).is_file()
 
@@ -230,16 +231,16 @@ def test_integrity_panel_precise_labels(repair):
         "repair_succeeded": True if repair else None,
     }
     rows = integrity_rows(metadata, soc=True)
-    assert rows[0]["Status"] == "PASSED"
+    assert rows[0]["Status"] == "Passed"
     assert rows[-2]["Status"] == ("Successful repair" if repair else "Not required")
-    assert rows[-1]["Status"] == "REQUIRED"
-    assert any(r["Status"] == "SANITIZED" for r in rows)
+    assert rows[-1]["Status"] == "Required"
+    assert any(r["Status"] == "Validated" for r in rows)
 
 
 def test_governance_panel_does_not_claim_soc_contract():
     rows = integrity_rows({"checks": COMMON_CHECKS}, soc=False)
     assert len(rows) == 3
-    assert "SOC" not in str(rows) and "PASSED" not in str(rows)
+    assert "Critical identifiers" not in str(rows) and "Final contract" not in str(rows)
     assert all(r["Status"] == "Unavailable" for r in integrity_rows({}, soc=True)[:-1])
 
 
@@ -281,7 +282,7 @@ def test_audit_filtering_omits_errors(workflow, outcome, expected):
         (
             500,
             {"detail": {"code": "integrity_validation_failed", "message": "SECRET"}},
-            INTEGRITY_FAILURE_MESSAGE,
+            POLICY_ERROR,
         ),
         (500, {"detail": "SECRET"}, GENERIC_ERROR),
         (500, "SECRET", GENERIC_ERROR),

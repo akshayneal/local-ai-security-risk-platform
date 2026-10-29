@@ -2,10 +2,12 @@
 
 import requests
 
-from app.ui_schemas import INTEGRITY_FAILURE_MESSAGE
-
 GENERIC_ERROR = (
     "Analysis failed. Check the local services and Activity, then try again."
+)
+POLICY_ERROR = (
+    "Analysis withheld. The generated response failed required checks after one repair attempt. "
+    "No analyst result was returned."
 )
 UNAVAILABLE = (
     "FastAPI is unavailable. Start the local backend to analyze cases or view Activity."
@@ -19,7 +21,7 @@ def safe_error(status: int, body: object) -> str:
             isinstance(detail, dict)
             and detail.get("code") == "integrity_validation_failed"
         ):
-            return INTEGRITY_FAILURE_MESSAGE
+            return POLICY_ERROR
     if status == 422:
         return "Some input fields are invalid or too long. Review the form and submit again."
     return GENERIC_ERROR
