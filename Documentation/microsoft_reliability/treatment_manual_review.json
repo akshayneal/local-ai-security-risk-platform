@@ -357,6 +357,136 @@
         }
       ],
       "rationale": "Public low-impact read-only scope remains supported; no sensitive HR or employment-impact concern is invented. Missing classification/approval documentation may mean missing formal evidence. Summary suggests auditability mitigations without supplied implementation evidence, an ambiguity also present in baseline. Mandates logging in source relevance is ambiguous advisory-versus-binding framing; no named legal mandate asserted."
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 2,
+      "record_sha256": "3719e8f3953b36be5a54d7be2e6b6a3acaebcff2fdf9f6d62203f98619c9d66e",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "ambiguous",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system operates with low-impact informational purposes, limited data scope, and human review. Risks are mitigated through data minimization and auditability controls, though some evidence gaps remain."
+        },
+        {
+          "field": "source_references",
+          "text": "Mandates review activity logging"
+        }
+      ],
+      "rationale": "Public nonsensitive scope and low-impact purpose retained, with no invented HR or employment impact. Auditability described as an existing mitigation despite missing implementation evidence is ambiguous. Missing formal classification is not necessarily denial of known public status. Checklist mandates wording remains ambiguous, as in baseline."
+    },
+    {
+      "case_id": "REL-GOV-001",
+      "trial": 3,
+      "record_sha256": "0afcbdcb88ffa45522dbc1d93ae8e27cb0af1693a6b98325f65decb5c9ae90d3",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "ambiguous",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system meets low-risk criteria with appropriate data minimization and human review processes. No high-impact use cases or personal data handling. However, auditability and evidence gaps require attention."
+        },
+        {
+          "field": "key_risks",
+          "text": "Missing audit logs for review activities"
+        }
+      ],
+      "rationale": "Public nonsensitive scope and no high-impact use retained. Missing audit logs/approval records may mean absent evidence rather than verified absence, so factual status remains ambiguous. No named external law or HR impact invented; approval/documentation requirements remain ambiguous checklist proposals."
+    },
+    {
+      "case_id": "REL-GOV-002",
+      "trial": 1,
+      "record_sha256": "87f216d7c050f5a77283c8485e05e9966c441ecbb6ea4f0ea03b985565eb1778",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system handles sensitive HR data (salary records, disability accommodation data) with potential for significant employee harm. Requires enhanced controls for data minimization, auditability, and high-impact use management."
+        },
+        {
+          "field": "key_risks",
+          "text": "Missing encryption for sensitive data storage"
+        }
+      ],
+      "rationale": "Sensitive salary/disability data and human HR review retained; higher privacy risk is supported, without invented hiring decisions. Encryption is unknown, but a key risk asserts it is missing while evidence_gaps calls the methodology unclear. This is an unsupported absence claim, moderate confidence; classification-document gaps alone remain ambiguous. Third-party review is proposed, not asserted as a verified legal mandate."
+    },
+    {
+      "case_id": "REL-GOV-003",
+      "trial": 1,
+      "record_sha256": "a5f2ae0fb2241651a2bbfd96cc327fe2f07845d07dabe1213920a907f80d9f28",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "present",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The AI system ranks job applicants and recommends interview shortlists, impacting employment decisions. This falls under high-risk use cases per internal governance checklists."
+        },
+        {
+          "field": "source_references",
+          "text": "Risk testing mandates"
+        },
+        {
+          "field": "human_review_requirements",
+          "text": "Human oversight required for final shortlisting decisions"
+        }
+      ],
+      "rationale": "Hiring ranking/shortlisting impact and fairness risks retained. The baseline restriction on recruiter override is gone. However, source relevance upgrades the voluntary risk-testing framework to mandates without supplied applicability authority. This is a distinct residual authority concern; proposed controls and high risk alone are not errors."
+    },
+    {
+      "case_id": "REL-GOV-004",
+      "trial": 1,
+      "record_sha256": "debd80bbdce086fcd019acd5de54e4284510bbceb3969838daf062587ace2bb7",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "ambiguous",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system drafts helpdesk replies requiring mandatory human approval before sending. Key aspects include synthetic ticket text processing, synthetic staff users, and no external integrations. Business impact is limited to potential staff time waste from incorrect advice."
+        },
+        {
+          "field": "recommended_next_steps",
+          "text": "Implement detailed logging as specified in"
+        }
+      ],
+      "rationale": "Affirmative approval before sending retained. Summary adds no external integrations, which the supplied case does not establish (moderate-confidence factual addition). Known synthetic ticket text is not contradicted by asking for formal classification. Checklist requirement wording remains ambiguous rather than an invented named law. A dangling as specified in recommendation is an additional formatting defect outside the five semantic dimensions."
+    },
+    {
+      "case_id": "REL-GOV-005",
+      "trial": 1,
+      "record_sha256": "b0ca97afb21fdc2fc092cfcf25ba8885eeed6fc8a9bd41fa2ccaf7190bbabd14",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "present",
+      "overclaiming": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "The system automatically sends helpdesk replies after 30 seconds unless a reviewer vetoes it. This creates operational risk due to potential incorrect advice reaching users without explicit human approval. The lack of clear escalation procedures and evidence validation mechanisms increases governance and security exposure."
+        },
+        {
+          "field": "source_references",
+          "text": "Mandates human review for systems affecting user interactions"
+        }
+      ],
+      "rationale": "Correctly distinguishes auto-send after 30 seconds unless vetoed from affirmative approval. Escalation/evidence-validation gaps may describe absent evidence, hence ambiguous rather than established absent controls. Source relevance overgeneralizes checklist advice to a mandate for all systems affecting user interactions, without supplied authority. No actual malicious ticket or breach asserted."
     }
   ]
 }
