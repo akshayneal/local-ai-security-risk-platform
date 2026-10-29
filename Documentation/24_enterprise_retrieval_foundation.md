@@ -94,3 +94,62 @@ metadata. A rebuilt snapshot does not override query-time registry currentness.
 The independent retrieval benchmark reads committed JSON fixtures. The authoring
 module can regenerate them deliberately but the runner never rewrites judgments.
 See the [benchmark report](25_retrieval_benchmark_report.md) for limitations and results.
+
+## Local dense retrieval and hybrid fusion
+
+`EmbeddingProvider` separates document and query embedding methods from search.
+`OllamaEmbeddingProvider` uses only a loopback HTTP endpoint with environment proxies
+disabled and redirects refused. It checks the locally installed model and its
+embedding capability; cloud-labelled/remote models are refused. It does not pull
+models automatically. Requests have a 60-second timeout and `truncate=false`, so
+oversize chunks fail rather than silently losing evidence. Raw-v1 text formatting
+follows the [Ollama embedding API](https://docs.ollama.com/api/embed); provider methods
+allow future model-specific query/document formatting without changing analyzers.
+
+The measured model is [embeddinggemma:300m](https://ollama.com/library/embeddinggemma:300m),
+separate from qwen generation. First run requires the explicit local download:
+
+```powershell
+ollama pull embeddinggemma:300m
+.\.venv\Scripts\python.exe -m evals.retrieval.runner --backends legacy lexical dense hybrid --output evals/results/retrieval_live.json --save-embedding-cache evals/results/retrieval_vectors.json
+.\.venv\Scripts\python.exe -m evals.retrieval.runner --backends legacy lexical dense hybrid --embedding-cache Documentation/retrieval_evaluation/vectors.json --output evals/results/retrieval_replay.json
+```
+
+`DenseRetriever` normalizes and validates finite, nonzero, consistent-dimensional
+vectors, then performs exact cosine ranking in memory. Only query-eligible records
+are sent to the provider, and lazy embedding/index population is included in query
+latency. No ANN, GPU-specific package or dedicated vector database is introduced.
+Saved JSON vectors include a format, model provenance and integrity digest. Offline
+replay refuses missing texts/corruption; it never calls a model as a fallback. The
+cache is a rebuildable local artifact, not an authenticated enterprise vector store.
+
+`HybridRetriever` fuses lexical and dense candidate ranks with RRF constant 60 and
+candidate depth `min(100, max(20, 4*K))`, fixed before evaluation. It validates shared
+corpus and version-gate identity, preserves each component rank and uses corpus
+order for ties. Scores from BM25 and cosine are never mixed directly. No reranker
+was necessary for this bounded experiment.
+
+Registered-document callers must supply `registry_version_gate` to each backend.
+The query-time check is not a transactional authorization/version snapshot over
+an entire concurrent search: registry/access updates during a request need a
+transactional snapshot/revalidation design before multi-user deployment. Scopes
+are caller-owned values, not an authorization service. Payloads/hashes and authority
+metadata still require a trusted importer. Index/filter success is not proof of
+truth, policy applicability outside its explicit scope or instruction safety.
+
+## Failure modes and integration decision
+
+| Path | Failure behavior |
+| --- | --- |
+| Released workflows | Unchanged legacy behavior, including missing-card handling |
+| Experimental legacy/lexical | No eligible hits returns `[]`; corrupt snapshot/registry or unavailable FTS raises `RetrievalError` |
+| Experimental dense/hybrid | Provider outage, missing model/vector, invalid dimensions or timeout raises `RetrievalError`; no silent legacy fallback |
+| Offline replay | Missing/corrupt cache or absent text fails; never performs network inference |
+
+No backend can relax authority, ACL, workflow or currentness because another backend
+fails. No new exception body or diagnostic is exposed through the released API.
+No default migration, environment-driven analyzer switch or shadow prompt integration
+is implemented in this sprint. The existing prompt card serializer does not express
+the new authority/version metadata; connecting it safely needs its own preservation
+tests. New workflows, RBAC, enterprise services and production document onboarding
+remain separate work. The [closeout](26_expansion_sprint_1_report.md) records the gate.
