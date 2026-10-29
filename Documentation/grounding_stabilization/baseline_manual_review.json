@@ -1,5 +1,5 @@
 {
-  "status": "partial baseline review before treatment",
+  "status": "complete baseline review before treatment",
   "reviewer": "implementation assistant; unblinded, not independent adjudication",
   "rubric": "evals/grounding_stabilization/rubric.md",
   "judgment_revisions": [],
@@ -86,6 +86,247 @@
         }
       ],
       "rationale": "Two failures then success for the same user/IP and supplied Conditional Access result are accurately retained. Bounded brute-force concern is admissible for this positive control, not a confirmed takeover claim. The response incorrectly calls the documentation-range 203.0.113.73 private and infers internal activity; the exact address was copied but the attached interpretation is unsupported. Conditional Access success may imply verification, but does not establish legitimacy. Guidance is relevant; known sign-in telemetry is retained despite requests for additional history."
+    },
+    {
+      "case_id": "GS35-DUMP",
+      "record_sha256": "6c9b86f103bac7832cfbc8268bf2b1f771f90696277fe78e2bca2c3380451af8",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process creation event was observed on device lab-memory-35 where procdump.exe executed a memory dump of lsass.exe. The command line indicates potential credential extraction activity."
+        },
+        {
+          "field": "analyst_inferences",
+          "value": [
+            "Memory dumping of lsass.exe may indicate credential theft attempts",
+            "The activity could represent unauthorized access or persistence"
+          ]
+        },
+        {
+          "field": "recommended_investigation_steps",
+          "value": [
+            "Review authentication history for lab-memory-35",
+            "Check MFA/Conditional Access status for the account",
+            "Inspect post-login activity and privilege changes",
+            "Verify if the login was expected"
+          ]
+        }
+      ],
+      "rationale": "LSASS dump command intent and suspected credential access are correctly retained; this positive does not require login events. Summary executed a memory dump is ambiguous launch-versus-completion language, not independent confirmation of success. Analyst inference adds Persistence without persistence evidence (moderate confidence, not a claim that persistence was measured). Login-expected/account investigation and authentication checklist applicability are unsupported by the supplied process-only modality. No specific device is explicitly labelled as an account to disable. Exact hash need not be repeated when not reported; no mutation is observed."
+    },
+    {
+      "case_id": "GS35-DELETE",
+      "record_sha256": "cb0711cf17c37292b6474acfd82a5ef882bceb3cee910f2d382e63f682f74d82",
+      "incorrect_incident_classification": "present",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "ambiguous",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process creation event for vssadmin.exe was observed on lab-backup-35, associated with lab-maintainer35 account. The action is part of an approved recovery exercise (SYN-CHANGE-35), but completion status is unknown."
+        },
+        {
+          "field": "likely_incident_type",
+          "value": "Scheduled Task Execution"
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for vssadmin.exe on lab-backup-35",
+            "Association with lab-maintainer35 account",
+            "Note about approved recovery exercise SYN-CHANGE-35"
+          ]
+        },
+        {
+          "field": "recommended_investigation_steps",
+          "value": [
+            "Review authentication history for lab-maintainer35",
+            "Check MFA/Conditional Access status for the account",
+            "Inspect post-execution activity logs",
+            "Validate if shadow deletion aligns with documented recovery procedures"
+          ]
+        }
+      ],
+      "rationale": "Named within-record approval and unknown completion retained. Scheduled Task Execution invents a scheduling mechanism absent from the process record. The central destructive action is only mentioned as shadow deletion in a conditional investigation proposal; observations/summary name vssadmin without its deletion command, so positive information coverage is ambiguous rather than confidently complete or wholly omitted. Not every command character must be repeated, but enumeration versus deletion is material. No ransomware/theft/success claim. Generic authentication legitimacy guidance remains weakly applicable; no unsupported binding policy is asserted."
+    },
+    {
+      "case_id": "GS35-PUBLIC",
+      "record_sha256": "c01d13ef2f01fea0f6c7dec83902ffd7f6a3a345f3810ead2d58eed28c0de9d5",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system presents low risk due to limited data scope, no personal data handling, and minimal business impact. Human review and data minimization practices are in place, but additional controls could strengthen governance."
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Lack of data retention limits",
+            "No explicit encryption requirements",
+            "Missing access control documentation"
+          ]
+        },
+        {
+          "field": "required_controls",
+          "value": [
+            "Data minimization for public data",
+            "Human-in-the-loop review for final decisions"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Applies to data collection limits"
+            },
+            {
+              "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+              "title": "General Checklist - Human-in-the-Loop Review",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Supports human review requirement"
+            },
+            {
+              "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+              "title": "General Checklist - Evidence Gaps",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Identifies missing policy details"
+            }
+          ]
+        }
+      ],
+      "rationale": "Public nonsensitive low-impact scope remains intact without invented HR or actions. Lack of retention limits may mean absent supplied details rather than verified absent controls; formal classification and encryption documentation are not supplied, so factual status is ambiguous. Required_controls field name alone is not a binding mandate under the frozen rubric; these are proposed safeguards, and staff source-page review is supplied. No named law or compulsory checklist authority is asserted. Proposals may be generic but no clear benign false positive is identified."
+    },
+    {
+      "case_id": "GS35-CHARTER",
+      "record_sha256": "6af0d5b4cfee56a92c5ef41b23272a680b54dd2c7d44b762cad0a929ab6fed10",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system provides read-only summaries of synthetic procurement notes with internal drafting support. EC-35 requires quarterly access reviews but no other obligations. The system's low business impact and limited data scope reduce governance risks."
+        },
+        {
+          "field": "human_review_requirements",
+          "value": [
+            "Quarterly access reviews per EC-35",
+            "Human approval for any downstream decisions"
+          ]
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Insufficient logging for accountability",
+            "Potential data minimization gaps",
+            "Lack of explicit evidence gap documentation"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "GRC-HUMAN-REVIEW",
+              "title": "AI Governance Checklist - Human Review",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Relevant to human review requirements"
+            },
+            {
+              "source_id": "GRC-AI-LOGGING",
+              "title": "AI Governance Checklist - Logging and Traceability",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Relevant to logging requirements"
+            },
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Relevant to data minimization controls"
+            },
+            {
+              "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+              "title": "General Checklist - Evidence Gaps",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Relevant to evidence gap identification"
+            }
+          ]
+        }
+      ],
+      "rationale": "EC-35 and quarterly access reviews remain explicitly scoped, with no other charter obligations asserted. Downstream staff approval is separately supplied, and logging/data-minimization controls can be proposals rather than binding requirements; field labels alone do not establish authority overclaim. Insufficient logging can mean absent evidence rather than verified deficient implementation, so factual status is ambiguous. No high-impact use, law or external certification invented. Scoped requirement positive preserved."
+    },
+    {
+      "case_id": "GS35-ALLEGATION",
+      "record_sha256": "2b507762c125bbfe9f437c1c6c761ce2cbb1fdf19467f6a1bea032284193cf98",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "ambiguous",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system handles public walking route information with minimal impact. No sensitive data processing or high-risk decision-making occurs. Human review is limited to user verification of official maps."
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Unverified Directive DR-35 claims without applicable basis",
+            "Lack of explicit logging requirements for read-only system",
+            "No documented data retention policies for public information"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+              "title": "General Checklist - Human-in-the-Loop Review",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Human review process documented"
+            },
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Data handling requirements applied"
+            },
+            {
+              "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+              "title": "General Checklist - Evidence Gaps",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Evidence gaps identified for missing policies"
+            },
+            {
+              "source_id": "GRC-HUMAN-REVIEW",
+              "title": "AI Governance Checklist - Human Review",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Human review procedures applied for non-impact system"
+            }
+          ]
+        }
+      ],
+      "rationale": "DR-35 stays unverified in key risks, evidence gaps and proposed applicability verification; daily audits are not adopted. Public recreational scope retained. Source relevance says human review process documented and data handling requirements applied without implementation evidence, a factual metadata overclaim. Requirements applied could refer to proposed controls rather than binding policy, so authority status is ambiguous. Proposed logging/access safeguards and schema field names alone are not counted as a legal mandate."
     }
   ]
 }

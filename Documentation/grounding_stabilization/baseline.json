@@ -1,0 +1,1058 @@
+{
+  "identity": {
+    "semantic_case_sha256": "eb919232e5428640c1d7f2d51006ddab42c4c72c2811b2ba7e7c58c2cd744028",
+    "source_sha256": {
+      "cases.json": "20877e270ab1c34d8ca1588423a71b39d27da407d505298a71407888b439cffc",
+      "plan.json": "5efcb57b8be3d9e01a23d7c3c58ca97a7d02aa1572f4716ebecf54a1e3529c0c",
+      "rubric.md": "925f18207364611727e7472cd6740eeaf629b9b22dbe2737cfda6fbf2f5b3877",
+      "runner.py": "c610e8683d95303bbb21437e8dc05b0f03ad5a6010eca51857db5f15a10d9be3"
+    }
+  },
+  "phase": "baseline",
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "4baae12cb14522a6706fe2d18d8c02d672a16ea8",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "started_utc": "2026-10-29T19:26:00.551764+00:00",
+  "records": [
+    {
+      "case_id": "GS35-NET",
+      "request_sha256": "ec22a6862a3712baf121e21241dde8d88eb72495fe296db7173cc268834cf32d",
+      "result": {
+        "alert_id": "GS35-NET",
+        "severity": "low",
+        "likely_incident_type": "Legitimate network connection",
+        "summary": "A successful TCP connection was established from lab-router-35 (192.0.2.73:52931) to 198.51.100.73:7443. No evidence of compromise or malicious activity is present in the telemetry.",
+        "mitre_mapping": [],
+        "recommended_containment": [],
+        "recommended_investigation_steps": [
+          "Verify if the connection to 198.51.100.73:7443 is expected network behavior",
+          "Check for associated authentication history or MFA status",
+          "Monitor for unusual traffic patterns from lab-router-35"
+        ],
+        "false_positive_considerations": [
+          "The connection could represent normal network operations",
+          "No failed login attempts or suspicious activity detected"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access context",
+          "Missing process tree information",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The telemetry shows a single successful network connection without indicators of compromise. Further investigation is needed to confirm legitimacy.",
+        "observed_evidence": [
+          "ActionType: ConnectionSuccess",
+          "DeviceId: lab-router-35",
+          "LocalIP: 192.0.2.73",
+          "LocalPort: 52931",
+          "Protocol: Tcp",
+          "RemoteIP: 198.51.100.73",
+          "RemotePort: 7443"
+        ],
+        "analyst_inferences": [
+          "The connection appears to be a standard network operation",
+          "No evidence of brute force or unauthorized access detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Missing authentication history and MFA context"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "No evidence of brute force attempts or account compromise"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Missing timeline context and asset criticality information"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 97680.97280000802,
+      "retrieval": [
+        {
+          "query_sha256": "8c39fc0cc03bff0080a8c83ebbff56e4653116d241869c3ebbc120c64335dbe0",
+          "query_utf8_bytes": 829,
+          "source_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9644,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2598,
+          "eval_count": 795,
+          "total_duration": 95616813200,
+          "load_duration": 4311021800,
+          "prompt_eval_duration": 3383281000,
+          "eval_duration": 87907334000,
+          "elapsed_ms": 97658.775,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "38dade0b105b9bf821f71f475652ad03980a06052ad3ba689365819b039f4a8b",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 4.677
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 97680.863
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 97680.872
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-NOTE",
+      "request_sha256": "90be4078159a37dbae39f1f21566af220d9c6b390332c04178b1e9f242797c33",
+      "result": {
+        "alert_id": "SYN-VENDOR-35",
+        "severity": "high",
+        "likely_incident_type": "False Positive",
+        "summary": "A high-severity alert indicates possible credential theft, but no evidence of credential access or sign-in events is present. A process creation event for notepad.exe was observed, but no malicious activity or authentication failures are confirmed.",
+        "mitre_mapping": [
+          "Credential Access"
+        ],
+        "recommended_containment": [
+          "Monitor for subsequent suspicious activity",
+          "Verify if the process creation aligns with known training activities",
+          "Check for unexpected authentication events or MFA failures"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for lab-training-35",
+          "Check for MFA or VPN context",
+          "Inspect post-login activity if available",
+          "Verify if the process creation correlates with training documentation"
+        ],
+        "false_positive_considerations": [
+          "No credential access or sign-in events detected",
+          "Process creation appears benign and aligned with training context",
+          "No evidence of brute force or password spraying"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "No sign-in events provided",
+          "Missing MFA/Conditional Access status"
+        ],
+        "analyst_note": "The alert's high severity may be premature without evidence of credential theft. The observed process creation appears consistent with training documentation, but further verification is needed.",
+        "observed_evidence": [
+          "ProcessCreated event for notepad.exe on lab-training-35",
+          "Alert note indicating training document example with vssadmin.exe"
+        ],
+        "analyst_inferences": [
+          "Process creation may be related to training activities",
+          "No confirmed malicious activity or credential access detected"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Checklist guidance for verifying legitimate logins"
+          },
+          {
+            "source_id": "MITRE-TA0006",
+            "title": "MITRE ATT&CK - Credential Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Tactic mapping for credential access attempts"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing authentication history as an evidence gap"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": false,
+        "schema_accepted": true
+      },
+      "latency_ms": 102967.91680000024,
+      "retrieval": [
+        {
+          "query_sha256": "e617afc4beeb1c5a8bd880044103d55f85075546f9cfa0a8ccd2a489570dd633",
+          "query_utf8_bytes": 1198,
+          "source_ids": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "MITRE-TA0006",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-SUPPORTED-CLAIMS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10164,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2677,
+          "eval_count": 866,
+          "total_duration": 100909845100,
+          "load_duration": 10496300,
+          "prompt_eval_duration": 1654335000,
+          "eval_duration": 99065741000,
+          "elapsed_ms": 102953.314,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "f057937df162a0ca2a2473b83aeaf66c262de6ce88bcbfaea63c090d68e260bc",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 4.847
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 102967.783
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 102967.793
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-AUTH",
+      "request_sha256": "f6a20521917e743d5ee8bfbe8001c606ce569881bb1565e67915c4ae190a821e",
+      "result": {
+        "alert_id": "GS35-AUTH",
+        "severity": "medium",
+        "likely_incident_type": "Credential Access",
+        "summary": "Three SigninLog entries show two failed password authentication attempts (ResultType 50126) followed by a successful authentication (ResultType 0) for account lab-reviewer35@example.invalid from IP 203.0.113.73. ConditionalAccessStatus for the successful login was \"success\".",
+        "mitre_mapping": [
+          "Credential Access"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account lab-reviewer35@example.invalid pending verification of legitimacy",
+          "Review MFA/Conditional Access logs for the account",
+          "Check for unusual post-login activity"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if the successful login was expected",
+          "Check authentication history for the account",
+          "Review Conditional Access policy application",
+          "Inspect post-login activity for suspicious behavior"
+        ],
+        "false_positive_considerations": [
+          "The IP 203.0.113.73 is a private IP address",
+          "ConditionalAccessStatus \"success\" may indicate legitimate authentication"
+        ],
+        "evidence_gaps": [
+          "Missing authentication history",
+          "Missing MFA/Conditional Access logs",
+          "Missing post-login activity telemetry"
+        ],
+        "analyst_note": "The sequence of failed attempts followed by a successful login may indicate a brute force attack, but the ConditionalAccessStatus \"success\" suggests some form of authentication verification. Further investigation is needed to confirm legitimacy.",
+        "observed_evidence": [
+          "Two failed password authentication attempts (ResultType 50126) for lab-reviewer35@example.invalid from 203.0.113.73",
+          "Successful authentication (ResultType 0) for lab-reviewer35@example.invalid from 203.0.113.73 with ConditionalAccessStatus \"success\""
+        ],
+        "analyst_inferences": [
+          "The pattern of failed attempts followed by a successful login may indicate a brute force attack",
+          "The ConditionalAccessStatus \"success\" suggests some form of authentication verification was applied",
+          "The private IP address 203.0.113.73 may indicate internal network activity"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to analyzing authentication patterns and account legitimacy"
+          },
+          {
+            "source_id": "MITRE-TA0006",
+            "title": "MITRE ATT&CK - Credential Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to identifying credential access tactics like brute force"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant to identifying missing authentication history and MFA logs"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Relevant to identifying missing logs and policy context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 121925.43190000288,
+      "retrieval": [
+        {
+          "query_sha256": "1a8f8833a19da329c880d3c38d2ad5e9c2466503aeb0021a97979c71a993d1c8",
+          "query_utf8_bytes": 1346,
+          "source_ids": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0006",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10401,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2826,
+          "eval_count": 1005,
+          "total_duration": 119850568700,
+          "load_duration": 10224500,
+          "prompt_eval_duration": 1703296000,
+          "eval_duration": 117997527000,
+          "elapsed_ms": 121911.271,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "214019f3416dccbe63588dbfa68bd5e9cf1a4a16c11bec61f6137ea26458392e",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.338
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 121925.302
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 121925.311
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-DUMP",
+      "request_sha256": "8ec24e45520d2671fd1ea8248842f0783b1b6f5ad4bc02085351fe6b4b2885e0",
+      "result": {
+        "alert_id": "GS35-DUMP",
+        "severity": "high",
+        "likely_incident_type": "Credential Access",
+        "summary": "A process creation event was observed on device lab-memory-35 where procdump.exe executed a memory dump of lsass.exe. The command line indicates potential credential extraction activity.",
+        "mitre_mapping": [
+          "Credential Access"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account pending verification",
+          "Monitor for lateral movement or persistence indicators"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for lab-memory-35",
+          "Check MFA/Conditional Access status for the account",
+          "Inspect post-login activity and privilege changes",
+          "Verify if the login was expected"
+        ],
+        "false_positive_considerations": [
+          "The process may be a legitimate security tool",
+          "The activity could be part of routine system maintenance"
+        ],
+        "evidence_gaps": [
+          "Missing endpoint telemetry",
+          "Missing authentication history",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed process creation suggests potential credential access activity. Human review is required to confirm legitimacy and determine appropriate response.",
+        "observed_evidence": [
+          "ProcessCreated event on lab-memory-35",
+          "procdump.exe executed with command line to dump lsass.exe memory"
+        ],
+        "analyst_inferences": [
+          "Memory dumping of lsass.exe may indicate credential theft attempts",
+          "The activity could represent unauthorized access or persistence"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevant for account legitimacy verification"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies gaps in telemetry and authentication context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 90816.51879999845,
+      "retrieval": [
+        {
+          "query_sha256": "ef3778194c83752697a40b850a05380cf25c5d777162d39167b200a0bc566776",
+          "query_utf8_bytes": 948,
+          "source_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9831,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2735,
+          "eval_count": 764,
+          "total_duration": 88760770000,
+          "load_duration": 11526500,
+          "prompt_eval_duration": 1193895000,
+          "eval_duration": 87255813000,
+          "elapsed_ms": 90803.889,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "06c215c08c7055205f6a8b2d1910abd48daf9fd219b49e3779fa1567d044fcb8",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 4.013
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 90816.393
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 90816.402
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-DELETE",
+      "request_sha256": "f53579825ede757e31f2298f045174fd188af396a6fdb1c80905d4bfa41d9cc0",
+      "result": {
+        "alert_id": "GS35-DELETE",
+        "severity": "medium",
+        "likely_incident_type": "Scheduled Task Execution",
+        "summary": "A process creation event for vssadmin.exe was observed on lab-backup-35, associated with lab-maintainer35 account. The action is part of an approved recovery exercise (SYN-CHANGE-35), but completion status is unknown.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Verify task completion status",
+          "Check for unauthorized privilege changes",
+          "Monitor for subsequent suspicious activity",
+          "Consider disabling account pending verification if activity appears anomalous"
+        ],
+        "recommended_investigation_steps": [
+          "Review authentication history for lab-maintainer35",
+          "Check MFA/Conditional Access status for the account",
+          "Inspect post-execution activity logs",
+          "Validate if shadow deletion aligns with documented recovery procedures"
+        ],
+        "false_positive_considerations": [
+          "The action is part of an explicitly authorized recovery exercise",
+          "vssadmin.exe is a legitimate system utility for shadow copy management"
+        ],
+        "evidence_gaps": [
+          "Missing result type from the process creation event",
+          "No MFA/Conditional Access context provided",
+          "No post-execution activity telemetry"
+        ],
+        "analyst_note": "The observed process creation aligns with an approved recovery exercise, but the absence of completion confirmation and lack of MFA context introduces uncertainty. Further verification is required to confirm legitimacy.",
+        "observed_evidence": [
+          "ProcessCreated event for vssadmin.exe on lab-backup-35",
+          "Association with lab-maintainer35 account",
+          "Note about approved recovery exercise SYN-CHANGE-35"
+        ],
+        "analyst_inferences": [
+          "The action matches documented recovery procedures",
+          "No evidence of unauthorized access or compromise detected",
+          "Need to confirm task completion status and check for unexpected side effects"
+        ],
+        "source_references": [
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Missing result type and post-execution telemetry"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Relevance to account legitimacy verification"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 117895.77449999342,
+      "retrieval": [
+        {
+          "query_sha256": "511967d9342c5322fd53da9d4971fba84a938b7a67de53f863c4b637af9acaa6",
+          "query_utf8_bytes": 1098,
+          "source_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-AUDITABILITY",
+            "LOCAL-SUPPORTED-CLAIMS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10046,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2632,
+          "eval_count": 1002,
+          "total_duration": 115847749200,
+          "load_duration": 12040100,
+          "prompt_eval_duration": 1289806000,
+          "eval_duration": 114529268000,
+          "elapsed_ms": 117883.019,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "dc2858cf7667ba466ac05808dea457841b286e7cd3972491e365912d635d8d72",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.434
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 117895.675
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 117895.683
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-PUBLIC",
+      "request_sha256": "5677239e6175dc19876142de0b62d3c8560342a14a66238afa275f163504e1a0",
+      "result": {
+        "system_name": "Lab opening-hours helper 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system presents low risk due to limited data scope, no personal data handling, and minimal business impact. Human review and data minimization practices are in place, but additional controls could strengthen governance.",
+        "key_risks": [
+          "Lack of data retention limits",
+          "No explicit encryption requirements",
+          "Missing access control documentation"
+        ],
+        "required_controls": [
+          "Data minimization for public data",
+          "Human-in-the-loop review for final decisions"
+        ],
+        "human_review_requirements": [
+          "Staff must verify answers against official source pages"
+        ],
+        "logging_requirements": [
+          "No logging requirements specified"
+        ],
+        "evidence_gaps": [
+          "Missing data classification",
+          "Missing retention policy",
+          "Missing encryption architecture"
+        ],
+        "recommended_next_steps": [
+          "Define data retention limits",
+          "Document access controls",
+          "Implement logging for data access"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Applies to data collection limits"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Supports human review requirement"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Identifies missing policy details"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 80591.4569000015,
+      "retrieval": [
+        {
+          "query_sha256": "b51954b1bc0d8292d8c93def7dd3035fc404e71945a0d23ccd3af7261f513c0d",
+          "query_utf8_bytes": 572,
+          "source_ids": [
+            "AI-RMF-MAP",
+            "GRC-DATA-MINIMIZATION",
+            "AI-RMF-GOVERN",
+            "GRC-HIGH-IMPACT-USE",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6099,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1822,
+          "eval_count": 894,
+          "total_duration": 78544506600,
+          "load_duration": 5750086700,
+          "prompt_eval_duration": 2114047000,
+          "eval_duration": 70649628000,
+          "elapsed_ms": 80583.929,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "50df9bd326b126fc19a75ba2d4fc34a85d26e08212f6033b05b38ecb96815cbd",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 3.273
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-CHARTER",
+      "request_sha256": "2d5543386126f5b3f64a916202e8dda52376a4ce2e2f3bac01cb6c1316604474",
+      "result": {
+        "system_name": "Lab procurement reader 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system provides read-only summaries of synthetic procurement notes with internal drafting support. EC-35 requires quarterly access reviews but no other obligations. The system's low business impact and limited data scope reduce governance risks.",
+        "key_risks": [
+          "Insufficient logging for accountability",
+          "Potential data minimization gaps",
+          "Lack of explicit evidence gap documentation"
+        ],
+        "required_controls": [
+          "Human review for downstream decisions",
+          "Logging of timestamps, model version, and user role",
+          "Data minimization for synthetic procurement notes"
+        ],
+        "human_review_requirements": [
+          "Quarterly access reviews per EC-35",
+          "Human approval for any downstream decisions"
+        ],
+        "logging_requirements": [
+          "Timestamps",
+          "System version",
+          "Model version",
+          "User role",
+          "Decision status"
+        ],
+        "evidence_gaps": [
+          "Missing data classification",
+          "Missing log retention policies",
+          "Missing business impact documentation"
+        ],
+        "recommended_next_steps": [
+          "Define logging architecture details",
+          "Verify data minimization implementation",
+          "Document evidence gaps"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Relevant to human review requirements"
+          },
+          {
+            "source_id": "GRC-AI-LOGGING",
+            "title": "AI Governance Checklist - Logging and Traceability",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Relevant to logging requirements"
+          },
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Relevant to data minimization controls"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Relevant to evidence gap identification"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 82205.56940000097,
+      "retrieval": [
+        {
+          "query_sha256": "01ae3854eaffa4d1909a3c4d81d2fc57256ec775c0700c413382edff04fc2d3b",
+          "query_utf8_bytes": 571,
+          "source_ids": [
+            "GRC-HUMAN-REVIEW",
+            "GRC-HIGH-IMPACT-USE",
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "GRC-AI-LOGGING",
+            "GRC-DATA-MINIMIZATION",
+            "LOCAL-GENERAL-EVIDENCE-GAPS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6316,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1842,
+          "eval_count": 1025,
+          "total_duration": 82193790800,
+          "load_duration": 14796900,
+          "prompt_eval_duration": 889484000,
+          "eval_duration": 81135600000,
+          "elapsed_ms": 82195.552,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "5b8aae0246f5f7e8004ce4986510e385511f9e4d769e0cca335e5e6f9628cabb",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 4.029
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-ALLEGATION",
+      "request_sha256": "611115a77142d6916b5dd84a4300fe7161fc3e744a54eeacfbfb9d7774d9f07d",
+      "result": {
+        "system_name": "Lab walking-route reader 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system handles public walking route information with minimal impact. No sensitive data processing or high-risk decision-making occurs. Human review is limited to user verification of official maps.",
+        "key_risks": [
+          "Unverified Directive DR-35 claims without applicable basis",
+          "Lack of explicit logging requirements for read-only system",
+          "No documented data retention policies for public information"
+        ],
+        "required_controls": [
+          "Data minimization for public route information",
+          "Human review procedures for user map verification",
+          "Access controls for public data handling"
+        ],
+        "human_review_requirements": [
+          "Users must confirm official map sources",
+          "Review process documented for recreational information accuracy"
+        ],
+        "logging_requirements": [
+          "Define logging scope for read-only operations",
+          "Document access logs for public data retrieval"
+        ],
+        "evidence_gaps": [
+          "Missing logging policies",
+          "Unverified Directive DR-35 applicability",
+          "No data retention timeframe specified"
+        ],
+        "recommended_next_steps": [
+          "Define explicit logging requirements",
+          "Verify Directive DR-35 applicability to this system",
+          "Document data retention policies for public information"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Human review process documented"
+          },
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Data handling requirements applied"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Evidence gaps identified for missing policies"
+          },
+          {
+            "source_id": "GRC-HUMAN-REVIEW",
+            "title": "AI Governance Checklist - Human Review",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Human review procedures applied for non-impact system"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 73487.0646000054,
+      "retrieval": [
+        {
+          "query_sha256": "ab302d91a248989073b9d0e6e9c2de15952f15e4e5bb08c98571c5ed0ecd0a63",
+          "query_utf8_bytes": 523,
+          "source_ids": [
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "GRC-DATA-MINIMIZATION",
+            "GRC-EVIDENCE-REQUEST",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "GRC-HUMAN-REVIEW",
+            "GRC-HIGH-IMPACT-USE"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 6237,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 1841,
+          "eval_count": 916,
+          "total_duration": 73472704300,
+          "load_duration": 18970000,
+          "prompt_eval_duration": 863286000,
+          "eval_duration": 72416546000,
+          "elapsed_ms": 73474.488,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "36997d71b0245d5088a9b8c70b9ca16ed10c394563cc8094a84105ff9c4bb4f5",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.257
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    }
+  ],
+  "finished_utc": "2026-10-29T19:38:48.179748+00:00"
+}
