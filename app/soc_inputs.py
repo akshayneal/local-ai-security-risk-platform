@@ -81,6 +81,7 @@ def canonical_bundle(value: Any) -> str:
     return json.dumps(
         value,
         sort_keys=True,
+        indent=0,
         separators=(",", ":"),
         ensure_ascii=False,
         allow_nan=False,
@@ -206,7 +207,11 @@ def validate_bundle(bundle: Any) -> None:
     if not 1 <= count <= MAX_TOTAL_ROWS:
         raise SocInputError("Bundle requires 1–100 total rows.")
     _check_tree(bundle)
-    if len(canonical_bundle(bundle).encode("utf-8")) > MAX_INPUT_BYTES:
+    try:
+        serialized_bytes = len(canonical_bundle(bundle).encode("utf-8"))
+    except UnicodeError as exc:
+        raise SocInputError("Telemetry contains invalid Unicode values.") from exc
+    if serialized_bytes > MAX_INPUT_BYTES:
         raise SocInputError("Serialized telemetry exceeds 80,000 bytes.")
 
 

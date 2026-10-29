@@ -77,7 +77,7 @@ commands); dynamic JSON-looking cells are not implicitly reinterpreted. JSON dyn
 objects/arrays retain their supplied types. BOM and Windows CRLF are supported.
 Duplicate JSON keys/CSV headers and inconsistent CSV row widths are rejected.
 
-Limits: 80,000 bytes uploaded **and** compact canonical UTF-8; 7 known tables;
+Limits: 80,000 bytes uploaded **and** canonical UTF-8; 7 known tables;
 50 rows/table; 100 total rows; 64 fields/object; 128 characters/field name;
 4,096 characters/string; nesting depth 8 (root depth zero); 5,000 values/containers.
 At least one row and a nonblank case ID of at most 256 characters are required.
@@ -86,7 +86,9 @@ Checks happen before inference; JSON nesting is also bounded before decoding.
 
 `NormalizedSocCase` contains the unchanged canonical `SocAlertRequest`, row counts,
 entities, warnings, exact AlertId links and table/zero-based-row/field/value
-observations. Canonical raw JSON sorts object keys and preserves row order,
+observations. Canonical raw JSON sorts object keys and uses field-per-line JSON,
+so quarantining an instruction-like command does not remove neighboring fields.
+It preserves row order,
 duplicates and values. Byte formatting is normalized, not original file bytes.
 Entity summaries are bounded to the existing label limit; indicator lists are
 stably deduplicated and bounded to 100 entries of 1,024 characters. Values omitted

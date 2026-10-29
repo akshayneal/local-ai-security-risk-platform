@@ -223,7 +223,15 @@ def main():
     parser.add_argument("--case", action="append")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    # CLI metadata only, never a model generation. Kept out of deterministic tests.
+    if args.live:
+        from evals.provenance import collect_provenance
+
+        runtime = collect_provenance().model_dump(mode="json")
+    else:
+        runtime = None
     report = run(live=args.live, selected=args.case)
+    report["runtime"] = runtime
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n"

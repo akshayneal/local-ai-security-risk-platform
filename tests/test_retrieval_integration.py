@@ -184,3 +184,45 @@ def test_legacy_context_and_long_query_and_bad_config(monkeypatch):
         orchestration.retrieve_for_analysis(
             "soc_alert", query, 5, legacy_loader=get_relevant_references
         )
+
+
+@pytest.mark.parametrize("soc", [True, False])
+def test_real_curated_lexical_path_to_both_analyzers(monkeypatch, soc):
+    module = soc_analyzer if soc else governance_analyzer
+    analyze = module.analyze_soc_alert if soc else module.analyze_governance_risk
+    request = (
+        SocAlertRequest(**SOC_INPUT)
+        if soc
+        else GovernanceRiskRequest(**GOVERNANCE_INPUT)
+    )
+    mode = "soc_alert" if soc else "governance"
+    hits = orchestration.lexical_search(
+        mode, request.model_dump_json(), 5 if soc else 6
+    )
+    assert hits
+    monkeypatch.setenv("RETRIEVAL_BACKEND", "lexical")
+    output = dict(SOC_RESPONSE if soc else GOVERNANCE_RESPONSE)
+    output["source_references"] = [
+        {
+            "source_id": h.record.evidence_id,
+            "title": "invented",
+            "framework": "invented",
+            "relevance": "invented",
+        }
+        for h in hits
+    ]
+    prompts = []
+    monkeypatch.setattr(
+        module,
+        "call_model_json",
+        lambda **kw: prompts.append(kw["user_prompt"]) or output.copy(),
+    )
+    result = analyze(request)
+    assert {s.source_id for s in result.source_references} == {
+        h.record.evidence_id for h in hits
+    }
+    assert all(
+        "Application evidence provenance" in s.relevance
+        for s in result.source_references
+    )
+    assert all(h.record.evidence_id in prompts[0] for h in hits)

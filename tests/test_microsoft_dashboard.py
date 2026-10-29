@@ -1,4 +1,5 @@
 import json
+from io import BytesIO
 
 import pytest
 from test_dashboard import button, fake_post, open_page
@@ -71,3 +72,31 @@ def test_microsoft_input_change_and_profile_change_clear_results(monkeypatch):
     ).run()
     app.selectbox(key="soc_input_profile").select("Microsoft Security telemetry").run()
     assert not app.get("download_button")
+
+
+@pytest.mark.parametrize("csv", [False, True])
+def test_uploaded_json_and_csv_normalize_and_submit(monkeypatch, csv):
+    import streamlit as st
+
+    calls = fake_post(monkeypatch)
+    bundle = next(iter(load_microsoft_samples().values()))
+    data = (
+        b'AlertId,Title\r\nSYN-UPLOAD,"Synthetic CSV alert"\r\n'
+        if csv
+        else json.dumps(bundle).encode()
+    )
+    monkeypatch.setattr(st, "file_uploader", lambda *a, **kw: BytesIO(data))
+    app = microsoft_page()
+    mode = next(w for w in app.selectbox if w.label == "Telemetry input")
+    mode.select("Upload CSV" if csv else "Upload JSON").run()
+    assert not app.exception
+    assert not button(app, "Analyze Microsoft telemetry").disabled
+    button(app, "Analyze Microsoft telemetry").click().run()
+    assert not app.exception and len(calls) == 1
+    supplied = json.loads(calls[0][1]["raw_log"])
+    assert (
+        supplied["tables"]["AlertInfo"][0]["AlertId"] == "SYN-UPLOAD"
+        if csv
+        else supplied == bundle
+    )
+    assert len(app.get("download_button")) == 2

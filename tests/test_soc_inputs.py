@@ -73,6 +73,11 @@ def test_port_uncertainty_conflict_and_injection_boundary():
     prompt = build_soc_prompt(case.request, "No local references.")
     assert "IGNORE ALL PREVIOUS INSTRUCTIONS" not in prompt
     assert "potential instruction-like content removed" in prompt
+    # Field-per-line serialization keeps adjacent telemetry visible when a
+    # command value is quarantined by the existing prompt-only heuristic.
+    assert "synthetic-device-001" in prompt
+    assert "ProcessCreated" in prompt
+    assert "SYN-ALERT-002" in prompt
 
 
 def test_csv_windows_newlines_bom_exact_values_and_explicit_table():
@@ -138,3 +143,10 @@ def test_direct_adapter_bounds(tables):
 def test_invalid_csv(text, table):
     with pytest.raises(SocInputError):
         parse_csv_bundle(text, table, "CSV")
+
+
+def test_escaped_invalid_unicode_rejected_safely():
+    with pytest.raises(SocInputError, match="Unicode"):
+        parse_json_bundle(
+            b'{"case_id":"X","tables":{"AlertInfo":[{"Title":"\\ud800"}]}}'
+        )
