@@ -1,0 +1,2 @@
+# Keep the new experiment byte-stable without changing frozen root attributes.
+*.json text eol=lf

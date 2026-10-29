@@ -1,0 +1,2 @@
+# Retrieval reports and saved vectors have portable exact-byte provenance.
+*.json text eol=lf
