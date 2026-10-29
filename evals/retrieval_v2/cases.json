@@ -1,0 +1,1434 @@
+[
+  {
+    "case_id": "R2-ID-01",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-EC-21 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-01-a": 3,
+      "V2-01-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-01-obsolete",
+      "V2-01-restricted",
+      "V2-01-other-scope",
+      "V2-01-other-use",
+      "V2-01-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-01",
+    "category": "multi_chunk",
+    "query": {
+      "text": "How should the lab preserve an event export before editing it, and what must accompany a transfer to another analyst?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-01-a": 3,
+      "V2-01-b": 3,
+      "V2-01-alt": 2
+    },
+    "required": [
+      "V2-01-b"
+    ],
+    "required_groups": [
+      [
+        "V2-01-a",
+        "V2-01-alt"
+      ],
+      [
+        "V2-01-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-01-obsolete",
+      "V2-01-restricted",
+      "V2-01-other-scope",
+      "V2-01-other-use",
+      "V2-01-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-01",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab custody handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-01-a": 3
+    },
+    "required": [
+      "V2-01-a"
+    ],
+    "forbidden": [
+      "V2-01-obsolete",
+      "V2-01-restricted",
+      "V2-01-other-scope",
+      "V2-01-other-use",
+      "V2-01-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-02",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-NT-22 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-02-a": 3,
+      "V2-02-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-02-obsolete",
+      "V2-02-restricted",
+      "V2-02-other-scope",
+      "V2-02-other-use",
+      "V2-02-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-02",
+    "category": "multi_chunk",
+    "query": {
+      "text": "What evidence permits naming the service on a network connection, and what should an investigator collect if only endpoints are known?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-02-a": 3,
+      "V2-02-b": 3,
+      "V2-02-alt": 2
+    },
+    "required": [
+      "V2-02-b"
+    ],
+    "required_groups": [
+      [
+        "V2-02-a",
+        "V2-02-alt"
+      ],
+      [
+        "V2-02-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-02-obsolete",
+      "V2-02-restricted",
+      "V2-02-other-scope",
+      "V2-02-other-use",
+      "V2-02-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-02",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab transport handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-02-a": 3
+    },
+    "required": [
+      "V2-02-a"
+    ],
+    "forbidden": [
+      "V2-02-obsolete",
+      "V2-02-restricted",
+      "V2-02-other-scope",
+      "V2-02-other-use",
+      "V2-02-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-03",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-ID-23 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-03-a": 3,
+      "V2-03-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-03-obsolete",
+      "V2-03-restricted",
+      "V2-03-other-scope",
+      "V2-03-other-use",
+      "V2-03-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-03",
+    "category": "multi_chunk",
+    "query": {
+      "text": "Does a completed second factor settle whether the session belongs to the real user, and which contextual checks should follow?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-03-a": 3,
+      "V2-03-b": 3,
+      "V2-03-alt": 2
+    },
+    "required": [
+      "V2-03-b"
+    ],
+    "required_groups": [
+      [
+        "V2-03-a",
+        "V2-03-alt"
+      ],
+      [
+        "V2-03-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-03-obsolete",
+      "V2-03-restricted",
+      "V2-03-other-scope",
+      "V2-03-other-use",
+      "V2-03-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-03",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab authentication handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-03-a": 3
+    },
+    "required": [
+      "V2-03-a"
+    ],
+    "forbidden": [
+      "V2-03-obsolete",
+      "V2-03-restricted",
+      "V2-03-other-scope",
+      "V2-03-other-use",
+      "V2-03-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-04",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-PC-24 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-04-a": 3,
+      "V2-04-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-04-obsolete",
+      "V2-04-restricted",
+      "V2-04-other-scope",
+      "V2-04-other-use",
+      "V2-04-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-04",
+    "category": "multi_chunk",
+    "query": {
+      "text": "Which keys tie an executable instance to its outbound traffic, and how should reused numeric process identifiers be handled?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-04-a": 3,
+      "V2-04-b": 3,
+      "V2-04-alt": 2
+    },
+    "required": [
+      "V2-04-b"
+    ],
+    "required_groups": [
+      [
+        "V2-04-a",
+        "V2-04-alt"
+      ],
+      [
+        "V2-04-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-04-obsolete",
+      "V2-04-restricted",
+      "V2-04-other-scope",
+      "V2-04-other-use",
+      "V2-04-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-04",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab process-link handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-04-a": 3
+    },
+    "required": [
+      "V2-04-a"
+    ],
+    "forbidden": [
+      "V2-04-obsolete",
+      "V2-04-restricted",
+      "V2-04-other-scope",
+      "V2-04-other-use",
+      "V2-04-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-05",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-SV-25 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-05-a": 3,
+      "V2-05-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-05-obsolete",
+      "V2-05-restricted",
+      "V2-05-other-scope",
+      "V2-05-other-use",
+      "V2-05-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-05",
+    "category": "multi_chunk",
+    "query": {
+      "text": "How should an analyst handle an incident marked high and its alert marked medium, and what aggregation detail could explain the difference?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-05-a": 3,
+      "V2-05-b": 3,
+      "V2-05-alt": 2
+    },
+    "required": [
+      "V2-05-b"
+    ],
+    "required_groups": [
+      [
+        "V2-05-a",
+        "V2-05-alt"
+      ],
+      [
+        "V2-05-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-05-obsolete",
+      "V2-05-restricted",
+      "V2-05-other-scope",
+      "V2-05-other-use",
+      "V2-05-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-05",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab severity handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-05-a": 3
+    },
+    "required": [
+      "V2-05-a"
+    ],
+    "forbidden": [
+      "V2-05-obsolete",
+      "V2-05-restricted",
+      "V2-05-other-scope",
+      "V2-05-other-use",
+      "V2-05-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-06",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-CT-26 require?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-06-a": 3,
+      "V2-06-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-06-obsolete",
+      "V2-06-restricted",
+      "V2-06-other-scope",
+      "V2-06-other-use",
+      "V2-06-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-06",
+    "category": "multi_chunk",
+    "query": {
+      "text": "Who must authorize isolating a workstation, and what operational checks precede the operator's action?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-06-a": 3,
+      "V2-06-b": 3,
+      "V2-06-alt": 2
+    },
+    "required": [
+      "V2-06-b"
+    ],
+    "required_groups": [
+      [
+        "V2-06-a",
+        "V2-06-alt"
+      ],
+      [
+        "V2-06-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-06-obsolete",
+      "V2-06-restricted",
+      "V2-06-other-scope",
+      "V2-06-other-use",
+      "V2-06-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-GATE-06",
+    "category": "scope_version_access",
+    "query": {
+      "text": "Current synthetic lab containment handling requirement",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-06-a": 3
+    },
+    "required": [
+      "V2-06-a"
+    ],
+    "forbidden": [
+      "V2-06-obsolete",
+      "V2-06-restricted",
+      "V2-06-other-scope",
+      "V2-06-other-use",
+      "V2-06-other-workflow"
+    ],
+    "rationale": "Only current accessible applicable policy in the requested scope qualifies."
+  },
+  {
+    "case_id": "R2-ID-07",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-SP-31 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-07-a": 3,
+      "V2-07-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-07-obsolete",
+      "V2-07-restricted",
+      "V2-07-other-scope",
+      "V2-07-other-use",
+      "V2-07-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-07",
+    "category": "multi_chunk",
+    "query": {
+      "text": "How can a company assistant avoid exposing files visible only to its connector, and what should permission-change tests inspect?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-07-a": 3,
+      "V2-07-b": 3,
+      "V2-07-alt": 2
+    },
+    "required": [
+      "V2-07-b"
+    ],
+    "required_groups": [
+      [
+        "V2-07-a",
+        "V2-07-alt"
+      ],
+      [
+        "V2-07-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-07-obsolete",
+      "V2-07-restricted",
+      "V2-07-other-scope",
+      "V2-07-other-use",
+      "V2-07-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-ID-08",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-HR-32 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-08-a": 3,
+      "V2-08-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-08-obsolete",
+      "V2-08-restricted",
+      "V2-08-other-scope",
+      "V2-08-other-use",
+      "V2-08-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-08",
+    "category": "multi_chunk",
+    "query": {
+      "text": "What human decision boundary applies to applicant ranking, and which fairness and challenge controls belong in the review?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-08-a": 3,
+      "V2-08-b": 3,
+      "V2-08-alt": 2
+    },
+    "required": [
+      "V2-08-b"
+    ],
+    "required_groups": [
+      [
+        "V2-08-a",
+        "V2-08-alt"
+      ],
+      [
+        "V2-08-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-08-obsolete",
+      "V2-08-restricted",
+      "V2-08-other-scope",
+      "V2-08-other-use",
+      "V2-08-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-ID-09",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-AG-33 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-09-a": 3,
+      "V2-09-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-09-obsolete",
+      "V2-09-restricted",
+      "V2-09-other-scope",
+      "V2-09-other-use",
+      "V2-09-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-09",
+    "category": "multi_chunk",
+    "query": {
+      "text": "What separates an agent reading directory data from changing an account, and what must an approval bind?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-09-a": 3,
+      "V2-09-b": 3,
+      "V2-09-alt": 2
+    },
+    "required": [
+      "V2-09-b"
+    ],
+    "required_groups": [
+      [
+        "V2-09-a",
+        "V2-09-alt"
+      ],
+      [
+        "V2-09-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-09-obsolete",
+      "V2-09-restricted",
+      "V2-09-other-scope",
+      "V2-09-other-use",
+      "V2-09-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-ID-10",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-PL-34 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-10-a": 3,
+      "V2-10-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-10-obsolete",
+      "V2-10-restricted",
+      "V2-10-other-scope",
+      "V2-10-other-use",
+      "V2-10-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-10",
+    "category": "multi_chunk",
+    "query": {
+      "text": "What should be checked before an assistant sends confidential records to an outside extension, and how can disclosure be reduced?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-10-a": 3,
+      "V2-10-b": 3,
+      "V2-10-alt": 2
+    },
+    "required": [
+      "V2-10-b"
+    ],
+    "required_groups": [
+      [
+        "V2-10-a",
+        "V2-10-alt"
+      ],
+      [
+        "V2-10-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-10-obsolete",
+      "V2-10-restricted",
+      "V2-10-other-scope",
+      "V2-10-other-use",
+      "V2-10-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-ID-11",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-RV-35 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-11-a": 3,
+      "V2-11-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-11-obsolete",
+      "V2-11-restricted",
+      "V2-11-other-scope",
+      "V2-11-other-use",
+      "V2-11-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-11",
+    "category": "multi_chunk",
+    "query": {
+      "text": "How should a review handle a design that promises human signoff while acting automatically, and what artifact clarifies the action order?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-11-a": 3,
+      "V2-11-b": 3,
+      "V2-11-alt": 2
+    },
+    "required": [
+      "V2-11-b"
+    ],
+    "required_groups": [
+      [
+        "V2-11-a",
+        "V2-11-alt"
+      ],
+      [
+        "V2-11-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-11-obsolete",
+      "V2-11-restricted",
+      "V2-11-other-scope",
+      "V2-11-other-use",
+      "V2-11-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-ID-12",
+    "category": "exact_identifier",
+    "query": {
+      "text": "What does LAB-FAQ-36 require?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-12-a": 3,
+      "V2-12-alt": 2
+    },
+    "required": [],
+    "forbidden": [
+      "V2-12-obsolete",
+      "V2-12-restricted",
+      "V2-12-other-scope",
+      "V2-12-other-use",
+      "V2-12-other-workflow"
+    ],
+    "rationale": "Either the current requirement chunk or its alternate summary supports the answer."
+  },
+  {
+    "case_id": "R2-MULTI-12",
+    "category": "multi_chunk",
+    "query": {
+      "text": "What bounds a low-impact internal question-answering tool, and how should errors and conversation retention be handled?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {
+      "V2-12-a": 3,
+      "V2-12-b": 3,
+      "V2-12-alt": 2
+    },
+    "required": [
+      "V2-12-b"
+    ],
+    "required_groups": [
+      [
+        "V2-12-a",
+        "V2-12-alt"
+      ],
+      [
+        "V2-12-b"
+      ]
+    ],
+    "forbidden": [
+      "V2-12-obsolete",
+      "V2-12-restricted",
+      "V2-12-other-scope",
+      "V2-12-other-use",
+      "V2-12-other-workflow"
+    ],
+    "rationale": "Requirement plus adjacent procedure are needed; the alternate can replace the requirement chunk."
+  },
+  {
+    "case_id": "R2-NONE-01",
+    "category": "no_answer",
+    "query": {
+      "text": "What is the mandatory 72-hour incident notification deadline for this lab?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-02",
+    "category": "no_answer",
+    "query": {
+      "text": "Is 198.51.100.143 currently a verified malicious command-and-control address?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-03",
+    "category": "no_answer",
+    "query": {
+      "text": "Which CVE explains this workstation's infection and what CVSS score applies?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-04",
+    "category": "no_answer",
+    "query": {
+      "text": "What is the lab's required forensic evidence retention duration in days?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-05",
+    "category": "no_answer",
+    "query": {
+      "text": "Which named operator approved isolation of workstation-57 yesterday?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-06",
+    "category": "no_answer",
+    "query": {
+      "text": "How many days must SharePoint assistant conversations be retained under the lab rule?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-07",
+    "category": "no_answer",
+    "query": {
+      "text": "Which exact recruiter approved candidate Morgan's rejection?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-08",
+    "category": "no_answer",
+    "query": {
+      "text": "What is the mandatory fairness error-rate threshold for applicant ranking?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-09",
+    "category": "no_answer",
+    "query": {
+      "text": "Which region does the outside extension use to store confidential records?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  },
+  {
+    "case_id": "R2-NONE-10",
+    "category": "no_answer",
+    "query": {
+      "text": "What is the exact legal penalty for an agent changing a directory account?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "source_types": [],
+      "authorities": [],
+      "applicability": [
+        "lab"
+      ],
+      "access_scopes": [],
+      "policy_scopes": [
+        "synthetic-lab"
+      ],
+      "as_of": "2026-10-29",
+      "include_inactive": false,
+      "version_ids": []
+    },
+    "relevance": {},
+    "required": [],
+    "forbidden": [],
+    "rationale": "Related guidance exists but no eligible record supplies the requested fact. Expected retrieval is empty."
+  }
+]

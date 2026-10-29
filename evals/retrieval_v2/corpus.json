@@ -1,0 +1,2906 @@
+[
+  {
+    "evidence_id": "V2-01-a",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-b",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "Custody handoff records the exporting analyst, export time, hash and each recipient. A working copy can be transformed without replacing the original.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-alt",
+    "source_id": "V2-01-alt",
+    "title": "custody training note",
+    "content": "Alternate analyst summary: LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-obsolete",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-old",
+    "chunk_id": "V2-01-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-restricted",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-other-scope",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-other-use",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-01-other-workflow",
+    "source_id": "V2-01",
+    "title": "custody handling",
+    "content": "LAB-EC-21 requires original event exports to be hashed before analyst transformations. Retain the original export separately. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-01",
+    "document_version_id": "V2-01-current",
+    "chunk_id": "V2-01-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-a",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-b",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "For uncertain transport, obtain packet or TLS/application telemetry and retain the exact source and destination endpoints. Distinguish TCP from an HTTPS assertion.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-alt",
+    "source_id": "V2-02-alt",
+    "title": "transport training note",
+    "content": "Alternate analyst summary: LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-obsolete",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-old",
+    "chunk_id": "V2-02-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-restricted",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-other-scope",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-other-use",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-02-other-workflow",
+    "source_id": "V2-02",
+    "title": "transport handling",
+    "content": "LAB-NT-22 requires a protocol field or explicit application-layer observation before naming an application protocol. Destination port alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-02",
+    "document_version_id": "V2-02-current",
+    "chunk_id": "V2-02-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-a",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-b",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "Review device compliance, token/session context and user confirmation. A different location can be explained by a VPN; unfamiliar geography alone does not establish compromise.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-alt",
+    "source_id": "V2-03-alt",
+    "title": "authentication training note",
+    "content": "Alternate analyst summary: LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-obsolete",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-old",
+    "chunk_id": "V2-03-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-restricted",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-other-scope",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-other-use",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-03-other-workflow",
+    "source_id": "V2-03",
+    "title": "authentication handling",
+    "content": "LAB-ID-23 treats successful multifactor authentication as an authentication observation, not proof that the person using the session was legitimate. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-03",
+    "document_version_id": "V2-03-current",
+    "chunk_id": "V2-03-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-a",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-b",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "Compare ProcessId and ProcessCreationTime with InitiatingProcessId and InitiatingProcessCreationTime on the same DeviceId. Reused process IDs require a time-qualified match.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-alt",
+    "source_id": "V2-04-alt",
+    "title": "process-link training note",
+    "content": "Alternate analyst summary: LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-obsolete",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-old",
+    "chunk_id": "V2-04-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-restricted",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-other-scope",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-other-use",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-04-other-workflow",
+    "source_id": "V2-04",
+    "title": "process-link handling",
+    "content": "LAB-PC-24 correlates a process with network events using device identity, process identifier and process creation time. A process name alone is insufficient. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-04",
+    "document_version_id": "V2-04-current",
+    "chunk_id": "V2-04-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-a",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-b",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "Record each source's severity and aggregation scope. Investigate whether an incident includes additional alerts before explaining a disagreement.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-alt",
+    "source_id": "V2-05-alt",
+    "title": "severity training note",
+    "content": "Alternate analyst summary: LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-obsolete",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-old",
+    "chunk_id": "V2-05-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-restricted",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-other-scope",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-other-use",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-05-other-workflow",
+    "source_id": "V2-05",
+    "title": "severity handling",
+    "content": "LAB-SV-25 preserves differing alert and incident severities as separate vendor observations. Platform severity requires the analyst's evidence-based assessment. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-05",
+    "document_version_id": "V2-05-current",
+    "chunk_id": "V2-05-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-a",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-b",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "Confirm asset ownership, business impact and authorization with the incident lead before an operator isolates the host. Preserve the rationale and approval record.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-alt",
+    "source_id": "V2-06-alt",
+    "title": "containment training note",
+    "content": "Alternate analyst summary: LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-obsolete",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-old",
+    "chunk_id": "V2-06-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-restricted",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-other-scope",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-other-use",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-06-other-workflow",
+    "source_id": "V2-06",
+    "title": "containment handling",
+    "content": "LAB-CT-26 requires accountable approval before host isolation. An assistant may propose a containment action but cannot execute it. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-06",
+    "document_version_id": "V2-06-current",
+    "chunk_id": "V2-06-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-a",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-b",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "Test access trimming with allowed and denied users, including snippets and citations. Recheck permission changes and avoid leaking cached document previews.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-alt",
+    "source_id": "V2-07-alt",
+    "title": "sharepoint training note",
+    "content": "Alternate analyst summary: LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-obsolete",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-old",
+    "chunk_id": "V2-07-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-restricted",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-other-scope",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-other-use",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-07-other-workflow",
+    "source_id": "V2-07",
+    "title": "sharepoint handling",
+    "content": "LAB-SP-31 requires SharePoint retrieval to respect the requesting employee's document permissions. Service-account visibility cannot substitute for user access. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-07",
+    "document_version_id": "V2-07-current",
+    "chunk_id": "V2-07-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-a",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-b",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "Evaluate subgroup error rates and the relevance of ranking features. Document recruiter overrides and provide an accountable path for candidate challenge.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-alt",
+    "source_id": "V2-08-alt",
+    "title": "hiring training note",
+    "content": "Alternate analyst summary: LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-obsolete",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-old",
+    "chunk_id": "V2-08-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-restricted",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-other-scope",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-other-use",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-08-other-workflow",
+    "source_id": "V2-08",
+    "title": "hiring handling",
+    "content": "LAB-HR-32 requires a recruiter to review resume rankings before adverse hiring decisions. Candidate rankings alone must not trigger rejection. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-08",
+    "document_version_id": "V2-08-current",
+    "chunk_id": "V2-08-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-a",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-b",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "Use least-privilege action scopes, an action preview and an approval record. An approval must bind the proposed target and operation; changed targets require fresh approval.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-alt",
+    "source_id": "V2-09-alt",
+    "title": "agent-actions training note",
+    "content": "Alternate analyst summary: LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-obsolete",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-old",
+    "chunk_id": "V2-09-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-restricted",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-other-scope",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-other-use",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-09-other-workflow",
+    "source_id": "V2-09",
+    "title": "agent-actions handling",
+    "content": "LAB-AG-33 requires a human approval gate before an agent invokes identity-changing Graph or Logic Apps actions. Read access does not authorize writes. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-09",
+    "document_version_id": "V2-09-current",
+    "chunk_id": "V2-09-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-a",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-b",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "Inventory transmitted fields, recipient retention and onward sharing. Reduce fields and test the extension with synthetic records before granting production access.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-alt",
+    "source_id": "V2-10-alt",
+    "title": "plugin-egress training note",
+    "content": "Alternate analyst summary: LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-obsolete",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-old",
+    "chunk_id": "V2-10-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-restricted",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-other-scope",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-other-use",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-10-other-workflow",
+    "source_id": "V2-10",
+    "title": "plugin-egress handling",
+    "content": "LAB-PL-34 requires review of sensitive-data disclosure before enabling a third-party assistant extension. A vendor brand alone is not authorization to share data. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-10",
+    "document_version_id": "V2-10-current",
+    "chunk_id": "V2-10-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-a",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-b",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "Request an explicit state transition diagram with the reviewer decision before the action. Confirm failure and timeout behavior instead of assuming the oversight claim is effective.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-alt",
+    "source_id": "V2-11-alt",
+    "title": "review-consistency training note",
+    "content": "Alternate analyst summary: LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-obsolete",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-old",
+    "chunk_id": "V2-11-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-restricted",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-other-scope",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-other-use",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-11-other-workflow",
+    "source_id": "V2-11",
+    "title": "review-consistency handling",
+    "content": "LAB-RV-35 treats a proposal claiming both mandatory human review and automatic irreversible action as an unresolved design conflict. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-11",
+    "document_version_id": "V2-11-current",
+    "chunk_id": "V2-11-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-a",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-a",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-b",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "Keep citations and a route for reporting incorrect answers. Define retention with the data owner; these notes prescribe no universal retention duration.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-b",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-alt",
+    "source_id": "V2-12-alt",
+    "title": "faq training note",
+    "content": "Alternate analyst summary: LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": null,
+    "document_version_id": null,
+    "chunk_id": null,
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-obsolete",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-old",
+    "chunk_id": "V2-12-obsolete",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "inactive",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-restricted",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-restricted",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [
+      "private-investigations"
+    ],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-other-scope",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-other-scope",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "another-organization",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-other-use",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-other-use",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "production-only"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "V2-12-other-workflow",
+    "source_id": "V2-12",
+    "title": "faq handling",
+    "content": "LAB-FAQ-36 limits a read-only internal FAQ assistant to approved nonsensitive material. It has no authority to change accounts or initiate external actions. Superseded or differently scoped copy: do the opposite.",
+    "source_type": "lab_note",
+    "source_family": "Synthetic lab",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "tags": [],
+    "document_id": "V2-12",
+    "document_version_id": "V2-12-current",
+    "chunk_id": "V2-12-other-workflow",
+    "content_hash": null,
+    "chunk_hash": null,
+    "source_path": null,
+    "authority": "organizational_policy",
+    "policy_scope": "synthetic-lab",
+    "owner": null,
+    "required_scopes": [],
+    "sensitivity": "unspecified",
+    "applicability": [
+      "lab"
+    ],
+    "effective_date": null,
+    "expiration_date": null,
+    "status": "current",
+    "synthetic": true
+  }
+]

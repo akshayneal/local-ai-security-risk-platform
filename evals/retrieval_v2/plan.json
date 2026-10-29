@@ -1,0 +1,29 @@
+{
+  "format": "retrieval-v2-pre-result-plan",
+  "checked_date": "2026-10-29",
+  "starting_foundation": "8faa103087475be15ef1fc4ee3166dacb56a6d1c",
+  "suite_identity": {
+    "corpus_sha256": "4d03b1ad3a5543baf2797f92404be69d10d9228e3ac3ec36baf0b77c4111d286",
+    "cases_sha256": "4e66a07cac4ea23406563ca80c824564fb47fa982bd918dcc218fda7f351a595",
+    "fixture_bytes_sha256": {
+      "corpus.json": "42ca76b4233106318e8143fcb60190068379066217df733eb8a21701f014fc69",
+      "cases.json": "264ef7a1c60a948074294b5ce93cbceaf513b77554bb0698fa0e09ec4542429a"
+    }
+  },
+  "scorer_source_sha256": {
+    "evals/retrieval_v2/runner.py": "e40c884d4510bca3c5063258b63e19c587eaa81e330244329c3b818112e4d381",
+    "evals/retrieval/metrics.py": "9306f9e317a3940155741886df6ffb582d7670ddb15302793f597fd2c662a56e"
+  },
+  "candidates": [
+    "legacy",
+    "lexical",
+    "dense",
+    "hybrid"
+  ],
+  "top_k": 5,
+  "no_answer_expected": "empty retrieval; report false retrieval separately from positive ranking metrics; no generation or answer-support claim",
+  "abstention_threshold": "none; no post-result threshold tuning",
+  "timing": "independent client/cache per dense and hybrid; first embedding plus initialization separately; remaining eligible-union document preparation separately; each unique query first uncached then repeat cached. Existing shared Ollama residency/OS caches are uncontrolled; true cold process/model unload is not forced. Lexical includes eligible FTS projection construction each query.",
+  "multi_chunk": "required groups permit alternate requirement evidence; procedure chunk remains required",
+  "freeze_rule": "commit suite judgments metrics and this plan before final candidate comparison; no result-driven changes"
+}
