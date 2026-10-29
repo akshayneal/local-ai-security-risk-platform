@@ -52,7 +52,7 @@ def test_fixed_ports_environment_and_no_development_venv():
 def test_stop_verifies_identity_and_never_kills_by_name():
     assert "$live.created -eq $Record.created" in COMMON
     assert "$live.command -ceq $Record.command" in COMMON
-    assert "$live.command.Contains($python)" in COMMON
+    assert "$live.command -match $pythonPattern" in COMMON
     assert "Stop-Process -Id $record.process_id" in COMMON
     assert "Stop-Process -Name" not in COMMON
     assert "Enter-DemoLock" in START
@@ -119,6 +119,33 @@ def test_shortcuts_use_copied_bootstrap():
         $first = Get-DemoDependencyHash $paths
         Set-Content (Join-Path $paths.Repo 'requirements.txt') 'c'
         if ($first -eq (Get-DemoDependencyHash $paths)) { throw 'missed direct change' }
+        """,
+        """
+        $paths = Get-DemoPaths
+        Initialize-DemoRoot $paths
+        New-Item -ItemType Directory $paths.Repo | Out-Null
+        Set-Content (Join-Path $paths.Repo 'requirements.txt') 'a'
+        Set-Content (Join-Path $paths.Repo 'requirements-windows-py313.lock.txt') 'b'
+        $plan = Get-DemoEnvironmentPlan $paths
+        if (-not $plan.Install -or -not $plan.Python.StartsWith($paths.Venv)) { throw 'bad first plan' }
+        New-Item -ItemType Directory (Split-Path $plan.Python) -Force | Out-Null
+        Set-Content $plan.Python 'fake executable fixture'
+        @{hash=$plan.Hash;python=$plan.Python} | ConvertTo-Json | Set-Content (Join-Path $paths.Runtime 'dependencies.json')
+        if ((Get-DemoEnvironmentPlan $paths).Install) { throw 'unchanged snapshot reinstalls' }
+        Set-Content (Join-Path $paths.Repo 'requirements-windows-py313.lock.txt') 'changed'
+        $next = Get-DemoEnvironmentPlan $paths
+        if (-not $next.Install -or $next.Python -eq $plan.Python -or -not (Test-Path $plan.Python)) { throw 'unsafe changed snapshot update' }
+        """,
+        """
+        $paths = Get-DemoPaths
+        Initialize-DemoRoot $paths
+        $script:killed = @()
+        function Get-DemoRecords { return @([pscustomobject]@{process_id=10}, [pscustomobject]@{process_id=11}) }
+        function Test-DemoOwnedProcess($Paths, $Record) { return $Record.process_id -eq 10 }
+        function Get-CimInstance { return @() }
+        function Stop-Process([int]$Id) { $script:killed += $Id }
+        Stop-DemoOwnedProcesses $paths
+        if ($script:killed.Count -ne 1 -or $script:killed[0] -ne 10) { throw 'stopped unowned process' }
         """,
         """
         $paths = Get-DemoPaths

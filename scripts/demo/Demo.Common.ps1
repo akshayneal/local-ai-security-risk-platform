@@ -116,25 +116,49 @@ function Get-DemoDependencyHash($Paths) {
         (Get-FileHash -LiteralPath $direct -Algorithm SHA256).Hash)
 }
 
+function Get-DemoEnvironmentPlan($Paths) {
+    $hash = Get-DemoDependencyHash $Paths
+    $statePath = Join-Path $Paths.Runtime 'dependencies.json'
+    $python = Join-Path $Paths.Venv 'Scripts/python.exe'
+    # Compatibility with the environment created by the original smoke.
+    $oldSentinel = Join-Path $Paths.Runtime 'dependencies.txt'
+    if ((Test-Path -LiteralPath $oldSentinel) -and (Get-Content -Raw -LiteralPath $oldSentinel).Trim() -eq $hash -and
+        (Test-Path -LiteralPath $python)) {
+        return [pscustomobject]@{ Hash = $hash; Python = $python; Install = $false; Environment = $Paths.Venv }
+    }
+    $hasher = [Security.Cryptography.SHA256]::Create()
+    try { $key = ([BitConverter]::ToString($hasher.ComputeHash([Text.Encoding]::UTF8.GetBytes($hash)))).Replace('-', '').Substring(0, 16) }
+    finally { $hasher.Dispose() }
+    $environment = Join-Path $Paths.Venv ('environments/' + $key)
+    $python = Join-Path $environment 'Scripts/python.exe'
+    $install = $true
+    if (Test-Path -LiteralPath $statePath) {
+        $state = Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
+        $install = -not ($state.hash -eq $hash -and $state.python -ceq $python -and (Test-Path -LiteralPath $python))
+    }
+    return [pscustomobject]@{ Hash = $hash; Python = $python; Install = $install; Environment = $environment }
+}
+
 function Initialize-DemoPython($Paths) {
     Get-Command py -ErrorAction Stop | Out-Null
     $version = & py -3.13 -c 'import sys; print(sys.version_info.major,sys.version_info.minor,sep=chr(46))'
     if ($LASTEXITCODE -ne 0 -or $version -ne '3.13') { throw 'Install CPython 3.13 with the Windows py launcher, then retry.' }
-    $python = Join-Path $Paths.Venv 'Scripts/python.exe'
+    $plan = Get-DemoEnvironmentPlan $Paths
+    $python = $plan.Python
     if (-not (Test-Path -LiteralPath $python)) {
-        & py -3.13 -m venv $Paths.Venv
+        & py -3.13 -m venv $plan.Environment
         if ($LASTEXITCODE -ne 0) { throw 'Could not create the dedicated demo virtual environment.' }
     }
     $version = & $python -c 'import sys; print(sys.version_info.major,sys.version_info.minor,sep=chr(46))'
     if ($LASTEXITCODE -ne 0 -or $version -ne '3.13') { throw 'Demo venv is incompatible; inspect it before recreating it.' }
-    $hash = Get-DemoDependencyHash $Paths
-    $sentinel = Join-Path $Paths.Runtime 'dependencies.txt'
-    if (-not (Test-Path -LiteralPath $sentinel) -or (Get-Content -Raw -LiteralPath $sentinel).Trim() -ne $hash) {
+    if ($plan.Install) {
         & $python -m pip install -r (Join-Path $Paths.Repo 'requirements-windows-py313.lock.txt') | Out-Host
         if ($LASTEXITCODE -ne 0) { throw 'Demo dependency install failed; retry with network access. Logs are preserved.' }
         & $python -m pip check | Out-Host
         if ($LASTEXITCODE -ne 0) { throw 'Demo dependency validation failed.' }
-        Set-Content -LiteralPath $sentinel -Value $hash
+        # Publish the selected environment only after validation. A changed
+        # snapshot is installed side-by-side, leaving the previous venv usable.
+        @{ hash = $plan.Hash; python = $python } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $Paths.Runtime 'dependencies.json')
     }
     return $python
 }
@@ -185,9 +209,9 @@ function Get-DemoProcessRecord([int]$ProcessId) {
 function Test-DemoOwnedProcess($Paths, $Record) {
     $live = Get-DemoProcessRecord $Record.process_id
     if (-not $live) { return $false }
-    $python = Join-Path $Paths.Venv 'Scripts/python.exe'
+    $pythonPattern = '^"?' + [regex]::Escape($Paths.Venv) + '\\(?:environments\\[A-F0-9]{16}\\)?Scripts\\python\.exe"?\s'
     return ($live.created -eq $Record.created -and $live.command -ceq $Record.command -and
-        $live.command.Contains($python) -and
+        $live.command -match $pythonPattern -and
         ($live.command -match '-m uvicorn app\.main:app .*--port 8100' -or
          $live.command -match '-m streamlit run dashboard/streamlit_app\.py .*--server.port 8510'))
 }

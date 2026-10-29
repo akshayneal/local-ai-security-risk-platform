@@ -31,7 +31,9 @@ Each fresh launch fetches `origin/main`; a fetch failure may use the exact commi
 recorded after a previous successful startup. Without that ready checkout startup
 fails with an actionable message. Dependency hashes cover both manifests; unchanged
 hashes reuse the environment without pip/network. Changed hashes trigger installation
-and `pip check`; failed updates never advance the dependency sentinel. An incompatible
+into a separate `venv/environments/<dependency-key>` and `pip check`; failed updates
+never advance the selected-environment sentinel or modify the prior environment. The
+original smoke-created `venv` is reused while its hashes match. An incompatible
 venv is refused. Changed dependencies cannot be installed offline unless cached.
 
 Ports are loopback-only API **8100**, UI **8510**, Ollama **11434**. The Streamlit
