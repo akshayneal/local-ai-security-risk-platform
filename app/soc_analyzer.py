@@ -24,6 +24,7 @@ from app.reference_loader import (
 from app.retrieval.orchestration import retrieve_for_analysis
 from app.retrieval.serialization import EVIDENCE_INSTRUCTIONS, restore_evidence_sources
 from app.schemas import SocAlertRequest, SocAlertResponse
+from app.soc_query import soc_retrieval_query
 
 
 def analyze_soc_alert(
@@ -32,7 +33,7 @@ def analyze_soc_alert(
     references: list[dict[str, Any]] | None = None,
     trace: AnalysisTrace | None = None,
 ) -> SocAlertResponse:
-    query = request.model_dump_json()
+    query = soc_retrieval_query(request)
     evidence = None
     reference_context = None
     if references is None:
