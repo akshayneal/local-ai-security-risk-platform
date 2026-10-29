@@ -27,8 +27,9 @@ fixed paths, checks Git origin, rejects worktrees/junctions/symlinks and restric
 checkout/reset to that clone. It never resets, switches or cleans the development
 checkout. Do not put personal files or make edits inside the demo clone.
 
-Each fresh launch fetches `origin/main`; a fetch failure may use the exact commit
-recorded after a previous successful startup. Without that ready checkout startup
+Each fresh launch fetches `origin/main`; a fetch failure restores the dedicated
+clone to the exact commit recorded after a previous successful startup, including
+when an intervening update failed during bootstrap. Without that ready checkout startup
 fails with an actionable message. Dependency hashes cover both manifests; unchanged
 hashes reuse the environment without pip/network. Changed hashes trigger installation
 into a separate `venv/environments/<dependency-key>` and `pip check`; failed updates

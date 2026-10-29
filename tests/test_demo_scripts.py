@@ -113,6 +113,30 @@ def test_shortcuts_use_copied_bootstrap():
         """
         $paths = Get-DemoPaths
         Initialize-DemoRoot $paths
+        New-Item -ItemType Directory (Join-Path $paths.Repo '.git') -Force | Out-Null
+        New-Item -ItemType Directory (Join-Path $paths.Repo 'app') -Force | Out-Null
+        Set-Content (Join-Path $paths.Repo 'app/main.py') '# fixture'
+        $script:readyCommit = 'a' * 40
+        $script:fakeHead = 'b' * 40
+        @{commit=$script:readyCommit} | ConvertTo-Json | Set-Content (Join-Path $paths.Runtime 'ready.json')
+        function Invoke-DemoGit($Paths, [string[]]$Arguments) {
+            Assert-DemoBoundary $Paths
+            switch ($Arguments[0]) {
+                'remote' { return $script:DemoRemote }
+                'fetch' { throw 'simulated offline' }
+                'cat-file' { return }
+                'checkout' { if ($Arguments[1] -ne 'main') { throw 'wrong branch' }; return }
+                'reset' { $script:fakeHead = $Arguments[2]; return }
+                'rev-parse' { return $script:fakeHead }
+                default { throw 'unexpected command' }
+            }
+        }
+        Sync-DemoRepository $paths
+        if ($script:fakeHead -ne $script:readyCommit) { throw 'did not restore last known good release' }
+        """,
+        """
+        $paths = Get-DemoPaths
+        Initialize-DemoRoot $paths
         New-Item -ItemType Directory $paths.Repo | Out-Null
         Set-Content (Join-Path $paths.Repo 'requirements.txt') 'a'
         Set-Content (Join-Path $paths.Repo 'requirements-windows-py313.lock.txt') 'b'

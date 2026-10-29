@@ -81,6 +81,22 @@ function Test-DemoFallback($Paths) {
     return ($head -eq $state.commit -and (Test-Path (Join-Path $Paths.Repo 'app/main.py')))
 }
 
+function Restore-DemoFallback($Paths) {
+    $ready = Join-Path $Paths.Runtime 'ready.json'
+    if (-not (Test-Path -LiteralPath $ready)) { return $false }
+    $state = Get-Content -Raw -LiteralPath $ready | ConvertFrom-Json
+    if ($state.commit -notmatch '^[a-f0-9]{40}$') { return $false }
+    try {
+        Invoke-DemoGit $Paths @('cat-file', '-e', ($state.commit + '^{commit}')) | Out-Null
+        # A previous fetch may have succeeded but dependency/bootstrap failed.
+        # Restore only this dedicated clone to the last actually ready release;
+        # its dependency environment remains intact after side-by-side updates.
+        Invoke-DemoGit $Paths @('checkout', 'main') | Out-Host
+        Invoke-DemoGit $Paths @('reset', '--hard', $state.commit) | Out-Host
+        return (Test-DemoFallback $Paths)
+    } catch { return $false }
+}
+
 function Sync-DemoRepository($Paths) {
     Get-Command git -ErrorAction Stop | Out-Null
     if (-not (Test-Path -LiteralPath $Paths.Repo)) {
@@ -99,7 +115,7 @@ function Sync-DemoRepository($Paths) {
     try {
         Invoke-DemoGit $Paths @('fetch', 'origin', 'main') | Out-Host
     } catch {
-        if (-not (Test-DemoFallback $Paths)) { throw 'GitHub unavailable and no previously ready demo checkout exists.' }
+        if (-not (Restore-DemoFallback $Paths)) { throw 'GitHub unavailable and no previously ready demo checkout exists.' }
         Write-Warning 'GitHub unavailable: using the last successfully synchronized and started demo.'
         return
     }
