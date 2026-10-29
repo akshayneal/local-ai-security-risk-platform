@@ -37,3 +37,10 @@ Live is explicit and optional. At most the 14 defined cases can be selected once
 invocation; duplicate/unknown selections are rejected. Use a fresh output filename
 and do not overwrite an official baseline. A single trial informs manual triage,
 not a reliability claim or authorization for further production hardening.
+
+The selected four-case local baseline is recorded under
+[`microsoft_stress/`](microsoft_stress/manual_triage.md): three returned analyses,
+one fail-closed error. Narrow checks passed on the three returns, while manual
+review found missed destructive evidence, unsupported incident characterization and
+invented FAQ support scope. No case was rerun and no production control changed
+after inspecting these outcomes.

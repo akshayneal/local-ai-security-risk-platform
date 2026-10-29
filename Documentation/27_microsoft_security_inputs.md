@@ -99,6 +99,10 @@ The existing prompt-only instruction quarantine still applies. The original
 canonical request remains intact for provenance and deterministic output checks;
 high-confidence instruction-like text can be removed from the model-facing copy.
 This preserves the existing security boundary, not a guarantee against all injection.
+The byte/row limits are input safety bounds, not token-budget guarantees. Very large
+accepted bundles can exceed the configured local model context. The application
+sends the canonical rows; server-side context truncation/attention is not validated
+by this adapter. No model context configuration was changed in this sprint.
 
 Eight bundled cases cover MFA/CA uncertainty, command injection, unknown protocol on
 443, severity disagreement, maintenance, multistage evidence, identity ambiguity and

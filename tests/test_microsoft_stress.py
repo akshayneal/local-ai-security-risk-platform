@@ -1,4 +1,7 @@
 import copy
+import hashlib
+import json
+from pathlib import Path
 
 from test_schemas import GOVERNANCE_RESPONSE, SOC_RESPONSE
 
@@ -8,6 +11,44 @@ from evals.microsoft_stress.runner import (
     preflight,
     run,
 )
+
+
+def test_selected_live_artifact_identity_and_narrow_checks():
+    from app.reference_loader import get_reference_ids, get_relevant_references
+    from app.retrieval.storage import fingerprint
+
+    directory = Path(__file__).resolve().parents[1] / "Documentation/microsoft_stress"
+    raw = (directory / "selected_live_baseline.json").read_bytes()
+    report = json.loads(raw)
+    manifest = json.loads((directory / "provenance.json").read_bytes())
+    assert hashlib.sha256(raw).hexdigest() == manifest["baseline_byte_sha256"]
+    assert (
+        report["application_sha"]
+        == manifest["application_sha"]
+        == "0f90fd543614e68609f6aedfc0e9d9440e9c368c"
+    )
+    assert (
+        report["suite_sha256"] == manifest["suite_sha256"] == fingerprint(load_cases())
+    )
+    assert not report["git_dirty"] and report["trials_per_case"] == 1
+    assert report["retrieval_backend"] == "legacy" and report["seed"] is None
+    assert len(report["results"]) == 4
+    assert sum(r["error"] is not None for r in report["results"]) == 1
+    cases = {c["case_id"]: c for c in load_cases()}
+    for row in report["results"]:
+        case = row["case"]
+        assert case == cases[case["case_id"]]
+        assert row["preflight"] == preflight(case)
+        if row["result"] is not None:
+            request_json = json.dumps(case["request"], separators=(",", ":"))
+            refs = get_relevant_references(
+                case["workflow"],
+                request_json,
+                5 if case["workflow"] == "soc_alert" else 6,
+            )
+            assert row["deterministic_checks"] == deterministic_checks(
+                case, row["result"], get_reference_ids(refs)
+            )
 
 
 def test_stress_preflight_all_cases_no_model():

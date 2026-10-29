@@ -1,0 +1,13 @@
+{
+  "format": "microsoft-stress-selected-baseline-v1",
+  "application_sha": "0f90fd543614e68609f6aedfc0e9d9440e9c368c",
+  "suite_sha256": "e09dde24587dbf005b9414378fd7198046388915a741e091ac5284821a7be0f0",
+  "baseline_byte_sha256": "4bd999bc25fc9c06b2ccc3ebd6f0af6ed0a3b896e070e51e9c0980352f603683",
+  "selected_case_count": 4,
+  "soc_trials": 3,
+  "ai_risk_trials": 1,
+  "returned_analyses": 3,
+  "application_errors": 1,
+  "manual_review": "manual_triage.md",
+  "note": "Single unseeded trials; raw report retained unchanged; no semantic reliability percentage."
+}
