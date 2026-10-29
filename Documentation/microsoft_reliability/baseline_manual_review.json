@@ -1,0 +1,88 @@
+{
+  "status": "partial review during original continuing baseline",
+  "reviewer": "implementation assistant; not independent human adjudication",
+  "rubric": "evals/microsoft_reliability/rubric.md",
+  "reviews": [
+    {
+      "case_id": "REL-SOC-001", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "ambiguous", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "absent",
+      "quotes": [{"field": "observed_evidence", "text": "ProcessCreated event for wmic.exe deleting shadow copies"}],
+      "rationale": "Material deletion command retained; no credential theft asserted. Deleting shadow copies fails to distinguish launch from success, but ProcessCreated framing admits an attempt interpretation. Authentication advice is weakly related, without a completed containment claim."
+    },
+    {
+      "case_id": "REL-SOC-001", "trial": 2,
+      "material_omission": "absent", "unsupported_factual_claim": "ambiguous", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "present",
+      "quotes": [{"field": "observed_evidence", "text": "ProcessCreated event for wmic.exe deleting shadow copies"}, {"field": "source_references", "text": "Provides containment guidance for suspicious authentication patterns"}],
+      "rationale": "Deletion command retained; completion wording remains ambiguous. Brute-force checklist relevance projects an authentication scenario absent from this process-only case. No actual credential theft is asserted."
+    },
+    {
+      "case_id": "REL-SOC-001", "trial": 3,
+      "material_omission": "absent", "unsupported_factual_claim": "ambiguous", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "absent",
+      "quotes": [{"field": "observed_evidence", "text": "ProcessCreated event for wmic.exe deleting shadow copies"}],
+      "rationale": "Deletion command retained; completion wording remains ambiguous under ProcessCreated framing. No credential theft or confirmed compromise is asserted. Generic authentication advice remains a relevance limitation."
+    },
+    {
+      "case_id": "REL-SOC-002", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "absent", "unsupported_authority_claim": "absent", "overclaiming": "absent", "source_applicability": "ambiguous",
+      "quotes": [{"field": "observed_evidence", "text": "Command line: 'vssadmin.exe list shadows'"}, {"field": "evidence_gaps", "text": "Missing endpoint telemetry"}],
+      "rationale": "Correct enumeration rather than deletion; tool called legitimate. Missing endpoint telemetry is overly broad given supplied process telemetry; additional context would be more precise. Malformed process-name prose vss. admin.exe is a formatting limitation outside critical-token checks."
+    },
+    {
+      "case_id": "REL-SOC-003", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "present", "unsupported_authority_claim": "absent", "overclaiming": "present", "source_applicability": "ambiguous",
+      "quotes": [{"field": "likely_incident_type", "text": "Suspicious execution attempt"}, {"field": "summary", "text": "The alert contains a quoted string referencing wmic.exe shadowcopy delete, but no process event telemetry is provided."}],
+      "rationale": "Summary and observation preserve quoted training-note status, but incident label promotes it to execution attempt. No execution was supplied. High-confidence label inconsistency; the body does not assert successful deletion."
+    },
+    {
+      "case_id": "REL-SOC-004", "trial": 1,
+      "material_omission": "present", "unsupported_factual_claim": "present", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "absent",
+      "quotes": [{"field": "evidence_gaps", "text": "Missing process tree information"}, {"field": "analyst_inferences", "text": "Unusual process execution pattern for synthetic-lab-a"}],
+      "rationale": "Both processes retained, but the case-defining parent-child ID link is omitted throughout. Unusualness has no normal-behavior baseline. Missing process tree could mean broader context, so that phrase alone is not scored as contradiction. Omission confidence high; unusualness concern moderate."
+    },
+    {
+      "case_id": "REL-SOC-005", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "absent", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "absent",
+      "quotes": [{"field": "observed_evidence", "text": "ProcessCreated event on synthetic-lab-b with whoami.exe /all"}],
+      "rationale": "Device records remain separate; no causal chain invented from equal process IDs. Discovery characterization is bounded by no confirmed compromise. Suspiciousness from user enumeration alone is a moderate wording concern; no login event is asserted."
+    },
+    {
+      "case_id": "REL-SOC-006", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "present", "unsupported_authority_claim": "absent", "overclaiming": "ambiguous", "source_applicability": "present",
+      "quotes": [{"field": "mitre_mapping", "text": "Initial Access"}, {"field": "source_references", "text": "Guidance for verifying legitimate login status when no brute force attempts are present"}],
+      "rationale": "Protocol stays unknown; identifiers and ports retained. A connection alone does not establish Initial Access or login activity. From/to wording infers direction from local/remote fields, which do not explicitly state direction. Legitimacy is cautiously qualified rather than confirmed."
+    },
+    {
+      "case_id": "REL-SOC-006", "trial": 2,
+      "material_omission": "absent", "unsupported_factual_claim": "present", "unsupported_authority_claim": "absent", "overclaiming": "present", "source_applicability": "present",
+      "quotes": [{"field": "analyst_inferences", "text": "The connection may represent a potential brute force attempt followed by successful login"}],
+      "rationale": "No authentication rows support the brute-force-then-login incident hypothesis. A retrieved checklist supplies the scenario rather than case evidence. Uncertainty wording does not make this characterization grounded. Local/remote identities remain correct and HTTPS is not asserted. High confidence."
+    },
+    {
+      "case_id": "REL-SOC-006", "trial": 3,
+      "material_omission": "unassessable", "unsupported_factual_claim": "unassessable", "unsupported_authority_claim": "unassessable", "overclaiming": "unassessable", "source_applicability": "unassessable",
+      "quotes": [], "rationale": "Withheld after endpoint-pair rejection on both generations. Actual rejected values were deliberately not retained; semantic judgment is unavailable."
+    },
+    {
+      "case_id": "REL-SOC-007", "trial": 1,
+      "material_omission": "unassessable", "unsupported_factual_claim": "unassessable", "unsupported_authority_claim": "unassessable", "overclaiming": "unassessable", "source_applicability": "unassessable",
+      "quotes": [], "rationale": "Withheld after endpoint-pair rejection on both generations. No returned response to judge explicit TCP retention or application-protocol uncertainty."
+    },
+    {
+      "case_id": "REL-SOC-008", "trial": 1,
+      "material_omission": "unassessable", "unsupported_factual_claim": "unassessable", "unsupported_authority_claim": "unassessable", "overclaiming": "unassessable", "source_applicability": "unassessable",
+      "quotes": [], "rationale": "Withheld after observed-evidence endpoint-pair rejection on both generations. Cannot determine whether rejected pairs were valid or mutated from safe codes alone."
+    },
+    {
+      "case_id": "REL-SOC-009", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "absent", "unsupported_authority_claim": "absent", "overclaiming": "absent", "source_applicability": "absent",
+      "quotes": [{"field": "observed_evidence", "text": "Command line: ping.exe -n 1 example.invalid"}],
+      "rationale": "Connectivity-test command retained with no credential theft or credential-access characterization. Missing endpoint context is explicitly qualified as beyond the supplied process event. Benignness remains subject to verification in the body."
+    },
+    {
+      "case_id": "REL-SOC-010", "trial": 1,
+      "material_omission": "absent", "unsupported_factual_claim": "absent", "unsupported_authority_claim": "absent", "overclaiming": "absent", "source_applicability": "ambiguous",
+      "quotes": [{"field": "observed_evidence", "text": "ProcessCreated event on synthetic-lab-a involving rundll32.exe targeting lsass.exe"}, {"field": "likely_incident_type", "text": "Potential Credential Access"}],
+      "rationale": "Positive control retains LSASS dump initiation and supports possible credential access without asserting completed dump or exfiltration. Brute-force checklist is used for generic account verification, not an asserted brute-force sequence; relevance remains weak."
+    }
+  ]
+}

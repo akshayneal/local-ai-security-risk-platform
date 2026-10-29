@@ -1,0 +1,94 @@
+{
+  "observed_utc": "2026-10-29T06:53:24.836429+00:00",
+  "launch_commit": "3f33cca",
+  "recovered_head": "06a7c4d2dcf7102dc0a4ae429ec4d9a0c99a5de7",
+  "original_process_running": true,
+  "frozen_identity": {
+    "version": "microsoft-reliability-v1",
+    "semantic_case_sha256": "a8a1963d52360de8eca77be28c3513450f0d3e53586e8b17ef7976be09241d1c",
+    "source_lf_sha256": {
+      "cases.py": "87c198bb11bf3a2783c7004618fd7281ce436b8dcc72e65316d1df577f942980",
+      "plan.json": "aa8833ea2c497e651af5dcb693edd581b8100aaaf8be226a8f2cbc6567a1bd71",
+      "rubric.md": "6098d0f97e58fd94a4dcaef86c51fe1e3e2c187f860a81df4f154ce54de077f5",
+      "runner.py": "8129b795db5500035df39950414b661e79deff864e29c49d930f049de4bd1112"
+    }
+  },
+  "journal_snapshot_bytes": 55391,
+  "journal_prefix_sha256": "a66c5eb8908090de15e3ca21c47420990f23c73ab0b412c12c859a062fcd5fa5",
+  "completed_schedule_prefix": [
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 1,
+      "record_sha256": "9c77d2b446590ddf2b5fb522d4a2f5ac7bef62408df6d2b073449dcfae03597a"
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 2,
+      "record_sha256": "9a179e5a283257ccc0fc45c70184d6e61fe03ae9ffd6d3f068670cd4eb29601d"
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 3,
+      "record_sha256": "281fae926863653dbb62447753469872b5a52779493c303f19cee98bf7db110b"
+    },
+    {
+      "case_id": "REL-SOC-002",
+      "trial": 1,
+      "record_sha256": "aec33cce7b3ce0e4c013973cec2d0a8336bfcddf79e1c0df24bae174cd8da88d"
+    },
+    {
+      "case_id": "REL-SOC-003",
+      "trial": 1,
+      "record_sha256": "09595c0b0a4200e924f9ace83f318f1603ca5d805b43751151743924b8c2464b"
+    },
+    {
+      "case_id": "REL-SOC-004",
+      "trial": 1,
+      "record_sha256": "dcf475484fe62ec8a54924660f28a46273f1f835634764afd47bdd37bf3372c0"
+    },
+    {
+      "case_id": "REL-SOC-005",
+      "trial": 1,
+      "record_sha256": "4541a696b5da2e12e17090d73648d418689b16d2f392033a8edc5dd9dd52bea8"
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 1,
+      "record_sha256": "435912b9bd2fa85b080c616988bda76d435d416da04dcf16d5665310aaba8253"
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 2,
+      "record_sha256": "a137e66e15e59e968ef629884f05016c2f013703e13537aa07aecb70a45f92da"
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 3,
+      "record_sha256": "d0bb73c3f76b36e704ed016275ab0e952433aecc4a5c0d07ee4b3ec89d73d314"
+    },
+    {
+      "case_id": "REL-SOC-007",
+      "trial": 1,
+      "record_sha256": "e640c2baee6a5a0befee784aa0c6c0246c56b8ce9a74ae96780771d53e4c2c4c"
+    },
+    {
+      "case_id": "REL-SOC-008",
+      "trial": 1,
+      "record_sha256": "fb23a61cb8be83d4177e5e9b1051374567894e96d8194943fea859d02d3d6304"
+    },
+    {
+      "case_id": "REL-SOC-009",
+      "trial": 1,
+      "record_sha256": "b00f38cd50e1200435f28bdb39892169f4b5979f8bc0e0ced990aedd25f4c203"
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "trial": 1,
+      "record_sha256": "e8842e93fbab3ae8d89bfde84b2aa1d8a1a4101cecda6fd65ecc2761f96cd369"
+    }
+  ],
+  "application_and_experiment_diff_from_launch": "empty",
+  "observed_model_digest_at_recovery": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "model_digest_scope": "recovery observation; launch report records short identifier",
+  "pending_status": "next attempt in flight; do not rerun; original process continues"
+}
