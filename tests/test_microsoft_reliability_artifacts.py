@@ -24,6 +24,13 @@ def test_baseline_complete_exact_schedule_provenance_and_replay():
         == manifest["baseline_sha256"]
     )
     assert report["identity"] == identity() == manifest["suite_identity"]
+    for name, expected_hash in report["identity"]["source_lf_sha256"].items():
+        assert (
+            hashlib.sha256(
+                (ROOT / "evals/microsoft_reliability" / name).read_bytes()
+            ).hexdigest()
+            == expected_hash
+        )
     expected = [
         (c["case_id"], trial, digest(request_for(c).model_dump(mode="json")))
         for c in load_cases()
