@@ -1,0 +1,135 @@
+{
+  "scope": "read-only lexical-query diagnosis; no model calls, no production change, no support/abstention claim",
+  "planned_controls": [
+    "process enumeration",
+    "network connection",
+    "credential-access evidence",
+    "synthetic true authentication"
+  ],
+  "records": [
+    {
+      "case_id": "REL-SOC-002",
+      "query_variants": {
+        "full_request": {
+          "authentication_card_score": 6,
+          "top5_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ]
+        },
+        "without_adapter_behavior": {
+          "authentication_card_score": 1,
+          "top5_ids": [
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "LOCAL-AUDITABILITY",
+            "LOCAL-SAFE-CONTAINMENT"
+          ]
+        },
+        "raw_evidence_only": {
+          "authentication_card_score": 0,
+          "top5_ids": []
+        }
+      }
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "query_variants": {
+        "full_request": {
+          "authentication_card_score": 6,
+          "top5_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ]
+        },
+        "without_adapter_behavior": {
+          "authentication_card_score": 1,
+          "top5_ids": [
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "LOCAL-SAFE-CONTAINMENT",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS"
+          ]
+        },
+        "raw_evidence_only": {
+          "authentication_card_score": 0,
+          "top5_ids": []
+        }
+      }
+    },
+    {
+      "case_id": "REL-SOC-010",
+      "query_variants": {
+        "full_request": {
+          "authentication_card_score": 6,
+          "top5_ids": [
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ]
+        },
+        "without_adapter_behavior": {
+          "authentication_card_score": 1,
+          "top5_ids": [
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "raw_evidence_only": {
+          "authentication_card_score": 0,
+          "top5_ids": [
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "SYN-QUERY-AUTH",
+      "query_variants": {
+        "full_request": {
+          "authentication_card_score": 9,
+          "top5_ids": [
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0006",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ]
+        },
+        "without_adapter_behavior": {
+          "authentication_card_score": 4,
+          "top5_ids": [
+            "MITRE-TA0006",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY",
+            "MITRE-TA0001"
+          ]
+        },
+        "raw_evidence_only": {
+          "authentication_card_score": 3,
+          "top5_ids": [
+            "MITRE-TA0006",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0001",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ]
+        }
+      }
+    }
+  ]
+}

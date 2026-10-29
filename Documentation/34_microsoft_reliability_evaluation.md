@@ -134,3 +134,29 @@ The exact 32-attempt treatment schedule, cases and frozen scorer are unchanged.
 The implementation must be committed cleanly before `--phase treatment`; every
 trial, rejection and repair is retained. No selective reruns, scorer tuning or
 replacement overall score is permitted.
+
+## Residual retrieval-query diagnosis
+
+A separate deterministic [query diagnostic](microsoft_reliability/query_diagnostic.json)
+is reproducible through `evals/microsoft_diagnostics/query_terms.py`, with no model
+calls or production changes. It compares the full canonical request, the same request
+without adapter-generated observed_behavior, and raw canonical evidence alone.
+Three existing synthetic non-authentication inputs and one new synthetic
+authentication control are inspected; this is diagnosis, not a scored benchmark or
+the conditional support/abstention experiment.
+
+The adapter adds MFA/Conditional Access and unfamiliar-IP warning text to every
+Microsoft request, including process-only inputs. The analyzer includes it in the
+retrieval query. The authentication checklist scores 6 and appears in the top five
+for all three non-authentication inputs. Removing that behavior field lowers its
+score to 1 and removes it from their top five; raw evidence scores 0. A true
+authentication control keeps the card under every representation (scores 9/4/3).
+This proves a query-term effect on this lexical ranking, not that it caused any
+particular generated claim or that raw-only queries preserve all useful context.
+
+No query change is applied during or after the frozen treatment. The finding is a
+specific next-step hypothesis for a separately declared query/support experiment.
+Changing query construction would also require carefully recording actual retrieved
+source authorization; the current frozen scorer reconstructs the original query.
+Do not retune its checks or silently reinterpret this comparison. Default retrieval
+and all historical retrieval metrics remain unchanged.
