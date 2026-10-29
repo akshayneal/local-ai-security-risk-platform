@@ -168,6 +168,7 @@ def run_benchmark(backends=("legacy", "lexical"), provider=None) -> dict:
         retriever = factories[name]()
         build_ms = (time.perf_counter() - started) * 1000
         rows = []
+        provider_before = provider.provenance() if provider is not None else None
         for case in cases:
             started = time.perf_counter()
             hits = retriever.search(case.query)
@@ -181,7 +182,7 @@ def run_benchmark(backends=("legacy", "lexical"), provider=None) -> dict:
                     "ranking": hits,
                     "latency_ms": elapsed,
                     "metrics": ranking_metrics(
-                        returned, case.relevance, list(case.required)
+                        returned, case.relevance, list(case.required), case.query.top_k
                     ),
                     "violations": policy_violations(
                         [hit.record for hit in hits], case.query, list(case.forbidden)
@@ -199,6 +200,12 @@ def run_benchmark(backends=("legacy", "lexical"), provider=None) -> dict:
             },
             "results": rows,
         }
+        if name in {"dense", "hybrid"}:
+            result["candidates"][name]["embedding_before"] = provider_before
+            result["candidates"][name]["embedding_after"] = provider.provenance()
+            result["candidates"][name]["index_population"] = (
+                "lazy; embedding time is included in query latency"
+            )
     if provider is not None:
         result["embedding_provider"] = provider.provenance()
     return result
@@ -216,15 +223,36 @@ def main() -> None:
         "--output", type=Path, default=Path("evals/results/retrieval.json")
     )
     parser.add_argument("--model", default="embeddinggemma:300m")
+    parser.add_argument(
+        "--embedding-cache", type=Path, help="Offline replay of saved local vectors"
+    )
+    parser.add_argument(
+        "--save-embedding-cache", type=Path, help="Persist vectors from this local run"
+    )
     args = parser.parse_args()
     provider = None
     if set(args.backends) & {"dense", "hybrid"}:
-        from app.retrieval.embeddings import OllamaEmbeddingProvider
+        from app.retrieval.embeddings import (
+            CachedEmbeddingProvider,
+            OllamaEmbeddingProvider,
+        )
 
-        provider = OllamaEmbeddingProvider(model=args.model)
+        provider = (
+            CachedEmbeddingProvider(args.embedding_cache)
+            if args.embedding_cache
+            else OllamaEmbeddingProvider(model=args.model)
+        )
     result = run_benchmark(tuple(args.backends), provider)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(canonical_json(result) + "\n", encoding="utf-8")
+    args.output.write_text(
+        canonical_json(result) + "\n", encoding="utf-8", newline="\n"
+    )
+    if args.save_embedding_cache:
+        if not isinstance(provider, OllamaEmbeddingProvider):
+            parser.error(
+                "--save-embedding-cache requires a live local dense/hybrid run"
+            )
+        provider.save_cache(args.save_embedding_cache)
     print(
         canonical_json(
             {
