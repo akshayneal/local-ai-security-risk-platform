@@ -61,3 +61,36 @@ Checkpoint 1 implements the [isolated demo](isolated_demo.md). Checkpoint 2 adds
 contracts, conservative metadata import, current-version gate and legacy adapter.
 Later sections and the benchmark report record candidate and migration decisions.
 No new dependency or registry schema change is needed for these foundations.
+
+## Lexical candidate and rebuildable snapshot
+
+`LexicalRetriever` uses standard-library SQLite FTS5/BM25. A general tokenizer
+indexes ordinary words and hashed whole punctuated tokens, preserving exact CVE,
+IP, control and command identifiers alongside split terms. Identity/title/tag/
+content/family field weights are fixed at 5/3/2/1/1 before evaluation. Queries use
+quoted OR terms (at most 256), never user-supplied FTS syntax. Ties preserve corpus
+order. Only eligible records enter a per-query in-memory FTS projection. This also
+prevents forbidden content from changing IDF statistics or consuming top-K slots.
+Projection rebuild cost is included in query latency; it is a small-corpus design,
+not an enterprise-throughput claim. Larger backends should implement authorized
+prefiltering with equivalent semantics behind the protocol.
+
+`storage.py` persists a versioned, ordered SQLite evidence snapshot with a semantic
+SHA-256 manifest. Corrupt/missing/incompatible snapshots fail predictably and must
+be rebuilt; no implicit backend fallback or relaxed access scope. This is separate
+from the unchanged document registry. Connections close explicitly on Windows.
+
+```powershell
+.\.venv\Scripts\python.exe -m app.retrieval.index build
+.\.venv\Scripts\python.exe -m app.retrieval.index status
+.\.venv\Scripts\python.exe -m app.retrieval.index build --raw-docs knowledge_base/raw_docs --registry knowledge_base/registry/document_registry.db --metadata path/to/reviewed-metadata.json
+.\.venv\Scripts\python.exe -m evals.retrieval.runner --output evals/results/retrieval.json
+```
+
+The registered-document options must be supplied together. The metadata JSON maps
+document IDs to explicit workflows, source_type, source_family and optional trusted
+metadata. A rebuilt snapshot does not override query-time registry currentness.
+
+The independent retrieval benchmark reads committed JSON fixtures. The authoring
+module can regenerate them deliberately but the runner never rewrites judgments.
+See the [benchmark report](25_retrieval_benchmark_report.md) for limitations and results.

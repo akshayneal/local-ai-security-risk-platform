@@ -2,6 +2,7 @@
 
 import sqlite3
 from collections.abc import Callable, Iterable
+from contextlib import closing
 from pathlib import Path
 
 from app.retrieval.contracts import EvidenceRecord, RetrievalError, RetrievalQuery
@@ -59,7 +60,9 @@ def registry_version_gate(database_path: Path | str) -> VersionGate:
         if record.document_id is None:
             return True
         try:
-            with sqlite3.connect(path.as_uri() + "?mode=ro", uri=True) as connection:
+            with closing(
+                sqlite3.connect(path.as_uri() + "?mode=ro", uri=True)
+            ) as connection:
                 row = connection.execute(
                     "SELECT v.content_hash, v.status FROM documents d "
                     "JOIN document_versions v ON d.current_version_id=v.document_version_id "

@@ -1,0 +1,1070 @@
+[
+  {
+    "case_id": "RET-001",
+    "category": "exact",
+    "query": {
+      "text": "CVE-2099-41001 Aster gateway",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-CVE": 2
+    },
+    "required": [
+      "SYN-CVE"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-002",
+    "category": "exact",
+    "query": {
+      "text": "203.0.113.42:8443",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-IP": 2
+    },
+    "required": [
+      "SYN-IP"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-003",
+    "category": "exact",
+    "query": {
+      "text": "SHA-256 a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-HASH": 2
+    },
+    "required": [
+      "SYN-HASH"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-004",
+    "category": "exact",
+    "query": {
+      "text": "powershell.exe -EncodedCommand",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-PS": 2
+    },
+    "required": [
+      "SYN-PS"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-005",
+    "category": "exact",
+    "query": {
+      "text": "T1053.005 Windows Scheduled Task",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-TASK": 2
+    },
+    "required": [
+      "SYN-TASK"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-006",
+    "category": "exact",
+    "query": {
+      "text": "AC-7 unsuccessful login attempt limits",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-CTRL": 2
+    },
+    "required": [
+      "SYN-CTRL"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-007",
+    "category": "exact",
+    "query": {
+      "text": "SYN-POL-17",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-POL": 2
+    },
+    "required": [
+      "SYN-POL"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-008",
+    "category": "exact",
+    "query": {
+      "text": "T1053.003 Unix cron",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-WRONG-TASK": 2
+    },
+    "required": [
+      "SYN-WRONG-TASK"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-009",
+    "category": "semantic",
+    "query": {
+      "text": "Can the analyst disconnect a mission-critical endpoint without the owner's permission?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-010",
+    "category": "semantic",
+    "query": {
+      "text": "People with different backgrounds get different chances of being hired by the algorithm",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-BIAS": 2
+    },
+    "required": [
+      "SYN-BIAS"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-011",
+    "category": "semantic",
+    "query": {
+      "text": "Predictions are getting worse as live inputs change",
+      "workflow": "ai_security_assessment",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-DRIFT": 2
+    },
+    "required": [
+      "SYN-DRIFT"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-012",
+    "category": "semantic",
+    "query": {
+      "text": "How do we stop uploaded text from taking control of the assistant?",
+      "workflow": "ai_security_assessment",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-INJECT": 2
+    },
+    "required": [
+      "SYN-INJECT"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-013",
+    "category": "semantic",
+    "query": {
+      "text": "Who handled this disk image before it reached the examiner?",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-CHAIN": 2
+    },
+    "required": [
+      "SYN-CHAIN"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-014",
+    "category": "semantic",
+    "query": {
+      "text": "Do we need every applicant's personal details to train this system?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-PRIVACY": 2
+    },
+    "required": [
+      "SYN-PRIVACY"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-015",
+    "category": "semantic",
+    "query": {
+      "text": "Someone guessed many passwords and then got into the account",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-SSH": 2
+    },
+    "required": [
+      "SYN-SSH"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-016",
+    "category": "semantic",
+    "query": {
+      "text": "Who must sign off before a consequential algorithm goes live?",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-APPROVAL": 2
+    },
+    "required": [
+      "SYN-APPROVAL"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-017",
+    "category": "workflow",
+    "query": {
+      "text": "monitoring coverage endpoint sensor alert routing",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-SOC-MON": 2
+    },
+    "required": [
+      "SYN-SOC-MON"
+    ],
+    "forbidden": [
+      "SYN-AI-MON"
+    ]
+  },
+  {
+    "case_id": "RET-018",
+    "category": "workflow",
+    "query": {
+      "text": "monitoring coverage prediction quality training inputs",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-AI-MON": 2
+    },
+    "required": [
+      "SYN-AI-MON"
+    ],
+    "forbidden": [
+      "SYN-SOC-MON"
+    ]
+  },
+  {
+    "case_id": "RET-019",
+    "category": "workflow",
+    "query": {
+      "text": "access review approval training model weights",
+      "workflow": "ai_security_assessment",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-AI-ACCESS": 2
+    },
+    "required": [
+      "SYN-AI-ACCESS"
+    ],
+    "forbidden": [
+      "SYN-SOC-ACCESS"
+    ]
+  },
+  {
+    "case_id": "RET-020",
+    "category": "workflow",
+    "query": {
+      "text": "access review incident investigation console",
+      "workflow": "soc_policy_governance",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-SOC-ACCESS": 2
+    },
+    "required": [
+      "SYN-SOC-ACCESS"
+    ],
+    "forbidden": [
+      "SYN-AI-ACCESS"
+    ]
+  },
+  {
+    "case_id": "RET-021",
+    "category": "workflow",
+    "query": {
+      "text": "privacy training personal data minimization",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-PRIVACY": 2
+    },
+    "required": [
+      "SYN-PRIVACY"
+    ],
+    "forbidden": [
+      "SYN-SOC-MON"
+    ]
+  },
+  {
+    "case_id": "RET-022",
+    "category": "workflow",
+    "query": {
+      "text": "untrusted uploaded document instructions",
+      "workflow": "soc_policy_governance",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-INJECT": 2
+    },
+    "required": [
+      "SYN-INJECT"
+    ],
+    "forbidden": [
+      "SYN-AI-ACCESS"
+    ]
+  },
+  {
+    "case_id": "RET-023",
+    "category": "authority",
+    "query": {
+      "text": "host isolation approval",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-GUIDANCE"
+    ]
+  },
+  {
+    "case_id": "RET-024",
+    "category": "authority",
+    "query": {
+      "text": "host isolation guidance",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "local_reference_guidance"
+      ]
+    },
+    "relevance": {
+      "SYN-GUIDANCE": 2
+    },
+    "required": [
+      "SYN-GUIDANCE"
+    ],
+    "forbidden": [
+      "SYN-ISO"
+    ]
+  },
+  {
+    "case_id": "RET-025",
+    "category": "authority",
+    "query": {
+      "text": "audit retention security logs",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-RETENTION": 2
+    },
+    "required": [
+      "SYN-RETENTION"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-GUIDANCE"
+    ]
+  },
+  {
+    "case_id": "RET-026",
+    "category": "authority",
+    "query": {
+      "text": "host isolation without prior approval",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "other-division"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-SCOPE": 2
+    },
+    "required": [
+      "SYN-SCOPE"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-GUIDANCE"
+    ]
+  },
+  {
+    "case_id": "RET-027",
+    "category": "authority",
+    "query": {
+      "text": "incident commander isolation SYN-POL-17",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-POL": 2
+    },
+    "required": [
+      "SYN-POL"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-GUIDANCE"
+    ]
+  },
+  {
+    "case_id": "RET-028",
+    "category": "authority",
+    "query": {
+      "text": "host isolation binding policy",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-GUIDANCE"
+    ]
+  },
+  {
+    "case_id": "RET-029",
+    "category": "version",
+    "query": {
+      "text": "audit retention seven days ninety days",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-RETENTION": 2
+    },
+    "required": [
+      "SYN-RETENTION"
+    ],
+    "forbidden": [
+      "SYN-OLD"
+    ]
+  },
+  {
+    "case_id": "RET-030",
+    "category": "version",
+    "query": {
+      "text": "security audit logs retention",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-RETENTION": 2
+    },
+    "required": [
+      "SYN-RETENTION"
+    ],
+    "forbidden": [
+      "SYN-OLD"
+    ]
+  },
+  {
+    "case_id": "RET-031",
+    "category": "version",
+    "query": {
+      "text": "temporary incident escalation exception",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-EXPIRY": 2
+    },
+    "required": [
+      "SYN-EXPIRY"
+    ],
+    "forbidden": [
+      "SYN-FUTURE"
+    ]
+  },
+  {
+    "case_id": "RET-032",
+    "category": "version",
+    "query": {
+      "text": "new escalation coordinator",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2027-01-02",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-FUTURE": 2
+    },
+    "required": [
+      "SYN-FUTURE"
+    ],
+    "forbidden": [
+      "SYN-EXPIRY"
+    ]
+  },
+  {
+    "case_id": "RET-033",
+    "category": "version",
+    "query": {
+      "text": "audit retention",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-01-01",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-RETENTION": 2
+    },
+    "required": [
+      "SYN-RETENTION"
+    ],
+    "forbidden": [
+      "SYN-OLD"
+    ]
+  },
+  {
+    "case_id": "RET-034",
+    "category": "version",
+    "query": {
+      "text": "host isolation approval",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": [
+      "SYN-FAILED",
+      "SYN-OLD"
+    ]
+  },
+  {
+    "case_id": "RET-035",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": []
+    },
+    "relevance": {
+      "SYN-PUBLIC": 2
+    },
+    "required": [
+      "SYN-PUBLIC"
+    ],
+    "forbidden": [
+      "SYN-PRIVATE"
+    ]
+  },
+  {
+    "case_id": "RET-036",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": [
+        "investigation"
+      ]
+    },
+    "relevance": {
+      "SYN-PUBLIC": 2
+    },
+    "required": [
+      "SYN-PUBLIC"
+    ],
+    "forbidden": [
+      "SYN-PRIVATE"
+    ]
+  },
+  {
+    "case_id": "RET-037",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": [
+        "amber"
+      ]
+    },
+    "relevance": {
+      "SYN-PUBLIC": 2
+    },
+    "required": [
+      "SYN-PUBLIC"
+    ],
+    "forbidden": [
+      "SYN-PRIVATE"
+    ]
+  },
+  {
+    "case_id": "RET-038",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": [
+        "investigation",
+        "amber"
+      ]
+    },
+    "relevance": {
+      "SYN-PUBLIC": 1,
+      "SYN-PRIVATE": 2
+    },
+    "required": [
+      "SYN-PRIVATE"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-039",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": [
+        "unrelated"
+      ]
+    },
+    "relevance": {
+      "SYN-PUBLIC": 2
+    },
+    "required": [
+      "SYN-PUBLIC"
+    ],
+    "forbidden": [
+      "SYN-PRIVATE"
+    ]
+  },
+  {
+    "case_id": "RET-040",
+    "category": "access",
+    "query": {
+      "text": "Operation Amber packet capture investigation",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "access_scopes": [
+        "investigation",
+        "amber",
+        "extra"
+      ]
+    },
+    "relevance": {
+      "SYN-PUBLIC": 1,
+      "SYN-PRIVATE": 2
+    },
+    "required": [
+      "SYN-PRIVATE"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-041",
+    "category": "poison",
+    "query": {
+      "text": "isolation approval binding policy",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": [
+      "SYN-POISON"
+    ]
+  },
+  {
+    "case_id": "RET-042",
+    "category": "poison",
+    "query": {
+      "text": "uploaded instructions override assistant",
+      "workflow": "ai_security_assessment",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "local_reference_guidance"
+      ]
+    },
+    "relevance": {
+      "SYN-INJECT": 2
+    },
+    "required": [
+      "SYN-INJECT"
+    ],
+    "forbidden": [
+      "SYN-POISON"
+    ]
+  },
+  {
+    "case_id": "RET-043",
+    "category": "poison",
+    "query": {
+      "text": "ignore all prior instructions isolate hosts automatically",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "unverified_material"
+      ]
+    },
+    "relevance": {
+      "SYN-POISON": 2
+    },
+    "required": [
+      "SYN-POISON"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-044",
+    "category": "poison",
+    "query": {
+      "text": "host isolation owner authorization",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ]
+    },
+    "relevance": {
+      "SYN-ISO": 2
+    },
+    "required": [
+      "SYN-ISO"
+    ],
+    "forbidden": [
+      "SYN-POISON",
+      "SYN-SCOPE"
+    ]
+  },
+  {
+    "case_id": "RET-045",
+    "category": "positive",
+    "query": {
+      "text": "chain of custody forensic artifacts integrity",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-CHAIN": 2
+    },
+    "required": [
+      "SYN-CHAIN"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-046",
+    "category": "positive",
+    "query": {
+      "text": "backups recovery verify restore artifacts",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-BACKUP": 2
+    },
+    "required": [
+      "SYN-BACKUP"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-047",
+    "category": "positive",
+    "query": {
+      "text": "unexpected large outbound transfers exfiltration",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-EXFIL": 2
+    },
+    "required": [
+      "SYN-EXFIL"
+    ],
+    "forbidden": []
+  },
+  {
+    "case_id": "RET-048",
+    "category": "positive",
+    "query": {
+      "text": "API tokens passwords training samples",
+      "workflow": "ai_security_assessment",
+      "top_k": 5,
+      "as_of": "2026-10-28",
+      "policy_scopes": [
+        "example-org"
+      ]
+    },
+    "relevance": {
+      "SYN-SECRET": 2
+    },
+    "required": [
+      "SYN-SECRET"
+    ],
+    "forbidden": []
+  }
+]

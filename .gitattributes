@@ -11,3 +11,7 @@ Documentation/evaluation_v2/*.json -text whitespace=blank-at-eol,blank-at-eof,sp
 # V3 is a distinct frozen experiment; preserve suite and report identity.
 evals/cases/semantic_grounding_v3.json text eol=lf
 Documentation/evaluation_v3/*.json -text
+
+# New retrieval experiment: reproducible fixture/cache/report bytes on both OSes.
+evals/retrieval/*.json text eol=lf
+Documentation/retrieval_evaluation/*.json text eol=lf
