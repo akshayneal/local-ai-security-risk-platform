@@ -100,3 +100,44 @@ def test_uploaded_json_and_csv_normalize_and_submit(monkeypatch, csv):
         else supplied == bundle
     )
     assert len(app.get("download_button")) == 2
+
+
+def test_capacity_failure_preserves_input_clears_stale_exports_and_hides_diagnostics(
+    monkeypatch,
+):
+    from types import SimpleNamespace
+
+    import requests
+
+    from dashboard.api_client import CONTEXT_ERROR
+
+    fake_post(monkeypatch)
+    app = microsoft_page()
+    button(app, "Load Microsoft sample").click().run()
+    original = app.text_area(key="ms_json").value
+    button(app, "Analyze Microsoft telemetry").click().run()
+    assert len(app.get("download_button")) == 2
+    monkeypatch.setattr(
+        requests,
+        "post",
+        lambda *a, **kw: SimpleNamespace(
+            ok=False,
+            status_code=422,
+            json=lambda: {
+                "detail": {
+                    "code": "complete_context_unavailable",
+                    "message": "PRIVATE DIAGNOSTIC",
+                },
+                "events": ["PRIVATE"],
+            },
+        ),
+    )
+    button(app, "Analyze Microsoft telemetry").click().run()
+    assert not app.exception and not app.get("download_button")
+    assert app.text_area(key="ms_json").value == original
+    assert any(e.value == CONTEXT_ERROR for e in app.error)
+    assert "PRIVATE" not in "\n".join(e.value for e in app.error)
+    app.selectbox(key="soc_input_profile").select(
+        "Generic / normalized SOC input"
+    ).run()
+    assert not app.exception and not app.error
