@@ -1,0 +1,1425 @@
+[
+  {
+    "evidence_id": "CEDAR-APPROVAL",
+    "source_id": "CEDAR-APPROVAL",
+    "title": "Cedar incident containment approval authority",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"containment_approver\", \"subject\": \"Cedar response\", \"value\": \"incident commander\"}], \"description\": \"Cedar incident containment approval authority\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "cedar",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "cedar",
+      "incident",
+      "containment",
+      "approval",
+      "authority"
+    ],
+    "content_hash": "eeb0b07cd87e455d8941731f94d2070926859254c7a328896deb70abd2720442"
+  },
+  {
+    "evidence_id": "MARBLE-DUMP",
+    "source_id": "MARBLE-DUMP",
+    "title": "Marble observed process memory dump target lsass",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"dump_target\", \"subject\": \"Marble endpoint\", \"value\": \"lsass.exe\"}], \"description\": \"Marble observed process memory dump target lsass\"}",
+    "source_type": "case_observation",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "marble",
+      "observed",
+      "process",
+      "memory",
+      "dump",
+      "target",
+      "lsass"
+    ],
+    "content_hash": "429e349c405de58e116df1de8fd9bbfb21257f354a40a82465ede0b90ea42f3e"
+  },
+  {
+    "evidence_id": "MARBLE-WRONG-WORKFLOW",
+    "source_id": "MARBLE-WRONG-WORKFLOW",
+    "title": "Marble observed process memory dump target lsass restricted to AI risk review",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"dump_target\", \"subject\": \"Marble endpoint\", \"value\": \"lsass.exe\"}], \"description\": \"Marble observed process memory dump target lsass restricted to AI risk review\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "marble",
+      "observed",
+      "process",
+      "memory",
+      "dump",
+      "target",
+      "lsass",
+      "restricted",
+      "to",
+      "ai",
+      "risk",
+      "review"
+    ],
+    "content_hash": "da687238e82d9c5a890c270522a6e30d7edd29b4531e70c31c6389acc1050a8f"
+  },
+  {
+    "evidence_id": "JUNIPER-PROSE",
+    "source_id": "JUNIPER-PROSE",
+    "title": "Juniper quarterly access review policy",
+    "content": "Within the fictional Juniper support unit, access reviews are required quarterly. This reviewed current policy applies only to Juniper support.",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "juniper",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "juniper",
+      "quarterly",
+      "access",
+      "review",
+      "policy"
+    ],
+    "content_hash": "6dda1114fafcb6efefc4f876b3a16909f7eb65ecb9400e8d4fc6b7652f89110f"
+  },
+  {
+    "evidence_id": "RELATED-3",
+    "source_id": "RELATED-3",
+    "title": "Elm service logging checklist recommendations",
+    "content": "{\"assertions\": [{\"kind\": \"recommendation\", \"predicate\": \"logging\", \"subject\": \"Elm service\", \"value\": \"recommended\"}], \"description\": \"Elm service logging checklist recommendations\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "elm",
+      "service",
+      "logging",
+      "checklist",
+      "recommendations"
+    ],
+    "content_hash": "fcea70d3dd8126d1ff54de2307aceda2151b8f6efc9ab2ab95bf6a01aa4a45e6"
+  },
+  {
+    "evidence_id": "RELATED-4",
+    "source_id": "RELATED-4",
+    "title": "Birch workflow bias testing checklist recommendations",
+    "content": "{\"assertions\": [{\"kind\": \"recommendation\", \"predicate\": \"bias testing\", \"subject\": \"Birch workflow\", \"value\": \"recommended\"}], \"description\": \"Birch workflow bias testing checklist recommendations\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "birch",
+      "workflow",
+      "bias",
+      "testing",
+      "checklist",
+      "recommendations"
+    ],
+    "content_hash": "e18efec0bfc78b3f60908789f06fb27b38dc5e570e9b556cb1e578c235c8623f"
+  },
+  {
+    "evidence_id": "RELATED-5",
+    "source_id": "RELATED-5",
+    "title": "Spruce console escalation checklist recommendations",
+    "content": "{\"assertions\": [{\"kind\": \"recommendation\", \"predicate\": \"escalation\", \"subject\": \"Spruce console\", \"value\": \"recommended\"}], \"description\": \"Spruce console escalation checklist recommendations\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "spruce",
+      "console",
+      "escalation",
+      "checklist",
+      "recommendations"
+    ],
+    "content_hash": "4fc48795ec6f813c6c1ff6dec2eee8973bc0ce78eebece1c27922cf90dfa1d50"
+  },
+  {
+    "evidence_id": "PARTIAL-9",
+    "source_id": "PARTIAL-9",
+    "title": "Ash records retention requirement without implementation evidence",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Ash records\", \"value\": 21}], \"description\": \"Ash records retention requirement without implementation evidence\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Ash records",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "ash",
+      "records",
+      "retention",
+      "requirement",
+      "without",
+      "implementation",
+      "evidence"
+    ],
+    "content_hash": "c0e8b1e57e89263bffae694f9b6ab6b93adc00e757256963628d1a1d17efee5e"
+  },
+  {
+    "evidence_id": "PARTIAL-10",
+    "source_id": "PARTIAL-10",
+    "title": "Willow reports retention requirement without implementation evidence",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Willow reports\", \"value\": 35}], \"description\": \"Willow reports retention requirement without implementation evidence\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Willow reports",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "willow",
+      "reports",
+      "retention",
+      "requirement",
+      "without",
+      "implementation",
+      "evidence"
+    ],
+    "content_hash": "11a008c578cb35c04a858d21819385010a6d330d63856e45514affc0b11f07de"
+  },
+  {
+    "evidence_id": "PARTIAL-11",
+    "source_id": "PARTIAL-11",
+    "title": "Pine schedules retention requirement without implementation evidence",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Pine schedules\", \"value\": 60}], \"description\": \"Pine schedules retention requirement without implementation evidence\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Pine schedules",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "pine",
+      "schedules",
+      "retention",
+      "requirement",
+      "without",
+      "implementation",
+      "evidence"
+    ],
+    "content_hash": "fd7f1bdd83d06406130cead13b522e84b120bf6fdf6c7ba4c82ab5b54ed05cd8"
+  },
+  {
+    "evidence_id": "CONFLICT-A-12",
+    "source_id": "CONFLICT-A-12",
+    "title": "Maple payroll current policy approval_mode",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_mode\", \"subject\": \"Maple payroll\", \"value\": \"affirmative\"}], \"description\": \"Maple payroll current policy approval_mode\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Maple payroll",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "maple",
+      "payroll",
+      "current",
+      "policy",
+      "approval_mode"
+    ],
+    "content_hash": "60500f83347626a757389141beb52ba76750bc4b5b0123337e4389dfde86246c"
+  },
+  {
+    "evidence_id": "CONFLICT-B-12",
+    "source_id": "CONFLICT-B-12",
+    "title": "Maple payroll competing current policy approval_mode",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_mode\", \"subject\": \"Maple payroll\", \"value\": \"automatic\"}], \"description\": \"Maple payroll competing current policy approval_mode\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Maple payroll",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "maple",
+      "payroll",
+      "competing",
+      "current",
+      "policy",
+      "approval_mode"
+    ],
+    "content_hash": "283c35045f2408edddd769d24f4b43e72570b7dec9c6b0c9330131e8cef29291"
+  },
+  {
+    "evidence_id": "CONFLICT-A-13",
+    "source_id": "CONFLICT-A-13",
+    "title": "Alder repository current policy retention_days",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Alder repository\", \"value\": 20}], \"description\": \"Alder repository current policy retention_days\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Alder repository",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "alder",
+      "repository",
+      "current",
+      "policy",
+      "retention_days"
+    ],
+    "content_hash": "ba4ad01731f056193c5d46455a024c0a47bd0f4dbb40d17681b62356d5a8b391"
+  },
+  {
+    "evidence_id": "CONFLICT-B-13",
+    "source_id": "CONFLICT-B-13",
+    "title": "Alder repository competing current policy retention_days",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Alder repository\", \"value\": 80}], \"description\": \"Alder repository competing current policy retention_days\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Alder repository",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "alder",
+      "repository",
+      "competing",
+      "current",
+      "policy",
+      "retention_days"
+    ],
+    "content_hash": "90f782fe84f6e5401270db2178f57a112946b89359573ca00a70a11620cefd1a"
+  },
+  {
+    "evidence_id": "CONFLICT-A-14",
+    "source_id": "CONFLICT-A-14",
+    "title": "Aspen response current policy escalation_owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"escalation_owner\", \"subject\": \"Aspen response\", \"value\": \"duty officer\"}], \"description\": \"Aspen response current policy escalation_owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Aspen response",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "aspen",
+      "response",
+      "current",
+      "policy",
+      "escalation_owner"
+    ],
+    "content_hash": "cc33aa29c8e67f508ccba560737bdf07213852d28fcefac326b2b2e2259c3ae3"
+  },
+  {
+    "evidence_id": "CONFLICT-B-14",
+    "source_id": "CONFLICT-B-14",
+    "title": "Aspen response competing current policy escalation_owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"escalation_owner\", \"subject\": \"Aspen response\", \"value\": \"service manager\"}], \"description\": \"Aspen response competing current policy escalation_owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Aspen response",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "aspen",
+      "response",
+      "competing",
+      "current",
+      "policy",
+      "escalation_owner"
+    ],
+    "content_hash": "160eb573a6e7a097515b2becfd7acfc4854ce41222fe6743cf9ee90e439145a4"
+  },
+  {
+    "evidence_id": "OLD-0",
+    "source_id": "VERSION-DOC-0",
+    "title": "Fir access superseded monthly review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Fir access\", \"value\": \"monthly\"}], \"description\": \"Fir access superseded monthly review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Fir access",
+    "required_scopes": [],
+    "status": "inactive",
+    "synthetic": true,
+    "tags": [
+      "fir",
+      "access",
+      "superseded",
+      "monthly",
+      "review"
+    ],
+    "content_hash": "6e0c2e64e460be7e74c4207dc8788a34a0b53982ca283834d239ca4c0d0d3896",
+    "document_id": "VERSION-DOC-0",
+    "document_version_id": "v1",
+    "chunk_id": "OLD-0"
+  },
+  {
+    "evidence_id": "CURRENT-0",
+    "source_id": "VERSION-DOC-0",
+    "title": "Fir access current annual review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Fir access\", \"value\": \"annual\"}], \"description\": \"Fir access current annual review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Fir access",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "fir",
+      "access",
+      "current",
+      "annual",
+      "review"
+    ],
+    "content_hash": "a8ba351a0a892c799a5173961bf696493fa3a377e049d9aaefa37fc22cfd7192",
+    "document_id": "VERSION-DOC-0",
+    "document_version_id": "v2",
+    "chunk_id": "CURRENT-0",
+    "effective_date": "2026-01-01"
+  },
+  {
+    "evidence_id": "DATE-DECOY-0",
+    "source_id": "DATE-DECOY-0",
+    "title": "Fir access dated monthly review policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Fir access\", \"value\": \"monthly\"}], \"description\": \"Fir access dated monthly review policy\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Fir access",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "fir",
+      "access",
+      "dated",
+      "monthly",
+      "review",
+      "policy"
+    ],
+    "content_hash": "c4675149d7be491d432bb917bc8711904184817a4e693d6a989fe0276c6ae927",
+    "effective_date": "2030-01-01"
+  },
+  {
+    "evidence_id": "OLD-1",
+    "source_id": "VERSION-DOC-1",
+    "title": "Palm retention superseded monthly review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Palm retention\", \"value\": \"monthly\"}], \"description\": \"Palm retention superseded monthly review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Palm retention",
+    "required_scopes": [],
+    "status": "inactive",
+    "synthetic": true,
+    "tags": [
+      "palm",
+      "retention",
+      "superseded",
+      "monthly",
+      "review"
+    ],
+    "content_hash": "59fc2c7e34c68a80173e0534b9c2a72cf26ee446dc5048c6239edb71f2c6991a",
+    "document_id": "VERSION-DOC-1",
+    "document_version_id": "v1",
+    "chunk_id": "OLD-1"
+  },
+  {
+    "evidence_id": "CURRENT-1",
+    "source_id": "VERSION-DOC-1",
+    "title": "Palm retention current annual review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Palm retention\", \"value\": \"annual\"}], \"description\": \"Palm retention current annual review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Palm retention",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "palm",
+      "retention",
+      "current",
+      "annual",
+      "review"
+    ],
+    "content_hash": "71b72cc291b80fc3756f44f8325384a9c9f5aad6878fba9167058856193bb725",
+    "document_id": "VERSION-DOC-1",
+    "document_version_id": "v2",
+    "chunk_id": "CURRENT-1",
+    "effective_date": "2026-01-01"
+  },
+  {
+    "evidence_id": "DATE-DECOY-1",
+    "source_id": "DATE-DECOY-1",
+    "title": "Palm retention dated monthly review policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Palm retention\", \"value\": \"monthly\"}], \"description\": \"Palm retention dated monthly review policy\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Palm retention",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "palm",
+      "retention",
+      "dated",
+      "monthly",
+      "review",
+      "policy"
+    ],
+    "content_hash": "e6afc55b431b8bd5d822562dd2018ad14e3298e2b71307475df853b8b6faf430",
+    "effective_date": "2025-01-01",
+    "expiration_date": "2026-01-01"
+  },
+  {
+    "evidence_id": "OLD-2",
+    "source_id": "VERSION-DOC-2",
+    "title": "Cypress continuity superseded monthly review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Cypress continuity\", \"value\": \"monthly\"}], \"description\": \"Cypress continuity superseded monthly review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Cypress continuity",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "cypress",
+      "continuity",
+      "superseded",
+      "monthly",
+      "review"
+    ],
+    "content_hash": "b87181ffe94980200fc38400962fd10066fd9f9a1677bd51a7d177cdcea922a5",
+    "document_id": "VERSION-DOC-2",
+    "document_version_id": "v1",
+    "chunk_id": "OLD-2"
+  },
+  {
+    "evidence_id": "CURRENT-2",
+    "source_id": "VERSION-DOC-2",
+    "title": "Cypress continuity current annual review",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Cypress continuity\", \"value\": \"annual\"}], \"description\": \"Cypress continuity current annual review\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Cypress continuity",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "cypress",
+      "continuity",
+      "current",
+      "annual",
+      "review"
+    ],
+    "content_hash": "44b1713d5e2bf069410d7c69c3b84e1529d3343e6b27e1e482becc16bd3a4424",
+    "document_id": "VERSION-DOC-2",
+    "document_version_id": "v2",
+    "chunk_id": "CURRENT-2",
+    "effective_date": "2026-01-01"
+  },
+  {
+    "evidence_id": "WRONG-SCOPE-18",
+    "source_id": "WRONG-SCOPE-18",
+    "title": "Copper service approval policy for another team",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_required\", \"subject\": \"Copper service\", \"value\": true}], \"description\": \"Copper service approval policy for another team\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "other-copper-team",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "copper",
+      "service",
+      "approval",
+      "policy",
+      "for",
+      "another",
+      "team"
+    ],
+    "content_hash": "70c58f7dd54c1444c99594519d684e91e7cb661ff925a8ca44cdcbff432d0b74"
+  },
+  {
+    "evidence_id": "WRONG-SCOPE-19",
+    "source_id": "WRONG-SCOPE-19",
+    "title": "Silver operations approval policy for another team",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_required\", \"subject\": \"Silver operations\", \"value\": true}], \"description\": \"Silver operations approval policy for another team\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "other-silver-team",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "silver",
+      "operations",
+      "approval",
+      "policy",
+      "for",
+      "another",
+      "team"
+    ],
+    "content_hash": "b9c3eb8e8347507119be31a42671b5c78cbda6f711488368c04572a639dc373a"
+  },
+  {
+    "evidence_id": "WRONG-SCOPE-20",
+    "source_id": "WRONG-SCOPE-20",
+    "title": "Bronze analyst approval policy for another team",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_required\", \"subject\": \"Bronze analyst\", \"value\": true}], \"description\": \"Bronze analyst approval policy for another team\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "other-bronze-team",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "bronze",
+      "analyst",
+      "approval",
+      "policy",
+      "for",
+      "another",
+      "team"
+    ],
+    "content_hash": "81dd75bbb0f52343cd5bd1da858586d0a7e3b019b611df7490034f1e3af2f86c"
+  },
+  {
+    "evidence_id": "RESTRICTED-0",
+    "source_id": "RESTRICTED-0",
+    "title": "Quartz incident restricted retention policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Quartz incident\", \"value\": 90}], \"description\": \"Quartz incident restricted retention policy\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Quartz incident",
+    "required_scopes": [
+      "restricted-lab-review"
+    ],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "quartz",
+      "incident",
+      "restricted",
+      "retention",
+      "policy"
+    ],
+    "content_hash": "36568fa560d67e839fe3c62ce41f1e824659c7faedef8c9ef45b9bc8ed47dcef"
+  },
+  {
+    "evidence_id": "RESTRICTED-1",
+    "source_id": "RESTRICTED-1",
+    "title": "Opal archive restricted retention policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Opal archive\", \"value\": 90}], \"description\": \"Opal archive restricted retention policy\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Opal archive",
+    "required_scopes": [
+      "restricted-lab-review"
+    ],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "opal",
+      "archive",
+      "restricted",
+      "retention",
+      "policy"
+    ],
+    "content_hash": "726419c2726892a180431ec0ea87acd3a178b69bdc541f2fdab3c4eb83740a82"
+  },
+  {
+    "evidence_id": "RESTRICTED-2",
+    "source_id": "RESTRICTED-2",
+    "title": "Amber review restricted retention policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Amber review\", \"value\": 90}], \"description\": \"Amber review restricted retention policy\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Amber review",
+    "required_scopes": [
+      "restricted-lab-review"
+    ],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "amber",
+      "review",
+      "restricted",
+      "retention",
+      "policy"
+    ],
+    "content_hash": "5c2265b96b4479779c5c4b38b04866651ef03b4efa0dfa13263691f0eba11007"
+  },
+  {
+    "evidence_id": "GUIDANCE-24",
+    "source_id": "GUIDANCE-24",
+    "title": "Kite assistant audit recommendation not organizational policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Kite assistant\", \"value\": \"weekly\"}], \"description\": \"Kite assistant audit recommendation not organizational policy\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "kite",
+      "assistant",
+      "audit",
+      "recommendation",
+      "not",
+      "organizational",
+      "policy"
+    ],
+    "content_hash": "50de0f05f2c0203162f86f83113fe5c0ba0d9ad933c70ff313f7ecbbf0e90b29"
+  },
+  {
+    "evidence_id": "GUIDANCE-25",
+    "source_id": "GUIDANCE-25",
+    "title": "Heron aid audit recommendation not organizational policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Heron aid\", \"value\": \"weekly\"}], \"description\": \"Heron aid audit recommendation not organizational policy\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "external_framework_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "heron",
+      "aid",
+      "audit",
+      "recommendation",
+      "not",
+      "organizational",
+      "policy"
+    ],
+    "content_hash": "30b1b5399cd1d6ca435bdc951327bdbb5e0d9af2753a5fee619aa94e0a7df9a0"
+  },
+  {
+    "evidence_id": "GUIDANCE-26",
+    "source_id": "GUIDANCE-26",
+    "title": "Crane system audit recommendation not organizational policy",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Crane system\", \"value\": \"weekly\"}], \"description\": \"Crane system audit recommendation not organizational policy\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "local_reference_guidance",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "crane",
+      "system",
+      "audit",
+      "recommendation",
+      "not",
+      "organizational",
+      "policy"
+    ],
+    "content_hash": "d69bfc9228a3be1330092aa063b52101585b319cd0cb65ea554bc714f1693b4e"
+  },
+  {
+    "evidence_id": "SCOPED-27",
+    "source_id": "SCOPED-27",
+    "title": "Ibis unit explicitly applicable lab policy review_interval",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Ibis unit\", \"value\": \"quarterly\"}], \"description\": \"Ibis unit explicitly applicable lab policy review_interval\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Ibis unit",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "ibis",
+      "unit",
+      "explicitly",
+      "applicable",
+      "lab",
+      "policy",
+      "review_interval"
+    ],
+    "content_hash": "f85dbdd73bb8034e332c98ecfcbc940765d1da1ddfea73db25483803dbdbfb10"
+  },
+  {
+    "evidence_id": "SCOPED-28",
+    "source_id": "SCOPED-28",
+    "title": "Lark response explicitly applicable lab policy approval_owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"approval_owner\", \"subject\": \"Lark response\", \"value\": \"duty lead\"}], \"description\": \"Lark response explicitly applicable lab policy approval_owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Lark response",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "lark",
+      "response",
+      "explicitly",
+      "applicable",
+      "lab",
+      "policy",
+      "approval_owner"
+    ],
+    "content_hash": "64859283a2e62d5903309855c20bc33e065b4b8f208adb2d3e356f42cf1ba5eb"
+  },
+  {
+    "evidence_id": "SCOPED-29",
+    "source_id": "SCOPED-29",
+    "title": "Wren service explicitly applicable lab policy retention_days",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"retention_days\", \"subject\": \"Wren service\", \"value\": 28}], \"description\": \"Wren service explicitly applicable lab policy retention_days\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Wren service",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "wren",
+      "service",
+      "explicitly",
+      "applicable",
+      "lab",
+      "policy",
+      "retention_days"
+    ],
+    "content_hash": "18cb005f6d90bda1f582e398794100ecc4b332a8db93254f0bd3e2988f699e13"
+  },
+  {
+    "evidence_id": "ALLEGED-30",
+    "source_id": "ALLEGED-30",
+    "title": "Hawk FAQ alleged fictional audit mandate unverified",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Hawk FAQ\", \"value\": \"daily\"}], \"description\": \"Hawk FAQ alleged fictional audit mandate unverified\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "hawk",
+      "faq",
+      "alleged",
+      "fictional",
+      "audit",
+      "mandate",
+      "unverified"
+    ],
+    "content_hash": "7523902a80ca81e5a88378aac4ba480fccd5407177d1becd15a265c7087db3e9"
+  },
+  {
+    "evidence_id": "ALLEGED-31",
+    "source_id": "ALLEGED-31",
+    "title": "Owl helper alleged fictional audit mandate unverified",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Owl helper\", \"value\": \"daily\"}], \"description\": \"Owl helper alleged fictional audit mandate unverified\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "owl",
+      "helper",
+      "alleged",
+      "fictional",
+      "audit",
+      "mandate",
+      "unverified"
+    ],
+    "content_hash": "2351db0ca878934db82a622c36d4729fd46351ac38b85689e74308f9810278d9"
+  },
+  {
+    "evidence_id": "ALLEGED-32",
+    "source_id": "ALLEGED-32",
+    "title": "Swan notes alleged fictional audit mandate unverified",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"audit_frequency\", \"subject\": \"Swan notes\", \"value\": \"daily\"}], \"description\": \"Swan notes alleged fictional audit mandate unverified\"}",
+    "source_type": "reference",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "swan",
+      "notes",
+      "alleged",
+      "fictional",
+      "audit",
+      "mandate",
+      "unverified"
+    ],
+    "content_hash": "20cd326decc8777762a923497a80b3aca5ac8277e26f365e1f0d445292d24ae5"
+  },
+  {
+    "evidence_id": "EVENT-33",
+    "source_id": "EVENT-33",
+    "title": "Dune workstation supplied network connection telemetry",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"network_connection\", \"subject\": \"Dune workstation\", \"value\": true}], \"description\": \"Dune workstation supplied network connection telemetry\"}",
+    "source_type": "case_observation",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "dune",
+      "workstation",
+      "supplied",
+      "network",
+      "connection",
+      "telemetry"
+    ],
+    "content_hash": "a3efae43af44ab12bf537e73bea32d761913a02182d3e47962e599326541214e"
+  },
+  {
+    "evidence_id": "EVENT-34",
+    "source_id": "EVENT-34",
+    "title": "Mesa device supplied network connection telemetry",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"network_connection\", \"subject\": \"Mesa device\", \"value\": true}], \"description\": \"Mesa device supplied network connection telemetry\"}",
+    "source_type": "case_observation",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "mesa",
+      "device",
+      "supplied",
+      "network",
+      "connection",
+      "telemetry"
+    ],
+    "content_hash": "992aa34f3ad205cf541335d3dfed951b2b94466ee77881232eb01c13da32be1e"
+  },
+  {
+    "evidence_id": "EVENT-35",
+    "source_id": "EVENT-35",
+    "title": "Reef training supplied quoted command telemetry",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"quoted_command\", \"subject\": \"Reef training\", \"value\": \"delete backups\"}], \"description\": \"Reef training supplied quoted command telemetry\"}",
+    "source_type": "case_observation",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "reef",
+      "training",
+      "supplied",
+      "quoted",
+      "command",
+      "telemetry"
+    ],
+    "content_hash": "e104f3cd8643d2e005417eb31e5d152a5149a437b8105f1632ff498635bd26b5"
+  },
+  {
+    "evidence_id": "EVENT-36",
+    "source_id": "EVENT-36",
+    "title": "Delta identity supplied authentication success telemetry",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"authentication_success\", \"subject\": \"Delta identity\", \"value\": true}], \"description\": \"Delta identity supplied authentication success telemetry\"}",
+    "source_type": "case_observation",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "soc_investigation"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "delta",
+      "identity",
+      "supplied",
+      "authentication",
+      "success",
+      "telemetry"
+    ],
+    "content_hash": "35d6bf628a435cd71bca580b4b7d7ce00618e4f6eca739be661618bd76c985c6"
+  },
+  {
+    "evidence_id": "MULTI-37-1",
+    "source_id": "MULTI-37-1",
+    "title": "Brook catalogue independent public-data inventory 1",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Brook catalogue\", \"value\": \"public\"}], \"description\": \"Brook catalogue independent public-data inventory 1\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "brook",
+      "catalogue",
+      "independent",
+      "public-data",
+      "inventory",
+      "1"
+    ],
+    "content_hash": "53a9eaaf16319f8c92ac4b667a93aeda45c2dfa6b54eb21803773cdf32eaa726"
+  },
+  {
+    "evidence_id": "MULTI-37-2",
+    "source_id": "MULTI-37-2",
+    "title": "Brook catalogue independent public-data inventory 2",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Brook catalogue\", \"value\": \"public\"}], \"description\": \"Brook catalogue independent public-data inventory 2\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "brook",
+      "catalogue",
+      "independent",
+      "public-data",
+      "inventory",
+      "2"
+    ],
+    "content_hash": "772d7080cfc1dee14d5099edfeead53ddbd9176845cd549190251844d6f6b596"
+  },
+  {
+    "evidence_id": "MULTI-38-1",
+    "source_id": "MULTI-38-1",
+    "title": "Creek schedule independent public-data inventory 1",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Creek schedule\", \"value\": \"public\"}], \"description\": \"Creek schedule independent public-data inventory 1\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "creek",
+      "schedule",
+      "independent",
+      "public-data",
+      "inventory",
+      "1"
+    ],
+    "content_hash": "3e369a586bd553cb53f41c1b656a53a16563477dbbfc701eceea15ab1d2f8dd8"
+  },
+  {
+    "evidence_id": "MULTI-38-2",
+    "source_id": "MULTI-38-2",
+    "title": "Creek schedule independent public-data inventory 2",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Creek schedule\", \"value\": \"public\"}], \"description\": \"Creek schedule independent public-data inventory 2\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "creek",
+      "schedule",
+      "independent",
+      "public-data",
+      "inventory",
+      "2"
+    ],
+    "content_hash": "486a007aab89db95d0f06db3cbdac460d9e12f75d514d1ac75eb7416fe762abb"
+  },
+  {
+    "evidence_id": "MULTI-39-1",
+    "source_id": "MULTI-39-1",
+    "title": "Stream index independent public-data inventory 1",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Stream index\", \"value\": \"public\"}], \"description\": \"Stream index independent public-data inventory 1\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "stream",
+      "index",
+      "independent",
+      "public-data",
+      "inventory",
+      "1"
+    ],
+    "content_hash": "9c5f880e5c8020f88a1b36e0cf3c52ac0127b0a867f85bde0cfb2bb0dc5064b2"
+  },
+  {
+    "evidence_id": "MULTI-39-2",
+    "source_id": "MULTI-39-2",
+    "title": "Stream index independent public-data inventory 2",
+    "content": "{\"assertions\": [{\"kind\": \"observation\", \"predicate\": \"data_sensitivity\", \"subject\": \"Stream index\", \"value\": \"public\"}], \"description\": \"Stream index independent public-data inventory 2\"}",
+    "source_type": "inventory",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "unverified_material",
+    "policy_scope": null,
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "stream",
+      "index",
+      "independent",
+      "public-data",
+      "inventory",
+      "2"
+    ],
+    "content_hash": "4eb31911f9c3b8ac29bbf250ba1c35aa82aed41fc892b2c3471dbf3065558197"
+  },
+  {
+    "evidence_id": "CHUNK-40-1",
+    "source_id": "CHUNK-DOC-40",
+    "title": "Harbor service access review owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_owner\", \"subject\": \"Harbor service\", \"value\": \"service owner\"}], \"description\": \"Harbor service access review owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Harbor service",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "harbor",
+      "service",
+      "access",
+      "review",
+      "owner"
+    ],
+    "content_hash": "723babcfda6f803ed07379867f5e1b4e54c78fdbbc10af5819e4ad31caf38403",
+    "document_id": "CHUNK-DOC-40",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-40-1"
+  },
+  {
+    "evidence_id": "CHUNK-40-2",
+    "source_id": "CHUNK-DOC-40",
+    "title": "Harbor service access review interval",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Harbor service\", \"value\": \"quarterly\"}], \"description\": \"Harbor service access review interval\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Harbor service",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "harbor",
+      "service",
+      "access",
+      "review",
+      "interval"
+    ],
+    "content_hash": "4b41de4dac07fee2023bcac8d1764b2720e60337a36e64d037a01e9886c33c6c",
+    "document_id": "CHUNK-DOC-40",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-40-2"
+  },
+  {
+    "evidence_id": "CHUNK-41-1",
+    "source_id": "CHUNK-DOC-41",
+    "title": "Beacon reports access review owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_owner\", \"subject\": \"Beacon reports\", \"value\": \"service owner\"}], \"description\": \"Beacon reports access review owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Beacon reports",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "beacon",
+      "reports",
+      "access",
+      "review",
+      "owner"
+    ],
+    "content_hash": "dea96e8d9ebfbe7dd09b1e47a7d86d0ece73accb5849d38964f5986c6bfb56a2",
+    "document_id": "CHUNK-DOC-41",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-41-1"
+  },
+  {
+    "evidence_id": "CHUNK-41-2",
+    "source_id": "CHUNK-DOC-41",
+    "title": "Beacon reports access review interval",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Beacon reports\", \"value\": \"quarterly\"}], \"description\": \"Beacon reports access review interval\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Beacon reports",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "beacon",
+      "reports",
+      "access",
+      "review",
+      "interval"
+    ],
+    "content_hash": "999d2fb8e92034ab15e6088614256411c12b83d533cdd01284ad18722f3e6efe",
+    "document_id": "CHUNK-DOC-41",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-41-2"
+  },
+  {
+    "evidence_id": "CHUNK-42-1",
+    "source_id": "CHUNK-DOC-42",
+    "title": "Cove workflow access review owner",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_owner\", \"subject\": \"Cove workflow\", \"value\": \"service owner\"}], \"description\": \"Cove workflow access review owner\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Cove workflow",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "cove",
+      "workflow",
+      "access",
+      "review",
+      "owner"
+    ],
+    "content_hash": "5edae3a9e6aadfdcd40cffda662eb8103b6c1ca12db4f804f2e127d5088a7a8a",
+    "document_id": "CHUNK-DOC-42",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-42-1"
+  },
+  {
+    "evidence_id": "CHUNK-42-2",
+    "source_id": "CHUNK-DOC-42",
+    "title": "Cove workflow access review interval",
+    "content": "{\"assertions\": [{\"kind\": \"requirement\", \"predicate\": \"review_interval\", \"subject\": \"Cove workflow\", \"value\": \"quarterly\"}], \"description\": \"Cove workflow access review interval\"}",
+    "source_type": "policy",
+    "source_family": "Synthetic reviewed lab material",
+    "workflows": [
+      "ai_system_risk"
+    ],
+    "authority": "organizational_policy",
+    "policy_scope": "Cove workflow",
+    "required_scopes": [],
+    "status": "current",
+    "synthetic": true,
+    "tags": [
+      "cove",
+      "workflow",
+      "access",
+      "review",
+      "interval"
+    ],
+    "content_hash": "8cb77e5ecb509784000755afa3f5599cb449780a3bc1fbd2b649551b8f288cbe",
+    "document_id": "CHUNK-DOC-42",
+    "document_version_id": "v1",
+    "chunk_id": "CHUNK-42-2"
+  }
+]

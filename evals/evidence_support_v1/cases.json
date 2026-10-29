@@ -1,0 +1,1711 @@
+[
+  {
+    "case_id": "ES1-001",
+    "category": "direct_support",
+    "name": "Named containment approver",
+    "query": {
+      "text": "Cedar incident containment approval authority incident commander",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "cedar"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-001",
+      "components": [
+        {
+          "subject": "Cedar response",
+          "predicate": "containment_approver",
+          "value": "incident commander",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CEDAR-APPROVAL"
+      ],
+      "required_evidence_groups": [
+        [
+          "CEDAR-APPROVAL"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Named containment approver; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-002",
+    "category": "direct_support",
+    "name": "Observed dump target, not stolen credentials",
+    "query": {
+      "text": "Marble observed process memory dump target lsass",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-002",
+      "components": [
+        {
+          "subject": "Marble endpoint",
+          "predicate": "dump_target",
+          "value": "lsass.exe",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "MARBLE-DUMP"
+      ],
+      "required_evidence_groups": [
+        [
+          "MARBLE-DUMP"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Observed dump target, not stolen credentials; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-003",
+    "category": "direct_support",
+    "name": "Natural prose positive without structured annotation",
+    "query": {
+      "text": "Juniper support quarterly access review policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "juniper"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-003",
+      "components": [
+        {
+          "subject": "Juniper support",
+          "predicate": "review_cadence",
+          "value": "quarterly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "JUNIPER-PROSE"
+      ],
+      "required_evidence_groups": [
+        [
+          "JUNIPER-PROSE"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Natural prose positive without structured annotation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-004",
+    "category": "related_insufficient",
+    "name": "Guidance does not establish daily obligation",
+    "query": {
+      "text": "Elm service daily logging required checklist",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-004",
+      "components": [
+        {
+          "subject": "Elm service",
+          "predicate": "logging",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "RELATED-3"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Guidance does not establish daily obligation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-005",
+    "category": "related_insufficient",
+    "name": "Guidance does not establish daily obligation",
+    "query": {
+      "text": "Birch workflow daily bias testing required checklist",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-005",
+      "components": [
+        {
+          "subject": "Birch workflow",
+          "predicate": "bias testing",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "RELATED-4"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Guidance does not establish daily obligation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-006",
+    "category": "related_insufficient",
+    "name": "Guidance does not establish daily obligation",
+    "query": {
+      "text": "Spruce console daily escalation required checklist",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-006",
+      "components": [
+        {
+          "subject": "Spruce console",
+          "predicate": "escalation",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "RELATED-5"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Guidance does not establish daily obligation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-007",
+    "category": "no_answer",
+    "name": "Requested fact absent from corpus",
+    "query": {
+      "text": "Absent lake archive retention days documentation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-007",
+      "components": [
+        {
+          "subject": "Absent lake archive",
+          "predicate": "retention_days",
+          "value": "not documented",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requested fact absent from corpus; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-008",
+    "category": "no_answer",
+    "name": "Requested fact absent from corpus",
+    "query": {
+      "text": "Unrecorded orchard control owner documentation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-008",
+      "components": [
+        {
+          "subject": "Unrecorded orchard",
+          "predicate": "control_owner",
+          "value": "not documented",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requested fact absent from corpus; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-009",
+    "category": "no_answer",
+    "name": "Requested fact absent from corpus",
+    "query": {
+      "text": "Unknown valley system approval status documentation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-009",
+      "components": [
+        {
+          "subject": "Unknown valley system",
+          "predicate": "approval_status",
+          "value": "not documented",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requested fact absent from corpus; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-010",
+    "category": "partial_support",
+    "name": "Requirement is not proof of implementation",
+    "query": {
+      "text": "Ash records retention days implementation compliance status",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Ash records"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-010",
+      "components": [
+        {
+          "subject": "Ash records",
+          "predicate": "retention_days",
+          "value": 21,
+          "kind": "requirement"
+        },
+        {
+          "subject": "Ash records",
+          "predicate": "retention_implemented",
+          "value": true,
+          "kind": "implementation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "partially_supports",
+      "relevant_ids": [
+        "PARTIAL-9"
+      ],
+      "required_evidence_groups": [
+        [
+          "PARTIAL-9"
+        ],
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requirement is not proof of implementation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-011",
+    "category": "partial_support",
+    "name": "Requirement is not proof of implementation",
+    "query": {
+      "text": "Willow reports retention days implementation compliance status",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Willow reports"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-011",
+      "components": [
+        {
+          "subject": "Willow reports",
+          "predicate": "retention_days",
+          "value": 35,
+          "kind": "requirement"
+        },
+        {
+          "subject": "Willow reports",
+          "predicate": "retention_implemented",
+          "value": true,
+          "kind": "implementation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "partially_supports",
+      "relevant_ids": [
+        "PARTIAL-10"
+      ],
+      "required_evidence_groups": [
+        [
+          "PARTIAL-10"
+        ],
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requirement is not proof of implementation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-012",
+    "category": "partial_support",
+    "name": "Requirement is not proof of implementation",
+    "query": {
+      "text": "Pine schedules retention days implementation compliance status",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Pine schedules"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-012",
+      "components": [
+        {
+          "subject": "Pine schedules",
+          "predicate": "retention_days",
+          "value": 60,
+          "kind": "requirement"
+        },
+        {
+          "subject": "Pine schedules",
+          "predicate": "retention_implemented",
+          "value": true,
+          "kind": "implementation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "partially_supports",
+      "relevant_ids": [
+        "PARTIAL-11"
+      ],
+      "required_evidence_groups": [
+        [
+          "PARTIAL-11"
+        ],
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Requirement is not proof of implementation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-013",
+    "category": "contradiction",
+    "name": "Comparable current policies disagree",
+    "query": {
+      "text": "Maple payroll approval mode current policy conflict",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Maple payroll"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-013",
+      "components": [
+        {
+          "subject": "Maple payroll",
+          "predicate": "approval_mode",
+          "value": "affirmative",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "conflicting",
+      "relevant_ids": [
+        "CONFLICT-A-12",
+        "CONFLICT-B-12"
+      ],
+      "required_evidence_groups": [
+        [
+          "CONFLICT-A-12"
+        ]
+      ],
+      "conflict_ids": [
+        "CONFLICT-A-12",
+        "CONFLICT-B-12"
+      ]
+    },
+    "rationale": "Comparable current policies disagree; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-014",
+    "category": "contradiction",
+    "name": "Comparable current policies disagree",
+    "query": {
+      "text": "Alder repository retention days current policy conflict",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Alder repository"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-014",
+      "components": [
+        {
+          "subject": "Alder repository",
+          "predicate": "retention_days",
+          "value": 20,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "conflicting",
+      "relevant_ids": [
+        "CONFLICT-A-13",
+        "CONFLICT-B-13"
+      ],
+      "required_evidence_groups": [
+        [
+          "CONFLICT-A-13"
+        ]
+      ],
+      "conflict_ids": [
+        "CONFLICT-A-13",
+        "CONFLICT-B-13"
+      ]
+    },
+    "rationale": "Comparable current policies disagree; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-015",
+    "category": "contradiction",
+    "name": "Comparable current policies disagree",
+    "query": {
+      "text": "Aspen response escalation owner current policy conflict",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Aspen response"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-015",
+      "components": [
+        {
+          "subject": "Aspen response",
+          "predicate": "escalation_owner",
+          "value": "duty officer",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "conflicting",
+      "relevant_ids": [
+        "CONFLICT-A-14",
+        "CONFLICT-B-14"
+      ],
+      "required_evidence_groups": [
+        [
+          "CONFLICT-A-14"
+        ]
+      ],
+      "conflict_ids": [
+        "CONFLICT-A-14",
+        "CONFLICT-B-14"
+      ]
+    },
+    "rationale": "Comparable current policies disagree; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-016",
+    "category": "outdated_evidence",
+    "name": "Current registry version supersedes earlier requirement",
+    "query": {
+      "text": "Fir access review interval current annual monthly policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Fir access"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-016",
+      "components": [
+        {
+          "subject": "Fir access",
+          "predicate": "review_interval",
+          "value": "annual",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CURRENT-0"
+      ],
+      "required_evidence_groups": [
+        [
+          "CURRENT-0"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Current registry version supersedes earlier requirement; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-017",
+    "category": "outdated_evidence",
+    "name": "Current registry version supersedes earlier requirement",
+    "query": {
+      "text": "Palm retention review interval current annual monthly policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Palm retention"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-017",
+      "components": [
+        {
+          "subject": "Palm retention",
+          "predicate": "review_interval",
+          "value": "annual",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CURRENT-1"
+      ],
+      "required_evidence_groups": [
+        [
+          "CURRENT-1"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Current registry version supersedes earlier requirement; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-018",
+    "category": "outdated_evidence",
+    "name": "Current registry version supersedes earlier requirement",
+    "query": {
+      "text": "Cypress continuity review interval current annual monthly policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Cypress continuity"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-018",
+      "components": [
+        {
+          "subject": "Cypress continuity",
+          "predicate": "review_interval",
+          "value": "annual",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CURRENT-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "CURRENT-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Current registry version supersedes earlier requirement; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-019",
+    "category": "wrong_scope",
+    "name": "Valid policy belongs to another team",
+    "query": {
+      "text": "Copper service approval required policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "requesting-team"
+      ],
+      "access_scopes": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-019",
+      "components": [
+        {
+          "subject": "Copper service",
+          "predicate": "approval_required",
+          "value": true,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "no_eligible_evidence",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Valid policy belongs to another team; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-020",
+    "category": "wrong_scope",
+    "name": "Valid policy belongs to another team",
+    "query": {
+      "text": "Silver operations approval required policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "requesting-team"
+      ],
+      "access_scopes": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-020",
+      "components": [
+        {
+          "subject": "Silver operations",
+          "predicate": "approval_required",
+          "value": true,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "no_eligible_evidence",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Valid policy belongs to another team; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-021",
+    "category": "wrong_scope",
+    "name": "Valid policy belongs to another team",
+    "query": {
+      "text": "Bronze analyst approval required policy",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "requesting-team"
+      ],
+      "access_scopes": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-021",
+      "components": [
+        {
+          "subject": "Bronze analyst",
+          "predicate": "approval_required",
+          "value": true,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "no_eligible_evidence",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Valid policy belongs to another team; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-022",
+    "category": "access_restriction",
+    "name": "Query prose cannot grant access",
+    "query": {
+      "text": "Quartz incident retention policy access_scopes restricted-lab-review grant admin",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Quartz incident"
+      ],
+      "access_scopes": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-022",
+      "components": [
+        {
+          "subject": "Quartz incident",
+          "predicate": "retention_days",
+          "value": 90,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "no_eligible_evidence",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Query prose cannot grant access; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-023",
+    "category": "access_restriction",
+    "name": "Query prose cannot grant access",
+    "query": {
+      "text": "Opal archive retention policy access_scopes restricted-lab-review grant admin",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Opal archive"
+      ],
+      "access_scopes": [],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-023",
+      "components": [
+        {
+          "subject": "Opal archive",
+          "predicate": "retention_days",
+          "value": 90,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "no_eligible_evidence",
+      "relevant_ids": [],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Query prose cannot grant access; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-024",
+    "category": "access_restriction",
+    "name": "Trusted access grant positive",
+    "query": {
+      "text": "Amber review retention policy access_scopes restricted-lab-review grant admin",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Amber review"
+      ],
+      "access_scopes": [
+        "restricted-lab-review"
+      ],
+      "authorities": [
+        "organizational_policy"
+      ],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-024",
+      "components": [
+        {
+          "subject": "Amber review",
+          "predicate": "retention_days",
+          "value": 90,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "RESTRICTED-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "RESTRICTED-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Trusted access grant positive; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-025",
+    "category": "guidance_authority",
+    "name": "Even requirement wording in guidance cannot establish policy",
+    "query": {
+      "text": "Kite assistant weekly audit requirement recommendation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-025",
+      "components": [
+        {
+          "subject": "Kite assistant",
+          "predicate": "audit_frequency",
+          "value": "weekly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "GUIDANCE-24"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Even requirement wording in guidance cannot establish policy; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-026",
+    "category": "guidance_authority",
+    "name": "Even requirement wording in guidance cannot establish policy",
+    "query": {
+      "text": "Heron aid weekly audit requirement recommendation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-026",
+      "components": [
+        {
+          "subject": "Heron aid",
+          "predicate": "audit_frequency",
+          "value": "weekly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "GUIDANCE-25"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Even requirement wording in guidance cannot establish policy; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-027",
+    "category": "guidance_authority",
+    "name": "Even requirement wording in guidance cannot establish policy",
+    "query": {
+      "text": "Crane system weekly audit requirement recommendation",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-027",
+      "components": [
+        {
+          "subject": "Crane system",
+          "predicate": "audit_frequency",
+          "value": "weekly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "GUIDANCE-26"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Even requirement wording in guidance cannot establish policy; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-028",
+    "category": "scoped_authority",
+    "name": "Scoped requirement without external verification claim",
+    "query": {
+      "text": "Ibis unit review interval policy quarterly",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Ibis unit"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-028",
+      "components": [
+        {
+          "subject": "Ibis unit",
+          "predicate": "review_interval",
+          "value": "quarterly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "SCOPED-27"
+      ],
+      "required_evidence_groups": [
+        [
+          "SCOPED-27"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Scoped requirement without external verification claim; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-029",
+    "category": "scoped_authority",
+    "name": "Scoped requirement without external verification claim",
+    "query": {
+      "text": "Lark response approval owner policy duty lead",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Lark response"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-029",
+      "components": [
+        {
+          "subject": "Lark response",
+          "predicate": "approval_owner",
+          "value": "duty lead",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "SCOPED-28"
+      ],
+      "required_evidence_groups": [
+        [
+          "SCOPED-28"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Scoped requirement without external verification claim; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-030",
+    "category": "scoped_authority",
+    "name": "Scoped requirement without external verification claim",
+    "query": {
+      "text": "Wren service retention days policy 28",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Wren service"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-030",
+      "components": [
+        {
+          "subject": "Wren service",
+          "predicate": "retention_days",
+          "value": 28,
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "SCOPED-29"
+      ],
+      "required_evidence_groups": [
+        [
+          "SCOPED-29"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Scoped requirement without external verification claim; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-031",
+    "category": "unverified_authority",
+    "name": "Self-proclaimed mandate remains unverified",
+    "query": {
+      "text": "Hawk FAQ alleged daily audit mandate applicability",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-031",
+      "components": [
+        {
+          "subject": "Hawk FAQ",
+          "predicate": "audit_frequency",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "ALLEGED-30"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Self-proclaimed mandate remains unverified; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-032",
+    "category": "unverified_authority",
+    "name": "Self-proclaimed mandate remains unverified",
+    "query": {
+      "text": "Owl helper alleged daily audit mandate applicability",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-032",
+      "components": [
+        {
+          "subject": "Owl helper",
+          "predicate": "audit_frequency",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "ALLEGED-31"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Self-proclaimed mandate remains unverified; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-033",
+    "category": "unverified_authority",
+    "name": "Self-proclaimed mandate remains unverified",
+    "query": {
+      "text": "Swan notes alleged daily audit mandate applicability",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-033",
+      "components": [
+        {
+          "subject": "Swan notes",
+          "predicate": "audit_frequency",
+          "value": "daily",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "ALLEGED-32"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Self-proclaimed mandate remains unverified; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-034",
+    "category": "event_interpretation",
+    "name": "Connection observation does not prove compromise",
+    "query": {
+      "text": "Dune workstation network connection telemetry evidence",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-034",
+      "components": [
+        {
+          "subject": "Dune workstation",
+          "predicate": "network_connection",
+          "value": true,
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "EVENT-33"
+      ],
+      "required_evidence_groups": [
+        [
+          "EVENT-33"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Connection observation does not prove compromise; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-035",
+    "category": "event_interpretation",
+    "name": "Connection is not a login",
+    "query": {
+      "text": "Mesa device authentication success telemetry evidence",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-035",
+      "components": [
+        {
+          "subject": "Mesa device",
+          "predicate": "authentication_success",
+          "value": true,
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "EVENT-34"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Connection is not a login; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-036",
+    "category": "event_interpretation",
+    "name": "Contextual mention is not execution",
+    "query": {
+      "text": "Reef training command executed telemetry evidence",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-036",
+      "components": [
+        {
+          "subject": "Reef training",
+          "predicate": "command_executed",
+          "value": "delete backups",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "related_but_insufficient",
+      "relevant_ids": [
+        "EVENT-35"
+      ],
+      "required_evidence_groups": [
+        []
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Contextual mention is not execution; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-037",
+    "category": "event_interpretation",
+    "name": "Actual sign-in observation remains supported",
+    "query": {
+      "text": "Delta identity authentication success telemetry evidence",
+      "workflow": "soc_investigation",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-037",
+      "components": [
+        {
+          "subject": "Delta identity",
+          "predicate": "authentication_success",
+          "value": true,
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "EVENT-36"
+      ],
+      "required_evidence_groups": [
+        [
+          "EVENT-36"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Actual sign-in observation remains supported; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-038",
+    "category": "multiple_sufficient",
+    "name": "Either eligible inventory independently supports the observation",
+    "query": {
+      "text": "Brook catalogue public data sensitivity inventory",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-038",
+      "components": [
+        {
+          "subject": "Brook catalogue",
+          "predicate": "data_sensitivity",
+          "value": "public",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "MULTI-37-1",
+        "MULTI-37-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "MULTI-37-1",
+          "MULTI-37-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Either eligible inventory independently supports the observation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-039",
+    "category": "multiple_sufficient",
+    "name": "Either eligible inventory independently supports the observation",
+    "query": {
+      "text": "Creek schedule public data sensitivity inventory",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-039",
+      "components": [
+        {
+          "subject": "Creek schedule",
+          "predicate": "data_sensitivity",
+          "value": "public",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "MULTI-38-1",
+        "MULTI-38-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "MULTI-38-1",
+          "MULTI-38-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Either eligible inventory independently supports the observation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-040",
+    "category": "multiple_sufficient",
+    "name": "Either eligible inventory independently supports the observation",
+    "query": {
+      "text": "Stream index public data sensitivity inventory",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-040",
+      "components": [
+        {
+          "subject": "Stream index",
+          "predicate": "data_sensitivity",
+          "value": "public",
+          "kind": "observation"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "MULTI-39-1",
+        "MULTI-39-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "MULTI-39-1",
+          "MULTI-39-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Either eligible inventory independently supports the observation; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-041",
+    "category": "multi_chunk",
+    "name": "Both complementary chunks required",
+    "query": {
+      "text": "Harbor service access review owner interval quarterly",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Harbor service"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-041",
+      "components": [
+        {
+          "subject": "Harbor service",
+          "predicate": "review_owner",
+          "value": "service owner",
+          "kind": "requirement"
+        },
+        {
+          "subject": "Harbor service",
+          "predicate": "review_interval",
+          "value": "quarterly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CHUNK-40-1",
+        "CHUNK-40-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "CHUNK-40-1"
+        ],
+        [
+          "CHUNK-40-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Both complementary chunks required; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-042",
+    "category": "multi_chunk",
+    "name": "Both complementary chunks required",
+    "query": {
+      "text": "Beacon reports access review owner interval quarterly",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Beacon reports"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-042",
+      "components": [
+        {
+          "subject": "Beacon reports",
+          "predicate": "review_owner",
+          "value": "service owner",
+          "kind": "requirement"
+        },
+        {
+          "subject": "Beacon reports",
+          "predicate": "review_interval",
+          "value": "quarterly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CHUNK-41-1",
+        "CHUNK-41-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "CHUNK-41-1"
+        ],
+        [
+          "CHUNK-41-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Both complementary chunks required; trusted query grants are fixture-owned, never inferred from source/query prose."
+  },
+  {
+    "case_id": "ES1-043",
+    "category": "multi_chunk",
+    "name": "Both complementary chunks required",
+    "query": {
+      "text": "Cove workflow access review owner interval quarterly",
+      "workflow": "ai_system_risk",
+      "top_k": 5,
+      "policy_scopes": [
+        "Cove workflow"
+      ],
+      "access_scopes": [],
+      "authorities": [],
+      "as_of": "2026-10-01"
+    },
+    "claim": {
+      "claim_id": "CLAIM-043",
+      "components": [
+        {
+          "subject": "Cove workflow",
+          "predicate": "review_owner",
+          "value": "service owner",
+          "kind": "requirement"
+        },
+        {
+          "subject": "Cove workflow",
+          "predicate": "review_interval",
+          "value": "quarterly",
+          "kind": "requirement"
+        }
+      ]
+    },
+    "gold": {
+      "relationship": "directly_supports",
+      "relevant_ids": [
+        "CHUNK-42-1",
+        "CHUNK-42-2"
+      ],
+      "required_evidence_groups": [
+        [
+          "CHUNK-42-1"
+        ],
+        [
+          "CHUNK-42-2"
+        ]
+      ],
+      "conflict_ids": []
+    },
+    "rationale": "Both complementary chunks required; trusted query grants are fixture-owned, never inferred from source/query prose."
+  }
+]

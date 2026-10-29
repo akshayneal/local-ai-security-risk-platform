@@ -1,0 +1,13 @@
+{
+  "version": "evidence-support-v1",
+  "split": "held-out; no threshold calibration or candidate-result tuning",
+  "as_of": "2026-10-01",
+  "top_k": 5,
+  "retrievers": ["legacy", "lexical", "dense", "hybrid"],
+  "embedding_model": "embeddinggemma:300m",
+  "hybrid_rrf_constant": 60,
+  "support_candidate": "Conservative exact structured-assertion matching with trusted eligibility/authority; unstructured entailment remains unassessed; no ranking-score support threshold.",
+  "naive_comparator": "Diagnostic any-hit-means-support heuristic, not a claim that current retrievers or production analyses assert support.",
+  "live_generation": "None required for primary retrieval benchmark. Separate selected end-to-end plan must freeze before model calls; maximum 24 scheduled case trials.",
+  "source_scope": "All fixtures synthetic; access/policy grants are trusted experiment context, never read from query/source prose. Registry map simulates reviewed current-version state without touching application registry."
+}
