@@ -2,7 +2,7 @@
 
 Local analyst-support software for security-event investigation and AI-system risk review. It combines a Streamlit application, FastAPI backend, curated local references and Ollama inference with `qwen3:8b`.
 
-**Release candidate: 2.3.0rc1.** Two practitioner workflows are active. Human visual approval is pending; this branch has not been merged or tagged as a release.
+**Release: 2.3.0.** Two practitioner workflows are active.
 
 ## What it does
 
@@ -79,7 +79,6 @@ Prerequisites: Git, Python 3.13, and Ollama with `qwen3:8b` for analysis. Start 
 ```powershell
 git clone https://github.com/akshayneal/local-ai-security-risk-platform.git
 cd local-ai-security-risk-platform
-git switch feature/portfolio-hardening
 python -m venv .venv
 ```
 

@@ -135,7 +135,7 @@ def test_ai_system_risk_name_in_exports():
 
 
 def test_application_version_is_centralized_and_independent_of_scorers():
-    assert APPLICATION_VERSION == "2.3.0rc1"
+    assert APPLICATION_VERSION == "2.3.0"
     with TestClient(app) as client:
         assert (
             app.version
