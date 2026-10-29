@@ -121,9 +121,9 @@ def test_treatment_manifest_freeze_and_expectations():
     for name, expected in manifest["artifact_sha256"].items():
         assert byte_hash(ROOT / name) == expected, name
     for name, expected in manifest["behavior_git_blob_sha1"].items():
-        actual = subprocess.check_output(
-            ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-        ).strip()
+        from historical_identity import expansion_blob
+
+        actual = expansion_blob(name)
         original = subprocess.check_output(
             ["git", "rev-parse", f"{manifest['treatment_commit']}:{name}"],
             cwd=ROOT,
