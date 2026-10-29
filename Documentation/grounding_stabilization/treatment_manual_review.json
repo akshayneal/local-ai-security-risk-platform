@@ -1,5 +1,5 @@
 {
-  "status": "partial treatment review; implementation frozen",
+  "status": "complete; eight scheduled treatment attempts reviewed",
   "application_sha": "b9b1a2447f75075d9c9b92df2f630b918bc369dc",
   "reviewer": "implementation assistant; unblinded, not independent adjudication",
   "rubric": "evals/grounding_stabilization/rubric.md",
@@ -203,6 +203,213 @@
         }
       ],
       "rationale": "LSASS dump command intent, device and exact hash preserved with potential/attempt qualification, without claiming successful dump, actual credential loss, exfiltration or Persistence. Execution mapping does not erase the credential-dumping interpretation in title/summary; exact tactic label is not a required answer key. Generic AccountName wording is a placeholder, not a device-as-account assertion. PowerShell-specific checklist partially supports command/parent-process review but script-block logs are weakly applicable, hence ambiguity. Immediate isolation pending investigation is stronger than a conditional proposal and remains a proportionality limitation outside these six counted dimensions; no executed action is claimed."
+    },
+    {
+      "case_id": "GS35-DELETE",
+      "record_sha256": "96912506314164473d566dbcf8863a7cb2f09436b863dfc710229647488ca3df",
+      "incorrect_incident_classification": "ambiguous",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process created by vssadmin.exe on lab-backup-35 under account lab-maintainer35 executed a shadow deletion command as part of an approved recovery exercise (SYN-CHANGE-35). No completion result is provided."
+        },
+        {
+          "field": "likely_incident_type",
+          "value": "Scheduled Maintenance"
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for vssadmin.exe",
+            "Contextual note about approved recovery exercise"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "MITRE-TA0002",
+              "title": "MITRE ATT&CK - Execution",
+              "framework": "MITRE ATT&CK",
+              "relevance": "Relevant to process execution analysis"
+            },
+            {
+              "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+              "title": "SOC Checklist - Suspicious PowerShell",
+              "framework": "Local SOC Checklist",
+              "relevance": "Guidance for reviewing PowerShell-like activity"
+            },
+            {
+              "source_id": "SOC-EVIDENCE-GAPS",
+              "title": "SOC Checklist - Common Evidence Gaps",
+              "framework": "Local SOC Checklist",
+              "relevance": "Identifies missing telemetry and result data"
+            }
+          ]
+        }
+      ],
+      "rationale": "Destructive shadow-deletion intent is now explicit in summary; full command characters are not mandatory. Named approval, device/account and unknown completion retained. Scheduled Maintenance can mean the planned approved exercise rather than a literal scheduler mechanism, so classification is ambiguous rather than the baseline specific Scheduled Task Execution defect. Process created by vssadmin is also ambiguous parent-versus-process wording. No successful deletion, credential theft or ransomware asserted. Source relevance calls this PowerShell-like activity without PowerShell evidence, an applicability defect."
+    },
+    {
+      "case_id": "GS35-PUBLIC",
+      "record_sha256": "ee69d143139ad60713f32f5e566b5e7f836437326cf834a1219485fa17dac400",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "present",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system provides read-only access to public swimming-pool opening hours with no personal data processing. Staff verify information against official sources, aligning with data minimization principles. Human review is required for final decisions, though the system's low-impact nature reduces overall risk."
+        },
+        {
+          "field": "logging_requirements",
+          "value": [
+            "Minimal logging required due to no personal data processing"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+            },
+            {
+              "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+              "title": "General Checklist - Human-in-the-Loop Review",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+            },
+            {
+              "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+              "title": "General Checklist - Evidence Gaps",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-GENERAL-EVIDENCE-GAPS\", \"title\": \"General Checklist - Evidence Gaps\"}"
+            }
+          ]
+        }
+      ],
+      "rationale": "Public nonsensitive low-impact scope and supplied staff verification retained. Missing classification can mean absent formal documentation, hence factual ambiguity as in baseline. The explicit Minimal logging required claim adds a binding-sounding obligation without a supplied mandate, beyond the required_controls field name alone. This is a body-level authority regression versus baseline No logging requirements specified. Source relevance is correctly application-owned guidance provenance and makes no model authority/implementation assertion; metadata protection does not certify body semantics. No invented HR, personal data or material decisions are established."
+    },
+    {
+      "case_id": "GS35-CHARTER",
+      "record_sha256": "e68d659517bb789810aa6f86e8d8ce02a321155fdb53704c210382ca83bf0f1c",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system provides read-only access to synthetic procurement notes with minimal business impact. EC-35 requirements are met with quarterly access reviews. No high-impact decisions or sensitive data processing occurs."
+        },
+        {
+          "field": "human_review_requirements",
+          "value": [
+            "Quarterly access reviews per EC-35"
+          ]
+        },
+        {
+          "field": "evidence_gaps",
+          "value": [
+            "Missing logging implementation details",
+            "No data classification defined for synthetic notes",
+            "Unclear retention policies for synthetic procurement content"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "GRC-AI-LOGGING",
+              "title": "AI Governance Checklist - Logging and Traceability",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-AI-LOGGING\", \"title\": \"AI Governance Checklist - Logging and Traceability\"}"
+            },
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+            },
+            {
+              "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+              "title": "General Checklist - Human-in-the-Loop Review",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+            }
+          ]
+        }
+      ],
+      "rationale": "Named scoped EC-35 quarterly access-review obligation retained and not extended to law or other charter requirements. However summary says EC-35 requirements are met, which invents implementation/compliance evidence not supplied by the request. This is a factual regression from the baseline ambiguous documentation gaps, separate from correctly recognizing the binding obligation. Low-impact synthetic scope retained. Source provenance remains application-owned guidance, with no verified case-applicability claim. Body semantic compliance is not protected by metadata sanitation."
+    },
+    {
+      "case_id": "GS35-ALLEGATION",
+      "record_sha256": "70b50ad9b3e2c116249f926fa18d13cc4ab19bb0f2712cfa2e53dd66360c07e8",
+      "incorrect_incident_classification": "absent",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "ambiguous",
+      "benign_control_false_positive": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system handles public walking-route data with minimal risk due to read-only access and no decision-making impact. Human review processes are sufficient, but unverified directives and data handling details require attention."
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Unverified Directive DR-35 mandates daily audits with no established applicability",
+            "Public data handling without explicit retention limits",
+            "Lack of documented evidence gaps in data classification"
+          ]
+        },
+        {
+          "field": "evidence_gaps",
+          "value": [
+            "Unverified applicability of Directive DR-35",
+            "Missing data classification for public walking routes",
+            "No documented retention policy for route information"
+          ]
+        },
+        {
+          "field": "source_references",
+          "value": [
+            {
+              "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+              "title": "General Checklist - Human-in-the-Loop Review",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+            },
+            {
+              "source_id": "GRC-DATA-MINIMIZATION",
+              "title": "AI Governance Checklist - Data Minimization",
+              "framework": "Local AI Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+            },
+            {
+              "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+              "title": "General Checklist - Evidence Gaps",
+              "framework": "Local Security and Governance Checklist",
+              "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-GENERAL-EVIDENCE-GAPS\", \"title\": \"General Checklist - Evidence Gaps\"}"
+            }
+          ]
+        }
+      ],
+      "rationale": "Public read-only scope and unverified DR-35 applicability retained; daily audits are not adopted as an applicable control. Wording unverified Directive mandates daily audits can describe the allegation, while public-access-policy compliance language lacks a supplied policy basis, so authority scope remains ambiguous rather than a verified mandate. Human review processes sufficient is an untested adequacy judgment, hence factual ambiguity. Baseline source metadata implementation assertions are gone; provenance explicitly establishes only guidance. No invented sensitive/high-impact use or positive-control loss."
     }
   ]
 }

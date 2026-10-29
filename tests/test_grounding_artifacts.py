@@ -47,7 +47,7 @@ def test_untreated_report_identity_schedule_actual_authorization_and_review():
             [
                 "git",
                 "show",
-                "41250f9:Documentation/grounding_stabilization/baseline_manual_review.json",
+                "4ce84ca:Documentation/grounding_stabilization/baseline_manual_review.json",
             ],
             cwd=ROOT,
         )
@@ -108,3 +108,76 @@ def test_offline_query_controls_replay_without_changing_original_diagnostic():
             assert expected["lexical_top5"] == [
                 h.record.source_id for h in lexical_search("soc_alert", query, 5)
             ]
+
+
+def test_treatment_artifacts_replay_and_guidance_metadata_has_no_model_authority():
+    from evals.grounding_stabilization.comparison import (
+        compare_reports,
+        compare_reviews,
+    )
+
+    baseline = json.loads((FOLDER / "baseline.json").read_bytes())
+    treatment = json.loads((FOLDER / "treatment.json").read_bytes())
+    provenance = json.loads((FOLDER / "treatment_provenance.json").read_bytes())
+    for name, expected in provenance["artifact_sha256"].items():
+        assert hashlib.sha256((FOLDER / name).read_bytes()).hexdigest() == expected
+    assert (
+        treatment["runtime"]["git_commit"] == "b9b1a2447f75075d9c9b92df2f630b918bc369dc"
+    )
+    assert not treatment["runtime"]["git_dirty"]
+    assert provenance["journal_records_equal_report"] is True
+    assert provenance["executing_source_changes_during_treatment"] == []
+    assert json.loads((FOLDER / "comparison.json").read_bytes()) == compare_reports(
+        baseline, treatment
+    )
+    before = json.loads((FOLDER / "baseline_manual_review.json").read_bytes())
+    after = json.loads((FOLDER / "treatment_manual_review.json").read_bytes())
+    assert json.loads(
+        (FOLDER / "manual_comparison.json").read_bytes()
+    ) == compare_reviews(before, after)
+    for case, row in zip(cases(), treatment["records"], strict=True):
+        if row["result"] is None:
+            continue
+        assert row["checks"] == checks(
+            row["result"], row["retrieval"][0]["source_ids"], case
+        )
+        if case["workflow"] == "governance":
+            for source in row["result"]["source_references"]:
+                prefix = "Application guidance provenance: "
+                assert source["relevance"].startswith(prefix)
+                metadata = json.loads(source["relevance"][len(prefix) :])
+                assert metadata["binding_by_retrieval"] is False
+                assert metadata["policy_scope"] is None
+                assert metadata["authority"] in {
+                    "local_reference_guidance",
+                    "external_framework_guidance",
+                }
+
+
+def test_treatment_manual_review_quotes_and_earlier_judgments_preserved():
+    from evals.grounding_stabilization.comparison import DIMENSIONS
+
+    report = json.loads((FOLDER / "treatment.json").read_bytes())
+    review = json.loads((FOLDER / "treatment_manual_review.json").read_bytes())
+    assert review["status"] == "complete; eight scheduled treatment attempts reviewed"
+    assert len(review["reviews"]) == len(report["records"]) == 8
+    for item, row in zip(review["reviews"], report["records"], strict=True):
+        assert item["case_id"] == row["case_id"]
+        assert item["record_sha256"] == digest(row)
+        for key in DIMENSIONS:
+            assert item[key] in {"present", "absent", "ambiguous", "unassessable"}
+            assert (item[key] == "unassessable") is (row["result"] is None)
+        for quote in item["quotes"]:
+            assert quote["value"] == row["result"][quote["field"]]
+    prior = json.loads(
+        subprocess.check_output(
+            [
+                "git",
+                "show",
+                "9c8f288:Documentation/grounding_stabilization/treatment_manual_review.json",
+            ],
+            cwd=ROOT,
+        )
+    )
+    assert review["reviews"][: len(prior["reviews"])] == prior["reviews"]
+    assert review["judgment_revisions"] == []

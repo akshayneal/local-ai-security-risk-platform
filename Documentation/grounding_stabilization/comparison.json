@@ -1,0 +1,47 @@
+{
+  "identity": {
+    "semantic_case_sha256": "eb919232e5428640c1d7f2d51006ddab42c4c72c2811b2ba7e7c58c2cd744028",
+    "source_sha256": {
+      "cases.json": "20877e270ab1c34d8ca1588423a71b39d27da407d505298a71407888b439cffc",
+      "plan.json": "5efcb57b8be3d9e01a23d7c3c58ca97a7d02aa1572f4716ebecf54a1e3529c0c",
+      "rubric.md": "925f18207364611727e7472cd6740eeaf629b9b22dbe2737cfda6fbf2f5b3877",
+      "runner.py": "c610e8683d95303bbb21437e8dc05b0f03ad5a6010eca51857db5f15a10d9be3"
+    }
+  },
+  "baseline_sha": "4baae12cb14522a6706fe2d18d8c02d672a16ea8",
+  "treatment_sha": "b9b1a2447f75075d9c9b92df2f630b918bc369dc",
+  "baseline": {
+    "case_trials": 8,
+    "returned": 8,
+    "withheld": 0,
+    "first_pass_returned": 8,
+    "policy_repairs": 0,
+    "returned_after_repair": 0,
+    "model_requests": 8,
+    "completed_model_responses": 8,
+    "errors": {},
+    "machine_check_failures": {
+      "case_identity_exact": 1
+    },
+    "latency_ms_median_all_attempts": 94248.74580000323,
+    "latency_ms_total": 767570.7057000109
+  },
+  "treatment": {
+    "case_trials": 8,
+    "returned": 8,
+    "withheld": 0,
+    "first_pass_returned": 8,
+    "policy_repairs": 0,
+    "returned_after_repair": 0,
+    "model_requests": 8,
+    "completed_model_responses": 8,
+    "errors": {},
+    "machine_check_failures": {},
+    "latency_ms_median_all_attempts": 117012.24185000319,
+    "latency_ms_total": 909107.4437000061
+  },
+  "availability_transitions": {
+    "returned -> returned": 8
+  },
+  "semantic_assessment": "Separate unchanged-rubric manual review; no composite score or statistical reliability claim."
+}

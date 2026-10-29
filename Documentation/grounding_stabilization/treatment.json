@@ -1,0 +1,1047 @@
+{
+  "identity": {
+    "semantic_case_sha256": "eb919232e5428640c1d7f2d51006ddab42c4c72c2811b2ba7e7c58c2cd744028",
+    "source_sha256": {
+      "cases.json": "20877e270ab1c34d8ca1588423a71b39d27da407d505298a71407888b439cffc",
+      "plan.json": "5efcb57b8be3d9e01a23d7c3c58ca97a7d02aa1572f4716ebecf54a1e3529c0c",
+      "rubric.md": "925f18207364611727e7472cd6740eeaf629b9b22dbe2737cfda6fbf2f5b3877",
+      "runner.py": "c610e8683d95303bbb21437e8dc05b0f03ad5a6010eca51857db5f15a10d9be3"
+    }
+  },
+  "phase": "treatment",
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.12",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "b9b1a2447f75075d9c9b92df2f630b918bc369dc",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "started_utc": "2026-10-29T19:45:24.060191+00:00",
+  "records": [
+    {
+      "case_id": "GS35-NET",
+      "request_sha256": "ec22a6862a3712baf121e21241dde8d88eb72495fe296db7173cc268834cf32d",
+      "result": {
+        "alert_id": "GS35-NET",
+        "severity": "medium",
+        "likely_incident_type": "Network Connection",
+        "summary": "A successful TCP connection was established from lab-router-35 (192.0.2.73) to 198.51.100.73 on port 7443. No associated account activity or process details were observed.",
+        "mitre_mapping": [
+          "Command and Control"
+        ],
+        "recommended_containment": [
+          "Monitor network traffic for additional connections from lab-router-35",
+          "Verify if the destination IP (198.51.100.73) is associated with known services or malicious activity",
+          "Check for related process creation events or account access attempts",
+          "Consider isolating the device if further suspicious activity is detected"
+        ],
+        "recommended_investigation_steps": [
+          "Review network traffic patterns from lab-router-35",
+          "Check if the destination IP (198.51.100.73) is linked to any known malicious domains or services",
+          "Investigate if this connection correlates with any other security events or account compromises",
+          "Analyze system logs for associated process creation or credential access attempts"
+        ],
+        "false_positive_considerations": [
+          "The connection could be a legitimate service or administrative task",
+          "Port 7443 may be used by a known application or protocol",
+          "No account or process context is available to confirm malicious intent"
+        ],
+        "evidence_gaps": [
+          "Missing details about the connection's purpose or context",
+          "No associated account activity or process creation events",
+          "No information about the destination IP's reputation or associated domains"
+        ],
+        "analyst_note": "The observed connection appears to be a single successful network event without additional context. While the port (7443) is not standard, this alone does not confirm malicious activity. Further investigation is needed to determine the connection's legitimacy.",
+        "observed_evidence": [
+          "ConnectionSuccess event from lab-router-35 (192.0.2.73) to 198.51.100.73 on port 7443 using TCP"
+        ],
+        "analyst_inferences": [],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0011",
+            "title": "MITRE ATT&CK - Command and Control",
+            "framework": "MITRE ATT&CK",
+            "relevance": "The connection could represent command and control activity, though additional evidence is needed to confirm"
+          },
+          {
+            "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+            "title": "SOC Checklist - Suspicious PowerShell",
+            "framework": "Local SOC Checklist",
+            "relevance": "No PowerShell activity was observed in this event"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 109915.12630000943,
+      "retrieval": [
+        {
+          "query_sha256": "0db2adf7ecb9e12ec286248cecb4bf7882a849925bf95a6036d9e26b6f69df32",
+          "query_utf8_bytes": 266,
+          "source_ids": [
+            "MITRE-TA0007",
+            "MITRE-TA0011",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8939,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2471,
+          "eval_count": 887,
+          "total_duration": 107862202100,
+          "load_duration": 4047553600,
+          "prompt_eval_duration": 3014274000,
+          "eval_duration": 100788335000,
+          "elapsed_ms": 109898.407,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "38dade0b105b9bf821f71f475652ad03980a06052ad3ba689365819b039f4a8b",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 3.388
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 109915.021
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 109915.03
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-NOTE",
+      "request_sha256": "90be4078159a37dbae39f1f21566af220d9c6b390332c04178b1e9f242797c33",
+      "result": {
+        "alert_id": "GS35-NOTE",
+        "severity": "high",
+        "likely_incident_type": "False Positive",
+        "summary": "The alert indicates \"Possible credential theft\" but lacks direct evidence of credential access. A notepad.exe process was created on lab-training-35, but no credential access, sign-in events, or suspicious authentication activity is observed. The alert's title suggests concern but does not confirm malicious activity.",
+        "mitre_mapping": [
+          "Initial Access"
+        ],
+        "recommended_containment": [
+          "Verify if the notepad.exe process is part of legitimate training activities. Monitor for additional suspicious process creations or credential access attempts.",
+          "Check system logs for unauthorized access patterns or unusual authentication events.",
+          "Ensure conditional access policies are properly configured to detect and block unauthorized access attempts."
+        ],
+        "recommended_investigation_steps": [
+          "Review the full raw log for additional context about the notepad.exe process and its command-line arguments.",
+          "Check for any related events in the AlertEvidence table that might indicate credential access or unauthorized activity.",
+          "Verify if the lab-training-35 device has any security policies or training materials that might explain the notepad.exe process.",
+          "Cross-reference the alert with other security telemetry to identify potential patterns or correlations.",
+          "Examine network traffic and system logs for any signs of unauthorized access or lateral movement.",
+          "Validate if the \"Possible credential theft\" alert is based on incomplete data or misinterpreted telemetry."
+        ],
+        "false_positive_considerations": [
+          "The alert's title suggests credential theft, but no direct evidence of credential access is present.",
+          "The notepad.exe process may be part of legitimate training activities rather than malicious activity.",
+          "The absence of sign-in events or authentication failures weakens the credibility of the credential theft claim."
+        ],
+        "evidence_gaps": [
+          "No observed credential access events or sign-in attempts.",
+          "No indication of unauthorized access or suspicious authentication activity.",
+          "Missing details about the notepad.exe process's command-line arguments or purpose.",
+          "No network traffic or remote access evidence to support the alert's title."
+        ],
+        "analyst_note": "The alert's title suggests potential credential theft, but the available evidence does not confirm this. The observed process creation for notepad.exe may be part of legitimate training activities. Further investigation is needed to determine if this is a false positive or if there are other indicators of compromise that were not included in the provided telemetry.",
+        "observed_evidence": [
+          "ProcessCreated event for notepad.exe on lab-training-35",
+          "Alert note indicating the vssadmin.exe example was not executed",
+          "No credential access or sign-in events observed"
+        ],
+        "analyst_inferences": [
+          "The notepad.exe process may be related to legitimate training activities rather than malicious activity.",
+          "The alert's title about credential theft is not supported by observed telemetry.",
+          "No evidence of unauthorized access or suspicious authentication activity was found.",
+          "The absence of credential access events weakens the credibility of the alert's title."
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0001",
+            "title": "MITRE ATT&CK - Initial Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "The alert's title suggests possible initial access, but no direct evidence of unauthorized login is present"
+          },
+          {
+            "source_id": "MITRE-TA0006",
+            "title": "MITRE ATT&CK - Credential Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "The alert's title implies credential theft, but no direct evidence of credential access is observed"
+          },
+          {
+            "source_id": "LOCAL-SUPPORTED-CLAIMS",
+            "title": "General Checklist - Supported Claims",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "The analysis must distinguish between observed evidence and unsupported claims, ensuring no assumptions are made about IP, domain, or credential status without explicit data"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 133114.24320000515,
+      "retrieval": [
+        {
+          "query_sha256": "a5f172604ec606a5d7ef3c3fc03bc592962c6dbe45fd906e1196b1abc5014f3e",
+          "query_utf8_bytes": 559,
+          "source_ids": [
+            "MITRE-TA0006",
+            "MITRE-TA0002",
+            "LOCAL-SUPPORTED-CLAIMS",
+            "MITRE-TA0001",
+            "MITRE-TA0003"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10245,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2702,
+          "eval_count": 1101,
+          "total_duration": 131053972600,
+          "load_duration": 9672500,
+          "prompt_eval_duration": 1746475000,
+          "eval_duration": 129145838000,
+          "elapsed_ms": 133101.284,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "f057937df162a0ca2a2473b83aeaf66c262de6ce88bcbfaea63c090d68e260bc",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 3.767
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 133114.135
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 133114.143
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-AUTH",
+      "request_sha256": "f6a20521917e743d5ee8bfbe8001c606ce569881bb1565e67915c4ae190a821e",
+      "result": {
+        "alert_id": "GS35-AUTH",
+        "severity": "high",
+        "likely_incident_type": "Brute Force Attempt",
+        "summary": "Multiple failed password authentication attempts followed by a successful login to account lab-reviewer35@example.invalid from IP 203.0.113.73. The successful login had ConditionalAccessStatus: success but no MFA context provided.",
+        "mitre_mapping": [
+          "Credential Access (TA0006)",
+          "Initial Access (TA0001)"
+        ],
+        "recommended_containment": [
+          "Consider disabling the account lab-reviewer35@example.invalid pending verification of the successful login's legitimacy",
+          "Review ConditionalAccess logs for this account and IP to confirm authorization"
+        ],
+        "recommended_investigation_steps": [
+          "Check MFA/Conditional Access logs for this account and IP",
+          "Review post-login activity for privilege changes or persistence indicators",
+          "Verify if the IP 203.0.113.73 is associated with known legitimate users or locations"
+        ],
+        "false_positive_considerations": [
+          "The successful login may be legitimate if the IP is known to the organization",
+          "ConditionalAccessStatus: success could indicate proper authentication controls"
+        ],
+        "evidence_gaps": [
+          "Missing MFA/Conditional Access logs",
+          "Missing VPN context for the IP",
+          "Missing post-login activity telemetry"
+        ],
+        "analyst_note": "The pattern of failed attempts followed by a successful login could indicate a brute force attempt. However, the successful login's legitimacy requires verification through MFA/Conditional Access logs and contextual validation.",
+        "observed_evidence": [
+          "3 SigninLog entries for lab-reviewer35@example.invalid from 203.0.113.73",
+          "2 failed password attempts (ResultType 50126)",
+          "1 successful authentication (ResultType 0) with ConditionalAccessStatus: success"
+        ],
+        "analyst_inferences": [
+          "The sequence suggests potential credential access attempt",
+          "The successful login's legitimacy is unverified without MFA/Conditional Access context"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0006",
+            "title": "MITRE ATT&CK - Credential Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Directly describes credential access techniques including brute force"
+          },
+          {
+            "source_id": "SOC-BRUTE-FORCE-SUCCESS",
+            "title": "SOC Checklist - Brute Force Followed by Successful Login",
+            "framework": "Local SOC Checklist",
+            "relevance": "Provides investigation steps for brute force followed by successful login"
+          },
+          {
+            "source_id": "MITRE-TA0001",
+            "title": "MITRE ATT&CK - Initial Access",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant if the successful login represents unauthorized initial access"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing MFA/Conditional Access logs as evidence gaps"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 145392.48389999557,
+      "retrieval": [
+        {
+          "query_sha256": "4c217dffca1ae030d823a3d9b1899d8157f629e656d1ba719bd297feda37fa19",
+          "query_utf8_bytes": 718,
+          "source_ids": [
+            "MITRE-TA0006",
+            "SOC-BRUTE-FORCE-SUCCESS",
+            "MITRE-TA0001",
+            "SOC-EVIDENCE-GAPS",
+            "LOCAL-AUDITABILITY"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10629,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2871,
+          "eval_count": 1177,
+          "total_duration": 143326217100,
+          "load_duration": 8750300,
+          "prompt_eval_duration": 1813503000,
+          "eval_duration": 141348555000,
+          "elapsed_ms": 145376.078,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "214019f3416dccbe63588dbfa68bd5e9cf1a4a16c11bec61f6137ea26458392e",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 4.078
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 145392.327
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 145392.339
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-DUMP",
+      "request_sha256": "8ec24e45520d2671fd1ea8248842f0783b1b6f5ad4bc02085351fe6b4b2885e0",
+      "result": {
+        "alert_id": "GS35-DUMP",
+        "severity": "high",
+        "likely_incident_type": "Credential Dumping",
+        "summary": "A process creation event was detected on lab-memory-35 executing procdump.exe with a memory dump command targeting lsass.exe. The command line indicates potential credential dumping activity.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Isolate lab-memory-35 from the network pending investigation",
+          "Review account privileges for AccountName associated with the process",
+          "Check for additional suspicious process creations"
+        ],
+        "recommended_investigation_steps": [
+          "Verify if the procdump.exe execution aligns with approved administrative tasks",
+          "Investigate the user context and authentication history for lab-memory-35",
+          "Check for associated network connections and file system changes",
+          "Review conditional access status and MFA compliance for the account"
+        ],
+        "false_positive_considerations": [
+          "The process may be part of legitimate memory analysis or troubleshooting",
+          "The command could be a false positive for credential dumping without further context"
+        ],
+        "evidence_gaps": [
+          "Missing process tree information",
+          "Missing authentication history",
+          "Missing asset criticality context",
+          "Missing timeline context"
+        ],
+        "analyst_note": "The observed process creation suggests potential credential dumping activity, but requires further verification. The command line indicates memory extraction from lsass.exe, which is commonly associated with credential theft. However, without additional evidence like network exfiltration or unauthorized access, this remains a potential indicator rather than confirmed compromise.",
+        "observed_evidence": [
+          "ProcessCreated event on lab-memory-35",
+          "Execution of procdump.exe with memory dump command targeting lsass.exe",
+          "SHA256 hash 7373737373737373737373737373737373737373737373737373737373737373"
+        ],
+        "analyst_inferences": [
+          "Suspicious memory extraction activity targeting lsass.exe",
+          "Potential credential dumping attempt",
+          "Unverified legitimacy of the process execution"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "The execution of procdump.exe aligns with MITRE ATT&CK Execution tactics"
+          },
+          {
+            "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+            "title": "SOC Checklist - Suspicious PowerShell",
+            "framework": "Local SOC Checklist",
+            "relevance": "The command line warrants review of full command line, parent process, and script block logs as per checklist"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "The analysis highlights gaps in process tree, authentication history, and timeline context"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 127170.38129999128,
+      "retrieval": [
+        {
+          "query_sha256": "7a25e633d969fca1efcd38239bf3e35c94a1db7ffdfd72511e83ca277f35ae01",
+          "query_utf8_bytes": 319,
+          "source_ids": [
+            "MITRE-TA0002",
+            "SOC-EVIDENCE-GAPS",
+            "SOC-POWERSHELL-SUSPICIOUS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 9155,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2607,
+          "eval_count": 1064,
+          "total_duration": 125118914100,
+          "load_duration": 9451100,
+          "prompt_eval_duration": 1673933000,
+          "eval_duration": 123231659000,
+          "elapsed_ms": 127161.172,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "06c215c08c7055205f6a8b2d1910abd48daf9fd219b49e3779fa1567d044fcb8",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 3.698
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 127170.268
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 127170.274
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-DELETE",
+      "request_sha256": "f53579825ede757e31f2298f045174fd188af396a6fdb1c80905d4bfa41d9cc0",
+      "result": {
+        "alert_id": "GS35-DELETE",
+        "severity": "medium",
+        "likely_incident_type": "Scheduled Maintenance",
+        "summary": "A process created by vssadmin.exe on lab-backup-35 under account lab-maintainer35 executed a shadow deletion command as part of an approved recovery exercise (SYN-CHANGE-35). No completion result is provided.",
+        "mitre_mapping": [
+          "Execution"
+        ],
+        "recommended_containment": [
+          "Verify command execution outcome",
+          "Monitor for unexpected network activity",
+          "Check for additional process creation anomalies"
+        ],
+        "recommended_investigation_steps": [
+          "Confirm if the command completed successfully",
+          "Review associated authentication logs",
+          "Check for unusual network connections during execution"
+        ],
+        "false_positive_considerations": [
+          "The activity is part of an approved recovery exercise",
+          "vssadmin.exe is a legitimate Microsoft utility"
+        ],
+        "evidence_gaps": [
+          "Missing endpoint telemetry",
+          "Missing authentication history",
+          "Missing result data"
+        ],
+        "analyst_note": "The observed process creation aligns with an approved maintenance task, but the absence of completion data requires verification to rule out unexpected behavior.",
+        "observed_evidence": [
+          "ProcessCreated event for vssadmin.exe",
+          "Contextual note about approved recovery exercise"
+        ],
+        "analyst_inferences": [
+          "The command matches a known maintenance task",
+          "No evidence of compromise or unauthorized access"
+        ],
+        "source_references": [
+          {
+            "source_id": "MITRE-TA0002",
+            "title": "MITRE ATT&CK - Execution",
+            "framework": "MITRE ATT&CK",
+            "relevance": "Relevant to process execution analysis"
+          },
+          {
+            "source_id": "SOC-POWERSHELL-SUSPICIOUS",
+            "title": "SOC Checklist - Suspicious PowerShell",
+            "framework": "Local SOC Checklist",
+            "relevance": "Guidance for reviewing PowerShell-like activity"
+          },
+          {
+            "source_id": "SOC-EVIDENCE-GAPS",
+            "title": "SOC Checklist - Common Evidence Gaps",
+            "framework": "Local SOC Checklist",
+            "relevance": "Identifies missing telemetry and result data"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 91771.85520000057,
+      "retrieval": [
+        {
+          "query_sha256": "b8aa78f127f510097ea95bff9b32c9bedfacd2664a4f2ec69efe2b24b889600c",
+          "query_utf8_bytes": 460,
+          "source_ids": [
+            "MITRE-TA0002",
+            "SOC-POWERSHELL-SUSPICIOUS",
+            "MITRE-TA0005",
+            "MITRE-TA0011",
+            "SOC-EVIDENCE-GAPS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": 8192,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 10013,
+          "schema_json_utf8_bytes": 2515,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": true,
+          "prompt_eval_count": 2653,
+          "eval_count": 764,
+          "total_duration": 89723238000,
+          "load_duration": 9979400,
+          "prompt_eval_duration": 1846641000,
+          "eval_duration": 87562107000,
+          "elapsed_ms": 91759.21,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "dc2858cf7667ba466ac05808dea457841b286e7cd3972491e365912d635d8d72",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 3.491
+          },
+          {
+            "generation": 0,
+            "stage": "validation",
+            "violations": [],
+            "schema": "passed",
+            "sources": "processed",
+            "observables": "passed",
+            "endpoints": "passed",
+            "observations": "passed",
+            "elapsed_ms": 91771.724
+          },
+          {
+            "generation": 0,
+            "stage": "outcome",
+            "status": "accepted",
+            "elapsed_ms": 91771.735
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-PUBLIC",
+      "request_sha256": "5677239e6175dc19876142de0b62d3c8560342a14a66238afa275f163504e1a0",
+      "result": {
+        "system_name": "Lab opening-hours helper 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system provides read-only access to public swimming-pool opening hours with no personal data processing. Staff verify information against official sources, aligning with data minimization principles. Human review is required for final decisions, though the system's low-impact nature reduces overall risk.",
+        "key_risks": [
+          "Data minimization compliance",
+          "Human review adequacy",
+          "Missing data classification"
+        ],
+        "required_controls": [
+          "Limit data collection to public opening-hours pages",
+          "Implement staff verification process for information accuracy",
+          "Document data sources and handling requirements"
+        ],
+        "human_review_requirements": [
+          "Staff must inspect source pages before relying on answers"
+        ],
+        "logging_requirements": [
+          "Minimal logging required due to no personal data processing"
+        ],
+        "evidence_gaps": [
+          "Missing data classification",
+          "Missing approval records",
+          "Missing business impact documentation"
+        ],
+        "recommended_next_steps": [
+          "Confirm data sources and classification",
+          "Document staff verification process",
+          "Establish data handling requirements"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-GENERAL-EVIDENCE-GAPS\", \"title\": \"General Checklist - Evidence Gaps\"}"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 89029.41570000257,
+      "retrieval": [
+        {
+          "query_sha256": "b51954b1bc0d8292d8c93def7dd3035fc404e71945a0d23ccd3af7261f513c0d",
+          "query_utf8_bytes": 572,
+          "source_ids": [
+            "AI-RMF-MAP",
+            "GRC-DATA-MINIMIZATION",
+            "AI-RMF-GOVERN",
+            "GRC-HIGH-IMPACT-USE",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "LOCAL-HUMAN-IN-THE-LOOP"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8345,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 2313,
+          "eval_count": 924,
+          "total_duration": 86973634400,
+          "load_duration": 6732265400,
+          "prompt_eval_duration": 2636829000,
+          "eval_duration": 77564574000,
+          "elapsed_ms": 89017.465,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "50df9bd326b126fc19a75ba2d4fc34a85d26e08212f6033b05b38ecb96815cbd",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.222
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-CHARTER",
+      "request_sha256": "2d5543386126f5b3f64a916202e8dda52376a4ce2e2f3bac01cb6c1316604474",
+      "result": {
+        "system_name": "Lab procurement reader 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system provides read-only access to synthetic procurement notes with minimal business impact. EC-35 requirements are met with quarterly access reviews. No high-impact decisions or sensitive data processing occurs.",
+        "key_risks": [
+          "Insufficient logging for accountability",
+          "Potential data minimization gaps for synthetic notes",
+          "Missing data classification for synthetic procurement content"
+        ],
+        "required_controls": [
+          "Implement data minimization for synthetic procurement notes",
+          "Establish logging requirements for system activity",
+          "Define data classification for synthetic procurement content"
+        ],
+        "human_review_requirements": [
+          "Quarterly access reviews per EC-35"
+        ],
+        "logging_requirements": [
+          "Record timestamps, system version, input/output categories, and human approval status"
+        ],
+        "evidence_gaps": [
+          "Missing logging implementation details",
+          "No data classification defined for synthetic notes",
+          "Unclear retention policies for synthetic procurement content"
+        ],
+        "recommended_next_steps": [
+          "Define logging parameters",
+          "Classify synthetic procurement notes",
+          "Establish retention policies for synthetic data"
+        ],
+        "source_references": [
+          {
+            "source_id": "GRC-AI-LOGGING",
+            "title": "AI Governance Checklist - Logging and Traceability",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-AI-LOGGING\", \"title\": \"AI Governance Checklist - Logging and Traceability\"}"
+          },
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+          },
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 88604.58070000459,
+      "retrieval": [
+        {
+          "query_sha256": "01ae3854eaffa4d1909a3c4d81d2fc57256ec775c0700c413382edff04fc2d3b",
+          "query_utf8_bytes": 571,
+          "source_ids": [
+            "GRC-HUMAN-REVIEW",
+            "GRC-HIGH-IMPACT-USE",
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "GRC-AI-LOGGING",
+            "GRC-DATA-MINIMIZATION",
+            "LOCAL-GENERAL-EVIDENCE-GAPS"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8554,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 2333,
+          "eval_count": 1009,
+          "total_duration": 88589949200,
+          "load_duration": 13442100,
+          "prompt_eval_duration": 1151209000,
+          "eval_duration": 87250417000,
+          "elapsed_ms": 88592.04,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "5b8aae0246f5f7e8004ce4986510e385511f9e4d769e0cca335e5e6f9628cabb",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.499
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    },
+    {
+      "case_id": "GS35-ALLEGATION",
+      "request_sha256": "611115a77142d6916b5dd84a4300fe7161fc3e744a54eeacfbfb9d7774d9f07d",
+      "result": {
+        "system_name": "Lab walking-route reader 35",
+        "risk_level": "low",
+        "decision": "approved",
+        "summary": "The system handles public walking-route data with minimal risk due to read-only access and no decision-making impact. Human review processes are sufficient, but unverified directives and data handling details require attention.",
+        "key_risks": [
+          "Unverified Directive DR-35 mandates daily audits with no established applicability",
+          "Public data handling without explicit retention limits",
+          "Lack of documented evidence gaps in data classification"
+        ],
+        "required_controls": [
+          "Implement data minimization for public route information",
+          "Maintain human review process for route verification",
+          "Document evidence gaps in data classification and retention"
+        ],
+        "human_review_requirements": [
+          "Users must verify route information against official maps",
+          "Review process should confirm data accuracy and compliance with public access policies"
+        ],
+        "logging_requirements": [
+          "Record access logs for public route data with timestamps and user identifiers"
+        ],
+        "evidence_gaps": [
+          "Unverified applicability of Directive DR-35",
+          "Missing data classification for public walking routes",
+          "No documented retention policy for route information"
+        ],
+        "recommended_next_steps": [
+          "Verify Directive DR-35 applicability through legal review",
+          "Define data retention policies for public route information",
+          "Implement evidence gap tracking for data classification"
+        ],
+        "source_references": [
+          {
+            "source_id": "LOCAL-HUMAN-IN-THE-LOOP",
+            "title": "General Checklist - Human-in-the-Loop Review",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-HUMAN-IN-THE-LOOP\", \"title\": \"General Checklist - Human-in-the-Loop Review\"}"
+          },
+          {
+            "source_id": "GRC-DATA-MINIMIZATION",
+            "title": "AI Governance Checklist - Data Minimization",
+            "framework": "Local AI Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local AI Governance Checklist\", \"policy_scope\": null, \"source_id\": \"GRC-DATA-MINIMIZATION\", \"title\": \"AI Governance Checklist - Data Minimization\"}"
+          },
+          {
+            "source_id": "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "title": "General Checklist - Evidence Gaps",
+            "framework": "Local Security and Governance Checklist",
+            "relevance": "Application guidance provenance: {\"applicability\": \"requires case-specific analyst review\", \"authority\": \"local_reference_guidance\", \"binding_by_retrieval\": false, \"framework\": \"Local Security and Governance Checklist\", \"policy_scope\": null, \"source_id\": \"LOCAL-GENERAL-EVIDENCE-GAPS\", \"title\": \"General Checklist - Evidence Gaps\"}"
+          }
+        ]
+      },
+      "error": null,
+      "checks": {
+        "authorized_sources": true,
+        "source_ids_absent_from_prose": true,
+        "case_identity_exact": true,
+        "schema_accepted": true
+      },
+      "latency_ms": 124109.35739999695,
+      "retrieval": [
+        {
+          "query_sha256": "ab302d91a248989073b9d0e6e9c2de15952f15e4e5bb08c98571c5ed0ecd0a63",
+          "query_utf8_bytes": 523,
+          "source_ids": [
+            "LOCAL-HUMAN-IN-THE-LOOP",
+            "GRC-DATA-MINIMIZATION",
+            "GRC-EVIDENCE-REQUEST",
+            "LOCAL-GENERAL-EVIDENCE-GAPS",
+            "GRC-HUMAN-REVIEW",
+            "GRC-HIGH-IMPACT-USE"
+          ],
+          "context_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      ],
+      "model_attempts": [
+        {
+          "configured_num_ctx": null,
+          "system_utf8_bytes": 3505,
+          "user_utf8_bytes": 8475,
+          "schema_json_utf8_bytes": 2114,
+          "byte_counts_are_token_counts": false,
+          "prompt_retention": "not_proven",
+          "status": "response_received",
+          "complete_context_required": false,
+          "prompt_eval_count": 2332,
+          "eval_count": 1389,
+          "total_duration": 124096570200,
+          "load_duration": 16053600,
+          "prompt_eval_duration": 1140018000,
+          "eval_duration": 122765523000,
+          "elapsed_ms": 124098.748,
+          "context_status": "unknown"
+        }
+      ],
+      "diagnostics": {
+        "format": "local-machine-diagnostics-v1",
+        "identity_sha256": "36997d71b0245d5088a9b8c70b9ca16ed10c394563cc8094a84105ff9c4bb4f5",
+        "events": [
+          {
+            "generation": 0,
+            "stage": "generation",
+            "status": "started",
+            "elapsed_ms": 5.138
+          }
+        ],
+        "repair_attempted": false,
+        "repair_failed": false
+      }
+    }
+  ],
+  "finished_utc": "2026-10-29T20:00:33.228639+00:00"
+}

@@ -1,0 +1,37 @@
+{
+  "application_sha": "b9b1a2447f75075d9c9b92df2f630b918bc369dc",
+  "suite_identity": {
+    "semantic_case_sha256": "eb919232e5428640c1d7f2d51006ddab42c4c72c2811b2ba7e7c58c2cd744028",
+    "source_sha256": {
+      "cases.json": "20877e270ab1c34d8ca1588423a71b39d27da407d505298a71407888b439cffc",
+      "plan.json": "5efcb57b8be3d9e01a23d7c3c58ca97a7d02aa1572f4716ebecf54a1e3529c0c",
+      "rubric.md": "925f18207364611727e7472cd6740eeaf629b9b22dbe2737cfda6fbf2f5b3877",
+      "runner.py": "c610e8683d95303bbb21437e8dc05b0f03ad5a6010eca51857db5f15a10d9be3"
+    }
+  },
+  "artifact_sha256": {
+    "baseline.json": "3698d6b77b45d3bcc975300d708a72d02b856bbec606adf4b03e001aad5f1cee",
+    "baseline_manual_review.json": "a77cfa4919bd22fcc7e9a89a50715536bb1804ec5b4c830b3659f5f53f85d201",
+    "treatment.json": "cd4e646b3562df6673254377bbe3fdcc3799498213530be5853572f72314c137",
+    "treatment_manual_review.json": "f301100c476a148a8c60353443342e21d42f7d57019e6cc3174b46d8af33bcec",
+    "comparison.json": "9e31b6e5756ed3b03ed92efa51c8b85f5074d46831773fd80cfdc2a22442ed3e",
+    "manual_comparison.json": "9851dc21e5242499e7df574c41f49303ab4fa96ed0e2b83f94c3d363c75df063",
+    "query_controls.json": "95262f924f7f880cd2b220434b623a0767c27003b3fad6f9062d13b3d8fa670c"
+  },
+  "journal_sha256": "f74ba27501b78bd5549a365834c520f7ef2d12ce096217263912c30f3d9445d2",
+  "journal_records_equal_report": true,
+  "executing_source_changes_during_treatment": [],
+  "source_paths_checked": [
+    "app",
+    "reference_material",
+    "evals/grounding_stabilization/runner.py",
+    "evals/grounding_stabilization/cases.json",
+    "evals/grounding_stabilization/plan.json",
+    "evals/grounding_stabilization/rubric.md",
+    "evals/grounding_stabilization/freeze.json"
+  ],
+  "accounting_source_sha256": "1c8ce65b02fc91345a6654deef67ceaed1c26d65d24ba52645c967de40a0442b",
+  "accounting_note": "Separate offline aggregation added after suite freeze; no changed truth conditions, machine checks or manual rubric.",
+  "total_scheduled_case_trials": 16,
+  "total_recorded_model_requests": 16
+}

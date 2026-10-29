@@ -1,0 +1,97 @@
+{
+  "method": "Unblinded implementation-assistant judgments; counts overlap. Incident classification applies to SOC; benign false positives must be read in case context. No aggregate pass score.",
+  "baseline_labels": {
+    "incorrect_incident_classification": {
+      "ambiguous": 1,
+      "present": 2,
+      "absent": 5
+    },
+    "unsupported_factual_claim": {
+      "ambiguous": 3,
+      "present": 5
+    },
+    "unsupported_authority_claim": {
+      "absent": 7,
+      "ambiguous": 1
+    },
+    "benign_control_false_positive": {
+      "absent": 7,
+      "ambiguous": 1
+    },
+    "positive_control_information_lost": {
+      "absent": 7,
+      "ambiguous": 1
+    },
+    "source_applicability": {
+      "ambiguous": 1,
+      "present": 3,
+      "absent": 4
+    }
+  },
+  "treatment_labels": {
+    "incorrect_incident_classification": {
+      "present": 2,
+      "ambiguous": 2,
+      "absent": 4
+    },
+    "unsupported_factual_claim": {
+      "present": 3,
+      "ambiguous": 4,
+      "absent": 1
+    },
+    "unsupported_authority_claim": {
+      "absent": 6,
+      "present": 1,
+      "ambiguous": 1
+    },
+    "benign_control_false_positive": {
+      "present": 1,
+      "ambiguous": 1,
+      "absent": 6
+    },
+    "positive_control_information_lost": {
+      "absent": 8
+    },
+    "source_applicability": {
+      "present": 3,
+      "absent": 4,
+      "ambiguous": 1
+    }
+  },
+  "common_returned_transitions": {
+    "incorrect_incident_classification": {
+      "ambiguous -> present": 1,
+      "present -> present": 1,
+      "absent -> ambiguous": 1,
+      "absent -> absent": 4,
+      "present -> ambiguous": 1
+    },
+    "unsupported_factual_claim": {
+      "ambiguous -> present": 2,
+      "present -> present": 1,
+      "present -> ambiguous": 3,
+      "present -> absent": 1,
+      "ambiguous -> ambiguous": 1
+    },
+    "unsupported_authority_claim": {
+      "absent -> absent": 6,
+      "absent -> present": 1,
+      "ambiguous -> ambiguous": 1
+    },
+    "benign_control_false_positive": {
+      "absent -> present": 1,
+      "ambiguous -> ambiguous": 1,
+      "absent -> absent": 6
+    },
+    "positive_control_information_lost": {
+      "absent -> absent": 7,
+      "ambiguous -> absent": 1
+    },
+    "source_applicability": {
+      "ambiguous -> present": 1,
+      "present -> present": 2,
+      "absent -> absent": 4,
+      "present -> ambiguous": 1
+    }
+  }
+}
