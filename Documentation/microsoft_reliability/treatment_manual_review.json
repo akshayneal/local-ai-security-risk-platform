@@ -1,0 +1,152 @@
+{
+  "status": "partial review during unchanged continuing treatment",
+  "application_sha": "92e8ee3038715071389b8ff95c4b6f65f7ce7da8",
+  "reviewer": "implementation assistant; not independent human adjudication",
+  "rubric": "evals/microsoft_reliability/rubric.md",
+  "reviews": [
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 1,
+      "record_sha256": "3485b6bd084b91a61c7a1aca3638197607e4ec4ef7d99d858c01b3cf364beb91",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two suspicious process creations detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed compromise detected."
+        }
+      ],
+      "rationale": "Both process commands are retained explicitly as ProcessCreated command lines, without an asserted successful deletion. Potential evasion is grounded in the deletion command; no credential theft asserted. Authentication guidance still appears despite process-only input."
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 2,
+      "record_sha256": "711768ac6a304545b323057077c3cca2f1e44770f544ea6de5527b00b849a62e",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two process creation events detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed compromise, but suspicious activity warrants investigation."
+        }
+      ],
+      "rationale": "Both process commands are retained explicitly as ProcessCreated command lines, without an asserted successful deletion. Potential evasion is grounded in the deletion command; no credential theft asserted. Authentication guidance still appears despite process-only input. Conditional account-disablement advice lacks account telemetry and remains a proportionality concern. Login-verification proposals are not counted as observed login claims."
+    },
+    {
+      "case_id": "REL-SOC-001",
+      "trial": 3,
+      "record_sha256": "c25839d941f847e9ea41c37f5d355d24ea8f8ef126bfba3832e916b047980f49",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two process creation events detected on synthetic-lab-a: PowerShell script execution and wmic shadowcopy deletion. No confirmed authentication compromise, but suspicious command patterns observed."
+        }
+      ],
+      "rationale": "Both process commands are retained explicitly as ProcessCreated command lines, without an asserted successful deletion. Potential evasion is grounded in the deletion command; no credential theft asserted. Authentication guidance still appears despite process-only input. Conditional account-disablement advice lacks account telemetry and remains a proportionality concern. Login-verification proposals are not counted as observed login claims."
+    },
+    {
+      "case_id": "REL-SOC-002",
+      "trial": 1,
+      "record_sha256": "b5e0bbbf5521da73ff0a37954c2be2939ec64af6c00d8fee12ea256f58fd1029",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "absent",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A process creation event was detected on synthetic-lab-a involving vss,admin.exe executing \"vssadmin.exe list shadows\". No clear malicious intent identified."
+        }
+      ],
+      "rationale": "Enumeration command remains in summary; no deletion claim or adversarial mapping. Medium severity alone is not an error. Summary corrupts the executable spelling to vss,admin.exe, an out-of-key identifier/format defect analogous to the baseline typo. Generic authentication guidance remains weakly relevant."
+    },
+    {
+      "case_id": "REL-SOC-003",
+      "trial": 1,
+      "record_sha256": "796886db6fcc5025be64fd320b0955792043124ca1097f009b0a1c8319d29dd0",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "present",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Contextual evidence notes a quoted string containing wmic.exe shadowcopy delete /nointeractive command, but no process event or execution confirmation is provided. No authentication history, MFA status, or process telemetry is available for verification."
+        },
+        {
+          "field": "likely_incident_type",
+          "text": "Suspicious Command Execution"
+        }
+      ],
+      "rationale": "The body correctly identifies a quoted training note and no confirmed execution, but incident label Suspicious Command Execution still promotes a contextual mention into incident execution. This is the same high-confidence label/body inconsistency as baseline. No successful deletion is asserted."
+    },
+    {
+      "case_id": "REL-SOC-004",
+      "trial": 1,
+      "record_sha256": "f897bff9e8c02211a25f1153ca1c6f61e96f65e1fe7e9500e629ee9f5522681a",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two process creations observed on synthetic-lab-a: cmd.exe executing audit.cmd followed by whoami.exe /all. No confirmed compromise, but potential discovery activity noted."
+        }
+      ],
+      "rationale": "The response now describes a process chain, supported by supplied parent/initiator IDs on the same device. Individual IDs need not be repeated. Discovery is grounded in whoami behavior and remains potential, without unsupported unusual-baseline claims. DeviceId is distinguished from an associated unknown account. Authentication and conditional disablement advice remain disproportionate/weakly relevant."
+    },
+    {
+      "case_id": "REL-SOC-005",
+      "trial": 1,
+      "record_sha256": "78cf9f6091fbdd7dbef8fda433e3d135b323a8e2918d67755ecaeefa3076923f",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "Two process creation events detected: cmd.exe /c report.cmd on synthetic-lab-a and whoami.exe /all on synthetic-lab-b. No confirmed compromise detected."
+        }
+      ],
+      "rationale": "Processes remain on distinct devices, without an invented parent-child chain from equal IDs. Possible discovery follows the supplied whoami command rather than proving compromise. Authentication/containment advice remains generic; no actual login or MFA bypass is asserted."
+    },
+    {
+      "case_id": "REL-SOC-006",
+      "trial": 1,
+      "record_sha256": "d9972c833411196451a833a0f5a4c1d491dca6db0cffad3c0e6338798a44ef98",
+      "material_omission": "absent",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "overclaiming": "ambiguous",
+      "source_applicability": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "text": "A single network connection was observed between 192.0.2.25:51234 and 203.0.113.91:8443 with status 'ConnectionSuccess'. No authentication events or process creation telemetry are available for analysis."
+        },
+        {
+          "field": "mitre_mapping",
+          "text": "Initial Access"
+        }
+      ],
+      "rationale": "Exact row-backed local and remote pairs now appear in returned prose. The body explicitly says no authentication events are available and invents no login sequence. Initial Access remains an unsupported incident mapping for a connection alone; this is a characterization concern, not a claim the body asserts successful authentication. Lack of authentication as exculpatory support remains a moderate reasoning concern."
+    }
+  ]
+}
