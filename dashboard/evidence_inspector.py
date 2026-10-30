@@ -6,10 +6,15 @@ import streamlit as st
 from pydantic import ValidationError
 
 from app.evidence_inspector import (
+    AnalystCorrection,
     AnalystEvidenceReview,
+    CorrectionCategory,
     EvidenceInspectorReport,
+    InspectorClaim,
+    append_analyst_correction,
     fingerprint,
     validate_analyst_review,
+    validate_correction_history,
 )
 from app.microsoft_evidence import microsoft_evidence
 from app.support_contracts import Relationship
@@ -22,6 +27,102 @@ REVIEW_OPTIONS = {
     "Conflicting evidence — analyst judgment": Relationship.CONFLICT,
     "Inapplicable to this claim — analyst judgment": Relationship.INAPPLICABLE,
 }
+
+
+def correction_history(
+    report: EvidenceInspectorReport, *, prefix: str
+) -> tuple[AnalystCorrection, ...]:
+    state = st.session_state.get(f"{prefix}_evidence_reviews", {})
+    if state.get("inspector_id") != report.inspector_id:
+        return ()
+    return validate_correction_history(
+        report,
+        tuple(
+            AnalystCorrection.model_validate(r) for r in state.get("corrections", [])
+        ),
+    )
+
+
+def _correction_editor(
+    report: EvidenceInspectorReport,
+    claim: InspectorClaim,
+    labels: dict[str, str],
+    state: dict,
+    *,
+    prefix: str,
+) -> None:
+    history = correction_history(report, prefix=prefix)
+    selected = [r for r in history if r.claim_id == claim.claim_id]
+    latest = selected[-1] if selected else None
+    st.write("Original AI analysis — unchanged")
+    st.text(claim.text)
+    st.caption(
+        "Analyst-proposed correction — not independently verified. Session history is not durable storage or an authenticated audit trail. No reanalysis or action occurs."
+    )
+    form_key = f"{prefix}_correction_{report.inspector_id[:12]}_{claim.claim_id[:12]}_{latest.revision if latest else 0}"
+    with st.form(form_key):
+        categories = list(CorrectionCategory)
+        category = st.selectbox(
+            "Correction category",
+            categories,
+            format_func=lambda c: c.value,
+            index=categories.index(latest.category) if latest else 0,
+        )
+        proposed = st.text_area(
+            "Proposed correction wording",
+            value=latest.proposed_text if latest else "",
+            max_chars=4096,
+        )
+        rationale = st.text_area(
+            "Correction rationale",
+            value=latest.rationale if latest else "",
+            max_chars=2000,
+        )
+        ids = st.multiselect(
+            "Correction evidence",
+            list(labels),
+            default=list(latest.evidence_ids) if latest else [],
+            format_func=labels.get,
+        )
+        st.caption(
+            "Evidence is optional when documenting an unsupported claim. Linking a source does not verify this proposal or grant policy authority. Wording and rationale may be sensitive; review exports before sharing."
+        )
+        save = st.form_submit_button("Save correction revision")
+    if save:
+        try:
+            history = append_analyst_correction(
+                report,
+                history,
+                claim_id=claim.claim_id,
+                category=category,
+                proposed_text=proposed,
+                rationale=rationale,
+                evidence_ids=tuple(ids),
+            )
+            state["corrections"] = [r.model_dump(mode="json") for r in history]
+            st.rerun()
+        except (ValidationError, ValueError):
+            st.warning(
+                "Correction not saved. Use nonblank bounded wording/rationale and evidence from this result."
+            )
+    if selected:
+        latest = selected[-1]
+        st.write("Latest analyst-proposed correction — not independently verified")
+        st.text(latest.proposed_text)
+        st.text(f"Rationale: {latest.rationale}")
+        st.caption(
+            f"Revision {latest.revision}. "
+            + (
+                "Linked evidence selected; entailment remains unverified."
+                if latest.evidence_ids
+                else "No linked support selected."
+            )
+        )
+        with st.expander("Correction revision history", expanded=False):
+            for revision in selected:
+                st.text(
+                    f"Revision {revision.revision} · {revision.category.value}\nCorrection ID: {revision.correction_id}\nRevision ID: {revision.revision_id}\nSupersedes: {revision.supersedes_revision_id or 'None (first revision)'}\nOriginal field: {revision.original_response_field}\nOriginal claim fingerprint: {revision.original_claim_fingerprint}\nProposed: {revision.proposed_text}\nRationale: {revision.rationale}\nEvidence: {', '.join(revision.evidence_ids) or 'No linked support selected'}\nProvenance: analyst_recorded; not_verified"
+                )
 
 
 def display_evidence_inspector(
@@ -40,7 +141,7 @@ def display_evidence_inspector(
     state_key = f"{prefix}_evidence_reviews"
     state = st.session_state.get(state_key)
     if not state or state["inspector_id"] != report.inspector_id:
-        state = {"inspector_id": report.inspector_id, "reviews": {}}
+        state = {"inspector_id": report.inspector_id, "reviews": {}, "corrections": []}
         st.session_state[state_key] = state
     with st.expander("Evidence Inspector", expanded=False):
         st.write(
@@ -215,6 +316,9 @@ def display_evidence_inspector(
                         st.warning(
                             "Select evidence for a support/conflict judgment and keep the note within limits."
                         )
+                _correction_editor(
+                    report, claims[claim_id], labels, state, prefix=prefix
+                )
             st.text(f"Recorded analyst judgments: {len(state['reviews'])}")
         for limitation in report.limitations:
             st.caption(limitation)

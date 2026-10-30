@@ -3,6 +3,7 @@
 import json
 import re
 from datetime import UTC, datetime
+from html import escape
 
 from app.evidence_inspector import EvidenceInspectorReport, inspector_export
 from app.schemas import (
@@ -77,6 +78,10 @@ def _text(value: str) -> str:
     return re.sub(r"([\\`*_{}\[\]()<>#!|])", r"\\\1", value).replace("\n", " ")
 
 
+def _correction_text(value: str) -> str:
+    return _text(escape(" ".join(value.splitlines()), quote=False))
+
+
 def markdown_export(document: dict) -> str:
     analysis = document["analysis"]
     soc = document["workflow"] == "SOC Investigation"
@@ -136,6 +141,43 @@ def markdown_export(document: dict) -> str:
             lines.append(
                 f"- Analyst-recorded judgment (not verified), claim {_text(review['claim_id'])}: {_text(review['relationship'])}. Evidence: {_text(', '.join(review['evidence_ids']))}. Note: {_text(review['note'])}"
             )
+        history = inspector.get("correction_history")
+        if history:
+            lines.extend(
+                [
+                    "",
+                    "## Analyst-Proposed Corrections — Not Independently Verified",
+                    "",
+                    _correction_text(history["notice"]),
+                ]
+            )
+            for revision in history["revisions"]:
+                lines.extend(
+                    [
+                        "",
+                        f"### Correction revision {revision['revision']}",
+                        *[
+                            f"- {label}: {_correction_text(str(revision[key]))}"
+                            for key, label in (
+                                ("claim_id", "Original claim identity"),
+                                ("original_response_field", "Original response field"),
+                                (
+                                    "original_claim_fingerprint",
+                                    "Original claim fingerprint",
+                                ),
+                                ("correction_id", "Correction identity"),
+                                ("revision_id", "Revision identity"),
+                                ("supersedes_revision_id", "Supersedes revision"),
+                                ("category", "Category"),
+                                ("proposed_text", "Analyst-proposed wording"),
+                                ("rationale", "Rationale"),
+                                ("provenance", "Provenance"),
+                                ("verification_status", "Verification status"),
+                            )
+                        ],
+                        f"- Linked evidence: {_correction_text(', '.join(revision['evidence_ids']) or 'No linked support selected')}",
+                    ]
+                )
     lines.extend(
         [
             "",

@@ -16,13 +16,20 @@ from app.soc_inputs import (
 )
 from app.ui_schemas import SocAnalysisEnvelope
 from dashboard.api_client import GENERIC_ERROR, post_analysis
-from dashboard.evidence_inspector import display_evidence_inspector
+from dashboard.evidence_inspector import correction_history, display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
 from dashboard.sample_loader import SampleLoadError, load_microsoft_samples
 
 
 def clear_soc_profile() -> None:
-    for key in ("soc_result", "soc_error", "ms_result", "ms_error"):
+    for key in (
+        "soc_result",
+        "soc_error",
+        "ms_result",
+        "ms_error",
+        "soc_evidence_reviews",
+        "ms_evidence_reviews",
+    ):
         st.session_state.pop(key, None)
 
 
@@ -67,6 +74,7 @@ def microsoft_workspace(base_url: str) -> None:
     if st.session_state.get("ms_input_fingerprint") != fingerprint:
         st.session_state.pop("ms_result", None)
         st.session_state.pop("ms_error", None)
+        st.session_state.pop("ms_evidence_reviews", None)
         st.session_state["ms_input_fingerprint"] = fingerprint
     normalized = None
     if data:
@@ -104,6 +112,7 @@ def microsoft_workspace(base_url: str) -> None:
     ):
         st.session_state.pop("ms_result", None)
         st.session_state.pop("ms_error", None)
+        st.session_state.pop("ms_evidence_reviews", None)
         with st.spinner("Analyzing with the local model..."):
             body, error = post_analysis(
                 base_url,
@@ -142,7 +151,9 @@ def microsoft_workspace(base_url: str) -> None:
         )
         if inspector is not None:
             saved["document"]["evidence_inspector"] = inspector_export(
-                inspector, reviews
+                inspector,
+                reviews,
+                corrections=correction_history(inspector, prefix="ms"),
             )
         st.subheader("Exports")
         st.download_button(

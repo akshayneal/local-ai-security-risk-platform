@@ -149,7 +149,9 @@ def validate_correction_history(
             or item.original_claim_fingerprint
             != fingerprint(claim.model_dump(mode="json"))
             or item.correction_id
-            != fingerprint([report.inspector_id, item.claim_id, "analyst-correction-v1"])
+            != fingerprint(
+                [report.inspector_id, item.claim_id, "analyst-correction-v1"]
+            )
             or not set(item.evidence_ids) <= allowed
         ):
             raise ValueError("Correction must bind to this claim and eligible evidence")
@@ -182,7 +184,9 @@ def append_analyst_correction(
         "claim_id": claim_id,
         "original_response_field": claim.response_field,
         "original_claim_fingerprint": fingerprint(claim.model_dump(mode="json")),
-        "correction_id": fingerprint([report.inspector_id, claim_id, "analyst-correction-v1"]),
+        "correction_id": fingerprint(
+            [report.inspector_id, claim_id, "analyst-correction-v1"]
+        ),
         "revision": previous.revision + 1 if previous else 1,
         "supersedes_revision_id": previous.revision_id if previous else None,
         "category": category,

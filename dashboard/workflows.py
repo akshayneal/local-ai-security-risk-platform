@@ -7,7 +7,7 @@ from app.evidence_inspector import inspector_export
 from app.schemas import GovernanceRiskRequest, SocAlertRequest
 from app.ui_schemas import GovernanceAnalysisEnvelope, SocAnalysisEnvelope
 from dashboard.api_client import GENERIC_ERROR, post_analysis
-from dashboard.evidence_inspector import display_evidence_inspector
+from dashboard.evidence_inspector import correction_history, display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
 from dashboard.presentation import SOURCE_CAVEAT, TRUST_CAVEAT, integrity_rows
 from dashboard.sample_loader import (
@@ -145,6 +145,7 @@ def _load_sample(prefix: str, samples: list, label: str) -> None:
         st.session_state[f"{prefix}_{field}"] = value
     st.session_state.pop(f"{prefix}_result", None)
     st.session_state.pop(f"{prefix}_error", None)
+    st.session_state.pop(f"{prefix}_evidence_reviews", None)
 
 
 def workflow_page(base_url: str, *, soc: bool) -> None:
@@ -221,6 +222,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
     if submitted:
         st.session_state.pop(f"{prefix}_result", None)
         st.session_state.pop(f"{prefix}_error", None)
+        st.session_state.pop(f"{prefix}_evidence_reviews", None)
         payload = {
             field: [item.strip() for item in value.splitlines() if item.strip()]
             if field in LIST_FIELDS
@@ -282,7 +284,11 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             submitted_input=saved.get("submitted_input"),
         )
         if inspector is not None:
-            document["evidence_inspector"] = inspector_export(inspector, reviews)
+            document["evidence_inspector"] = inspector_export(
+                inspector,
+                reviews,
+                corrections=correction_history(inspector, prefix=prefix),
+            )
         st.subheader("Exports")
         st.caption("Submitted case identity and analysis; review before sharing.")
         json_column, md_column = st.columns(2)
