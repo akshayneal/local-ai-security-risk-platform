@@ -1,0 +1,14 @@
+{
+  "attempt": "knowledge-bridge-v1-offline-001",
+  "launch_commit": "5c872e8",
+  "command": ".\\.venv\\Scripts\\python.exe -m evals.knowledge_bridge_v1.runner --output Documentation/knowledge_bridge_v1/results.json",
+  "status": "incomplete infrastructure failure; no complete results report produced",
+  "error": "PermissionError WinError 32 during TemporaryDirectory cleanup of the runner-owned registry.db",
+  "cause": "The remove-registry-entry synthetic fixture used sqlite3.Connection as a transaction context manager but did not explicitly close the connection. Windows retained the file handle.",
+  "case_results": "No per-case output was journaled by this initial runner; partial results are unavailable and are not reconstructed or counted as passes.",
+  "temporary_remnant": "knowledge-bridge-v1-t1tpe1pc/workspaces/case in the operating-system temporary directory; left untouched after the failed automatic cleanup",
+  "real_model_requests": 0,
+  "embedding_requests": 0,
+  "network_requests": 0,
+  "recovery": "Explicit connection closure only; preserve original implementation freeze and add a separately committed execution-fix identity. Repeat the entire unchanged deterministic suite, with no expected-result, scoring, source or ranking changes."
+}

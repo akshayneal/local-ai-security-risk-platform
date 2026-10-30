@@ -2,6 +2,7 @@
 
 import json
 import sqlite3
+from contextlib import closing
 from datetime import date
 
 import pytest
@@ -168,7 +169,7 @@ def test_bad_workspace_fails_visibly_without_sensitive_errors(
     elif operation == "missing-review":
         (path / "reviewed.json").unlink()
     elif operation == "stale-registry":
-        with sqlite3.connect(path / "registry.db") as connection:
+        with closing(sqlite3.connect(path / "registry.db")) as connection, connection:
             connection.execute("UPDATE documents SET current_version_id='stale'")
     with pytest.raises(RetrievalError) as error:
         kw.load_workspace("demo")

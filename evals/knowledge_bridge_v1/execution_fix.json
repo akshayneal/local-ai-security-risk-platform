@@ -1,0 +1,6 @@
+{
+  "reason": "Close the registry-mutation fixture connection before Windows temp cleanup; validate this sole infrastructure source exception. No cases, scoring, ranking or expected outcomes changed.",
+  "original_runner_git_blob": "5519c45d7f41c3bd5d368766d42609160f6613c4",
+  "fixed_runner_git_blob": "87c8da5591a1036a0d0b206e294b08c9ab5193b9",
+  "failed_attempt": "Documentation/knowledge_bridge_v1/attempt_001_failure.json"
+}

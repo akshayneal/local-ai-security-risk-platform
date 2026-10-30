@@ -8,6 +8,7 @@ import sqlite3
 import subprocess
 import tempfile
 import time
+from contextlib import closing
 from datetime import date
 from pathlib import Path
 from unittest.mock import patch
@@ -32,8 +33,19 @@ def verify_freeze() -> dict:
         text=True,
         input="\n".join(names) + "\n",
     ).splitlines()
-    if dict(zip(names, actual, strict=True)) != names:
-        raise ValueError("Pre-outcome implementation snapshot mismatch")
+    actual = dict(zip(names, actual, strict=True))
+    if actual != names:
+        fix = json.loads((SUITE / "execution_fix.json").read_bytes())
+        runner = "evals/knowledge_bridge_v1/runner.py"
+        if (
+            fix["original_runner_git_blob"] != names[runner]
+            or fix["fixed_runner_git_blob"] != actual[runner]
+        ):
+            raise ValueError("Execution-fix source identity mismatch")
+        actual[runner] = names[runner]
+        if actual != names:
+            raise ValueError("Pre-outcome implementation snapshot mismatch")
+        freeze["execution_fix"] = fix
     freeze["implementation_source_git_blobs"] = names
     return freeze
 
@@ -52,7 +64,7 @@ def _condition(path: Path, case: dict) -> None:
             "Unreviewed replacement", encoding="utf-8"
         )
     elif case.get("operation") == "remove-registry-entry":
-        with sqlite3.connect(path / "registry.db") as connection:
+        with closing(sqlite3.connect(path / "registry.db")) as connection, connection:
             connection.execute(
                 "DELETE FROM documents WHERE source_path='access-policy.md'"
             )

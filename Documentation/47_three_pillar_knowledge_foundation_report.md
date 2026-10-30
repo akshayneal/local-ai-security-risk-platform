@@ -233,6 +233,15 @@ Early scoped Ruff failures were import/fixture/nested-with style errors; all wer
 corrected. One exploratory shell Python command had a quoting SyntaxError and made
 no changes. No failed intermediate check is presented as a passing run.
 
+Offline attempt 001 at `5c872e8` failed during Windows temporary-directory cleanup
+because its registry-mutation fixture did not close a SQLite connection. No complete
+report or partial per-case journal was written, so no partial pass count is claimed.
+The failure and temporary remnant are preserved in `knowledge_bridge_v1/attempt_001_failure.json`.
+The fix explicitly closes that fixture connection; no source, ranking, case, expected
+result or score changes. The original implementation freeze remains intact, with
+a separate execution-fix hash committed before the full-suite retry. This is a
+deterministic infrastructure retry, not a selective example rerun or live inference.
+
 ## Human-only review and next scope
 
 **USER VISUAL QA PENDING.** Start/stop the development launcher manually using
