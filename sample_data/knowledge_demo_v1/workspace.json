@@ -1,0 +1,27 @@
+{
+  "format": "local-knowledge-workspace-v1",
+  "workflows": {
+    "soc_investigation": {
+      "access_scopes": [
+        "northstar.learning"
+      ],
+      "policy_scopes": [
+        "northstar.learning"
+      ],
+      "applicability": [
+        "learning"
+      ]
+    },
+    "ai_system_risk": {
+      "access_scopes": [
+        "northstar.learning"
+      ],
+      "policy_scopes": [
+        "northstar.learning"
+      ],
+      "applicability": [
+        "learning"
+      ]
+    }
+  }
+}

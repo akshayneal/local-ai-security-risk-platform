@@ -1,0 +1,3 @@
+# Frozen bridge rubric
+
+Implementation-authored synthetic gold; not independently human adjudicated. Each case has fixed targets, forbidden sources or an expected safe workspace error. Retrieval misses count as positive loss. Eligible related hits do not prove support; no-answer nonempty hits are reported candidly. All free-form claims remain unassessed. Metadata status is never evidence of actual approval or implementation. Separately test complete request/prompt/stub/validator/Inspector/export compatibility for both workflows, Microsoft critical fields, correction-first exports, path/resource limits, missing registries and hostile content. No real model calls; semantic unsupported-answer tendency, positive generation loss and model reliability are NOT MEASURED.

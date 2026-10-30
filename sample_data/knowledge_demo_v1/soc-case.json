@@ -1,0 +1,56 @@
+{
+  "case_id": "NORTHSTAR-001",
+  "tables": {
+    "AlertInfo": [
+      {
+        "AlertId": "NS-ALERT-001",
+        "Title": "Synthetic authentication investigation",
+        "Severity": "Medium",
+        "Category": "InitialAccess"
+      }
+    ],
+    "AlertEvidence": [
+      {
+        "AlertId": "NS-ALERT-001",
+        "EntityType": "User",
+        "AccountUpn": "operator@northstar.example.invalid"
+      }
+    ],
+    "SigninLogs": [
+      {
+        "Id": "NS-SIGNIN-FAIL",
+        "TimeGenerated": "2026-10-20T12:00:00Z",
+        "UserPrincipalName": "operator@northstar.example.invalid",
+        "IPAddress": "198.51.100.15",
+        "ResultType": "50076",
+        "ConditionalAccessStatus": "failure"
+      },
+      {
+        "Id": "NS-SIGNIN-SUCCESS",
+        "TimeGenerated": "2026-10-20T12:01:00Z",
+        "UserPrincipalName": "svc_inventory@northstar.example.invalid",
+        "IPAddress": "198.51.100.15",
+        "ResultType": "0",
+        "ConditionalAccessStatus": "success"
+      }
+    ],
+    "DeviceProcessEvents": [
+      {
+        "Timestamp": "2026-10-20T12:00:30Z",
+        "DeviceName": "workstation.example.invalid",
+        "FileName": "powershell.exe",
+        "ProcessCommandLine": "powershell.exe -File C:\\Maintenance\\Inventory.ps1",
+        "AccountName": "svc_inventory",
+        "InitiatingProcessFileName": "taskeng.exe"
+      }
+    ],
+    "SecurityIncident": [
+      {
+        "IncidentName": "NS-INC-001",
+        "Status": "New",
+        "Severity": "Medium",
+        "Description": "Operator claims scheduled inventory. Independent change approval and execution-completion evidence are not supplied."
+      }
+    ]
+  }
+}

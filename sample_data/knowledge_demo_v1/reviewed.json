@@ -1,0 +1,224 @@
+{
+  "format": "local-knowledge-reviews-v1",
+  "documents": [
+    {
+      "source_path": "soc-playbook.md",
+      "document_id": "doc_d6ee415943cf",
+      "document_version_id": "doc_d6ee415943cf_v_c66cab32ecd3",
+      "content_hash": "c66cab32ecd3743483532bd60d8d4dd6ed5a0315d6444aee80f90977eed1f33b",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "procedure",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "local_reference_guidance",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    },
+    {
+      "source_path": "access-policy.md",
+      "document_id": "doc_5813db960d16",
+      "document_version_id": "doc_5813db960d16_v_f76ad2c3c5e7",
+      "content_hash": "f76ad2c3c5e7c098f2cd87c5a4f57b806e72570d0b1d1ae83ce4bf8becb67562",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "policy",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "organizational_policy",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current",
+        "policy_scope": "northstar.learning"
+      }
+    },
+    {
+      "source_path": "implementation-record.md",
+      "document_id": "doc_e9ee9ae9a856",
+      "document_version_id": "doc_e9ee9ae9a856_v_0c7986564515",
+      "content_hash": "0c7986564515e32b102a3f4572bd6d6b8329044b28f0cf4799c219071b1aedaf",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "implementation_record",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "local_reference_guidance",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    },
+    {
+      "source_path": "assets.md",
+      "document_id": "doc_1f1551a7018d",
+      "document_version_id": "doc_1f1551a7018d_v_859e531adb99",
+      "content_hash": "859e531adb990140995cf866ed32dbc4af1184e2c873038952ce1f2833f8e860",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "inventory",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "local_reference_guidance",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    },
+    {
+      "source_path": "rag-design.md",
+      "document_id": "doc_10a73b032ba0",
+      "document_version_id": "doc_10a73b032ba0_v_0b5da18d0ffe",
+      "content_hash": "0b5da18d0ffec73622bb8bd7266c786e17a05373f0735a267946db0b125997f0",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "procedure",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "local_reference_guidance",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    },
+    {
+      "source_path": "expired-policy.md",
+      "document_id": "doc_d9d704fdcd73",
+      "document_version_id": "doc_d9d704fdcd73_v_f28c2c745a71",
+      "content_hash": "f28c2c745a716e040782b5761cb7a8bb3bdcd3bad5777ba687247226ca722443",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "policy",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "organizational_policy",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "inactive",
+        "expiration_date": "2026-06-01",
+        "policy_scope": "northstar.learning"
+      }
+    },
+    {
+      "source_path": "conflicting-note.md",
+      "document_id": "doc_3f730ebf58a9",
+      "document_version_id": "doc_3f730ebf58a9_v_036aa890efb2",
+      "content_hash": "036aa890efb20fc79db763ad5971cf8c84a8f65c2c151d0a8f59630895529e70",
+      "approved": true,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "procedure",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "local_reference_guidance",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    },
+    {
+      "source_path": "poison.md",
+      "document_id": "doc_b4b85867d1cd",
+      "document_version_id": "doc_b4b85867d1cd_v_cec7fcc9db02",
+      "content_hash": "cec7fcc9db0269672b39383ce3d2ccdff4833ea33f9ca2bf9c698e84d2b08cac",
+      "approved": false,
+      "metadata": {
+        "workflows": [
+          "soc_investigation",
+          "ai_system_risk"
+        ],
+        "source_type": "procedure",
+        "source_family": "Synthetic Northstar v1",
+        "authority": "unverified_material",
+        "owner": "Northstar learning operations (synthetic)",
+        "sensitivity": "synthetic-public",
+        "required_scopes": [
+          "northstar.learning"
+        ],
+        "applicability": [
+          "learning"
+        ],
+        "synthetic": true,
+        "effective_date": "2026-01-01",
+        "status": "current"
+      }
+    }
+  ]
+}

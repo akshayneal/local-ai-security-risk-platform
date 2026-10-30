@@ -1,0 +1,29 @@
+{
+  "format": "knowledge-bridge-plan-v1",
+  "question": "Does reviewed current local knowledge enter existing analyzers without relaxing eligibility or changing opt-out behavior?",
+  "baseline": "legacy with local_knowledge omitted/false",
+  "treatment": "explicit UI request opt-in plus operator workspace",
+  "cases": 26,
+  "as_of": "2026-10-30",
+  "ranking": "existing SQLite FTS5 BM25; K=8; no learned threshold",
+  "metrics": [
+    "eligible-relevant Recall@8 on positive cases",
+    "required-group coverage",
+    "false eligible exposure",
+    "related no-answer nonempty retrieval (not generation error)",
+    "positive-answer retrieval loss",
+    "support-status consistency (unassessed only)",
+    "violation counts",
+    "elapsed milliseconds; network/model cost zero"
+  ],
+  "rubric": "Synthetic implementation-authored targets; related retrieval is not full support. No independent adjudication. Semantic generation metrics NOT MEASURED. Contract/model-stub tests are reported separately.",
+  "runtime": "existing Python 3.13 venv; no new dependencies, embeddings or network",
+  "model": "deterministic stub only in integration tests; no real model",
+  "live_inference_cap": 0,
+  "stopping_conditions": [
+    "unexpected state outside authorized exceptions",
+    "eligibility or preservation failure",
+    "provider unavailable (live not authorized by this plan)"
+  ],
+  "controls": "Metadata negatives mutate one reviewed field at a time; frozen source bytes otherwise unchanged. No selective reruns or expected-result edits after outcomes."
+}

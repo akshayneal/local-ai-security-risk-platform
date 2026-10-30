@@ -1,0 +1,21 @@
+{
+  "sha256": {
+    "sample_data/knowledge_demo_v1/.gitattributes": "ba3d4e0a92188305f7cb5ff36e521d8e5df81a0cf5bc64028d9c86834e5096c0",
+    "sample_data/knowledge_demo_v1/ai-risk-request.json": "d0a67c51b0e239b5779165cadeb8895787dfca5fecff366d23d97564855f246c",
+    "sample_data/knowledge_demo_v1/assets.json": "6d238015c1c908dab59e3a17be62f1cb0577c2dbc31af8170ea381b186b82ccf",
+    "sample_data/knowledge_demo_v1/reviewed.json": "bc0ebe3d2b330741fcd5636a4005e0547c7c774029e4435010cae751352206dd",
+    "sample_data/knowledge_demo_v1/soc-case.json": "556548cacd330bdefcb745a3d9aff2317dce68680933ab28462dce594f05bcce",
+    "sample_data/knowledge_demo_v1/workspace.json": "060dc5705409ad08d3cb84ecc3aae5d51cf46a7f6f019ffd5f09d40d4c17fd62",
+    "sample_data/knowledge_demo_v1/documents/access-policy.md": "f76ad2c3c5e7c098f2cd87c5a4f57b806e72570d0b1d1ae83ce4bf8becb67562",
+    "sample_data/knowledge_demo_v1/documents/assets.md": "859e531adb990140995cf866ed32dbc4af1184e2c873038952ce1f2833f8e860",
+    "sample_data/knowledge_demo_v1/documents/conflicting-note.md": "036aa890efb20fc79db763ad5971cf8c84a8f65c2c151d0a8f59630895529e70",
+    "sample_data/knowledge_demo_v1/documents/expired-policy.md": "f28c2c745a716e040782b5761cb7a8bb3bdcd3bad5777ba687247226ca722443",
+    "sample_data/knowledge_demo_v1/documents/implementation-record.md": "0c7986564515e32b102a3f4572bd6d6b8329044b28f0cf4799c219071b1aedaf",
+    "sample_data/knowledge_demo_v1/documents/poison.md": "cec7fcc9db0269672b39383ce3d2ccdff4833ea33f9ca2bf9c698e84d2b08cac",
+    "sample_data/knowledge_demo_v1/documents/rag-design.md": "0b5da18d0ffec73622bb8bd7266c786e17a05373f0735a267946db0b125997f0",
+    "sample_data/knowledge_demo_v1/documents/soc-playbook.md": "c66cab32ecd3743483532bd60d8d4dd6ed5a0315d6444aee80f90977eed1f33b",
+    "evals/knowledge_bridge_v1/cases.json": "54fce89a45963688c9d825a33cf7c9f693aac3d23fe072e9b57d6125bed63902",
+    "evals/knowledge_bridge_v1/plan.json": "fc8e710559d602cf6abb4f47a736aace062d8de15afbcd21022d79932095b02a",
+    "evals/knowledge_bridge_v1/rubric.md": "de230351e1c38aa9ab50ba3075f9dd7f3d4c088481bd21e8f087a8c976ee5f8c"
+  }
+}

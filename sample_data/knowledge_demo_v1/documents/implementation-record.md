@@ -1,0 +1,2 @@
+# SYNTHETIC Northstar implementation evidence v1
+Owner: learning engineering. The RAG design proposes lexical retrieval, read-only source serialization and a human review step. This is a design review note, not a deployed-control test or approved deployment record. No case-specific incident approval, deployed ACL test, retention configuration or completed isolation is supplied. Implementation and approval remain unverified.

@@ -1,0 +1,296 @@
+[
+  {
+    "id": "positive-playbook",
+    "query": "suspicious authentication incident procedure",
+    "workflow": "soc_investigation",
+    "targets": [
+      "soc-playbook.md"
+    ]
+  },
+  {
+    "id": "positive-policy",
+    "query": "incident containment approval recorded requirement",
+    "workflow": "soc_investigation",
+    "targets": [
+      "access-policy.md"
+    ]
+  },
+  {
+    "id": "multi-source",
+    "query": "authentication containment approval procedure",
+    "workflow": "soc_investigation",
+    "targets": [
+      "soc-playbook.md",
+      "access-policy.md"
+    ],
+    "groups": [
+      [
+        "soc-playbook.md"
+      ],
+      [
+        "access-policy.md"
+      ]
+    ]
+  },
+  {
+    "id": "ai-design",
+    "query": "RAG retrieval prompt tool boundaries",
+    "workflow": "soc_investigation",
+    "targets": [
+      "rag-design.md"
+    ],
+    "case_workflow": "ai_system_risk"
+  },
+  {
+    "id": "implementation-gap",
+    "query": "deployed ACL tests approval implementation",
+    "workflow": "soc_investigation",
+    "targets": [
+      "implementation-record.md"
+    ]
+  },
+  {
+    "id": "asset-context",
+    "query": "catalog dependencies critical service",
+    "workflow": "soc_investigation",
+    "targets": [
+      "assets.md"
+    ]
+  },
+  {
+    "id": "related-no-deadline",
+    "query": "incident response deadline minutes",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "no_answer": true
+  },
+  {
+    "id": "true-no-answer",
+    "query": "zygomorphic quasar isotope",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "no_answer": true
+  },
+  {
+    "id": "expired",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "expiration_date": "2026-01-02"
+      }
+    }
+  },
+  {
+    "id": "inactive",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "status": "inactive"
+      }
+    }
+  },
+  {
+    "id": "future",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "effective_date": "2099-01-01"
+      }
+    }
+  },
+  {
+    "id": "wrong-workflow",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "workflows": [
+          "ai_security_assessment"
+        ]
+      }
+    }
+  },
+  {
+    "id": "wrong-unit",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "applicability": [
+          "finance"
+        ]
+      }
+    }
+  },
+  {
+    "id": "wrong-policy",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "policy_scope": "northstar.finance"
+      }
+    }
+  },
+  {
+    "id": "restricted",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "metadata": {
+        "required_scopes": [
+          "secret"
+        ]
+      }
+    }
+  },
+  {
+    "id": "unapproved",
+    "query": "authentication incident approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "access-policy.md"
+    ],
+    "mutate": {
+      "file": "access-policy.md",
+      "approved": false
+    }
+  },
+  {
+    "id": "expired-pack",
+    "query": "OLD-UNSAFE-ESCALATION",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "expired-policy.md"
+    ]
+  },
+  {
+    "id": "conflict-visible",
+    "query": "catalog shutdown authentication approval",
+    "workflow": "soc_investigation",
+    "targets": [
+      "conflicting-note.md",
+      "access-policy.md"
+    ]
+  },
+  {
+    "id": "requirement-not-implementation",
+    "query": "containment approval recorded",
+    "workflow": "soc_investigation",
+    "targets": [
+      "access-policy.md"
+    ],
+    "assertion": "requirement-does-not-prove-implementation"
+  },
+  {
+    "id": "approval-not-granted",
+    "query": "incident lead approval granted",
+    "workflow": "soc_investigation",
+    "targets": [
+      "access-policy.md"
+    ],
+    "assertion": "approval-not-granted"
+  },
+  {
+    "id": "poison-unapproved",
+    "query": "BRIDGE_POISON_MARKER",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "forbidden": [
+      "poison.md"
+    ]
+  },
+  {
+    "id": "poison-approved-unverified",
+    "query": "BRIDGE_POISON_MARKER",
+    "workflow": "soc_investigation",
+    "targets": [
+      "poison.md"
+    ],
+    "mutate": {
+      "file": "poison.md",
+      "approved": true
+    },
+    "assertion": "unverified-authority"
+  },
+  {
+    "id": "stale-bytes",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "error": true,
+    "operation": "change-file"
+  },
+  {
+    "id": "unknown-registry",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "error": true,
+    "operation": "remove-registry-entry"
+  },
+  {
+    "id": "spoofed-id",
+    "query": "incident containment approval",
+    "workflow": "soc_investigation",
+    "targets": [],
+    "error": true,
+    "mutate": {
+      "file": "access-policy.md",
+      "document_id": "doc_forged"
+    }
+  },
+  {
+    "id": "forged-authority-body",
+    "query": "BRIDGE_POISON_MARKER",
+    "workflow": "soc_investigation",
+    "targets": [
+      "poison.md"
+    ],
+    "mutate": {
+      "file": "poison.md",
+      "approved": true
+    },
+    "assertion": "body-cannot-grant-scopes"
+  }
+]

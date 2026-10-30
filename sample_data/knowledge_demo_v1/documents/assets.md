@@ -1,0 +1,2 @@
+# SYNTHETIC Northstar asset context v1
+Owner: learning operations. The structured inventory in assets.json is the explicit graph source. catalog.example.invalid is a critical catalog service. rag.example.invalid depends on catalog.example.invalid for read-only catalog lookup. workstation.example.invalid is an analyst workstation. The documentation-only network ranges are 192.0.2.0/24 and 198.51.100.0/24. These fictional ranges provide context, not live reachability or trust verification.

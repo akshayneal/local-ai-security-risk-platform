@@ -1,0 +1,14 @@
+{
+  "system_name": "Northstar internal RAG assistant (synthetic)",
+  "system_purpose": "Draft learning-unit catalog and policy answers with current registered documents and lexical retrieval.",
+  "data_types": [
+    "Synthetic catalog",
+    "Synthetic scoped policy"
+  ],
+  "users": [
+    "Learning unit analysts"
+  ],
+  "external_integrations": [],
+  "human_review_process": "Analysts review drafts. Deployment approval and deployed control tests are not supplied.",
+  "business_impact": "Catalog service supports learning operations; answers are advisory."
+}

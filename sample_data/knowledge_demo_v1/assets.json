@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "version": "northstar-demo-v1",
+  "subnets": [
+    "192.0.2.0/24",
+    "198.51.100.0/24"
+  ],
+  "assets": [
+    {
+      "id": "catalog.example.invalid",
+      "critical": true,
+      "address": "192.0.2.20"
+    },
+    {
+      "id": "rag.example.invalid",
+      "address": "192.0.2.30"
+    },
+    {
+      "id": "workstation.example.invalid",
+      "address": "198.51.100.15"
+    }
+  ],
+  "dependencies": [
+    {
+      "from": "rag.example.invalid",
+      "to": "catalog.example.invalid",
+      "purpose": "read-only catalog lookup"
+    }
+  ]
+}
