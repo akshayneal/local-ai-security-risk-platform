@@ -116,6 +116,11 @@ withheld rather than silently evicting source material. Defaults remain unchange
 - A forged source reference is removed and metadata restored, but arbitrary model
   prose can still be wrong. Governance retains its narrower semantic checks. No
   accuracy/confidence/safety percentage or independent validation is asserted.
+- Existing SOC critical-identifier checks remain bound to supplied telemetry.
+  An address appearing only in an eligible asset document does not become an
+  observed event fact; repeating it in generated case text can still trigger the
+  existing repair/withholding contract. No broader identifier migration or live
+  positive-information retention claim is made here.
 
 ## Synthetic Northstar walkthrough
 
@@ -219,7 +224,7 @@ git diff --check
 
 The runner creates output exclusively and refuses to overwrite an existing report.
 Only new temporary synthetic workspaces are created during evaluation. Official
-new results and final counts will be recorded below after execution. Frozen
+new results and final counts are recorded below. Frozen
 historical evaluations are never rerun live, relabeled, tuned against or rewritten.
 
 Intermediate development checks are retained honestly: one UI/bridge batch had
@@ -241,6 +246,82 @@ The fix explicitly closes that fixture connection; no source, ranking, case, exp
 result or score changes. The original implementation freeze remains intact, with
 a separate execution-fix hash committed before the full-suite retry. This is a
 deterministic infrastructure retry, not a selective example rerun or live inference.
+
+## Completed offline evidence and final local validation
+
+The complete recorded evaluation ran at
+`30de7f4846e7b8b39a6659c9e0a00023800ec343`. See
+[unaltered results](knowledge_bridge_v1/results.json),
+[artifact identities](knowledge_bridge_v1/result_identity.json), and
+[exact changed-file inventory](knowledge_bridge_v1/change_inventory.json).
+
+| Separate measure | Result / denominator |
+| --- | --- |
+| Authored contract cases | 26/26 satisfy their predeclared assertions |
+| Relevant document-target Recall@8 | 13/13 targets across 11 positive cases |
+| Required-group coverage | 2/2 groups in one multi-source requirement/procedure case |
+| Forbidden eligible exposure | 0 sources across 10 declared exclusion cases |
+| No-answer nonempty retrieval | **1/2** queries: related incident guidance cannot supply the missing deadline |
+| Positive retrieval loss | 0/13 declared targets |
+| Support status consistency | 23/23 returned selections remain unassessed |
+| Expected safe workspace refusals | 3/3 (changed bytes, missing registry identity, forged ID) |
+| Real generation / embedding / network calls | 0 / 0 / 0 |
+| Generated unsupported-answer tendency / positive generation loss | NOT MEASURED |
+
+The targets are authored document identities, not exhaustive relevance judgments
+over every chunk in a real organization. Requirement/procedure coverage tests two
+distinct chunks. The **1/2 no-answer counterexample remains a limitation**, even
+though the declared contract cases pass: lexical relevance does not establish
+answerability. There is no learned abstention threshold or automatic free-prose
+support certification. The requirement/implementation/approval cases verify
+retained unassessed status and provenance, not a semantic theorem about model text.
+
+Recorded per-case elapsed time includes fresh temporary workspace registration:
+median 177.4725 ms, range 97.721–208.242 ms, sum 4656.526 ms. Whole runner command
+took 5.62 s. These are local software timings, not inference latency or controlled
+backend comparisons. No paid model/API request occurred; CPU/electricity costs were
+not measured. No qwen outputs or independent human judgments are claimed.
+
+Local execution count: one incomplete infrastructure attempt (partial case count
+unavailable), one complete official 26-case run, one complete focused offline replay,
+and one complete replay inside the full deterministic suite: **78 completed case
+checks across three full executions**, with no selective rerun or altered expectations.
+Hosted CI performs its own fresh deterministic replay, reported separately in the
+final handoff. Historical vector/ranking/Inspector replays ran offline in the full
+suite; historical live evaluations and original artifacts were not modified.
+
+Final implementation verification with the existing Windows CPython 3.13.1 venv:
+
+- `.\.venv\Scripts\python.exe -m pytest -q`: **1876 passed**, one existing
+  Starlette/httpx deprecation warning, 95.05 s. No skips or failures in that run.
+- Focused UI/bridge/Microsoft/Inspector/preservation batch: **121 passed**, one
+  existing warning. Earlier core retrieval/correction/report batch: **134 passed**.
+- New frozen evaluation/artifact replay: **4 passed**, 5.70 s before the full suite.
+- Final post-report policy/historical/scope recheck: **7 passed**, 4.06 s.
+- `.\.venv\Scripts\python.exe -m ruff check .`: passed.
+- `.\.venv\Scripts\python.exe -m pip check`: no broken requirements.
+- `git diff --check`: passed. No dependency, launcher, original schema/analyzer/
+  prompt, reference-card or frozen historical artifact diff. New freeze hashes and
+  installed AGENTS.md hash passed; protected preexisting 405 file hashes passed.
+- Git reported stale stat entries on nine new LF-normalized fixture files despite
+  no content diff. Each was verified byte-identical to HEAD before an explicit
+  index refresh; no source/expected-result bytes changed and no staged diff resulted.
+
+The actual CLI walkthrough used the new ignored workspace **northstar-sprint5**:
+`init --demo`, `register`, `build`, `status`, and SOC/AI-risk `query` all exited 0.
+It contains eight registered documents/chunks, seven approved reviews, and six
+currently eligible chunks for each configured workflow. The SOC walkthrough query
+selected five and explicitly reported one omitted eligible chunk; the AI query
+selected six. These are query-specific results, not complete-case support claims.
+`git check-ignore` confirms its configuration and registry are ignored. This new
+synthetic workspace remains available for user inspection; no inherited workspace
+was touched. `status northstar-sprint5` is safe to run again; do not reinitialize it.
+
+All changes are confined to the authorized feature branch. Final tracked diff must
+be clean before the one authorized non-force push; protected s4check remains visibly
+untracked. Final exact commit SHA and GitHub Actions URL/status are given in the
+handoff after the push. Main/tag, release clone, permissions, dependencies, OS
+settings and shared processes remain unchanged; no merge/tag/release or PR action.
 
 ## Human-only review and next scope
 

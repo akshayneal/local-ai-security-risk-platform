@@ -122,3 +122,26 @@ is recorded explicitly in the new manifest; original analyzer/prompt files remai
 untouched. Focused bridge/compatibility/correction/report checks: 134 passed, one
 existing warning. Initial Ruff found import order, fixture-import and nested-with
 style issues, corrected with scoped edits; these were not application failures.
+
+## Final gate outcomes
+
+Gate 0: verified base, protected remnants and user policy preserved; historical
+audits reproduce with fixed past boundaries and a separate current-scope manifest.
+Gate 1: truthful three-pillar copy, exactly two runnable analyzers, old routes kept.
+Gate 2: both real registered-document -> existing analyzer -> stub -> validator ->
+Inspector/export paths pass, including actual eligible citations; opt-out complete
+generation arguments and original response contracts remain unchanged.
+Gate 3: new synthetic CLI workspace init/register/build/status/query succeeds;
+eight documents, seven approved, six eligible. No live Microsoft connection.
+Gate 4: 26 authored cases, exact replay, honest related-no-answer counterexample
+(1/2 nonempty), no generative reliability claim. One failed offline infrastructure
+attempt is preserved; its connection-close-only fix was committed before complete
+replay, with original case/rubric/source and implementation freeze retained.
+
+Final local deterministic suite: **1876 passed**, one existing warning, 95.05 s;
+Ruff/pip/diff and all protected historical/source/artifact hashes passed. Frozen
+official run plus focused and full-suite replay: 78 completed deterministic case
+checks; initial incomplete attempt has no reconstructable partial count. Live qwen
+and embedding requests: zero, **NOT RUN**. Exact pushed-SHA CI is verified in the
+final handoff. USER VISUAL QA PENDING; no release, independent semantic validation,
+third analyzer, authenticated authorization or broad entailment certification.

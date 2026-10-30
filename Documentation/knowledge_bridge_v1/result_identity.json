@@ -1,0 +1,9 @@
+{
+  "sha256": {
+    "Documentation/knowledge_bridge_v1/results.json": "f50c958d84ef56fb24f85afe122939798b461daa1c9f6aef8bc715983811e2a0",
+    "Documentation/knowledge_bridge_v1/attempt_001_failure.json": "023a7b479cc207c6999f0e8ec1056ef5d5ac6d1a656f9c6c0cdc968eb2d71914",
+    "evals/knowledge_bridge_v1/freeze.json": "4f96d4b72a6bf470723f07761997f34e553916f7d69696c125b57c51c07a6200",
+    "evals/knowledge_bridge_v1/implementation_freeze.json": "81b204f6b296f8972e14e14fc1bd75002fe4fdda5d737306c3da7f4ff5b0c7dc",
+    "evals/knowledge_bridge_v1/execution_fix.json": "fa43adea0186c355f7028648a5666a69fa37e1763a740b7a6416691193efc4c0"
+  }
+}
