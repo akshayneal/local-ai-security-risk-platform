@@ -1,0 +1,42 @@
+{
+  "format": "cross-pillar-live-v1",
+  "question": "Can the unmodified three analyzers produce useful bounded advisory outputs through one gateway on an actual local Qwen provider while preserving evidence/authority boundaries?",
+  "baseline_treatment": "Two SOC and two AI-risk scenarios paired off/on; four distinct technical architecture cases. Descriptive comparison only, no isolated causal RAG claim.",
+  "as_of": "2026-10-30",
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "ollama_version": "0.40.13",
+  "temperature": 0.1,
+  "num_ctx": 8192,
+  "complete_context": "Existing application path for knowledge-on and AI Security; off remains original SDK path. No fallback.",
+  "scheduled_submissions": 12,
+  "max_raw_generation_attempts": 32,
+  "per_http_timeout_seconds": 180,
+  "whole_run_limit_seconds": 6500,
+  "max_provider_response_bytes": 256000,
+  "max_total_output_bytes": 10000000,
+  "order": [
+    "CEDAR-AUTH-OFF",
+    "CEDAR-AUTH-ON",
+    "CEDAR-MAINT-OFF",
+    "CEDAR-MAINT-ON",
+    "CEDAR-DRAFT-OFF",
+    "CEDAR-DRAFT-ON",
+    "CEDAR-NOANSWER-OFF",
+    "CEDAR-NOANSWER-ON",
+    "CEDAR-SEC-RAG",
+    "CEDAR-SEC-TOOL",
+    "CEDAR-SEC-BENIGN",
+    "CEDAR-SEC-HOSTILE"
+  ],
+  "stop_conditions": [
+    "Protected identity conflict",
+    "Provider identity mismatch => NOT RUN",
+    "Whole-run or raw attempt cap",
+    "Interrupted journal retained; no automatic resume or case replay",
+    "Response size/sensitive-pattern check failure withholds retention"
+  ],
+  "holdout": "NOT PLANNED; no optional extra live calls authorized by this evaluation freeze",
+  "metrics": "See rubric.md; exact denominators. Deterministic structure separate from implementation-authored semantic review; independent adjudication pending.",
+  "source_provenance": "All cases and four documents newly authored synthetic text; no inherited cases/judgments used as tuning data."
+}

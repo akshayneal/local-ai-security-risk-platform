@@ -1,0 +1,153 @@
+{
+  "provenance": "Locally authored fictional corpus, explicit version-bound implementation-author review; no independent human adjudication",
+  "workspace": {
+    "format": "local-knowledge-workspace-v1",
+    "workflows": {
+      "soc_investigation": {
+        "access_scopes": [
+          "cedar.training"
+        ],
+        "policy_scopes": [
+          "cedar.training"
+        ],
+        "applicability": [
+          "training"
+        ]
+      },
+      "ai_system_risk": {
+        "access_scopes": [
+          "cedar.training"
+        ],
+        "policy_scopes": [
+          "cedar.training"
+        ],
+        "applicability": [
+          "training"
+        ]
+      }
+    }
+  },
+  "documents": [
+    {
+      "body": "# Synthetic Cedar Review Policy\nCedar training systems require an accountable human to review model drafts against evidence. An approval record and a tested logging/retention design are required before deployment. This requirement does not show that any system implements it or has been approved.\n",
+      "review": {
+        "source_path": "review-policy.md",
+        "document_id": "doc_9f81e84091a9",
+        "document_version_id": "doc_9f81e84091a9_v_0875d1796432",
+        "content_hash": "0875d17964325499edbb3ec654ffd352646acf2aee53180806a4abe97c3c42e9",
+        "approved": true,
+        "metadata": {
+          "workflows": [
+            "ai_system_risk"
+          ],
+          "source_type": "policy",
+          "source_family": "Synthetic Cedar Sprint 7",
+          "owner": "Cedar training operator (fictional)",
+          "sensitivity": "synthetic-public",
+          "authority": "organizational_policy",
+          "required_scopes": [
+            "cedar.training"
+          ],
+          "applicability": [
+            "training"
+          ],
+          "effective_date": "2026-01-01",
+          "expiration_date": "2027-01-01",
+          "status": "current",
+          "synthetic": true,
+          "policy_scope": "cedar.training"
+        }
+      }
+    },
+    {
+      "body": "# Synthetic Cedar Containment Procedure\nInvestigate authentication sources and account identity separately. Preserve relevant logs and verify context before proposing containment. Host isolation or account disablement requires explicit incident-owner approval. This procedure grants no approval for the current case.\n",
+      "review": {
+        "source_path": "containment-procedure.md",
+        "document_id": "doc_17ac9efa2cc8",
+        "document_version_id": "doc_17ac9efa2cc8_v_b61093782bb6",
+        "content_hash": "b61093782bb613e17fbea01e34989a691f3946ac8850dcb97be0cc1a07f2d349",
+        "approved": true,
+        "metadata": {
+          "workflows": [
+            "soc_investigation"
+          ],
+          "source_type": "procedure",
+          "source_family": "Synthetic Cedar Sprint 7",
+          "owner": "Cedar training operator (fictional)",
+          "sensitivity": "synthetic-public",
+          "authority": "local_reference_guidance",
+          "required_scopes": [
+            "cedar.training"
+          ],
+          "applicability": [
+            "training"
+          ],
+          "effective_date": "2026-01-01",
+          "expiration_date": "2027-01-01",
+          "status": "current",
+          "synthetic": true
+        }
+      }
+    },
+    {
+      "body": "# Synthetic Cedar Asset Notes\ncedar-backup-7 supports a training backup mission. Planned maintenance can explain service authentication, but a case-specific signed change record and source ownership must be checked. The service account is not the source address. No case approval record is supplied.\n",
+      "review": {
+        "source_path": "asset-notes.md",
+        "document_id": "doc_47e4e43fa8a3",
+        "document_version_id": "doc_47e4e43fa8a3_v_c85cd5707b71",
+        "content_hash": "c85cd5707b710b317819417a4bb7f574611b9015e1c2c26b7e9463007294a4f4",
+        "approved": true,
+        "metadata": {
+          "workflows": [
+            "soc_investigation"
+          ],
+          "source_type": "asset_context",
+          "source_family": "Synthetic Cedar Sprint 7",
+          "owner": "Cedar training operator (fictional)",
+          "sensitivity": "synthetic-public",
+          "authority": "unverified_material",
+          "required_scopes": [
+            "cedar.training"
+          ],
+          "applicability": [
+            "training"
+          ],
+          "effective_date": "2026-01-01",
+          "expiration_date": "2027-01-01",
+          "status": "current",
+          "synthetic": true
+        }
+      }
+    },
+    {
+      "body": "# Synthetic Cedar Retention Topic Note\nRetention length depends on the data and reviewed policy. This topic note supplies no retention duration, implementation test, contract, 2031 schedule or approval signature. It cannot answer how many days a future assistant must retain logs.\n",
+      "review": {
+        "source_path": "retention-topic.md",
+        "document_id": "doc_b42a267d93eb",
+        "document_version_id": "doc_b42a267d93eb_v_5a04aeed3b80",
+        "content_hash": "5a04aeed3b806150fd6e90f0fd85e9cb9111aab4c4bc17f6f8a7b01e8276e955",
+        "approved": true,
+        "metadata": {
+          "workflows": [
+            "ai_system_risk"
+          ],
+          "source_type": "reference",
+          "source_family": "Synthetic Cedar Sprint 7",
+          "owner": "Cedar training operator (fictional)",
+          "sensitivity": "synthetic-public",
+          "authority": "local_reference_guidance",
+          "required_scopes": [
+            "cedar.training"
+          ],
+          "applicability": [
+            "training"
+          ],
+          "effective_date": "2026-01-01",
+          "expiration_date": "2027-01-01",
+          "status": "current",
+          "synthetic": true
+        }
+      }
+    }
+  ]
+}
