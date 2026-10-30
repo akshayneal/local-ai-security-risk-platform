@@ -164,6 +164,27 @@ def test_old_soc_success_shape_unchanged(api, monkeypatch):
     assert len(audits) == 1
 
 
+@pytest.mark.parametrize("ui", [False, True])
+def test_submitted_case_routing_id_overrides_vendor_id_after_validation(
+    api, monkeypatch, ui
+):
+    raw = {**SOC_RESPONSE, "alert_id": "VENDOR-OTHER-CASE"}
+    calls, traces = fake_generations(monkeypatch, [raw])
+    client, audits = api
+    response = client.post(
+        ("/ui" if ui else "") + "/analyze/soc-alert", json=SOC_INPUT
+    )
+    assert response.status_code == 200
+    body = response.json()["analysis"] if ui else response.json()
+    assert body == SocAlertResponse(
+        **{**raw, "alert_id": SOC_INPUT["alert_id"]}
+    ).model_dump(mode="json")
+    assert raw["alert_id"] == "VENDOR-OTHER-CASE"
+    assert len(calls) == 1 and len(audits) == 1 and audits[0]["success"]
+    assert audits[0]["input_summary"].startswith(SOC_INPUT["alert_id"] + ":")
+    assert traces[0] is None or not traces[0].repair_attempted
+
+
 @pytest.mark.parametrize(
     "path,payload",
     [

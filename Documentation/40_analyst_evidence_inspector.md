@@ -49,6 +49,14 @@ routes still call the original analyzer once, preserve SOC repair/context protec
 and audit the analysis once. Governance retains its narrower existing validation;
 Inspector metadata does not make it equivalent to SOC factual checks.
 
+After the eight frozen live diagnostics completed, the SOC API boundary was corrected
+to bind the response routing `alert_id` to the submitted case ID after full analyzer
+validation. Both public and UI routes share this correction. All other validated
+fields remain intact; no identifier parser, additional generation or repair was added.
+The archived diagnostic's vendor-ID substitution remains a recorded failure. Direct
+analyzer behavior and historical experiment replay are unchanged. This correction
+does not validate event/account/endpoint claims in ordinary model text.
+
 The UI uses the shared support-assessment contract for unassessed model claims.
 The evaluated exact structured-record matcher is available as a reusable library,
 but it does not automatically interpret free-form production conclusions. Applying

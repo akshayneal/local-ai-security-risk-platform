@@ -1,0 +1,264 @@
+{
+  "status": "complete; eight scheduled candidate attempts reviewed",
+  "application_launch_sha": "379853ee6040039627823ac357d7120e8390cca9",
+  "reviewer": "implementation assistant; not independent human adjudication",
+  "rubric": "evals/evidence_support_e2e/rubric.md",
+  "judgment_revisions": [],
+  "reviews": [
+    {
+      "case_id": "ESE-NET",
+      "record_sha256": "0e527cc73384b6c97ef11f9f2be835f1660bbae1af24bd884bf7974546b402de",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "benign_or_uncertain_false_positive": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A TCP connection was established from 192.0.2.109 (DeviceId: synthetic-edge-109) to 198.51.100.109 on port 9555. The alert indicates potential command and control activity, but no explicit malicious command execution or credential theft was observed."
+        },
+        {
+          "field": "mitre_mapping",
+          "value": [
+            "Command and Control"
+          ]
+        },
+        {
+          "field": "analyst_inferences",
+          "value": [
+            "The connection pattern aligns with MITRE ATT&CK Command and Control tactics",
+            "No evidence of credential theft or malicious command execution was found"
+          ]
+        }
+      ],
+      "rationale": "Exact TCP connection and endpoint roles retained without an invented login or protocol. Vendor possible-C2 label is attributed, but mapping and connection pattern aligns with C2 turn a lone connection into an unsupported incident inference. This is a negative/uncertain-control false positive despite body caveats. PowerShell/process-context guidance is weakly applicable without process telemetry. Inspector correctly marks all model claims unassessed and captures actual candidates/citations; this does not fix the model inference."
+    },
+    {
+      "case_id": "ESE-AUTH",
+      "record_sha256": "af991b6ff918e4e3cd8a2cab04e21d0064557de2d07c1b304ef18e70433cad7a",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "benign_or_uncertain_false_positive": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "Two failed password authentication attempts followed by a successful login from IP 203.0.113.109 targeting synthetic-operator109@example.invalid, with a subsequent successful authentication for synthetic-service109@example.invalid showing Conditional Access success."
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "Failed password authentication attempts for synthetic-operator109@example.invalid from 203.0.113.109",
+            "Successful authentication for synthetic-service109@example.invalid from 203.0.113.109 with Conditional Access success"
+          ]
+        },
+        {
+          "field": "recommended_containment",
+          "value": [
+            "Consider disabling synthetic-operator109@example.invalid account pending verification of the successful login's legitimacy"
+          ]
+        }
+      ],
+      "rationale": "Observations preserve two failures for operator and the success for a different service account, including CA status. Summary wording implies an operator success followed by another service success, stronger than the three supplied events; containment also associates operator disablement with the successful login legitimacy. This is a moderate-confidence event-joining/identity interpretation concern despite correct observations. No confirmed malicious takeover or actual account action is established. The authentication checklist is topically appropriate, but does not resolve account attribution. Conditional internal-IP speculation is not treated as a factual private-IP assertion."
+    },
+    {
+      "case_id": "ESE-NOTE",
+      "record_sha256": "53c324e68dc10f4729050789e52dd9129f8b15bda0b7b5137b544f77582afc1d",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "ambiguous",
+      "source_applicability": "present",
+      "benign_or_uncertain_false_positive": "present",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process creation event was detected on synthetic-training-109 involving wmic.exe executing \"shadowcopy get ID\". The alert suggests possible credential access, but no confirmed authentication attempts or credential theft were observed."
+        },
+        {
+          "field": "likely_incident_type",
+          "value": "Potential Credential Access"
+        },
+        {
+          "field": "alert_id",
+          "value": "VENDOR-110"
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for wmic.exe executing \"shadowcopy get ID\" on synthetic-training-109"
+          ]
+        }
+      ],
+      "rationale": "Actual shadowcopy enumeration is retained. Potential Credential Access characterization follows the unsupported vendor title without credential telemetry, and the canonical case ID is replaced by the vendor alert ID. The quoted wbadmin non-execution note is not represented in the response, so negative-control information coverage is ambiguous rather than proven complete; no deletion execution is asserted. Authentication guidance is borrowed without authentication events. Inspector still correctly reports model statements as unassessed and inventory includes original context rows."
+    },
+    {
+      "case_id": "ESE-DUMP",
+      "record_sha256": "6829056e83a94a26fea9a157d1117abab9b78b9507716f6b844ebc8eff398227",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "present",
+      "benign_or_uncertain_false_positive": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "A process creation event was detected on synthetic-forensics-109 involving rundll32.exe executing a MiniDump command targeting lsass.exe (PID 812). The activity is associated with a lab command covered by approved diagnostic authorization LAB-EX-109, but no completion result is provided."
+        },
+        {
+          "field": "observed_evidence",
+          "value": [
+            "ProcessCreated event for rundll32.exe with command line: rundll32.exe C:\\Windows\\System32\\comsvcs.dll MiniDump 812 C:\\Lab\\snapshot109.bin full",
+            "SHA256 hash: a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9",
+            "Note: PID 812 is lsass.exe and the activity is covered by approved diagnostic authorization LAB-EX-109"
+          ]
+        },
+        {
+          "field": "recommended_containment",
+          "value": [
+            "Isolate synthetic-forensics-109 from the network pending verification",
+            "Monitor for additional process creation events or unusual network connections"
+          ]
+        }
+      ],
+      "rationale": "Exact LSASS-targeting MiniDump command, supplied 64-character hash, named within-record lab authorization and unknown completion are retained. Execution mapping is broad rather than a confirmed successful theft claim. Isolate pending verification may be disproportionate given the supplied approval, but remains a conditional analyst recommendation: moderate ambiguity, not an executed action. PowerShell/encoded-script guidance is weakly applicable to this rundll32 record. The workbench does not independently verify the synthetic approval."
+    },
+    {
+      "case_id": "ESE-HIRING",
+      "record_sha256": "93a0bbb6a4bb53af443ec76b575090a1bdd0a40463069c490f794b64c2c42600",
+      "unsupported_factual_claim": "ambiguous",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "benign_or_uncertain_false_positive": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system ranks applicant CVs for interview shortlists with material employment impact. Fictional internal policy TA-109 requires quarterly bias review and affirmative human approval, but implementation evidence is absent. Employment-related AI systems are classified as high-risk per local guidelines."
+        },
+        {
+          "field": "required_controls",
+          "value": [
+            "Quarterly bias review per TA-109",
+            "Affirmative human approval for final decisions",
+            "Human-in-the-loop review for AI recommendations",
+            "Documentation of review processes and control gaps"
+          ]
+        },
+        {
+          "field": "evidence_gaps",
+          "value": [
+            "No implementation evidence for required controls",
+            "Missing specific control frequencies and methodologies",
+            "No documented review process details",
+            "Unverified external legal applicability of TA-109"
+          ]
+        }
+      ],
+      "rationale": "Material employment impact, quarterly bias review, affirmative approval requirement and missing implementation evidence are explicitly retained. No charter-compliance or implemented-control assertion is made. Missing specific control frequencies is imprecise despite the supplied quarterly cadence; it may refer to other controls, so recorded as an ambiguous consistency concern rather than erasing the positive. Local high-impact and human-review guidance is relevant; no external legal mandate is established."
+    },
+    {
+      "case_id": "ESE-PUBLIC",
+      "record_sha256": "93d459843a5713d244e03d32e2b474fd88a95f7b4ec252df887a03aeae573ba2",
+      "unsupported_factual_claim": "present",
+      "unsupported_authority_claim": "ambiguous",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "benign_or_uncertain_false_positive": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system provides read-only public trail hours information with low business impact. It adheres to data minimization principles, includes human review, and maintains retention logs as specified. No personal data or high-impact use cases are involved."
+        },
+        {
+          "field": "required_controls",
+          "value": [
+            "Data minimization for public trail hours",
+            "Human review verification process by synthetic staff",
+            "Seven-day retention logs with access controls"
+          ]
+        },
+        {
+          "field": "logging_requirements",
+          "value": [
+            "Seven-day retention of request logs",
+            "Access controls for log storage"
+          ]
+        }
+      ],
+      "rationale": "Low-impact public-only local scope, staff verification and known seven-day retention are retained. The summary says it adheres and maintains retention logs, promoting signed design/configuration terms to implemented behavior without operational evidence. This is a moderate-confidence implementation-status overstatement. Access controls appear under required controls without a supplied binding obligation; the field can carry proposed safeguards, so unsupported authority is ambiguous rather than a verified mandate. No high-impact HR role or missing known retention is invented."
+    },
+    {
+      "case_id": "ESE-ALLEGATION",
+      "record_sha256": "29d484cbaf135e323f44bb065b19857fc8e0717348145e942654b481b7e41a65",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "ambiguous",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "benign_or_uncertain_false_positive": "ambiguous",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "The system presents low risk due to public data handling and minimal business impact. No decisions or external processing occur. However, unverified regulatory claims and potential data minimization gaps require attention."
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Unverified Directive AX-109 compliance requirements",
+            "Potential data minimization gaps for public visitor maps"
+          ]
+        },
+        {
+          "field": "required_controls",
+          "value": [
+            "Implement data minimization for public visitor maps",
+            "Establish logging for audit trails"
+          ]
+        },
+        {
+          "field": "human_review_requirements",
+          "value": [
+            "Confirm Directive AX-109 applicability",
+            "Verify data handling practices meet stated purpose"
+          ]
+        }
+      ],
+      "rationale": "Public local-only scope and low impact are retained. Directive remains unverified and applicability is a verification question; no daily-audit mandate or verified compliance is asserted. It is still called regulatory despite being a fictional draft allegation, and generic logging appears as a required control without a supplied mandate. Those are ambiguous authority/proportionality concerns because the existing fields also contain proposals and the text requests verification. Potential minimization gaps are expressly potential, not established defects. Cited minimization/human-review/gap guidance is topically relevant but does not prove an obligation."
+    },
+    {
+      "case_id": "ESE-CONFLICT",
+      "record_sha256": "0c67e26d408b8a743dfd9c3c27e9a5dcb5833a1c83d06ae86fb6487379b1562d",
+      "unsupported_factual_claim": "absent",
+      "unsupported_authority_claim": "absent",
+      "positive_control_information_lost": "absent",
+      "source_applicability": "absent",
+      "benign_or_uncertain_false_positive": "absent",
+      "quotes": [
+        {
+          "field": "summary",
+          "value": "Conflicting system descriptions (public transit FAQ vs payroll deductions) with unresolved human review and potential material payroll impact. Requires clarification of system purpose, data classification, and approval processes."
+        },
+        {
+          "field": "key_risks",
+          "value": [
+            "Conflicting system purpose descriptions",
+            "Unresolved human review requirements",
+            "Potential material payroll impact without affirmative approval",
+            "Lack of data classification for sensitive payroll data"
+          ]
+        },
+        {
+          "field": "evidence_gaps",
+          "value": [
+            "Missing policy context for system purpose",
+            "Unclassified payroll data sensitivity",
+            "Unverified approval records",
+            "Incomplete business impact analysis"
+          ]
+        }
+      ],
+      "rationale": "Conflicting descriptions and potential payroll impact remain conditional and unresolved; no deployment, approval or compliance is asserted. Missing classification is read as formal classification/handling evidence, not denial that the supplied design names payroll data. The unreviewed other-unit policy is not promoted to binding authority, although its exact wrong-unit provenance is not discussed in the body. Proposed review/logging controls remain proposals requiring applicability review in the Inspector. No independent implementation verification or release approval follows the model decision."
+    }
+  ]
+}

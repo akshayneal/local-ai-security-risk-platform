@@ -1,0 +1,59 @@
+{
+  "scheduled_cases": 8,
+  "returned": 8,
+  "withheld": 0,
+  "actual_model_requests": 8,
+  "repair_attempts": 0,
+  "machine_checks": {
+    "case_identity_exact": {
+      "passed": 7,
+      "denominator": 8
+    },
+    "cited_sources_captured": {
+      "passed": 8,
+      "denominator": 8
+    },
+    "model_claims_unassessed": {
+      "passed": 8,
+      "denominator": 8
+    },
+    "one_audit": {
+      "passed": 8,
+      "denominator": 8
+    },
+    "retrieval_captured": {
+      "passed": 8,
+      "denominator": 8
+    }
+  },
+  "latency_seconds": {
+    "median": 103.00051925000024,
+    "minimum": 82.4466894000002,
+    "maximum": 132.50429929999973
+  },
+  "manual_dimensions": {
+    "unsupported_factual_claim": {
+      "present": 4,
+      "absent": 3,
+      "ambiguous": 1
+    },
+    "unsupported_authority_claim": {
+      "absent": 6,
+      "ambiguous": 2
+    },
+    "positive_control_information_lost": {
+      "absent": 7,
+      "ambiguous": 1
+    },
+    "source_applicability": {
+      "present": 3,
+      "absent": 5
+    },
+    "benign_or_uncertain_false_positive": {
+      "present": 2,
+      "ambiguous": 3,
+      "absent": 3
+    }
+  },
+  "interpretation": "Single unseeded candidate trials, assistant adjudication, no composite score or measured generated-claim improvement; no selective reruns."
+}

@@ -93,6 +93,11 @@ def _run_soc(
             if trace is None
             else analyze_soc_alert(request, trace=trace)
         )
+        # The routing ID belongs to the submitted case, not the model or vendor.
+        # Rebuild only after the analyzer's complete factual validation succeeds.
+        result = SocAlertResponse.model_validate(
+            {**result.model_dump(mode="json"), "alert_id": request.alert_id}
+        )
 
         write_audit_log(
             mode="soc_alert",
