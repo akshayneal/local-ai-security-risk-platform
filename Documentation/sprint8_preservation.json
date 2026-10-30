@@ -9,7 +9,8 @@
     "tests/test_sprint4_preservation.py": "42f2cf87c4ae1979a4568e8f9c431f111459956d",
     "tests/test_ai_security_evaluation.py": "740b7fd9875e2e530792821274f8001aafa5ebf0",
     "tests/test_knowledge_evaluation.py": "125899ea57203c365a38b5912bec6e86c288a7f8",
-    "tests/test_cross_pillar_evaluation.py": "677b965f8b4dac7a667903849ef013fd2cc744c3"
+    "tests/test_cross_pillar_evaluation.py": "677b965f8b4dac7a667903849ef013fd2cc744c3",
+    "tests/test_microsoft_inventory.py": "27a6e2a88001f465779cc510329e2cd8bb528285"
   },
   "authorized_new": [
     "Documentation/52_reliability_fidelity_sprint_plan.md",
@@ -53,6 +54,7 @@
     "tests/test_ai_security_evaluation.py": "Replay unchanged original backend in immutable snapshot, not new backend under old hash.",
     "tests/test_knowledge_evaluation.py": "Same archived original source for frozen source verification/replay.",
     "tests/test_cross_pillar_evaluation.py": "Archive first frozen source verifier call only; retain hostile freeze mutation and all old denominators.",
-    "README.md": "Only current status/report correction if supported by actual outcomes."
+    "README.md": "Only current status/report correction if supported by actual outcomes.",
+    "tests/test_microsoft_inventory.py": "Final full suite exposed one additional historical SOC prompt hash guard. Only import/decorator pin its unchanged original body and digest to the original e7f61f4 snapshot; current Microsoft tests remain active. AST and actual archived prompt-mutation rejection cover this exact migration, authorized by Sprint 8 section 6. No frozen inputs/scoring/application change."
   }
 }

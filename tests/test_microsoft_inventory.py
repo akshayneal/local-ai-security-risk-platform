@@ -3,6 +3,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from sprint8_history import historical_test
 from test_schemas import SOC_INPUT, SOC_RESPONSE
 
 from app import soc_analyzer
@@ -13,6 +14,7 @@ from app.schemas import SocAlertRequest
 from app.soc_inputs import MicrosoftSocAdapter
 
 
+@historical_test
 def test_generic_soc_prompt_is_byte_identical_to_frozen_launch():
     request = SocAlertRequest(**SOC_INPUT)
     # Captured from the frozen launch function at 3f33cca with this request/context.

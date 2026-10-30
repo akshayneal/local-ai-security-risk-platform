@@ -4,9 +4,11 @@ import ast
 import hashlib
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
+from sprint8_history import _snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "e7f61f4e7f8b56e14c6cf0d65fa461aff3e79417"
@@ -116,13 +118,19 @@ def expected_tree(name):
             [ast.alias("historical_call", "historical_ai_security_call")],
         )
         return tree
-    helper = "historical_test" if "preservation" in name else "historical_call"
+    helper = (
+        "historical_test"
+        if "preservation" in name or "microsoft_inventory" in name
+        else "historical_call"
+    )
     tree.body.append(
         ast.ImportFrom(module="sprint8_history", names=[ast.alias(helper)], level=0)
     )
     targets = (
         {"test_prior_mini_sprint_and_unmodified_source_are_preserved"}
         if "sprint4" in name
+        else {"test_generic_soc_prompt_is_byte_identical_to_frozen_launch"}
+        if "microsoft_inventory" in name
         else {
             "test_current_scope_and_protected_base_blobs",
             "test_historical_replay_call_sites_only_pin_the_source_root",
@@ -202,6 +210,7 @@ def canonical(tree):
         "tests/test_ai_security_evaluation.py",
         "tests/test_knowledge_evaluation.py",
         "tests/test_cross_pillar_evaluation.py",
+        "tests/test_microsoft_inventory.py",
     ],
 )
 def test_historical_changes_are_only_snapshot_call_sites(name):
@@ -226,3 +235,35 @@ def test_current_scope_and_byte_mutation_negatives():
 
     assert blob(data) == git("rev-parse", BASE + ":app/ollama_client.py").strip()
     assert blob(data + b"\n# mutation") != blob(data)
+
+
+def test_original_soc_prompt_digest_still_rejects_corrupted_snapshot(tmp_path):
+    directory, env = _snapshot(tmp_path, BASE)
+    prompt = directory / "app/prompts.py"
+    original = prompt.read_text()
+    assert "Analyze the following SOC alert." in original
+    prompt.write_text(
+        original.replace("Analyze the following SOC alert.", "MUTATED SOC instruction.")
+    )
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "tests/test_microsoft_inventory.py::test_generic_soc_prompt_is_byte_identical_to_frozen_launch",
+        ],
+        cwd=directory,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=90,
+        check=False,
+    )
+    assert result.returncode == 1
+    assert "AssertionError" in result.stdout
+    assert "f093c435c6657d28e4158338627b9d019bd953b1bdf20097b32a00c8373c6e8e" in result.stdout
+    assert "1 failed" in result.stdout
