@@ -186,7 +186,9 @@ def test_new_suite_literal_hashes_survive_windows_checkout():
         elif ": eol:" in row:
             assert row.endswith(": eol: lf")
     assert (runner.SUITE / ".gitattributes").read_text() == (
-        "* text eol=lf\ncases.json -text -eol\ncorpus.json -text -eol\n"
+        "* text eol=lf\n"
+        "cases.json -text -eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n"
+        "corpus.json -text -eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n"
     )
 
 
