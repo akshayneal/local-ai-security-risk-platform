@@ -1,0 +1,21 @@
+{
+  "base_commit": "e7f61f4e7f8b56e14c6cf0d65fa461aff3e79417",
+  "sha256": {
+    "evals/reliability_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "evals/reliability_v1/__init__.py": "ddb1f0674977d695fe97e0e2c3a5653d5999ca8da5094a3df1654e63779e3bba",
+    "evals/reliability_v1/cases.json": "cf1488091a400531fc10b4fe21ec3d06252f7dc6047e69fd0a97863d962cebcd",
+    "evals/reliability_v1/plan.json": "fffd10376522a235cc0503986dcbeea5042be126c614e0e12c4b27e46ad529a1",
+    "evals/reliability_v1/rubric.md": "1a823c54afa80243ea7161990d796c889ef28917aab942c6fbc7dd67d78a3fc3",
+    "evals/reliability_v1/runner.py": "91ce2c45c5638531825ed536aec6197a46d535d0fdad9923af44cb17d92e8893",
+    "evals/reliability_v1/transport.py": "7d1b6f5d5c26b317456340e23b3fe5762fa7275035f0be51ac57f1409c875fec"
+  },
+  "case_sha256": {
+    "MAPLE-SEC-A": "e7ef52456807e082fbb0c5a70e2be4329bfc6598191f7116c3db3245f7f99a1d",
+    "MAPLE-SEC-B": "114410a1c5233697b289a9ecba315a63d9b477e6bd6ea087563d653bafe730af",
+    "MAPLE-SOC-A": "b93f914e28ce2d8b98953fd63ab55b0b2c535eb484c0a29d824e04a602818e6d",
+    "MAPLE-SOC-B": "92bd3077c5a6c1c3302de0fe7d24ed436ca99cc07d50c256a7cc16a149adb94c",
+    "MAPLE-RISK-A": "6d341ec11b55a4603e641f77df798d2483658d9ae6af7729b0a9ffea7cf1cb2c",
+    "MAPLE-RISK-B": "b1ea584ca63ebfb06f23bca17db63be9b9a195e49b500ee4bd5bf9c1387838c4"
+  },
+  "meaning": "Frozen before application edits or live outcomes. Implementation source identity recorded immediately before the official run."
+}

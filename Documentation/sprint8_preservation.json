@@ -1,0 +1,58 @@
+{
+  "base_commit": "e7f61f4e7f8b56e14c6cf0d65fa461aff3e79417",
+  "authorized_existing": {
+    "app/ai_security_contracts.py": "b8e70ea25df628a3ae2aa6211659a03336d764c5",
+    "app/ai_security_analyzer.py": "fda92d6c6ad4ed1263901fed1e0a20eaaebfa975",
+    "app/prompts.py": "11f6bf15ef646c03cb5409d7c94c696a15c59d58",
+    "README.md": "b5644b473ddad23f06739d8a8217d4a803e3e316",
+    "tests/test_sprint7_preservation.py": "ee8bebb5c64c42d8c870397c98f3fa02ce225b68",
+    "tests/test_sprint4_preservation.py": "42f2cf87c4ae1979a4568e8f9c431f111459956d",
+    "tests/test_ai_security_evaluation.py": "740b7fd9875e2e530792821274f8001aafa5ebf0",
+    "tests/test_knowledge_evaluation.py": "125899ea57203c365a38b5912bec6e86c288a7f8",
+    "tests/test_cross_pillar_evaluation.py": "677b965f8b4dac7a667903849ef013fd2cc744c3"
+  },
+  "authorized_new": [
+    "Documentation/52_reliability_fidelity_sprint_plan.md",
+    "Documentation/53_reliability_fidelity_readout.md",
+    "Documentation/sprint8_preservation.json",
+    "Documentation/reliability_v1/readout.json",
+    "Documentation/reliability_v1/ci.json",
+    "evals/reliability_v1/.gitattributes",
+    "evals/reliability_v1/__init__.py",
+    "evals/reliability_v1/plan.json",
+    "evals/reliability_v1/cases.json",
+    "evals/reliability_v1/rubric.md",
+    "evals/reliability_v1/freeze.json",
+    "evals/reliability_v1/runner.py",
+    "evals/reliability_v1/transport.py",
+    "tests/test_reliability_fidelity.py",
+    "tests/test_reliability_evaluation.py",
+    "tests/test_sprint8_preservation.py",
+    "tests/sprint8_history.py"
+  ],
+  "out_of_scope_rule": "Every other base path must match git ls-tree at base_commit; no blanket directory exemptions.",
+  "inherited_manifests": [
+    "Documentation/sprint5_preservation.json",
+    "Documentation/sprint6_preservation.json",
+    "Documentation/sprint7_preservation.json"
+  ],
+  "protected_live_manifest": "Documentation/cross_pillar_v1/live_readout.json",
+  "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
+  "historical_snapshot": "e7f61f4e7f8b56e14c6cf0d65fa461aff3e79417",
+  "allowed_app_changes": [
+    "app/ai_security_contracts.py",
+    "app/ai_security_analyzer.py",
+    "app/prompts.py"
+  ],
+  "scope_reasons": {
+    "app/ai_security_contracts.py": "Provider-visible honest advisory/insufficient union; existing public response and cross-field validator remain strict.",
+    "app/ai_security_analyzer.py": "Send and validate the narrower model-visible union; clarify coverage, without rewriting or dropping raw findings.",
+    "app/prompts.py": "Correct two-workflow system description; distinguish unknown implementation/inventory from absence; retain material positive facts and exact chunk citations.",
+    "tests/test_sprint4_preservation.py": "Only the protected-source guard needs archived execution after authorized prompt change; original assertions unchanged.",
+    "tests/test_sprint7_preservation.py": "Archive three historical tests whose current-tree or replay endpoint legitimately changes; preserve original bodies and snapshots.",
+    "tests/test_ai_security_evaluation.py": "Replay unchanged original backend in immutable snapshot, not new backend under old hash.",
+    "tests/test_knowledge_evaluation.py": "Same archived original source for frozen source verification/replay.",
+    "tests/test_cross_pillar_evaluation.py": "Archive first frozen source verifier call only; retain hostile freeze mutation and all old denominators.",
+    "README.md": "Only current status/report correction if supported by actual outcomes."
+  }
+}

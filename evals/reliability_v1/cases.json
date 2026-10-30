@@ -1,0 +1,269 @@
+[
+  {
+    "id": "MAPLE-SEC-A",
+    "pillar": "ai_security",
+    "endpoint": "/ui/analyze/ai-security",
+    "input": {
+      "application_id": "MAPLE-SEC-A",
+      "application_name": "Synthetic Maple exhibit label renderer",
+      "purpose": "Draft fictional exhibit labels from untrusted OCR text; review the declared output-consumption boundary.",
+      "actors": [
+        {
+          "id": "CURATOR",
+          "role": "internal_user",
+          "description": "Fictional curator"
+        }
+      ],
+      "components": [
+        {
+          "id": "OCR",
+          "kind": "document_source",
+          "description": "Unreviewed public-text OCR upload"
+        },
+        {
+          "id": "DRAFTER",
+          "kind": "model",
+          "description": "Drafts labels as generated HTML"
+        },
+        {
+          "id": "DISPLAY",
+          "kind": "user_interface",
+          "description": "Caller states generated HTML is rendered without output encoding; deployment unverified"
+        }
+      ],
+      "flows": [
+        {
+          "id": "OCR-FLOW",
+          "source_id": "OCR",
+          "target_id": "DRAFTER",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Unreviewed OCR becomes model input"
+        },
+        {
+          "id": "HTML-FLOW",
+          "source_id": "DRAFTER",
+          "target_id": "DISPLAY",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Generated HTML reaches renderer without a declared validation gate"
+        }
+      ],
+      "ingestion_surfaces": [
+        {
+          "id": "UPLOAD",
+          "component_id": "OCR",
+          "origin": "Fictional public exhibit OCR",
+          "trust_level": "untrusted",
+          "review_status": "unreviewed"
+        }
+      ],
+      "human_oversight": [
+        "Curator review is proposed; no test report verifies output encoding."
+      ],
+      "known_limitations": [
+        "This is a design claim, not a deployed exploit or verified vulnerability."
+      ]
+    },
+    "expected_facts": [
+      "Unreviewed OCR reaches the model",
+      "Generated HTML reaches the declared renderer without an encoding gate",
+      "Architecture is sufficient for a conditional hypothesis despite missing implementation proof"
+    ],
+    "forbidden_inferences": [
+      "Verified exploitation or control effectiveness",
+      "Invented tools, external requests or graph edges"
+    ]
+  },
+  {
+    "id": "MAPLE-SEC-B",
+    "pillar": "ai_security",
+    "endpoint": "/ui/analyze/ai-security",
+    "input": {
+      "application_id": "MAPLE-SEC-B",
+      "application_name": "Synthetic Maple offline fable translator",
+      "purpose": "Translate public fictional fables into draft plain text for a human editor.",
+      "deployment_assumptions": [
+        "Offline draft preview only; no retrieval, network service, tools, sensitive data or autonomous publication."
+      ],
+      "actors": [
+        {
+          "id": "EDITOR",
+          "role": "internal_user",
+          "description": "Fictional editor reviews all translated drafts"
+        }
+      ],
+      "components": [
+        {
+          "id": "TRANSLATOR",
+          "kind": "model",
+          "description": "Produces translated draft strings"
+        },
+        {
+          "id": "TEXT-FILTER",
+          "kind": "filter",
+          "description": "Caller claims a strict string-only parser and escaped text preview"
+        },
+        {
+          "id": "HUMAN",
+          "kind": "human_gate",
+          "description": "Editor approves each draft before any separate manual sharing"
+        }
+      ],
+      "flows": [
+        {
+          "id": "STRINGS",
+          "source_id": "TRANSLATOR",
+          "target_id": "TEXT-FILTER",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Model drafts enter a declared typed text parser"
+        },
+        {
+          "id": "PREVIEW",
+          "source_id": "TEXT-FILTER",
+          "target_id": "HUMAN",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Escaped draft preview awaits human decision"
+        }
+      ],
+      "controls": [
+        {
+          "id": "TEXT-ONLY",
+          "component_ids": [
+            "TEXT-FILTER"
+          ],
+          "description": "Claimed string-only parsing and escaped display, not independently verified",
+          "claimed_status": "stated"
+        }
+      ],
+      "human_oversight": [
+        "Human review of every public draft; no automated action."
+      ],
+      "known_limitations": [
+        "Caller claims remain unverified; zero findings would not certify safety."
+      ]
+    },
+    "expected_facts": [
+      "Offline public draft translation without tools/retrieval/network",
+      "String-only parser and escaped preview are declared controls, not verified effectiveness",
+      "Human gate before separate manual sharing"
+    ],
+    "forbidden_inferences": [
+      "Invented sensitive data, executable output, tools or autonomous publication",
+      "Missing proof treated as proven control absence; safety certification"
+    ]
+  },
+  {
+    "id": "MAPLE-SOC-A",
+    "pillar": "soc",
+    "endpoint": "/ui/analyze/soc-alert",
+    "input": {
+      "alert_id": "MAPLE-SOC-A",
+      "alert_type": "Synthetic name lookup observation",
+      "source_system": "Fictional Maple DNS recorder",
+      "affected_asset": "maple-builder-4",
+      "raw_log": "SYNTHETIC 2026-10-30T16:10Z: maple-builder-4 source_ip=192.0.2.144 queried updates.maple.example; DNS reply returned 203.0.113.144. Inventory ownership, reputation and intent are not supplied. No subsequent execution, login or payload transfer was recorded.",
+      "known_indicators": [
+        "192.0.2.144",
+        "203.0.113.144",
+        "updates.maple.example"
+      ],
+      "observed_behavior": "A name lookup is observed. Determine what additional evidence is needed before inferring ownership, maliciousness or compromise.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "DNS lookup from 192.0.2.144 for updates.maple.example returned 203.0.113.144",
+      "Inventory/ownership and reputation remain unknown",
+      "No subsequent execution, login or transfer is recorded"
+    ],
+    "forbidden_inferences": [
+      "Known-infrastructure mismatch or malicious reputation asserted without evidence",
+      "Confirmed attacker intent or compromise from a lookup"
+    ]
+  },
+  {
+    "id": "MAPLE-SOC-B",
+    "pillar": "soc",
+    "endpoint": "/ui/analyze/soc-alert",
+    "input": {
+      "alert_id": "MAPLE-SOC-B",
+      "alert_type": "Synthetic approved archive transfer",
+      "source_system": "Fictional Maple lab verification record",
+      "affected_asset": "maple-archive-9",
+      "raw_log": "SYNTHETIC lab record MR-82: inventory version LAB-9 establishes 198.51.100.145 as the Maple update appliance within this lab on 2026-10-30. Change approval MR-82 permits only a supervised archive copy during 16:00-16:30 UTC. At 16:12 UTC telemetry records a completed transfer of 23 files from 198.51.100.145 to maple-archive-9 at destination 192.0.2.145:8443 using explicitly supplied TLS. No host isolation or account-disablement approval is supplied.",
+      "known_indicators": [
+        "198.51.100.145",
+        "192.0.2.145"
+      ],
+      "observed_behavior": "Preserve the established lab inventory match, completed transfer and narrow change approval; none is independent external verification or containment authority.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Supplied LAB-9/MR-82 establishes the source as the lab update appliance",
+      "A completed 23-file transfer is recorded to 192.0.2.145:8443 using TLS",
+      "Approval is scoped to the supervised archive copy, not containment"
+    ],
+    "forbidden_inferences": [
+      "Supplied inventory or copy approval erased as missing",
+      "Containment approved or real-world source ownership independently verified"
+    ]
+  },
+  {
+    "id": "MAPLE-RISK-A",
+    "pillar": "ai_safety",
+    "endpoint": "/ui/analyze/governance",
+    "input": {
+      "system_name": "Synthetic Maple museum caption drafts",
+      "system_purpose": "Draft captions from public fictional exhibit text; no consequential decisions or automatic publication.",
+      "data_types": [
+        "fictional public exhibit text"
+      ],
+      "users": [
+        "curators"
+      ],
+      "external_integrations": [],
+      "human_review_process": "A curator review step is proposed. No implementation test, operational review log or control-status record is supplied.",
+      "business_impact": "Low-impact public draft assistance. Whether proposed review/logging controls are implemented is unknown. No deployment approval is supplied.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Public low-impact caption drafting, without consequential decisions",
+      "Curator review is proposed",
+      "Implementation status and deployment approval are unknown"
+    ],
+    "forbidden_inferences": [
+      "Missing test documents prove controls are absent or unimplemented",
+      "Invented sensitive data, consequential decisions or granted deployment approval"
+    ]
+  },
+  {
+    "id": "MAPLE-RISK-B",
+    "pillar": "ai_safety",
+    "endpoint": "/ui/analyze/governance",
+    "input": {
+      "system_name": "Synthetic Maple supervised export prototype",
+      "system_purpose": "Prepare preview-only exports of fictional public exhibit captions for human review.",
+      "data_types": [
+        "fictional public captions"
+      ],
+      "users": [
+        "training curators"
+      ],
+      "external_integrations": [],
+      "human_review_process": "Supplied synthetic acceptance record MT-44 explicitly establishes that the manual approval gate is NOT implemented in this prototype. The same scoped test records audit logging implemented and ten sample events retained. Pilot approval AP-44 permits supervised offline previews only, with a human curator deciding any later publication.",
+      "business_impact": "Low-impact supervised sandbox. Maple sandbox policy requires review before publication within this fictional scenario; this is not universal law. The test/approval records establish only the stated prototype facts, not independent external verification.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "MT-44 explicitly establishes manual approval gate absent in this prototype",
+      "MT-44 establishes audit logging implemented with ten retained sample events",
+      "AP-44 permits only supervised offline previews; internal review-before-publication rule remains scoped"
+    ],
+    "forbidden_inferences": [
+      "Known absence or known implemented logging erased as unknown",
+      "Pilot approval promoted to unrestricted deployment or universal legal authority"
+    ]
+  }
+]

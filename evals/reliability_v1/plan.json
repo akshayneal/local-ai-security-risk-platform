@@ -1,0 +1,47 @@
+{
+  "format": "reliability-prospective-v1",
+  "question": "Can narrow schema and fidelity instruction fixes yield usable, bounded advisories without erasing supplied positive facts or inventing external certainty?",
+  "comparison": "Fresh prospective verification only; not a causal comparison or statistical improvement estimate against Sprint 7.",
+  "case_order": [
+    "MAPLE-SEC-A",
+    "MAPLE-SEC-B",
+    "MAPLE-SOC-A",
+    "MAPLE-SOC-B",
+    "MAPLE-RISK-A",
+    "MAPLE-RISK-B"
+  ],
+  "max_scheduled_submissions": 6,
+  "max_global_raw_attempts": 6,
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "runtime": {
+    "temperature": 0.1,
+    "num_ctx": 8192,
+    "per_http_timeout_seconds": 180,
+    "overall_deadline_seconds": 1500,
+    "max_response_bytes": 256000,
+    "max_retained_bytes": 4000000,
+    "retrieval_backend": "legacy",
+    "local_knowledge": false
+  },
+  "implementation_paths": [
+    "app/ai_security_contracts.py",
+    "app/ai_security_analyzer.py",
+    "app/prompts.py",
+    "app/ollama_client.py",
+    "app/soc_analyzer.py",
+    "app/governance_analyzer.py",
+    "evals/reliability_v1/runner.py",
+    "evals/reliability_v1/transport.py"
+  ],
+  "public_contract": "Original response fields, enum values, strict contradictory coverage rejection, graph/source/category identities, no_actions_executed and not_verified remain. Technical advisory may validly have zero findings; missing graph avoids generation.",
+  "acceptance": "Returned schema-valid advisory for structurally sufficient SEC cases; exact identities/source membership; preserved stated facts and uncertainty; no fabricated authority or actions. Insufficient-information is reported separately, never inflated to usable advisory.",
+  "stopping": [
+    "Exact model mismatch or unavailable => all NOT RUN",
+    "Unknown inherited evaluation/preservation change => stop",
+    "Retries/repairs consume the same global six-attempt cap; remaining cases NOT RUN",
+    "No automatic resume, optional cases, warm-up, replay, post-result tuning or extra live calls"
+  ],
+  "novelty": "Entirely new Maple DNS/approved archive, museum-caption/export and OCR-HTML/plain-text-translation scenarios. Old Cedar cases used only to diagnose general categories, not reused or edited as new inputs.",
+  "review": "Deterministic checks separate from implementation-authored qualitative review; independent human adjudication pending."
+}
