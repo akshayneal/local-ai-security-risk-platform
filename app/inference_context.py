@@ -32,7 +32,9 @@ class EvidenceBudgetError(RuntimeError):
 
 
 def complete_context_required() -> bool:
-    return _COMPLETE.get()
+    from app.knowledge_contracts import knowledge_enabled
+
+    return _COMPLETE.get() or knowledge_enabled()
 
 
 @contextmanager

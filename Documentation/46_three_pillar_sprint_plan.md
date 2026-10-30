@@ -101,3 +101,24 @@ transactional multi-user authorization, portal and third analyzer remain deferre
 Implementation-authored synthetic judgments are not independently adjudicated.
 Optional live inference is skipped to prioritize deterministic security and review.
 No model outcomes may be invented. See report 47 for actual final execution results.
+
+## Historical closeout checkpoint
+
+`9af0344` fixed the old correction/retrieval scope comparisons at their final
+pre-Sprint-5 boundary, retaining their original allowed changes. Other historical
+hash guards resolve only named authorized source edits at the verified Sprint 5
+base; every other old data/scorer/report hash remains checked against current bytes.
+The new guard freezes all other tracked files and installed AGENTS.md bytes.
+Thirteen focused historical/preservation checks passed before implementation.
+
+`45a845d` committed 26 new cases, rubric and synthetic snapshots. `65b6587` corrected
+only the pre-outcome freeze hashes to repository LF bytes for Windows/Linux replay;
+no case, judgment or source content changed and no evaluation had run.
+
+The bridge also needs one narrow `app/inference_context.py` edit: enable the existing
+complete-context, no-truncation/no-shift local runtime contract for opted-in knowledge
+requests in both analyzers. The old default remains unchanged. The source exception
+is recorded explicitly in the new manifest; original analyzer/prompt files remain
+untouched. Focused bridge/compatibility/correction/report checks: 134 passed, one
+existing warning. Initial Ruff found import order, fixture-import and nested-with
+style issues, corrected with scoped edits; these were not application failures.

@@ -19,7 +19,8 @@
     "tests/test_grounding_preservation.py": "e8e348af622d60a3ac6a3a2037d2e8953a8ef121",
     "tests/test_sprint4_preservation.py": "bbce0cd322f494081778f15fa065f25e0aa03a5e",
     "tests/test_retrieval_artifacts.py": "74434353496d4b808e875d7d0024f72b56e05c90",
-    "tests/test_release_candidate.py": "7a4d87fd9df02861ccc28909f706b8b53583f2e8"
+    "tests/test_release_candidate.py": "7a4d87fd9df02861ccc28909f706b8b53583f2e8",
+    "app/inference_context.py": "70e1990acdcf8454d1c3ce8f99bccadf0df02014"
   },
   "authorized_new": [
     "Documentation/46_three_pillar_sprint_plan.md",
@@ -203,7 +204,6 @@
     "app/document_loader.py": "98f32478abba802e18e3318ad6e93a93c90c57da",
     "app/document_registry.py": "e507457a9c2b04c65d5d1253b238da18460aa7c5",
     "app/governance_analyzer.py": "0395ead170540fd3a8883f84d92dd18f3298b07f",
-    "app/inference_context.py": "70e1990acdcf8454d1c3ce8f99bccadf0df02014",
     "app/local_diagnostics.py": "11cd50ba725f5a77eb6f86694c72321b4bc1b5eb",
     "app/microsoft_evidence.py": "c5244cb4c14040a1f75d9d4d48ed2cdde7ee34b8",
     "app/model_metrics.py": "d7ad2d13c95c3205e89c9e1ef09351877bb76641",

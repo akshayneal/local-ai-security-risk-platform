@@ -10,7 +10,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from app.evidence_inspector import capture_selection
+from app.knowledge_contracts import KnowledgeCoverage, knowledge_enabled
 from app.retrieval.contracts import RetrievalError, RetrievalQuery, RetrievedEvidence
+from app.retrieval.filtering import VersionGate
 from app.retrieval.importers import LEGACY_WORKFLOWS, load_curated_records
 from app.retrieval.lexical import LexicalRetriever
 from app.retrieval.serialization import evidence_cards, serialize_evidence
@@ -21,6 +23,9 @@ class AnalysisReferences:
     cards: list[dict]
     evidence: list[RetrievedEvidence] | None = None
     context: str | None = None
+    knowledge: KnowledgeCoverage | None = None
+    eligibility: RetrievalQuery | None = None
+    version_gate: VersionGate | None = None
 
 
 def _observed(
@@ -56,6 +61,34 @@ def retrieve_for_analysis(
     backend = os.getenv("RETRIEVAL_BACKEND", "legacy")
     if backend not in {"legacy", "lexical"}:
         raise RetrievalError("Unsupported configured retrieval backend")
+    if knowledge_enabled():
+        from app.knowledge_workspace import (
+            KNOWLEDGE_ERROR,
+            MAX_CONTEXT_CHARACTERS,
+            knowledge_for_analysis,
+        )
+
+        local_hits, coverage, eligibility, gate = knowledge_for_analysis(
+            mode, query, limit
+        )
+        # Curated cards remain guidance with their original categorical authority.
+        # Neither set competes away the other; both are explicitly bounded.
+        hits = local_hits + lexical_search(mode, query, limit)
+        context = "\n".join(coverage.warnings) + "\n" + serialize_evidence(hits)
+        if len(context) > MAX_CONTEXT_CHARACTERS:
+            raise RetrievalError(KNOWLEDGE_ERROR)
+        return _observed(
+            mode,
+            query,
+            AnalysisReferences(
+                evidence_cards(hits),
+                hits,
+                context,
+                coverage,
+                eligibility,
+                gate,
+            ),
+        )
     if backend == "lexical":
         hits = lexical_search(mode, query, limit)  # Errors propagate, no fallback.
         return _observed(

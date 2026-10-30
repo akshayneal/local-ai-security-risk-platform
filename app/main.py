@@ -4,8 +4,11 @@ from app.audit_logger import read_audit_logs, write_audit_log
 from app.evidence_inspector import build_inspector, collect_evidence
 from app.governance_analyzer import analyze_governance_risk
 from app.inference_context import EVIDENCE_BUDGET_MESSAGE, EvidenceBudgetError
+from app.knowledge_contracts import knowledge_enabled, local_knowledge_request
+from app.knowledge_workspace import KNOWLEDGE_ERROR, workspace_status
 from app.ollama_client import OLLAMA_MODEL
 from app.output_policy import OutputPolicyError
+from app.retrieval.contracts import RetrievalError
 from app.schemas import (
     GovernanceRiskRequest,
     GovernanceRiskResponse,
@@ -20,6 +23,8 @@ from app.ui_schemas import (
     ProductTrace,
     SocAnalysisEnvelope,
     SocMetadata,
+    UiGovernanceRequest,
+    UiSocRequest,
 )
 from app.version import APPLICATION_VERSION
 
@@ -74,6 +79,22 @@ def _run_governance(request: GovernanceRiskRequest) -> GovernanceRiskResponse:
             error=str(exc),
         )
 
+        if knowledge_enabled() and isinstance(exc, RetrievalError):
+            raise HTTPException(
+                status_code=409,
+                detail={
+                    "code": "local_knowledge_unavailable",
+                    "message": KNOWLEDGE_ERROR,
+                },
+            ) from exc
+        if knowledge_enabled() and isinstance(exc, EvidenceBudgetError):
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "code": "complete_context_unavailable",
+                    "message": EVIDENCE_BUDGET_MESSAGE,
+                },
+            ) from exc
         raise HTTPException(
             status_code=500, detail="Analysis failed. See local logs for details."
         ) from exc
@@ -118,6 +139,14 @@ def _run_soc(
             error=str(exc),
         )
 
+        if knowledge_enabled() and isinstance(exc, RetrievalError):
+            raise HTTPException(
+                status_code=409,
+                detail={
+                    "code": "local_knowledge_unavailable",
+                    "message": KNOWLEDGE_ERROR,
+                },
+            ) from exc
         if trace is not None and isinstance(exc, OutputPolicyError):
             raise HTTPException(
                 status_code=500,
@@ -141,9 +170,13 @@ def _run_soc(
 
 @app.post("/ui/analyze/governance", response_model=GovernanceAnalysisEnvelope)
 def ui_governance_endpoint(
-    request: GovernanceRiskRequest,
+    request: UiGovernanceRequest,
 ) -> GovernanceAnalysisEnvelope:
-    with collect_evidence("governance") as capture:
+    enabled = request.local_knowledge
+    request = GovernanceRiskRequest.model_validate(
+        request.model_dump(exclude={"local_knowledge"})
+    )
+    with local_knowledge_request(enabled), collect_evidence("governance") as capture:
         result = _run_governance(request)
     return GovernanceAnalysisEnvelope(
         analysis=result,
@@ -155,9 +188,13 @@ def ui_governance_endpoint(
 
 
 @app.post("/ui/analyze/soc-alert", response_model=SocAnalysisEnvelope)
-def ui_soc_endpoint(request: SocAlertRequest) -> SocAnalysisEnvelope:
+def ui_soc_endpoint(request: UiSocRequest) -> SocAnalysisEnvelope:
+    enabled = request.local_knowledge
+    request = SocAlertRequest.model_validate(
+        request.model_dump(exclude={"local_knowledge"})
+    )
     trace = ProductTrace()
-    with collect_evidence("soc_alert") as capture:
+    with local_knowledge_request(enabled), collect_evidence("soc_alert") as capture:
         result = _run_soc(request, trace=trace)
     return SocAnalysisEnvelope(
         analysis=result,
@@ -176,6 +213,12 @@ def ui_soc_endpoint(request: SocAlertRequest) -> SocAnalysisEnvelope:
 def ui_status() -> dict:
     """Backend readiness only; deliberately does not call Ollama."""
     return {"status": "ok", "version": app.version, "model": OLLAMA_MODEL}
+
+
+@app.get("/ui/knowledge/status")
+def knowledge_status() -> dict:
+    """Allowlisted aggregate metadata only; no path, payload or request grants."""
+    return workspace_status()
 
 
 @app.get("/logs")

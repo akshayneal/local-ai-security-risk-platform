@@ -2,11 +2,27 @@
 
 from typing import Any, Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, StrictBool
 
 from app.analysis_trace import AnalysisTrace
 from app.evidence_inspector import EvidenceInspectorReport
-from app.schemas import GovernanceRiskResponse, SocAlertResponse
+from app.schemas import (
+    GovernanceRiskRequest,
+    GovernanceRiskResponse,
+    SocAlertRequest,
+    SocAlertResponse,
+)
+
+
+class UiSocRequest(SocAlertRequest):
+    model_config = ConfigDict(extra="forbid")
+    local_knowledge: StrictBool = False
+
+
+class UiGovernanceRequest(GovernanceRiskRequest):
+    model_config = ConfigDict(extra="forbid")
+    local_knowledge: StrictBool = False
+
 
 INTEGRITY_FAILURE_MESSAGE = (
     "The generated analysis could not satisfy the application's factual-integrity "

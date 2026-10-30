@@ -41,3 +41,6 @@ knowledge_base/registry/*.db*
 evals/results/*.json
 evals/results/*.jsonl
 !evals/results/.gitkeep
+
+# Private operator-owned knowledge workspaces (raw documents, reviewed metadata, registry).
+knowledge_base/workspaces/

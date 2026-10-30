@@ -11,6 +11,7 @@ from typing import Any, Literal
 
 from pydantic import Field, StrictInt, model_validator
 
+from app.knowledge_contracts import KnowledgeCoverage, knowledge_enabled
 from app.microsoft_evidence import microsoft_evidence
 from app.retrieval.contracts import EvidenceRecord, RetrievalQuery
 from app.retrieval.filtering import filter_records
@@ -86,6 +87,9 @@ class EvidenceInspectorReport(SupportModel):
     total_claims: int
     evidence_gaps: tuple[str, ...] = ()
     review_required: Literal[True] = True
+    local_knowledge: KnowledgeCoverage | None = Field(
+        default=None, exclude_if=lambda v: v is None
+    )
     limitations: tuple[str, ...] = (
         "Retrieved guidance is not binding policy; a requirement is not evidence it is implemented.",
         "Model assertions are unassessed. Citations and source eligibility do not prove claim entailment.",
@@ -281,6 +285,8 @@ class EvidenceCapture:
     query_sha256: str | None = None
     status: str = "not_observed"
     records: list[EvidenceRecord] = field(default_factory=list)
+    knowledge: KnowledgeCoverage | None = None
+    registry_checked: bool = False
 
 
 _ACTIVE: ContextVar[EvidenceCapture | None] = ContextVar(
@@ -314,8 +320,29 @@ def capture_selection(mode: str, query: str, selection: Any) -> None:
                 if c.get("source_id") in catalog
                 and catalog[c["source_id"]].legacy_card() == c
             ]
-        # The current orchestration grants only public curated references. Never
-        # derive additional access/policy grants or registry claims from text.
+        # Registered evidence requires the operator-owned query and registry gate
+        # supplied by this request's bridge, never grants parsed from request text.
+        if knowledge_enabled() and selection.knowledge is not None:
+            if selection.eligibility is None or selection.version_gate is None:
+                raise ValueError("Missing trusted eligibility context")
+            capture.records = filter_records(
+                records, selection.eligibility, selection.version_gate
+            )
+            # Curated guidance has no unit/access requirements and remains eligible
+            # under its original public query, not the organizational unit filter.
+            public = RetrievalQuery(text=query, workflow=LEGACY_WORKFLOWS[mode])
+            capture.records = [
+                r
+                for r in records
+                if r in capture.records
+                or (r.document_id is None and r in filter_records([r], public))
+            ]
+            capture.status = (
+                "captured" if len(capture.records) == len(records) else "partial"
+            )
+            capture.registry_checked = True
+            capture.knowledge = selection.knowledge
+            return
         context = RetrievalQuery(
             text=query[:20_000] or "evidence", workflow=LEGACY_WORKFLOWS[mode]
         )
@@ -374,7 +401,7 @@ def build_inspector(
     cited = {s["source_id"] for s in response.get("source_references", [])}
     sources = tuple(
         InspectorSource(
-            provenance=source_provenance(r),
+            provenance=source_provenance(r, registry_checked=capture.registry_checked),
             cited=r.evidence_id in cited,
             excerpt=r.content[:MAX_EXCERPT],
             excerpt_truncated=len(r.content) > MAX_EXCERPT,
@@ -473,6 +500,7 @@ def build_inspector(
         claims=tuple(claims),
         total_claims=total,
         evidence_gaps=tuple(response.get("evidence_gaps", [])),
+        local_knowledge=capture.knowledge,
     )
 
 
@@ -514,6 +542,8 @@ def inspector_export(
         "human_review_required": True,
         "limitations": list(report.limitations),
     }
+    if report.local_knowledge is not None:
+        document["local_knowledge"] = report.local_knowledge.model_dump(mode="json")
     if corrections:
         history = validate_correction_history(report, corrections)
         latest = {r.claim_id: r for r in history}
