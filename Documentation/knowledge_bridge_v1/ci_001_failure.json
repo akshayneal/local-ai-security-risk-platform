@@ -1,0 +1,12 @@
+{
+  "head_sha": "745fc28b1550d795c488eb4cb8a7da8dc9d911c2",
+  "url": "https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41014190104",
+  "status": "completed",
+  "conclusion": "failure",
+  "tests": "failed; exact hosted pass/fail/skip counts unavailable",
+  "ruff": "skipped after test failure",
+  "evidence": "GitHub Actions run, jobs and check annotations retrieved through the read-only public API. Log download returned HTTP 403; no credentials were read or changed and no workflow rerun was requested.",
+  "confirmed_portability_defect": "The new policy preservation assertion expected installed Windows AGENTS.md raw SHA-256 17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d. Git stores the same policy text with LF SHA-256 265a373d73215ebfe02a21f313f4b71efb57f815fc430b6f5c524888b51310fc. The old assertion necessarily fails on that normalized checkout. Without hosted logs, no claim is made that this was the sole CI failure.",
+  "fix": "Keep the exact installed-byte check in this preserved checkout and add an exact canonical-text hash bound to unchanged policy commit 9af0344 for Git transport portability. Do not modify AGENTS.md or any frozen evaluation. Add a regression that rejects changed policy text.",
+  "followup": "Full deterministic local validation, then a bounded additional non-force push to the same explicitly authorized feature branch and exact-final-SHA CI verification. No merge, tag, release, force push, branch deletion or PR change."
+}

@@ -41,9 +41,31 @@ def test_sprint5_scope_and_protected_historical_bytes():
         p.startswith(("evals/", "reference_material/"))
         for p in plan["authorized_existing"]
     )
+    policy = (ROOT / "AGENTS.md").read_bytes()
     assert (
-        hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest()
-        == plan["installed_agents_sha256"]
+        hashlib.sha256(policy.replace(b"\r\n", b"\n")).hexdigest()
+        == plan["installed_agents_lf_sha256"]
+    )
+    if (ROOT / "evals/results/s4check").exists():
+        # Preserve this user's installed bytes, including mixed line endings.
+        # A fresh clone has Git-normalized text, not the original transport bytes.
+        assert hashlib.sha256(policy).hexdigest() == plan["installed_agents_sha256"]
+
+
+def test_policy_portability_is_bound_to_the_unchanged_policy_checkpoint():
+    plan = manifest()
+    original = subprocess.check_output(["git", "show", "9af0344:AGENTS.md"], cwd=ROOT)
+    assert hashlib.sha256(original).hexdigest() == plan["installed_agents_lf_sha256"]
+    assert original == (ROOT / "AGENTS.md").read_bytes().replace(b"\r\n", b"\n")
+    assert (
+        hashlib.sha256(
+            original.replace(b"\n", b"\r\n").replace(b"\r\n", b"\n")
+        ).hexdigest()
+        == plan["installed_agents_lf_sha256"]
+    )
+    assert (
+        hashlib.sha256(original + b"\nunauthorized policy change").hexdigest()
+        != plan["installed_agents_lf_sha256"]
     )
 
 

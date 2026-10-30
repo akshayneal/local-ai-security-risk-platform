@@ -284,16 +284,22 @@ not measured. No qwen outputs or independent human judgments are claimed.
 
 Local execution count: one incomplete infrastructure attempt (partial case count
 unavailable), one complete official 26-case run, one complete focused offline replay,
-and one complete replay inside the full deterministic suite: **78 completed case
-checks across three full executions**, with no selective rerun or altered expectations.
+and one complete replay in each of the two full deterministic validation runs:
+**104 completed case checks across four full executions**, with no selective rerun
+or altered expectations. The second full validation follows the policy-test-only
+portability correction; application/evaluation source and outcomes are unchanged.
 Hosted CI performs its own fresh deterministic replay, reported separately in the
 final handoff. Historical vector/ranking/Inspector replays ran offline in the full
 suite; historical live evaluations and original artifacts were not modified.
 
-Final implementation verification with the existing Windows CPython 3.13.1 venv:
+Implementation verification with the existing Windows CPython 3.13.1 venv:
 
 - `.\.venv\Scripts\python.exe -m pytest -q`: **1876 passed**, one existing
   Starlette/httpx deprecation warning, 95.05 s. No skips or failures in that run.
+- Final portability-checkpoint full run of the same command: **1877 passed**,
+  one existing warning, **94.01 s**, no skips/failures. The additional test binds
+  canonical policy text to the original policy checkpoint and checks transport
+  equivalence without modifying the installed file.
 - Focused UI/bridge/Microsoft/Inspector/preservation batch: **121 passed**, one
   existing warning. Earlier core retrieval/correction/report batch: **134 passed**.
 - New frozen evaluation/artifact replay: **4 passed**, 5.70 s before the full suite.
@@ -318,10 +324,38 @@ synthetic workspace remains available for user inspection; no inherited workspac
 was touched. `status northstar-sprint5` is safe to run again; do not reinitialize it.
 
 All changes are confined to the authorized feature branch. Final tracked diff must
-be clean before the one authorized non-force push; protected s4check remains visibly
+be clean before each authorized non-force feature push; protected s4check remains visibly
 untracked. Final exact commit SHA and GitHub Actions URL/status are given in the
 handoff after the push. Main/tag, release clone, permissions, dependencies, OS
 settings and shared processes remain unchanged; no merge/tag/release or PR action.
+
+## Hosted portability follow-up
+
+The initial pushed checkpoint `745fc28b1550d795c488eb4cb8a7da8dc9d911c2` had
+[failed exact-SHA CI](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41014190104).
+Tests failed and Ruff was skipped. Public run/jobs/check metadata was readable;
+log download returned HTTP 403, so hosted pass/fail/skip counts were unavailable.
+No credential access, permission change or workflow rerun was attempted.
+
+A concrete portability defect was reproduced from the committed bytes: this
+checkout's installed AGENTS.md has mixed line endings and SHA-256 `17269f4...`,
+whereas Git stores identical text with LF SHA-256
+`265a373d73215ebfe02a21f313f4b71efb57f815fc430b6f5c524888b51310fc`.
+The newly authored raw-byte assertion necessarily fails on an LF checkout.
+The fix preserves the original exact-byte check wherever this protected inherited
+snapshot exists, and always checks exact normalized policy text against the
+unchanged `9af0344:AGENTS.md` checkpoint. A fresh-clone regression checks LF/CRLF
+transport equivalence and rejects changed policy text. The installed file itself
+remains byte-identical. No historical hash, expected case, scorer or model result
+changed. See [preserved failed CI metadata](knowledge_bridge_v1/ci_001_failure.json).
+
+This required one bounded additional checkpoint/push on the same authorized branch
+after the initial push, rather than a history rewrite or stable-branch change.
+Without initial logs, the defect is not asserted to be its sole failure; the final
+exact-SHA run determines hosted status. The final handoff supplies that SHA/URL.
+Focused portability checks: 4 passed, 2.42 s. Final full suite: 1877 passed,
+one existing warning, 94.01 s; Ruff, pip check and diff check passed. No production
+module, frozen case/source/scorer/result or policy-body change follows those gates.
 
 ## Human-only review and next scope
 

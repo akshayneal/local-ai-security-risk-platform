@@ -860,5 +860,6 @@
     "evals/results/s4check/tests/test_support_e2e_artifacts.py": "5cc72a384691dc264bd64d563bf31a53424d5916ecb6d679bb49a7179f8b2f7b",
     "evals/results/s4check/tests/test_support_e2e_plan.py": "e4288b3b4033ccdd1eabdec973be862c94761e057efb600010160f446dce8a43",
     "evals/results/s4check/tests/test_ui_api.py": "d9d1309daf203a263393f29507c038c5683a9fa36bae62d454f361b28496ee0f"
-  }
+  },
+  "installed_agents_lf_sha256": "265a373d73215ebfe02a21f313f4b71efb57f815fc430b6f5c524888b51310fc"
 }

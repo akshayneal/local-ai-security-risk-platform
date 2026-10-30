@@ -145,3 +145,16 @@ checks; initial incomplete attempt has no reconstructable partial count. Live qw
 and embedding requests: zero, **NOT RUN**. Exact pushed-SHA CI is verified in the
 final handoff. USER VISUAL QA PENDING; no release, independent semantic validation,
 third analyzer, authenticated authorization or broad entailment certification.
+
+Hosted follow-up: the initial pushed `745fc28` CI failed (tests failed, Ruff skipped;
+public logs HTTP 403). A new preservation-test portability defect was confirmed:
+Git LF-normalizes the unchanged installed policy text. Retain the exact installed
+raw-byte check in this protected checkout and separately bind canonical policy text
+to its unchanged first checkpoint for fresh clones. No AGENTS.md edit or frozen
+case/scorer/result change. Record failed CI metadata, run full local gates, and make
+one additional non-force push on the same authorized branch for final exact-SHA CI.
+The corrected checkpoint passes 1877 deterministic tests (one existing warning,
+94.01 s), Ruff/pip/diff, plus 4 focused portability checks. There are now four
+completed local full matrix executions (official run + focused replay + two full
+suite replays), 104 completed case checks. No application/evaluation source or
+frozen outcome changed during the portability follow-up. Live calls remain zero.
