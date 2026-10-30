@@ -43,3 +43,54 @@ No composite score or universal retriever superiority is claimed.
 Frozen source/data identities are recorded in
 [freeze.json](../evals/evidence_support_v1/freeze.json). Results will be appended
 after the once-only ranking run and the separately committed support candidate.
+
+## Completed result
+
+Ranking launch `abd9ab214e24bccd9f052bfd75dffe87afbdca16` completed all 172
+case/backend rows once, with a byte-exact journal/report comparison. Installed local
+embeddinggemma digest is
+`85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1`.
+Fifty-eight embedding requests populated an exact replay cache. There were **zero
+qwen generations** for this primary experiment. Corpus and judgments stayed frozen.
+Candidate `1d123a7db13c12089fb13a9ca55dc164ca8b767b` was committed before its
+offline assessment pass. [Provenance and artifacts](evidence_support_v1/assessment_provenance.json)
+bind both candidate modules, the exact ranking/assessment reports and vector cache.
+
+| Metric | Legacy | Lexical | Dense | Hybrid |
+| --- | ---: | ---: | ---: | ---: |
+| Mean eligible relevant Recall@5 (35 nonempty gold sets) | 1.0 | 1.0 | 1.0 | 1.0 |
+| Full-support evidence sufficiency@5 (18 positives) | 18/18 | 18/18 | 18/18 | 18/18 |
+| Required-group recall (24 cases with nonempty groups) | 1.0 | 1.0 | 1.0 | 1.0 |
+| False full-support decisions (25 non-full cases) | 0/25 | 0/25 | 0/25 | 0/25 |
+| False abstention / positive loss | 1/18 | 1/18 | 1/18 | 1/18 |
+| Correct no-answer | 19/19 | 19/19 | 19/19 | 19/19 |
+| Correct partial / conflict handling | 3/3; 3/3 | 3/3; 3/3 | 3/3; 3/3 | 3/3; 3/3 |
+| Eligible-source / wrong-authority support violations | 0; 0 | 0; 0 | 0; 0 | 0; 0 |
+| Diagnostic any-hit false support | 18/25 | 18/25 | 20/25 | 20/25 |
+| Median ranking milliseconds | 0.290 | 1.291 | 24.666 | 2.264 |
+| Median support-assessment milliseconds | 0.098 | 0.097 | 0.101 | 0.101 |
+
+All rankers reach a ceiling on this small, explicit synthetic corpus. This is weak
+evidence for choosing among them; no default migration is justified. Vector caching
+and backend order affect latency: hybrid reuses dense vectors/query embeddings, so
+the observed medians do not establish a causal hybrid speed advantage. Eligibility
+includes workflow, access, policy scope, dates, status and fixture registry currentness.
+Tests also verify never-eligible restricted/wrong-team/old/future/expired sources did
+not enter the embedding cache, rather than merely hiding them after ranking.
+
+The one lost positive is the valid natural-prose Juniper policy. It is retrieved but
+the bounded structured matcher cannot interpret it. This loss is preserved; no parser
+or answer-key tuning follows it. Structured requirements match only reviewed scoped
+policy metadata; policy wording cannot prove implementation. Source assertion
+matching is a useful software primitive, not general semantic intelligence or proof
+that future production analyses will avoid unsupported claims.
+
+The any-hit heuristic is explicitly diagnostic. Its 18/25 or 20/25 false-support
+counts are **not** generated hallucinations and are not labeled current production
+decisions. Raw retrievers provide candidates; they make no support assignment.
+The assessment layer, ranking quality and human/model analysis must remain separate.
+
+No errata or original judgment revisions were needed. Two artifact tests replay all
+four rankings from cached vectors, every assessment, group metrics, source eligibility
+and the false-abstention cost without Ollama/network. Live semantic validation is
+separately bounded and must not be inferred from this deterministic result.

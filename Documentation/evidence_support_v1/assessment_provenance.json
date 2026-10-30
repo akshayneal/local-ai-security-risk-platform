@@ -1,0 +1,15 @@
+{
+  "candidate_commit": "1d123a7db13c12089fb13a9ca55dc164ca8b767b",
+  "artifact_sha256": {
+    "assessed.json": "a20bfc281e4c7c67727079e33d6a08d8e79f2282bd6b17df9a2afb31d98cca87",
+    "rankings.json": "91fe607c918dd748634922446d5ab3c7db1fa7f1c3d692d5fa2bc1ed09752489",
+    "vectors.json": "005f1fdc8939f4d2ced7fa8899d7801dd48a3cd892dbc9ee7a43e1a016f9ce3c"
+  },
+  "candidate_source_blobs": {
+    "app/support_assessor.py": "b050253ba7ff53078faa85eb8625fd648a092038",
+    "app/support_contracts.py": "ae27c64eeff345666d1c57236687edeb4785636c"
+  },
+  "qwen_generations": 0,
+  "corpus_or_judgment_changes": [],
+  "limitations": "Bounded typed assertions; one natural-prose positive lost. No general entailment or production hallucination-rate claim."
+}
