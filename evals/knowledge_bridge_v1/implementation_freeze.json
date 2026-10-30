@@ -1,0 +1,26 @@
+{
+  "status": "pre-outcome implementation snapshot; no real model runs",
+  "source_git_blobs": {
+    "app/knowledge_contracts.py": "39ea30a0907f43605b9d33b55467f38248363ee0",
+    "app/knowledge_workspace.py": "d5ba31e64a3cd142a3934534d30b64e64e79b414",
+    "app/retrieval/contracts.py": "0f5d161dc02b51e6f06f28aa969fd783d8bacfcd",
+    "app/retrieval/filtering.py": "d0432a45b99bf94f5b06917475e5d3e37f3fddea",
+    "app/retrieval/importers.py": "469ba2cffeb5b524f730992ea8f4ddf7e3ae419c",
+    "app/retrieval/lexical.py": "a547d71568291641697595b9ce104b7544f3c866",
+    "app/retrieval/serialization.py": "8134f679dd96820a18c35cd6a26ce53d6004c3ee",
+    "app/retrieval/orchestration.py": "bce52f385f3df9b8a95d97072a0b0772d984217c",
+    "app/document_loader.py": "98f32478abba802e18e3318ad6e93a93c90c57da",
+    "app/chunker.py": "f08d639ff1656e00160c6d402be3fcad52bcf47d",
+    "app/document_registry.py": "e507457a9c2b04c65d5d1253b238da18460aa7c5",
+    "app/main.py": "bf965350c834c2e4522dbab64136cf7bd9814052",
+    "app/ui_schemas.py": "0b4a25fd565cf96100577328926e2bb64e36afff",
+    "app/evidence_inspector.py": "9afe28374cadc674d5ebefb72cc768111c6e00b5",
+    "app/inference_context.py": "09358ab1138cd77d705141c1691afb7c902105a2",
+    "app/schemas.py": "44402b810c6ec967393d8883cde55927d381cb9d",
+    "app/soc_analyzer.py": "e5218abe9822a93732877ae0fbec0e1221a3adf9",
+    "app/governance_analyzer.py": "0395ead170540fd3a8883f84d92dd18f3298b07f",
+    "app/prompts.py": "11f6bf15ef646c03cb5409d7c94c696a15c59d58",
+    "app/untrusted_content.py": "d0100d46e0fc66040a31d35914a9aef1607d36ce",
+    "evals/knowledge_bridge_v1/runner.py": "5519c45d7f41c3bd5d368766d42609160f6613c4"
+  }
+}

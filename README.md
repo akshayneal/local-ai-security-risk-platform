@@ -1,8 +1,8 @@
 # Local AI Security Risk Platform
 
-Local analyst-support software for security-event investigation and AI-system risk review. It combines a Streamlit application, FastAPI backend, curated local references and Ollama inference with `qwen3:8b`.
+Local-first, single-user decision support across SOC, AI Security, and AI Safety, Assurance & Policy. It combines a Streamlit application, FastAPI backend, curated local references and Ollama inference with `qwen3:8b`.
 
-**Release: 2.3.0.** Two practitioner workflows are active.
+**Released main: 2.3.0.** Two practitioner workflows are active. This development branch is unmerged; Sprint 5 reviewed local knowledge is experimental and defaults off.
 
 ## What it does
 
@@ -14,12 +14,21 @@ Both workflows support validated synthetic sample loading, structured source ref
 
 ## Product direction
 
-| Domain | Technical | Policy / governance |
+| Pillar | Working capability | Status |
 | --- | --- | --- |
-| Security Operations | **SOC Investigation — Active** | SOC Policy & Governance Review — Planned |
-| AI Security | AI Security Assessment — Planned | **AI System Risk Review — Active** |
+| SOC | SOC Investigation; generic telemetry and experimental Microsoft JSON/CSV file adapter | Two-workflow core released; Microsoft adapter unmerged |
+| AI Security | Knowledge-pipeline threat model and adversarial software tests | Separate AI Security Assessment Planned; no runnable assessment route |
+| AI Safety, Assurance & Policy | Existing AI System Risk Review; human review, evidence gaps, policy/implementation distinction | Core released; Inspector/corrections unmerged |
 
-The planned workflows communicate product direction and are not included in this release. They have no forms, endpoints, analysis actions or sample outputs. Future SOC policy review would cover escalation, approval boundaries, procedural constraints and evidence/documentation obligations. Future AI security assessment would examine attack surface, prompt/retrieval/tool risks, authorization boundaries, controls and evaluation planning.
+A shared local evidence layer supplies telemetry, curated guidance and explicitly opted-in, reviewed current organizational documents. A shared assurance layer supplies contracts, provenance, deterministic checks, application self-evaluation and analyst review. Platform Evaluation describes this application's evaluations; it is not another analyzer. Standalone SOC Policy & Governance Review remains Planned.
+
+| Development status | Capabilities |
+| --- | --- |
+| Unmerged but functional | Evidence Inspector, session-bound corrections, field anchors, correction-first exports, curated lexical opt-in and working-checkout launcher |
+| Sprint 5 experimental | Reviewed local document CLI, registered current-version BM25 bridge for both analyzers, read-only Knowledge Workspace, synthetic Northstar demo |
+| Planned | Technical AI Security Assessment, authenticated document portal, broader natural-language support/applicability evaluation |
+
+An applicable policy does not prove implementation, granted approval or a correct model answer. A citation is evidence provenance, not an entailment certificate.
 
 ## Why the architecture matters
 
@@ -35,10 +44,11 @@ Navigation separates practitioner work from platform assurance:
 
 | Area | Page | Purpose |
 | --- | --- | --- |
-| Landing | Overview | Current release and four-workflow product map |
+| Landing | Overview | Three pillars and honest capability statuses |
 | Workflows | SOC Investigation | Security telemetry, evidence/inference separation and investigation guidance |
 | Workflows | AI System Risk Review | AI-system risks, controls and oversight |
 | Platform | Platform Evaluation | Frozen evaluation history and same-suite comparisons for this application |
+| Platform | Knowledge Workspace | Read-only operator workspace status and eligible source identities |
 | Platform | Activity | Recent local audit entries, filtered by workflow and outcome |
 | Platform | About | Native architecture overview and operational boundaries |
 
@@ -112,7 +122,7 @@ Open `http://localhost:8501`; API documentation is at `http://127.0.0.1:8000/doc
 
 ## Testing
 
-The current deterministic suite has **1,287 tests** and requires no Ollama, internet connection or running application server:
+The released product checkpoint documented **1,287 tests** (the current development count is recorded in report 47) and requires no Ollama, internet connection or running application server:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest
@@ -146,4 +156,21 @@ Coverage includes API compatibility, source controls, bounded SOC repair/fail-cl
 
 ## Roadmap
 
-The next product families are SOC Policy & Governance Review and AI Security Assessment, both planned. Other possible expansion areas include investigation depth, ATT&CK STIX validation and deployment packaging. Implementation requires separate authorization. Vector RAG and external integrations remain deferred. The immediate release step is human visual inspection, followed by separately authorized merge/version-tag decisions.
+The next scoped runtime is a technical AI Security Assessment with explicit attack surfaces, prompt/retrieval/tool boundaries, evidence-linked threats, bounded adversarial tests and human review. Standalone SOC Policy & Governance Review, authenticated portals, default dense/hybrid migration and external integrations remain deferred. This branch is not a release recommendation; visual and independent semantic review remain pending.
+
+## Experimental reviewed local knowledge (Sprint 5)
+
+Start with the [synthetic CLI and human walkthrough](Documentation/47_three_pillar_knowledge_foundation_report.md). No real organizational documents are bundled. Keep private material under the ignored `knowledge_base/workspaces/<name>/documents/`; never put it into tracked sample directories.
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.knowledge_workspace init northstar --demo
+.\.venv\Scripts\python.exe -m scripts.knowledge_workspace register northstar
+.\.venv\Scripts\python.exe -m scripts.knowledge_workspace build northstar
+.\.venv\Scripts\python.exe -m scripts.knowledge_workspace query northstar --workflow soc_investigation --text "incident containment approval procedure"
+```
+
+`build` validates and builds a bounded in-memory lexical projection; no persistent vector index is created. Normal new-document reviews default to unapproved/unverified. Review exact-version sidecars separately from document contents. Missing, corrupt or stale workspaces withhold opted-in analysis without fallback. The checkbox grants no access; only operator-owned workspace configuration supplies eligibility scopes. This local eligibility mechanism is not authenticated IAM/RBAC.
+
+For a manual foreground backend, set `$env:LOCAL_KNOWLEDGE_WORKSPACE = 'northstar'` before the existing loopback uvicorn command. Leave normal launchers unchanged. In either active analysis page, explicitly select **Include reviewed local knowledge (experimental)**, default off. Check Knowledge Workspace and the Inspector for eligible, selected and cited chunks, versions, categorical authority and incomplete-evidence warnings. Full raw documents and hidden grants are not automatically exported. Related hits and requirements remain unassessed as evidence of specific implementation or approval.
+
+Opted-in requests reuse the existing complete-context local runtime path (`truncate=false`, `shift=false`) and can be withheld if the installed provider cannot meet it. No model download, cloud call, authentication, live Microsoft connection or autonomous response is added. See [sprint plan](Documentation/46_three_pillar_sprint_plan.md) and [results/limitations](Documentation/47_three_pillar_knowledge_foundation_report.md). **USER VISUAL QA PENDING.**

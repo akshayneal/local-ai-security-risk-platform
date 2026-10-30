@@ -23,6 +23,11 @@ def safe_error(status: int, body: object) -> str:
         detail = body.get("detail")
         if (
             isinstance(detail, dict)
+            and detail.get("code") == "local_knowledge_unavailable"
+        ):
+            return "Reviewed local knowledge unavailable or invalid; analysis withheld. Check Knowledge Workspace and the operator CLI."
+        if (
+            isinstance(detail, dict)
             and detail.get("code") == "complete_context_unavailable"
         ):
             return CONTEXT_ERROR

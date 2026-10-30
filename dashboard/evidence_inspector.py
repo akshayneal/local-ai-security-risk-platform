@@ -206,6 +206,16 @@ def display_evidence_inspector(
         st.text(
             f"Retrieved: {len(report.sources)} · Cited: {sum(s.cited for s in report.sources)} · Retrieval capture: {report.retrieval_status}"
         )
+        if report.local_knowledge is not None:
+            coverage = report.local_knowledge
+            st.text(
+                f"Local documents: {coverage.registered_documents} registered · {coverage.approved_documents} approved · {coverage.eligible_chunks} eligible chunks · {coverage.selected_chunks} selected · {coverage.omitted_eligible_chunks} omitted"
+            )
+            for warning in coverage.warnings:
+                st.warning(warning)
+            with st.expander("Eligible local chunk identities"):
+                for evidence_id in coverage.eligible_evidence_ids:
+                    st.text(evidence_id)
         sources_tab, input_tab, claims_tab, review_tab = st.tabs(
             [
                 "Retrieved & cited",

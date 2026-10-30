@@ -9,7 +9,7 @@ from dashboard.evaluation_catalog import (
     catalog_rows,
     same_suite_comparison,
 )
-from dashboard.navigation import WORKFLOW_MAP
+from dashboard.navigation import PILLARS
 from dashboard.presentation import audit_rows
 
 
@@ -132,23 +132,23 @@ def overview_page() -> None:
     st.write(
         "Local analyst-support platform for security-event investigation and AI-system risk review."
     )
-    technical, governance = st.columns(2)
-    technical.subheader("Technical")
-    governance.subheader("Policy / governance")
-    for row in WORKFLOW_MAP:
-        st.caption(row["domain"])
-        for column, category in zip(
-            st.columns(2), ("technical", "governance"), strict=True
-        ):
-            card = row[category]
-            with column, st.container(border=True):
-                st.caption(card["status"])
-                st.subheader(card["title"])
-                st.write(card["description"])
-                if card["status"] == "Active":
-                    st.page_link(card["page"], label="Open workflow")
+    for column, pillar in zip(st.columns(3), PILLARS, strict=True):
+        with column, st.container(border=True):
+            st.subheader(pillar["title"])
+            st.caption(pillar["status"])
+            st.markdown(f"**{pillar['workflow']}**")
+            st.write(pillar["description"])
+            if "page" in pillar:
+                st.page_link(pillar["page"], label="Open workflow")
     st.caption(
-        "Planned workflows communicate platform direction and are not included in this release."
+        "Two active analyzers. AI Security Assessment and standalone SOC Policy & Governance Review remain Planned. Development features are unmerged, not a new release."
+    )
+    st.subheader("Shared local evidence and assurance")
+    st.write(
+        "Structured telemetry, curated guidance and explicitly opted-in reviewed local documents feed bounded inference. Provenance, deterministic checks, Evidence Inspector and analyst corrections support human review; citations do not prove truth or authorize action."
+    )
+    st.caption(
+        "Sprint 5 experimental: registered document bridge and Knowledge Workspace. Local knowledge defaults off; no authentication or enterprise IAM."
     )
     st.subheader("Platform views")
     st.write(
@@ -160,12 +160,15 @@ def about_page() -> None:
     st.title("About")
     st.subheader("Product scope")
     st.write(
-        "Local AI Security Risk Platform supports security-event investigation and AI-system risk review using structured requests, local references and Ollama inference."
+        "Three pillars share local evidence and assurance: SOC; AI Security (assessment Planned); AI Safety, Assurance & Policy (AI System Risk Review active). Platform Evaluation reports this application's own frozen evaluations."
     )
     st.subheader("Architecture")
     stages = (
         ("1. Request", "Streamlit input, FastAPI and Pydantic request validation"),
-        ("2. Context", "Local reference retrieval and untrusted-content handling"),
+        (
+            "2. Context",
+            "Curated guidance; optional reviewed current local documents, scoped eligibility and untrusted-content handling",
+        ),
         ("3. Inference", "Configured local Ollama model; qwen3:8b by default"),
     )
     for column, (title, description) in zip(st.columns(3), stages, strict=True):
@@ -190,7 +193,10 @@ def about_page() -> None:
         )
     st.subheader("Current release")
     st.write(
-        "SOC Investigation and AI System Risk Review are active. Overview shows the two planned workflows."
+        "Released main/v2.3.0 has two active analyzers. Inspector, corrections and Microsoft inputs are unmerged functional development. Sprint 5 local knowledge is experimental and opt-in. AI Security Assessment and standalone SOC Policy & Governance Review remain Planned."
+    )
+    st.write(
+        "Policy applicability and model correctness are separate. An applicable requirement is not evidence of implementation, granted approval, complete evidence coverage or a correct generated answer."
     )
     st.subheader("Operational boundaries")
     left, right = st.columns(2)

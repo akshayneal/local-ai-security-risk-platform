@@ -24,6 +24,17 @@ def verify_freeze() -> dict:
     for name, expected in freeze["sha256"].items():
         if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != expected:
             raise ValueError("Frozen source/plan mismatch")
+    implementation = json.loads((SUITE / "implementation_freeze.json").read_bytes())
+    names = implementation["source_git_blobs"]
+    actual = subprocess.check_output(
+        ["git", "hash-object", "--stdin-paths"],
+        cwd=ROOT,
+        text=True,
+        input="\n".join(names) + "\n",
+    ).splitlines()
+    if dict(zip(names, actual, strict=True)) != names:
+        raise ValueError("Pre-outcome implementation snapshot mismatch")
+    freeze["implementation_source_git_blobs"] = names
     return freeze
 
 
@@ -53,72 +64,77 @@ def evaluate() -> dict:
     results = []
     for case in cases:
         started = time.perf_counter()
-        with tempfile.TemporaryDirectory(prefix="knowledge-bridge-v1-") as temporary:
-            with patch.object(kw, "WORKSPACE_ROOT", Path(temporary) / "workspaces"):
-                kw.initialize_workspace("case", demo=True)
-                kw.register_workspace("case")
-                path = kw.workspace_path("case")
-                _condition(path, case)
-                try:
-                    workspace = kw.load_workspace("case")
-                    query = kw.workspace_query(
-                        workspace,
-                        Workflow(case.get("case_workflow", case["workflow"])),
-                        case["query"],
-                        top_k=8,
-                        as_of=date(2026, 10, 30),
+        with (
+            tempfile.TemporaryDirectory(prefix="knowledge-bridge-v1-") as temporary,
+            patch.object(kw, "WORKSPACE_ROOT", Path(temporary) / "workspaces"),
+        ):
+            kw.initialize_workspace("case", demo=True)
+            kw.register_workspace("case")
+            path = kw.workspace_path("case")
+            _condition(path, case)
+            try:
+                workspace = kw.load_workspace("case")
+                query = kw.workspace_query(
+                    workspace,
+                    Workflow(case.get("case_workflow", case["workflow"])),
+                    case["query"],
+                    top_k=8,
+                    as_of=date(2026, 10, 30),
+                )
+                hits, coverage, _ = kw.select_knowledge(workspace, query)
+                selected = {h.record.source_path for h in hits}
+                found = len(set(case["targets"]) & selected)
+                forbidden = len(set(case.get("forbidden", [])) & selected)
+                groups = case.get("groups", [])
+                assertion_ok = coverage.support_status == "unassessed"
+                if case.get("assertion") in {
+                    "unverified-authority",
+                    "body-cannot-grant-scopes",
+                }:
+                    assertion_ok &= all(
+                        h.record.authority == "unverified_material"
+                        and h.record.required_scopes == {"northstar.learning"}
+                        for h in hits
+                        if h.record.source_path == "poison.md"
                     )
-                    hits, coverage, _ = kw.select_knowledge(workspace, query)
-                    selected = {h.record.source_path for h in hits}
-                    found = len(set(case["targets"]) & selected)
-                    forbidden = len(set(case.get("forbidden", [])) & selected)
-                    groups = case.get("groups", [])
-                    assertion_ok = coverage.support_status == "unassessed"
-                    if case.get("assertion") in {
-                        "unverified-authority",
-                        "body-cannot-grant-scopes",
-                    }:
-                        assertion_ok &= all(
-                            h.record.authority == "unverified_material"
-                            and h.record.required_scopes == {"northstar.learning"}
-                            for h in hits
-                            if h.record.source_path == "poison.md"
-                        )
-                    results.append(
-                        {
-                            "id": case["id"],
-                            "safe_error": False,
-                            "passed": not case.get("error")
-                            and not forbidden
-                            and found == len(case["targets"])
-                            and assertion_ok,
-                            "relevant_found": found,
-                            "relevant_total": len(case["targets"]),
-                            "required_groups_found": sum(
-                                bool(set(g) & selected) for g in groups
-                            ),
-                            "required_groups_total": len(groups),
-                            "false_eligible_exposures": forbidden,
-                            "no_answer": case.get("no_answer", False),
-                            "nonempty_retrieval": bool(hits),
-                            "support_unassessed": assertion_ok,
-                            "selected_ids": [h.record.evidence_id for h in hits],
-                            "elapsed_ms": round(
-                                (time.perf_counter() - started) * 1000, 3
-                            ),
-                        }
-                    )
-                except RetrievalError:
-                    results.append(
-                        {
-                            "id": case["id"],
-                            "safe_error": True,
-                            "passed": bool(case.get("error")),
-                            "elapsed_ms": round(
-                                (time.perf_counter() - started) * 1000, 3
-                            ),
-                        }
-                    )
+                results.append(
+                    {
+                        "id": case["id"],
+                        "safe_error": False,
+                        "passed": not case.get("error")
+                        and not forbidden
+                        and found == len(case["targets"])
+                        and assertion_ok,
+                        "relevant_found": found,
+                        "relevant_total": len(case["targets"]),
+                        "required_groups_found": sum(
+                            bool(set(g) & selected) for g in groups
+                        ),
+                        "required_groups_total": len(groups),
+                        "false_eligible_exposures": forbidden,
+                        "no_answer": case.get("no_answer", False),
+                        "nonempty_retrieval": bool(hits),
+                        "support_unassessed": assertion_ok,
+                        "selected_ids": [h.record.evidence_id for h in hits],
+                        "elapsed_ms": round((time.perf_counter() - started) * 1000, 3),
+                    }
+                )
+            except RetrievalError:
+                results.append(
+                    {
+                        "id": case["id"],
+                        "safe_error": True,
+                        "passed": bool(case.get("error")),
+                        "relevant_found": 0,
+                        "relevant_total": len(case["targets"]),
+                        "required_groups_found": 0,
+                        "required_groups_total": len(case.get("groups", [])),
+                        "false_eligible_exposures": 0,
+                        "no_answer": case.get("no_answer", False),
+                        "nonempty_retrieval": False,
+                        "elapsed_ms": round((time.perf_counter() - started) * 1000, 3),
+                    }
+                )
     positive = [r for r in results if r.get("relevant_total", 0)]
     negative = [r for r in results if r.get("no_answer")]
     found = sum(r["relevant_found"] for r in positive)
@@ -177,6 +193,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.output.exists():
+        parser.error(
+            "Output exists; preserve it and choose a new path for explicit replay"
+        )
     report = evaluate()
     with args.output.open("x", encoding="utf-8", newline="\n") as output:
         output.write(json.dumps(report, indent=2) + "\n")

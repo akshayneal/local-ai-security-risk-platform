@@ -66,6 +66,7 @@ def retrieve_for_analysis(
             KNOWLEDGE_ERROR,
             MAX_CONTEXT_CHARACTERS,
             knowledge_for_analysis,
+            protected_evidence_context,
         )
 
         local_hits, coverage, eligibility, gate = knowledge_for_analysis(
@@ -74,7 +75,7 @@ def retrieve_for_analysis(
         # Curated cards remain guidance with their original categorical authority.
         # Neither set competes away the other; both are explicitly bounded.
         hits = local_hits + lexical_search(mode, query, limit)
-        context = "\n".join(coverage.warnings) + "\n" + serialize_evidence(hits)
+        context = "\n".join(coverage.warnings) + "\n" + protected_evidence_context(hits)
         if len(context) > MAX_CONTEXT_CHARACTERS:
             raise RetrievalError(KNOWLEDGE_ERROR)
         return _observed(

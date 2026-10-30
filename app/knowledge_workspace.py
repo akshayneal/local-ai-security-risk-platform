@@ -27,6 +27,7 @@ from app.retrieval.filtering import filter_records, registry_version_gate
 from app.retrieval.importers import LEGACY_WORKFLOWS, load_registered_records
 from app.retrieval.lexical import LexicalRetriever
 from app.retrieval.serialization import serialize_evidence
+from app.untrusted_content import neutralize_text
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE_ROOT = ROOT / "knowledge_base/workspaces"
@@ -49,6 +50,20 @@ CONTEXT_WARNING = (
     "a policy requirement does not prove implementation or granted approval. "
     "Preserve conflicts and require human review before action."
 )
+
+
+def protected_evidence_context(hits) -> str:
+    """Quarantine each actual payload before JSON escapes can hide word boundaries.
+
+    Preserve original evidence for hashing/inspection; this is a model-facing copy.
+    Application-owned identity/version/authority fields are not replaced by prose.
+    """
+    envelopes = json.loads(serialize_evidence(hits))
+    for envelope in envelopes:
+        envelope["untrusted_evidence_content"] = neutralize_text(
+            envelope["untrusted_evidence_content"]
+        )
+    return json.dumps(envelopes, ensure_ascii=True, indent=2)
 
 
 def _no_link(path: Path) -> None:
@@ -308,11 +323,32 @@ def workspace_status() -> dict:
         }
     try:
         workspace = configured_workspace()
+        workflows = {}
+        for workflow in workspace.config.workflows:
+            query = workspace_query(workspace, workflow, "workspace status")
+            eligible = filter_records(
+                workspace.records,
+                query,
+                registry_version_gate(workspace_file(workspace.path, "registry.db")),
+            )
+            workflows[workflow.value] = [
+                {
+                    "evidence_id": r.evidence_id,
+                    "source_id": r.source_id,
+                    "title": r.title,
+                    "version": r.document_version_id,
+                    "authority": r.authority.value,
+                    "status": r.status,
+                    "synthetic": r.synthetic,
+                }
+                for r in eligible
+            ]
         return {
             "status": "experimental",
             "registered_documents": len(workspace.reviews.documents),
             "approved_documents": sum(r.approved for r in workspace.reviews.documents),
             "approved_chunks": len(workspace.records),
+            "workflows": workflows,
             "message": "Read-only workspace validated. Each request rechecks workflow, scope, dates and current versions. Claims remain unassessed.",
         }
     except RetrievalError:

@@ -207,16 +207,51 @@ def test_no_answer_coverage_and_query_context_caps(demo_workspace, monkeypatch):
         search(workspace)
 
 
-def test_link_escape_refused_without_reading_target(demo_workspace, monkeypatch):
-    # Portable deterministic link-boundary check; actual symlink creation on Windows
-    # requires privileges and is not attempted by the suite.
-    original = kw._no_link
+@pytest.mark.parametrize("method", ["is_symlink", "is_junction"])
+def test_link_escape_refused_without_reading_target(
+    demo_workspace, monkeypatch, method
+):
+    from pathlib import Path
 
-    def linked(path):
-        if path.name == "documents":
-            raise ValueError("link boundary")
-        return original(path)
+    original = getattr(Path, method)
+    monkeypatch.setattr(
+        Path, method, lambda path: path.name == "documents" or original(path)
+    )
+    with pytest.raises(RetrievalError):
+        kw.load_workspace("demo")
 
-    monkeypatch.setattr(kw, "_no_link", linked)
+
+def test_registry_gate_rejects_superseded_snapshot(demo_workspace):
+    workspace = kw.load_workspace("demo")
+    original = next(r for r in workspace.records if r.source_path == "access-policy.md")
+    gate = kw.registry_version_gate(demo_workspace / "registry.db")
+    assert gate(original)
+    with (demo_workspace / "documents/access-policy.md").open(
+        "a", encoding="utf-8"
+    ) as target:
+        target.write("\nA changed version requires a new review.\n")
+    kw.register_workspace("demo")
+    assert not gate(original)
+    with pytest.raises(RetrievalError):
+        kw.load_workspace("demo")
+
+
+def test_workspace_count_extraction_and_chunk_limits(demo_workspace, monkeypatch):
+    for number in range(25):
+        (demo_workspace / f"documents/extra-{number}.md").write_text("synthetic")
+    with pytest.raises(RetrievalError):
+        kw.load_workspace("demo")
+
+
+@pytest.mark.parametrize(
+    "workspace_item", ["workspace.json", "reviewed.json", "registry.db"]
+)
+def test_linked_control_files_refused(demo_workspace, monkeypatch, workspace_item):
+    from pathlib import Path
+
+    original = Path.is_symlink
+    monkeypatch.setattr(
+        Path, "is_symlink", lambda path: path.name == workspace_item or original(path)
+    )
     with pytest.raises(RetrievalError):
         kw.load_workspace("demo")

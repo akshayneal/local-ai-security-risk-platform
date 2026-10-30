@@ -8,10 +8,36 @@ PAGE_GROUPS = {
     ),
     "Platform": (
         ("pages/platform_evaluation.py", "Platform Evaluation"),
+        ("pages/knowledge_workspace.py", "Knowledge Workspace"),
         ("pages/activity.py", "Activity"),
         ("pages/about.py", "About"),
     ),
 }
+
+# The old WORKFLOW_MAP remains import-compatible for downstream presentation tools.
+# Primary product copy uses these three pillars instead of the historical quadrants.
+PILLARS = (
+    {
+        "title": "SOC",
+        "workflow": "SOC Investigation",
+        "status": "Active",
+        "description": "Supplied telemetry investigation, observations and hypotheses, evidence gaps, conditional response and human approval. Microsoft JSON/CSV files are experimental inputs; no live connector.",
+        "page": "pages/soc_investigation.py",
+    },
+    {
+        "title": "AI Security",
+        "workflow": "AI Security Assessment",
+        "status": "Planned",
+        "description": "Future technical assessment: prompt injection, retrieval poisoning, tool permission boundaries, data leakage and adversarial control tests. This sprint tests the shared knowledge pipeline; there is no separate runnable analyzer.",
+    },
+    {
+        "title": "AI Safety, Assurance & Policy",
+        "workflow": "AI System Risk Review",
+        "status": "Active",
+        "description": "AI-system risk, reliability and policy applicability, missing implementation evidence, human oversight and residual risk. A policy requirement does not prove implementation or model correctness.",
+        "page": "pages/ai_system_risk_review.py",
+    },
+)
 
 WORKFLOW_MAP = (
     {

@@ -18,6 +18,7 @@ from app.ui_schemas import SocAnalysisEnvelope
 from dashboard.api_client import GENERIC_ERROR, post_analysis
 from dashboard.evidence_inspector import correction_history, display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
+from dashboard.knowledge_workspace import knowledge_checkbox
 from dashboard.sample_loader import SampleLoadError, load_microsoft_samples
 
 
@@ -107,6 +108,7 @@ def microsoft_workspace(base_url: str) -> None:
         )
         for warning in normalized.warnings:
             st.warning(warning)
+    include_knowledge = knowledge_checkbox("ms")
     if st.button(
         "Analyze Microsoft telemetry", type="primary", disabled=normalized is None
     ):
@@ -117,7 +119,10 @@ def microsoft_workspace(base_url: str) -> None:
             body, error = post_analysis(
                 base_url,
                 "/ui/analyze/soc-alert",
-                normalized.request.model_dump(mode="json"),
+                {
+                    **normalized.request.model_dump(mode="json"),
+                    **({"local_knowledge": True} if include_knowledge else {}),
+                },
             )
         if error:
             st.session_state["ms_error"] = error
