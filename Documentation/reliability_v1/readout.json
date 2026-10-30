@@ -1,0 +1,481 @@
+{
+  "format": "reliability-v1-prospective-readout",
+  "base_commit": "e7f61f4e7f8b56e14c6cf0d65fa461aff3e79417",
+  "freeze_commit": "e70b654",
+  "implementation_commit": "40202f41ae59ca18077db882be0a6b6183f08ac8",
+  "release_candidate": "NO-GO",
+  "review_origin": "Implementation-authored under the precommitted rubric, not independent adjudication. Different cases/paths from Sprint 7; not a causal or statistical improvement estimate.",
+  "provider": {
+    "version": "0.40.13",
+    "model": {
+      "name": "qwen3:8b",
+      "model": "qwen3:8b",
+      "modified_at": "2026-10-25T18:09:29.600096-04:00",
+      "size": 5225388164,
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    }
+  },
+  "runtime": {
+    "temperature": 0.1,
+    "num_ctx": 8192,
+    "per_http_timeout_seconds": 180,
+    "overall_deadline_seconds": 1500,
+    "max_response_bytes": 256000,
+    "max_retained_bytes": 4000000,
+    "retrieval_backend": "legacy",
+    "local_knowledge": false
+  },
+  "source_git_blobs": {
+    "app/ai_security_contracts.py": "e2547c4b31d8920a606d81733e7e5e3a9f22d060",
+    "app/ai_security_analyzer.py": "910cdbf3ead4b53f6951623f384a82f1d46e65e1",
+    "app/prompts.py": "e8422c1fed7a8e8af23ddce458ec1324fbb581ad",
+    "app/ollama_client.py": "349861ff3e17ada1b58569f433eed25afbe3c3e2",
+    "app/soc_analyzer.py": "e5218abe9822a93732877ae0fbec0e1221a3adf9",
+    "app/governance_analyzer.py": "0395ead170540fd3a8883f84d92dd18f3298b07f",
+    "evals/reliability_v1/runner.py": "47ebda28ee8dfbd713a09ff94521e48fa9847eb7",
+    "evals/reliability_v1/transport.py": "a62e142cf90f4773f95fe39fb41bdae8d7b4870a"
+  },
+  "ignored_run_root": "knowledge_base/workspaces/maple-sprint8-live/sprint8-primary-001",
+  "artifact_sha256": {
+    "journal.jsonl": "e6bcdd8bfbbcaba9a39812f2fae9f48c58ec614b1ef61b6ba932a307c3d072a6",
+    "MAPLE-RISK-A.json": "a7d1148752817441f89457e0a2d699a8653dd1e11b096cabbfcefb4acbcd98ae",
+    "MAPLE-RISK-B.json": "2b11af92805006723759ecfc5f2d46b24332284364fb013b1c9693caaf8ec731",
+    "MAPLE-SEC-A.json": "d0fd561fe0827a265e25a6f7e6b435e4ff0cbbe4605ffaf28876aecc6e87710d",
+    "MAPLE-SEC-B.json": "63f1873203474b9e0ed870afdc26b93dd8cf38219e5979c85e46be24d457210d",
+    "MAPLE-SOC-A.json": "b3d59aacf216a6103f8d3212a440c160b8c664b1c1a38e923c4c1261eb5af6c3",
+    "MAPLE-SOC-B.json": "66ceedc6d81a1b2a599d7a9bab42f50e7e00f27a70aa6c3ecd4e6c4e6cba6551",
+    "provider-0001.json": "62a711fd350cde487f1653b6956941ad3b5878da15cd968ea5b4349ddc0a721d",
+    "provider-0002.json": "5793377e6ac75dc897b761cff8c237531a38e052205895c41717b2dc746f0c59",
+    "provider-0003.json": "3c955e2dc6188c39ed210c571651b87e7de1be7e0d1044e4b381e764bd3f8551",
+    "provider-0004.json": "d84bcbf7f87fdc9465a241c5efa679a79a91f3e4f07de807719b5291c48d629c",
+    "provider-0005.json": "b2cc6b53617928e6b7c2bc671a93b00f4ae5fb497c600b49d9dce32235d222ae",
+    "provider-0006.json": "e8deb14e6e355d9c7bfa9ac28b0943f507f4e50ef7ed7eb88ab11ecc29917ca7",
+    "report.json": "a06e6aea49eb082705b30cc04d667b0abceecf6fb9fad5bbd89659e48909e217"
+  },
+  "counts": {
+    "scheduled": 6,
+    "submitted": 6,
+    "raw_attempted": 6,
+    "provider_responded": 6,
+    "returned_api": 6,
+    "withheld": 0,
+    "unknown_after_timeout": 0,
+    "not_run": 0,
+    "retries_or_repairs": 0,
+    "budget_denied": 0,
+    "extra_live_runs": 0,
+    "embedding_calls": 0
+  },
+  "by_pillar": {
+    "ai_security": {
+      "submitted": 2,
+      "api_returned": 2,
+      "insufficient_information": 2,
+      "usable_advisory_returned": 0
+    },
+    "soc": {
+      "submitted": 2,
+      "api_returned": 2
+    },
+    "ai_safety": {
+      "submitted": 2,
+      "api_returned": 2
+    }
+  },
+  "deterministic_metrics": {
+    "schema_valid": {
+      "count": 6,
+      "total": 6
+    },
+    "raw_identifier_fidelity": {
+      "count": 6,
+      "total": 6
+    },
+    "source_membership": {
+      "count": 6,
+      "total": 6
+    },
+    "selected_source_occurrences": 34,
+    "cited_source_occurrences": 13,
+    "contradictory_coverage_findings": {
+      "count": 0,
+      "technical_returns": 2
+    }
+  },
+  "implementation_author_metrics": {
+    "fact_judgments": {
+      "retained": 11,
+      "contradicted": 3,
+      "omitted": 4
+    },
+    "assessable_facts": 18,
+    "scheduled_facts": 18,
+    "positive_technical_concern_lost_to_insufficiency": {
+      "count": 1,
+      "total": 1
+    },
+    "benign_technical_false_insufficiency": {
+      "count": 1,
+      "total": 1
+    },
+    "unsupported_inventory_mismatch": {
+      "count": 0,
+      "unknown_inventory_cases": 1
+    },
+    "unsupported_attack_mapping": {
+      "count": 1,
+      "soc_returns": 2
+    },
+    "unknown_control_status_overstated_as_absent": {
+      "count": 1,
+      "unknown_status_governance_cases": 1
+    },
+    "known_gate_absence_retained": {
+      "count": 1,
+      "explicit_record_governance_cases": 1
+    },
+    "implemented_logging_state_retained": {
+      "count": 1,
+      "explicit_record_governance_cases": 1
+    },
+    "known_logging_count_omitted": {
+      "count": 1,
+      "explicit_record_governance_cases": 1
+    },
+    "scoped_review_requirement_contradicted": {
+      "count": 1,
+      "explicit_record_governance_cases": 1
+    },
+    "guidance_ids_in_ordinary_evidence_gaps": {
+      "cases": 2,
+      "technical_returns": 2
+    },
+    "actual_new_deployment_approval_claim": "Not observed; RISK-B enum approved is a proposed decision, not an actual grant. Its incorrect review-requirement assertion remains a material defect."
+  },
+  "latency": {
+    "submission_wall_sum_seconds": 565.531125,
+    "provider_reported_total_sum_seconds": 565.2291281,
+    "provider_total_median_seconds": 98.3933019,
+    "provider_total_range_seconds": [
+      64.2169731,
+      112.0679853
+    ],
+    "meaning": "Descriptive actual request wall time vs provider total_duration, which includes loading/prompt/generation. No controlled performance claim."
+  },
+  "results": [
+    {
+      "id": "MAPLE-SEC-A",
+      "pillar": "ai_security",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": "insufficient_information",
+      "selected_evidence_ids": [
+        "AISEC-V1-PROMPT-INJECTION",
+        "AISEC-V1-RETRIEVAL-POISONING",
+        "AISEC-V1-SENSITIVE-DATA-DISCLOSURE",
+        "AISEC-V1-EXCESSIVE-TOOL-AGENCY",
+        "AISEC-V1-BROKEN-AUTHORIZATION",
+        "AISEC-V1-UNSAFE-OUTPUT-CONSUMPTION"
+      ],
+      "cited_evidence_ids": [],
+      "source_membership_valid": true,
+      "wall_seconds": 64.260342,
+      "provider_total_seconds": 64.2169731,
+      "fact_judgments": [
+        {
+          "fact": "Unreviewed OCR reaches the model",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Generated HTML reaches the declared renderer without an encoding gate",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Architecture is sufficient for a conditional hypothesis despite missing implementation proof",
+          "judgment": "contradicted"
+        }
+      ],
+      "implementation_author_review": "OCR and generated-HTML boundary retained, but sufficient graph incorrectly classified insufficient; no candidate advisory.",
+      "evidence": [
+        {
+          "field": "coverage_status",
+          "excerpt": "insufficient_information",
+          "excerpt_truncated": false
+        },
+        {
+          "field": "evidence_gaps[2]",
+          "excerpt": "AISEC-V1-SENSITIVE-DATA-DISCLOSURE",
+          "excerpt_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "MAPLE-SEC-B",
+      "pillar": "ai_security",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": "insufficient_information",
+      "selected_evidence_ids": [
+        "AISEC-V1-PROMPT-INJECTION",
+        "AISEC-V1-RETRIEVAL-POISONING",
+        "AISEC-V1-SENSITIVE-DATA-DISCLOSURE",
+        "AISEC-V1-EXCESSIVE-TOOL-AGENCY",
+        "AISEC-V1-BROKEN-AUTHORIZATION",
+        "AISEC-V1-UNSAFE-OUTPUT-CONSUMPTION"
+      ],
+      "cited_evidence_ids": [],
+      "source_membership_valid": true,
+      "wall_seconds": 110.210647,
+      "provider_total_seconds": 110.162954,
+      "fact_judgments": [
+        {
+          "fact": "Offline public draft translation without tools/retrieval/network",
+          "judgment": "omitted"
+        },
+        {
+          "fact": "String-only parser and escaped preview are declared controls, not verified effectiveness",
+          "judgment": "omitted"
+        },
+        {
+          "fact": "Human gate before separate manual sharing",
+          "judgment": "omitted"
+        }
+      ],
+      "implementation_author_review": "Offline and unverified TEXT-ONLY fragments are present, but the full public-translation/no-tools basis, string-parser/escaped-preview features and human gate are not carried into the analysis. These are full-fact omissions, not claims every fragment disappeared.",
+      "evidence": [
+        {
+          "field": "summary",
+          "excerpt": "The submitted design lacks implementation evidence for critical controls. The TEXT-ONLY claim has no verification, and output handling testing is miss",
+          "excerpt_truncated": true
+        }
+      ]
+    },
+    {
+      "id": "MAPLE-SOC-A",
+      "pillar": "soc",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": null,
+      "selected_evidence_ids": [
+        "LOCAL-SUPPORTED-CLAIMS",
+        "MITRE-TA0002",
+        "SOC-BRUTE-FORCE-SUCCESS",
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "SOC-POWERSHELL-SUSPICIOUS"
+      ],
+      "cited_evidence_ids": [
+        "SOC-BRUTE-FORCE-SUCCESS",
+        "SOC-POWERSHELL-SUSPICIOUS",
+        "LOCAL-SUPPORTED-CLAIMS"
+      ],
+      "source_membership_valid": true,
+      "wall_seconds": 82.047785,
+      "provider_total_seconds": 81.9946119,
+      "fact_judgments": [
+        {
+          "fact": "DNS lookup from 192.0.2.144 for updates.maple.example returned 203.0.113.144",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Inventory/ownership and reputation remain unknown",
+          "judgment": "retained"
+        },
+        {
+          "fact": "No subsequent execution, login or transfer is recorded",
+          "judgment": "retained"
+        }
+      ],
+      "implementation_author_review": "Concrete source/answer roles and absent subsequent actions retained; ownership gap explicit and no known reputation asserted. Powershell guidance is nevertheless cited as irrelevant.",
+      "evidence": [
+        {
+          "field": "observed_evidence[0]",
+          "excerpt": "SYNTHETIC 2026-10-30T16:10Z: maple-builder-4 source_ip=192.0.2.144 queried updates.maple.example; DNS reply returned 203.0.113.144",
+          "excerpt_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "MAPLE-SOC-B",
+      "pillar": "soc",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": null,
+      "selected_evidence_ids": [
+        "LOCAL-SAFE-CONTAINMENT",
+        "SOC-IR-CONTAINMENT",
+        "LOCAL-AUDITABILITY",
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "LOCAL-GENERAL-EVIDENCE-GAPS"
+      ],
+      "cited_evidence_ids": [
+        "LOCAL-SAFE-CONTAINMENT",
+        "SOC-IR-CONTAINMENT",
+        "LOCAL-GENERAL-EVIDENCE-GAPS"
+      ],
+      "source_membership_valid": true,
+      "wall_seconds": 109.337891,
+      "provider_total_seconds": 109.2767461,
+      "fact_judgments": [
+        {
+          "fact": "Supplied LAB-9/MR-82 establishes the source as the lab update appliance",
+          "judgment": "retained"
+        },
+        {
+          "fact": "A completed 23-file transfer is recorded to 192.0.2.145:8443 using TLS",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Approval is scoped to the supervised archive copy, not containment",
+          "judgment": "retained"
+        }
+      ],
+      "implementation_author_review": "Lab inventory/source, completed transfer and narrow copy approval retained. Credential Access mapping has no supplied authentication/credential basis.",
+      "evidence": [
+        {
+          "field": "mitre_mapping[0]",
+          "excerpt": "Credential Access",
+          "excerpt_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "MAPLE-RISK-A",
+      "pillar": "ai_safety",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": null,
+      "selected_evidence_ids": [
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "AI-RMF-MANAGE",
+        "GRC-HUMAN-REVIEW",
+        "LOCAL-AUDITABILITY",
+        "LOCAL-SAFE-CONTAINMENT",
+        "GRC-AI-LOGGING"
+      ],
+      "cited_evidence_ids": [
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "LOCAL-AUDITABILITY",
+        "GRC-AI-LOGGING"
+      ],
+      "source_membership_valid": true,
+      "wall_seconds": 87.552759,
+      "provider_total_seconds": 87.5098577,
+      "fact_judgments": [
+        {
+          "fact": "Public low-impact caption drafting, without consequential decisions",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Curator review is proposed",
+          "judgment": "retained"
+        },
+        {
+          "fact": "Implementation status and deployment approval are unknown",
+          "judgment": "contradicted"
+        }
+      ],
+      "implementation_author_review": "Low/non-consequential context and proposed curator review retained; summary asserts absent controls despite an unknown-status gap.",
+      "evidence": [
+        {
+          "field": "summary",
+          "excerpt": "The system presents low-impact risks due to its non-consequential nature, but lacks implemented controls for human review, auditability, and logging. ",
+          "excerpt_truncated": true
+        },
+        {
+          "field": "evidence_gaps[1]",
+          "excerpt": "Implementation status of controls unknown",
+          "excerpt_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "MAPLE-RISK-B",
+      "pillar": "ai_safety",
+      "api_state": "RETURNED",
+      "http_status": 200,
+      "raw_attempts": 1,
+      "schema_valid": true,
+      "raw_id_preserved": true,
+      "coverage_status": null,
+      "selected_evidence_ids": [
+        "GRC-AI-LOGGING",
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "GRC-HUMAN-REVIEW",
+        "LOCAL-AUDITABILITY",
+        "LOCAL-SAFE-CONTAINMENT",
+        "GRC-EVIDENCE-REQUEST"
+      ],
+      "cited_evidence_ids": [
+        "GRC-AI-LOGGING",
+        "LOCAL-HUMAN-IN-THE-LOOP",
+        "GRC-HUMAN-REVIEW",
+        "LOCAL-AUDITABILITY"
+      ],
+      "source_membership_valid": true,
+      "wall_seconds": 112.121701,
+      "provider_total_seconds": 112.0679853,
+      "fact_judgments": [
+        {
+          "fact": "MT-44 explicitly establishes manual approval gate absent in this prototype",
+          "judgment": "retained"
+        },
+        {
+          "fact": "MT-44 establishes audit logging implemented with ten retained sample events",
+          "judgment": "omitted"
+        },
+        {
+          "fact": "AP-44 permits only supervised offline previews; internal review-before-publication rule remains scoped",
+          "judgment": "contradicted"
+        }
+      ],
+      "implementation_author_review": "Manual gate absence and implemented logging state retained, but ten sample events omitted. Supplied pilot scope/review requirement is lost and review requirement explicitly contradicted.",
+      "evidence": [
+        {
+          "field": "summary",
+          "excerpt": "The system operates within a low-impact supervised sandbox with implemented audit logging. While human review is not explicitly required for this prot",
+          "excerpt_truncated": true
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Schema-valid insufficient responses do not satisfy technical advisory usefulness.",
+    "Unknown-vs-absent and supplied-policy fidelity failures persist despite clarified instructions.",
+    "No post-result application/prompt tuning or model reruns.",
+    "Independent review, user workflows/launcher/final visual acceptance PENDING.",
+    "All data supplied is fictional; full raw outputs remain ignored, not tracked."
+  ]
+}

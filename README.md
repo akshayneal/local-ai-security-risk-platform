@@ -216,6 +216,12 @@ completed a frozen 12-submission local-Qwen matrix: SOC 4/4 and AI-risk 4/4 retu
 AI Security 0/4 returned because contradictory coverage/findings were withheld.
 Semantic overstatements and positive fact omissions remain in returned answers.
 See the [Sprint 7 evidence and NO-GO readout](Documentation/51_cross_pillar_rc_readout.md).
+Sprint 8 aligns the provider-visible response variants with the strict public
+contract and clarifies evidence-state instructions. Its six-call prospective run
+returned six valid API responses, but both technical responses claimed insufficient
+information: usable technical advisories remain **0/2**. Governance overstatements
+and SOC mapping/citation defects persist. See the [Sprint 8 reliability readout](Documentation/53_reliability_fidelity_readout.md);
+release candidacy remains **NO-GO**.
 Software checks, citations and small synthetic live trials do not establish
 semantic accuracy or model injection resistance. The user's
 prior brief UI observation was provisional; both older workflows' retrieval/output
