@@ -4,7 +4,7 @@ import hashlib
 import json
 
 import pytest
-from test_sprint7_preservation import historical_ai_security_call
+from sprint8_history import historical_call as historical_ai_security_call
 
 from evals.ai_security_v1.runner import ROOT, SUITE, evaluate, verify_freeze
 

@@ -4,20 +4,21 @@ import hashlib
 import json
 
 import pytest
+from sprint8_history import historical_call
 
 from evals.knowledge_bridge_v1.runner import ROOT, SUITE, evaluate, verify_freeze
 
 
 @pytest.fixture(scope="module")
-def recorded_and_replay():
+def recorded_and_replay(tmp_path_factory):
     recorded = json.loads(
         (ROOT / "Documentation/knowledge_bridge_v1/results.json").read_bytes()
     )
-    return recorded, evaluate()
+    return recorded, historical_call(evaluate, tmp_path_factory)
 
 
-def test_frozen_source_cases_rubric_and_implementation_identity():
-    freeze = verify_freeze()
+def test_frozen_source_cases_rubric_and_implementation_identity(tmp_path_factory):
+    freeze = historical_call(verify_freeze, tmp_path_factory)
     assert len(json.loads((SUITE / "cases.json").read_bytes())) == 26
     assert freeze["implementation_source_git_blobs"]
     original = json.loads((SUITE / "implementation_freeze.json").read_bytes())

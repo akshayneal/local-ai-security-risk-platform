@@ -8,6 +8,7 @@ import subprocess
 from unittest.mock import patch
 
 import pytest
+from sprint8_history import historical_test
 
 from evals.provenance import ROOT
 
@@ -26,6 +27,7 @@ def assert_scope(names, allowed):
     assert not set(names) - set(allowed), "Unauthorized current-tree paths"
 
 
+@historical_test
 def test_current_scope_and_protected_base_blobs():
     plan = manifest()
     assert plan["base_commit"] == plan["historical_end_commit"] == END
@@ -191,6 +193,7 @@ def historical_ai_security_call(callback, tmp_path_factory):
         return callback()
 
 
+@historical_test
 def test_historical_replay_call_sites_only_pin_the_source_root():
     original = git("show", END + ":tests/test_ai_security_evaluation.py")
     expected = (
@@ -218,6 +221,7 @@ def test_historical_replay_call_sites_only_pin_the_source_root():
     assert ast.dump(ast.parse(expected)) == ast.dump(ast.parse(current))
 
 
+@historical_test
 def test_original_runner_still_rejects_corrupt_snapshot(tmp_path_factory):
     from evals.ai_security_v1 import runner
 

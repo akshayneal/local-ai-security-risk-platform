@@ -9,6 +9,7 @@ from unittest.mock import patch
 import httpx
 import pytest
 import requests
+from sprint8_history import historical_call
 
 from evals.cross_pillar_v1 import runner
 from evals.cross_pillar_v1.transport import (
@@ -130,12 +131,14 @@ def test_deadline_and_output_storage_fail_closed(tmp_path):
     budget.close()
 
 
-def test_frozen_matrix_and_fresh_reviewed_workspace(tmp_path, monkeypatch):
+def test_frozen_matrix_and_fresh_reviewed_workspace(
+    tmp_path, monkeypatch, tmp_path_factory
+):
     from app import knowledge_workspace as kw
     from app.ai_security_contracts import AiSecurityRequest
     from app.ui_schemas import UiGovernanceRequest, UiSocRequest
 
-    runner.verify_freeze()
+    historical_call(runner.verify_freeze, tmp_path_factory)
     cases = runner.read("cases.json")
     assert len(cases) == len({c["id"] for c in cases}) == 12
     assert runner.read("plan.json")["order"] == [c["id"] for c in cases]

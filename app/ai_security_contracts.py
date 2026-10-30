@@ -2,7 +2,7 @@
 
 from typing import Annotated, Literal
 
-from pydantic import AliasChoices, Field, StrictStr, model_validator
+from pydantic import AliasChoices, Field, StrictStr, TypeAdapter, model_validator
 
 from app.retrieval.contracts import Contract
 from app.support_contracts import SourceSupportProvenance
@@ -220,6 +220,34 @@ class AiSecurityResponse(Contract):
         if len(self.model_dump_json().encode()) > MAX_OUTPUT_BYTES:
             raise ValueError("Response exceeds total UTF-8 budget")
         return self
+
+
+class AdvisoryGeneration(AiSecurityResponse):
+    """Provider-visible branch: a reviewable design may have zero findings."""
+
+    coverage_status: Literal["advisory_returned"]
+
+
+class InsufficientGeneration(AiSecurityResponse):
+    """Encode the existing public cross-field rule in the decoder schema too."""
+
+    coverage_status: Literal["insufficient_information"]
+    findings: tuple[TechnicalFinding, ...] = Field(default=(), max_length=0)
+    evidence_gaps: tuple[Text, ...] = Field(min_length=1, max_length=16)
+
+
+_GENERATION = TypeAdapter(AdvisoryGeneration | InsufficientGeneration)
+
+
+def generation_schema() -> dict:
+    return _GENERATION.json_schema()
+
+
+def validate_generation(raw: dict) -> AiSecurityResponse:
+    # Neither convert status nor drop findings. Validate the raw provider payload
+    # against both the model-visible variants and the unchanged public contract.
+    _GENERATION.validate_python(raw)
+    return AiSecurityResponse.model_validate(raw)
 
 
 class AiSecuritySource(Contract):

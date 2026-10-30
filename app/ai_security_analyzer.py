@@ -9,7 +9,9 @@ from app.ai_security_contracts import (
     AiSecurityRequest,
     AiSecurityResponse,
     AiSecuritySource,
+    generation_schema,
     unique,
+    validate_generation,
 )
 from app.ai_security_sources import AiSecurityBoundaryError, load_guidance
 from app.inference_context import microsoft_model_context
@@ -33,9 +35,13 @@ authored guidance categories, not OWASP/MITRE/NIST mappings or internal policy.
 Never assert exploitation, penetration, executed actions, verified controls or granted
 approval. All findings are candidate/not_verified; no_actions_executed is mandatory.
 A supplied test report or approval claim is not independent verification.
-No finding may be appropriate for a benign design; an empty list is not proof of safety.
-State unknown boundaries and missing evidence explicitly. If no defensible hypothesis
-can be made, use insufficient_information with gaps and no findings. Do not invent
+Missing implementation proof is an evidence gap, not a missing architecture.
+For a structurally reviewable design, use advisory_returned with conditional findings
+or with zero findings for a benign design; an empty list is not proof of safety.
+Use insufficient_information only when the supplied design cannot support a technical
+review; that variant requires gaps and zero findings. State unknown boundaries and
+missing evidence explicitly. Never combine insufficient_information with findings.
+Do not invent
 components, edges or permissions. Return only the requested schema, no hidden reasoning.
 """
 LIMITATIONS = (
@@ -160,7 +166,7 @@ def analyze_ai_security(request: AiSecurityRequest) -> AiSecurityEnvelope:
         with microsoft_model_context(True):
             raw = call_model_json(
                 user_prompt=prompt,
-                response_schema=AiSecurityResponse.model_json_schema(),
+                response_schema=generation_schema(),
             )
         if (
             not isinstance(raw, dict)
@@ -168,7 +174,7 @@ def analyze_ai_security(request: AiSecurityRequest) -> AiSecurityEnvelope:
             > MAX_OUTPUT_BYTES
         ):
             raise AiSecurityBoundaryError()
-        result = AiSecurityResponse.model_validate(raw)
+        result = validate_generation(raw)
         validate_references(request, result, categories)
         gaps = tuple(dict.fromkeys((*known_gaps(request), *result.evidence_gaps)))
         result = AiSecurityResponse.model_validate(
