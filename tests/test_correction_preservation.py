@@ -37,3 +37,28 @@ def test_corrections_preserve_frozen_evaluations_and_analysis_implementation():
         "Documentation/43_analyst_corrections.md",
         "Documentation/44_evidence_precision_and_reviewed_reports.md",
     }
+
+
+def test_precision_sprint_changes_only_inspector_reporting_and_new_documentation():
+    changed = subprocess.check_output(
+        [
+            "git",
+            "diff",
+            "3b51f9ed2f0ba765fe82b99a50771a5109748feb",
+            "--name-only",
+            "--",
+            "app",
+            "dashboard",
+            "evals",
+            "reference_material",
+            "Documentation",
+        ],
+        cwd=ROOT,
+        text=True,
+    ).splitlines()
+    assert set(changed) <= {
+        "app/evidence_inspector.py",
+        "dashboard/evidence_inspector.py",
+        "dashboard/exports.py",
+        "Documentation/44_evidence_precision_and_reviewed_reports.md",
+    }

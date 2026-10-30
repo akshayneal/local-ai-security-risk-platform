@@ -515,12 +515,46 @@ def inspector_export(
         "limitations": list(report.limitations),
     }
     if corrections:
+        history = validate_correction_history(report, corrections)
+        latest = {r.claim_id: r for r in history}
+        claims = {c.claim_id: c for c in report.claims}
+        summary = {
+            "format": "analyst-review-summary-v1",
+            "notice": "Contains unverified analyst-entered text and bounded original AI excerpts that may be sensitive. Review before sharing; not redacted. Original AI analysis remains unchanged. See correction_history for every revision.",
+            "claims": [
+                {
+                    "claim_id": r.claim_id,
+                    "original_response_field": r.original_response_field,
+                    "original_claim_excerpt": claims[r.claim_id].text[:400],
+                    "original_claim_excerpt_truncated": claims[
+                        r.claim_id
+                    ].text_truncated
+                    or len(claims[r.claim_id].text) > 400,
+                    "latest_proposed_text": r.proposed_text,
+                    "category": r.category.value,
+                    "revision_count": r.revision,
+                    "provenance": r.provenance,
+                    "verification_status": r.verification_status,
+                    "evidence_linked": bool(r.evidence_ids),
+                    "correction_id": r.correction_id,
+                    "latest_revision_id": r.revision_id,
+                    "history_section": "correction_history",
+                }
+                for r in latest.values()
+            ],
+        }
+        document = {"review_summary": summary, **document}
+        linked_ids = {i for r in history for i in r.evidence_ids}
+        linked_fields = [
+            a.model_dump(mode="json")
+            for a in report.field_anchors
+            if a.evidence_id in linked_ids
+        ]
+        if linked_fields:
+            document["field_anchors"] = linked_fields
         document["correction_history"] = {
             "format": "analyst-corrections-v1",
             "notice": "Contains user-entered text that may be sensitive. Review before sharing; not redacted or independently verified. Original AI analysis is unchanged. Session history is not durable or an authenticated audit trail.",
-            "revisions": [
-                r.model_dump(mode="json")
-                for r in validate_correction_history(report, corrections)
-            ],
+            "revisions": [r.model_dump(mode="json") for r in history],
         }
     return document

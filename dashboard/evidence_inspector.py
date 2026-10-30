@@ -11,6 +11,7 @@ from app.evidence_inspector import (
     CorrectionCategory,
     EvidenceInspectorReport,
     InspectorClaim,
+    SuppliedFieldAnchor,
     append_analyst_correction,
     fingerprint,
     validate_analyst_review,
@@ -27,6 +28,20 @@ REVIEW_OPTIONS = {
     "Conflicting evidence — analyst judgment": Relationship.CONFLICT,
     "Inapplicable to this claim — analyst judgment": Relationship.INAPPLICABLE,
 }
+MAX_FIELD_CHOICES = 200
+
+
+def field_label(anchor: SuppliedFieldAnchor) -> str:
+    return f"Field: {anchor.table} · Row {anchor.row_index} · {anchor.field_name} ({anchor.value_presence})"
+
+
+def field_choices(
+    report: EvidenceInspectorReport, query: str
+) -> tuple[tuple[SuppliedFieldAnchor, ...], int]:
+    matching = tuple(
+        a for a in report.field_anchors if query.casefold() in field_label(a).casefold()
+    )
+    return matching[:MAX_FIELD_CHOICES], len(matching)
 
 
 def correction_history(
@@ -54,6 +69,33 @@ def _correction_editor(
     history = correction_history(report, prefix=prefix)
     selected = [r for r in history if r.claim_id == claim.claim_id]
     latest = selected[-1] if selected else None
+    field_options = ()
+    if report.field_anchors:
+        query = st.text_input(
+            "Filter supplied field anchors",
+            key=f"{prefix}_field_filter_{report.inspector_id[:12]}_{claim.claim_id[:12]}",
+            help="Filter by table, row or field name before editing. Changing filters can discard unsaved form edits. Row indices are zero-based. No field values appear in these labels.",
+        )
+        field_options, matching = field_choices(report, query)
+        st.caption(
+            f"Field anchor coverage: showing {len(field_options)} of {matching} matching fields ({len(report.field_anchors)} total). "
+            + (
+                "Incomplete display; refine the filter to find other fields."
+                if matching > MAX_FIELD_CHOICES
+                else "All matching fields shown."
+            )
+        )
+    field_ids = {a.evidence_id for a in report.field_anchors}
+    visible_ids = {a.evidence_id for a in field_options}
+    retained_ids = tuple(
+        evidence_id
+        for evidence_id in (latest.evidence_ids if latest else ())
+        if evidence_id in field_ids - visible_ids
+    )
+    if retained_ids:
+        st.caption(
+            f"{len(retained_ids)} previously linked fields outside this display are retained. Refine the filter to inspect or remove them."
+        )
     st.write("Original AI analysis — unchanged")
     st.text(claim.text)
     st.caption(
@@ -81,9 +123,20 @@ def _correction_editor(
         ids = st.multiselect(
             "Correction evidence",
             list(labels),
-            default=list(latest.evidence_ids) if latest else [],
+            default=[i for i in latest.evidence_ids if i in labels] if latest else [],
             format_func=labels.get,
         )
+        selected_fields = []
+        if report.field_anchors:
+            field_labels = {a.evidence_id: field_label(a) for a in field_options}
+            selected_fields = st.multiselect(
+                "Supplied field evidence",
+                list(field_labels),
+                default=[i for i in latest.evidence_ids if i in visible_ids]
+                if latest
+                else [],
+                format_func=field_labels.get,
+            )
         st.caption(
             "Evidence is optional when documenting an unsupported claim. Linking a source does not verify this proposal or grant policy authority. Wording and rationale may be sensitive; review exports before sharing."
         )
@@ -97,7 +150,7 @@ def _correction_editor(
                 category=category,
                 proposed_text=proposed,
                 rationale=rationale,
-                evidence_ids=tuple(ids),
+                evidence_ids=(*ids, *selected_fields, *retained_ids),
             )
             state["corrections"] = [r.model_dump(mode="json") for r in history]
             st.rerun()

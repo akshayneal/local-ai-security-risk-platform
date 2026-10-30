@@ -70,6 +70,15 @@ def export_document(
 
 
 def json_export(document: dict) -> str:
+    if document.get("evidence_inspector", {}).get("review_summary"):
+        document = {
+            "evidence_inspector": document["evidence_inspector"],
+            **{
+                key: value
+                for key, value in document.items()
+                if key != "evidence_inspector"
+            },
+        }
     return json.dumps(document, ensure_ascii=False, indent=2)
 
 
@@ -95,6 +104,27 @@ def markdown_export(document: dict) -> str:
         f"{key.replace('_', ' ').title()}: {_text(value)}"
         for key, value in document["case"].items()
     )
+    summary = document.get("evidence_inspector", {}).get("review_summary")
+    if summary:
+        lines.extend(
+            [
+                "",
+                "## Analyst Correction Summary",
+                "",
+                _correction_text(summary["notice"]),
+            ]
+        )
+        for claim in summary["claims"]:
+            lines.extend(
+                [
+                    "",
+                    f"- Original response field: {_correction_text(claim['original_response_field'])}",
+                    f"- Original AI statement (bounded excerpt; {'truncated' if claim['original_claim_excerpt_truncated'] else 'complete claim'}): {_correction_text(claim['original_claim_excerpt'])}",
+                    f"- Latest analyst-proposed correction — not independently verified: {_correction_text(claim['latest_proposed_text'])}",
+                    f"- Category: {_correction_text(claim['category'])}; revisions: {claim['revision_count']}; provenance: analyst_recorded; status: not_verified; evidence: {'linked (provenance, not proof)' if claim['evidence_linked'] else 'no linked support selected'}.",
+                    f"- See detailed correction history for correction {_correction_text(claim['correction_id'])}, latest revision {_correction_text(claim['latest_revision_id'])}.",
+                ]
+            )
     lines.extend(
         [
             "",
@@ -151,6 +181,10 @@ def markdown_export(document: dict) -> str:
                     _correction_text(history["notice"]),
                 ]
             )
+            for anchor in inspector.get("field_anchors", []):
+                lines.append(
+                    f"- Linked supplied field: {_correction_text(anchor['table'])} · Row {anchor['row_index']} · {_correction_text(anchor['field_name'])} ({anchor['value_presence']}); ID {_correction_text(anchor['evidence_id'])}; parent row {_correction_text(anchor['parent_observation_id'])}. Field provenance is not proof."
+                )
             for revision in history["revisions"]:
                 lines.extend(
                     [
