@@ -1,0 +1,43 @@
+{
+  "ranking_sha256": "91fe607c918dd748634922446d5ab3c7db1fa7f1c3d692d5fa2bc1ed09752489",
+  "journal_sha256": "30e84b07b2e0e74d28fd26adb2b703b47c97e3741530b9d622b6e5930c37876a",
+  "journal_records_equal_report": true,
+  "vectors_sha256": "005f1fdc8939f4d2ced7fa8899d7801dd48a3cd892dbc9ee7a43e1a016f9ce3c",
+  "suite_identity": {
+    "corpus.json": "e2d20506b2e04c70a660ffea54dd078abcb8d34bf8aac2fd8f9e190f76adda5a",
+    "cases.json": "1fada3ae56a78ec6138121f822876ca55dae6ae86f0ceb200cdcc400bde504d3",
+    "registry_current.json": "c215f28bb716e390b63e070b826dd88f7a34c85198b91f0c5eec3f2a47f75bc7",
+    "plan.json": "566e189ba9164998a0206438c4f4bec0bf001d06fd3d63331434a7931b1d2527",
+    "methodology.md": "b3dd61f1cb05c31e419e10499463b85b71d32b88c64b9d12d171354f15f94499",
+    "build_suite.py": "a50953d8e8bfcd903983491c5ed306c847f40552155f5bfe36ad453577687712",
+    "runner.py": "afeb4b548982441f50bdb449edca4d1e47548427e6a3b67054aba9dd3c2247c8"
+  },
+  "ranking_launch_commit": "abd9ab214e24bccd9f052bfd75dffe87afbdca16",
+  "records": 172,
+  "embedding": {
+    "provider": "ollama-local",
+    "model": "embeddinggemma:300m",
+    "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+    "size_bytes": 621875917,
+    "details": {
+      "parent_model": "embeddinggemma:300m-bf16",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": [
+        "gemma3"
+      ],
+      "parameter_size": "307.58M",
+      "quantization_level": "BF16",
+      "context_length": 2048,
+      "embedding_length": 768,
+      "runner": "ggml"
+    },
+    "ollama_version": "0.40.13",
+    "text_format": "raw-v1",
+    "truncate": false,
+    "live_calls": 58,
+    "cache_hits": 38,
+    "cached_texts": 83,
+    "embedding_ms": 18151.43400000057
+  }
+}

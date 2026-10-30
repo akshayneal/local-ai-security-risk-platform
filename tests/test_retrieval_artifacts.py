@@ -98,6 +98,8 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "app/inference_context.py",
         "app/soc_query.py",
         "app/reference_authority.py",
+        "app/support_contracts.py",
+        "app/support_assessor.py",
     }
     assert all(
         name.startswith("app/retrieval/") or name in integration | additions

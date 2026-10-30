@@ -1,0 +1,5554 @@
+{
+  "identity": {
+    "corpus.json": "e2d20506b2e04c70a660ffea54dd078abcb8d34bf8aac2fd8f9e190f76adda5a",
+    "cases.json": "1fada3ae56a78ec6138121f822876ca55dae6ae86f0ceb200cdcc400bde504d3",
+    "registry_current.json": "c215f28bb716e390b63e070b826dd88f7a34c85198b91f0c5eec3f2a47f75bc7",
+    "plan.json": "566e189ba9164998a0206438c4f4bec0bf001d06fd3d63331434a7931b1d2527",
+    "methodology.md": "b3dd61f1cb05c31e419e10499463b85b71d32b88c64b9d12d171354f15f94499",
+    "build_suite.py": "a50953d8e8bfcd903983491c5ed306c847f40552155f5bfe36ad453577687712",
+    "runner.py": "afeb4b548982441f50bdb449edca4d1e47548427e6a3b67054aba9dd3c2247c8"
+  },
+  "runtime": {
+    "python_version": "3.13.1",
+    "ollama_version": "ollama version is 0.40.13",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f",
+    "model_digest_kind": "ollama_ls_short_id",
+    "git_commit": "abd9ab214e24bccd9f052bfd75dffe87afbdca16",
+    "git_dirty": false,
+    "temperature": 0.1,
+    "seed": null,
+    "seed_state": "not_configured",
+    "unavailable": []
+  },
+  "embedding": {
+    "provider": "ollama-local",
+    "model": "embeddinggemma:300m",
+    "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+    "size_bytes": 621875917,
+    "details": {
+      "parent_model": "embeddinggemma:300m-bf16",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": [
+        "gemma3"
+      ],
+      "parameter_size": "307.58M",
+      "quantization_level": "BF16",
+      "context_length": 2048,
+      "embedding_length": 768,
+      "runner": "ggml"
+    },
+    "ollama_version": "0.40.13",
+    "text_format": "raw-v1",
+    "truncate": false,
+    "live_calls": 58,
+    "cache_hits": 38,
+    "cached_texts": 83,
+    "embedding_ms": 18151.43400000057
+  },
+  "records": [
+    {
+      "case_id": "ES1-001",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CEDAR-APPROVAL",
+          "score": 21.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3638000000592001
+    },
+    {
+      "case_id": "ES1-001",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CEDAR-APPROVAL",
+          "score": 25.823103711209257,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.7878999999538792
+    },
+    {
+      "case_id": "ES1-001",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CEDAR-APPROVAL",
+          "score": 0.7504596483451698,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.37937497935186326,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.3452564461039256,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.33125387531007666,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3304645857195891,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 16832.186000000092
+    },
+    {
+      "case_id": "ES1-001",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CEDAR-APPROVAL",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.2731000001385837
+    },
+    {
+      "case_id": "ES1-002",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 28.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.12070000002495362
+    },
+    {
+      "case_id": "ES1-002",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 14.418674424695624,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.7026000000678323
+    },
+    {
+      "case_id": "ES1-002",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.8237030634030904,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.3596993254937596,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.3570385275949768,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.34008458776619954,
+          "rank": 4
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.238045523714776,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 116.79709999998522
+    },
+    {
+      "case_id": "ES1-002",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2331999998878018
+    },
+    {
+      "case_id": "ES1-003",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "JUNIPER-PROSE",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29279999989739736
+    },
+    {
+      "case_id": "ES1-003",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "JUNIPER-PROSE",
+          "score": 22.513980311608,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 3.1846604931161733,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.020480685227332,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.020480685227332,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.020480685227332,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2778000000253087
+    },
+    {
+      "case_id": "ES1-003",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "JUNIPER-PROSE",
+          "score": 0.8104049066741488,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.40919942663976805,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.40514693054427886,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3668751369749343,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.28406973602862384,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 44.69250000011016
+    },
+    {
+      "case_id": "ES1-003",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "JUNIPER-PROSE",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.031054405392392875,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031009615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3828999999295775
+    },
+    {
+      "case_id": "ES1-004",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-3",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.2878999998756626
+    },
+    {
+      "case_id": "ES1-004",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-3",
+          "score": 16.030552720334093,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 2.545254318039631,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 2.5147379680294146,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.3680871660559537,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.3680871660559537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.4177000000472617
+    },
+    {
+      "case_id": "ES1-004",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.6158579726021766,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.3424982048730854,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.31026609682895095,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.30557210608460156,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.30158091862912484,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.96740000004138
+    },
+    {
+      "case_id": "ES1-004",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.03076923076923077,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.02964426877470356,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.1589999998923304
+    },
+    {
+      "case_id": "ES1-005",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-4",
+          "score": 20.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3382999998393643
+    },
+    {
+      "case_id": "ES1-005",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-4",
+          "score": 19.206302632185118,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 2.950732466600406,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 2.545254318039631,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 2.545254318039631,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.3680871660559537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2656000001243228
+    },
+    {
+      "case_id": "ES1-005",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.64118621521804,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.39522307659640055,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.3766014258107019,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.33196105601458664,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3269834866102823,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 26.533900000003996
+    },
+    {
+      "case_id": "ES1-005",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.03200204813108039,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.03149801587301587,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.03128054740957967,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.02964426877470356,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3251000000072963
+    },
+    {
+      "case_id": "ES1-006",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-5",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3085999999257183
+    },
+    {
+      "case_id": "ES1-006",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-5",
+          "score": 16.030552720334093,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 2.545254318039631,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 2.5147379680294146,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.3680871660559537,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.3680871660559537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.4108999998825311
+    },
+    {
+      "case_id": "ES1-006",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.5945439880937738,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.39901525900958806,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.3200467835005937,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.31551972793087074,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.31398209664824595,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 21.511099999997896
+    },
+    {
+      "case_id": "ES1-006",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.030536130536130537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.358100000037666
+    },
+    {
+      "case_id": "ES1-007",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.2540000000408327
+    },
+    {
+      "case_id": "ES1-007",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2337999999090243
+    },
+    {
+      "case_id": "ES1-007",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.34789817967868053,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3361237483383557,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3243043591130848,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.321165526399781,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.3191982969338712,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 65.05020000008699
+    },
+    {
+      "case_id": "ES1-007",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.01639344262295082,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.343200000041179
+    },
+    {
+      "case_id": "ES1-008",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.2623000000312459
+    },
+    {
+      "case_id": "ES1-008",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.244099999894388
+    },
+    {
+      "case_id": "ES1-008",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.32488532646673773,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.317158928512542,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3166569146689178,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.30338106859430247,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.3022744615611749,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 20.085899999912726
+    },
+    {
+      "case_id": "ES1-008",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.01639344262295082,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.1808000001328764
+    },
+    {
+      "case_id": "ES1-009",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.26270000012118544
+    },
+    {
+      "case_id": "ES1-009",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.4016239884163415,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.189900000099442
+    },
+    {
+      "case_id": "ES1-009",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.294952494362984,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.2919140333673665,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.28229886562232503,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.2792646181931856,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.2775189974558878,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.387100000130886
+    },
+    {
+      "case_id": "ES1-009",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.032018442622950824,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.01639344262295082,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.016129032258064516,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.015873015873015872,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.193600000055085
+    },
+    {
+      "case_id": "ES1-010",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-9",
+          "score": 16.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.28190000011818483
+    },
+    {
+      "case_id": "ES1-010",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-9",
+          "score": 20.396928206613595,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2584000000970263
+    },
+    {
+      "case_id": "ES1-010",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-9",
+          "score": 0.6147563257893194,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.34855988947703853,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.34593495112858264,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.33620420296211595,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3160449907965799,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 44.75359999992179
+    },
+    {
+      "case_id": "ES1-010",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-9",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.5465999999596534
+    },
+    {
+      "case_id": "ES1-011",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-10",
+          "score": 16.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3154000000904489
+    },
+    {
+      "case_id": "ES1-011",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-10",
+          "score": 20.396928206613595,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.4707000000271364
+    },
+    {
+      "case_id": "ES1-011",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-10",
+          "score": 0.6304057211531291,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3378307251099085,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3336469864887466,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.32150605786903863,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.32147230662080667,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 49.9998999998752
+    },
+    {
+      "case_id": "ES1-011",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-10",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.4005999998735206
+    },
+    {
+      "case_id": "ES1-012",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-11",
+          "score": 16.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3186000001278444
+    },
+    {
+      "case_id": "ES1-012",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-11",
+          "score": 20.396928206613595,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.4221999999790569
+    },
+    {
+      "case_id": "ES1-012",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-11",
+          "score": 0.6604777639970475,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3159694795275393,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.31048507613121434,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.3067490855165975,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.3010241959599069,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 45.258799999828625
+    },
+    {
+      "case_id": "ES1-012",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "PARTIAL-11",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.016129032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.015625,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.2199000000000524
+    },
+    {
+      "case_id": "ES1-013",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-12",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-12",
+          "score": 16.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29900000004090543
+    },
+    {
+      "case_id": "ES1-013",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-12",
+          "score": 22.661491741056075,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-12",
+          "score": 22.473363937552943,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 1.6535212006845323,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 1.6535212006845323,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 1.6535212006845323,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2987000000066473
+    },
+    {
+      "case_id": "ES1-013",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-12",
+          "score": 0.7479089692634707,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-12",
+          "score": 0.7239545570032206,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.3659227682908235,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.33335371723658913,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3315916124878182,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 58.00760000010996
+    },
+    {
+      "case_id": "ES1-013",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-12",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-12",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03125763125763126,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.030309988518943745,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3382000001674896
+    },
+    {
+      "case_id": "ES1-014",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-13",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-13",
+          "score": 16.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.37550000001829176
+    },
+    {
+      "case_id": "ES1-014",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-13",
+          "score": 22.661491741056075,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-13",
+          "score": 22.473363937552943,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 1.6535212006845323,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 1.6535212006845323,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 1.6535212006845323,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.345600000149716
+    },
+    {
+      "case_id": "ES1-014",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-13",
+          "score": 0.6938978055370968,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-13",
+          "score": 0.6888239943298891,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3223557738417841,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.31076411279242416,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3071437704148527,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 60.55760000003829
+    },
+    {
+      "case_id": "ES1-014",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-13",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-13",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03149801587301587,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03149801587301587,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.03076923076923077,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3605000001225562
+    },
+    {
+      "case_id": "ES1-015",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-14",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-14",
+          "score": 16.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.43950000008408097
+    },
+    {
+      "case_id": "ES1-015",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-14",
+          "score": 21.856904927499272,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-14",
+          "score": 21.67593103380785,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 2.865622473111842,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 1.6540436050169036,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 1.6540436050169036,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3718999998673098
+    },
+    {
+      "case_id": "ES1-015",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-14",
+          "score": 0.7122548833097055,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-14",
+          "score": 0.6992034078118348,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.3795655878873474,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.3179964360337042,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3110242054563436,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 58.056500000020606
+    },
+    {
+      "case_id": "ES1-015",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CONFLICT-A-14",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CONFLICT-B-14",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-5",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.030536130536130537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.446800000143412
+    },
+    {
+      "case_id": "ES1-016",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-0",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.34010000013040553
+    },
+    {
+      "case_id": "ES1-016",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-0",
+          "score": 24.335032179634414,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 3.1861441971452678,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.614991571146272,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.614991571146272,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.614991571146272,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.432400000112466
+    },
+    {
+      "case_id": "ES1-016",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-0",
+          "score": 0.5838084192819698,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3877631807843287,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3591766935639678,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.33446026575908167,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.2858235028598652,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 46.07550000014271
+    },
+    {
+      "case_id": "ES1-016",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-0",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.031054405392392875,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031009615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.2758000000067113
+    },
+    {
+      "case_id": "ES1-017",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-1",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29029999996055267
+    },
+    {
+      "case_id": "ES1-017",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-1",
+          "score": 24.335032179634414,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 3.1861441971452678,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.614991571146272,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.614991571146272,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.614991571146272,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3530000001082954
+    },
+    {
+      "case_id": "ES1-017",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-1",
+          "score": 0.5883189241409723,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.37817529327965554,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.370686125729758,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.3578981708169373,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.28326209063678126,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 46.29239999985657
+    },
+    {
+      "case_id": "ES1-017",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-1",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.029827662395050816,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.429300000130752
+    },
+    {
+      "case_id": "ES1-018",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-2",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.30379999998331186
+    },
+    {
+      "case_id": "ES1-018",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-2",
+          "score": 24.335032179634414,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 3.1861441971452678,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.614991571146272,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.614991571146272,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.614991571146272,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3383000000430911
+    },
+    {
+      "case_id": "ES1-018",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-2",
+          "score": 0.5751330671170937,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3674704564053168,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3501427179529227,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.34920585667404613,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.308859285334899,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 77.1113000000696
+    },
+    {
+      "case_id": "ES1-018",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CURRENT-2",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.0304147465437788,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.450299999964045
+    },
+    {
+      "case_id": "ES1-019",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.034599999935380765
+    },
+    {
+      "case_id": "ES1-019",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.02650000010362419
+    },
+    {
+      "case_id": "ES1-019",
+      "backend": "dense",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.021599999854515772
+    },
+    {
+      "case_id": "ES1-019",
+      "backend": "hybrid",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.09609999983695161
+    },
+    {
+      "case_id": "ES1-020",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.022199999875738285
+    },
+    {
+      "case_id": "ES1-020",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.02769999991869554
+    },
+    {
+      "case_id": "ES1-020",
+      "backend": "dense",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.013699999954042141
+    },
+    {
+      "case_id": "ES1-020",
+      "backend": "hybrid",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.05780000014965481
+    },
+    {
+      "case_id": "ES1-021",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.021400000150606502
+    },
+    {
+      "case_id": "ES1-021",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.02779999999802385
+    },
+    {
+      "case_id": "ES1-021",
+      "backend": "dense",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.014100000043981709
+    },
+    {
+      "case_id": "ES1-021",
+      "backend": "hybrid",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.05409999994299142
+    },
+    {
+      "case_id": "ES1-022",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.022000000171829015
+    },
+    {
+      "case_id": "ES1-022",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.04319999993640522
+    },
+    {
+      "case_id": "ES1-022",
+      "backend": "dense",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.015899999880275573
+    },
+    {
+      "case_id": "ES1-022",
+      "backend": "hybrid",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.0700999999025953
+    },
+    {
+      "case_id": "ES1-023",
+      "backend": "legacy",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.022500000113723218
+    },
+    {
+      "case_id": "ES1-023",
+      "backend": "lexical",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.036500000078376615
+    },
+    {
+      "case_id": "ES1-023",
+      "backend": "dense",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.0170999999227206
+    },
+    {
+      "case_id": "ES1-023",
+      "backend": "hybrid",
+      "ranking": [],
+      "metrics": {
+        "relevant_recall_at_k": null,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.0778999999511143
+    },
+    {
+      "case_id": "ES1-024",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "RESTRICTED-2",
+          "score": 16.0,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.05520000013348181
+    },
+    {
+      "case_id": "ES1-024",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "RESTRICTED-2",
+          "score": 1.0451086232173798e-05,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.5740999999943597
+    },
+    {
+      "case_id": "ES1-024",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "RESTRICTED-2",
+          "score": 0.6535430278481603,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 68.01289999998517
+    },
+    {
+      "case_id": "ES1-024",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "RESTRICTED-2",
+          "score": 0.03278688524590164,
+          "rank": 1
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.9259000000838569
+    },
+    {
+      "case_id": "ES1-025",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 18.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 10.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 10.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3025000000889122
+    },
+    {
+      "case_id": "ES1-025",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 12.444038588994035,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 3.6407906121613527,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 3.6407906121613527,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.389905462002437,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.389905462002437,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3263000000733882
+    },
+    {
+      "case_id": "ES1-025",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.6494452421924687,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.5400022840484798,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.5279076397216118,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.4452375523333268,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.41463132192690055,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 20.691299999953117
+    },
+    {
+      "case_id": "ES1-025",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.030776515151515152,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.6688000000376633
+    },
+    {
+      "case_id": "ES1-026",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 18.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 10.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 10.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.28670000006059126
+    },
+    {
+      "case_id": "ES1-026",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 12.444038588994035,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 3.6407906121613527,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 3.6407906121613527,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.389905462002437,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.389905462002437,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3387999999849853
+    },
+    {
+      "case_id": "ES1-026",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.6414584640344476,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.5147907936790554,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.4993163801031309,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.40599735221188743,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.39597217245099164,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 21.257999999988897
+    },
+    {
+      "case_id": "ES1-026",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.030776515151515152,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.216100000168808
+    },
+    {
+      "case_id": "ES1-027",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 18.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 10.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 10.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29810000000907166
+    },
+    {
+      "case_id": "ES1-027",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 12.444038588994037,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 3.6407906121613527,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 3.6407906121613527,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 1.389905462002437,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 1.389905462002437,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.276700000062192
+    },
+    {
+      "case_id": "ES1-027",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.6361600115559027,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.5174196284259666,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.5169157800299788,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.41255321117626015,
+          "rank": 4
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.3848645734164775,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 22.19409999997879
+    },
+    {
+      "case_id": "ES1-027",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.030776515151515152,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.03055037313432836,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.22740000003796
+    },
+    {
+      "case_id": "ES1-028",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-27",
+          "score": 13.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.31669999998484855
+    },
+    {
+      "case_id": "ES1-028",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-27",
+          "score": 21.03958303690129,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 3.1920106623027515,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.023893047384656,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.023893047384656,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.023893047384656,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3198999999985972
+    },
+    {
+      "case_id": "ES1-028",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-27",
+          "score": 0.6235879115376075,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.38801740040126576,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3581787716884548,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.334473577023783,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.28595075506290435,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 46.69160000003103
+    },
+    {
+      "case_id": "ES1-028",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-27",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.031009615384615385,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.02946236559139785,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.250000000003638
+    },
+    {
+      "case_id": "ES1-029",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-28",
+          "score": 14.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3031000001101347
+    },
+    {
+      "case_id": "ES1-029",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-28",
+          "score": 24.319358909165693,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.0242297369333855,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.0242297369333855,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.0242297369333855,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3624000000618253
+    },
+    {
+      "case_id": "ES1-029",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-28",
+          "score": 0.6642585222850229,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3464586446585855,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.32912320592814226,
+          "rank": 3
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.3272130927353015,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3258538404247959,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 45.542199999999866
+    },
+    {
+      "case_id": "ES1-029",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-28",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03125763125763126,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.03055037313432836,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.015873015873015872,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.2776999999223335
+    },
+    {
+      "case_id": "ES1-030",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-29",
+          "score": 13.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29590000008283823
+    },
+    {
+      "case_id": "ES1-030",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-29",
+          "score": 21.03958303690129,
+          "rank": 1
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 3.5138325535153574,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 2.023893047384656,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 2.023893047384656,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 2.023893047384656,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.4796999998907268
+    },
+    {
+      "case_id": "ES1-030",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-29",
+          "score": 0.6092615970852197,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.35936812884002794,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.35514096202524736,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.3442891368090179,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.34134421002034515,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 48.990799999955925
+    },
+    {
+      "case_id": "ES1-030",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "SCOPED-29",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.031754032258064516,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.03125763125763126,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.031054405392392875,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.031024531024531024,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.659499999936088
+    },
+    {
+      "case_id": "ES1-031",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 13.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29850000009901123
+    },
+    {
+      "case_id": "ES1-031",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 16.244309191811993,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 7.4410612149793085,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 7.4410612149793085,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.9038807259522741,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.9038807259522741,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3742000001002452
+    },
+    {
+      "case_id": "ES1-031",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.7277859167804813,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.5976034497334065,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.5574820071350721,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.4934073579384859,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.48288204284758707,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 24.616100000002916
+    },
+    {
+      "case_id": "ES1-031",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03076923076923077,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.6456999999027175
+    },
+    {
+      "case_id": "ES1-032",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 13.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3061000002162473
+    },
+    {
+      "case_id": "ES1-032",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 16.244309191811993,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 7.4410612149793085,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 7.4410612149793085,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.9038807259522741,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.9038807259522741,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.7063999998754298
+    },
+    {
+      "case_id": "ES1-032",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.7319957528554297,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.5747960663272771,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.5568986792062134,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.49803159443732997,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.4853585515725994,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 21.246999999902982
+    },
+    {
+      "case_id": "ES1-032",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.03076923076923077,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.263700000185054
+    },
+    {
+      "case_id": "ES1-033",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 13.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 4.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 4.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.290400000039881
+    },
+    {
+      "case_id": "ES1-033",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 16.244309191811993,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 7.4410612149793085,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 7.4410612149793085,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.9038807259522741,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.9038807259522741,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2907000000268454
+    },
+    {
+      "case_id": "ES1-033",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.702412557578659,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.5776619571545226,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.5445384748134325,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.45106614957129687,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.4467936229210242,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.518699999935052
+    },
+    {
+      "case_id": "ES1-033",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "ALLEGED-32",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.03200204813108039,
+          "rank": 2
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.03200204813108039,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.030536130536130537,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.265299999862691
+    },
+    {
+      "case_id": "ES1-034",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-33",
+          "score": 20.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 12.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.13809999995828548
+    },
+    {
+      "case_id": "ES1-034",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-33",
+          "score": 5.408491203758397,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 1.2680849955977984,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 1.8403755868544603e-06,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 1.834503297170815e-06,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.881100000015067
+    },
+    {
+      "case_id": "ES1-034",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.6520334476407332,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.4690699521023244,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.3278443307657162,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.31882818044990163,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.29686160278913204,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.230400000196823
+    },
+    {
+      "case_id": "ES1-034",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.03149801587301587,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.03149801587301587,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.224800000045434
+    },
+    {
+      "case_id": "ES1-035",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-34",
+          "score": 12.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 12.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.11799999992945231
+    },
+    {
+      "case_id": "ES1-035",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-34",
+          "score": 4.140408048536186,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 4.140408048536186,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 1.8403755868544603e-06,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 1.834503297170815e-06,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.7174000002123648
+    },
+    {
+      "case_id": "ES1-035",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.5905402101465534,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.5682837441866794,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.47680210999352807,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.40166665061721274,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.30767726125946515,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.13220000005822
+    },
+    {
+      "case_id": "ES1-035",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2604999999439315
+    },
+    {
+      "case_id": "ES1-036",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-35",
+          "score": 16.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.12490000017351122
+    },
+    {
+      "case_id": "ES1-036",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-35",
+          "score": 6.19321231594977,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 1.8403755868544603e-06,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 1.8403755868544603e-06,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 1.8403755868544603e-06,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.7242000001497217
+    },
+    {
+      "case_id": "ES1-036",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.6285888703664693,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.3851736094313582,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.3752558704438851,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.3410909218078271,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.3362242195514194,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 18.975199999886172
+    },
+    {
+      "case_id": "ES1-036",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.03200204813108039,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.03200204813108039,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": null,
+        "support_sufficient_at_k": null
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.219600000013088
+    },
+    {
+      "case_id": "ES1-037",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-36",
+          "score": 20.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 4.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.1107000000502012
+    },
+    {
+      "case_id": "ES1-037",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-36",
+          "score": 8.280814256696784,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 1.8403755868544603e-06,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 1.8403755868544603e-06,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 1.834503297170815e-06,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.6825000000389991
+    },
+    {
+      "case_id": "ES1-037",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.722668887796088,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.4323926040585753,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.4259573974297793,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.38314055622367343,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.2601088219731438,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 21.56239999999343
+    },
+    {
+      "case_id": "ES1-037",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "EVENT-36",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "EVENT-33",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "EVENT-34",
+          "score": 0.031746031746031744,
+          "rank": 3
+        },
+        {
+          "evidence_id": "EVENT-35",
+          "score": 0.03125,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MARBLE-DUMP",
+          "score": 0.015384615384615385,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.1970000000474101
+    },
+    {
+      "case_id": "ES1-038",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 13.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 5.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.28809999980694556
+    },
+    {
+      "case_id": "ES1-038",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 9.687437386029233,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 9.687437386029233,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 3.1293403807239675,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 3.1293403807239675,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 3.1293403807239675,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2196999998650426
+    },
+    {
+      "case_id": "ES1-038",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.6013295570246068,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 0.592608304379765,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.4671161548255164,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.4559413467083765,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 0.4482020925621599,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 19.30820000006861
+    },
+    {
+      "case_id": "ES1-038",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.03149801587301587,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.03125763125763126,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.030776515151515152,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.208699999982855
+    },
+    {
+      "case_id": "ES1-039",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 13.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 5.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.2750000001014996
+    },
+    {
+      "case_id": "ES1-039",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 9.687437386029234,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 9.687437386029234,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 3.1293403807239675,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 3.1293403807239675,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 3.1293403807239675,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2252999999873282
+    },
+    {
+      "case_id": "ES1-039",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.612729694963322,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.5915475907203148,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.45482644367322034,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 0.43244270094883314,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.41848942593644073,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 22.46689999992668
+    },
+    {
+      "case_id": "ES1-039",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.03125763125763126,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.03125763125763126,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 0.030776515151515152,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.209700000094017
+    },
+    {
+      "case_id": "ES1-040",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 13.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 13.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 5.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 5.0,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 5.0,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.27569999997467676
+    },
+    {
+      "case_id": "ES1-040",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 9.687437386029234,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 9.687437386029234,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 3.1293403807239675,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 3.1293403807239675,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 3.1293403807239675,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.2801000000308704
+    },
+    {
+      "case_id": "ES1-040",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.6076171465434805,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 0.5939052914514527,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.49242292772751517,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-2",
+          "score": 0.4792302546420509,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.45528900762331603,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 24.666100000104052
+    },
+    {
+      "case_id": "ES1-040",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "MULTI-39-1",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "MULTI-39-2",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MULTI-37-1",
+          "score": 0.03125763125763126,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MULTI-38-1",
+          "score": 0.03125763125763126,
+          "rank": 4
+        },
+        {
+          "evidence_id": "MULTI-37-2",
+          "score": 0.030776515151515152,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.1572000000560365
+    },
+    {
+      "case_id": "ES1-041",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-40-2",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-40-1",
+          "score": 20.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.3045999999358173
+    },
+    {
+      "case_id": "ES1-041",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-40-2",
+          "score": 19.816688951343483,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-40-1",
+          "score": 17.39671190033754,
+          "rank": 2
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 2.8629923575950404,
+          "rank": 3
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 2.5984743185952786,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3111999999182444
+    },
+    {
+      "case_id": "ES1-041",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-40-2",
+          "score": 0.6015072573230066,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-40-1",
+          "score": 0.5576399986644316,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.38510296604367156,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3285918192441076,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-30",
+          "score": 0.32101019673212067,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 58.08889999980238
+    },
+    {
+      "case_id": "ES1-041",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-40-2",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-40-1",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.029709507042253523,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-3",
+          "score": 0.029386529386529386,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3914000000786473
+    },
+    {
+      "case_id": "ES1-042",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-41-2",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-41-1",
+          "score": 20.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 3
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.2950999999029591
+    },
+    {
+      "case_id": "ES1-042",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-41-2",
+          "score": 20.570266411808966,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-41-1",
+          "score": 18.097033540685644,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 2.5984743185952786,
+          "rank": 3
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3354000000163069
+    },
+    {
+      "case_id": "ES1-042",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-41-2",
+          "score": 0.6426123135490843,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-41-1",
+          "score": 0.6122793238081533,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3791646260148277,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.3386382306933618,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-26",
+          "score": 0.32910014298173407,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 56.299600000102146
+    },
+    {
+      "case_id": "ES1-042",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-41-2",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-41-1",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.029206349206349208,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.015625,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.3243999999067455
+    },
+    {
+      "case_id": "ES1-043",
+      "backend": "legacy",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-42-2",
+          "score": 21.0,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-42-1",
+          "score": 20.0,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.0,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 4.0,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 0.29229999995550315
+    },
+    {
+      "case_id": "ES1-043",
+      "backend": "lexical",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-42-2",
+          "score": 19.21607127293455,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-42-1",
+          "score": 16.746373988404045,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 4.560696853169342,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 2.22740587999019,
+          "rank": 4
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 1.3215000001309818
+    },
+    {
+      "case_id": "ES1-043",
+      "backend": "dense",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-42-2",
+          "score": 0.5981237137857337,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-42-1",
+          "score": 0.5688866057762101,
+          "rank": 2
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.3479291811279566,
+          "rank": 3
+        },
+        {
+          "evidence_id": "GUIDANCE-24",
+          "score": 0.32922762084854795,
+          "rank": 4
+        },
+        {
+          "evidence_id": "ALLEGED-31",
+          "score": 0.32354347849760595,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 58.43640000011874
+    },
+    {
+      "case_id": "ES1-043",
+      "backend": "hybrid",
+      "ranking": [
+        {
+          "evidence_id": "CHUNK-42-2",
+          "score": 0.03278688524590164,
+          "rank": 1
+        },
+        {
+          "evidence_id": "CHUNK-42-1",
+          "score": 0.03225806451612903,
+          "rank": 2
+        },
+        {
+          "evidence_id": "MARBLE-WRONG-WORKFLOW",
+          "score": 0.03036576949620428,
+          "rank": 3
+        },
+        {
+          "evidence_id": "RELATED-4",
+          "score": 0.0293236301369863,
+          "rank": 4
+        },
+        {
+          "evidence_id": "GUIDANCE-25",
+          "score": 0.015873015873015872,
+          "rank": 5
+        }
+      ],
+      "metrics": {
+        "relevant_recall_at_k": 1.0,
+        "required_group_recall": 1.0,
+        "support_sufficient_at_k": true
+      },
+      "eligible_source_violations": [],
+      "latency_ms": 2.312500000016371
+    }
+  ]
+}
