@@ -1,0 +1,15 @@
+{
+  "version":"evidence-support-e2e-v1",
+  "scheduled_trials":8,
+  "trials_per_case":1,
+  "phase":"candidate-only passive-inspection diagnostic; no changed generation treatment",
+  "model":"qwen3:8b",
+  "temperature":0.1,
+  "seed":null,
+  "retrieval":"legacy",
+  "shadow":false,
+  "microsoft_num_ctx":8192,
+  "application_implementation":"2707a620d8c7f179462b2754f84d9a9d567e347d",
+  "maximum_sprint4_scheduled_live_cases":24,
+  "audit":"Counting sink only; no generated audit logs modified"
+}
