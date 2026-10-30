@@ -27,7 +27,7 @@ A shared local evidence layer supplies telemetry, curated guidance and explicitl
 | Unmerged but functional | Evidence Inspector, session-bound corrections, field anchors, correction-first exports, curated lexical opt-in and working-checkout launcher |
 | Sprint 5 experimental | Reviewed local document CLI, registered current-version BM25 bridge for both analyzers, read-only Knowledge Workspace, synthetic Northstar demo |
 | Sprint 6 experimental | Technical AI Security Assessment, immutable graph contracts, local authored guidance, read-only provenance and safe exports |
-| Planned | Authenticated document portal, third-pillar organizational knowledge and broader natural-language support/applicability evaluation |
+| Planned | Authenticated document portal, AI Security organizational knowledge and broader natural-language support/applicability evaluation |
 
 An applicable policy does not prove implementation, granted approval or a correct model answer. A citation is evidence provenance, not an entailment certificate.
 
@@ -158,7 +158,7 @@ Coverage includes API compatibility, source controls, bounded SOC repair/fail-cl
 
 ## Roadmap
 
-The experimental technical AI Security Assessment now supports submitted assets, flows, retrieval/tool boundaries and candidate threats. Its live output quality and user acceptance remain untested; prioritize fixed-case human review before expanding it. Standalone SOC Policy & Governance Review, authenticated portals, default dense/hybrid migration and external integrations remain deferred. This branch is not a release recommendation; visual and independent semantic review remain pending.
+The experimental technical AI Security Assessment now supports submitted assets, flows, retrieval/tool boundaries and candidate threats. The Sprint 7 live matrix exposed semantic overstatements and withheld all four technical advisories for inconsistent model coverage. Independent fixed-case review and user acceptance remain pending; see the [RC readout](Documentation/51_cross_pillar_rc_readout.md) before expanding it. Standalone SOC Policy & Governance Review, authenticated portals, default dense/hybrid migration and external integrations remain deferred. This branch is not a release recommendation; visual and independent semantic review remain pending.
 
 ## Experimental reviewed local knowledge (Sprint 5)
 
@@ -211,7 +211,12 @@ Never reinitialize or modify the preserved `northstar-sprint5` workspace for thi
 
 See the [Sprint 6 plan](Documentation/48_ai_security_sprint_plan.md) and
 [technical report and manual acceptance checklist](Documentation/49_ai_security_assessment_report.md).
-**LIVE INFERENCE NOT RUN (0)** in the new offline suite. Software checks and synthetic
-stubs do not establish semantic accuracy or model injection resistance. The user's
+The historical Sprint 6 offline suite ran **zero real inference calls**. Sprint 7
+completed a frozen 12-submission local-Qwen matrix: SOC 4/4 and AI-risk 4/4 returned;
+AI Security 0/4 returned because contradictory coverage/findings were withheld.
+Semantic overstatements and positive fact omissions remain in returned answers.
+See the [Sprint 7 evidence and NO-GO readout](Documentation/51_cross_pillar_rc_readout.md).
+Software checks, citations and small synthetic live trials do not establish
+semantic accuracy or model injection resistance. The user's
 prior brief UI observation was provisional; both older workflows' retrieval/output
 acceptance and Sprint 6 end-to-end/visual acceptance remain pending.
