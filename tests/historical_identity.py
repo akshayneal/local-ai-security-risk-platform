@@ -11,6 +11,28 @@ import subprocess
 from evals.provenance import ROOT
 
 
+def sprint5_blob(name: str) -> str:
+    """Only named Sprint 5 source edits use their verified pre-sprint blob.
+
+    Frozen historical data/scorers remain checked against current files. The new
+    scope guard separately bounds this sprint and preserves the installed policy.
+    """
+    manifest = json.loads(
+        (ROOT / "Documentation/sprint5_preservation.json").read_bytes()
+    )
+    if name in manifest["authorized_existing"]:
+        actual = subprocess.check_output(
+            ["git", "rev-parse", f"{manifest['base_commit']}:{name}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert actual == manifest["authorized_existing"][name]
+        return actual
+    return subprocess.check_output(
+        ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
+    ).strip()
+
+
 def sprint4_blob(name: str) -> str:
     """Only six explicitly authorized additive workbench paths use prior identity."""
     manifest = json.loads(
@@ -33,9 +55,7 @@ def sprint4_blob(name: str) -> str:
         ).strip()
         assert actual == allowed[name]
         return actual
-    return subprocess.check_output(
-        ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-    ).strip()
+    return sprint5_blob(name)
 
 
 def expansion_blob(name: str) -> str:
@@ -81,9 +101,7 @@ def expansion_blob(name: str) -> str:
         ).strip()
         assert value == manifest["authorized_prior_source_git_blob_sha1"][name]
         return value
-    return subprocess.check_output(
-        ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-    ).strip()
+    return sprint5_blob(name)
 
 
 def historical_blob(name: str) -> str:

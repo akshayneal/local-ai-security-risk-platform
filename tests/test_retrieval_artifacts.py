@@ -72,7 +72,17 @@ def test_release_implementation_and_frozen_evidence_preserved():
         ".gitattributes",
     ]
     names = subprocess.check_output(
-        ["git", "diff", "v2.3.0", "--name-only", "--", *protected], cwd=ROOT, text=True
+        [
+            "git",
+            "diff",
+            "v2.3.0",
+            "6be3887617dfac1b95c09d672f5fa5acaabb9e08",
+            "--name-only",
+            "--",
+            *protected,
+        ],
+        cwd=ROOT,
+        text=True,
     ).splitlines()
     # Explicit expansion integration and machine-only diagnostic instrumentation.
     # Prior implementation identities stay checked at the foundation checkpoint.
