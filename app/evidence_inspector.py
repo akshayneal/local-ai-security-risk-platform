@@ -6,9 +6,10 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import dataclass, field
+from enum import StrEnum
 from typing import Any, Literal
 
-from pydantic import Field
+from pydantic import Field, StrictInt, model_validator
 
 from app.microsoft_evidence import microsoft_evidence
 from app.retrieval.contracts import EvidenceRecord, RetrievalQuery
@@ -89,6 +90,111 @@ class AnalystEvidenceReview(SupportModel):
     reviewer_identity: Literal[
         "local user entry; identity not independently authenticated"
     ] = "local user entry; identity not independently authenticated"
+
+
+class CorrectionCategory(StrEnum):
+    FACT = "Unsupported factual claim"
+    INCIDENT = "Unsupported incident inference"
+    AUTHORITY = "Incorrect policy/authority claim"
+    IMPLEMENTATION = "Incorrect implementation/compliance claim"
+    EVIDENCE = "Missing or mischaracterized evidence"
+    OTHER = "Other clarification"
+
+
+class AnalystCorrection(SupportModel):
+    inspector_id: str
+    claim_id: str
+    original_response_field: str
+    original_claim_fingerprint: str
+    correction_id: str
+    revision_id: str
+    revision: StrictInt = Field(ge=1)
+    supersedes_revision_id: str | None
+    category: CorrectionCategory
+    proposed_text: str = Field(min_length=1, max_length=4096)
+    rationale: str = Field(min_length=1, max_length=2000)
+    evidence_ids: tuple[str, ...] = ()
+    provenance: Literal["analyst_recorded"] = "analyst_recorded"
+    verification_status: Literal["not_verified"] = "not_verified"
+    reviewer_identity: Literal[
+        "local user entry; identity not independently authenticated"
+    ] = "local user entry; identity not independently authenticated"
+
+    @model_validator(mode="after")
+    def validate_content(self):
+        if not self.proposed_text.strip() or not self.rationale.strip():
+            raise ValueError("Correction wording and rationale must be nonblank")
+        if self.revision_id != fingerprint(
+            self.model_dump(mode="json", exclude={"revision_id"})
+        ):
+            raise ValueError("Correction revision fingerprint does not match")
+        return self
+
+
+def validate_correction_history(
+    report: EvidenceInspectorReport, history: tuple[AnalystCorrection, ...]
+) -> tuple[AnalystCorrection, ...]:
+    claims = {c.claim_id: c for c in report.claims}
+    allowed = {s.provenance.evidence_id for s in report.sources} | {
+        r.observation_id for r in report.input_inventory
+    }
+    latest: dict[str, AnalystCorrection] = {}
+    for item in history:
+        item = AnalystCorrection.model_validate(item.model_dump(mode="json"))
+        claim = claims.get(item.claim_id)
+        if (
+            item.inspector_id != report.inspector_id
+            or claim is None
+            or item.original_response_field != claim.response_field
+            or item.original_claim_fingerprint
+            != fingerprint(claim.model_dump(mode="json"))
+            or item.correction_id
+            != fingerprint([report.inspector_id, item.claim_id, "analyst-correction-v1"])
+            or not set(item.evidence_ids) <= allowed
+        ):
+            raise ValueError("Correction must bind to this claim and eligible evidence")
+        previous = latest.get(item.claim_id)
+        if item.revision != (previous.revision + 1 if previous else 1) or (
+            item.supersedes_revision_id != (previous.revision_id if previous else None)
+        ):
+            raise ValueError("Correction revisions must form one ordered claim lineage")
+        latest[item.claim_id] = item
+    return history
+
+
+def append_analyst_correction(
+    report: EvidenceInspectorReport,
+    history: tuple[AnalystCorrection, ...],
+    *,
+    claim_id: str,
+    category: CorrectionCategory,
+    proposed_text: str,
+    rationale: str,
+    evidence_ids: tuple[str, ...] = (),
+) -> tuple[AnalystCorrection, ...]:
+    validate_correction_history(report, history)
+    claim = next((c for c in report.claims if c.claim_id == claim_id), None)
+    if claim is None:
+        raise ValueError("Unknown claim in this Inspector result")
+    previous = next((r for r in reversed(history) if r.claim_id == claim_id), None)
+    payload = {
+        "inspector_id": report.inspector_id,
+        "claim_id": claim_id,
+        "original_response_field": claim.response_field,
+        "original_claim_fingerprint": fingerprint(claim.model_dump(mode="json")),
+        "correction_id": fingerprint([report.inspector_id, claim_id, "analyst-correction-v1"]),
+        "revision": previous.revision + 1 if previous else 1,
+        "supersedes_revision_id": previous.revision_id if previous else None,
+        "category": category,
+        "proposed_text": proposed_text,
+        "rationale": rationale,
+        "evidence_ids": evidence_ids,
+        "provenance": "analyst_recorded",
+        "verification_status": "not_verified",
+        "reviewer_identity": "local user entry; identity not independently authenticated",
+    }
+    item = AnalystCorrection(**payload, revision_id=fingerprint(payload))
+    return validate_correction_history(report, (*history, item))
 
 
 def validate_analyst_review(
@@ -293,13 +399,16 @@ def build_inspector(
 
 
 def inspector_export(
-    report: EvidenceInspectorReport, reviews: list[AnalystEvidenceReview] | None = None
+    report: EvidenceInspectorReport,
+    reviews: list[AnalystEvidenceReview] | None = None,
+    *,
+    corrections: tuple[AnalystCorrection, ...] = (),
 ) -> dict:
     checked = [
         validate_analyst_review(report, r).model_dump(mode="json")
         for r in reviews or []
     ]
-    return {
+    document = {
         "format": "evidence-inspector-v1",
         "inspector_id": report.inspector_id,
         "request_sha256": report.request_sha256,
@@ -327,3 +436,13 @@ def inspector_export(
         "human_review_required": True,
         "limitations": list(report.limitations),
     }
+    if corrections:
+        document["correction_history"] = {
+            "format": "analyst-corrections-v1",
+            "notice": "Contains user-entered text that may be sensitive. Review before sharing; not redacted or independently verified. Original AI analysis is unchanged. Session history is not durable or an authenticated audit trail.",
+            "revisions": [
+                r.model_dump(mode="json")
+                for r in validate_correction_history(report, corrections)
+            ],
+        }
+    return document
