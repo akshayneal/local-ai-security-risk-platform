@@ -3,7 +3,9 @@
 import ast
 import hashlib
 import json
+import os
 import subprocess
+from unittest.mock import patch
 
 import pytest
 
@@ -152,3 +154,77 @@ def test_historical_and_current_guards_reject_unauthorized_changes():
     assert (
         hashlib.sha256(data).digest() != hashlib.sha256(data + b"\n# changed").digest()
     )
+
+
+def historical_ai_security_call(callback, tmp_path_factory):
+    """Replay frozen checks with the original UI source identity.
+
+    Check the executing backend and frozen data first. The unchanged runner then
+    verifies ALL its original hashes in a scratch source snapshot. Git reads only;
+    no index/config/branch/worktree is written or registered in the real repo.
+    """
+    from evals.ai_security_v1 import runner
+
+    freeze = json.loads((runner.SUITE / "freeze.json").read_bytes())
+    implementation = json.loads(
+        (runner.SUITE / "implementation_freeze.json").read_bytes()
+    )
+    blobs = implementation["source_git_blobs"]
+    for name, expected in freeze["sha256"].items():
+        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected
+    for name, expected in blobs.items():
+        assert git("rev-parse", END + ":" + name).strip() == expected
+        if name != "dashboard/ai_security.py":
+            assert git("hash-object", name).strip() == expected, name
+    snapshot = tmp_path_factory.mktemp("sprint6-source-snapshot")
+    for name in set(blobs) | set(freeze["sha256"]):
+        target = snapshot / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(
+            subprocess.check_output(["git", "show", END + ":" + name], cwd=ROOT)
+        )
+    git_dir = git("rev-parse", "--absolute-git-dir").strip()
+    with (
+        patch.object(runner, "ROOT", snapshot),
+        patch.dict(os.environ, {"GIT_DIR": git_dir, "GIT_WORK_TREE": str(snapshot)}),
+    ):
+        return callback()
+
+
+def test_historical_replay_call_sites_only_pin_the_source_root():
+    original = git("show", END + ":tests/test_ai_security_evaluation.py")
+    expected = (
+        original.replace(
+            "import pytest\n",
+            "import pytest\nfrom test_sprint7_preservation import historical_ai_security_call\n",
+        )
+        .replace(
+            "def recorded_and_replay():", "def recorded_and_replay(tmp_path_factory):"
+        )
+        .replace(
+            "return recorded, evaluate()",
+            "return recorded, historical_ai_security_call(evaluate, tmp_path_factory)",
+        )
+        .replace(
+            "def test_new_freeze_and_predeclared_group_denominators():",
+            "def test_new_freeze_and_predeclared_group_denominators(tmp_path_factory):",
+        )
+        .replace(
+            'assert verify_freeze()["implementation_source_git_blobs"]',
+            'assert historical_ai_security_call(verify_freeze, tmp_path_factory)["implementation_source_git_blobs"]',
+        )
+    )
+    current = (ROOT / "tests/test_ai_security_evaluation.py").read_text()
+    assert ast.dump(ast.parse(expected)) == ast.dump(ast.parse(current))
+
+
+def test_original_runner_still_rejects_corrupt_snapshot(tmp_path_factory):
+    from evals.ai_security_v1 import runner
+
+    def corrupt_snapshot():
+        with (runner.ROOT / "dashboard/ai_security.py").open("ab") as target:
+            target.write(b"\n# unauthorized snapshot mutation\n")
+        with pytest.raises(ValueError, match="implementation mismatch"):
+            runner.verify_freeze()
+
+    historical_ai_security_call(corrupt_snapshot, tmp_path_factory)

@@ -10,7 +10,8 @@
     "tests/test_development_launcher.py": "da621d3bc4f0a834227aaf23b44fc80c4f5cb5ec",
     "tests/test_sprint5_preservation.py": "990bad91331797d2e52ac7b5a798fcb48e326d0e",
     "tests/test_sprint6_preservation.py": "968d03bb252e4167b6e679c7d9099120dbad7f6a",
-    "dashboard/ai_security.py": "1fee68c4dea46a6ab258ec1c9d6f0c968abb769e"
+    "dashboard/ai_security.py": "1fee68c4dea46a6ab258ec1c9d6f0c968abb769e",
+    "tests/test_ai_security_evaluation.py": "464e144b1416cdba98395c080b91856576d572b2"
   },
   "authorized_new": [
     "Documentation/50_cross_pillar_rc_hardening_plan.md",
@@ -30,7 +31,8 @@
     "scripts/development/Test-DevelopmentGateway.ps1",
     "tests/test_sprint7_preservation.py",
     "tests/test_cross_pillar_evaluation.py",
-    "tests/test_cross_pillar_smoke.py"
+    "tests/test_cross_pillar_smoke.py",
+    "evals/cross_pillar_v1/.gitattributes"
   ],
   "protected_git_blobs": {
     ".env.example": "a891151133e54d956049e64da8ac091883f6ec95",
@@ -441,7 +443,6 @@
     "scripts/register_documents.py": "3fa919341ced0dbc906c7f61702cfbbaa7e92324",
     "tests/historical_identity.py": "b7170f763ce3dfac3223dbda78c04667ceefc11e",
     "tests/test_ai_security_contracts.py": "3c6cdcc487b8b40cd012c038315f490e68617033",
-    "tests/test_ai_security_evaluation.py": "464e144b1416cdba98395c080b91856576d572b2",
     "tests/test_ai_security_hardening.py": "97f2a6fc6ccdaace4f71dd17180e0397afc62f7e",
     "tests/test_ai_security_ui.py": "2cb737253632b2e483381177058b1f2c2c6ed1e8",
     "tests/test_ai_security_workflow.py": "7a0c08af20d2fbc65dc183572d2fd138c70e0153",
@@ -719,5 +720,9 @@
   "original_snapshot_manifest": "Documentation/sprint5_preservation.json",
   "workspace_manifest": "Documentation/sprint6_preservation.json",
   "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
-  "cache_exception": "Explicit user authorization: preserve 181 bytecode and four pytest cache files; never execute/import s4check."
+  "cache_exception": "Explicit user authorization: preserve 181 bytecode and four pytest cache files; never execute/import s4check.",
+  "scope_refinement_before_edit": {
+    "evals/cross_pillar_v1/.gitattributes": "The newly frozen raw SHA-256 files need explicit LF checkout bytes on Windows. Limit attributes to this new suite only; no frozen data/rubric/source bytes change. Add a failing checkout-attribute regression before the attribute file.",
+    "tests/test_ai_security_evaluation.py": "Full validation exposed the Sprint 6 runner binding the explicitly authorized UI guidance file. Pin only test replay/verify calls to an immutable 1c4f937 source snapshot; retain every scorer/assertion/artifact. Check executing backend and frozen data against their original hashes first; add exact AST and snapshot-corruption regressions. Do not edit the frozen runner or manifest."
+  }
 }

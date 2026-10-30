@@ -4,20 +4,23 @@ import hashlib
 import json
 
 import pytest
+from test_sprint7_preservation import historical_ai_security_call
 
 from evals.ai_security_v1.runner import ROOT, SUITE, evaluate, verify_freeze
 
 
 @pytest.fixture(scope="module")
-def recorded_and_replay():
+def recorded_and_replay(tmp_path_factory):
     recorded = json.loads(
         (ROOT / "Documentation/ai_security_v1/results.json").read_bytes()
     )
-    return recorded, evaluate()
+    return recorded, historical_ai_security_call(evaluate, tmp_path_factory)
 
 
-def test_new_freeze_and_predeclared_group_denominators():
-    assert verify_freeze()["implementation_source_git_blobs"]
+def test_new_freeze_and_predeclared_group_denominators(tmp_path_factory):
+    assert historical_ai_security_call(verify_freeze, tmp_path_factory)[
+        "implementation_source_git_blobs"
+    ]
     cases = json.loads((SUITE / "cases.json").read_bytes())
     assert len(cases) == 24 and len({c["id"] for c in cases}) == 24
     for group in {c["group"] for c in cases}:

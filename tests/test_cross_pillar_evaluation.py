@@ -2,6 +2,7 @@
 
 import io
 import json
+import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
@@ -170,6 +171,54 @@ def test_no_live_entry_point_in_deterministic_suite():
     source = Path(runner.__file__).read_text()
     assert 'if __name__ == "__main__":' in source
     assert "call_model_json" not in source  # Actual app functions supply inference.
+
+
+def test_new_suite_literal_hashes_survive_windows_checkout():
+    paths = list(runner.read("freeze.json")["sha256"])
+    attributes = subprocess.check_output(
+        ["git", "check-attr", "eol", "--", *paths], cwd=runner.ROOT, text=True
+    ).splitlines()
+    assert all(row.endswith(": eol: lf") for row in attributes)
+    assert (runner.SUITE / ".gitattributes").read_text() == "* text eol=lf\n"
+
+
+def test_recorded_live_denominators_and_optional_local_artifact_identity():
+    """Consistency/provenance checks only, never independent semantic validation."""
+    from collections import Counter
+
+    readout = json.loads(
+        (runner.ROOT / "Documentation/cross_pillar_v1/live_readout.json").read_bytes()
+    )
+    counts = readout["counts"]
+    assert counts["scheduled_submissions"] == counts["completed_http_submissions"] == 12
+    assert (
+        counts["raw_provider_http_attempts"]
+        == 12
+        <= runner.read("plan.json")["max_raw_generation_attempts"]
+    )
+    assert counts["returned_advisories"] + counts["withheld_advisories"] == 12
+    assert [r["case_id"] for r in readout["results"]] == runner.read("plan.json")[
+        "order"
+    ]
+    actual = Counter(
+        j["judgment"] for r in readout["results"] for j in r["expected_fact_judgments"]
+    )
+    assert dict(actual) == readout["qualitative_metrics"]["fact_judgments"]
+    assert sum(actual.values()) == 26
+    # Fresh clones have no private ignored local run; absence is not verification.
+    directory = runner.ROOT / readout["ignored_run_root"]
+    if directory.exists():
+        for name, digest in readout["artifact_sha256"].items():
+            assert runner.sha((directory / name).read_bytes()) == digest, name
+        events = [
+            json.loads(line)
+            for line in (directory / "journal.jsonl").read_text().splitlines()
+        ]
+        assert (
+            sum(e["event"] == "provider_reserved" for e in events)
+            == counts["raw_provider_http_attempts"]
+        )
+        assert events[-1]["event"] == "run_finished"
 
 
 @pytest.mark.parametrize("complete", [False, True])

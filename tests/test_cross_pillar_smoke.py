@@ -43,6 +43,49 @@ def test_composed_gateway_routes_are_a_compatible_superset():
         assert gateway.get("/health").json() == old.get("/health").json()
 
 
+def test_contradictory_model_coverage_is_withheld_without_error_disclosure(monkeypatch):
+    """Observed live failure shape; preserve rejection rather than invent success."""
+    from app.ai_security_sources import load_guidance
+
+    hits, categories = load_guidance()
+    source = hits[0].record.evidence_id
+    raw = {
+        "application_id": "SYN-RAG",
+        "coverage_status": "insufficient_information",
+        "summary": "Synthetic inconsistent coverage",
+        "human_review_requirements": ["Human review required."],
+        "evidence_gaps": ["Implementation is unverified."],
+        "findings": [
+            {
+                "finding_id": "F1",
+                "category": categories[source],
+                "component_ids": ["C_MODEL"],
+                "hypothesis": "Synthetic candidate.",
+                "prerequisites": ["Review declared input path."],
+                "possible_impact": "Unverified impact.",
+                "proposed_mitigations": ["Review controls."],
+                "validation_recommendations": ["Use synthetic controls."],
+                "missing_evidence": ["No control test supplied."],
+                "source_references": [source],
+            }
+        ],
+    }
+    audits = []
+    monkeypatch.setattr(ai_security_analyzer, "call_model_json", lambda **kwargs: raw)
+    monkeypatch.setattr(
+        ai_security_api, "write_audit_log", lambda **row: audits.append(row)
+    )
+    sample = json.loads(
+        (ROOT / "sample_data/ai_security_demo_v1/rag.json").read_bytes()
+    )
+    with TestClient(ai_security_api.app) as client:
+        result = client.post("/ui/analyze/ai-security", json=sample)
+    assert result.status_code == 500
+    assert result.json() == {"detail": ai_security_api.WITHHELD}
+    assert "analysis" not in result.json() and "Synthetic candidate" not in result.text
+    assert len(audits) == 1 and audits[0]["success"] is False
+
+
 @pytest.mark.parametrize(
     "pillar,page,button,endpoint",
     [

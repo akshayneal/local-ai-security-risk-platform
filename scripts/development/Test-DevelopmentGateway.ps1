@@ -32,10 +32,26 @@ switch ($Scenario) {
         Assert ($script:DevelopmentCommands.ui -like '*--server.port 8535*') 'UI port changed'
     }
     legacy_stop {
+        # Old venv redirector children keep the old exact command. A sibling
+        # with an unrelated executable must never be adopted or terminated.
+        $child = $record.PSObject.Copy(); $child.id = 101; $child.parent = 100
+        $child.created = '2026-01-01T00:00:00.1000000Z'
+        $child.PSObject.Properties.Remove('service')
+        $script:live[101] = $child
+        $unrelated = $child.PSObject.Copy(); $unrelated.id = 999; $unrelated.executable = 'C:\unrelated\python.exe'
+        $script:live[999] = $unrelated
+        function Get-CimInstance {
+            param($Filter)
+            if ($Filter -eq 'ParentProcessId = 100') {
+                [pscustomobject]@{ ProcessId = 101 }
+                [pscustomobject]@{ ProcessId = 999 }
+            }
+        }
         $loaded = Read-DevelopmentState $paths
         Assert (-not (Test-DevelopmentReady $paths $loaded)) 'legacy service advertised as the new gateway'
         Stop-DevelopmentOwned $paths $loaded
-        Assert ($script:stopped.Count -eq 2 -and $script:live.Count -eq 0) 'strict legacy stop failed'
+        Assert ($script:stopped.Count -eq 3 -and $script:stopped[0] -eq 101) 'strict legacy child-first stop failed'
+        Assert ($script:live.Count -eq 1 -and $script:live.ContainsKey(999) -and 999 -notin $script:stopped) 'unrelated legacy-command child terminated'
         Assert (-not (Test-Path $paths.State)) 'successful stop retained state'
     }
     legacy_start {
