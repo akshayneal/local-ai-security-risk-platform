@@ -126,3 +126,23 @@ historic hashes/current scope/policy/protected workspace, exact inventory and CI
 USER VISUAL QA PENDING for the new workflow; both prior workflows' manual acceptance
 also remains pending. Final hardening requires fixed-case human semantic and
 end-to-end review, not another feature expansion or safety certification claim.
+
+## Completed gates
+
+Plan/preservation checkpoint `bcc8b31`; frozen examples/guidance/cases `883e977`;
+working typed gateway/provenance/UI and implementation snapshot `94988eb`.
+The historic Sprint 5 diff end is pinned; all other guard behavior is AST-identical.
+Core backend/UI focused checks passed before Experimental navigation activation.
+The explicit gateway preserves frozen main.py; optional organizational knowledge
+and correction editing for AI Security remain unsupported, with no grant fallback.
+
+Official 24-case suite: 24/24 authored properties, 3/3 input rejections, 4/4 invalid
+outputs withheld, 17/17 expected valid transactions, 6/6 benign, 9/9 category/source
+reference consistency, no structured authority promotion in two forged cases.
+One official run plus two local full replays: 72 complete case checks, zero real
+model/embedding calls. LIVE INFERENCE NOT RUN (0); semantic effectiveness unmeasured.
+
+Final local full suite: 1958 passed, one existing warning, 97.38 s; uncached Ruff,
+pip/diff checks and all protected source/artifact/workspace/snapshot hashes pass.
+Final report 49 records limitations and development failures. Exact final feature
+SHA and hosted CI are checked after the final documentation/evidence checkpoint.

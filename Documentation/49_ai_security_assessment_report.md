@@ -246,3 +246,67 @@ Only then consider a separately authorized portfolio/release decision. Keep opti
 AI Security organizational knowledge and correction editing separately scoped with
 new reviewed grants/fixtures. Do not expand framework breadth or claim certification
 to conceal missing human acceptance.
+
+## Completed offline evidence and final local gate
+
+Official run: `94988eb55ac27d4c93dabf301db783800d213a89`. See
+[frozen results](ai_security_v1/results.json),
+[artifact identities](ai_security_v1/result_identity.json), and
+[exact file/commit inventory](ai_security_v1/change_inventory.json).
+
+| Separate deterministic property | Count / denominator |
+| --- | --- |
+| Predeclared cases | 24/24; four groups of 6 |
+| Invalid input rejected before generation | 3/3 |
+| Invalid stub output withheld | 4/4 |
+| Expected valid input/output transactions returned | 17/17 |
+| Benign/positive preservation | 6/6 |
+| Declared category/source consistency | 9/9 cited finding references |
+| Unassessed/unverified status retained | 17/17 returned results |
+| Targeted missing implementation-evidence gap | 1/1 |
+| False structured proof/approval promotion | 0/2 forged-status cases |
+| Explicit insufficiency without model generation | 1/1 |
+| Real model attempts / embeddings | 0 / 0 |
+| Semantic accuracy / live injection resistance | NOT MEASURED |
+
+All 24 cases and statuses are retained. Seventeen valid results include one
+deterministic insufficiency and 16 accepted stub responses. The official run used
+20 stub calls and 21 stubbed audit outcomes: four invalid outputs were withheld;
+three invalid inputs never reached generation/audit. Category consistency verifies
+enum/source-label agreement, not whether a model chose the right threat. Semantic
+false positives, positive model-answer losses and independent review remain unmeasured.
+
+Python/API per-case median 10.5745 ms, range 4.888–26.608 ms, sum 252.094 ms;
+whole runner command 2.88 s including startup/imports. These are not model inference
+timings. No paid API request occurred; CPU/electricity costs were not measured.
+
+New suite: one official run, one focused full replay, one replay in the final full
+suite: **72 complete local case checks**, 60 matrix stub calls, zero real inference.
+Other API/UI/unit stubs are software checks, not live trials. No incomplete official
+run, selectively rerun case, source/ranking tuning or changed expected result.
+Old Sprint 5 ran offline at baseline, focused compatibility and final full suite:
+three replays/78 cases, preserving original results and the no-answer counterexample.
+Hosted CI adds a separate fresh replay; final exact-SHA evidence is in the handoff.
+
+Final Windows CPython 3.13.1 verification:
+
+- `python -B -m pytest -q -p no:cacheprovider`: **1958 passed**, zero failed/skipped,
+  one existing Starlette/httpx warning, **97.38 s**.
+- New evaluation/preservation/navigation selection: **23 passed**, one existing
+  warning, 5.79 s. Earlier implementation/UI/preservation: **77 passed**;
+  compatibility/navigation/historical replay selection: **67 passed**.
+- `python -B -m ruff check --no-cache .`: passed.
+- `python -B -m pip check`: no broken requirements.
+- `git diff --check`: passed. Main.py, original public/UI schemas, analyzers,
+  prompts/model client, inference context, knowledge/Inspector contracts, launchers,
+  dependency files and AGENTS.md have no diff from the Sprint 5 base.
+- Every protected base blob and historical evaluation/source hash, 405 inherited
+  file hashes and all 13 Northstar hashes passed. That registry/WAL/SHM was never
+  opened through SQLite or updated by this sprint.
+
+Actual local-provider output and all three workflows' manual acceptance remain
+untested. The gateway's old-route generation-argument equivalence is demonstrated
+with stubs, not human acceptance. USER VISUAL QA PENDING; no release recommendation.
+All commits/pushes remain on the Sprint 6 feature branch. The final handoff supplies
+exact SHA/CI URL/status. No merge, tag, release, PR, launcher retargeting, OS/account/
+permission/credential change or persistent service.
