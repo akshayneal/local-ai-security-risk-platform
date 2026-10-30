@@ -60,6 +60,19 @@ class InspectorClaim(SupportModel):
     assessment: EvidenceSupportAssessment
 
 
+class SuppliedFieldAnchor(SupportModel):
+    evidence_id: str
+    request_sha256: str
+    table: str
+    row_index: StrictInt = Field(ge=0)
+    field_name: str
+    parent_observation_id: str
+    value_presence: Literal["empty", "nonempty"]
+    provenance: Literal["supplied field; not independently verified"] = (
+        "supplied field; not independently verified"
+    )
+
+
 class EvidenceInspectorReport(SupportModel):
     inspector_id: str
     request_sha256: str
@@ -68,6 +81,7 @@ class EvidenceInspectorReport(SupportModel):
     retrieval_status: Literal["captured", "not_observed", "unavailable", "partial"]
     sources: tuple[InspectorSource, ...] = ()
     input_inventory: tuple[InputInventoryRow, ...] = ()
+    field_anchors: tuple[SuppliedFieldAnchor, ...] = ()
     claims: tuple[InspectorClaim, ...] = ()
     total_claims: int
     evidence_gaps: tuple[str, ...] = ()
@@ -77,6 +91,39 @@ class EvidenceInspectorReport(SupportModel):
         "Model assertions are unassessed. Citations and source eligibility do not prove claim entailment.",
         "Input inventory shows supplied fields and row provenance, not verified event truth or complete forensic coverage.",
     )
+
+    @model_validator(mode="after")
+    def field_paths_match_inventory(self):
+        rows = {r.observation_id: r for r in self.input_inventory}
+        seen = set()
+        for anchor in self.field_anchors:
+            row = rows.get(anchor.parent_observation_id)
+            if (
+                self.workflow != "soc_alert"
+                or row is None
+                or anchor.request_sha256 != self.request_sha256
+                or anchor.table != row.table
+                or anchor.row_index != row.row_index
+                or anchor.field_name not in row.field_names
+                or anchor.parent_observation_id
+                != fingerprint([self.request_sha256, anchor.table, anchor.row_index])
+                or anchor.evidence_id
+                != fingerprint(
+                    [
+                        self.request_sha256,
+                        anchor.table,
+                        anchor.row_index,
+                        anchor.field_name,
+                        "supplied-field-v1",
+                    ]
+                )
+                or anchor.evidence_id in seen
+            ):
+                raise ValueError(
+                    "Field anchors must match this request's supplied row/field inventory"
+                )
+            seen.add(anchor.evidence_id)
+        return self
 
 
 class AnalystEvidenceReview(SupportModel):
@@ -134,10 +181,13 @@ class AnalystCorrection(SupportModel):
 def validate_correction_history(
     report: EvidenceInspectorReport, history: tuple[AnalystCorrection, ...]
 ) -> tuple[AnalystCorrection, ...]:
+    report = EvidenceInspectorReport.model_validate(report.model_dump(mode="json"))
     claims = {c.claim_id: c for c in report.claims}
-    allowed = {s.provenance.evidence_id for s in report.sources} | {
-        r.observation_id for r in report.input_inventory
-    }
+    allowed = (
+        {s.provenance.evidence_id for s in report.sources}
+        | {r.observation_id for r in report.input_inventory}
+        | {a.evidence_id for a in report.field_anchors}
+    )
     latest: dict[str, AnalystCorrection] = {}
     for item in history:
         item = AnalystCorrection.model_validate(item.model_dump(mode="json"))
@@ -332,6 +382,7 @@ def build_inspector(
         for r in capture.records
     )
     inventory = []
+    field_anchors = []
     structured = (
         microsoft_evidence(original) if isinstance(request, SocAlertRequest) else None
     )
@@ -346,6 +397,28 @@ def build_inspector(
                         field_names=tuple(sorted(row)),
                     )
                 )
+                for name, value in sorted(row.items()):
+                    field_anchors.append(
+                        SuppliedFieldAnchor(
+                            evidence_id=fingerprint(
+                                [
+                                    request_hash,
+                                    table,
+                                    index,
+                                    name,
+                                    "supplied-field-v1",
+                                ]
+                            ),
+                            request_sha256=request_hash,
+                            table=table,
+                            row_index=index,
+                            field_name=name,
+                            parent_observation_id=inventory[-1].observation_id,
+                            value_presence="empty"
+                            if value in (None, "", [], {})
+                            else "nonempty",
+                        )
+                    )
     else:
         inventory.append(
             InputInventoryRow(
@@ -396,6 +469,7 @@ def build_inspector(
         retrieval_status=capture.status,
         sources=sources,
         input_inventory=tuple(inventory),
+        field_anchors=tuple(field_anchors),
         claims=tuple(claims),
         total_claims=total,
         evidence_gaps=tuple(response.get("evidence_gaps", [])),

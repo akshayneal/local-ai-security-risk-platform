@@ -56,9 +56,10 @@ def test_live_artifact_schedule_provenance_and_original_defect_are_preserved():
     for case, row in zip(cases(), rows, strict=True):
         request = request_for(case)
         assert case["case_id"] == row["case_id"]
-        assert row["request_sha256"] == hashlib.sha256(
-            request.model_dump_json().encode()
-        ).hexdigest()
+        assert (
+            row["request_sha256"]
+            == hashlib.sha256(request.model_dump_json().encode()).hexdigest()
+        )
         assert row["error"] is None and row["response"] is not None
         assert len(row["model_attempts"]) == 1
         attempt = row["model_attempts"][0]
@@ -66,16 +67,16 @@ def test_live_artifact_schedule_provenance_and_original_defect_are_preserved():
         assert attempt["configured_num_ctx"] == (
             8192 if case["workflow"] == "soc_alert" else None
         )
-        assert attempt["complete_context_required"] is (
-            case["workflow"] == "soc_alert"
-        )
+        assert attempt["complete_context_required"] is (case["workflow"] == "soc_alert")
         assert len(row["audit_outcomes"]) == 1
         assert row["audit_outcomes"][0]["success"]
         assert row["audit_outcomes"][0]["source_ids"] == [
             s["source_id"] for s in row["response"]["analysis"]["source_references"]
         ]
         assert all(
-            value for key, value in row["checks"].items() if key != "case_identity_exact"
+            value
+            for key, value in row["checks"].items()
+            if key != "case_identity_exact"
         )
     # Do not retroactively repair the archived model output or its original score.
     note = next(row for row in rows if row["case_id"] == "ESE-NOTE")
@@ -84,7 +85,9 @@ def test_live_artifact_schedule_provenance_and_original_defect_are_preserved():
     assert sum(r["checks"]["case_identity_exact"] for r in rows) == 7
 
 
-def test_actual_retrieval_and_passive_inspector_replay_from_archived_analysis(monkeypatch):
+def test_actual_retrieval_and_passive_inspector_replay_from_archived_analysis(
+    monkeypatch,
+):
     monkeypatch.setenv("RETRIEVAL_BACKEND", "legacy")
     monkeypatch.delenv("RETRIEVAL_SHADOW_BACKEND", raising=False)
     for case, row in zip(cases(), load("results.json")["records"], strict=True):
@@ -102,9 +105,12 @@ def test_actual_retrieval_and_passive_inspector_replay_from_archived_analysis(mo
             row["response"]["analysis"]
         )
         replay = build_inspector(capture, request, response)
-        assert replay.model_dump(mode="json") == row["response"]["metadata"][
-            "evidence_inspector"
-        ]
+        # Replay every original field exactly; the additive 4.6 field inventory is
+        # tested separately and never written into the frozen live artifact.
+        assert (
+            replay.model_dump(mode="json", exclude={"field_anchors"})
+            == row["response"]["metadata"]["evidence_inspector"]
+        )
         assert all(
             c.assessment.verification_status == "not_verified"
             and c.assessment.provenance == "model_proposed"
@@ -124,9 +130,10 @@ def test_manual_reviews_are_complete_quote_bound_and_summary_is_reproducible():
     assert len(review["reviews"]) == len(rows) == 8
     for row, item in zip(rows, review["reviews"], strict=True):
         assert item["case_id"] == row["case_id"]
-        assert item["record_sha256"] == hashlib.sha256(
-            json.dumps(row, sort_keys=True).encode()
-        ).hexdigest()
+        assert (
+            item["record_sha256"]
+            == hashlib.sha256(json.dumps(row, sort_keys=True).encode()).hexdigest()
+        )
         for dimension in DIMENSIONS:
             assert item[dimension] in {"absent", "present", "ambiguous"}
         assert item["quotes"] and item["rationale"]
@@ -138,9 +145,10 @@ def test_manual_reviews_are_complete_quote_bound_and_summary_is_reproducible():
     }
     assert summary["returned"] == summary["actual_model_requests"] == 8
     assert summary["withheld"] == summary["repair_attempts"] == 0
-    assert summary["latency_seconds"]["median"] == statistics.median(
-        r["latency_ms"] for r in rows
-    ) / 1000
+    assert (
+        summary["latency_seconds"]["median"]
+        == statistics.median(r["latency_ms"] for r in rows) / 1000
+    )
     assert summary["machine_checks"] == {
         key: {"passed": sum(r["checks"][key] for r in rows), "denominator": 8}
         for key in rows[0]["checks"]

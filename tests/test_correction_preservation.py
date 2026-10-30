@@ -35,4 +35,5 @@ def test_corrections_preserve_frozen_evaluations_and_analysis_implementation():
         "dashboard/workflows.py",
         "dashboard/microsoft_input.py",
         "Documentation/43_analyst_corrections.md",
+        "Documentation/44_evidence_precision_and_reviewed_reports.md",
     }
