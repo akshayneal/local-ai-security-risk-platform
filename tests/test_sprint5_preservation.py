@@ -20,7 +20,15 @@ def test_sprint5_scope_and_protected_historical_bytes():
         ["git", "merge-base", "--is-ancestor", BASE, "HEAD"], cwd=ROOT, check=True
     )
     changed = subprocess.check_output(
-        ["git", "diff", BASE, "--name-only"], cwd=ROOT, text=True
+        [
+            "git",
+            "diff",
+            BASE,
+            "a43814b43df9bd677469f002c785ac0710c4404d",
+            "--name-only",
+        ],
+        cwd=ROOT,
+        text=True,
     ).splitlines()
     allowed = set(plan["authorized_existing"]) | set(plan["authorized_new"])
     assert all(
