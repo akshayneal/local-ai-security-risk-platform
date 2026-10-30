@@ -16,7 +16,8 @@ No extra model generation, automatic action, new retrieval backend or default ch
   values. Original submitted inputs remain in that result's local Streamlit session.
 - An explicit opt-in selected-value viewer, bound by the request fingerprint. Only
   the selected original field/cell is displayed, capped at 2000 characters with
-  coverage labeling. Values are excluded from evidence exports by design.
+  coverage labeling. This viewer does not automatically add selected values to the
+  Inspector export block.
 - Model-authored assertions, their response fields and field-based display kinds.
   They always carry model-proposed/unassessed provenance and require analyst review.
   The kind is not an automatic semantic classifier: summary/gap text can mix facts,
@@ -65,9 +66,11 @@ remains inactive; human review is the explicit production boundary.
 
 Existing JSON/Markdown exports remain unchanged when Inspector metadata is absent.
 New exports add versioned provenance, field inventory, claim status and optional
-analyst judgments. They exclude original input values, source excerpts, prompts,
-rejected generations, traces and operational diagnostics. Notes/model strings are
-escaped in Markdown. Judgments are session-local and exportable; no persistent
+analyst judgments. The Inspector block does not automatically include original input
+payloads/values, source excerpts, prompts, rejected generations, traces or operational
+diagnostics. The existing full analysis can quote supplied telemetry, and explicitly
+entered analyst notes can contain sensitive text; exports are not redacted reports.
+Notes/model strings are escaped in Markdown. Judgments are session-local and exportable; no persistent
 review database, backend audit certification or authenticated approval is added.
 
 Governance UI labels control fields as model proposals/stated requirements requiring
