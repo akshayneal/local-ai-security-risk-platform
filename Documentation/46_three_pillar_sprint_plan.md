@@ -158,3 +158,13 @@ The corrected checkpoint passes 1877 deterministic tests (one existing warning,
 completed local full matrix executions (official run + focused replay + two full
 suite replays), 104 completed case checks. No application/evaluation source or
 frozen outcome changed during the portability follow-up. Live calls remain zero.
+Connected GitHub logs later established the first CI counts (1842 passed / 3 failed /
+31 skipped) and second counts (1844 passed / 2 failed / 31 skipped). The remaining
+two failures are new AppTest form-checkbox interactions under CI's newer Streamlit.
+Batch edit and submit in a single form run; retain all opt-in/no-grants assertions.
+Six focused UI tests pass. No application, frozen evaluation or installed dependency
+change; a final full gate and additional bounded feature push verify this correction.
+Final form-driver checkpoint: 1877 passed, one existing warning, 96.68 s;
+Ruff/pip/diff passed. Total completed local matrix checks: 130 across five full
+executions, plus the preserved initial incomplete infrastructure attempt. No live
+model/embedding calls. Final hosted status is supplied for the exact final SHA.

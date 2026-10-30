@@ -8,7 +8,8 @@
     "0a9e76687bd98278f9b9846a49d1e656acaadc6e Bridge reviewed current local documents into both existing analyzers with strict opt-in",
     "5c872e8e9390d79ce97a9b2028b55a20d4928b6e Present three pillars and freeze reviewed bridge UI and adversarial controls before evaluation",
     "30de7f4846e7b8b39a6659c9e0a00023800ec343 Preserve incomplete offline attempt and close runner-owned SQLite fixture before full replay",
-    "745fc28b1550d795c488eb4cb8a7da8dc9d911c2 Record frozen knowledge bridge results, exact replay, limitations and Sprint 5 handoff"
+    "745fc28b1550d795c488eb4cb8a7da8dc9d911c2 Record frozen knowledge bridge results, exact replay, limitations and Sprint 5 handoff",
+    "d863c9b4cb2678f1c5b1408b753a78fec883195f Preserve installed policy bytes while verifying Git-normalized policy across fresh checkouts"
   ],
   "changed_files": [
     ".gitignore",
@@ -19,6 +20,7 @@
     "Documentation/knowledge_bridge_v1/attempt_001_failure.json",
     "Documentation/knowledge_bridge_v1/change_inventory.json",
     "Documentation/knowledge_bridge_v1/ci_001_failure.json",
+    "Documentation/knowledge_bridge_v1/ci_002_failure.json",
     "Documentation/knowledge_bridge_v1/result_identity.json",
     "Documentation/knowledge_bridge_v1/results.json",
     "Documentation/sprint5_preservation.json",

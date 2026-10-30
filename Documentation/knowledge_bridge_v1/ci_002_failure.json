@@ -1,0 +1,16 @@
+{
+  "head_sha": "d863c9b4cb2678f1c5b1408b753a78fec883195f",
+  "url": "https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41015107055",
+  "status": "completed",
+  "conclusion": "failure",
+  "passed": 1844,
+  "failed": 2,
+  "skipped": 31,
+  "test_seconds": 22.83,
+  "ruff": "skipped after test failure",
+  "runtime": {"python": "3.13.17", "streamlit": "1.66.1", "pydantic": "2.14.2", "pytest": "9.2.0"},
+  "failed_tests": ["tests/test_knowledge_ui.py::test_optin_checkbox_defaults_off_and_sends_boolean_only[True]", "tests/test_knowledge_ui.py::test_optin_checkbox_defaults_off_and_sends_boolean_only[False]"],
+  "observed_failure": "KeyError local_knowledge: the fixture triggers an intermediate script rerun after checking a form control, before submitting the form. The request made by that fixture lacks the opt-in key.",
+  "bounded_fix": "Batch checkbox edit and submit into one AppTest run, matching atomic form submission. Retain assertions for default-off, outgoing literal boolean true, absent request grants, preserved submitted input and no exception. No production module, case, scorer, source or frozen result change.",
+  "evidence": "Read-only connected GitHub workflow-job logs. No local credentials were read or changed, no permissions/accounts changed, no GUI/browser control and no workflow rerun request."
+}

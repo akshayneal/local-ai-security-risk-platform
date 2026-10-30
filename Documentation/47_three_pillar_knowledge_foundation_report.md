@@ -284,10 +284,10 @@ not measured. No qwen outputs or independent human judgments are claimed.
 
 Local execution count: one incomplete infrastructure attempt (partial case count
 unavailable), one complete official 26-case run, one complete focused offline replay,
-and one complete replay in each of the two full deterministic validation runs:
-**104 completed case checks across four full executions**, with no selective rerun
-or altered expectations. The second full validation follows the policy-test-only
-portability correction; application/evaluation source and outcomes are unchanged.
+and one complete replay in each of the three full deterministic validation runs:
+**130 completed case checks across five full executions**, with no selective rerun
+or altered expectations. Later full validations follow policy-test/form-driver-only
+portability corrections; application/evaluation source and outcomes are unchanged.
 Hosted CI performs its own fresh deterministic replay, reported separately in the
 final handoff. Historical vector/ranking/Inspector replays ran offline in the full
 suite; historical live evaluations and original artifacts were not modified.
@@ -300,6 +300,8 @@ Implementation verification with the existing Windows CPython 3.13.1 venv:
   one existing warning, **94.01 s**, no skips/failures. The additional test binds
   canonical policy text to the original policy checkpoint and checks transport
   equivalence without modifying the installed file.
+- Final form-driver-checkpoint full run: **1877 passed**, one existing warning,
+  **96.68 s**, no skips/failures. Ruff, pip check and diff check also passed.
 - Focused UI/bridge/Microsoft/Inspector/preservation batch: **121 passed**, one
   existing warning. Earlier core retrieval/correction/report batch: **134 passed**.
 - New frozen evaluation/artifact replay: **4 passed**, 5.70 s before the full suite.
@@ -356,6 +358,29 @@ exact-SHA run determines hosted status. The final handoff supplies that SHA/URL.
 Focused portability checks: 4 passed, 2.42 s. Final full suite: 1877 passed,
 one existing warning, 94.01 s; Ruff, pip check and diff check passed. No production
 module, frozen case/source/scorer/result or policy-body change follows those gates.
+
+The connected GitHub reader subsequently supplied the actual logs through existing
+repository access: first CI **1842 passed, 3 failed, 31 skipped** in 17.11 s;
+second CI at `d863c9b` **1844 passed, 2 failed, 31 skipped** in 22.83 s. Both
+skipped Ruff after test failure. The second run passed the corrected policy guard,
+all backend/bridge/security/evaluation checks, and failed only the two new checkbox
+AppTests. Its fresh direct-manifest environment used Python 3.13.17, Streamlit
+1.66.1, Pydantic 2.14.2 and pytest 9.2.0, unlike the preserved Windows environment.
+No local packages or requirements were upgraded to mimic CI.
+
+The checkbox fixture previously forced a separate script rerun between editing a
+form control and clicking submit. Batch those actions in one AppTest run, matching
+form submission, and keep default-off, checked-value, outgoing true flag, no grants,
+unchanged submitted-input and no-exception assertions. This changes only the new
+test driver, not application behavior, a frozen scorer or an expected outcome.
+Six focused UI tests passed in 3.18 s. Preserve
+[second CI failure](knowledge_bridge_v1/ci_002_failure.json); the first CI metadata
+also retains its later log evidence. A further bounded non-force feature checkpoint
+is required for the corrected test and final exact-SHA hosted verification. No
+workflow was manually rerun, and no local credentials/accounts/permissions changed.
+Final local verification after the form-driver correction: 1877 passed, one existing
+warning, 96.68 s; Ruff/pip/diff passed. Completed local matrix executions now total
+130 case checks (one official run, one focused replay and three full-suite replays).
 
 ## Human-only review and next scope
 

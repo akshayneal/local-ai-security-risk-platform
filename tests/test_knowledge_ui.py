@@ -16,7 +16,10 @@ def test_optin_checkbox_defaults_off_and_sends_boolean_only(monkeypatch, soc):
     page = open_page("SOC Investigation" if soc else "AI System Risk Review")
     checkbox = next(c for c in page.checkbox if "reviewed local knowledge" in c.label)
     assert checkbox.value is False
-    checkbox.check().run()
+    # Form values reach the script together on submit. Do not inject a separate
+    # script rerun between editing a form control and clicking its submit button.
+    checkbox.check()
+    assert checkbox.value is True
     button(page, "Analyze SOC alert" if soc else "Review AI system").click().run()
     assert len(calls) == 1 and calls[0][1]["local_knowledge"] is True
     assert not {"access_scopes", "policy_scopes", "workspace"} & calls[0][1].keys()
