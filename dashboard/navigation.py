@@ -5,6 +5,7 @@ PAGE_GROUPS = {
     "Workflows": (
         ("pages/soc_investigation.py", "SOC Investigation"),
         ("pages/ai_system_risk_review.py", "AI System Risk Review"),
+        ("pages/ai_security_assessment.py", "AI Security Assessment"),
     ),
     "Platform": (
         ("pages/platform_evaluation.py", "Platform Evaluation"),
@@ -27,8 +28,9 @@ PILLARS = (
     {
         "title": "AI Security",
         "workflow": "AI Security Assessment",
-        "status": "Planned",
-        "description": "Future technical assessment: prompt injection, retrieval poisoning, tool permission boundaries, data leakage and adversarial control tests. This sprint tests the shared knowledge pipeline; there is no separate runnable analyzer.",
+        "status": "Experimental",
+        "description": "Typed component/flow threat-model review for injection, poisoning, disclosure, tool agency, authorization and downstream consumption. Candidate hypotheses only; requires the explicit Sprint 6 API gateway. No exploitation or deployed-control verification.",
+        "page": "pages/ai_security_assessment.py",
     },
     {
         "title": "AI Safety, Assurance & Policy",
@@ -58,8 +60,9 @@ WORKFLOW_MAP = (
         "domain": "AI Security",
         "technical": {
             "title": "AI Security Assessment",
-            "status": "Planned",
+            "status": "Experimental",
             "description": "AI attack surface, prompt injection, retrieval poisoning, tool and agent authorization, trust boundaries, technical controls and security evaluation planning.",
+            "page": "pages/ai_security_assessment.py",
         },
         "governance": {
             "title": "AI System Risk Review",

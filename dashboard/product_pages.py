@@ -107,10 +107,11 @@ def activity_page(base_url: str) -> None:
     left, right = st.columns(2)
     workflow = left.selectbox(
         "Workflow",
-        ["All", "soc_alert", "governance"],
+        ["All", "soc_alert", "governance", "ai_security"],
         format_func=lambda value: {
             "soc_alert": "SOC Investigation",
             "governance": "AI System Risk Review",
+            "ai_security": "AI Security Assessment (Experimental)",
         }.get(value, value),
     )
     outcome = right.selectbox("Outcome", ["All", "Success", "Failure"])
@@ -141,7 +142,7 @@ def overview_page() -> None:
             if "page" in pillar:
                 st.page_link(pillar["page"], label="Open workflow")
     st.caption(
-        "Two active analyzers. AI Security Assessment and standalone SOC Policy & Governance Review remain Planned. Development features are unmerged, not a new release."
+        "Two established active workflows plus Experimental AI Security Assessment via the explicit Sprint 6 gateway. Standalone SOC Policy & Governance Review remains Planned. Development features are unmerged, not a release."
     )
     st.subheader("Shared local evidence and assurance")
     st.write(
@@ -160,7 +161,7 @@ def about_page() -> None:
     st.title("About")
     st.subheader("Product scope")
     st.write(
-        "Three pillars share local evidence and assurance: SOC; AI Security (assessment Planned); AI Safety, Assurance & Policy (AI System Risk Review active). Platform Evaluation reports this application's own frozen evaluations."
+        "Three pillars share local evidence and assurance: SOC; AI Security (experimental technical assessment); AI Safety, Assurance & Policy (AI System Risk Review active). Platform Evaluation reports this application's own frozen evaluations."
     )
     st.subheader("Architecture")
     stages = (
@@ -193,7 +194,7 @@ def about_page() -> None:
         )
     st.subheader("Current release")
     st.write(
-        "Released main/v2.3.0 has two active analyzers. Inspector, corrections and Microsoft inputs are unmerged functional development. Sprint 5 local knowledge is experimental and opt-in. AI Security Assessment and standalone SOC Policy & Governance Review remain Planned."
+        "Released main/v2.3.0 has two active analyzers. Inspector, corrections and Microsoft inputs are unmerged functional development. Sprint 5 local knowledge is experimental and opt-in for SOC/AI risk only. AI Security Assessment is experimental via the separate foreground gateway; its organizational knowledge and correction editor are unsupported. Standalone SOC Policy & Governance Review remains Planned."
     )
     st.write(
         "Policy applicability and model correctness are separate. An applicable requirement is not evidence of implementation, granted approval, complete evidence coverage or a correct generated answer."

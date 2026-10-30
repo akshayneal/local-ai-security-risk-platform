@@ -24,6 +24,7 @@ def test_native_navigation_groups_and_default_overview():
     assert [title for _, title in PAGE_GROUPS["Workflows"]] == [
         "SOC Investigation",
         "AI System Risk Review",
+        "AI Security Assessment",
     ]
     assert [title for _, title in PAGE_GROUPS["Platform"]] == [
         "Platform Evaluation",
@@ -51,13 +52,13 @@ def test_overview_two_active_two_planned_and_no_analysis_controls(monkeypatch):
     monkeypatch.setattr(requests, "get", no_network)
     page = open_page("Overview")
     captions = [c.value for c in page.caption]
-    assert captions.count("Active") == 2 and captions.count("Planned") == 1
+    assert captions.count("Active") == 2 and captions.count("Experimental") == 1
     assert {
         "SOC",
         "AI Security",
         "AI Safety, Assurance & Policy",
     } <= {h.value for h in page.subheader}
-    assert len(page.get("page_link")) == 2
+    assert len(page.get("page_link")) == 3
     assert not page.get("form") and not page.get("download_button")
     assert [b.label for b in page.button] == ["Check backend status"]
     assert not page.exception

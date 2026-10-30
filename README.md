@@ -2,7 +2,7 @@
 
 Local-first, single-user decision support across SOC, AI Security, and AI Safety, Assurance & Policy. It combines a Streamlit application, FastAPI backend, curated local references and Ollama inference with `qwen3:8b`.
 
-**Released main: 2.3.0.** Two practitioner workflows are active. This development branch is unmerged; Sprint 5 reviewed local knowledge is experimental and defaults off.
+**Released main: 2.3.0.** Two practitioner workflows are active. This development branch is unmerged. Sprint 5 local knowledge defaults off; Sprint 6 adds an experimental technical AI Security workflow through an explicit foreground gateway.
 
 ## What it does
 
@@ -17,7 +17,7 @@ Both workflows support validated synthetic sample loading, structured source ref
 | Pillar | Working capability | Status |
 | --- | --- | --- |
 | SOC | SOC Investigation; generic telemetry and experimental Microsoft JSON/CSV file adapter | Two-workflow core released; Microsoft adapter unmerged |
-| AI Security | Knowledge-pipeline threat model and adversarial software tests | Separate AI Security Assessment Planned; no runnable assessment route |
+| AI Security | Typed component/flow threat model and structured technical hypotheses | Experimental AI Security Assessment via Sprint 6 gateway; no exploitation or control verification |
 | AI Safety, Assurance & Policy | Existing AI System Risk Review; human review, evidence gaps, policy/implementation distinction | Core released; Inspector/corrections unmerged |
 
 A shared local evidence layer supplies telemetry, curated guidance and explicitly opted-in, reviewed current organizational documents. A shared assurance layer supplies contracts, provenance, deterministic checks, application self-evaluation and analyst review. Platform Evaluation describes this application's evaluations; it is not another analyzer. Standalone SOC Policy & Governance Review remains Planned.
@@ -26,7 +26,8 @@ A shared local evidence layer supplies telemetry, curated guidance and explicitl
 | --- | --- |
 | Unmerged but functional | Evidence Inspector, session-bound corrections, field anchors, correction-first exports, curated lexical opt-in and working-checkout launcher |
 | Sprint 5 experimental | Reviewed local document CLI, registered current-version BM25 bridge for both analyzers, read-only Knowledge Workspace, synthetic Northstar demo |
-| Planned | Technical AI Security Assessment, authenticated document portal, broader natural-language support/applicability evaluation |
+| Sprint 6 experimental | Technical AI Security Assessment, immutable graph contracts, local authored guidance, read-only provenance and safe exports |
+| Planned | Authenticated document portal, third-pillar organizational knowledge and broader natural-language support/applicability evaluation |
 
 An applicable policy does not prove implementation, granted approval or a correct model answer. A citation is evidence provenance, not an entailment certificate.
 
@@ -47,6 +48,7 @@ Navigation separates practitioner work from platform assurance:
 | Landing | Overview | Three pillars and honest capability statuses |
 | Workflows | SOC Investigation | Security telemetry, evidence/inference separation and investigation guidance |
 | Workflows | AI System Risk Review | AI-system risks, controls and oversight |
+| Workflows | AI Security Assessment | Experimental technical threat-model review, explicit gateway required |
 | Platform | Platform Evaluation | Frozen evaluation history and same-suite comparisons for this application |
 | Platform | Knowledge Workspace | Read-only operator workspace status and eligible source identities |
 | Platform | Activity | Recent local audit entries, filtered by workflow and outcome |
@@ -156,7 +158,7 @@ Coverage includes API compatibility, source controls, bounded SOC repair/fail-cl
 
 ## Roadmap
 
-The next scoped runtime is a technical AI Security Assessment with explicit attack surfaces, prompt/retrieval/tool boundaries, evidence-linked threats, bounded adversarial tests and human review. Standalone SOC Policy & Governance Review, authenticated portals, default dense/hybrid migration and external integrations remain deferred. This branch is not a release recommendation; visual and independent semantic review remain pending.
+The experimental technical AI Security Assessment now supports submitted assets, flows, retrieval/tool boundaries and candidate threats. Its live output quality and user acceptance remain untested; prioritize fixed-case human review before expanding it. Standalone SOC Policy & Governance Review, authenticated portals, default dense/hybrid migration and external integrations remain deferred. This branch is not a release recommendation; visual and independent semantic review remain pending.
 
 ## Experimental reviewed local knowledge (Sprint 5)
 
@@ -174,3 +176,43 @@ Start with the [synthetic CLI and human walkthrough](Documentation/47_three_pill
 For a manual foreground backend, set `$env:LOCAL_KNOWLEDGE_WORKSPACE = 'northstar'` before the existing loopback uvicorn command. Leave normal launchers unchanged. In either active analysis page, explicitly select **Include reviewed local knowledge (experimental)**, default off. Check Knowledge Workspace and the Inspector for eligible, selected and cited chunks, versions, categorical authority and incomplete-evidence warnings. Full raw documents and hidden grants are not automatically exported. Related hits and requirements remain unassessed as evidence of specific implementation or approval.
 
 Opted-in requests reuse the existing complete-context local runtime path (`truncate=false`, `shift=false`) and can be withheld if the installed provider cannot meet it. No model download, cloud call, authentication, live Microsoft connection or autonomous response is added. See [sprint plan](Documentation/46_three_pillar_sprint_plan.md) and [results/limitations](Documentation/47_three_pillar_knowledge_foundation_report.md). **USER VISUAL QA PENDING.**
+
+## Experimental technical AI Security Assessment (Sprint 6)
+
+This distinct workflow reviews a caller-declared AI architecture: actors, components,
+directed flows, ingestion origins, declared tool capabilities, claimed controls and
+separately supplied unverified implementation evidence. It returns candidate technical
+hypotheses, mitigations, proposed tests and gaps. It performs no penetration test,
+network scan, tool execution, real permission check or deployed-control verification.
+Missing graph information produces an explicit insufficient-information response.
+
+To preserve the exact Sprint 5 source snapshots, `app.main:app` and all existing
+launchers remain unchanged. The new page states its requirement for the explicit
+`app.ai_security_api:app` gateway, which composes the old routes with
+`POST /ui/analyze/ai-security`. Start it manually in a foreground terminal using an
+unused port; no service is started by this sprint:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn app.ai_security_api:app --host 127.0.0.1 --port 8246
+```
+
+In another foreground terminal, point Streamlit at that gateway:
+
+```powershell
+$env:API_BASE_URL = 'http://127.0.0.1:8246'
+.\.venv\Scripts\python.exe -m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1 --server.port 8536
+```
+
+Use AI Security Assessment's bounded JSON editor and synthetic examples. Its source
+panel is read-only and unassessed; existing Inspector correction history is not
+extended to this workflow. The six source categories are locally authored guidance
+v1, not external framework/control mappings. Organizational knowledge and grants are
+unsupported for this workflow; SOC/AI-risk workspace eligibility remains unchanged.
+Never reinitialize or modify the preserved `northstar-sprint5` workspace for this demo.
+
+See the [Sprint 6 plan](Documentation/48_ai_security_sprint_plan.md) and
+[technical report and manual acceptance checklist](Documentation/49_ai_security_assessment_report.md).
+**LIVE INFERENCE NOT RUN (0)** in the new offline suite. Software checks and synthetic
+stubs do not establish semantic accuracy or model injection resistance. The user's
+prior brief UI observation was provisional; both older workflows' retrieval/output
+acceptance and Sprint 6 end-to-end/visual acceptance remain pending.

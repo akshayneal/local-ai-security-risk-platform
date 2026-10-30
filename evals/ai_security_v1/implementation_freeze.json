@@ -1,0 +1,28 @@
+{
+  "status": "frozen before recorded offline outcomes; no real model attempts",
+  "source_git_blobs": {
+    "app/ai_security_contracts.py": "b8e70ea25df628a3ae2aa6211659a03336d764c5",
+    "app/ai_security_sources.py": "2ff7dbcedee06f55b9a7022e6560831ec8247d09",
+    "app/ai_security_analyzer.py": "fda92d6c6ad4ed1263901fed1e0a20eaaebfa975",
+    "app/ai_security_api.py": "b9ee9bfe669b2883519a29739ecfb20490d6c621",
+    "dashboard/ai_security.py": "1fee68c4dea46a6ab258ec1c9d6f0c968abb769e",
+    "dashboard/pages/ai_security_assessment.py": "e467853fb2a50f3e2bb4dfed383e1df8ebd8e77a",
+    "dashboard/navigation.py": "1776218e66d150c84fd21ce01b97c70a10d515f9",
+    "dashboard/product_pages.py": "83683feac36b2d7052263eded05642fdae267071",
+    "evals/ai_security_v1/runner.py": "ce7dabc77817f2bc0b7ceb8798b620bd61759c43",
+    "app/main.py": "bf965350c834c2e4522dbab64136cf7bd9814052",
+    "app/schemas.py": "44402b810c6ec967393d8883cde55927d381cb9d",
+    "app/ui_schemas.py": "0b4a25fd565cf96100577328926e2bb64e36afff",
+    "app/soc_analyzer.py": "e5218abe9822a93732877ae0fbec0e1221a3adf9",
+    "app/governance_analyzer.py": "0395ead170540fd3a8883f84d92dd18f3298b07f",
+    "app/prompts.py": "11f6bf15ef646c03cb5409d7c94c696a15c59d58",
+    "app/ollama_client.py": "349861ff3e17ada1b58569f433eed25afbe3c3e2",
+    "app/inference_context.py": "09358ab1138cd77d705141c1691afb7c902105a2",
+    "app/knowledge_contracts.py": "39ea30a0907f43605b9d33b55467f38248363ee0",
+    "app/knowledge_workspace.py": "d5ba31e64a3cd142a3934534d30b64e64e79b414",
+    "app/retrieval/contracts.py": "0f5d161dc02b51e6f06f28aa969fd783d8bacfcd",
+    "app/retrieval/serialization.py": "8134f679dd96820a18c35cd6a26ce53d6004c3ee",
+    "app/support_assessor.py": "b050253ba7ff53078faa85eb8625fd648a092038",
+    "app/untrusted_content.py": "d0100d46e0fc66040a31d35914a9aef1607d36ce"
+  }
+}

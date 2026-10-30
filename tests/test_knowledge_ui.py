@@ -67,8 +67,11 @@ def test_knowledge_page_readonly_and_missing_workspace_visible(monkeypatch, stat
     assert not page.exception
 
 
-def test_three_pillars_have_only_two_runnable_pages():
+def test_three_pillars_have_two_established_and_one_experimental_page():
     assert len(PILLARS) == 3
-    assert sum("page" in p for p in PILLARS) == 2
+    assert sum("page" in p for p in PILLARS) == 3
     planned = next(p for p in PILLARS if p["title"] == "AI Security")
-    assert planned["status"] == "Planned" and "page" not in planned
+    assert (
+        planned["status"] == "Experimental"
+        and planned["page"] == "pages/ai_security_assessment.py"
+    )

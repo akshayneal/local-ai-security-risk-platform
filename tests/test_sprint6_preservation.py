@@ -58,12 +58,11 @@ def test_sprint5_scope_range_only_is_pinned_without_changing_its_other_guards():
             and len(node.elts) >= 4
             and isinstance(node.elts[2], ast.Name)
             and node.elts[2].id == "BASE"
+            and ast.dump(node.elts[0]) == ast.dump(ast.Constant("git"))
+            and ast.dump(node.elts[1]) == ast.dump(ast.Constant("diff"))
         ):
-            if ast.dump(node.elts[0]) == ast.dump(ast.Constant("git")) and ast.dump(
-                node.elts[1]
-            ) == ast.dump(ast.Constant("diff")):
-                node.elts.insert(3, ast.Constant(BASE))
-                break
+            node.elts.insert(3, ast.Constant(BASE))
+            break
     else:
         raise AssertionError("Historic diff call not found")
     assert ast.dump(ast.parse(source)) == ast.dump(expected)
