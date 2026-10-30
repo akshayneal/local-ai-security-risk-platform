@@ -48,3 +48,11 @@ The same contract will support an additive, read-only workflow Inspector: model 
 will retain explicit proposed/unassessed provenance instead of being silently
 converted into structured facts. Production analysis/schema/repair contracts remain
 unchanged; no semantic enforcement is activated by this component.
+
+The additive UI integration is now implemented as described in the
+[Evidence Inspector](40_analyst_evidence_inspector.md). Request-local capture observes
+the actual existing selection; no model call is added. Every free-form model claim
+uses the shared contract with model-proposed/unassessed/not-verified status. Analyst
+judgments are explicit, case-bound and exportable, with no independent verification
+claim. This is the justified production activation: inspectability and review, not
+automatic semantic approval, abstention or changed generation.

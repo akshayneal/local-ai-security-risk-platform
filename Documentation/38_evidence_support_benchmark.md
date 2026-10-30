@@ -94,3 +94,9 @@ No errata or original judgment revisions were needed. Two artifact tests replay 
 four rankings from cached vectors, every assessment, group metrics, source eligibility
 and the false-abstention cost without Ollama/network. Live semantic validation is
 separately bounded and must not be inferred from this deterministic result.
+
+Judgments were authored by the implementation assistant before candidate outcomes.
+Independence here means the gold data is separate from the candidate's inputs;
+it is not independent human/expert adjudication. The explicit synthetic subjects
+and structured assertion format make ranking relatively easy and do not represent
+the full difficulty or prevalence of real organizational documents.

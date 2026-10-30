@@ -134,7 +134,14 @@ def test_governance_response_and_exactly_once_audit(api, monkeypatch, ui):
     if ui:
         body = response.json()
         assert body["analysis"] == result.model_dump(mode="json")
-        assert body["metadata"] == {
+        inspector = body["metadata"]["evidence_inspector"]
+        assert inspector["retrieval_status"] == "not_observed"
+        assert inspector["review_required"] is True
+        assert {
+            key: value
+            for key, value in body["metadata"].items()
+            if key != "evidence_inspector"
+        } == {
             "model": main.OLLAMA_MODEL,
             "local_execution": True,
             "human_review_required": True,

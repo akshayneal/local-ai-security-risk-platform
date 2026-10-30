@@ -1,6 +1,8 @@
 import json
 import subprocess
 
+from historical_identity import sprint4_blob
+
 from evals.provenance import ROOT
 
 
@@ -19,12 +21,7 @@ def test_sprint3_frozen_evidence_and_prior_production_identity():
         "dashboard/microsoft_input.py",
     }
     for name, expected in manifest["frozen_git_blob_sha1"].items():
-        assert (
-            subprocess.check_output(
-                ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
-            ).strip()
-            == expected
-        ), name
+        assert sprint4_blob(name) == expected, name
     for name, expected in manifest["authorized_prior_source_git_blob_sha1"].items():
         assert (
             subprocess.check_output(

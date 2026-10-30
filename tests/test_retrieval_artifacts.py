@@ -88,6 +88,8 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "app/prompts.py",
         "app/main.py",
         "dashboard/api_client.py",
+        "app/ui_schemas.py",
+        "dashboard/exports.py",
     }
     additions = {
         "app/soc_inputs.py",
@@ -100,6 +102,8 @@ def test_release_implementation_and_frozen_evidence_preserved():
         "app/reference_authority.py",
         "app/support_contracts.py",
         "app/support_assessor.py",
+        "app/evidence_inspector.py",
+        "dashboard/evidence_inspector.py",
     }
     assert all(
         name.startswith("app/retrieval/") or name in integration | additions

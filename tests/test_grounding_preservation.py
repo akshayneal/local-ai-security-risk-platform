@@ -1,6 +1,8 @@
 import json
 import subprocess
 
+from historical_identity import sprint4_blob
+
 from evals.provenance import ROOT
 
 
@@ -21,7 +23,14 @@ def test_prior_evidence_and_unmodified_source_bytes_preserved():
         input="\n".join(protected) + "\n",
         text=True,
     ).splitlines()
-    assert dict(zip(protected, actual, strict=True)) == protected
+    actual = dict(zip(protected, actual, strict=True))
+    sprint4 = json.loads(
+        (ROOT / "Documentation/expansion_sprint_4_preservation.json").read_bytes()
+    )
+    for name in sprint4["authorized_prior_source_git_blob_sha1"]:
+        if name in actual:
+            actual[name] = sprint4_blob(name)
+    assert actual == protected
     for name, expected in manifest["authorized_prior_source_git_blob_sha1"].items():
         assert (
             subprocess.check_output(

@@ -3,9 +3,11 @@
 import streamlit as st
 from pydantic import ValidationError
 
+from app.evidence_inspector import inspector_export
 from app.schemas import GovernanceRiskRequest, SocAlertRequest
 from app.ui_schemas import GovernanceAnalysisEnvelope, SocAnalysisEnvelope
 from dashboard.api_client import GENERIC_ERROR, post_analysis
+from dashboard.evidence_inspector import display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
 from dashboard.presentation import SOURCE_CAVEAT, TRUST_CAVEAT, integrity_rows
 from dashboard.sample_loader import (
@@ -123,8 +125,14 @@ def governance_result(result: dict) -> None:
         section("Key Risks", result.get("key_risks", []))
         section("Evidence Gaps", result.get("evidence_gaps", []))
     with controls:
-        section("Required Controls", result.get("required_controls", []))
-        section("Logging Requirements", result.get("logging_requirements", []))
+        section(
+            "Model-Proposed Controls — Verify Applicability",
+            result.get("required_controls", []),
+        )
+        section(
+            "Logging Proposals / Stated Requirements — Verify",
+            result.get("logging_requirements", []),
+        )
     with oversight:
         section(
             "Human Review Requirements", result.get("human_review_requirements", [])
@@ -239,10 +247,15 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             else:
                 try:
                     envelope = envelope_model.model_validate(body)
-                    document = export_document(request, envelope.analysis)
+                    document = export_document(
+                        request,
+                        envelope.analysis,
+                        evidence_inspector=envelope.metadata.evidence_inspector,
+                    )
                     st.session_state[f"{prefix}_result"] = {
                         "envelope": envelope.model_dump(mode="json"),
                         "document": document,
+                        "submitted_input": request.model_dump(mode="json"),
                     }
                 except (ValidationError, ValueError):
                     st.session_state[f"{prefix}_error"] = GENERIC_ERROR
@@ -263,6 +276,13 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
         with integrity_column:
             trust_panel(saved["envelope"]["metadata"], soc=soc)
         display_source_references(result)
+        inspector, reviews = display_evidence_inspector(
+            saved["envelope"]["metadata"].get("evidence_inspector"),
+            prefix=prefix,
+            submitted_input=saved.get("submitted_input"),
+        )
+        if inspector is not None:
+            document["evidence_inspector"] = inspector_export(inspector, reviews)
         st.subheader("Exports")
         st.caption("Submitted case identity and analysis; review before sharing.")
         json_column, md_column = st.columns(2)

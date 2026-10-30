@@ -11,8 +11,41 @@ import subprocess
 from evals.provenance import ROOT
 
 
+def sprint4_blob(name: str) -> str:
+    """Only six explicitly authorized additive workbench paths use prior identity."""
+    manifest = json.loads(
+        (ROOT / "Documentation/expansion_sprint_4_preservation.json").read_bytes()
+    )
+    allowed = manifest["authorized_prior_source_git_blob_sha1"]
+    assert set(allowed) == {
+        "app/main.py",
+        "app/ui_schemas.py",
+        "app/retrieval/orchestration.py",
+        "dashboard/workflows.py",
+        "dashboard/microsoft_input.py",
+        "dashboard/exports.py",
+    }
+    if name in allowed:
+        actual = subprocess.check_output(
+            ["git", "rev-parse", f"{manifest['starting_commit']}:{name}"],
+            cwd=ROOT,
+            text=True,
+        ).strip()
+        assert actual == allowed[name]
+        return actual
+    return subprocess.check_output(
+        ["git", "hash-object", f"--path={name}", name], cwd=ROOT, text=True
+    ).strip()
+
+
 def expansion_blob(name: str) -> str:
     """Four explicitly authorized integration paths retain their prior identity."""
+    if name in {
+        "app/ui_schemas.py",
+        "dashboard/exports.py",
+        "app/retrieval/orchestration.py",
+    }:
+        return sprint4_blob(name)
     sprint3 = json.loads(
         (ROOT / "Documentation/expansion_sprint_3_preservation.json").read_bytes()
     )

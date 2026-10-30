@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
+from app.evidence_inspector import capture_selection
 from app.retrieval.contracts import RetrievalError, RetrievalQuery, RetrievedEvidence
 from app.retrieval.importers import LEGACY_WORKFLOWS, load_curated_records
 from app.retrieval.lexical import LexicalRetriever
@@ -20,6 +21,13 @@ class AnalysisReferences:
     cards: list[dict]
     evidence: list[RetrievedEvidence] | None = None
     context: str | None = None
+
+
+def _observed(
+    mode: str, query: str, selection: AnalysisReferences
+) -> AnalysisReferences:
+    capture_selection(mode, query, selection)
+    return selection
 
 
 def lexical_search(mode: str, query: str, limit: int) -> list[RetrievedEvidence]:
@@ -50,7 +58,11 @@ def retrieve_for_analysis(
         raise RetrievalError("Unsupported configured retrieval backend")
     if backend == "lexical":
         hits = lexical_search(mode, query, limit)  # Errors propagate, no fallback.
-        return AnalysisReferences(evidence_cards(hits), hits, serialize_evidence(hits))
+        return _observed(
+            mode,
+            query,
+            AnalysisReferences(evidence_cards(hits), hits, serialize_evidence(hits)),
+        )
     started = time.perf_counter()
     cards = legacy_loader(mode=mode, query=query, limit=limit)
     legacy_ms = (time.perf_counter() - started) * 1000
@@ -80,5 +92,7 @@ def retrieve_for_analysis(
         try:
             write_shadow(record)
         except Exception:  # noqa: BLE001
-            return AnalysisReferences(cards)  # Logging cannot influence generation.
-    return AnalysisReferences(cards)
+            return _observed(
+                mode, query, AnalysisReferences(cards)
+            )  # Logging cannot influence generation.
+    return _observed(mode, query, AnalysisReferences(cards))

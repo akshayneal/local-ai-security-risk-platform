@@ -1,0 +1,329 @@
+"""Request-local evidence provenance and explicit unassessed model claims."""
+
+import hashlib
+import json
+from collections.abc import Iterator
+from contextlib import contextmanager
+from contextvars import ContextVar
+from dataclasses import dataclass, field
+from typing import Any, Literal
+
+from pydantic import Field
+
+from app.microsoft_evidence import microsoft_evidence
+from app.retrieval.contracts import EvidenceRecord, RetrievalQuery
+from app.retrieval.filtering import filter_records
+from app.retrieval.importers import LEGACY_WORKFLOWS, load_curated_records
+from app.schemas import GovernanceRiskRequest, SocAlertRequest
+from app.support_assessor import source_provenance
+from app.support_contracts import (
+    AssessmentOrigin,
+    ClaimKind,
+    EvidenceSupportAssessment,
+    Relationship,
+    SourceSupportProvenance,
+    SupportModel,
+)
+
+MAX_INSPECTED_CLAIMS = 60
+MAX_EXCERPT = 600
+
+
+def fingerprint(value: Any) -> str:
+    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
+
+
+class InspectorSource(SupportModel):
+    provenance: SourceSupportProvenance
+    cited: bool
+    excerpt: str = Field(max_length=MAX_EXCERPT)
+    excerpt_truncated: bool
+
+
+class InputInventoryRow(SupportModel):
+    observation_id: str
+    table: str
+    row_index: int | None
+    field_names: tuple[str, ...]
+    status: Literal["supplied field inventory; values not reproduced"] = (
+        "supplied field inventory; values not reproduced"
+    )
+
+
+class InspectorClaim(SupportModel):
+    claim_id: str
+    response_field: str
+    kind: ClaimKind
+    text: str = Field(max_length=4096)
+    text_truncated: bool
+    assessment: EvidenceSupportAssessment
+
+
+class EvidenceInspectorReport(SupportModel):
+    inspector_id: str
+    request_sha256: str
+    query_sha256: str | None
+    workflow: Literal["soc_alert", "governance"]
+    retrieval_status: Literal["captured", "not_observed", "unavailable", "partial"]
+    sources: tuple[InspectorSource, ...] = ()
+    input_inventory: tuple[InputInventoryRow, ...] = ()
+    claims: tuple[InspectorClaim, ...] = ()
+    total_claims: int
+    evidence_gaps: tuple[str, ...] = ()
+    review_required: Literal[True] = True
+    limitations: tuple[str, ...] = (
+        "Retrieved guidance is not binding policy; a requirement is not evidence it is implemented.",
+        "Model assertions are unassessed. Citations and source eligibility do not prove claim entailment.",
+        "Input inventory shows supplied fields and row provenance, not verified event truth or complete forensic coverage.",
+    )
+
+
+class AnalystEvidenceReview(SupportModel):
+    inspector_id: str
+    claim_id: str
+    relationship: Relationship
+    evidence_ids: tuple[str, ...] = ()
+    note: str = Field(default="", max_length=1000)
+    provenance: Literal["analyst_recorded"] = "analyst_recorded"
+    verification_status: Literal["not_verified"] = "not_verified"
+    reviewer_identity: Literal[
+        "local user entry; identity not independently authenticated"
+    ] = "local user entry; identity not independently authenticated"
+
+
+def validate_analyst_review(
+    report: EvidenceInspectorReport, review: AnalystEvidenceReview
+) -> AnalystEvidenceReview:
+    claims = {c.claim_id for c in report.claims}
+    evidence = {s.provenance.evidence_id for s in report.sources} | {
+        r.observation_id for r in report.input_inventory
+    }
+    if (
+        review.inspector_id != report.inspector_id
+        or review.claim_id not in claims
+        or not set(review.evidence_ids) <= evidence
+    ):
+        raise ValueError(
+            "Review must refer to this submitted result and its eligible evidence"
+        )
+    if (
+        review.relationship
+        in {Relationship.DIRECT, Relationship.PARTIAL, Relationship.CONFLICT}
+        and not review.evidence_ids
+    ):
+        raise ValueError("A support/conflict judgment requires selected evidence")
+    return review
+
+
+@dataclass
+class EvidenceCapture:
+    workflow: str
+    query_sha256: str | None = None
+    status: str = "not_observed"
+    records: list[EvidenceRecord] = field(default_factory=list)
+
+
+_ACTIVE: ContextVar[EvidenceCapture | None] = ContextVar(
+    "evidence_inspector", default=None
+)
+
+
+@contextmanager
+def collect_evidence(workflow: str) -> Iterator[EvidenceCapture]:
+    capture = EvidenceCapture(workflow)
+    token = _ACTIVE.set(capture)
+    try:
+        yield capture
+    finally:
+        _ACTIVE.reset(token)
+
+
+def capture_selection(mode: str, query: str, selection: Any) -> None:
+    capture = _ACTIVE.get()
+    if capture is None or capture.workflow != mode:
+        return
+    try:
+        capture.query_sha256 = hashlib.sha256(query.encode()).hexdigest()
+        if selection.evidence is not None:
+            records = [h.record for h in selection.evidence]
+        else:
+            catalog = {r.evidence_id: r for r in load_curated_records(mode)}
+            records = [
+                catalog[c["source_id"]]
+                for c in selection.cards
+                if c.get("source_id") in catalog
+                and catalog[c["source_id"]].legacy_card() == c
+            ]
+        # The current orchestration grants only public curated references. Never
+        # derive additional access/policy grants or registry claims from text.
+        context = RetrievalQuery(
+            text=query[:20_000] or "evidence", workflow=LEGACY_WORKFLOWS[mode]
+        )
+        capture.records = filter_records(
+            records, context, lambda r: r.document_id is None
+        )
+        expected = (
+            len(selection.evidence)
+            if selection.evidence is not None
+            else len(selection.cards)
+        )
+        capture.status = "captured" if len(capture.records) == expected else "partial"
+    except Exception:  # noqa: BLE001 -- optional inspection cannot alter analysis or echo errors.
+        capture.records = []
+        capture.status = "unavailable"
+
+
+SOC_KINDS = {
+    "severity": ClaimKind.INFERENCE,
+    "likely_incident_type": ClaimKind.INFERENCE,
+    "summary": ClaimKind.UNKNOWN,
+    "mitre_mapping": ClaimKind.INFERENCE,
+    "observed_evidence": ClaimKind.OBSERVATION,
+    "analyst_inferences": ClaimKind.INFERENCE,
+    "recommended_containment": ClaimKind.RECOMMENDATION,
+    "recommended_investigation_steps": ClaimKind.RECOMMENDATION,
+    "evidence_gaps": ClaimKind.UNKNOWN,
+    "analyst_note": ClaimKind.UNKNOWN,
+}
+GOV_KINDS = {
+    "risk_level": ClaimKind.INFERENCE,
+    "decision": ClaimKind.RECOMMENDATION,
+    "summary": ClaimKind.UNKNOWN,
+    "key_risks": ClaimKind.INFERENCE,
+    "required_controls": ClaimKind.RECOMMENDATION,
+    "human_review_requirements": ClaimKind.RECOMMENDATION,
+    "logging_requirements": ClaimKind.RECOMMENDATION,
+    "recommended_next_steps": ClaimKind.RECOMMENDATION,
+    "evidence_gaps": ClaimKind.UNKNOWN,
+}
+
+
+def build_inspector(
+    capture: EvidenceCapture, request: SocAlertRequest | GovernanceRiskRequest, result
+) -> EvidenceInspectorReport:
+    original = request.model_dump(mode="json")
+    response = result.model_dump(mode="json")
+    request_hash = fingerprint(original)
+    inspector_id = fingerprint(
+        {
+            "request": request_hash,
+            "response": response,
+            "sources": [r.evidence_id for r in capture.records],
+        }
+    )
+    cited = {s["source_id"] for s in response.get("source_references", [])}
+    sources = tuple(
+        InspectorSource(
+            provenance=source_provenance(r),
+            cited=r.evidence_id in cited,
+            excerpt=r.content[:MAX_EXCERPT],
+            excerpt_truncated=len(r.content) > MAX_EXCERPT,
+        )
+        for r in capture.records
+    )
+    inventory = []
+    structured = (
+        microsoft_evidence(original) if isinstance(request, SocAlertRequest) else None
+    )
+    if structured is not None:
+        for table, rows in sorted(structured.bundle["tables"].items()):
+            for index, row in enumerate(rows):
+                inventory.append(
+                    InputInventoryRow(
+                        observation_id=fingerprint([request_hash, table, index]),
+                        table=table,
+                        row_index=index,
+                        field_names=tuple(sorted(row)),
+                    )
+                )
+    else:
+        inventory.append(
+            InputInventoryRow(
+                observation_id=fingerprint([request_hash, "input"]),
+                table=type(request).__name__,
+                row_index=None,
+                field_names=tuple(
+                    k for k, v in original.items() if v not in (None, "", [])
+                ),
+            )
+        )
+    claims = []
+    total = 0
+    for name, kind in (
+        SOC_KINDS if isinstance(request, SocAlertRequest) else GOV_KINDS
+    ).items():
+        values = response.get(name, [])
+        for index, text in enumerate(values if isinstance(values, list) else [values]):
+            if not isinstance(text, str) or not text.strip():
+                continue
+            total += 1
+            if len(claims) >= MAX_INSPECTED_CLAIMS:
+                continue
+            claim_id = fingerprint([inspector_id, name, index, text])
+            assessment = EvidenceSupportAssessment(
+                claim_id=claim_id,
+                candidate_evidence_ids=tuple(r.evidence_id for r in capture.records),
+                relationship=Relationship.UNASSESSED,
+                provenance=AssessmentOrigin.MODEL,
+                verification_status="not_verified",
+                limitation="Field-based claim kind is a display aid, not semantic classification. Global citations do not establish claim-specific support.",
+            )
+            claims.append(
+                InspectorClaim(
+                    claim_id=claim_id,
+                    response_field=name,
+                    kind=kind,
+                    text=text[:4096],
+                    text_truncated=len(text) > 4096,
+                    assessment=assessment,
+                )
+            )
+    return EvidenceInspectorReport(
+        inspector_id=inspector_id,
+        request_sha256=request_hash,
+        query_sha256=capture.query_sha256,
+        workflow=capture.workflow,
+        retrieval_status=capture.status,
+        sources=sources,
+        input_inventory=tuple(inventory),
+        claims=tuple(claims),
+        total_claims=total,
+        evidence_gaps=tuple(response.get("evidence_gaps", [])),
+    )
+
+
+def inspector_export(
+    report: EvidenceInspectorReport, reviews: list[AnalystEvidenceReview] | None = None
+) -> dict:
+    checked = [
+        validate_analyst_review(report, r).model_dump(mode="json")
+        for r in reviews or []
+    ]
+    return {
+        "format": "evidence-inspector-v1",
+        "inspector_id": report.inspector_id,
+        "request_sha256": report.request_sha256,
+        "workflow": report.workflow,
+        "retrieval_status": report.retrieval_status,
+        "sources": [
+            {"provenance": s.provenance.model_dump(mode="json"), "cited": s.cited}
+            for s in report.sources
+        ],
+        "input_inventory": [r.model_dump(mode="json") for r in report.input_inventory],
+        "claims": [
+            {
+                "claim_id": c.claim_id,
+                "response_field": c.response_field,
+                "kind": c.kind.value,
+                "relationship": c.assessment.relationship.value,
+                "provenance": c.assessment.provenance.value,
+                "verification_status": c.assessment.verification_status,
+            }
+            for c in report.claims
+        ],
+        "claims_shown": len(report.claims),
+        "total_claims": report.total_claims,
+        "analyst_reviews": checked,
+        "human_review_required": True,
+        "limitations": list(report.limitations),
+    }

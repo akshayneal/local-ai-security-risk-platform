@@ -6,6 +6,7 @@ import json
 import streamlit as st
 from pydantic import ValidationError
 
+from app.evidence_inspector import inspector_export
 from app.soc_inputs import (
     TABLES,
     MicrosoftSocAdapter,
@@ -15,6 +16,7 @@ from app.soc_inputs import (
 )
 from app.ui_schemas import SocAnalysisEnvelope
 from dashboard.api_client import GENERIC_ERROR, post_analysis
+from dashboard.evidence_inspector import display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
 from dashboard.sample_loader import SampleLoadError, load_microsoft_samples
 
@@ -115,7 +117,12 @@ def microsoft_workspace(base_url: str) -> None:
                 envelope = SocAnalysisEnvelope.model_validate(body)
                 st.session_state["ms_result"] = {
                     "envelope": envelope.model_dump(mode="json"),
-                    "document": export_document(normalized.request, envelope.analysis),
+                    "submitted_input": normalized.request.model_dump(mode="json"),
+                    "document": export_document(
+                        normalized.request,
+                        envelope.analysis,
+                        evidence_inspector=envelope.metadata.evidence_inspector,
+                    ),
                 }
             except (ValidationError, ValueError):
                 st.session_state["ms_error"] = GENERIC_ERROR
@@ -128,6 +135,15 @@ def microsoft_workspace(base_url: str) -> None:
         soc_result(saved["envelope"]["analysis"])
         trust_panel(saved["envelope"]["metadata"], soc=True)
         display_source_references(saved["envelope"]["analysis"])
+        inspector, reviews = display_evidence_inspector(
+            saved["envelope"]["metadata"].get("evidence_inspector"),
+            prefix="ms",
+            submitted_input=saved.get("submitted_input"),
+        )
+        if inspector is not None:
+            saved["document"]["evidence_inspector"] = inspector_export(
+                inspector, reviews
+            )
         st.subheader("Exports")
         st.download_button(
             "Download JSON analysis",

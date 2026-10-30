@@ -5,6 +5,7 @@ from typing import Any, Literal
 from pydantic import BaseModel
 
 from app.analysis_trace import AnalysisTrace
+from app.evidence_inspector import EvidenceInspectorReport
 from app.schemas import GovernanceRiskResponse, SocAlertResponse
 
 INTEGRITY_FAILURE_MESSAGE = (
@@ -31,6 +32,7 @@ class GovernanceMetadata(BaseModel):
     local_execution: Literal[True] = True
     human_review_required: Literal[True] = True
     checks: tuple[str, ...] = COMMON_CHECKS
+    evidence_inspector: EvidenceInspectorReport | None = None
 
 
 class SocMetadata(GovernanceMetadata):

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
 from app.audit_logger import read_audit_logs, write_audit_log
+from app.evidence_inspector import build_inspector, collect_evidence
 from app.governance_analyzer import analyze_governance_risk
 from app.inference_context import EVIDENCE_BUDGET_MESSAGE, EvidenceBudgetError
 from app.ollama_client import OLLAMA_MODEL
@@ -137,16 +138,22 @@ def _run_soc(
 def ui_governance_endpoint(
     request: GovernanceRiskRequest,
 ) -> GovernanceAnalysisEnvelope:
+    with collect_evidence("governance") as capture:
+        result = _run_governance(request)
     return GovernanceAnalysisEnvelope(
-        analysis=_run_governance(request),
-        metadata=GovernanceMetadata(model=OLLAMA_MODEL),
+        analysis=result,
+        metadata=GovernanceMetadata(
+            model=OLLAMA_MODEL,
+            evidence_inspector=build_inspector(capture, request, result),
+        ),
     )
 
 
 @app.post("/ui/analyze/soc-alert", response_model=SocAnalysisEnvelope)
 def ui_soc_endpoint(request: SocAlertRequest) -> SocAnalysisEnvelope:
     trace = ProductTrace()
-    result = _run_soc(request, trace=trace)
+    with collect_evidence("soc_alert") as capture:
+        result = _run_soc(request, trace=trace)
     return SocAnalysisEnvelope(
         analysis=result,
         metadata=SocMetadata(
@@ -155,6 +162,7 @@ def ui_soc_endpoint(request: SocAlertRequest) -> SocAnalysisEnvelope:
             repair_succeeded=(not trace.repair_failed)
             if trace.repair_attempted
             else None,
+            evidence_inspector=build_inspector(capture, request, result),
         ),
     )
 
