@@ -15,7 +15,12 @@ def test_launcher_scope_and_visible_errors():
     common = (SCRIPTS / "Development.Common.ps1").read_text()
     start = (SCRIPTS / "Start-Development.ps1").read_text()
     stop = (SCRIPTS / "Stop-Development.ps1").read_text()
-    for forbidden in ("Stop-Process -Name", "taskkill", "git reset", "ollama pull qwen3:8b\n"):
+    for forbidden in (
+        "Stop-Process -Name",
+        "taskkill",
+        "git reset",
+        "ollama pull qwen3:8b\n",
+    ):
         assert forbidden not in common + start + stop
     assert "--host 127.0.0.1 --port 8235" in common
     assert "--server.address 127.0.0.1 --server.port 8535" in common
@@ -106,6 +111,63 @@ def test_process_identity_regressions(scenario, tmp_path):
             "Bypass",
             "-File",
             str(SCRIPTS / "Test-DevelopmentIdentity.ps1"),
+            "-Scenario",
+            scenario,
+            "-Scratch",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+        timeout=40,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_gateway_command_and_legacy_start_order_on_every_platform():
+    common = (SCRIPTS / "Development.Common.ps1").read_text()
+    start = (SCRIPTS / "Start-Development.ps1").read_text()
+    commands = common.split("function ConvertTo-DevelopmentPath")[0]
+    assert (
+        "api = '-m uvicorn app.ai_security_api:app --host 127.0.0.1 --port 8235'"
+        in commands
+    )
+    assert (
+        "DevelopmentLegacyApiCommand = '-m uvicorn app.main:app --host 127.0.0.1 --port 8235'"
+        in commands
+    )
+    assert (
+        start.index("Read-DevelopmentState")
+        < start.index("Assert-DevelopmentCurrentGateway")
+        < start.index("Update-DevelopmentChildren")
+    )
+    assert start.index("Assert-DevelopmentCurrentGateway") < start.index(
+        "Stop-DevelopmentOwned"
+    )
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows mock-only process migration")
+@pytest.mark.parametrize(
+    "scenario",
+    [
+        "canonical_command",
+        "legacy_stop",
+        "legacy_start",
+        "new_reuse",
+        "altered_record",
+        "changed_identity",
+        "port_conflict",
+    ],
+)
+def test_gateway_migration(scenario, tmp_path):
+    result = subprocess.run(
+        [
+            "powershell.exe",
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            str(SCRIPTS / "Test-DevelopmentGateway.ps1"),
             "-Scenario",
             scenario,
             "-Scratch",

@@ -1,9 +1,12 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $script:DevelopmentCommands = @{
-    api = '-m uvicorn app.main:app --host 127.0.0.1 --port 8235'
+    api = '-m uvicorn app.ai_security_api:app --host 127.0.0.1 --port 8235'
     ui = '-m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1 --server.port 8535 --server.headless true --browser.gatherUsageStats false'
 }
+# Stop-only compatibility for format-1 records from the previous dev launcher.
+# This fixed command is never used to launch or reuse a service.
+$script:DevelopmentLegacyApiCommand = '-m uvicorn app.main:app --host 127.0.0.1 --port 8235'
 
 function ConvertTo-DevelopmentPath([string]$Path) {
     if (-not $Path -or -not [IO.Path]::IsPathRooted($Path)) { throw 'Process identity requires an absolute executable path.' }
@@ -115,11 +118,26 @@ function Read-DevelopmentState($Paths) {
     $state = Get-Content -Raw -LiteralPath $Paths.State | ConvertFrom-Json
     if ($state.root -ne $Paths.Root -or $state.format -ne 1) { throw 'Unrecognized development ownership file; refusing process actions.' }
     foreach ($record in $state.records) {
+        $current = $record.service -in @('api', 'ui') -and (Test-DevelopmentCommand $record.command ('"' + $Paths.Python + '" ' + $script:DevelopmentCommands[$record.service]))
+        $legacy = $record.service -eq 'api' -and (Test-DevelopmentCommand $record.command ('"' + $Paths.Python + '" ' + $script:DevelopmentLegacyApiCommand))
         if ($record.service -notin @('api', 'ui') -or
-            -not (Test-DevelopmentCommand $record.command ('"' + $Paths.Python + '" ' + $script:DevelopmentCommands[$record.service])) -or
+            -not ($current -or $legacy) -or
             [IO.Path]::GetFileName($record.executable) -ne 'python.exe') { throw 'Invalid development process record; refusing process actions.' }
     }
     return $state
+}
+
+function Test-DevelopmentLegacyState($Paths, $State) {
+    if (-not $State) { return $false }
+    return @($State.records | Where-Object {
+        $_.service -eq 'api' -and (Test-DevelopmentCommand $_.command ('"' + $Paths.Python + '" ' + $script:DevelopmentLegacyApiCommand))
+    }).Count -gt 0
+}
+
+function Assert-DevelopmentCurrentGateway($Paths, $State) {
+    if (Test-DevelopmentLegacyState $Paths $State) {
+        throw 'Legacy two-workflow development state found. Use Stop-Development.cmd (strict identity verification), then Start-Development.cmd for the three-workflow gateway. No process was automatically stopped or reused.'
+    }
 }
 
 function Save-DevelopmentState($Paths, $State) {
@@ -196,6 +214,7 @@ function Test-DevelopmentHttp([string]$Url) {
 
 function Test-DevelopmentReady($Paths, $State) {
     if (-not $State) { return $false }
+    if (Test-DevelopmentLegacyState $Paths $State) { return $false }
     foreach ($service in @('api', 'ui')) {
         $port = if ($service -eq 'api') { 8235 } else { 8535 }
         $listeners = @(Get-DevelopmentListeners $port)

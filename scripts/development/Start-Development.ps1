@@ -13,6 +13,7 @@ try {
     Initialize-DevelopmentEnvironment $paths
     $env:PYTHONPATH = $paths.Root
     $state = Read-DevelopmentState $paths
+    Assert-DevelopmentCurrentGateway $paths $state
     if ($state) { Update-DevelopmentChildren $paths $state }
     if ($state -and (Test-DevelopmentReady $paths $state)) {
         if ($state.commit -ne $head) { throw 'Running services use a different commit. Use Stop, then Start to load this checkout.' }

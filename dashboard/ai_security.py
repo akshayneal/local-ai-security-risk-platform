@@ -165,7 +165,7 @@ def ai_security_page(base_url: str) -> None:
         "EXPERIMENTAL · technical design review · no penetration testing or actions"
     )
     st.info(
-        "Requires the explicit Sprint 6 API gateway (app.ai_security_api:app). Existing launchers keep their original backend. Local organizational knowledge is unsupported here; this workflow grants no document or tool permissions."
+        "The Windows development launcher uses the three-workflow gateway (app.ai_security_api:app). For a manual backend, use that same gateway. Local organizational knowledge is unsupported here; this workflow grants no document or tool permissions."
     )
     st.code(
         ".\\.venv\\Scripts\\python.exe -m uvicorn app.ai_security_api:app --host 127.0.0.1 --port 8000",

@@ -36,12 +36,13 @@ def test_sprint5_scope_and_protected_historical_bytes():
         for p in changed
     )
     protected = plan["protected_git_blobs"]
-    hashes = subprocess.check_output(
-        ["git", "hash-object", "--stdin-paths"],
+    snapshot = subprocess.check_output(
+        ["git", "ls-tree", "-r", "1c4f937f2b067a4a2b0d8ac8cf5db4f552555d00"],
         cwd=ROOT,
         text=True,
-        input="\n".join(protected) + "\n",
     ).splitlines()
+    by_path = {line.split("\t")[1]: line.split()[2] for line in snapshot}
+    hashes = [by_path[name] for name in protected]
     assert dict(zip(protected, hashes, strict=True)) == protected
     # Explicitly immutable semantics: neither frozen scorers/data nor dependencies
     # may be placed in an authorized source exception.

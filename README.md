@@ -2,7 +2,7 @@
 
 Local-first, single-user decision support across SOC, AI Security, and AI Safety, Assurance & Policy. It combines a Streamlit application, FastAPI backend, curated local references and Ollama inference with `qwen3:8b`.
 
-**Released main: 2.3.0.** Two practitioner workflows are active. This development branch is unmerged. Sprint 5 local knowledge defaults off; Sprint 6 adds an experimental technical AI Security workflow through an explicit foreground gateway.
+**Released main: 2.3.0.** Two practitioner workflows are active. This development branch is unmerged. Local knowledge defaults off. The development launcher uses one gateway for all three workflows, including experimental technical AI Security Assessment. See the Sprint 7 readout for actual local-model evidence and release blockers.
 
 ## What it does
 
@@ -48,7 +48,7 @@ Navigation separates practitioner work from platform assurance:
 | Landing | Overview | Three pillars and honest capability statuses |
 | Workflows | SOC Investigation | Security telemetry, evidence/inference separation and investigation guidance |
 | Workflows | AI System Risk Review | AI-system risks, controls and oversight |
-| Workflows | AI Security Assessment | Experimental technical threat-model review, explicit gateway required |
+| Workflows | AI Security Assessment | Experimental technical threat-model review via the development gateway |
 | Platform | Platform Evaluation | Frozen evaluation history and same-suite comparisons for this application |
 | Platform | Knowledge Workspace | Read-only operator workspace status and eligible source identities |
 | Platform | Activity | Recent local audit entries, filtered by workflow and outcome |
@@ -124,7 +124,7 @@ Open `http://localhost:8501`; API documentation is at `http://127.0.0.1:8000/doc
 
 ## Testing
 
-The released product checkpoint documented **1,287 tests** (the current development count is recorded in report 47) and requires no Ollama, internet connection or running application server:
+The released product checkpoint documented **1,287 tests** (the current development count is recorded in report 51) and requires no Ollama, internet connection or running application server:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest
@@ -173,7 +173,7 @@ Start with the [synthetic CLI and human walkthrough](Documentation/47_three_pill
 
 `build` validates and builds a bounded in-memory lexical projection; no persistent vector index is created. Normal new-document reviews default to unapproved/unverified. Review exact-version sidecars separately from document contents. Missing, corrupt or stale workspaces withhold opted-in analysis without fallback. The checkbox grants no access; only operator-owned workspace configuration supplies eligibility scopes. This local eligibility mechanism is not authenticated IAM/RBAC.
 
-For a manual foreground backend, set `$env:LOCAL_KNOWLEDGE_WORKSPACE = 'northstar'` before the existing loopback uvicorn command. Leave normal launchers unchanged. In either active analysis page, explicitly select **Include reviewed local knowledge (experimental)**, default off. Check Knowledge Workspace and the Inspector for eligible, selected and cited chunks, versions, categorical authority and incomplete-evidence warnings. Full raw documents and hidden grants are not automatically exported. Related hits and requirements remain unassessed as evidence of specific implementation or approval.
+For a manual foreground backend, set `$env:LOCAL_KNOWLEDGE_WORKSPACE = 'northstar'` before the existing loopback uvicorn command. The development launcher also reads that operator setting; use Stop then Start to load it. Do not modify the preserved `northstar-sprint5` workspace. In either active analysis page, explicitly select **Include reviewed local knowledge (experimental)**, default off. Check Knowledge Workspace and the Inspector for eligible, selected and cited chunks, versions, categorical authority and incomplete-evidence warnings. Full raw documents and hidden grants are not automatically exported. Related hits and requirements remain unassessed as evidence of specific implementation or approval.
 
 Opted-in requests reuse the existing complete-context local runtime path (`truncate=false`, `shift=false`) and can be withheld if the installed provider cannot meet it. No model download, cloud call, authentication, live Microsoft connection or autonomous response is added. See [sprint plan](Documentation/46_three_pillar_sprint_plan.md) and [results/limitations](Documentation/47_three_pillar_knowledge_foundation_report.md). **USER VISUAL QA PENDING.**
 
@@ -186,22 +186,21 @@ hypotheses, mitigations, proposed tests and gaps. It performs no penetration tes
 network scan, tool execution, real permission check or deployed-control verification.
 Missing graph information produces an explicit insufficient-information response.
 
-To preserve the exact Sprint 5 source snapshots, `app.main:app` and all existing
-launchers remain unchanged. The new page states its requirement for the explicit
-`app.ai_security_api:app` gateway, which composes the old routes with
-`POST /ui/analyze/ai-security`. Start it manually in a foreground terminal using an
-unused port; no service is started by this sprint:
+The Windows [development launcher](Documentation/45_development_launcher.md)
+uses `app.ai_security_api:app` on port 8235 for all three workflows, with Streamlit
+on 8535. Existing shortcut targets remain valid. If an older two-workflow dev
+instance has recorded ownership state, Start requests a strictly verified Stop,
+then Start; it never silently reuses that instance as the new gateway.
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn app.ai_security_api:app --host 127.0.0.1 --port 8246
+.\scripts\development\Stop-Development.cmd
+.\scripts\development\Start-Development.cmd
 ```
 
-In another foreground terminal, point Streamlit at that gateway:
-
-```powershell
-$env:API_BASE_URL = 'http://127.0.0.1:8246'
-.\.venv\Scripts\python.exe -m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1 --server.port 8536
-```
+For a manual foreground development backend, use the same composed entrypoint
+and point Streamlit's `API_BASE_URL` at its loopback port. The earlier run-local
+`app.main:app` commands describe the stable compatible two-workflow backend.
+Release demo/main/v2.3.0 remain unchanged. No real service is started by tests.
 
 Use AI Security Assessment's bounded JSON editor and synthetic examples. Its source
 panel is read-only and unassessed; existing Inspector correction history is not

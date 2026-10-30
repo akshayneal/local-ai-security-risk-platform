@@ -65,3 +65,15 @@ minimal evidence and descriptive metrics. Implementation-authored qualitative
 review is explicitly separate from deterministic checks; independent adjudication
 and user workflow/final visual acceptance remain pending. NO-GO while any required
 manual acceptance or important semantic/reliability gate is unresolved.
+
+## Pre-inference output-location configuration
+
+The existing ignore rules cover flat evals/results JSON files, not nested fresh
+workspace databases. No ignore file is changed. The official invocation explicitly
+sets the frozen runner's RESULTS configuration to the fresh ignored sibling
+`knowledge_base/workspaces/cedar-sprint7-live`, before main(), with exclusive
+`sprint7-baseline-001` creation. This is an artifact-location configuration only;
+cases, corpus, rubric, runtime, counting transports and frozen source hashes stay
+unchanged. Its experiment workspace lives under that new run directory; the old
+Northstar workspace is neither loaded nor queried. The final report records the
+exact invocation and implementation commit. No default CLI invocation is used.

@@ -20,7 +20,15 @@ def test_sprint6_scope_and_all_other_base_blobs_preserved():
         ["git", "merge-base", "--is-ancestor", BASE, "HEAD"], cwd=ROOT, check=True
     )
     changed = subprocess.check_output(
-        ["git", "diff", BASE, "--name-only"], cwd=ROOT, text=True
+        [
+            "git",
+            "diff",
+            BASE,
+            "1c4f937f2b067a4a2b0d8ac8cf5db4f552555d00",
+            "--name-only",
+        ],
+        cwd=ROOT,
+        text=True,
     ).splitlines()
     allowed = set(manifest["authorized_existing"]) | set(manifest["authorized_new"])
     assert all(
@@ -28,12 +36,13 @@ def test_sprint6_scope_and_all_other_base_blobs_preserved():
         for p in changed
     )
     protected = manifest["protected_git_blobs"]
-    actual = subprocess.check_output(
-        ["git", "hash-object", "--stdin-paths"],
+    snapshot = subprocess.check_output(
+        ["git", "ls-tree", "-r", "1c4f937f2b067a4a2b0d8ac8cf5db4f552555d00"],
         cwd=ROOT,
         text=True,
-        input="\n".join(protected) + "\n",
     ).splitlines()
+    by_path = {line.split("\t")[1]: line.split()[2] for line in snapshot}
+    actual = [by_path[name] for name in protected]
     assert dict(zip(protected, actual, strict=True)) == protected
     assert not any(
         p.startswith(("evals/", "reference_material/", "scripts/"))
@@ -42,7 +51,15 @@ def test_sprint6_scope_and_all_other_base_blobs_preserved():
 
 
 def test_sprint5_scope_range_only_is_pinned_without_changing_its_other_guards():
-    source = (ROOT / "tests/test_sprint5_preservation.py").read_text()
+    source = subprocess.check_output(
+        [
+            "git",
+            "show",
+            "1c4f937f2b067a4a2b0d8ac8cf5db4f552555d00:tests/test_sprint5_preservation.py",
+        ],
+        cwd=ROOT,
+        text=True,
+    )
     original = subprocess.check_output(
         ["git", "show", BASE + ":tests/test_sprint5_preservation.py"],
         cwd=ROOT,

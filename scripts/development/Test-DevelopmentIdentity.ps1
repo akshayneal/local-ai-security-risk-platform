@@ -83,7 +83,7 @@ switch ($Scenario) {
     command_identity {
         $expected = '"C:\checkout with spaces\.venv\Scripts\python.exe" ' + $script:DevelopmentCommands.api
         Assert (Test-DevelopmentCommand ($expected + ' ') $expected) 'trailing whitespace rejected'
-        $quoted = '"c:/checkout with spaces/.venv/Scripts/python.exe" -m "uvicorn" app.main:app   --host 127.0.0.1 --port "8235"'
+        $quoted = '"c:/checkout with spaces/.venv/Scripts/python.exe" -m "uvicorn" app.ai_security_api:app   --host 127.0.0.1 --port "8235"'
         Assert (Test-DevelopmentCommand $quoted $expected) 'equivalent quoting/separators rejected'
         foreach ($bad in @(($expected + ' --reload'), ($expected + "`n"), $expected.Replace('8235', '8535'), ('"C:\other\python.exe" ' + $script:DevelopmentCommands.api), $expected.Replace('uvicorn', 'evil'))) {
             Assert (-not (Test-DevelopmentCommand $bad $expected)) 'unexpected interpreter/arguments accepted'
