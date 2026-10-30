@@ -1,0 +1,15 @@
+{
+  "sha256": {
+    "reference_material/ai_security_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "reference_material/ai_security_v1/cards.json": "d3b4a40d66f6f868f64909e93b0c0ad0641f33e3834af22295feab0f48d25e7f",
+    "sample_data/ai_security_demo_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "sample_data/ai_security_demo_v1/benign.json": "553d20c8754abdbb2de322c8bd71f089d42e385103a6686a2c8ad7e32aec0928",
+    "sample_data/ai_security_demo_v1/insufficient.json": "c703fdd71d02011c3df252c1f376ccae67d3091286a5ae8d3124edb6f08051ba",
+    "sample_data/ai_security_demo_v1/rag.json": "d9d8be3b3ca7f357bd288aaa6c432d3c48215d339a4ff7c8160570ddce2a8dc6",
+    "evals/ai_security_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "evals/ai_security_v1/cases.json": "01b833d94585f5395e87c7033702d0cdda7c42935c6535ad3098ea06e294680a",
+    "evals/ai_security_v1/plan.json": "c9b593b7548943d0077d4f1e8b975881a6b97d36835f60df9e0c7ec009554d44",
+    "evals/ai_security_v1/rubric.md": "a7522c27c313e898203aaff958999d13bac954b6ec3eb2a8aacf8994a2a1b813",
+    "evals/ai_security_v1/__init__.py": "f2f07264a49b559e7de09276b521e9df42fb1b5061cd408be80885ae991b1cde"
+  }
+}

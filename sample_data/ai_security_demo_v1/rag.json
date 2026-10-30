@@ -1,0 +1,125 @@
+{
+  "application_id": "SYN-RAG",
+  "application_name": "Synthetic Northstar catalog RAG",
+  "purpose": "Synthetic technical scenario: retrieval poisoning. Draft catalog answers for human review; architecture claims only.",
+  "deployment_assumptions": [
+    "Local demonstration; no deployed-system verification supplied."
+  ],
+  "actors": [
+    {
+      "id": "USER",
+      "role": "internal_user",
+      "description": "Synthetic learning analyst"
+    }
+  ],
+  "components": [
+    {
+      "id": "C_UI",
+      "kind": "user_interface",
+      "description": "Question editor"
+    },
+    {
+      "id": "C_MODEL",
+      "kind": "model",
+      "description": "Local model drafts responses"
+    },
+    {
+      "id": "C_STORE",
+      "kind": "retrieval_store",
+      "description": "Catalog passages"
+    },
+    {
+      "id": "C_SOURCE",
+      "kind": "document_source",
+      "description": "Explicit synthetic document copies"
+    },
+    {
+      "id": "C_TOOL",
+      "kind": "tool",
+      "description": "Read-only catalog lookup"
+    }
+  ],
+  "flows": [
+    {
+      "id": "FLOW_QUERY",
+      "source_id": "C_UI",
+      "target_id": "C_MODEL",
+      "classification": "internal",
+      "boundary_crossing": "stated",
+      "description": "User questions become model context"
+    },
+    {
+      "id": "FLOW_INGEST",
+      "source_id": "C_SOURCE",
+      "target_id": "C_STORE",
+      "classification": "public",
+      "boundary_crossing": "stated",
+      "description": "Operator-reviewed catalog documents"
+    },
+    {
+      "id": "FLOW_RETRIEVE",
+      "source_id": "C_STORE",
+      "target_id": "C_MODEL",
+      "classification": "internal",
+      "boundary_crossing": "stated",
+      "description": "Eligible catalog excerpts"
+    },
+    {
+      "id": "FLOW_TOOL",
+      "source_id": "C_MODEL",
+      "target_id": "C_TOOL",
+      "classification": "internal",
+      "boundary_crossing": "stated",
+      "description": "Declared tool design only; no application execution"
+    }
+  ],
+  "ingestion_surfaces": [
+    {
+      "id": "SURFACE_DOC",
+      "component_id": "C_SOURCE",
+      "origin": "Copied synthetic catalog files",
+      "trust_level": "untrusted",
+      "review_status": "unreviewed"
+    }
+  ],
+  "tools": [
+    {
+      "id": "TOOL_LOOKUP",
+      "component_id": "C_TOOL",
+      "capabilities": [
+        "read"
+      ],
+      "invoker_actor_ids": [
+        "USER"
+      ],
+      "human_gate": "stated"
+    }
+  ],
+  "controls": [
+    {
+      "id": "CONTROL_ACL",
+      "component_ids": [
+        "C_STORE"
+      ],
+      "description": "Stated learning-unit filtering before retrieval",
+      "claimed_status": "stated",
+      "implementation_evidence_ids": [
+        "EVIDENCE_NOTE"
+      ]
+    }
+  ],
+  "implementation_evidence": [
+    {
+      "id": "EVIDENCE_NOTE",
+      "kind": "design_note",
+      "description": "Caller supplies a design note, not independently verified deployment tests.",
+      "provenance": "caller_supplied_unverified"
+    }
+  ],
+  "human_oversight": [
+    "Analyst reviews drafts and decides whether further tests are authorized."
+  ],
+  "known_limitations": [
+    "No actual exploit, deployed control or approval verification."
+  ]
+}

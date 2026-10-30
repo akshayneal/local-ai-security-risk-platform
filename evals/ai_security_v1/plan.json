@@ -1,0 +1,37 @@
+{
+  "question": "Can typed synthetic threat models cross the real route and validator with bounded unassessed source provenance, without granting permissions or changing old workflows?",
+  "version": "ai-security-v1",
+  "groups": {
+    "technical_risk": 6,
+    "benign_preservation": 6,
+    "hostile_source": 6,
+    "scope_reference_unknown": 6
+  },
+  "case_count": 24,
+  "baseline": "Sprint 5 unchanged; no technical analyzer. Existing SOC/governance compatibility checked separately.",
+  "treatment": "New explicit experimental gateway, typed graph, local guidance and model-schema boundary; deterministic stubs in this suite",
+  "runtime": "existing Python 3.13 venv; SQLite/embeddings not used",
+  "real_model_attempt_cap": 0,
+  "live_status": "LIVE INFERENCE NOT RUN (0)",
+  "metrics": [
+    "accepted legitimate inputs / predeclared input-valid cases",
+    "input rejections / predeclared invalid cases",
+    "output rejections / predeclared invalid stub outputs",
+    "metadata-category consistency / accepted cited findings",
+    "missing evidence reporting / required gap cases",
+    "false authority or approval promotion / forged-status cases",
+    "accepted benign cases / 6",
+    "explicit insufficiency without generation / 1",
+    "route response structure and source membership / returned cases",
+    "fixed input and source hash identities",
+    "runtime excluding real inference (none)"
+  ],
+  "judgments": "Synthetic implementation-authored, not independent human adjudication. Category consistency means source label matches enum, not semantic precision. Prompt-copy quarantine is not live model injection resistance.",
+  "stop_conditions": [
+    "unknown modified/untracked material outside protected exception",
+    "protected workspace/hash mismatch",
+    "failed core source/identifier boundary",
+    "no provider substitutions or unjournaled inference"
+  ],
+  "replay": "Full deterministic replays only; preserve failed attempts. Never edit expectations after outcomes."
+}

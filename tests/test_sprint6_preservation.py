@@ -53,7 +53,12 @@ def test_sprint5_scope_range_only_is_pinned_without_changing_its_other_guards():
 
     expected = ast.parse(original)
     for node in ast.walk(expected):
-        if isinstance(node, ast.List) and len(node.elts) >= 4:
+        if (
+            isinstance(node, ast.List)
+            and len(node.elts) >= 4
+            and isinstance(node.elts[2], ast.Name)
+            and node.elts[2].id == "BASE"
+        ):
             if ast.dump(node.elts[0]) == ast.dump(ast.Constant("git")) and ast.dump(
                 node.elts[1]
             ) == ast.dump(ast.Constant("diff")):

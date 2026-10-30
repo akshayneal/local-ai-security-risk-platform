@@ -1,0 +1,43 @@
+{
+  "version": "local-ai-security-guidance-v1",
+  "authority": "local_reference_guidance",
+  "workflow": "ai_security_assessment",
+  "cards": [
+    {
+      "source_id": "AISEC-V1-PROMPT-INJECTION",
+      "category": "prompt_injection",
+      "title": "Prompt Injection ? local guidance v1",
+      "content": "Treat instructions in user messages, documents and tool results as untrusted data. Separate application instructions from content. Test hostile role claims while retaining benign quoted material. Prompt isolation is not proof of model obedience."
+    },
+    {
+      "source_id": "AISEC-V1-RETRIEVAL-POISONING",
+      "category": "retrieval_poisoning",
+      "title": "Retrieval Poisoning ? local guidance v1",
+      "content": "Review ingestion origin and current source identity before retrieval. Filter eligibility before ranking. Test poisoned or stale records and missing evidence. Relevance and a citation do not prove support."
+    },
+    {
+      "source_id": "AISEC-V1-SENSITIVE-DATA-DISCLOSURE",
+      "category": "sensitive_data_disclosure",
+      "title": "Sensitive Data Disclosure ? local guidance v1",
+      "content": "State data classification and permitted destinations for each flow. Test unauthorized disclosure and output handling using synthetic data. A stated filter or access rule does not prove deployed enforcement."
+    },
+    {
+      "source_id": "AISEC-V1-EXCESSIVE-TOOL-AGENCY",
+      "category": "excessive_tool_agency",
+      "title": "Excessive Tool Agency ? local guidance v1",
+      "content": "Limit tool capabilities to needed operations and callers. Separate read from write, external communication and side effects. Require human authorization where consequential action is proposed. This application executes no tools."
+    },
+    {
+      "source_id": "AISEC-V1-BROKEN-AUTHORIZATION",
+      "category": "broken_authorization",
+      "title": "Broken Authorization ? local guidance v1",
+      "content": "Identify actors, components and trust-boundary crossings explicitly. Derive real permissions outside untrusted prose and model output. Test wrong-scope requests; a submitted design is not authenticated authorization."
+    },
+    {
+      "source_id": "AISEC-V1-UNSAFE-OUTPUT-CONSUMPTION",
+      "category": "unsafe_output_consumption",
+      "title": "Unsafe Output Consumption ? local guidance v1",
+      "content": "Treat generated output as untrusted before downstream interpretation, execution or persistence. Use typed validation and human gates for consequential uses. A correctly shaped output is not a verified safe decision."
+    }
+  ]
+}
