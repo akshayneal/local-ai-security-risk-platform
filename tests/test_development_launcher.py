@@ -81,3 +81,39 @@ def test_cmd_failure_is_visible_from_path_with_spaces(tmp_path):
     assert result.returncode == 1
     assert "Development startup failed" in result.stdout
     assert "Press any key" in result.stdout
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows command parsing and process mocks")
+@pytest.mark.parametrize(
+    "scenario",
+    [
+        "command_identity",
+        "trailing_space_start",
+        "normalized_start",
+        "delayed_metadata",
+        "delegated_exit",
+        "startup_exit",
+        "health_failure",
+        "child_rejection",
+    ],
+)
+def test_process_identity_regressions(scenario, tmp_path):
+    result = subprocess.run(
+        [
+            "powershell.exe",
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            str(SCRIPTS / "Test-DevelopmentIdentity.ps1"),
+            "-Scenario",
+            scenario,
+            "-Scratch",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+        timeout=40,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr

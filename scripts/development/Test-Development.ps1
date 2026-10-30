@@ -8,8 +8,9 @@ function Expect-Failure([scriptblock]$Action, [string]$Pattern) {
     Assert $caught "Expected failure: $Pattern"
 }
 $paths = [pscustomobject]@{ Root = $Scratch; Python = (Join-Path $Scratch 'missing python.exe'); Runtime = $Scratch; State = (Join-Path $Scratch 'state.json') }
-$record = [pscustomobject]@{ id = 100; parent = 1; created = '2026-01-01T00:00:00.0000000Z'; command = ('python.exe ' + $script:DevelopmentCommands.api); executable = 'C:\Python\python.exe'; service = 'api' }
+$record = [pscustomobject]@{ id = 100; parent = $PID; created = '2026-01-01T00:00:00.0000000Z'; command = ('"C:\Python\python.exe" ' + $script:DevelopmentCommands.api); executable = 'C:\Python\python.exe'; service = 'api' }
 $script:fixtureRecord = $record
+function Get-DevelopmentInterpreters { param($Paths); return @($Paths.Python, 'C:\Python\python.exe') }
 $state = [pscustomobject]@{ format = 1; root = $Scratch; commit = 'test'; records = @($record) }
 switch ($Scenario) {
     syntax_paths {
@@ -101,7 +102,12 @@ switch ($Scenario) {
         $script:fixtureRecord = $record.PSObject.Copy()
         $script:fixtureRecord.PSObject.Properties.Remove('service')
         $script:launches = 0; $script:stopped = @()
-        function Start-Process { $script:launches++; if ($script:launches -eq 2) { throw 'mock UI failure' }; return [pscustomobject]@{ Id = 100 } }
+        function Start-Process {
+            $script:launches++; if ($script:launches -eq 2) { throw 'mock UI failure' }
+            $mock = [pscustomobject]@{ Id = 100; StartTime = [datetime]::Parse($script:fixtureRecord.created); HasExited = $false }
+            $mock | Add-Member ScriptMethod Dispose {}
+            return $mock
+        }
         function Get-DevelopmentProcess { return $script:fixtureRecord }
         function Get-CimInstance { return @() }
         function Stop-Process { param($Id); $script:stopped += $Id }

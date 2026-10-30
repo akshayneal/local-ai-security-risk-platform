@@ -5,9 +5,70 @@ $script:DevelopmentCommands = @{
     ui = '-m streamlit run dashboard/streamlit_app.py --server.address 127.0.0.1 --server.port 8535 --server.headless true --browser.gatherUsageStats false'
 }
 
+function ConvertTo-DevelopmentPath([string]$Path) {
+    if (-not $Path -or -not [IO.Path]::IsPathRooted($Path)) { throw 'Process identity requires an absolute executable path.' }
+    return [IO.Path]::GetFullPath($Path.Replace('/', '\'))
+}
+
+function Split-DevelopmentCommand([string]$Command) {
+    if (-not ('DevelopmentLauncher.CommandLine' -as [type])) {
+        Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+namespace DevelopmentLauncher {
+    public static class CommandLine {
+        [DllImport("shell32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        static extern IntPtr CommandLineToArgvW(string command, out int count);
+        [DllImport("kernel32.dll")] static extern IntPtr LocalFree(IntPtr memory);
+        public static string[] Split(string command) {
+            int count;
+            IntPtr memory = CommandLineToArgvW(command, out count);
+            if (memory == IntPtr.Zero) throw new InvalidOperationException("Cannot parse process arguments.");
+            try {
+                var result = new string[count];
+                for (int i = 0; i < count; i++)
+                    result[i] = Marshal.PtrToStringUni(Marshal.ReadIntPtr(memory, i * IntPtr.Size));
+                return result;
+            } finally { LocalFree(memory); }
+        }
+    }
+}
+'@
+    }
+    if ([string]::IsNullOrWhiteSpace($Command)) { return @() }
+    return [DevelopmentLauncher.CommandLine]::Split($Command.TrimStart([char[]]" `t"))
+}
+
+function Test-DevelopmentCommand([string]$Command, [string]$Expected) {
+    $actual = @(Split-DevelopmentCommand $Command)
+    $wanted = @(Split-DevelopmentCommand $Expected)
+    if ($actual.Count -ne $wanted.Count -or $actual.Count -lt 2) { return $false }
+    try {
+        if ((ConvertTo-DevelopmentPath $actual[0]) -ne (ConvertTo-DevelopmentPath $wanted[0])) { return $false }
+    } catch { return $false }
+    for ($i = 1; $i -lt $actual.Count; $i++) {
+        if ($i -eq 4 -and $wanted[2] -ceq 'streamlit') {
+            if ($actual[$i].Replace('/', '\') -ine $wanted[$i].Replace('/', '\')) { return $false }
+        } elseif ($actual[$i] -cne $wanted[$i]) { return $false }
+    }
+    return $true
+}
+
+function Get-DevelopmentInterpreters($Paths) {
+    $base = & $Paths.Python -c 'import sys; print(sys._base_executable)'
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot determine the virtual environment base interpreter.' }
+    return @((ConvertTo-DevelopmentPath $Paths.Python), (ConvertTo-DevelopmentPath $base))
+}
+
+function Get-DevelopmentCreationTime([datetime]$Time) {
+    # CIM truncates Windows' 100ns creation time to microseconds.
+    $utc = $Time.ToUniversalTime()
+    return $utc.AddTicks(-($utc.Ticks % 10)).ToString('o')
+}
+
 function Get-DevelopmentPaths {
     $root = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
-    [pscustomobject]@{ Root = $root; Python = (Join-Path $root '.venv/Scripts/python.exe')
+    [pscustomobject]@{ Root = $root; Python = (ConvertTo-DevelopmentPath (Join-Path $root '.venv/Scripts/python.exe'))
         Runtime = (Join-Path $root 'logs/development'); State = (Join-Path $root 'logs/development/processes.json') }
 }
 
@@ -38,13 +99,15 @@ function Enter-DevelopmentLock($Paths) {
 function Get-DevelopmentProcess([int]$ProcessId) {
     $p = Get-CimInstance Win32_Process -Filter "ProcessId = $ProcessId" -ErrorAction Stop
     if ($p) { return [pscustomobject]@{ id = [int]$p.ProcessId; parent = [int]$p.ParentProcessId
-        created = $p.CreationDate.ToUniversalTime().ToString('o'); command = $p.CommandLine; executable = $p.ExecutablePath } }
+        created = Get-DevelopmentCreationTime $p.CreationDate; command = $p.CommandLine; executable = $p.ExecutablePath } }
 }
 
 function Test-DevelopmentOwned($Record) {
     $live = Get-DevelopmentProcess $Record.id
-    return ($null -ne $live -and $live.created -ceq $Record.created -and
-        $live.command -ceq $Record.command -and $live.executable -eq $Record.executable)
+    if (-not $live -or $live.created -cne $Record.created -or $live.parent -ne $Record.parent -or
+        -not $live.executable -or -not $Record.executable) { return $false }
+    return ((ConvertTo-DevelopmentPath $live.executable) -eq (ConvertTo-DevelopmentPath $Record.executable) -and
+        (Test-DevelopmentCommand $live.command $Record.command))
 }
 
 function Read-DevelopmentState($Paths) {
@@ -53,7 +116,7 @@ function Read-DevelopmentState($Paths) {
     if ($state.root -ne $Paths.Root -or $state.format -ne 1) { throw 'Unrecognized development ownership file; refusing process actions.' }
     foreach ($record in $state.records) {
         if ($record.service -notin @('api', 'ui') -or
-            -not $record.command.EndsWith($script:DevelopmentCommands[$record.service], [StringComparison]::Ordinal) -or
+            -not (Test-DevelopmentCommand $record.command ('"' + $Paths.Python + '" ' + $script:DevelopmentCommands[$record.service])) -or
             [IO.Path]::GetFileName($record.executable) -ne 'python.exe') { throw 'Invalid development process record; refusing process actions.' }
     }
     return $state
@@ -66,23 +129,38 @@ function Save-DevelopmentState($Paths, $State) {
 }
 
 function Update-DevelopmentChildren($Paths, $State) {
-    # Discover only while a recorded parent is still verifiably alive. The Windows
-    # venv redirector's child may use the base interpreter executable instead.
+    if (-not $State.PSObject.Properties['interpreters']) {
+        $State | Add-Member NoteProperty interpreters @(Get-DevelopmentInterpreters $Paths)
+    }
+    # A dead redirector is usable only with an exit time from its original launch
+    # handle. PPID alone is insufficient: Windows can recycle a parent's PID.
     foreach ($record in @($State.records)) {
-        if (-not (Test-DevelopmentOwned $record)) { continue }
+        $parentAlive = Test-DevelopmentOwned $record
+        $exitBound = if ($record.PSObject.Properties['exited']) { $record.exited } else { $null }
+        if (-not $parentAlive -and (-not $exitBound -or (Get-DevelopmentProcess $record.id))) { continue }
         $children = @(Get-CimInstance Win32_Process -Filter "ParentProcessId = $($record.id)")
         foreach ($child in $children) {
             $candidate = Get-DevelopmentProcess $child.ProcessId
             if ($candidate -and $candidate.id -notin @($State.records | ForEach-Object { $_.id }) -and
-                $candidate.created -ge $record.created -and
-                [IO.Path]::GetFileName($candidate.executable) -eq 'python.exe' -and
-                $candidate.command.EndsWith($script:DevelopmentCommands[$record.service], [StringComparison]::Ordinal)) {
+                $candidate.parent -eq $record.id -and $candidate.created -ge $record.created -and
+                ($parentAlive -or $candidate.created -le $exitBound) -and $candidate.executable -and
+                (ConvertTo-DevelopmentPath $candidate.executable) -in $State.interpreters -and
+                (Test-DevelopmentCommand $candidate.command $record.command) -and
+                ((Test-DevelopmentOwned $record) -or ($exitBound -and -not (Get-DevelopmentProcess $record.id)))) {
                 $candidate | Add-Member NoteProperty service $record.service
                 $State.records += $candidate
             }
         }
     }
     Save-DevelopmentState $Paths $State
+}
+
+function Update-DevelopmentLaunchHandles($Launches) {
+    foreach ($launch in $Launches) {
+        if ($launch.process.HasExited -and -not $launch.record.exited) {
+            $launch.record.exited = $launch.process.ExitTime.ToUniversalTime().ToString('o')
+        }
+    }
 }
 
 function Stop-DevelopmentOwned($Paths, $State) {
@@ -172,20 +250,37 @@ function Initialize-DevelopmentOllama($Paths) {
 }
 
 function Start-DevelopmentServices($Paths, $Head) {
-    $state = [pscustomobject]@{ format = 1; root = $Paths.Root; commit = $Head; records = @() }
+    $state = [pscustomobject]@{ format = 1; root = $Paths.Root; commit = $Head; records = @(); interpreters = @(Get-DevelopmentInterpreters $Paths) }
+    $launches = @()
     try {
         Assert-DevelopmentPortsFree
         foreach ($service in @('api', 'ui')) {
             $p = Start-Process -FilePath $Paths.Python -ArgumentList $script:DevelopmentCommands[$service] -WorkingDirectory $Paths.Root -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $Paths.Runtime "$service.out.log") -RedirectStandardError (Join-Path $Paths.Runtime "$service.err.log")
-            $record = Get-DevelopmentProcess $p.Id
-            if (-not $record) { throw "$service exited immediately. Inspect $service.err.log." }
-            if ($record.executable -ne $Paths.Python -or -not $record.command.EndsWith($script:DevelopmentCommands[$service], [StringComparison]::Ordinal)) { throw "Cannot verify newly started $service process; refusing process actions." }
-            $record | Add-Member NoteProperty service $service
+            # Capture identity from the Start-Process handle before querying CIM.
+            # This also makes early failures eligible for verified cleanup.
+            $record = [pscustomobject]@{ id = $p.Id; parent = $PID; created = Get-DevelopmentCreationTime $p.StartTime
+                executable = (ConvertTo-DevelopmentPath $Paths.Python); command = ('"' + $Paths.Python + '" ' + $script:DevelopmentCommands[$service]); service = $service; exited = $null }
             $state.records += $record
+            $launches += [pscustomobject]@{ process = $p; record = $record }
             Save-DevelopmentState $Paths $state
+            $identityDeadline = (Get-Date).AddSeconds(3)
+            do {
+                Update-DevelopmentLaunchHandles $launches
+                Update-DevelopmentChildren $Paths $state
+                $verified = @($state.records | Where-Object { $_.service -eq $service -and (Test-DevelopmentOwned $_) }).Count -gt 0
+                if ($verified) { break }
+                if ((Get-Date) -ge $identityDeadline) {
+                    $live = Get-DevelopmentProcess $record.id
+                    $pathMatches = $live -and $live.executable -and ((ConvertTo-DevelopmentPath $live.executable) -eq $record.executable)
+                    $argumentsMatch = $live -and (Test-DevelopmentCommand $live.command $record.command)
+                    throw "Cannot verify newly started $service after 3s (PID $($record.id), metadata=$([bool]$live), path=$([bool]$pathMatches), arguments=$([bool]$argumentsMatch)). Inspect $service.err.log."
+                }
+                Start-Sleep -Milliseconds 100
+            } while ($true)
         }
         $deadline = (Get-Date).AddSeconds(60)
         do {
+            Update-DevelopmentLaunchHandles $launches
             Update-DevelopmentChildren $Paths $state
             if (Test-DevelopmentReady $Paths $state) { return }
             if ((Get-Date) -ge $deadline) { throw 'Application readiness timed out; inspect api.err.log and ui.err.log.' }
@@ -193,7 +288,12 @@ function Start-DevelopmentServices($Paths, $Head) {
         } while ($true)
     } catch {
         $failure = $_
-        Stop-DevelopmentOwned $Paths $state
+        try {
+            Update-DevelopmentLaunchHandles $launches
+            Stop-DevelopmentOwned $Paths $state
+        } catch { Write-Warning "Startup cleanup refused or failed: $($_.Exception.Message). Ownership records retained." }
         throw $failure
+    } finally {
+        foreach ($launch in $launches) { $launch.process.Dispose() }
     }
 }
