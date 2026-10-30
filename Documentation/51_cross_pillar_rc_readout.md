@@ -118,8 +118,9 @@ rubric, hash manifest or official evaluation result was broadened or rewritten.
 
 A newly added checkout regression also demonstrated that the new suite's literal
 SHA-256 files had no explicit LF checkout rule. A suite-local `.gitattributes`
-fixes Windows CRLF conversion without changing any frozen case, rubric, runner
-or response. The current manifest was explicitly tightened to allow that exact
+initially fixed the checkout rule for LF source files. Hosted CI then exposed
+that the two inputs had originally been frozen with CRLF; see the exact transport
+follow-up below. No working case, rubric, runner or response bytes changed. The current manifest was explicitly tightened to allow that exact
 new file before it was written. The regression failed first and then passed.
 No prior attributes or ignore rules changed.
 
@@ -390,7 +391,7 @@ unsupported assertions and pending manual acceptance remain release blockers.
 | Frozen real-provider attempt / budget / provenance | PASS | One sequential 12-submission run, 12/32 raw attempts, complete journal and hashes; no retry/replay/holdout/embedding/cloud call |
 | Live technical availability / semantic reliability | FAIL | AI Security 0/4 returned; inventory and control-absence overstatements; positive fact loss; no post-outcome tuning |
 | Original contracts / historical evidence replay | PASS | Original API/analyzer/source bytes preserved, frozen metrics replayed; exact AST and corrupted-snapshot regressions |
-| Local deterministic gates | PASS | 1994 passed, one existing warning, no skips/failures; Ruff/pip/diff pass |
+| Local deterministic gates | PASS | Final 1995 passed, one existing warning, no skips/failures; Ruff/pip/diff pass |
 | Final pushed-SHA GitHub Actions | UNTESTED at report commit | Performed after this document is committed/pushed; exact SHA, run URL, counts and conclusion supplied in final handoff |
 | User workflow/final visual acceptance | UNTESTED | Earlier brief look was provisional; use the checklist above |
 | Independent semantic/expert adjudication | UNTESTED | All qualitative judgments here are implementation-authored |
@@ -408,7 +409,7 @@ git diff --check
 
 The focused batch passed 204 tests, one existing warning, 32.31 s. After the
 historical replay call-site migration, its focused batch passed 11, one warning,
-16.24 s. A final artifact-denominator/hash check passed separately. The final full
+16.24 s. A final artifact-denominator/hash check passed separately. Before the hosted transport correction, the full
 suite passed **1994**, one existing Starlette/httpx warning, **118.03 s**, no skips.
 `PYTHONDONTWRITEBYTECODE=1` was process-local for final validation, alongside `-B`
 and disabled pytest cache. Ruff: all checks passed. Pip: no broken requirements.
@@ -436,3 +437,48 @@ suite; then perform the manual acceptance checklist. Do not selectively replay
 these failed cases to claim improvement or silently broaden semantic rules.
 Framework provenance, AI Security organizational knowledge/correction editing,
 authenticated multi-user authorization and a new release remain outside this sprint.
+
+
+## Retained hosted failure and byte-transport correction
+
+The first final-package push at `b4dc3d0346eed990aaefa050643d01ea8b842b16`
+failed [CI 41132567084](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41132567084):
+**1955 passed, one failed, 38 Linux skips**, 33.81 s; Ruff was skipped after
+pytest failed. Public log download returned HTTP 403. The existing connected
+repository reader supplied the job log without a credential/permission change.
+[Retained metadata and diagnosis](cross_pillar_v1/ci.json) identify the single
+failure in the new suite's literal-byte verifier. Historical replay, current
+API/UI paths and all source/eligibility guards passed in that run.
+
+The original Windows working `cases.json` and `corpus.json` have CRLF line endings.
+Their exact pre-inference SHA-256 values were committed in the freeze and still
+match the working files and official live-run provenance. Git had initially stored
+LF-normalized versions, so a fresh Linux checkout correctly failed the unchanged
+hash verification. The fix preserves the **original frozen bytes**, rather than
+changing expected hashes, case values or the rubric. The suite-local attributes
+now disable text/EOL conversion only for those two files. Ordinary whitespace
+checks remain enabled, with CR-at-EOL explicitly recognized. Code/plans keep LF.
+
+A new regression checks every committed frozen file against the original literal
+SHA-256, supplementing the working-tree check. It failed before the correction.
+The first local attribute commit `a59f794` retained Git's old stat-cached index
+blobs; the regression caught that incomplete staging before another push.
+Exact-path restaging in `14ae255` then matched all original working/staged hashes,
+and all 17 focused evaluation tests passed. The Git diff records original-byte
+transport restoration only; no working case/corpus byte, review, expected fact,
+non-inference, source hash, raw output or qualitative judgment was edited.
+No model run was repeated and no local dependency was installed/upgraded.
+
+Final post-correction local/hosted verification is recorded below and in the
+final handoff for the exact final pushed feature SHA; the failed run above remains
+part of the evidence.
+
+
+Post-correction final Windows gates: **1995 passed**, one existing warning,
+**117.73 s**, no skips/failures. Focused evaluation suite: **17 passed**, 5.47 s.
+Ruff passed; pip check found no broken requirements; `git diff --check` passed.
+Every original frozen working and committed file hash now matches. Final protected
+405+185 snapshot, 13 Northstar and AGENTS checks remain exact. The final additive
+feature push is followed by exact-SHA CI inspection; its URL, actual counts and
+conclusion are supplied in the handoff. No model result/judgment is replaced by
+these software reruns; the single official run remains 12 submissions/12 attempts.

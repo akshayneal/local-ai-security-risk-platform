@@ -1,0 +1,41 @@
+{
+  "kind": "retained_initial_failed_ci_evidence",
+  "commit": "b4dc3d0346eed990aaefa050643d01ea8b842b16",
+  "run_id": 41132567084,
+  "job_id": 124326932434,
+  "url": "https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41132567084",
+  "conclusion": "failure",
+  "counts": {
+    "passed": 1955,
+    "failed": 1,
+    "skipped": 38
+  },
+  "test_seconds": 33.81,
+  "ruff": "skipped after test failure",
+  "runtime": {
+    "os": "Ubuntu 26.04.1",
+    "python": "3.13.17",
+    "pytest": "9.2.0",
+    "streamlit": "1.66.1",
+    "pydantic": "2.14.2",
+    "ollama_sdk": "0.6.3"
+  },
+  "failed_test": "tests/test_cross_pillar_evaluation.py::test_frozen_matrix_and_fresh_reviewed_workspace",
+  "error": "ValueError: Frozen evaluation bytes changed: evals/cross_pillar_v1/cases.json",
+  "log_access": "Public log-download endpoint returned HTTP 403; existing connected repository reader supplied the job log. No credentials or permissions were changed.",
+  "reproduction": {
+    "working_cases_match_original_freeze": true,
+    "working_corpus_matches_original_freeze": true,
+    "first_pushed_git_blobs_match_original_freeze": false,
+    "cause": "Original frozen working files use CRLF. Git initially stored normalized LF bytes, so fresh checkout failed the unchanged literal hash verification.",
+    "cases_original_sha256": "15739b77e2430e7e2ac8e92b065e139dad691710b9b86f2212ea74c3d83895dd",
+    "corpus_original_sha256": "802af566497b46dc85cef29f483df231377ed4211ca3031f6b2f0daafd7d355a"
+  },
+  "fix": "Preserve the two original frozen files without Git text conversion; retain normal whitespace checks with CR-at-EOL explicitly recognized. Exact-path restaging records the original pre-inference bytes. Add a regression comparing committed bytes with unchanged frozen SHA-256 values.",
+  "unchanged": "Working input bytes, case values, corpus bodies/reviews, rubric, freeze hashes, runner, model outputs and qualitative judgments remain unchanged. No additional inference or dependency update.",
+  "followup_commits": [
+    "a59f7943d4ca1bbff6dc7e3aa1ef3be9be533886",
+    "14ae2557902979cc43767edbedf8638b6624c238"
+  ],
+  "final_ci": "Reported for the final pushed SHA in the handoff; this file preserves only the failed run."
+}

@@ -8,12 +8,13 @@ Starting source: `1c4f937f2b067a4a2b0d8ac8cf5db4f552555d00`.
 | `Documentation/45_development_launcher.md` | Canonical gateway, strict legacy Stop/Start migration and unchanged shortcut targets. |
 | `Documentation/50_cross_pillar_rc_hardening_plan.md` | Pre-implementation scope, baseline, checkpoint order and pre-inference output-root configuration. |
 | `Documentation/51_cross_pillar_rc_readout.md` | Implemented matrix, trust diagram, real/stub evidence, learner concepts, blockers and manual acceptance. |
+| `Documentation/cross_pillar_v1/ci.json` | Preserved first exact-SHA CI failure, actual hosted counts, runtime, hash mismatch and bounded transport fix. |
 | `Documentation/cross_pillar_v1/change_inventory.md` | This exact path inventory and checkpoint/preservation explanation. |
 | `Documentation/cross_pillar_v1/live_readout.json` | Minimal synthetic outcome evidence, exact run/artifact hashes, deterministic metrics and implementation-authored semantic review. |
 | `Documentation/sprint7_preservation.json` | Exact authorized paths, every protected base blob, 185 inherited cache hashes and scoped LF-attribute refinement. |
 | `README.md` | Current three-workflow launcher guidance and truthful evidence/readiness links. |
 | `dashboard/ai_security.py` | Startup guidance now names the three-workflow development launcher; no analyzer/correction/grant behavior change. |
-| `evals/cross_pillar_v1/.gitattributes` | New-suite-only literal LF checkout bytes; scope refined before edit, regression failed then passed; no frozen file bytes rewritten. |
+| `evals/cross_pillar_v1/.gitattributes` | New-suite checkout policy: LF for code/plans; no text conversion for the two original CRLF frozen inputs, with CR-at-EOL recognized and exact committed-byte regression. No working input bytes changed. |
 | `evals/cross_pillar_v1/__init__.py` | Inert new evaluation namespace. |
 | `evals/cross_pillar_v1/cases.json` | Twelve new frozen synthetic submissions with expected facts/non-inferences and controls. |
 | `evals/cross_pillar_v1/corpus.json` | Four new synthetic documents and precommitted exact-version operator-owned reviews/scopes. |
@@ -60,8 +61,15 @@ allowlists.
 
 Two explicit scope refinements were needed. The first is the new suite-local
 `.gitattributes`: literal evaluation SHA-256 requires LF even on a fresh Windows
-checkout. The new manifest lists this exact path with a reason before its creation;
-a checkout-attribute regression failed before the one-line fix and passed after.
+checkout. The new manifest lists this exact path with a reason before its creation.
+The first checkout-attribute regression passed locally but CI exposed an additional
+transport problem: cases/corpus were originally frozen with CRLF while Git had
+stored LF. Preserve their original pre-inference bytes with `-text -eol`; normal
+trailing-space/blank-EOF/space-before-tab checks remain enabled, with CR-at-EOL
+recognized for those exact two files. A committed-byte regression failed first,
+then passed after exact-path restaging. No case value, body/review, rubric,
+judgment, freeze hash, working input byte or model output changed. The Git diff
+records restoration of literal frozen bytes, not a changed evaluation question.
 The second is `tests/test_ai_security_evaluation.py`: full validation exposed a
 Sprint 6 implementation binding on the explicitly authorized UI guidance text.
 The active manifest was tightened for that exact test before editing. Its calls
@@ -74,3 +82,16 @@ The ignored output-root configuration was recorded before inference and does not
 change any case, provider/runtime setting or budget. No optional holdout or extra
 live case is authorized/run. Semantic failures are retained, without post-outcome
 prompt tuning or selective replay.
+
+
+## Hosted byte-transport follow-up
+
+First final-package push `b4dc3d0346eed990aaefa050643d01ea8b842b16` failed
+[CI 41132567084](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/41132567084):
+1955 passed, one failed, 38 skipped, Ruff skipped. Evidence is retained in ci.json.
+`a59f7943d4ca1bbff6dc7e3aa1ef3be9be533886` added the preservation policy/regression; Git initially retained its old
+index blobs, caught by the regression before another push. `14ae2557902979cc43767edbedf8638b6624c238` recorded the
+original frozen CRLF input bytes through exact-path restaging and explicit
+CR-at-EOL handling. There was no history rewrite, dependency update or extra
+model run. A final additive documentation/verification checkpoint follows; its
+exact SHA and exact-commit CI result are in the handoff.
