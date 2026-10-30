@@ -176,10 +176,27 @@ def test_no_live_entry_point_in_deterministic_suite():
 def test_new_suite_literal_hashes_survive_windows_checkout():
     paths = list(runner.read("freeze.json")["sha256"])
     attributes = subprocess.check_output(
-        ["git", "check-attr", "eol", "--", *paths], cwd=runner.ROOT, text=True
+        ["git", "check-attr", "eol", "text", "--", *paths], cwd=runner.ROOT, text=True
     ).splitlines()
-    assert all(row.endswith(": eol: lf") for row in attributes)
-    assert (runner.SUITE / ".gitattributes").read_text() == "* text eol=lf\n"
+    for row in attributes:
+        if row.startswith(
+            ("evals/cross_pillar_v1/cases.json:", "evals/cross_pillar_v1/corpus.json:")
+        ):
+            assert row.endswith(": unset")  # Original frozen CRLF bytes, no filter.
+        elif ": eol:" in row:
+            assert row.endswith(": eol: lf")
+    assert (runner.SUITE / ".gitattributes").read_text() == (
+        "* text eol=lf\ncases.json -text -eol\ncorpus.json -text -eol\n"
+    )
+
+
+def test_committed_evaluation_bytes_match_original_frozen_hashes():
+    """A passing working-tree check must not hide Git transport normalization."""
+    for name, digest in runner.read("freeze.json")["sha256"].items():
+        committed = subprocess.check_output(
+            ["git", "show", "HEAD:" + name], cwd=runner.ROOT
+        )
+        assert runner.sha(committed) == digest, name
 
 
 def test_recorded_live_denominators_and_optional_local_artifact_identity():

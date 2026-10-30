@@ -1,1 +1,3 @@
 * text eol=lf
+cases.json -text -eol
+corpus.json -text -eol
