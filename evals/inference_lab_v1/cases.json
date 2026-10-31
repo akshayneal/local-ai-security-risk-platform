@@ -1,0 +1,317 @@
+[
+  {
+    "id": "BIRCH-SEC-RISK",
+    "pillar": "ai_security",
+    "endpoint": "/ui/analyze/ai-security",
+    "control": "positive",
+    "input": {
+      "application_id": "BIRCH-SEC-RISK",
+      "application_name": "Synthetic Birch command engineering example",
+      "purpose": "Engineering development example for declared boundary reasoning, distinct from final acceptance.",
+      "actors": [
+        {
+          "id": "OPERATOR",
+          "role": "operator",
+          "description": "Fictional design operator"
+        }
+      ],
+      "components": [
+        {
+          "id": "MODEL",
+          "kind": "model",
+          "description": "Proposes draft study materials from fictional public input"
+        },
+        {
+          "id": "TICKET",
+          "kind": "document_source",
+          "description": "Unreviewed public support tickets"
+        },
+        {
+          "id": "RUNNER",
+          "kind": "tool",
+          "description": "Caller states generated command strings are passed directly to an interpreter without an allowlist or human gate"
+        }
+      ],
+      "flows": [
+        {
+          "id": "TICKET_IN",
+          "source_id": "TICKET",
+          "target_id": "MODEL",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Untrusted ticket text becomes model input"
+        },
+        {
+          "id": "COMMAND_OUT",
+          "source_id": "MODEL",
+          "target_id": "RUNNER",
+          "classification": "internal",
+          "boundary_crossing": "stated",
+          "description": "Generated command reaches the declared interpreter without validation"
+        }
+      ],
+      "known_limitations": [
+        "All design statements are caller-supplied and externally unverified."
+      ],
+      "ingestion_surfaces": [
+        {
+          "id": "TICKET_UPLOAD",
+          "component_id": "TICKET",
+          "origin": "Synthetic public tickets",
+          "trust_level": "untrusted",
+          "review_status": "unreviewed"
+        }
+      ],
+      "tools": [
+        {
+          "id": "EXECUTOR",
+          "component_id": "RUNNER",
+          "capabilities": [
+            "side_effect"
+          ],
+          "invoker_actor_ids": [
+            "OPERATOR"
+          ],
+          "human_gate": "absent"
+        }
+      ]
+    },
+    "expected_facts": [
+      "Reviewable graph has a model and declared adjacent flow",
+      "Risky case permits conditional findings; benign case permits zero findings"
+    ],
+    "forbidden_inferences": [
+      "No false insufficiency, invented graph/source or verified risk"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-SEC-RISK",
+      "status": "fresh authored prospective case; independent review pending"
+    }
+  },
+  {
+    "id": "BIRCH-SEC-BENIGN",
+    "pillar": "ai_security",
+    "endpoint": "/ui/analyze/ai-security",
+    "control": "negative",
+    "input": {
+      "application_id": "BIRCH-SEC-BENIGN",
+      "application_name": "Synthetic Birch wordlist engineering example",
+      "purpose": "Engineering development example for declared boundary reasoning, distinct from final acceptance.",
+      "actors": [
+        {
+          "id": "OPERATOR",
+          "role": "operator",
+          "description": "Fictional design operator"
+        }
+      ],
+      "components": [
+        {
+          "id": "MODEL",
+          "kind": "model",
+          "description": "Proposes draft study materials from fictional public input"
+        },
+        {
+          "id": "PARSER",
+          "kind": "filter",
+          "description": "Claimed strict list-of-strings parser and escaped text preview"
+        },
+        {
+          "id": "EDITOR",
+          "kind": "human_gate",
+          "description": "Human reviews every draft and chooses any separate manual use"
+        }
+      ],
+      "flows": [
+        {
+          "id": "TEXT_OUT",
+          "source_id": "MODEL",
+          "target_id": "PARSER",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Plain draft strings reach a declared parser"
+        },
+        {
+          "id": "READ_ONLY",
+          "source_id": "PARSER",
+          "target_id": "EDITOR",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Escaped read-only preview awaits human review"
+        }
+      ],
+      "known_limitations": [
+        "All design statements are caller-supplied and externally unverified."
+      ],
+      "deployment_assumptions": [
+        "Offline public word-list sorting; no tools, retrieval, network, confidential data, executable output or autonomous action."
+      ],
+      "controls": [
+        {
+          "id": "STRING_ONLY",
+          "component_ids": [
+            "PARSER"
+          ],
+          "description": "Caller reports typed string parsing and escaped preview; effectiveness unverified",
+          "claimed_status": "stated"
+        }
+      ]
+    },
+    "expected_facts": [
+      "Reviewable graph has a model and declared adjacent flow",
+      "Risky case permits conditional findings; benign case permits zero findings"
+    ],
+    "forbidden_inferences": [
+      "No false insufficiency, invented graph/source or verified risk"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-SEC-BENIGN",
+      "status": "fresh authored prospective case; independent review pending"
+    }
+  },
+  {
+    "id": "BIRCH-SOC-SEQUENCE",
+    "pillar": "soc",
+    "endpoint": "/ui/analyze/soc-alert",
+    "control": "positive",
+    "input": {
+      "alert_id": "BIRCH-SOC-SEQUENCE",
+      "alert_type": "Synthetic linked login and process events",
+      "source_system": "Synthetic Birch bounded observation record",
+      "affected_asset": "birch-lab-4",
+      "raw_log": "SYNTHETIC: at 10:02Z learner4 failed a login to birch-lab-4 from 198.51.100.61. At 10:05Z the same learner4 account completed login from 198.51.100.61. At 10:06Z helper-script on birch-lab-4 attempted destination 203.0.113.61:8444. Intent, authorization and connection outcome unknown. No response action executed.",
+      "known_indicators": [
+        "198.51.100.61",
+        "203.0.113.61"
+      ],
+      "observed_behavior": "Preserve supplied roles, outcomes and numeric facts. Separate observations, conditional hypotheses and unverified source claims.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Retain exact supplied operational/control facts and scope",
+      "Distinguish supplied assertions, unknown implementation and independent verification",
+      "No unsupported mappings, polarity reversal or invented actions"
+    ],
+    "forbidden_inferences": [
+      "No invented ownership, reputation, protocol, confirmed attacker intent or executed response",
+      "No unsupported ATT&CK technique or categorically irrelevant citation",
+      "Scoped copy approval cannot authorize containment"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-SOC-SEQUENCE",
+      "status": "Mutable engineering example, never acceptance evidence"
+    }
+  },
+  {
+    "id": "BIRCH-SOC-MAINTENANCE",
+    "pillar": "soc",
+    "endpoint": "/ui/analyze/soc-alert",
+    "control": "negative",
+    "input": {
+      "alert_id": "BIRCH-SOC-MAINTENANCE",
+      "alert_type": "Synthetic authorized workshop package copy",
+      "source_system": "Synthetic Birch bounded observation record",
+      "affected_asset": "birch-library-5",
+      "raw_log": "SYNTHETIC inventory LIB-62 reports 192.0.2.62 as the workshop package server within this fictional lab. Approval COPY-62 permits only a supervised copy of 9 public lesson files between 10:00 and 10:15 UTC. At 10:07Z a completed TLS transfer from 192.0.2.62 to birch-library-5 destination 198.51.100.62:7444 is recorded. No containment or account change authorization supplied.",
+      "known_indicators": [
+        "192.0.2.62",
+        "198.51.100.62"
+      ],
+      "observed_behavior": "Preserve supplied roles, outcomes and numeric facts. Separate observations, conditional hypotheses and unverified source claims.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Retain exact supplied operational/control facts and scope",
+      "Distinguish supplied assertions, unknown implementation and independent verification",
+      "No unsupported mappings, polarity reversal or invented actions"
+    ],
+    "forbidden_inferences": [
+      "No invented ownership, reputation, protocol, confirmed attacker intent or executed response",
+      "No unsupported ATT&CK technique or categorically irrelevant citation",
+      "Scoped copy approval cannot authorize containment"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-SOC-MAINTENANCE",
+      "status": "Mutable engineering example, never acceptance evidence"
+    }
+  },
+  {
+    "id": "BIRCH-RISK-UNKNOWN",
+    "pillar": "ai_safety",
+    "endpoint": "/ui/analyze/governance",
+    "control": "ambiguous",
+    "input": {
+      "system_name": "Birch public recipe phrasing helper",
+      "system_purpose": "Draft optional phrasing for fictional public recipes. No consequential decisions or automatic sharing.",
+      "data_types": [
+        "fictional public text"
+      ],
+      "users": [
+        "fictional workshop editors"
+      ],
+      "external_integrations": [],
+      "human_review_process": "An editor review step is proposed. No test result, implementation status or operational log is supplied.",
+      "business_impact": "Low-impact offline drafting. Review and logging implementation are unknown. No approval is supplied.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Retain exact supplied operational/control facts and scope",
+      "Distinguish supplied assertions, unknown implementation and independent verification",
+      "No unsupported mappings, polarity reversal or invented actions"
+    ],
+    "forbidden_inferences": [
+      "No unknown/absent/implemented reversal or loss of material counts",
+      "No narrow approval promoted to unrestricted deployment or universal policy",
+      "No invented confidential data, consequential decision or executed action"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-RISK-UNKNOWN",
+      "status": "Mutable engineering example, never acceptance evidence"
+    }
+  },
+  {
+    "id": "BIRCH-RISK-IMPLEMENTED",
+    "pillar": "ai_safety",
+    "endpoint": "/ui/analyze/governance",
+    "control": "negative",
+    "input": {
+      "system_name": "Birch public lesson card prototype",
+      "system_purpose": "Generate draft lesson cards from fictional public study notes.",
+      "data_types": [
+        "fictional public text"
+      ],
+      "users": [
+        "fictional workshop editors"
+      ],
+      "external_integrations": [],
+      "human_review_process": "Synthetic test B-624 reports review gate implemented in prototype R3. All 6 of 6 sample cards awaited trainer confirmation. Audit logging retained 12 sample events.",
+      "business_impact": "Supervised offline draft preview only. B-624 establishes reported prototype/sample facts, not universal effectiveness or unrestricted deployment approval.",
+      "local_knowledge": false
+    },
+    "expected_facts": [
+      "Retain exact supplied operational/control facts and scope",
+      "Distinguish supplied assertions, unknown implementation and independent verification",
+      "No unsupported mappings, polarity reversal or invented actions"
+    ],
+    "forbidden_inferences": [
+      "No unknown/absent/implemented reversal or loss of material counts",
+      "No narrow approval promoted to unrestricted deployment or universal policy",
+      "No invented confidential data, consequential decision or executed action"
+    ],
+    "source_scope": {
+      "origin": "Synthetic Birch development request, separate authored input",
+      "authority": "caller_supplied_unverified",
+      "scope": "BIRCH-RISK-IMPLEMENTED",
+      "status": "Mutable engineering example, never acceptance evidence"
+    }
+  }
+]

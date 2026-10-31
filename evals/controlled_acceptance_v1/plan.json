@@ -1,0 +1,63 @@
+{
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "runtime": {
+    "temperature": 0.1,
+    "num_ctx": 8192,
+    "per_request_seconds": 180,
+    "whole_run_seconds": 14400,
+    "max_reply_bytes": 256000,
+    "max_retained_bytes": 12000000,
+    "truncate": false,
+    "shift": false,
+    "retrieval_backend": "legacy",
+    "local_knowledge": false,
+    "think": "provider_default; optional paired lab arm only after actual show capability"
+  },
+  "shared_raw_caps": {
+    "lab": 24,
+    "acceptance": 12,
+    "global": 36
+  },
+  "review_origin": "Authored by implementation agent; not blind or independent. Independent semantic adjudication pending.",
+  "stop_conditions": [
+    "Protected-byte mutation or unexpected provider/model request",
+    "Incomplete or unknown previous attempt, timeout, authority compromise or cap fault",
+    "No installed exact model: LIVE NOT RUN; never install/start/restart",
+    "No background, parallel calls, hidden retries or post-acceptance tuning"
+  ],
+  "format": "controlled-acceptance-v1",
+  "scheduled": 12,
+  "case_order": [
+    "ASTER-SEC-COMMAND",
+    "ASTER-SEC-MAIL",
+    "ASTER-SEC-BENIGN",
+    "ASTER-SEC-HOSTILE",
+    "ASTER-SOC-SEQUENCE",
+    "ASTER-SOC-MAINTENANCE",
+    "ASTER-SOC-UNKNOWN",
+    "ASTER-SOC-GUIDANCE",
+    "ASTER-RISK-UNKNOWN",
+    "ASTER-RISK-ABSENT",
+    "ASTER-RISK-IMPLEMENTED",
+    "ASTER-RISK-SCOPED"
+  ],
+  "freeze_rule": "Commit cases/rubric/runner/accounting and literal hashes before first development call; exactly one final run against committed implementation, never rerun or tune after outcomes.",
+  "positive_negative_ambiguous_counts": {
+    "ai_security": {
+      "positive": 2,
+      "negative": 1,
+      "ambiguous": 1
+    },
+    "soc": {
+      "positive": 1,
+      "negative": 2,
+      "ambiguous": 1
+    },
+    "ai_safety": {
+      "positive": 1,
+      "negative": 2,
+      "ambiguous": 1
+    }
+  }
+}

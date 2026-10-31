@@ -1,0 +1,12 @@
+{
+  "format": "controlled-acceptance-v1-literal-freeze",
+  "sha256": {
+    "evals/controlled_acceptance_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "evals/controlled_acceptance_v1/cases.json": "baf5b4a90f91be10f939fdb8e0e04d1dd15c1b4a2fa2baca0da107c80aed90bd",
+    "evals/controlled_acceptance_v1/plan.json": "b58dec8997f7b7b35b4b81f9a980b8ecc21e38e82d930300f4342576c3fc657a",
+    "evals/controlled_acceptance_v1/rubric.md": "dea662b3976a4e355fa14a19919c6e2af587b63982df08dc7ba8d8a5d0e32e10",
+    "evals/controlled_acceptance_v1/runner.py": "d349e00a566a42dde59cb6633b5f928e8c407c7202e1496be8d3b174c4ccb018"
+  },
+  "accounting_contract": "24 lab + 12 acceptance <=36 raw requests; fsync reservation before each send across both HTTP stacks; unknown/incomplete attempt stops; no borrowing; one final acceptance run only; implementation identity locked before run. Shared lab transport may be corrected before first acceptance, without changing these sealed rules.",
+  "scoring_contract": "36 authored required facts, per-case/aggregate explicit denominators, no population reliability claims; independent adjudication pending."
+}
