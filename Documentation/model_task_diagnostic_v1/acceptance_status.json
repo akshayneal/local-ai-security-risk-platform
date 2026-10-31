@@ -1,0 +1,39 @@
+{
+  "status": "NOT RUN",
+  "scheduled": 12,
+  "submitted": 0,
+  "raw_attempts": 0,
+  "completed": 0,
+  "not_run": 12,
+  "reason": [
+    "Ledger did not meet paired semantic fidelity gate; product remainsOFF.",
+    "Full compact path has no viable latest positive/benign pair.",
+    "Narrow/off experimental question is incompatible with inherited compact/ledgerON/default-thinking180s methodology."
+  ],
+  "per_pillar_scheduled": {
+    "ai_security": 4,
+    "soc": 4,
+    "ai_safety": 4
+  },
+  "case_order_not_run": [
+    "ASTER-SEC-COMMAND",
+    "ASTER-SEC-MAIL",
+    "ASTER-SEC-BENIGN",
+    "ASTER-SEC-HOSTILE",
+    "ASTER-SOC-SEQUENCE",
+    "ASTER-SOC-MAINTENANCE",
+    "ASTER-SOC-UNKNOWN",
+    "ASTER-SOC-GUIDANCE",
+    "ASTER-RISK-UNKNOWN",
+    "ASTER-RISK-ABSENT",
+    "ASTER-RISK-IMPLEMENTED",
+    "ASTER-RISK-SCOPED"
+  ],
+  "frozen_method_unchanged": true,
+  "fresh_acceptance_root_exists": false,
+  "isolation_tests": "Mock-only, original importedrun preserved with process-local roots and stricter one-send/umbrella guards; old journal never reused.",
+  "reserved_acceptance_allowance_unused": 12,
+  "no_borrowing": true,
+  "independent_review": "PENDING",
+  "release_candidate": "NO-GO"
+}

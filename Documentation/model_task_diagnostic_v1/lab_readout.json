@@ -1,53 +1,668 @@
 {
-  "status": "DEVELOPMENT_IN_PROGRESS",
-  "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
-  "D1": {
-    "raw_attempts": 6,
-    "done_frames": 6,
-    "complete_answers": 2,
-    "known_length_withheld": 4,
-    "unknown": 0,
-    "app_returned": 1,
-    "selected_next_mode": "off",
-    "engineering_viable_pair": false,
-    "reviews": [
-      {
+  "format": "model-task-diagnostic-v1-final",
+  "status": "LAB_COMPLETE_CAP_EXHAUSTED",
+  "start_commit": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "preregistration_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+  "explicit_rule_commit": "ad14f124f3511dbf7af109d50c8f3d05c6037b4a",
+  "raw_attempts": 16,
+  "done_frames": 16,
+  "complete_json_answers": 12,
+  "raw_schema_valid": 12,
+  "known_token_limit_withheld": 4,
+  "unknown": 0,
+  "transport_or_SDK_retries": 0,
+  "SOC_repairs_actual": 0,
+  "public_analyzer_records_returned": 6,
+  "public_analyzer_submissions": 12,
+  "experimental_records_returned": 4,
+  "experimental_submissions": 4,
+  "live_HTTP_app_requests": 0,
+  "distinct_authored_cases": 4,
+  "lab_budget": {
+    "raw_attempts": 16,
+    "phase_counts": {
+      "D1": 6,
+      "D2": 4,
+      "D3": 4,
+      "D4": 2
+    },
+    "pending": null,
+    "blocked": false,
+    "remaining": 0
+  },
+  "campaign_budget": {
+    "counts": {
+      "lab": 16,
+      "acceptance": 0
+    },
+    "reserved": 16,
+    "pending": null,
+    "blocked": false,
+    "remaining": {
+      "lab": 0,
+      "acceptance": 12
+    }
+  },
+  "full_fact_model_counts": {
+    "UNASSESSABLE": 24,
+    "PARTIAL": 38,
+    "OMITTED": 19,
+    "CONTRADICTED": 10,
+    "RETAINED": 5
+  },
+  "full_fact_scheduled": 96,
+  "model_retention_excludes_app_projection": true,
+  "arms": [
+    {
+      "treatment": {
+        "contrast": "D1",
+        "mode": "default",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 0,
+      "known_length_withheld": 2,
+      "analyzer_returned": 0,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        177.56774,
+        170.373259
+      ],
+      "eval_tokens": [
+        1280,
+        1280
+      ],
+      "facts": {
+        "UNASSESSABLE": 12
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D1",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 1,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        80.896826,
+        65.800443
+      ],
+      "eval_tokens": [
+        614,
+        505
+      ],
+      "facts": {
+        "PARTIAL": 3,
+        "OMITTED": 6,
+        "CONTRADICTED": 2,
+        "RETAINED": 1
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D1",
+        "mode": "on",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 0,
+      "known_length_withheld": 2,
+      "analyzer_returned": 0,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        170.489721,
+        171.753636
+      ],
+      "eval_tokens": [
+        1280,
+        1280
+      ],
+      "facts": {
+        "UNASSESSABLE": 12
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 1,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        81.984782,
+        42.35237
+      ],
+      "eval_tokens": [
+        638,
+        330
+      ],
+      "facts": {
+        "PARTIAL": 3,
+        "OMITTED": 6,
+        "CONTRADICTED": 2,
+        "RETAINED": 1
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 0,
+      "experimental_returned": 2,
+      "unknown": 0,
+      "wall_seconds": [
+        25.312358,
+        29.03776
+      ],
+      "eval_tokens": [
+        200,
+        230
+      ],
+      "facts": {
+        "PARTIAL": 10,
+        "OMITTED": 1,
+        "CONTRADICTED": 1
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 2,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        100.252172,
+        125.845985
+      ],
+      "eval_tokens": [
+        762,
+        961
+      ],
+      "facts": {
+        "PARTIAL": 6,
+        "RETAINED": 1,
+        "OMITTED": 2,
+        "CONTRADICTED": 3
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": true
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 2,
+      "experimental_returned": 0,
+      "unknown": 0,
+      "wall_seconds": [
+        96.179531,
+        123.17035
+      ],
+      "eval_tokens": [
+        654,
+        899
+      ],
+      "facts": {
+        "PARTIAL": 4,
+        "RETAINED": 2,
+        "OMITTED": 4,
+        "CONTRADICTED": 2
+      }
+    },
+    {
+      "treatment": {
+        "contrast": "D4",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "explicit-v2",
+        "ledger": false
+      },
+      "raw_attempts": 2,
+      "done_frames": 2,
+      "complete_answers": 2,
+      "known_length_withheld": 0,
+      "analyzer_returned": 0,
+      "experimental_returned": 2,
+      "unknown": 0,
+      "wall_seconds": [
+        30.897544,
+        36.16659
+      ],
+      "eval_tokens": [
+        252,
+        288
+      ],
+      "facts": {
+        "PARTIAL": 12
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": "s10-d-0001",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "default",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "6ab8b8924549d10bc1950f9ff4de6ec145084c6a7415c9a91b0ca925bb596814",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "ceda0610dadcc3f55500527c4dc7382c71ba231d3b896462112ec9412834808e",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0001",
+        "event": "provider_finished",
+        "frames": 1278,
+        "outcome": "KNOWN_WITHHELD",
+        "raw_response_bytes": 171321,
+        "raw_response_sha256": "bc7bb95b9c2710b0ee519bb6507f0001c7e579d39b24d085f297a0a300ede07d",
+        "thinking_bytes": 3269,
+        "thinking_present": true,
+        "thinking_sha256": "d213f9fec4cb9f9e1ad2b7811c63a7d736ed51442ca2fdb47cd5bcd92ea0cbe3",
+        "usage": {
+          "eval_count": 1280,
+          "eval_duration": 164799180000,
+          "load_duration": 8835254500,
+          "prompt_eval_count": 3018,
+          "prompt_eval_duration": 3849032000,
+          "total_duration": 177527746000
+        },
+        "wall_seconds": 177.544883
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "positive",
+        "error_type": "DiagnosticStop",
+        "formulation": "full",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "generation_limit",
+            "elapsed_ms": 177561.4876000036,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "request_failed",
+            "system_utf8_bytes": 3584,
+            "user_utf8_bytes": 10471
+          }
+        ],
+        "mode": "default",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 177.56774
+      },
+      "provider_answer_sha256": "06dccf980dbd671692b4cf4a3ecea73f67b6d4f3ce474b42cf8dd787c6d07402",
+      "analysis_artifact_sha256": "a148f0844c1ae0b6ec91ff29a173bc013220f2fa6ac913dd35532c8fd9342340",
+      "author_review": {
         "attempt": "s10-d-0001",
         "case_id": "ELM-SEC-FREETEXT-V1",
         "trial": "d1-default-v1",
         "provider_finish": "KNOWN_WITHHELD_LENGTH",
         "app_returned": false,
-        "full_model_facts": [
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE"
-        ],
         "app_projected_facts": "No accepted advisory",
         "engineering_viable": false,
-        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim.",
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "UNASSESSABLE",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0002",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "default",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
       },
-      {
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "c39344078a4599e3ae45e4280d245248605052a7e775be40dcd729f40a59b968",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "8497f08e3567ed655db58e8a958ac243d1a954e9713af6c1f8baeb9a215534d6",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0002",
+        "event": "provider_finished",
+        "frames": 1278,
+        "outcome": "KNOWN_WITHHELD",
+        "raw_response_bytes": 173253,
+        "raw_response_sha256": "5d80c5b83c4c124c64a6c98400949bb9dc1dcfffe31e68d1c42c5486df32c35c",
+        "thinking_bytes": 3664,
+        "thinking_present": true,
+        "thinking_sha256": "a1f338f2d5093175707aaab2f0396a0dad3e834e8d7404ffdfa3ad17c5c4c2cf",
+        "usage": {
+          "eval_count": 1280,
+          "eval_duration": 169099074000,
+          "load_duration": 16158900,
+          "prompt_eval_count": 3072,
+          "prompt_eval_duration": 1172116000,
+          "total_duration": 170306764300
+        },
+        "wall_seconds": 170.342092
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "negative",
+        "error_type": "DiagnosticStop",
+        "formulation": "full",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "generation_limit",
+            "elapsed_ms": 170365.82029999408,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "request_failed",
+            "system_utf8_bytes": 3584,
+            "user_utf8_bytes": 10654
+          }
+        ],
+        "mode": "default",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 170.373259
+      },
+      "provider_answer_sha256": "33955ded249d8aafdaf58c7908a03ec2133b0381142ab40cd51981f76b332878",
+      "analysis_artifact_sha256": "92c403b9b94ab5547816cf573dab7be5bbe507ac12402af741f9697e0a1e0593",
+      "author_review": {
         "attempt": "s10-d-0002",
         "case_id": "ELM-SEC-NUMERIC-V1",
         "trial": "d1-default-v1",
         "provider_finish": "KNOWN_WITHHELD_LENGTH",
         "app_returned": false,
-        "full_model_facts": [
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE"
-        ],
         "app_projected_facts": "No accepted advisory",
         "engineering_viable": false,
-        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim.",
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "UNASSESSABLE",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "UNASSESSABLE",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0003",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
       },
-      {
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "6ab8b8924549d10bc1950f9ff4de6ec145084c6a7415c9a91b0ca925bb596814",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "fa1bc11fe48713457109986500d7504fa9b3064df9ac8f24578da36b71d70949",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0003",
+        "event": "provider_finished",
+        "frames": 614,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 78028,
+        "raw_response_sha256": "455351e9d15ac8d002214b924e36a57c3881e19bb6e74b2e9293b2715bf301d3",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 614,
+          "eval_duration": 79416578000,
+          "load_duration": 14268400,
+          "prompt_eval_count": 3024,
+          "prompt_eval_duration": 1354979000,
+          "total_duration": 80803859300
+        },
+        "wall_seconds": 80.847508
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "positive",
+        "error_type": "AiSecurityBoundaryError",
+        "formulation": "full",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 80890.276,
+            "eval_count": 614,
+            "eval_duration": 79416578000,
+            "load_duration": 14268400,
+            "prompt_eval_count": 3024,
+            "prompt_eval_duration": 1354979000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 80803859300,
+            "user_utf8_bytes": 10471
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 80.896826
+      },
+      "provider_answer_sha256": "70aa95fa63f48dfac96609d9a265ee085fd5fa520a135e3edb298cbfabeac0eb",
+      "analysis_artifact_sha256": "dc0329dd5b29ddf454045f6488acbcbfdde36dfcef3fca0045805db6485be358",
+      "author_review": {
         "attempt": "s10-d-0003",
         "case_id": "ELM-SEC-FREETEXT-V1",
         "trial": "d1-off-v1",
@@ -57,14 +672,6 @@
         "raw_plausible_cores": 1,
         "unsupported_categories": [
           "unsafe_output_consumption"
-        ],
-        "full_model_facts": [
-          "PARTIAL",
-          "PARTIAL",
-          "PARTIAL",
-          "OMITTED",
-          "CONTRADICTED",
-          "RETAINED"
         ],
         "app_projected_facts": "No accepted advisory",
         "engineering_viable": false,
@@ -79,9 +686,145 @@
             "field": "findings[1].hypothesis",
             "text": "The application may be vulnerable to unsafe output consumption due to the lack of validation and human gate enforcement for the generated rephrased text."
           }
+        ],
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "PARTIAL",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "PARTIAL",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "PARTIAL",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "OMITTED",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "CONTRADICTED",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "RETAINED",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
         ]
+      }
+    },
+    {
+      "attempt": "s10-d-0004",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
       },
-      {
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "c39344078a4599e3ae45e4280d245248605052a7e775be40dcd729f40a59b968",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "2679ecd69dc91d0dbcb4c4a2e644a9c49233bd04839c5a7d0bf9483b64c7eb4c",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0004",
+        "event": "provider_finished",
+        "frames": 505,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 63957,
+        "raw_response_sha256": "dcb73ed5f420ecc067f8a85f99e96ea5a33e7bc9dde52cc34bc122b25bb39b94",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 505,
+          "eval_duration": 64583849000,
+          "load_duration": 14715300,
+          "prompt_eval_count": 3078,
+          "prompt_eval_duration": 1128058000,
+          "total_duration": 65748470800
+        },
+        "wall_seconds": 65.773809
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "negative",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 65794.288,
+            "eval_count": 505,
+            "eval_duration": 64583849000,
+            "load_duration": 14715300,
+            "prompt_eval_count": 3078,
+            "prompt_eval_duration": 1128058000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 65748470800,
+            "user_utf8_bytes": 10654
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 65.800443
+      },
+      "provider_answer_sha256": "6d7dffac9a2e423b6bed24a3b3be8adb58c1dac10fad1b67dcb936323fc79a8f",
+      "analysis_artifact_sha256": "46dacc16e2024cbfe8cacdcd1d60f70eb45e2b284329b5e1846a5302fa84fa2d",
+      "author_review": {
         "attempt": "s10-d-0004",
         "case_id": "ELM-SEC-NUMERIC-V1",
         "trial": "d1-off-v1",
@@ -89,14 +832,6 @@
         "app_returned": true,
         "raw_candidate_count": 0,
         "unsupported_categories": [],
-        "full_model_facts": [
-          "OMITTED",
-          "OMITTED",
-          "OMITTED",
-          "CONTRADICTED",
-          "OMITTED",
-          "OMITTED"
-        ],
         "app_projected_facts": "Purpose retains12/24 and typed counts in app summary; not model retention.",
         "engineering_viable": false,
         "reason": "Zero findings is appropriate restraint; model instead copies generic guidance checks, doubts explicit classifications and adds out-of-scope tool/retrieval reviews. All six guidance IDs appear in ordinary prose despite citation instructions.",
@@ -106,93 +841,2111 @@
             "text": "No evidence to confirm that data classification and permitted destinations are explicitly stated for each flow",
             "reason": "Every declared flow is explicitly public with declared endpoints; independently unverified is distinct from missing declaration."
           }
+        ],
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "OMITTED",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "OMITTED",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "OMITTED",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "CONTRADICTED",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "OMITTED",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "OMITTED",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
         ]
+      }
+    },
+    {
+      "attempt": "s10-d-0005",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "on",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
       },
-      {
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "6ab8b8924549d10bc1950f9ff4de6ec145084c6a7415c9a91b0ca925bb596814",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "23b75dfef120d322f46bcd134ac5f36e269916b5869be119f9c716c688e1b176",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0005",
+        "event": "provider_finished",
+        "frames": 1278,
+        "outcome": "KNOWN_WITHHELD",
+        "raw_response_bytes": 175578,
+        "raw_response_sha256": "70f4bf55bcb9b595c652b2aa2b7d0eba633430e1d31f974b8fc5d2bbcc8b75d2",
+        "thinking_bytes": 4543,
+        "thinking_present": true,
+        "thinking_sha256": "df6dd2c195ea20e4007990cfdd0fd4d7113fc16dc194f647110910098f473ca6",
+        "usage": {
+          "eval_count": 1280,
+          "eval_duration": 169112656000,
+          "load_duration": 9668100,
+          "prompt_eval_count": 3018,
+          "prompt_eval_duration": 1292833000,
+          "total_duration": 170431971600
+        },
+        "wall_seconds": 170.452984
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "positive",
+        "error_type": "DiagnosticStop",
+        "formulation": "full",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "generation_limit",
+            "elapsed_ms": 170483.54210000252,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "request_failed",
+            "system_utf8_bytes": 3584,
+            "user_utf8_bytes": 10471
+          }
+        ],
+        "mode": "on",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 170.489721
+      },
+      "provider_answer_sha256": "f026cb198aadd32650862e49410d4f1991ab924dc2f675ca71e57ebe385e857a",
+      "analysis_artifact_sha256": "f55c8b3e61191540f88d91b2d3b3237d92648d5798223706d874a1670088e6b2",
+      "author_review": {
         "attempt": "s10-d-0005",
         "case_id": "ELM-SEC-FREETEXT-V1",
         "trial": "d1-on-v1",
         "provider_finish": "KNOWN_WITHHELD_LENGTH",
         "app_returned": false,
-        "full_model_facts": [
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE"
-        ],
         "app_projected_facts": "No accepted advisory",
         "engineering_viable": false,
-        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim.",
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "UNASSESSABLE",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0006",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D1",
+        "mode": "on",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
       },
-      {
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "c39344078a4599e3ae45e4280d245248605052a7e775be40dcd729f40a59b968",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "deb04d79c75b7928196ddfb9ede47bed8a273fc642dd30b13c89e6781161b553",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0006",
+        "event": "provider_finished",
+        "frames": 1279,
+        "outcome": "KNOWN_WITHHELD",
+        "raw_response_bytes": 180211,
+        "raw_response_sha256": "c17155988a55c629cbda0c453f06a6abedccf86829d0de23f9982b38ba95eaf7",
+        "thinking_bytes": 6165,
+        "thinking_present": true,
+        "thinking_sha256": "342a301f615e2f7795aa2f2e0b107e49a763aedaf958d0c4ed5d9776b0014d88",
+        "usage": {
+          "eval_count": 1280,
+          "eval_duration": 170509171000,
+          "load_duration": 14176600,
+          "prompt_eval_count": 3072,
+          "prompt_eval_duration": 1164310000,
+          "total_duration": 171707802800
+        },
+        "wall_seconds": 171.724733
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D1",
+        "control": "negative",
+        "error_type": "DiagnosticStop",
+        "formulation": "full",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "generation_limit",
+            "elapsed_ms": 171747.49760000122,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "request_failed",
+            "system_utf8_bytes": 3584,
+            "user_utf8_bytes": 10654
+          }
+        ],
+        "mode": "on",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 171.753636
+      },
+      "provider_answer_sha256": "a0de66aecb1145ced357abe250ec4f1496cd08e266e7a15f8af585a2c98ca7a2",
+      "analysis_artifact_sha256": "605815e289dbcbe74df9d7e639caa28dfa2a35f496b45803cc60a076a3960e91",
+      "author_review": {
         "attempt": "s10-d-0006",
         "case_id": "ELM-SEC-NUMERIC-V1",
         "trial": "d1-on-v1",
         "provider_finish": "KNOWN_WITHHELD_LENGTH",
         "app_returned": false,
-        "full_model_facts": [
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE",
-          "UNASSESSABLE"
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim.",
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "UNASSESSABLE",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "UNASSESSABLE",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "UNASSESSABLE",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0007",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "6ab8b8924549d10bc1950f9ff4de6ec145084c6a7415c9a91b0ca925bb596814",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "fa1bc11fe48713457109986500d7504fa9b3064df9ac8f24578da36b71d70949",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0007",
+        "event": "provider_finished",
+        "frames": 638,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 81012,
+        "raw_response_sha256": "ee694ecbb93880856477e341a1ef5a1408be52c59dbe1e4021e92e9683a16401",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 638,
+          "eval_duration": 80722985000,
+          "load_duration": 12582900,
+          "prompt_eval_count": 3024,
+          "prompt_eval_duration": 1167121000,
+          "total_duration": 81918928300
+        },
+        "wall_seconds": 81.958941
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D2",
+        "control": "positive",
+        "error_type": "AiSecurityBoundaryError",
+        "formulation": "full",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 81978.607,
+            "eval_count": 638,
+            "eval_duration": 80722985000,
+            "load_duration": 12582900,
+            "prompt_eval_count": 3024,
+            "prompt_eval_duration": 1167121000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 81918928300,
+            "user_utf8_bytes": 10471
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "WITHHELD",
+        "wall_seconds": 81.984782
+      },
+      "provider_answer_sha256": "4b0abd91c3973b7bbeb53f3489cdb33d1d1ecd5f4ba27c9a14f9623ab307d468",
+      "analysis_artifact_sha256": "16b41a6ec2da54a9f6e2ccd294507caf12de804770931348600557fff5b6ce41",
+      "author_review": {
+        "attempt": "s10-d-0007",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "trial": "d2-full-off-v1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "raw_candidate_count": 2,
+        "raw_plausible_cores": 1,
+        "unsupported_categories": [
+          "unsafe_output_consumption"
         ],
         "app_projected_facts": "No accepted advisory",
         "engineering_viable": false,
-        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+        "reason": "Fresh planned full-task repeat again omits REPHRASER endpoint and adds unsafe-output concern based only on read-only preview; no selective rerun.",
+        "excerpts": [
+          {
+            "field": "findings[0].component_ids",
+            "text": "QUESTION, WRAPPER",
+            "reason": "WRAPPED-CONTEXT also needs REPHRASER endpoint."
+          },
+          {
+            "field": "findings[1].hypothesis",
+            "text": "The application may be vulnerable to unsafe output consumption due to the lack of validation and human gate enforcement for the generated rephrased text."
+          }
+        ],
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "PARTIAL",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "PARTIAL",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "PARTIAL",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "OMITTED",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "CONTRADICTED",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "RETAINED",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
       }
-    ]
-  },
-  "lab_budget": {
-    "raw_attempts": 14,
-    "phase_counts": {
-      "D1": 6,
-      "D2": 4,
-      "D3": 4,
-      "D4": 0
     },
-    "pending": null,
-    "blocked": false,
-    "remaining": 2
-  },
-  "campaign_budget": {
-    "counts": {
-      "lab": 14,
-      "acceptance": 0
+    {
+      "attempt": "s10-d-0008",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "c39344078a4599e3ae45e4280d245248605052a7e775be40dcd729f40a59b968",
+      "schema_sha256": "1dfa9368826dcb7eeff3a56e5b2b9e7c5fc654ab2d69bf3217463e197899e6cd",
+      "request_sha256": "2679ecd69dc91d0dbcb4c4a2e644a9c49233bd04839c5a7d0bf9483b64c7eb4c",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0008",
+        "event": "provider_finished",
+        "frames": 330,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 42050,
+        "raw_response_sha256": "6a8e2bc40ce4616f79998a6b1f9d244f536a08d67a3155d683067713fb9376fd",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 330,
+          "eval_duration": 41084715000,
+          "load_duration": 13669800,
+          "prompt_eval_count": 3078,
+          "prompt_eval_duration": 1169269000,
+          "total_duration": 42287903200
+        },
+        "wall_seconds": 42.321847
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D2",
+        "control": "negative",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 42344.974,
+            "eval_count": 330,
+            "eval_duration": 41084715000,
+            "load_duration": 13669800,
+            "prompt_eval_count": 3078,
+            "prompt_eval_duration": 1169269000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 3365,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 42287903200,
+            "user_utf8_bytes": 10654
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 42.35237
+      },
+      "provider_answer_sha256": "d747bc02384ec8d03eb7a577947c8a1bf2e000777bf7e7e91a4569f07cb00fff",
+      "analysis_artifact_sha256": "1816b625de13904b798c133819d4f157c3cec9e4a4847036586530e4ff9be30a",
+      "author_review": {
+        "attempt": "s10-d-0008",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "trial": "d2-full-off-v1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "raw_candidate_count": 0,
+        "unsupported_categories": [],
+        "app_projected_facts": "Purpose retains12/24 and typed counts in app summary; not model retention.",
+        "engineering_viable": false,
+        "reason": "Zero findings but generic irrelevant tool/retrieval reviews, source IDs in ordinary text, and supplied classification treated as missing.",
+        "excerpts": [
+          {
+            "field": "evidence_gaps",
+            "text": "No evidence to confirm that data classification and permitted destinations are explicitly stated for each flow",
+            "reason": "Every declared flow is explicitly public with declared endpoints; independently unverified is distinct from missing declaration."
+          }
+        ],
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "OMITTED",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "OMITTED",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "OMITTED",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "CONTRADICTED",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "OMITTED",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "OMITTED",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
     },
-    "reserved": 14,
-    "pending": null,
-    "blocked": false,
-    "remaining": {
-      "lab": 2,
-      "acceptance": 12
+    {
+      "attempt": "s10-d-0009",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "a48fb1b04ad0e771d9625e31854ff1b5cadf0304600c3e7ecbb53831d29bb4f6",
+      "schema_sha256": "798e9ec682474959d2e9a7ff44c7b6a6ef633ba7786fad5e31de3e75a9e39f06",
+      "request_sha256": "be781c3f170e1e18a459357ce600259557e6a5a60bc2cac55bb043649712ba91",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0009",
+        "event": "provider_finished",
+        "frames": 200,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 25634,
+        "raw_response_sha256": "1158e925605979361499b393daef4afc1389c24ad4980cbefc02cdd70a1677b0",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 200,
+          "eval_duration": 23286800000,
+          "load_duration": 11485500,
+          "prompt_eval_count": 2018,
+          "prompt_eval_duration": 1586252000,
+          "total_duration": 25217969000
+        },
+        "wall_seconds": 25.278691
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D2",
+        "control": "positive",
+        "error_type": null,
+        "formulation": "narrow",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 25307.523,
+            "eval_count": 200,
+            "eval_duration": 23286800000,
+            "load_duration": 11485500,
+            "prompt_eval_count": 2018,
+            "prompt_eval_duration": 1586252000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 910,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 25217969000,
+            "user_utf8_bytes": 5967
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 25.312358
+      },
+      "provider_answer_sha256": "c61f75429dc4a10a0a3f01b89d01cd29c322ab63c026473f25585804a51061a8",
+      "analysis_artifact_sha256": "d3e664027ee69a6028344b611f0ce17eb8355e6f540f1ecf563c80512727f927",
+      "author_review": {
+        "attempt": "s10-d-0009",
+        "trial": "d2-narrow-off-v1",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "reason": "False-negative no_finding while reproducing unfiltered visitor-content mechanism.",
+        "excerpts": [
+          {
+            "text": "The submitted design does not provide a path for prompt injection on the selected flow."
+          }
+        ],
+        "engineering_viable": false,
+        "experimental_question_returned": true,
+        "core_decision_correct": false,
+        "advisory_promotion_supported": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "PARTIAL",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "PARTIAL",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "PARTIAL",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "OMITTED",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "PARTIAL",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "CONTRADICTED",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ],
+        "rationale_characters": 355,
+        "model_flow_ids_present": [],
+        "app_projection_excluded_from_model_retention": true,
+        "rationale_incomplete": false
+      }
+    },
+    {
+      "attempt": "s10-d-0010",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D2",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "b95e70f64a7fa855b43e5a3a4b4f62b6a72259a0ac360a7e2a8c8435659a6ece",
+      "schema_sha256": "798e9ec682474959d2e9a7ff44c7b6a6ef633ba7786fad5e31de3e75a9e39f06",
+      "request_sha256": "52815c79d404a2efec65a33c31a18d160ddd2a2ebc7c4d45b0dfa67f653e2e1b",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0010",
+        "event": "provider_finished",
+        "frames": 230,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 29437,
+        "raw_response_sha256": "feae985c060025e714709c94c62768ab8123fdaba4e325e3cea6a866d7ec61cb",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 230,
+          "eval_duration": 27041378000,
+          "load_duration": 17170000,
+          "prompt_eval_count": 2076,
+          "prompt_eval_duration": 1774327000,
+          "total_duration": 28982042400
+        },
+        "wall_seconds": 29.010872
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D2",
+        "control": "negative",
+        "error_type": null,
+        "formulation": "narrow",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 29032.407,
+            "eval_count": 230,
+            "eval_duration": 27041378000,
+            "load_duration": 17170000,
+            "prompt_eval_count": 2076,
+            "prompt_eval_duration": 1774327000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 910,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 28982042400,
+            "user_utf8_bytes": 6149
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 29.03776
+      },
+      "provider_answer_sha256": "6b4bbdd5f7ce4d6238441794e7d694ee5be875efffe357b2c56a2358be84b7cd",
+      "analysis_artifact_sha256": "2a283c712f6571c56dbcf7cf44c491adc64f24a80aa46e74cb459fdd29ba58be",
+      "author_review": {
+        "attempt": "s10-d-0010",
+        "trial": "d2-narrow-off-v1",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "reason": "Correct scoped no_finding; fixed12/24 and preview facts improve, but literal flow IDs/whole-graph constraints omitted; prevention wording overconfident.",
+        "excerpts": [
+          {
+            "text": "These controls prevent prompt injection on the assessed path."
+          }
+        ],
+        "engineering_viable": false,
+        "experimental_question_returned": true,
+        "core_decision_correct": true,
+        "advisory_promotion_supported": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "PARTIAL",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "PARTIAL",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "PARTIAL",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "PARTIAL",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "PARTIAL",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "PARTIAL",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ],
+        "rationale_characters": 328,
+        "model_flow_ids_present": [],
+        "app_projection_excluded_from_model_retention": true,
+        "rationale_incomplete": false
+      }
+    },
+    {
+      "attempt": "s10-d-0011",
+      "case_id": "ELM-SOC-FAILED-CHECK-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "b65204886a5ac52adfc508cfd08bb37a3f9e0bbe116abd4a3161cc57e5229f02",
+      "case_sha256": "cc26c49319bd19e66529ecbad08788590a7ec954b96e3048117cc93f6967d4a6",
+      "prompt_sha256": "8c65cde95765eeda287393f2e1df357d2769b42d85f49fd1bc8c59595adc8b82",
+      "schema_sha256": "435d4c0bd70a1b5068de4a1426e4beb39f8efe915ab53fee67428187c5a8bafd",
+      "request_sha256": "8a7eb601d37de3507d87308bbbc3f95925f84c14189c4778f9cf6aeb8e33a58c",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0011",
+        "event": "provider_finished",
+        "frames": 762,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 96533,
+        "raw_response_sha256": "375c91ac74cfc4c95830e0052d0e43ec3e99481b2208d01af8d2d8dfd377f6d3",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 762,
+          "eval_duration": 96580872000,
+          "load_duration": 11195900,
+          "prompt_eval_count": 2734,
+          "prompt_eval_duration": 3307520000,
+          "total_duration": 100132114600
+        },
+        "wall_seconds": 100.179275
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D3",
+        "control": "negative_with_unknowns",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-SOC-FAILED-CHECK-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 100232.639,
+            "eval_count": 762,
+            "eval_duration": 96580872000,
+            "load_duration": 11195900,
+            "prompt_eval_count": 2734,
+            "prompt_eval_duration": 3307520000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 2515,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 100132114600,
+            "user_utf8_bytes": 10041
+          }
+        ],
+        "mode": "off",
+        "pillar": "soc",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 100.252172
+      },
+      "provider_answer_sha256": "a4ae3440d08be766b56c2247743c82be70c52b929879a45e316583ffccc8f231",
+      "analysis_artifact_sha256": "4801355374fe68fa2c0839b16865d44b87e0741ea0207e113fb5a2ad8cdbeadd",
+      "author_review": {
+        "attempt": "s10-d-0011",
+        "trial": "d3-ledger-off-v1",
+        "case_id": "ELM-SOC-FAILED-CHECK-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "reason": "Exact endpoint/TCP roles retained; timestamp/PID/approval bounds lost; unsupported Discovery and irrelevant PowerShell source.",
+        "excerpts": [
+          {
+            "text": "The event may indicate network discovery activity, as it involves a failed connection attempt."
+          }
+        ],
+        "engineering_viable": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "S1",
+            "verdict": "PARTIAL",
+            "criterion": "One failed event at the full supplied timestamp; no successful connection/payload transfer.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S2",
+            "verdict": "RETAINED",
+            "criterion": "Correct local and remote IP/port roles with explicitly supplied TCP.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S3",
+            "verdict": "PARTIAL",
+            "criterion": "packetcheck.exe plus initiating PID731, without inferring legitimacy or success.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S4",
+            "verdict": "PARTIAL",
+            "criterion": "EL-271 four-attempt approval, exact host/target/time window, no unrestricted scan/containment.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S5",
+            "verdict": "PARTIAL",
+            "criterion": "Only one result supplied; other results/listener ownership/cause unknown.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S6",
+            "verdict": "PARTIAL",
+            "criterion": "No response executed or containment/account-change grant; proposed actions need human review.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0012",
+      "case_id": "ELM-RISK-PREVIEW-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": false
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "36883e7788c74d0af3f04c4cce4eceefe04d1ec82bba3ee75d3a83620e0bc3e9",
+      "case_sha256": "4a30da9a140a783ac5ea4f25a0125653e0e3f9f57b683dbdcf38e9cd3c56e8dc",
+      "prompt_sha256": "5bd41716dd2914a1702d91b9ba6c96779e6b0a9b017904a4bcd9de44359715a8",
+      "schema_sha256": "99c485aed6f37d83a05161bc7a54dfa0dcd65f8df6adb17aeb35b52755864210",
+      "request_sha256": "51efce610192d33086fae4a3721c3081e2a05641bc3284264e60aee05ac2c3da",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0012",
+        "event": "provider_finished",
+        "frames": 961,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 122440,
+        "raw_response_sha256": "86b9359bbd77c7b8b94c0f9c48dc87ed187a0d9d88b4e79daf251b1b373508ef",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 961,
+          "eval_duration": 123057535000,
+          "load_duration": 15944300,
+          "prompt_eval_count": 2605,
+          "prompt_eval_duration": 2390596000,
+          "total_duration": 125743332400
+        },
+        "wall_seconds": 125.785616
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D3",
+        "control": "mixed_control_states",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-RISK-PREVIEW-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 125821.038,
+            "eval_count": 961,
+            "eval_duration": 123057535000,
+            "load_duration": 15944300,
+            "prompt_eval_count": 2605,
+            "prompt_eval_duration": 2390596000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 2114,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 125743332400,
+            "user_utf8_bytes": 10018
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_safety",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 125.845985
+      },
+      "provider_answer_sha256": "c3091a6613bf4e99382f0b374ca6bf28783225cc7d5e221a00f049c1f16b8d4a",
+      "analysis_artifact_sha256": "aac77e39830b553ef52ccd145316edf6eb73791ac0c4f630cf3aabb868734479",
+      "author_review": {
+        "attempt": "s10-d-0012",
+        "trial": "d3-ledger-off-v1",
+        "case_id": "ELM-RISK-PREVIEW-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "reason": "Gate EL-T37/7of7 and one-rehearsal approval omitted; unknown retention becomes lack; external-only rule broadened to all sharing.",
+        "excerpts": [
+          {
+            "text": "Lack of audit-log retention implementation"
+          }
+        ],
+        "engineering_viable": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "G1",
+            "verdict": "PARTIAL",
+            "criterion": "Public fictional/offline optional subtitles, instructors, no external/consequential functions.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G2",
+            "verdict": "OMITTED",
+            "criterion": "Reported implemented gate EL-T37/P2 and7of7 retained as supplied test claim.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G3",
+            "verdict": "CONTRADICTED",
+            "criterion": "Explicit auto-publication absence, proposed second reviewer and unknown retention all preserved.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G4",
+            "verdict": "CONTRADICTED",
+            "criterion": "EL-R4 applies only to external sharing, not all internal/organizational use.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G5",
+            "verdict": "OMITTED",
+            "criterion": "EL-A19 permits only one P2 offline rehearsal/7 drafts, no public rollout.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G6",
+            "verdict": "CONTRADICTED",
+            "criterion": "Caller assertions not independent truth/permission; unknown implementation must not become absence.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0013",
+      "case_id": "ELM-SOC-FAILED-CHECK-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": true
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "b65204886a5ac52adfc508cfd08bb37a3f9e0bbe116abd4a3161cc57e5229f02",
+      "case_sha256": "cc26c49319bd19e66529ecbad08788590a7ec954b96e3048117cc93f6967d4a6",
+      "prompt_sha256": "7d650639e12bf6807f143a1ae65b2da89a7c53b6ca37fd9e71915b88046984da",
+      "schema_sha256": "435d4c0bd70a1b5068de4a1426e4beb39f8efe915ab53fee67428187c5a8bafd",
+      "request_sha256": "d79a54313de1bbea5d5d67e86a8be2373c8c3fcdb493c3b3e6cea45001c3a386",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0013",
+        "event": "provider_finished",
+        "frames": 654,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 82779,
+        "raw_response_sha256": "64d85fe466ee8d88971fca636b16bf063e710d22aaea9247305e3d5775b59c0a",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 654,
+          "eval_duration": 93126192000,
+          "load_duration": 9821300,
+          "prompt_eval_count": 4598,
+          "prompt_eval_duration": 2431901000,
+          "total_duration": 96050080800
+        },
+        "wall_seconds": 96.112837
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D3",
+        "control": "negative_with_unknowns",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-SOC-FAILED-CHECK-V1",
+        "ledger": true,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": true,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 96162.611,
+            "eval_count": 654,
+            "eval_duration": 93126192000,
+            "load_duration": 9821300,
+            "prompt_eval_count": 4598,
+            "prompt_eval_duration": 2431901000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 2515,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 96050080800,
+            "user_utf8_bytes": 16541
+          }
+        ],
+        "mode": "off",
+        "pillar": "soc",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 96.179531
+      },
+      "provider_answer_sha256": "a351c8dcbf1d39b7dc56fba4a61890b8c443c947bfde979f5ee4be318237d1ad",
+      "analysis_artifact_sha256": "b744415a429037ceefadc9d5fbf91f0a3a5ff8f4a2985aef303cf3049083c80a",
+      "author_review": {
+        "attempt": "s10-d-0013",
+        "trial": "d3-ledger-on-v1",
+        "case_id": "ELM-SOC-FAILED-CHECK-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "reason": "PID731 gained; approval four-attempt/time window and no-action scope omitted; unsupported Discovery/PowerShell citation persist.",
+        "excerpts": [
+          {
+            "text": "The event could be related to suspicious PowerShell activity, but no PowerShell commands were observed."
+          }
+        ],
+        "engineering_viable": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "S1",
+            "verdict": "PARTIAL",
+            "criterion": "One failed event at the full supplied timestamp; no successful connection/payload transfer.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S2",
+            "verdict": "RETAINED",
+            "criterion": "Correct local and remote IP/port roles with explicitly supplied TCP.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S3",
+            "verdict": "RETAINED",
+            "criterion": "packetcheck.exe plus initiating PID731, without inferring legitimacy or success.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S4",
+            "verdict": "OMITTED",
+            "criterion": "EL-271 four-attempt approval, exact host/target/time window, no unrestricted scan/containment.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S5",
+            "verdict": "PARTIAL",
+            "criterion": "Only one result supplied; other results/listener ownership/cause unknown.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "S6",
+            "verdict": "OMITTED",
+            "criterion": "No response executed or containment/account-change grant; proposed actions need human review.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0014",
+      "case_id": "ELM-RISK-PREVIEW-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D3",
+        "mode": "off",
+        "formulation": "full",
+        "decision_rule": "v1",
+        "ledger": true
+      },
+      "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "input_sha256": "36883e7788c74d0af3f04c4cce4eceefe04d1ec82bba3ee75d3a83620e0bc3e9",
+      "case_sha256": "4a30da9a140a783ac5ea4f25a0125653e0e3f9f57b683dbdcf38e9cd3c56e8dc",
+      "prompt_sha256": "aecb96f82e10dcf6d8daa1fc4b928782f2afd00565e2687b514e01ab75cb43a0",
+      "schema_sha256": "99c485aed6f37d83a05161bc7a54dfa0dcd65f8df6adb17aeb35b52755864210",
+      "request_sha256": "54665a1b64fb2c8b299300d60aa4f896595e6ce5462face9037d4a7846fde6aa",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "18e3b2c87aa4eb02da01ca506d7ea817ccc54bc778a6b2d4c349c0aea35ee4d9",
+        "evals/model_task_diagnostic_v1/runner.py": "0467616a3696de1afd414f58725f5a869463982f31b08547e65e03ac071802ce",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0014",
+        "event": "provider_finished",
+        "frames": 899,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 114518,
+        "raw_response_sha256": "91d6cb73f70fe989c2ba8e5f11b0df5786dfd5f125b005f37383bec512ae18f0",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 899,
+          "eval_duration": 121436994000,
+          "load_duration": 14157200,
+          "prompt_eval_count": 3561,
+          "prompt_eval_duration": 1312293000,
+          "total_duration": 123112636300
+        },
+        "wall_seconds": 123.129798
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D3",
+        "control": "mixed_control_states",
+        "error_type": null,
+        "formulation": "full",
+        "id": "ELM-RISK-PREVIEW-V1",
+        "ledger": true,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 123154.928,
+            "eval_count": 899,
+            "eval_duration": 121436994000,
+            "load_duration": 14157200,
+            "prompt_eval_count": 3561,
+            "prompt_eval_duration": 1312293000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 2114,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 123112636300,
+            "user_utf8_bytes": 14165
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_safety",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 123.17035
+      },
+      "provider_answer_sha256": "d8c6064ec223d9a051b4aeb5bdad693f559dc7b583dae37f5d6c9a708164ae2f",
+      "analysis_artifact_sha256": "6bc488692c12758217ea3446abffb663dedfc7b0704d0e7f9cae6394ca2a69ce",
+      "author_review": {
+        "attempt": "s10-d-0014",
+        "trial": "d3-ledger-on-v1",
+        "case_id": "ELM-RISK-PREVIEW-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "reason": "External-sharing wording improves; gate/test/7of7 and approval bounds remain omitted; unknown retention again described as lacking.",
+        "excerpts": [
+          {
+            "text": "Lack of audit-log retention and duration implementation."
+          }
+        ],
+        "engineering_viable": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "G1",
+            "verdict": "PARTIAL",
+            "criterion": "Public fictional/offline optional subtitles, instructors, no external/consequential functions.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G2",
+            "verdict": "OMITTED",
+            "criterion": "Reported implemented gate EL-T37/P2 and7of7 retained as supplied test claim.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G3",
+            "verdict": "CONTRADICTED",
+            "criterion": "Explicit auto-publication absence, proposed second reviewer and unknown retention all preserved.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G4",
+            "verdict": "PARTIAL",
+            "criterion": "EL-R4 applies only to external sharing, not all internal/organizational use.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G5",
+            "verdict": "OMITTED",
+            "criterion": "EL-A19 permits only one P2 offline rehearsal/7 drafts, no public rollout.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "G6",
+            "verdict": "CONTRADICTED",
+            "criterion": "Caller assertions not independent truth/permission; unknown implementation must not become absence.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s10-d-0015",
+      "case_id": "ELM-SEC-FREETEXT-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D4",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "explicit-v2",
+        "ledger": false
+      },
+      "implementation_commit": "ad14f124f3511dbf7af109d50c8f3d05c6037b4a",
+      "input_sha256": "9269479f944eed76f94630437fe4b50bc36b44e3bb0a69e39d8d771daef6115e",
+      "case_sha256": "71fbdeb8caa03651f66ba28e4711b4a96c2984580825dfd595d3a495f4b67010",
+      "prompt_sha256": "c3870516b103dbad0dd0fb1b953d0b86c300fc487f69eb7d9f2558f3cd137997",
+      "schema_sha256": "798e9ec682474959d2e9a7ff44c7b6a6ef633ba7786fad5e31de3e75a9e39f06",
+      "request_sha256": "6c98a3d43df8aa7ff4a71a132165ef63001af0618140145a0e031c047e5cdcf4",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "fa93844a69e5dc7e1771e9bd39a969d55bb226920c1aa188752443074b066c43",
+        "evals/model_task_diagnostic_v1/runner.py": "674c65fd3a64e6e03cedfb30b68c03c73cf869d575a49ca6b9a872ab9cc4d822",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0015",
+        "event": "provider_finished",
+        "frames": 252,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 32318,
+        "raw_response_sha256": "9dee2f55eeb8438b88bfc0b3a0e07d2c508b8e3ac3a4b1eb91b88ebf8725c784",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 252,
+          "eval_duration": 28823528000,
+          "load_duration": 9763000,
+          "prompt_eval_count": 2195,
+          "prompt_eval_duration": 1554178000,
+          "total_duration": 30846127500
+        },
+        "wall_seconds": 30.865414
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D4",
+        "control": "positive",
+        "decision_rule": "explicit-v2",
+        "error_type": null,
+        "formulation": "narrow",
+        "id": "ELM-SEC-FREETEXT-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 30893.136,
+            "eval_count": 252,
+            "eval_duration": 28823528000,
+            "load_duration": 9763000,
+            "prompt_eval_count": 2195,
+            "prompt_eval_duration": 1554178000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 910,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 30846127500,
+            "user_utf8_bytes": 7017
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 30.897544
+      },
+      "provider_answer_sha256": "3ba22cc8226cd0d790794a139406a9f054bcd25936819fa7f06fb36e2781f04c",
+      "analysis_artifact_sha256": "b0ceab3a8dc424d3b789ccf9fb83886f3431d28b042e9075d4345055e075f72e",
+      "author_review": {
+        "attempt": "s10-d-0015",
+        "trial": "d4-explicit-positive-v2",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "reason": "Expected conditional concern after explicit rule. Specific mechanism fits; rationale ends mid-sentence at400 chars, model flow IDs absent, validation/attack prerequisites still mixed.",
+        "excerpts": [
+          {
+            "text": "The submitted design permits attacker-controlled, instruction-like content to reach model context along the selected path under its declared constraints."
+          }
+        ],
+        "engineering_viable": false,
+        "experimental_question_returned": true,
+        "core_decision_correct": true,
+        "advisory_promotion_supported": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "P1",
+            "verdict": "PARTIAL",
+            "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P2",
+            "verdict": "PARTIAL",
+            "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P3",
+            "verdict": "PARTIAL",
+            "criterion": "Public escaped read-only output, trainer review, no execution/sharing all required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P4",
+            "verdict": "PARTIAL",
+            "criterion": "Every public flow and absence of declared tools/retrieval/private/network capabilities are a compound fact.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P5",
+            "verdict": "PARTIAL",
+            "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "P6",
+            "verdict": "PARTIAL",
+            "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ],
+        "rationale_characters": 400,
+        "model_flow_ids_present": [],
+        "app_projection_excluded_from_model_retention": true,
+        "rationale_incomplete": true
+      }
+    },
+    {
+      "attempt": "s10-d-0016",
+      "case_id": "ELM-SEC-NUMERIC-V1",
+      "case_version": 1,
+      "treatment": {
+        "contrast": "D4",
+        "mode": "off",
+        "formulation": "narrow",
+        "decision_rule": "explicit-v2",
+        "ledger": false
+      },
+      "implementation_commit": "ad14f124f3511dbf7af109d50c8f3d05c6037b4a",
+      "input_sha256": "c50e48366110c544e587eaf20b3dd0f12971a7baa4b411a2503a810a061c8d21",
+      "case_sha256": "6dcf8ce99b98aec8fd9141c5b002f52fe87e891a431bce23d0ab65f8f8a973d5",
+      "prompt_sha256": "a0c51c7ea50f28703651beade6bda1d62754cf8294143c890a81f927abcb4a76",
+      "schema_sha256": "798e9ec682474959d2e9a7ff44c7b6a6ef633ba7786fad5e31de3e75a9e39f06",
+      "request_sha256": "6655eb0037eaa73ff17341fe92a8f835965467f6d5dbb123f06d4431c6126d2e",
+      "source_sha256": {
+        "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+        "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+        "app/ai_security_sources.py": "e6286b984c8dc3349804fb9fe7fbd653a8cdf75b2b5f2a41411da0744c4636d8",
+        "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+        "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+        "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+        "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+        "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+        "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+        "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+        "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+        "evals/model_task_diagnostic_v1/narrow.py": "fa93844a69e5dc7e1771e9bd39a969d55bb226920c1aa188752443074b066c43",
+        "evals/model_task_diagnostic_v1/runner.py": "674c65fd3a64e6e03cedfb30b68c03c73cf869d575a49ca6b9a872ab9cc4d822",
+        "evals/model_task_diagnostic_v1/transport.py": "4adbb9e6b9ed35f5ad26cadc3a0ff3f47ac6869222baa2cdf81cc28cbe5b0c69",
+        "evals/model_task_diagnostic_v1/umbrella.py": "346b1ab6b8be20bb0c9d81f3e789a2eddc5502484e2e2063feb895386fcc59b5"
+      },
+      "options": {
+        "num_ctx": 8192,
+        "num_predict": 1280,
+        "temperature": 0.1
+      },
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "provider_finish": {
+        "attempt": "s10-d-0016",
+        "event": "provider_finished",
+        "frames": 288,
+        "outcome": "COMPLETED",
+        "raw_response_bytes": 36731,
+        "raw_response_sha256": "fe647b1151897900ce4a9bab716771ef83fd40b1baa8fa36640d78d9d592c10c",
+        "thinking_bytes": 0,
+        "thinking_present": false,
+        "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "usage": {
+          "eval_count": 288,
+          "eval_duration": 34305441000,
+          "load_duration": 11566400,
+          "prompt_eval_count": 2253,
+          "prompt_eval_duration": 1658195000,
+          "total_duration": 36110471400
+        },
+        "wall_seconds": 36.131301
+      },
+      "app_or_internal_outcome": {
+        "api_status": "not invoked; actual analyzer/internal contract exercised",
+        "contrast": "D4",
+        "control": "negative",
+        "decision_rule": "explicit-v2",
+        "error_type": null,
+        "formulation": "narrow",
+        "id": "ELM-SEC-NUMERIC-V1",
+        "ledger": false,
+        "metrics": [
+          {
+            "byte_counts_are_token_counts": false,
+            "complete_context_required": false,
+            "configured_num_ctx": 8192,
+            "context_status": "unknown",
+            "elapsed_ms": 36162.374,
+            "eval_count": 288,
+            "eval_duration": 34305441000,
+            "load_duration": 11566400,
+            "prompt_eval_count": 2253,
+            "prompt_eval_duration": 1658195000,
+            "prompt_retention": "not_proven",
+            "schema_json_utf8_bytes": 910,
+            "status": "response_received",
+            "system_utf8_bytes": 3584,
+            "total_duration": 36110471400,
+            "user_utf8_bytes": 7199
+          }
+        ],
+        "mode": "off",
+        "pillar": "ai_security",
+        "raw_attempts": 1,
+        "semantic_judgment": "PENDING",
+        "state": "RETURNED",
+        "wall_seconds": 36.16659
+      },
+      "provider_answer_sha256": "e23f75653da0c4dc1e94659e69284b28dd67448e57c9cac52a86788a432f0bea",
+      "analysis_artifact_sha256": "17ad09201fa4c10bfcfed5d1d4890051c5ad4919d6079a0931aea413ac8444be",
+      "author_review": {
+        "attempt": "s10-d-0016",
+        "trial": "d4-explicit-benign-v2",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "reason": "Expected no_finding; specific fixed numeric constraints retained as fragments, but model flow IDs absent and400-char rationale ends mid-sentence.",
+        "excerpts": [
+          {
+            "text": "The supplied design explicitly limits input to fixed public integers (12 and 24)"
+          }
+        ],
+        "engineering_viable": false,
+        "experimental_question_returned": true,
+        "core_decision_correct": true,
+        "advisory_promotion_supported": false,
+        "fact_verdicts": [
+          {
+            "fact_id": "B1",
+            "verdict": "PARTIAL",
+            "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B2",
+            "verdict": "PARTIAL",
+            "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B3",
+            "verdict": "PARTIAL",
+            "criterion": "Escaped read-only caption to LESSON/instructor before separate use and actual flow required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B4",
+            "verdict": "PARTIAL",
+            "criterion": "All declared public/offline/no tool/retrieval/private/network/execution/sharing constraints required.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B5",
+            "verdict": "PARTIAL",
+            "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          },
+          {
+            "fact_id": "B6",
+            "verdict": "PARTIAL",
+            "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+            "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+          }
+        ],
+        "rationale_characters": 400,
+        "model_flow_ids_present": [],
+        "app_projection_excluded_from_model_retention": true,
+        "rationale_incomplete": true
+      }
+    }
+  ],
+  "artifact_sha256": {
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/journal.jsonl": "a90991b5ffd6446cf0a29579f3e57cd7e18634bbca6e120a51019229e2c08012",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/ELM-SEC-FREETEXT-V1.json": "a148f0844c1ae0b6ec91ff29a173bc013220f2fa6ac913dd35532c8fd9342340",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/ELM-SEC-NUMERIC-V1.json": "92c403b9b94ab5547816cf573dab7be5bbe507ac12402af741f9697e0a1e0593",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/preflight.json": "3e441f344a6286e9220d9ecec4a5abf89f81aa4ecbd04b9008aeff54bff3506b",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/report.json": "b940c6b81f9a09acfcdf5cb3212ff9eb64e06d8bb1ac730ad7283bd79b12a6bc",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/s10-d-0001-request.json": "c0fd08efe4820c68933ced99e1a8d64f9d3c45260dd32cfe03a9385252df8099",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/s10-d-0001.json": "06dccf980dbd671692b4cf4a3ecea73f67b6d4f3ce474b42cf8dd787c6d07402",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/s10-d-0002-request.json": "3a23ed09ecc2f0d3807dd842664d31283479acfd2b15aa5d60c1e97c4c8d7937",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-default-v1/s10-d-0002.json": "33955ded249d8aafdaf58c7908a03ec2133b0381142ab40cd51981f76b332878",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/ELM-SEC-FREETEXT-V1.json": "dc0329dd5b29ddf454045f6488acbcbfdde36dfcef3fca0045805db6485be358",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/ELM-SEC-NUMERIC-V1.json": "46dacc16e2024cbfe8cacdcd1d60f70eb45e2b284329b5e1846a5302fa84fa2d",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/preflight.json": "dab500b298eff4663ba799cad74518eb995aa7fdde497f94eed921e2ab8e6040",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/report.json": "09aef08eb098bd374fa96bf8ac2379a3b209e42afd77e3014959b29456dd23af",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/s10-d-0003-request.json": "c0aff58e983bbee061f9c14718c5ef81f39415b28f5235c1d79ccd76fa89c5e4",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/s10-d-0003.json": "70aa95fa63f48dfac96609d9a265ee085fd5fa520a135e3edb298cbfabeac0eb",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/s10-d-0004-request.json": "e6ec0aaf91d0a873057c8bc4d9812213158a8b83d0d2aab567c133c5f905a4b8",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-off-v1/s10-d-0004.json": "6d7dffac9a2e423b6bed24a3b3be8adb58c1dac10fad1b67dcb936323fc79a8f",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/ELM-SEC-FREETEXT-V1.json": "f55c8b3e61191540f88d91b2d3b3237d92648d5798223706d874a1670088e6b2",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/ELM-SEC-NUMERIC-V1.json": "605815e289dbcbe74df9d7e639caa28dfa2a35f496b45803cc60a076a3960e91",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/preflight.json": "7ea5418fd23517ed3ef7b52f50830696ac7100f5680b8ecfadf23335dd66d1cc",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/report.json": "f45d706064cbee2e3396e5888579fa818806994d46f3d51c569ff7e9b9afb306",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/s10-d-0005-request.json": "eac47cff4baf5748325b31e36d3ad96e22ccbebc2c4f7c35fc1062d2dc4d3038",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/s10-d-0005.json": "f026cb198aadd32650862e49410d4f1991ab924dc2f675ca71e57ebe385e857a",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/s10-d-0006-request.json": "61c2a875f493621251fef69a713ac6b7c65ffea126b21b9940d0bca5c81bcbec",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d1-on-v1/s10-d-0006.json": "a0de66aecb1145ced357abe250ec4f1496cd08e266e7a15f8af585a2c98ca7a2",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/ELM-SEC-FREETEXT-V1.json": "16b41a6ec2da54a9f6e2ccd294507caf12de804770931348600557fff5b6ce41",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/ELM-SEC-NUMERIC-V1.json": "1816b625de13904b798c133819d4f157c3cec9e4a4847036586530e4ff9be30a",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/preflight.json": "0616aecaee6e34862dcc56f1bfdbbcd7dcc4d942fc389f3479b22ff4f88d383f",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/report.json": "16adadf753a27379b34f19249ebd030a68c18ab7ebf23a6fe2b83398b4f0cf3d",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/s10-d-0007-request.json": "c0aff58e983bbee061f9c14718c5ef81f39415b28f5235c1d79ccd76fa89c5e4",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/s10-d-0007.json": "4b0abd91c3973b7bbeb53f3489cdb33d1d1ecd5f4ba27c9a14f9623ab307d468",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/s10-d-0008-request.json": "e6ec0aaf91d0a873057c8bc4d9812213158a8b83d0d2aab567c133c5f905a4b8",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-full-off-v1/s10-d-0008.json": "d747bc02384ec8d03eb7a577947c8a1bf2e000777bf7e7e91a4569f07cb00fff",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/ELM-SEC-FREETEXT-V1.json": "d3e664027ee69a6028344b611f0ce17eb8355e6f540f1ecf563c80512727f927",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/ELM-SEC-NUMERIC-V1.json": "2a283c712f6571c56dbcf7cf44c491adc64f24a80aa46e74cb459fdd29ba58be",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/preflight.json": "a63adac32ef16885f5ecd721b05024090ebdd8e5e3b24e24b5a7818343a9991c",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/report.json": "04b7183fa3f45b229936a8c0864690ee72c386cb7731abdb1bd82da72d519579",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/s10-d-0009-request.json": "0acf29da55d9670a7ac2e9f639dc3b42c870590ceff0aa4acd03bc27d2e40e7a",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/s10-d-0009.json": "c61f75429dc4a10a0a3f01b89d01cd29c322ab63c026473f25585804a51061a8",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/s10-d-0010-request.json": "f2079226d3940641f3f26b53fbdb88131f14e4f95ef69225528d4c169fd62798",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d2-narrow-off-v1/s10-d-0010.json": "6b4bbdd5f7ce4d6238441794e7d694ee5be875efffe357b2c56a2358be84b7cd",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/ELM-RISK-PREVIEW-V1.json": "aac77e39830b553ef52ccd145316edf6eb73791ac0c4f630cf3aabb868734479",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/ELM-SOC-FAILED-CHECK-V1.json": "4801355374fe68fa2c0839b16865d44b87e0741ea0207e113fb5a2ad8cdbeadd",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/preflight.json": "3955ecdd1eb474b79514e445c00d80a815c7591b4746b86af6cb793b24828b75",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/report.json": "e893d62aa94a872c5d557a69a259c3aa77f7bd6a4b123b2582de9ec994c9d335",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/s10-d-0011-request.json": "e99f388356843e6ec58f1957ca8a6cfaa85c457a7628f4c205e5c7bc9e4752b0",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/s10-d-0011.json": "a4ae3440d08be766b56c2247743c82be70c52b929879a45e316583ffccc8f231",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/s10-d-0012-request.json": "4832f5197232b288cfe69d7f478606ae161485f233cfc592c75eeacdbe60cfe1",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-off-v1/s10-d-0012.json": "c3091a6613bf4e99382f0b374ca6bf28783225cc7d5e221a00f049c1f16b8d4a",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/ELM-RISK-PREVIEW-V1.json": "6bc488692c12758217ea3446abffb663dedfc7b0704d0e7f9cae6394ca2a69ce",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/ELM-SOC-FAILED-CHECK-V1.json": "b744415a429037ceefadc9d5fbf91f0a3a5ff8f4a2985aef303cf3049083c80a",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/preflight.json": "f9af8a1036c803aa59c74cd87c292ec4925c5a8976e855cf889521206f492031",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/report.json": "f05633861b421bd518648b62db6a99e97267cd4cc34d1a20227141823ac8b91b",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/s10-d-0013-request.json": "3ab64f91d5fd2bbf9e420672a597ff46336265e5be38b65a2992d31c8ea9d483",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/s10-d-0013.json": "a351c8dcbf1d39b7dc56fba4a61890b8c443c947bfde979f5ee4be318237d1ad",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/s10-d-0014-request.json": "a6f826bc355a2624f3f90e296bad276b32b96cf6b5f507d13d9313b27d45073b",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d3-ledger-on-v1/s10-d-0014.json": "d8c6064ec223d9a051b4aeb5bdad693f559dc7b583dae37f5d6c9a708164ae2f",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-benign-v2/ELM-SEC-NUMERIC-V1.json": "17ad09201fa4c10bfcfed5d1d4890051c5ad4919d6079a0931aea413ac8444be",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-benign-v2/preflight.json": "04a5b102b848c260aa6add76b0a0f9a2ca6cd79558e2f008c83bb9883af9340f",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-benign-v2/report.json": "f4fafc31c0be14ed608c318ccd5357661310688746bf60e611cb16e7e21bcdad",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-benign-v2/s10-d-0016-request.json": "6883494eaa5405c99c678ba7727978ea9124f49879fe05f70313345b4975eb2b",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-benign-v2/s10-d-0016.json": "e23f75653da0c4dc1e94659e69284b28dd67448e57c9cac52a86788a432f0bea",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-positive-v2/ELM-SEC-FREETEXT-V1.json": "b0ceab3a8dc424d3b789ccf9fb83886f3431d28b042e9075d4345055e075f72e",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-positive-v2/preflight.json": "42026e69e14409cca3ae875b6a455c9bf79c3e3d1c764612eea067cf3ada4a53",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-positive-v2/report.json": "a03a803181b2fa499e51fc22f974c6952d29da5ee73b1daa8ece34e7f437994e",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-positive-v2/s10-d-0015-request.json": "5dba981c5eab657a1e916cc83724ebf00dc0ebfba48c00f1b3a05f2b70c428a5",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/d4-explicit-positive-v2/s10-d-0015.json": "3ba22cc8226cd0d790794a139406a9f054bcd25936819fa7f06fb36e2781f04c",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/review-d1-v1/authored-review.json": "e01cd5339e1a2c819afaedda93ae7812589146b65534fc3fbf84b86be22e0818",
+    "knowledge_base/workspaces/elm-sprint10-lab/accounting/trials/review-final-v1/authored-review.json": "8962d9a602e1c9a57ee0fd0205a6e3ff46affab327f3001c701e231dbb36a784",
+    "knowledge_base/workspaces/elm-sprint10-campaign/journal.jsonl": "8950e42aa2b2139c89c298f9a55df9a2a1db8e62fc43c8dbeb18eefb7fff096e",
+    "knowledge_base/workspaces/elm-sprint10-campaign/manifest.json": "4dad362544583f148b1ec148382ab17c3cd805dc1b67e1bd0ec2834389d10aa4"
+  },
+  "retained_bytes": 486540,
+  "root_cause": {
+    "task": "Full task repeatedly failed ID binding and added unsupported scope; smaller v1 reduced noise/latency but false-negative positive judgment; explicitv2 changed that decision while preserving benign no_finding. Task definition/burden is actionable.",
+    "model": "Remaining omissions, overconfident wording, capped incomplete rationales, SOC unsupported mappings and governance polarity loss persist. Small2-graph evidence cannot establish general model capacity/safety.",
+    "configuration": "Default/on used all1280 tokens on4cases and withheld; off completed both JSONs. Token budget censors semantic comparison; not evidence thinking inherently worsens fidelity.",
+    "runtime": "All16 requests have finaldone; streaming/finite bounds avoided UNKNOWN thiscampaign, not proof of provider stability.",
+    "overall": "Mixed causes; task formulation and operational budget are concrete contributors; no defensible universal primary-cause or model-size verdict."
+  },
+  "defaults": "UNCHANGED: compact app-owned coverage and graph gates; global/default provider thinking; ledgerOFF; experimental helpers not promoted.",
+  "acceptance": "NOT RUN0/12: ledger fidelity failed and narrow/off experiment incompatible with inherited Aster compact/ledgerON/default-thinking180s method.",
+  "independent_review": "PENDING",
+  "release_candidate": "NO-GO",
+  "validation": {
+    "runtime": {
+      "python": "3.13.1",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "versions": {
+        "pytest": "9.1.1",
+        "ruff": "0.17.2",
+        "fastapi": "0.138.0",
+        "pydantic": "2.13.4",
+        "httpx": "0.28.1",
+        "ollama": "0.6.2",
+        "requests": "2.34.2"
+      }
+    },
+    "full_windows": {
+      "passed": 2227,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 1,
+      "seconds": 260.68
+    },
+    "hosted_CI": "Exact final pushed-SHA result in handoff",
+    "ruff": "PASS",
+    "pip_check": "No broken requirements found",
+    "diff_check": "PASS",
+    "final_preservation_and_cases": {
+      "passed": 10,
+      "failed": 0,
+      "seconds": 10.48
     }
   },
-  "A": {
-    "scheduled": 12,
-    "attempted": 0,
-    "status": "NOT RUN; conditional gate not reached"
-  },
-  "independent_review": "PENDING",
-  "D2": {
-    "raw_attempts": 4,
-    "complete_answers": 4,
-    "full_app_returned": 1,
-    "narrow_internal_returned": 2,
-    "positive_narrow_decision": "no_finding: false negative despite reproducing relevant hazard facts",
-    "benign_narrow_decision": "no_finding: appropriate scoped decision, with overconfident prevention wording and missing flow identifiers",
-    "conclusion": "Smaller task removes ID/category burden and generic noise but v1 still fails central positive judgment; no promotion.",
-    "followup": "D4 explicit-v2 generic decision-criterion clarification; same frozen input/schema/settings. Original v1 retained byte-identical."
-  },
-  "D3": {
-    "raw_attempts": 4,
-    "complete_answers": 4,
-    "analyzer_returned": 4,
-    "soc": "Ledger adds PID731; both arms omit exact approval count/window and keep unsupported Discovery + irrelevant PowerShell citation.",
-    "governance": "Both omit reported implemented gate/test and7of7; both turn unknown retention implementation into lack. On improves external-sharing scope wording but does not meet fidelity gate.",
-    "ledger_activation": "NO; defaultOFF"
-  }
+  "selected_path_only_fact_reviews": [
+    {
+      "attempt": "s10-d-0009",
+      "scheduled": 4,
+      "verdicts": [
+        {
+          "fact_id": "P1",
+          "verdict": "PARTIAL",
+          "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P2",
+          "verdict": "PARTIAL",
+          "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P5",
+          "verdict": "PARTIAL",
+          "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P6",
+          "verdict": "CONTRADICTED",
+          "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        }
+      ]
+    },
+    {
+      "attempt": "s10-d-0010",
+      "scheduled": 4,
+      "verdicts": [
+        {
+          "fact_id": "B1",
+          "verdict": "PARTIAL",
+          "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B2",
+          "verdict": "PARTIAL",
+          "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B5",
+          "verdict": "PARTIAL",
+          "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B6",
+          "verdict": "PARTIAL",
+          "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        }
+      ]
+    },
+    {
+      "attempt": "s10-d-0015",
+      "scheduled": 4,
+      "verdicts": [
+        {
+          "fact_id": "P1",
+          "verdict": "PARTIAL",
+          "criterion": "Full path/public classification/QUESTION source and marker-only scope must all be present; retained fragments alone are partial.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P2",
+          "verdict": "PARTIAL",
+          "criterion": "WRAPPER to REPHRASER plus unchanged content/markers/rejection state and WRAPPED-CONTEXT ID all required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P5",
+          "verdict": "PARTIAL",
+          "criterion": "Caller-stated controls, missing independent tests and no deployment approval must remain distinct.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "P6",
+          "verdict": "PARTIAL",
+          "criterion": "Conditional risk must fit the two actual input edges; false no_finding contradicts it. App-projected IDs earn no model credit.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        }
+      ]
+    },
+    {
+      "attempt": "s10-d-0016",
+      "scheduled": 4,
+      "verdicts": [
+        {
+          "fact_id": "B1",
+          "verdict": "PARTIAL",
+          "criterion": "Full fixed12/24 pair, NUMBERS/FORMATTER roles and FIXED-NUMBERS identifier required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B2",
+          "verdict": "PARTIAL",
+          "criterion": "Constant12,24 FORMATTER/CAPTIONER path, no substitutions and FIXED-CONTEXT identifier required.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B5",
+          "verdict": "PARTIAL",
+          "criterion": "Fixed-input and review claims stay unverified, not absent or independently proven.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        },
+        {
+          "fact_id": "B6",
+          "verdict": "PARTIAL",
+          "criterion": "No supplied attacker-controlled path supports a finding; verification gap is not a fabricated attack or safety certification.",
+          "evidence": "See quoted model output and original sanitized response; omission has no affirmative excerpt."
+        }
+      ]
+    }
+  ]
 }

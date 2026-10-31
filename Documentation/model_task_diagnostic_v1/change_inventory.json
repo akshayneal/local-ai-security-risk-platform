@@ -1,0 +1,145 @@
+{
+  "base_branch": "feature/controlled-inference-fidelity-sprint9",
+  "base_commit": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "final_branch": "feature/model-task-grounding-diagnostic-sprint10",
+  "implementation_commits": [
+    {
+      "sha": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+      "subject": "Preregister Sprint 10 model-task comparisons and isolated accounting"
+    },
+    {
+      "sha": "ad14f124f3511dbf7af109d50c8f3d05c6037b4a",
+      "subject": "Preserve core diagnostics and preregister explicit decision-rule ablation"
+    }
+  ],
+  "audit_commit": "Containing final audit commit; exact full SHA and hosted CI in final handoff",
+  "changed_path_count": 29,
+  "changed_paths": [
+    {
+      "status": "A",
+      "path": "Documentation/56_model_task_diagnostic_plan.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/57_model_task_diagnostic_readout.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/acceptance_status.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/change_inventory.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/checkpoint.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/decision_log.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/lab_readout.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/preflight.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/model_task_diagnostic_v1/resume_preflight.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/sprint10_preservation.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/__init__.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/acceptance.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/freeze.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/narrow.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/plan.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/rubric.md"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/runner.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/transport.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/model_task_diagnostic_v1/umbrella.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/sprint10_history.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_model_task_acceptance.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_model_task_diagnostic_cases.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_model_task_diagnostic_narrow.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_model_task_runner.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_model_task_transport.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_sprint10_preservation.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_sprint9_preservation.py"
+    }
+  ],
+  "production_changes": [],
+  "protected_raw_counts": {
+    "s4check": 590,
+    "northstar": 13,
+    "cedar7": 36,
+    "maple8": 14,
+    "birch9": 18
+  },
+  "inherited_untracked_preserved": 405,
+  "main_and_peeled_v2_3_0": "fde00d0ca5d21eecbc6973cc784550ed453edb7a"
+}

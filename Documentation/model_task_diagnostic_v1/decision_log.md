@@ -56,3 +56,22 @@ The new rule contains no case ID, gold label, numeric answer or case-specific
 finding. Original recorded v1 prompts/schema were checked byte-identical after
 adding optional v2. All D4 outcomes, including failure, will be retained; no more
 than2 calls and no Aster tuning. No improvement is claimed before these outcomes.
+
+## Final development close
+
+D4 explicit-v2 returned conditional_concern for free text and no_finding for fixed
+numeric input in30.90/36.17s. Both raw rationales end mid-sentence at400 characters;
+no app truncation/fill/repair occurred. This corrects one v1 false-negative decision
+but does not establish complete explanation quality or full-model fact retention.
+The explicit predicate supplies substantial logic and the positive echoes it;
+small correlated cases cannot establish general ability or one primary cause.
+
+All16 raw sends are finalized:12 complete JSON/shape-valid answers,4 known length
+withholdings,0UNKNOWN,0retry,0SOC repair. Public analyzers returned6/12 submissions;
+experimental narrow records returned4/4. No more lab calls. Aster0/12 NOT RUN:
+ledger fidelity failed, latest full path not viable, narrow/off incompatible with
+its locked method. Defaults unchanged; no production source was changed.
+
+Final Windows full suite2227passed, one pre-existing warning,260.68s. Full Ruff,
+pip check and diff check pass. Final raw/protected identities and feature-only
+push/CI remain the handoff gate. All original judgments/raw artifacts retained.
