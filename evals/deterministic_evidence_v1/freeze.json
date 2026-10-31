@@ -1,0 +1,11 @@
+{
+  "format": "sprint11-freeze-v1",
+  "sha256": {
+    "evals/deterministic_evidence_v1/dev_cases.json": "2daa67aaa068895c964bf7fbc45fa870ad0550eb21a2915054db94d70021e9e0",
+    "evals/deterministic_evidence_v1/acceptance_cases.json": "0a12d2b9b7016faa3e8a7e88380b85d650673b3dc0fdd84f619c1d792a4ce471",
+    "evals/deterministic_evidence_v1/plan.json": "181d45e6cb87803d50b4be73dbbcce67448a30f75176bc90d2508eee7b066552",
+    "evals/deterministic_evidence_v1/rubric.md": "94bbcf4af9722a9b9a53ee18b23cad370dd75b10d8565fbf6ca876af213d9b94",
+    "evals/deterministic_evidence_v1/acceptance.py": "044382741c3aac42d6cd303d7b20edc1ffcd1d003a2da1bcf69e1eb923ec0d80",
+    "evals/deterministic_evidence_v1/scoring.py": "cd85b0bdf9f6db5e54db24cdae042868c76528695e2a7329e294f133b9821d75"
+  }
+}

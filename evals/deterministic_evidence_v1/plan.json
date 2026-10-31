@@ -1,0 +1,75 @@
+{
+  "format": "sprint11-prospective-v1",
+  "base": "564499f0537688b6422f48c51fc5995467f000c6",
+  "model": "qwen3:8b",
+  "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "provider": "0.40.13",
+  "options": {
+    "temperature": 0.1,
+    "num_ctx": 32768,
+    "num_predict": 4096
+  },
+  "think": false,
+  "sampling": "installed top_p .95, top_k20, repeat_penalty1; no seed; same controls for all formats",
+  "bounds": {
+    "wall_seconds": 720,
+    "connect_seconds": 10,
+    "idle_seconds": 120,
+    "campaign_seconds": 21600,
+    "wire_response_bytes": 1000000,
+    "retention_bytes": 24000000
+  },
+  "caps": {
+    "dev": 24,
+    "acceptance": 12,
+    "global": 36,
+    "D0": 12,
+    "D1": 8,
+    "D2": 0,
+    "D3": 4
+  },
+  "design": [
+    "D0: six dev cases, F1 and F3 paired in that order per case (12 sends)",
+    "D1: same six cases F2; up to two extra counted SOC repairs (8 maximum)",
+    "D2 NOT RUN: no second installed completion model; embedding-only model ineligible",
+    "D3 up to4 only after prospective specific falsification entry and committed treatment; no selective retry",
+    "Reallocation before outputs: D0 uses6 of unavailable comparison capacity for complete matched cross-pillar F1/F3 pairs, D1 reserves2 for genuine existing SOC repair; not unrelated samples"
+  ],
+  "F1": "global system, same original complete input/question/rule; minimal verdict/explanation/unknowns/validation schema, no fact IDs or copying",
+  "F2": "unmodified baseline analyzers/prompts/schema/gates, compact AI default, ledgerOFF; counted local streaming transport and thinking-off evaluation runtime only",
+  "F3": "same question/rule, complete selected canonical facts, small proposal domain, no copied facts; Python canonical report projection; one category/path question, other domains unassessed",
+  "budget_rationale": "4096 output tokens, thinkingOFF, 720s at observed ~7.5tokens/s. Same usable cap for F1/F2/F3. Context32768 within installed model40960 allows a conservative upper bound: every UTF8 byte in messages/schema counts one token plus512 template overhead and4096 generated tokens; refuse before sending if bound exceeds32768. Avoid trusting a token estimate that could silently drop required fields. This is request-local, no shared setting change. Record actual prompt_eval_count and finish reason. No hidden shift/truncation.",
+  "stops": [
+    "UNKNOWN blocks all further inference; no replay/resolution by elapsed time",
+    "no hidden retry/fallback; all repairs count",
+    "no more than24dev/12acceptance; unused nontransferable",
+    "provider identity drift, active foreign evaluation, incomplete required context stop"
+  ],
+  "acceptance": {
+    "formulation": "F3",
+    "count": 12,
+    "order": [
+      "JUNIPER-SOC-POSITIVE",
+      "JUNIPER-SOC-NEGATIVE",
+      "JUNIPER-SOC-AMBIGUOUS",
+      "JUNIPER-SOC-ADVERSARIAL",
+      "JUNIPER-GOVERNANCE-POSITIVE",
+      "JUNIPER-GOVERNANCE-NEGATIVE",
+      "JUNIPER-GOVERNANCE-AMBIGUOUS",
+      "JUNIPER-GOVERNANCE-ADVERSARIAL",
+      "JUNIPER-AI-SECURITY-POSITIVE",
+      "JUNIPER-AI-SECURITY-NEGATIVE",
+      "JUNIPER-AI-SECURITY-AMBIGUOUS",
+      "JUNIPER-AI-SECURITY-ADVERSARIAL"
+    ],
+    "method": "same fixed model/options/thinkFalse/strict streaming, one generation per distinct case, no repair; unmodified acceptance runner/scorer",
+    "gates": [
+      "each pillar devpositive+negative decisions appropriate with no material contradiction/invented authority/high-impact unsupported action",
+      "all required facts dispatched and report-bound, no omissions",
+      "method compatible; code pinned/committed; protected hashes pass; no pending provider work"
+    ],
+    "no_post_acceptance_tuning": true
+  },
+  "judge": "implementation author, semantic review pending independent adjudication",
+  "disjointness": "new Larch and Juniper cases; no old case/gold imported; holdout never passed to development runner"
+}

@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from sprint8_history import _snapshot
+from sprint11_history import historical_test as sprint11_historical_test
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab"
@@ -26,6 +27,7 @@ def assert_scope(names, allowed):
     assert not set(names) - set(allowed), "Unauthorized Sprint 10 path"
 
 
+@sprint11_historical_test
 def test_current_exact_paths_and_all_other_base_blobs():
     manifest = load("Documentation/sprint10_preservation.json")
     assert manifest["base_commit"] == BASE

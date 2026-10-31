@@ -1,0 +1,232 @@
+{
+  "time_utc": "2026-10-31T23:45:03.288953+00:00",
+  "start_branch": "feature/model-task-grounding-diagnostic-sprint10",
+  "base": "564499f0537688b6422f48c51fc5995467f000c6",
+  "origin_base": "564499f0537688b6422f48c51fc5995467f000c6",
+  "new_branch": "feature/deterministic-evidence-benchmark-sprint11",
+  "prior_branch_absent_local_remote": true,
+  "tracked_dirty": [],
+  "inherited_untracked_count": 405,
+  "protected_counts": {
+    "s4check": 590,
+    "northstar": 13,
+    "cedar7": 36,
+    "maple8": 14,
+    "birch9": 18,
+    "elm10": 71,
+    "aster_files": 7
+  },
+  "elm_bytes": 486540,
+  "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
+  "main_and_peeled_tag": "fde00d0ca5d21eecbc6973cc784550ed453edb7a",
+  "provider_metadata": {
+    "/api/version": {
+      "version": "0.40.13"
+    },
+    "/api/tags": {
+      "models": [
+        {
+          "name": "embeddinggemma:300m",
+          "model": "embeddinggemma:300m",
+          "modified_at": "2026-10-28T21:18:17.4089083-04:00",
+          "size": 621875917,
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+          "details": {
+            "parent_model": "embeddinggemma:300m-bf16",
+            "format": "gguf",
+            "family": "gemma3",
+            "families": [
+              "gemma3"
+            ],
+            "parameter_size": "307.58M",
+            "quantization_level": "BF16",
+            "context_length": 2048,
+            "embedding_length": 768,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "embedding"
+          ]
+        },
+        {
+          "name": "qwen3:8b",
+          "model": "qwen3:8b",
+          "modified_at": "2026-10-25T18:09:29.600096-04:00",
+          "size": 5225388164,
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        }
+      ]
+    },
+    "/api/ps": {
+      "models": []
+    },
+    "embeddinggemma:300m": {
+      "capabilities": [
+        "embedding"
+      ],
+      "details": {
+        "parent_model": "embeddinggemma:300m-bf16",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "307.58M",
+        "quantization_level": "BF16"
+      },
+      "parameters": "num_batch                      2048\nnum_ctx                        2048",
+      "model_info": {
+        "gemma3.attention.causal": false,
+        "gemma3.attention.head_count": 3,
+        "gemma3.attention.head_count_kv": 1,
+        "gemma3.attention.key_length": 256,
+        "gemma3.attention.layer_norm_rms_epsilon": 1e-06,
+        "gemma3.attention.sliding_window": 512,
+        "gemma3.attention.sliding_window_pattern": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "gemma3.attention.value_length": 256,
+        "gemma3.block_count": 24,
+        "gemma3.context_length": 2048,
+        "gemma3.embedding_length": 768,
+        "gemma3.feed_forward_length": 1152,
+        "gemma3.pooling_type": 1,
+        "gemma3.rope.freq_base": 1000000,
+        "general.architecture": "gemma3",
+        "general.basename": "embeddinggemma",
+        "general.file_type": 32,
+        "general.license": "gemma",
+        "general.parameter_count": 307581696,
+        "general.quantization_version": 2,
+        "general.size_label": "300M",
+        "general.tags": [
+          "sentence-transformers",
+          "sentence-similarity",
+          "feature-extraction",
+          "text-embeddings-inference",
+          "sentence-similarity"
+        ],
+        "general.type": "model",
+        "tokenizer.ggml.add_bos_token": true,
+        "tokenizer.ggml.add_eos_token": true,
+        "tokenizer.ggml.add_sep_token": false,
+        "tokenizer.ggml.add_space_prefix": false,
+        "tokenizer.ggml.bos_token_id": 2,
+        "tokenizer.ggml.eos_token_id": 1,
+        "tokenizer.ggml.model": "llama",
+        "tokenizer.ggml.padding_token_id": 0,
+        "tokenizer.ggml.pre": "default",
+        "tokenizer.ggml.scores": [],
+        "tokenizer.ggml.token_type": [],
+        "tokenizer.ggml.tokens": [],
+        "tokenizer.ggml.unknown_token_id": 3
+      }
+    },
+    "qwen3:8b": {
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ],
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M"
+      },
+      "parameters": "top_p                          0.95\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6\ntop_k                          20",
+      "model_info": {
+        "general.architecture": "qwen3",
+        "general.basename": "Qwen3",
+        "general.file_type": 15,
+        "general.license": "apache-2.0",
+        "general.parameter_count": 8190735360,
+        "general.quantization_version": 2,
+        "general.size_label": "8B",
+        "general.type": "model",
+        "qwen3.attention.head_count": 32,
+        "qwen3.attention.head_count_kv": 8,
+        "qwen3.attention.key_length": 128,
+        "qwen3.attention.layer_norm_rms_epsilon": 1e-06,
+        "qwen3.attention.value_length": 128,
+        "qwen3.block_count": 36,
+        "qwen3.context_length": 40960,
+        "qwen3.embedding_length": 4096,
+        "qwen3.feed_forward_length": 12288,
+        "qwen3.rope.freq_base": 1000000,
+        "tokenizer.ggml.add_bos_token": false,
+        "tokenizer.ggml.bos_token_id": 151643,
+        "tokenizer.ggml.eos_token_id": 151645,
+        "tokenizer.ggml.merges": [],
+        "tokenizer.ggml.model": "gpt2",
+        "tokenizer.ggml.padding_token_id": 151643,
+        "tokenizer.ggml.pre": "qwen2",
+        "tokenizer.ggml.token_type": [],
+        "tokenizer.ggml.tokens": []
+      }
+    }
+  },
+  "process_observation": "ollama app PID17584 / serve18640; no Python/eval/backend; empty api/ps; only TimeWait connection owner0",
+  "historical_unknown": "Birch UNKNOWN preserved; no old request/journal replayed",
+  "new_generation_sends": 0,
+  "python": "Python 3.13.1",
+  "source_sha256": {
+    "app/analysis_trace.py": "00d8945392362997ff9a5da4644f9822fb3c4d3e08ae7fd4debba175f7971918",
+    "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+    "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+    "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+    "app/ai_security_analyzer.py": "120948a4215830ed61f1aa04d3f6a0d94901172aa8c96b1948dbd1416a80dd8c",
+    "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+    "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+    "app/output_policy.py": "420bba2510ad473b44470d7ac2016ef165d557371a9524c179c341cb1aaa20de",
+    "app/retrieval/serialization.py": "ce380bc10fdaad27a7b7b4a5ecd0312ad87db53f46872913a130d42f4b426c54",
+    "app/retrieval/orchestration.py": "5cfbdfb921d1e4abec4abdb0f90220848f19149121942dd4631ca59df8489026",
+    "dashboard/exports.py": "8056cf5b45a2ee5b5be7f431ef5e3c325e227375599c52e13f1509afcf7e01a4",
+    "tests/test_sprint10_preservation.py": "dae7f6785b3f2cc64bbf4d48bceb865809b85d958cf841e25c12e3db7ae35e2f"
+  }
+}
