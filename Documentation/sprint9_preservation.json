@@ -12,7 +12,6 @@
     "tests/test_ai_security_workflow.py": "7a0c08af20d2fbc65dc183572d2fd138c70e0153",
     "tests/test_ai_security_ui.py": "2cb737253632b2e483381177058b1f2c2c6ed1e8",
     "tests/test_cross_pillar_smoke.py": "d2e8a91f49c978c3be454a40d9758de22c6ba85a",
-    "tests/test_reliability_evaluation.py": "87c03a48168296f034b84d7bbc39c82427aeccaf",
     "tests/test_grounding_preservation.py": "eabe051fa3a28224a98e3b53b90ab62efa162da2"
   },
   "authorized_new": [

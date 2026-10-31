@@ -222,6 +222,12 @@ class AiSecurityResponse(Contract):
         return self
 
 
+class CandidateFinding(TechnicalFinding):
+    """Internal proposals must identify at least one declared directed flow."""
+
+    flow_ids: Ids = Field(min_length=1)
+
+
 class CandidateGeneration(Contract):
     """Internal model proposals; identity and structural coverage belong to Python.
 
@@ -229,7 +235,7 @@ class CandidateGeneration(Contract):
     against the declared graph/guidance, but that does not prove entailment.
     """
 
-    findings: tuple[TechnicalFinding, ...] = Field(max_length=12)
+    findings: tuple[CandidateFinding, ...] = Field(max_length=12)
     evidence_gaps: tuple[Text, ...] = Field(max_length=16)
     human_review_requirements: Notes = Field(min_length=1)
 

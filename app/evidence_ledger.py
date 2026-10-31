@@ -2,6 +2,7 @@
 
 The ledger preserves exact bounded input values and existing named telemetry roles.
 It establishes what the request supplied, not whether those assertions are true.
+H2 is experimental and NOT LIVE VALIDATED; prompt inclusion is internal opt-in.
 """
 
 import hashlib
@@ -23,7 +24,7 @@ MAX_LEDGER_VALUE_LENGTH = 1024
 MAX_LEDGER_BYTES = 24_000
 MAX_OMITTED_PATHS = 16
 
-_ENABLED: ContextVar[bool] = ContextVar("supplied_field_ledger_enabled", default=True)
+_ENABLED: ContextVar[bool] = ContextVar("supplied_field_ledger_enabled", default=False)
 
 _ROLES = {
     "DeviceId": "device",
@@ -81,7 +82,9 @@ class EvidenceLedger(SupportModel):
 
 @contextmanager
 def evidence_ledger_mode(enabled: bool) -> Iterator[None]:
-    """Internal lab ablation; no request field can select or change this mode."""
+    """Internal experimental opt-in; no request field can select this mode."""
+    if type(enabled) is not bool:
+        raise ValueError("Ledger selection must be a boolean")
     token = _ENABLED.set(enabled)
     try:
         yield

@@ -52,3 +52,51 @@ failed interventions and alternative explanations.
   test to mutate the old-protected client; no guard assertion was changed.
 - The proposed ledger is an exact input projection and prompt intervention.
   No general control-polarity or citation-entailment validator is claimed.
+
+## Adaptive lab: six actual raw requests
+
+All calls used implementation 1c421c08815060c746576b457e3d60351868a949,
+the frozen model/digest/options, identical paired Birch inputs, no ledger and
+provider-default thinking. The shared journal records actual wire/source hashes.
+
+| Attempts | Contrast | Observations | Decision |
+| --- | --- | --- | --- |
+| 1–2 | Existing coverage union + global instructions | Both graphs returned false insufficiency, zero findings; supplied classification and tested-control state were misstated. | Replace model-owned coverage, retain failures. |
+| 3–4 | Compact contract + same global instructions | Both returned advisory; risky case had one plausible retrieval core and two unsupported categories; benign zero findings but false component-absence wording. | Retain structural coverage architecture, reject semantic viability. |
+| 5–6 | Same compact contract + narrow instructions | Risky output added public-to-confidential and downstream-consumer inventions; benign request timed out at about 181 seconds. | Abandon automatic narrow instructions; unknown timeout stops all further inference. |
+
+Attempt 6 reserved before send. A requests ReadTimeout left provider completion
+unknown. The application's retry entered generation code but the shared budget
+refused transport before another raw request: six reservations total, five provider
+responses, five HTTP 200 advisories, one withheld HTTP 422, zero final attempts.
+Timeout is not proof cancellation; shared Ollama was not stopped/restarted/queried
+to force recovery. The journal remains blocked; no new trials or warm-ups occurred.
+
+These repeated two-case observations are development evidence only. No authored
+output met the predeclared strict usefulness criterion. No acceptance case was
+submitted. H2's SOC/governance comparison and optional thinking ablation are NOT
+RUN. Source membership passed for returned citations but did not establish their
+applicability. Complete expected facts are judged separately from retained semantic
+fragments; empty flow references fail the complete graph-path requirement.
+
+## Post-stop software intervention; no live validation
+
+- TDD: 16 failed / 41 passed for flow/category gates and attributed complete
+  purpose retention. Internal findings now require a real flow; schema and runtime
+  restrict categories using directed model paths, declared tools and explicit
+  nonpublic flow labels. Public TechnicalFinding and response shapes stay intact.
+  Multihop positive, disconnected/borrowed-path, public/unknown disclosure and
+  zero-finding tests remain. Necessary graph support is not semantic entailment.
+- Broken-authorization coverage is explicitly limited to declared tool/invoker
+  paths. General permission-matrix authorization remains unassessed.
+- Replace generic app summary with the complete attributed purpose and bounded
+  typed inventory counts. No description parser, truncation or authority promotion.
+- Revert only our automatic narrow-system selection to original global prompting;
+  keep explicit workflow context for future separately authorized experiments.
+- H2 ledger remains available through internal evidence_ledger_mode(True), but off
+  by default. No live evidence supports adding its extra context to legacy prompts.
+  Default-on and disabled prompt arms are tested against original prompt framing.
+- Latest AI Security compatibility batch: 117 passed. H2 compatibility batch:
+  239 passed. These are software checks, not further model observations.
+- Final acceptance: NOT RUN; strict lab viability unmet and timeout stop active.
+  Remaining lab allowance 18 and final allowance 12 remain unused, not transferable.

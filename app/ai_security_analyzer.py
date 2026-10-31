@@ -2,7 +2,7 @@
 
 import json
 from collections.abc import Iterator
-from contextlib import contextmanager, nullcontext
+from contextlib import contextmanager
 from contextvars import ContextVar
 
 from app.ai_security_contracts import (
@@ -13,16 +13,13 @@ from app.ai_security_contracts import (
     AiSecurityResponse,
     AiSecuritySource,
     CandidateGeneration,
+    DataFlow,
     generation_schema,
     unique,
     validate_generation,
 )
 from app.ai_security_sources import AiSecurityBoundaryError, load_guidance
-from app.inference_context import (
-    generation_system_prompt,
-    microsoft_model_context,
-    workflow_model_context,
-)
+from app.inference_context import microsoft_model_context
 from app.knowledge_workspace import protected_evidence_context
 from app.ollama_client import OLLAMA_MODEL, call_model_json
 from app.retrieval.serialization import EVIDENCE_INSTRUCTIONS
@@ -75,8 +72,14 @@ Propose zero to twelve conditional findings; zero is appropriate when no specifi
 candidate concern is justified. Missing control tests are gaps, not vulnerabilities
 or a reason to declare a supplied architecture absent. Preserve benign constraints.
 For each finding use actual component, flow, control and supplied evidence IDs.
-A cited flow must include both endpoint component IDs. Match each finding category
+Every finding must cite at least one actual flow, including both endpoint component
+IDs. Match each finding category
 to the supplied local guidance category; source IDs belong only in source_references.
+Only propose categories available in the schema. These are structural scope limits,
+not proof of risk. Sensitive disclosure needs an explicitly internal/sensitive flow;
+unknown/public is not confidential. Unsafe output needs a model-to-consumer path;
+tool agency needs a model-to-declared-tool path. Broken authorization is reviewed
+only for declared tool/invoker boundaries, not a general permission-matrix assessment.
 State a concrete hypothesis, prerequisites, possible impact, proposed mitigations,
 validation recommendations and missing evidence. Do not invent edges, capabilities,
 confirmed failures or permissions. Claimed controls, tests and approvals remain
@@ -92,6 +95,7 @@ LIMITATIONS = (
     "Deterministic checks validate structure and referenced identities, not semantic correctness, control effectiveness or model injection resistance.",
     "Source membership and category labels do not prove entailment. All findings require human review; no actions were executed.",
     "Read-only provenance panel only; historic Inspector correction records are not extended to this workflow. Local organizational knowledge is unsupported.",
+    "Compact category gates use declared graph paths and nonpublic flow labels, not prose entailment. Compact authorization coverage is limited to declared tool/invoker boundaries; other authorization requirements remain unassessed.",
 )
 
 
@@ -131,6 +135,145 @@ def reviewability_gaps(request: AiSecurityRequest) -> tuple[str, ...]:
             "Supply a directed flow between a model and a distinct declared component.",
         )
     return ()
+
+
+def reachable(
+    start: str, flows: tuple[DataFlow, ...], *, reverse: bool = False
+) -> set[str]:
+    """Bounded graph reachability, including the start; no description parsing."""
+    reached = {start}
+    pending = [start]
+    while pending:
+        current = pending.pop()
+        for flow in flows:
+            source, target = (
+                (flow.target_id, flow.source_id)
+                if reverse
+                else (flow.source_id, flow.target_id)
+            )
+            if source == current and target not in reached:
+                reached.add(target)
+                pending.append(target)
+    return reached
+
+
+def category_flow_scope(
+    request: AiSecurityRequest,
+) -> tuple[set[str], dict[str, set[str]]]:
+    """Necessary declared graph support, never proof of a vulnerability.
+
+    Each category requires a cited edge on its applicable path. Other cited edges
+    may establish upstream prerequisites or downstream impact, but must remain on
+    a directed model input/output path. Full multihop paths need not be restated.
+    """
+    flows = tuple(f for f in request.flows if f.source_id != f.target_id)
+    models = {c.id for c in request.components if c.kind == "model"}
+    ancestors = {model: reachable(model, flows, reverse=True) for model in models}
+    descendants = {model: reachable(model, flows) for model in models}
+    inputs = {
+        f.id
+        for f in flows
+        if any(
+            f.source_id in nodes and f.target_id in nodes
+            for nodes in ancestors.values()
+        )
+    }
+    outputs = {
+        f.id
+        for f in flows
+        if any(
+            f.source_id in nodes and f.target_id in nodes
+            for nodes in descendants.values()
+        )
+    }
+    related = inputs | outputs
+    retrieval = set()
+    for component in request.components:
+        if component.kind != "retrieval_store":
+            continue
+        before_store = reachable(component.id, flows, reverse=True)
+        after_store = reachable(component.id, flows)
+        for model in models:
+            if model not in after_store:
+                continue
+            retrieval.update(
+                f.id
+                for f in flows
+                if (f.source_id in before_store and f.target_id in before_store)
+                or (f.source_id in after_store and f.target_id in ancestors[model])
+            )
+    tool_paths = set()
+    for tool in request.tools:
+        # Request validation already binds every invoker to a declared actor.
+        before_tool = reachable(tool.component_id, flows, reverse=True)
+        for model in models:
+            if tool.component_id not in descendants[model]:
+                continue
+            tool_paths.update(
+                f.id
+                for f in flows
+                if f.source_id in descendants[model] and f.target_id in before_tool
+            )
+    scoped = {
+        "prompt_injection": inputs,
+        "retrieval_poisoning": retrieval,
+        "sensitive_data_disclosure": {
+            f.id
+            for f in flows
+            if f.id in related and f.classification in {"internal", "sensitive"}
+        },
+        "excessive_tool_agency": tool_paths,
+        "broken_authorization": tool_paths,
+        "unsafe_output_consumption": outputs,
+    }
+    return related, {category: ids for category, ids in scoped.items() if ids}
+
+
+def candidate_schema(request: AiSecurityRequest) -> dict:
+    """Narrow decoder category choices; identical runtime gates still apply."""
+    schema = CandidateGeneration.model_json_schema()
+    _, scope = category_flow_scope(request)
+    if scope:
+        schema["$defs"]["CandidateFinding"]["properties"]["category"]["enum"] = list(
+            scope
+        )
+    else:
+        schema["properties"]["findings"]["maxItems"] = 0
+    return schema
+
+
+def validate_category_scope(
+    request: AiSecurityRequest, result: CandidateGeneration
+) -> None:
+    related, scope = category_flow_scope(request)
+    for finding in result.findings:
+        cited = set(finding.flow_ids)
+        if not cited <= related or not cited.intersection(
+            scope.get(finding.category, set())
+        ):
+            raise AiSecurityBoundaryError()
+
+
+def declared_summary(request: AiSecurityRequest) -> str:
+    """Retain one complete attributed field plus typed counts, not inferred facts.
+
+    Purpose remains untrusted text. JSON serialization and the existing plain-text
+    UI/escaped Markdown keep it as data; its contents never confer authority.
+    The 400-character purpose and fixed inventory fit the public 1200-char limit.
+    """
+    classes = {
+        name: sum(f.classification == name for f in request.flows)
+        for name in ("public", "internal", "sensitive", "unknown")
+    }
+    return (
+        f'Caller-supplied purpose (unverified): "{request.purpose}". '
+        f"Declared inventory: components={len(request.components)}, flows={len(request.flows)}, "
+        + ", ".join(f"{name}_flows={count}" for name, count in classes.items())
+        + f", tools={len(request.tools)}, controls={len(request.controls)}, "
+        f"oversight_statements={len(request.human_oversight)}. "
+        "The declared model/path supports structural review only. Candidate findings remain "
+        "unverified and require human review; zero findings are not proof of safety."
+    )
 
 
 def validate_references(
@@ -250,17 +393,12 @@ def analyze_ai_security(request: AiSecurityRequest) -> AiSecurityEnvelope:
         )
         if len(prompt.encode()) > 28_000:
             raise AiSecurityBoundaryError()
-        # Existing loopback, no-truncation/no-shift runtime contract; resets on failure.
-        # A caller-selected system prompt is preserved for a journaled ablation.
-        system_context = (
-            workflow_model_context(AISEC_SYSTEM_PROMPT)
-            if compact and generation_system_prompt() is None
-            else nullcontext()
-        )
-        with microsoft_model_context(True), system_context:
+        # Keep the existing global system prompt unless a caller explicitly selects
+        # an ablation through workflow_model_context. No implicit narrow default.
+        with microsoft_model_context(True):
             raw = call_model_json(
                 user_prompt=prompt,
-                response_schema=CandidateGeneration.model_json_schema()
+                response_schema=candidate_schema(request)
                 if compact
                 else generation_schema(),
             )
@@ -274,10 +412,11 @@ def analyze_ai_security(request: AiSecurityRequest) -> AiSecurityEnvelope:
             proposal = CandidateGeneration.model_validate(raw)
             # Check the raw proposal before assigning any public coverage status.
             validate_references(request, proposal, categories)
+            validate_category_scope(request, proposal)
             result = AiSecurityResponse(
                 application_id=request.application_id,
                 coverage_status="advisory_returned",
-                summary="The declared model and directed flow support a structural review. Candidate findings remain unverified and require human review; zero findings are not proof of safety.",
+                summary=declared_summary(request),
                 findings=proposal.findings,
                 evidence_gaps=proposal.evidence_gaps,
                 human_review_requirements=proposal.human_review_requirements,
