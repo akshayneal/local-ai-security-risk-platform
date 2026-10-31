@@ -1,0 +1,131 @@
+{
+  "format": "controlled-acceptance-readout-v1",
+  "status": "NOT RUN",
+  "reason": "Lab semantic viability unmet and raw attempt s9-0006 timed out; provider completion unknown. No further inference permitted.",
+  "freeze_commit": "1480892720bca305e48cbbc52908c80ff3cf9e3e",
+  "freeze": {
+    "format": "controlled-acceptance-v1-literal-freeze",
+    "sha256": {
+      "evals/controlled_acceptance_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+      "evals/controlled_acceptance_v1/cases.json": "baf5b4a90f91be10f939fdb8e0e04d1dd15c1b4a2fa2baca0da107c80aed90bd",
+      "evals/controlled_acceptance_v1/plan.json": "b58dec8997f7b7b35b4b81f9a980b8ecc21e38e82d930300f4342576c3fc657a",
+      "evals/controlled_acceptance_v1/rubric.md": "dea662b3976a4e355fa14a19919c6e2af587b63982df08dc7ba8d8a5d0e32e10",
+      "evals/controlled_acceptance_v1/runner.py": "d349e00a566a42dde59cb6633b5f928e8c407c7202e1496be8d3b174c4ccb018"
+    },
+    "accounting_contract": "24 lab + 12 acceptance <=36 raw requests; fsync reservation before each send across both HTTP stacks; unknown/incomplete attempt stops; no borrowing; one final acceptance run only; implementation identity locked before run. Shared lab transport may be corrected before first acceptance, without changing these sealed rules.",
+    "scoring_contract": "36 authored required facts, per-case/aggregate explicit denominators, no population reliability claims; independent adjudication pending."
+  },
+  "implementation_commit": "20945f2521d60253f3ea3207f7a4b8f47d11cd18",
+  "scheduled": 12,
+  "submitted": 0,
+  "raw_attempts": 0,
+  "provider_returned": 0,
+  "api_returned": 0,
+  "withheld": 0,
+  "not_run": 12,
+  "cases": [
+    {
+      "id": "ASTER-SEC-COMMAND",
+      "pillar": "ai_security",
+      "control": "positive",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SEC-MAIL",
+      "pillar": "ai_security",
+      "control": "positive",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SEC-BENIGN",
+      "pillar": "ai_security",
+      "control": "negative",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SEC-HOSTILE",
+      "pillar": "ai_security",
+      "control": "ambiguous",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SOC-SEQUENCE",
+      "pillar": "soc",
+      "control": "positive",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SOC-MAINTENANCE",
+      "pillar": "soc",
+      "control": "negative",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SOC-UNKNOWN",
+      "pillar": "soc",
+      "control": "ambiguous",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-SOC-GUIDANCE",
+      "pillar": "soc",
+      "control": "negative",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-RISK-UNKNOWN",
+      "pillar": "ai_safety",
+      "control": "ambiguous",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-RISK-ABSENT",
+      "pillar": "ai_safety",
+      "control": "positive",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-RISK-IMPLEMENTED",
+      "pillar": "ai_safety",
+      "control": "negative",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "ASTER-RISK-SCOPED",
+      "pillar": "ai_safety",
+      "control": "negative",
+      "status": "NOT RUN"
+    }
+  ],
+  "review_origin": "authored prospective suite; neither blind nor independent; no acceptance outcomes",
+  "release_candidate": "NO-GO",
+  "validation": {
+    "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "full_windows": {
+      "passed": 2139,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 1,
+      "seconds": 234.48
+    },
+    "ruff": "PASS",
+    "pip_check": "No broken requirements found",
+    "diff_check": "PASS",
+    "runtime_versions": {
+      "pytest": "9.1.1",
+      "ruff": "0.17.2",
+      "pydantic": "2.13.4",
+      "fastapi": "0.138.0",
+      "httpx": "0.28.1",
+      "requests": "2.34.2",
+      "ollama": "0.6.2",
+      "streamlit": "1.58.0"
+    },
+    "hosted_ci": "Exact final pushed commit result supplied in final handoff",
+    "final_integrity": {
+      "passed": 35,
+      "seconds": 13.5
+    }
+  }
+}

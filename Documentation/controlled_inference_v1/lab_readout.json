@@ -1,0 +1,558 @@
+{
+  "format": "controlled-inference-lab-readout-v1",
+  "status": "STOPPED_TIMEOUT_UNKNOWN",
+  "acceptance_freeze_commit": "1480892720bca305e48cbbc52908c80ff3cf9e3e",
+  "inference_implementation_commit": "1c421c08815060c746576b457e3d60351868a949",
+  "post_stop_implementation_commit": "20945f2521d60253f3ea3207f7a4b8f47d11cd18",
+  "source_sha256_at_inference": {
+    "app/ai_security_analyzer.py": "1af36d4d2360f6f008e43e51a62bfe07aae434333355b1e1f0cc82513ef2039f",
+    "app/ai_security_contracts.py": "ae2cf1cd57f38035bbc35b9fdf622b5a416e5d5915d2b73446cd8e170bf25a3e",
+    "app/evidence_ledger.py": "2cfbd29bdfd56f6a10c9513a27a38ead4ac73de253309b4c9011fd204953ff08",
+    "app/governance_analyzer.py": "0714cbb7f326c5010b41ddce81d0c93a8f1c2487b65bfb8fb2776c5559dfbec5",
+    "app/inference_context.py": "8fc9ff48293af2ea9e766e11f6875cae272cf5590fd301919129b2c7faa18db4",
+    "app/ollama_client.py": "e709c4d16998fd950a40e5e450f89d8e72d44a6703596066a933089aed1952d2",
+    "app/prompts.py": "d9a5bdd02d5b6496adf9a50ab97c7dffd41ec4cfb6492d687ef7b06dce4bfc25",
+    "app/schemas.py": "86849831520fa1e535c960787d1d68448b5e9bd728988fc3ac89b434361c0883",
+    "app/soc_analyzer.py": "2f8f49d10a2112416cd84ec5199f0bf876a3896697010ac93e34f6bad33fecd1",
+    "evals/inference_lab_v1/runner.py": "0b5ad19221a93d64864f480cf5cedf13469367a695159b9998115b969dccf775",
+    "evals/inference_lab_v1/transport.py": "f7c656f7ca42f6c45ee04c072fcd52d62d6911cc7d5302fd7f1d546b5bbc382b"
+  },
+  "raw_attempts": 6,
+  "caps": {
+    "lab": 24,
+    "acceptance": 12,
+    "global": 36
+  },
+  "unused": {
+    "lab": 18,
+    "acceptance": 12
+  },
+  "provider_returned": 5,
+  "provider_timeout_unknown": 1,
+  "api_returned": 5,
+  "api_withheld": 1,
+  "false_insufficiency": 2,
+  "useful_advisories_author_judgment": 0,
+  "distinct_graphs": 2,
+  "submitted_repeated_cases": 6,
+  "per_pillar": {
+    "ai_security": {
+      "positive_submissions": 3,
+      "negative_submissions": 3,
+      "positive_provider_returns": 3,
+      "negative_provider_returns": 2,
+      "useful_positive": 0,
+      "useful_negative": 0
+    },
+    "soc": {
+      "submitted": 0,
+      "status": "NOT RUN"
+    },
+    "ai_safety": {
+      "submitted": 0,
+      "status": "NOT RUN"
+    }
+  },
+  "expected_full_facts": {
+    "scheduled": 18,
+    "assessable": 15,
+    "retained": 0,
+    "omitted": 14,
+    "contradicted": 1,
+    "unassessable": 3
+  },
+  "comparison_limit": "Repeated authored development examples, not blind/independent or population estimates. Post-stop graph gates were not live evaluated.",
+  "hypotheses": {
+    "H1": "false insufficiency removed in 3 compact returned outputs; semantic usefulness still fails",
+    "H2": "NOT RUN; ledger off by default",
+    "H3": "narrow-risk worse unsupported claims; narrow-benign timed out; optional think comparison NOT RUN",
+    "H4": "post-stop deterministic graph gates only; no live validation"
+  },
+  "attempts": [
+    {
+      "attempt": "s9-0001",
+      "case_id": "BIRCH-SEC-RISK",
+      "trial": "lab-a-baseline",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "baseline",
+        "system": "global"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "8375a2609f214a9a4a61516d54d55bac0c24031ac0bfbf1f7f7e644058c5a67f",
+      "case_sha256": "327473ae0ffd03ff02178c5eca6c0d40c9fe22866ecd0a45b6a978b3a85546fb",
+      "prompt_sha256": "1362c88a4f371dc4939c542bbecb5777a3b54bb9059d83416fb4a0e42827a0d0",
+      "schema_sha256": "794ec97d7a5419e57a9cee5b4324c013244ca6eaca7059f96c38e781ca3a7264",
+      "request_sha256": "9fb3f7878acd111d7165259d0fc67231f0a619e9b8a1a0edbd1f0cfb0dd51025",
+      "prompt_bytes": 13369,
+      "schema_bytes": 4839,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "returned",
+      "provider_response": {
+        "artifact": "s9-0001.json",
+        "artifact_sha256": "c702002ef204f13a89cc6abbf239274946a6ebe23d7ae7753efd839e3ac78f48",
+        "attempt": "s9-0001",
+        "case_id": "BIRCH-SEC-RISK",
+        "event": "provider_response",
+        "http_status": 200,
+        "provider_error_present": false,
+        "raw_response_sha256": "30a3c87660ace28b4dfc1c61d43c01e9b9582ac8c10a82e3e952907debdc4072",
+        "thinking_bytes": 3851,
+        "thinking_present": true,
+        "usage": {
+          "eval_count": 906,
+          "eval_duration": 95001194000,
+          "load_duration": 4505016700,
+          "prompt_eval_count": 2708,
+          "prompt_eval_duration": 3482026000,
+          "total_duration": 103007544500
+        },
+        "wall_seconds": 103.008817
+      },
+      "api_analysis_sha256": "8b713f8d6e4ba2bdac0f48c137304f5d8fcb29027995dc02d0252ce257580f12",
+      "judgment": {
+        "attempt": "s9-0001",
+        "trial": "lab-a-baseline",
+        "case_id": "BIRCH-SEC-RISK",
+        "fact_judgments": [
+          "omitted",
+          "omitted",
+          "omitted"
+        ],
+        "false_insufficiency": true,
+        "candidate_count": 0,
+        "unsupported_categories": 0,
+        "useful": false,
+        "notes": [
+          "Reviewable graph falsely insufficient; actual public classification called missing",
+          "Undeclared instruction separation promoted to definite bypass"
+        ],
+        "excerpts": [
+          {
+            "field": "summary",
+            "text": "Retrieval flows bypass trusted-instruction separation."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s9-0002",
+      "case_id": "BIRCH-SEC-BENIGN",
+      "trial": "lab-a-baseline",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "baseline",
+        "system": "global"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "f0432e032af123e721228f1a76b4fe4ef0a216adf4e77e592914152246a9ad74",
+      "case_sha256": "abafb9e828104fde10228f03c835ecced9c145096f136a55ee608ad9e374a84a",
+      "prompt_sha256": "11c5948afd5757d7cb42c1db572c0db982d85ae77131b1ffa0b3a70831a31bec",
+      "schema_sha256": "794ec97d7a5419e57a9cee5b4324c013244ca6eaca7059f96c38e781ca3a7264",
+      "request_sha256": "503b0d1665775c1dce478a1356e989d4771a7214e9ab042ee4e013e2f5c9e5ed",
+      "prompt_bytes": 13176,
+      "schema_bytes": 4839,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "returned",
+      "provider_response": {
+        "artifact": "s9-0002.json",
+        "artifact_sha256": "5e600b931b69d25cba9f19ab7b4430d919cd2e893b5e214ec71abdda0559b769",
+        "attempt": "s9-0002",
+        "case_id": "BIRCH-SEC-BENIGN",
+        "event": "provider_response",
+        "http_status": 200,
+        "provider_error_present": false,
+        "raw_response_sha256": "ab9d53f6d415c1d7ad7cc976a7bc8e365c96e3f84b88232f17941448daad251a",
+        "thinking_bytes": 3278,
+        "thinking_present": true,
+        "usage": {
+          "eval_count": 760,
+          "eval_duration": 84005548000,
+          "load_duration": 12782100,
+          "prompt_eval_count": 2678,
+          "prompt_eval_duration": 626524000,
+          "total_duration": 84664349800
+        },
+        "wall_seconds": 84.66582
+      },
+      "api_analysis_sha256": "969a86c5ad0030b9ee85297a9f3ec3378dfafab7c6fd4b8d2f5fab807286a430",
+      "judgment": {
+        "attempt": "s9-0002",
+        "trial": "lab-a-baseline",
+        "case_id": "BIRCH-SEC-BENIGN",
+        "fact_judgments": [
+          "omitted",
+          "omitted",
+          "omitted"
+        ],
+        "false_insufficiency": true,
+        "candidate_count": 0,
+        "unsupported_categories": 0,
+        "useful": false,
+        "notes": [
+          "Offline/fixed-enum/read-only public design facts omitted",
+          "No supplied tests overgeneralized to no controls tested"
+        ],
+        "excerpts": [
+          {
+            "field": "summary",
+            "text": "No controls are tested"
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s9-0003",
+      "case_id": "BIRCH-SEC-RISK",
+      "trial": "lab-a-compact",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "compact",
+        "system": "global"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "8375a2609f214a9a4a61516d54d55bac0c24031ac0bfbf1f7f7e644058c5a67f",
+      "case_sha256": "327473ae0ffd03ff02178c5eca6c0d40c9fe22866ecd0a45b6a978b3a85546fb",
+      "prompt_sha256": "aed98779d661adc18e5958df5152216e90c1c45e7e3df10db6e6c734ed74650b",
+      "schema_sha256": "984c507b56dd81cfed9ab9495cd7e86caab3af2856796b305f9e0f47c53ebbb0",
+      "request_sha256": "64cf6e06640dda300d593257cfd1018924d57db173fb1ff6a529af20ada55e96",
+      "prompt_bytes": 13153,
+      "schema_bytes": 3103,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "returned",
+      "provider_response": {
+        "artifact": "s9-0003.json",
+        "artifact_sha256": "b5e1314cfd7adb727279cd6c5611f3c7e5300011b90ddf8c1a99185755d4bcaf",
+        "attempt": "s9-0003",
+        "case_id": "BIRCH-SEC-RISK",
+        "event": "provider_response",
+        "http_status": 200,
+        "provider_error_present": false,
+        "raw_response_sha256": "a7a8077c9d725eabc14e4781d1446788931631b21147e27b57e9fd0fc249d313",
+        "thinking_bytes": 2576,
+        "thinking_present": true,
+        "usage": {
+          "eval_count": 1016,
+          "eval_duration": 113115797000,
+          "load_duration": 12191400,
+          "prompt_eval_count": 2667,
+          "prompt_eval_duration": 2388589000,
+          "total_duration": 115876748700
+        },
+        "wall_seconds": 115.878049
+      },
+      "api_analysis_sha256": "2775955fc78c4adba870d1acfecfcd49b82b2c92e03b7934a2ccd1a88fcb4f43",
+      "judgment": {
+        "attempt": "s9-0003",
+        "trial": "lab-a-compact",
+        "case_id": "BIRCH-SEC-RISK",
+        "fact_judgments": [
+          "omitted",
+          "omitted",
+          "omitted"
+        ],
+        "false_insufficiency": false,
+        "candidate_count": 3,
+        "plausible_candidate_cores": 1,
+        "unsupported_categories": 2,
+        "useful": false,
+        "retained_fragments": [
+          "Unreviewed content enters retrieval store",
+          "Conditional retrieval-poisoning concern"
+        ],
+        "notes": [
+          "Full expected graph facts not retained: no literal IMPORT/RETRIEVE references; all candidate flow_ids empty",
+          "Authorization and unsafe-consumption categories lack applicable declared support"
+        ],
+        "excerpts": [
+          {
+            "field": "findings[2].hypothesis",
+            "text": "Generated outputs lack explicit validation before downstream use, increasing unsafe consumption risks."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s9-0004",
+      "case_id": "BIRCH-SEC-BENIGN",
+      "trial": "lab-a-compact",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "compact",
+        "system": "global"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "f0432e032af123e721228f1a76b4fe4ef0a216adf4e77e592914152246a9ad74",
+      "case_sha256": "abafb9e828104fde10228f03c835ecced9c145096f136a55ee608ad9e374a84a",
+      "prompt_sha256": "beb1dd881081df2657e15929107a52e3c11f1e42b6d467f129d255aad23cfa82",
+      "schema_sha256": "984c507b56dd81cfed9ab9495cd7e86caab3af2856796b305f9e0f47c53ebbb0",
+      "request_sha256": "ea847331e9554f55cae6d1f35da3ce82abbcbc440842ab1be0ae498646187577",
+      "prompt_bytes": 12960,
+      "schema_bytes": 3103,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "returned",
+      "provider_response": {
+        "artifact": "s9-0004.json",
+        "artifact_sha256": "2bb7f257e2fb3343446ab29498c327acab8c090ae2806bc150074ccd76666edc",
+        "attempt": "s9-0004",
+        "case_id": "BIRCH-SEC-BENIGN",
+        "event": "provider_response",
+        "http_status": 200,
+        "provider_error_present": false,
+        "raw_response_sha256": "21b9bdbf5d98aede3d1f640f4a95261cd08ee66a79f83c881bfe6487b6ef0b80",
+        "thinking_bytes": 4131,
+        "thinking_present": true,
+        "usage": {
+          "eval_count": 936,
+          "eval_duration": 103451148000,
+          "load_duration": 11184700,
+          "prompt_eval_count": 2637,
+          "prompt_eval_duration": 626645000,
+          "total_duration": 104106212200
+        },
+        "wall_seconds": 104.107212
+      },
+      "api_analysis_sha256": "fc41b84d85cc8b1df63db3ef23259eaf6a609bebadede48fe627a12fd075b5a0",
+      "judgment": {
+        "attempt": "s9-0004",
+        "trial": "lab-a-compact",
+        "case_id": "BIRCH-SEC-BENIGN",
+        "fact_judgments": [
+          "omitted",
+          "omitted",
+          "omitted"
+        ],
+        "false_insufficiency": false,
+        "candidate_count": 0,
+        "unsupported_categories": 0,
+        "useful": false,
+        "notes": [
+          "Zero findings is appropriate restraint but full benign facts omitted",
+          "Review text presupposes absent components despite three supplied components"
+        ],
+        "excerpts": [
+          {
+            "field": "human_review_requirements[0]",
+            "text": "Verify that the absence of actors, components, and external data ingestion aligns with the stated deployment assumptions and does not introduce implicit trust boundary vulnerabilities."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s9-0005",
+      "case_id": "BIRCH-SEC-RISK",
+      "trial": "lab-b-narrow",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "compact",
+        "system": "default"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "8375a2609f214a9a4a61516d54d55bac0c24031ac0bfbf1f7f7e644058c5a67f",
+      "case_sha256": "327473ae0ffd03ff02178c5eca6c0d40c9fe22866ecd0a45b6a978b3a85546fb",
+      "prompt_sha256": "a11ddff69a9c3c78b1daae177d9f0e18518700f6395583cf35ac2a19eb9a264b",
+      "schema_sha256": "984c507b56dd81cfed9ab9495cd7e86caab3af2856796b305f9e0f47c53ebbb0",
+      "request_sha256": "a924ecef08f29e1231e5593b4872a92b483097df0d92b96edccbfaa4977c39b1",
+      "prompt_bytes": 10459,
+      "schema_bytes": 3103,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "returned",
+      "provider_response": {
+        "artifact": "s9-0005.json",
+        "artifact_sha256": "26cec3af7ae497879a373fd343775c20b8d41e7de9d52bc919f367d7385eaccf",
+        "attempt": "s9-0005",
+        "case_id": "BIRCH-SEC-RISK",
+        "event": "provider_response",
+        "http_status": 200,
+        "provider_error_present": false,
+        "raw_response_sha256": "404edfc9f7e5d5bd9a34a0967f44c27129baa5216860d170316b2706b7d4b871",
+        "thinking_bytes": 2478,
+        "thinking_present": true,
+        "usage": {
+          "eval_count": 1344,
+          "eval_duration": 147906760000,
+          "load_duration": 12447900,
+          "prompt_eval_count": 2170,
+          "prompt_eval_duration": 2703392000,
+          "total_duration": 150992155200
+        },
+        "wall_seconds": 150.993388
+      },
+      "api_analysis_sha256": "e3f83721d706760f3dafaac514b72fe349a04e9a6a646a4ceb35f17f4f61aabc",
+      "judgment": {
+        "attempt": "s9-0005",
+        "trial": "lab-b-narrow",
+        "case_id": "BIRCH-SEC-RISK",
+        "fact_judgments": [
+          "omitted",
+          "omitted",
+          "contradicted"
+        ],
+        "false_insufficiency": false,
+        "candidate_count": 4,
+        "plausible_candidate_cores": 2,
+        "unsupported_categories": 2,
+        "useful": false,
+        "retained_fragments": [
+          "Unreviewed uploads/index",
+          "INDEX/ANSWERER retrieval-poisoning theme"
+        ],
+        "notes": [
+          "Plausible cores have unsupported absent-control prerequisites",
+          "Public flows reclassified as unclassified/confidential; invented trusted downstream consumer",
+          "No candidate flow references retained"
+        ],
+        "excerpts": [
+          {
+            "field": "findings[2].hypothesis",
+            "text": "Unclassified data flows between UPLOAD and ANSWERER may inadvertently expose confidential study guide content."
+          },
+          {
+            "field": "findings[3].hypothesis",
+            "text": "Generated answers are treated as trusted without validation, risking downstream exploitation."
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "s9-0006",
+      "case_id": "BIRCH-SEC-BENIGN",
+      "trial": "lab-b-narrow",
+      "treatment": {
+        "ledger": "off",
+        "protocol": "compact",
+        "system": "default"
+      },
+      "commit": "1c421c08815060c746576b457e3d60351868a949",
+      "input_sha256": "f0432e032af123e721228f1a76b4fe4ef0a216adf4e77e592914152246a9ad74",
+      "case_sha256": "abafb9e828104fde10228f03c835ecced9c145096f136a55ee608ad9e374a84a",
+      "prompt_sha256": "cb4eb201e7bdc4f1156bef3c9ad931b1e6a06c70cbeada0b7f16d914ce8d2d41",
+      "schema_sha256": "984c507b56dd81cfed9ab9495cd7e86caab3af2856796b305f9e0f47c53ebbb0",
+      "request_sha256": "7f000901490a800003e0484d8a342b5c3b9f6178b3b547c13711c0e3d00f9677",
+      "prompt_bytes": 10266,
+      "schema_bytes": 3103,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 8192,
+        "temperature": 0.1
+      },
+      "think": "provider_default",
+      "truncate": false,
+      "shift": false,
+      "provider_outcome": "unknown_timeout",
+      "provider_response": null,
+      "api_analysis_sha256": "445b95e83ba5651fdda797c0f8941c240c468f626090bcf804014f722961f705",
+      "judgment": {
+        "attempt": "s9-0006",
+        "trial": "lab-b-narrow",
+        "case_id": "BIRCH-SEC-BENIGN",
+        "fact_judgments": [
+          "unassessable",
+          "unassessable",
+          "unassessable"
+        ],
+        "false_insufficiency": null,
+        "candidate_count": null,
+        "unsupported_categories": null,
+        "useful": false,
+        "notes": [
+          "ReadTimeout; provider completion unknown; API withheld422",
+          "Application retry blocked before second raw send; no further generation permitted"
+        ],
+        "excerpts": []
+      }
+    }
+  ],
+  "artifact_sha256": {
+    "accounting/journal.jsonl": "9038413a62a475ab5ebf9a343b705012f347739b25593cea8986d8b0519d0b56",
+    "lab-a-baseline/author-review.json": "04bbb0c26cbc003990c0d3a344d58f14a6ec9aa885eae47aca07b0fd925d8dac",
+    "lab-a-baseline/BIRCH-SEC-BENIGN.json": "969a86c5ad0030b9ee85297a9f3ec3378dfafab7c6fd4b8d2f5fab807286a430",
+    "lab-a-baseline/BIRCH-SEC-RISK.json": "8b713f8d6e4ba2bdac0f48c137304f5d8fcb29027995dc02d0252ce257580f12",
+    "lab-a-baseline/report.json": "8f96f3177d106d937685e1d1e43e1958102ae044203e1c78df9f6d333b326805",
+    "lab-a-baseline/s9-0001.json": "c702002ef204f13a89cc6abbf239274946a6ebe23d7ae7753efd839e3ac78f48",
+    "lab-a-baseline/s9-0002.json": "5e600b931b69d25cba9f19ab7b4430d919cd2e893b5e214ec71abdda0559b769",
+    "lab-a-compact/author-review.json": "f5bc14f1db8034a236d8fc6f3f1aad73e0f601d4b751ab1f252c20e3ac79c8b4",
+    "lab-a-compact/BIRCH-SEC-BENIGN.json": "fc41b84d85cc8b1df63db3ef23259eaf6a609bebadede48fe627a12fd075b5a0",
+    "lab-a-compact/BIRCH-SEC-RISK.json": "2775955fc78c4adba870d1acfecfcd49b82b2c92e03b7934a2ccd1a88fcb4f43",
+    "lab-a-compact/report.json": "f9736fd1bd780bb398f1a24a51059e05fbb7d2230927f89c4fb635518e31898b",
+    "lab-a-compact/s9-0003.json": "b5e1314cfd7adb727279cd6c5611f3c7e5300011b90ddf8c1a99185755d4bcaf",
+    "lab-a-compact/s9-0004.json": "2bb7f257e2fb3343446ab29498c327acab8c090ae2806bc150074ccd76666edc",
+    "lab-b-narrow/author-review.json": "c8b697e22c6e0a0d2dc3891c776e6e3d186db221343970e2d030a63971f0cd88",
+    "lab-b-narrow/BIRCH-SEC-BENIGN.json": "445b95e83ba5651fdda797c0f8941c240c468f626090bcf804014f722961f705",
+    "lab-b-narrow/BIRCH-SEC-RISK.json": "e3f83721d706760f3dafaac514b72fe349a04e9a6a646a4ceb35f17f4f61aabc",
+    "lab-b-narrow/report.json": "c710a37aa0deaeec9e88a2a44420a92a27852de80ad7decd32d57ac5a5818d55",
+    "lab-b-narrow/s9-0005.json": "26cec3af7ae497879a373fd343775c20b8d41e7de9d52bc919f367d7385eaccf"
+  },
+  "independent_review": "PENDING",
+  "release_candidate": "NO-GO",
+  "validation": {
+    "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "full_windows": {
+      "passed": 2139,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 1,
+      "seconds": 234.48
+    },
+    "ruff": "PASS",
+    "pip_check": "No broken requirements found",
+    "diff_check": "PASS",
+    "runtime_versions": {
+      "pytest": "9.1.1",
+      "ruff": "0.17.2",
+      "pydantic": "2.13.4",
+      "fastapi": "0.138.0",
+      "httpx": "0.28.1",
+      "requests": "2.34.2",
+      "ollama": "0.6.2",
+      "streamlit": "1.58.0"
+    },
+    "hosted_ci": "Exact final pushed commit result supplied in final handoff",
+    "final_integrity": {
+      "passed": 35,
+      "seconds": 13.5
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "base_branch": "feature/reliability-fidelity-sprint8",
+  "base_commit": "f85e67fbd224fa020d0d904b62b6f8d7fd0b5e24",
+  "final_branch": "feature/controlled-inference-fidelity-sprint9",
+  "implementation_commit": "20945f2521d60253f3ea3207f7a4b8f47d11cd18",
+  "commit_series": [
+    {
+      "sha": "1480892720bca305e48cbbc52908c80ff3cf9e3e",
+      "subject": "Freeze Sprint 9 acceptance contract and controlled inference lab"
+    },
+    {
+      "sha": "1c421c08815060c746576b457e3d60351868a949",
+      "subject": "Own structural reviewability and journal bounded inference proposals"
+    },
+    {
+      "sha": "20945f2521d60253f3ea3207f7a4b8f47d11cd18",
+      "subject": "Constrain candidate graph scope after preserved lab failures"
+    }
+  ],
+  "audit_commit": "Containing final audit commit; exact SHA in final handoff",
+  "changed_paths": [
+    {
+      "status": "A",
+      "path": "Documentation/54_controlled_inference_sprint_plan.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/55_controlled_inference_readout.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/controlled_inference_v1/acceptance_readout.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/controlled_inference_v1/change_inventory.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/controlled_inference_v1/decision_log.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/controlled_inference_v1/lab_readout.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/controlled_inference_v1/preflight.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/sprint9_preservation.json"
+    },
+    {
+      "status": "M",
+      "path": "app/ai_security_analyzer.py"
+    },
+    {
+      "status": "M",
+      "path": "app/ai_security_contracts.py"
+    },
+    {
+      "status": "A",
+      "path": "app/evidence_ledger.py"
+    },
+    {
+      "status": "M",
+      "path": "app/governance_analyzer.py"
+    },
+    {
+      "status": "M",
+      "path": "app/inference_context.py"
+    },
+    {
+      "status": "M",
+      "path": "app/ollama_client.py"
+    },
+    {
+      "status": "M",
+      "path": "app/soc_analyzer.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/__init__.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/freeze.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/plan.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/rubric.md"
+    },
+    {
+      "status": "A",
+      "path": "evals/controlled_acceptance_v1/runner.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/__init__.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/plan.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/runner.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/inference_lab_v1/transport.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/sprint9_history.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_ai_security_ui.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_ai_security_workflow.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_controlled_ai_security.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_controlled_ai_security_ui.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_controlled_inference_evaluation.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_cross_pillar_smoke.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_evidence_ledger.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_grounding_preservation.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_reliability_fidelity.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_sprint8_preservation.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_sprint9_preservation.py"
+    }
+  ],
+  "changed_path_count": 40,
+  "inherited_untracked_preserved": 405,
+  "protected_counts": {
+    "s4check": 590,
+    "northstar": 13,
+    "cedar7": 36,
+    "maple8": 14
+  },
+  "main_and_peeled_v2_3_0": "fde00d0ca5d21eecbc6973cc784550ed453edb7a"
+}
