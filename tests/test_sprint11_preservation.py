@@ -55,17 +55,24 @@ def test_current_exact_paths_and_all_other_base_blobs():
     assert dict(zip(protected, actual, strict=True)) == protected
 
 
-
 def test_all_elm_bytes_and_installed_agents():
     manifest = load("Documentation/sprint11_preservation.json")
     hashes = manifest["elm_sha256"]
     assert len(hashes) == 71
     if (ROOT / "knowledge_base/workspaces/elm-sprint10-lab").exists():
-        actual = {p.relative_to(ROOT).as_posix() for d in ["elm-sprint10-lab", "elm-sprint10-campaign"] for p in (ROOT / "knowledge_base/workspaces" / d).rglob("*") if p.is_file()}
+        actual = {
+            p.relative_to(ROOT).as_posix()
+            for d in ["elm-sprint10-lab", "elm-sprint10-campaign"]
+            for p in (ROOT / "knowledge_base/workspaces" / d).rglob("*")
+            if p.is_file()
+        }
         assert actual == set(hashes)
-        for path,digest in hashes.items():
+        for path, digest in hashes.items():
             assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
-        assert hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest() == manifest["installed_agents_sha256"]
+        assert (
+            hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest()
+            == manifest["installed_agents_sha256"]
+        )
 
 
 def canonical(tree):

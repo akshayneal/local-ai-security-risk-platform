@@ -1,0 +1,26 @@
+{
+  "time_utc": "2026-10-31T23:53:17.397866+00:00",
+  "branch": "feature/deterministic-evidence-benchmark-sprint11",
+  "preregistration_commit": "2cde4804fd56b49e621f4cea7d5e5f9a3781176e",
+  "status": "Offline evidence proof implemented; no new inference yet; source commit before D0 required",
+  "raw_sends": {
+    "dev": 0,
+    "acceptance": 0,
+    "global": 0
+  },
+  "pending": [],
+  "protected": "671 inherited +71Elm +7Aster matched; main/tag/AGENTS unchanged",
+  "implemented": "Internal opt-in three-pillar ledger/graph-leaf selection, proposal boundary and canonical JSON/escaped Markdown report; no public/default change",
+  "offline_checks": [
+    "13 proof tests passed",
+    "18 benchmark/transport tests passed; fake dispatch has all selected facts",
+    "18 formulation/case context upper-bound checks passed without sending",
+    "Ruff/pip checks passed",
+    "Focused integrity/compatibility/regression selection:148passed,1existingwarning,66.57s; additional real HTTP framing test passed in18-test block"
+  ],
+  "failure_history": [
+    "Initial proof collection failed before module existed",
+    "SOC counted repair mock exposed old metric helper rejects32768; moved runtime override into evaluation-only call seam, no old app source changed"
+  ],
+  "next_safe": "Wait focused checks, stage only authorized paths, commit source; then D0 counted F1/F3 matched run. Do not run oldjournals or any acceptance before gates."
+}
