@@ -12,7 +12,8 @@
     "tests/test_ai_security_workflow.py": "7a0c08af20d2fbc65dc183572d2fd138c70e0153",
     "tests/test_ai_security_ui.py": "2cb737253632b2e483381177058b1f2c2c6ed1e8",
     "tests/test_cross_pillar_smoke.py": "d2e8a91f49c978c3be454a40d9758de22c6ba85a",
-    "tests/test_reliability_evaluation.py": "87c03a48168296f034b84d7bbc39c82427aeccaf"
+    "tests/test_reliability_evaluation.py": "87c03a48168296f034b84d7bbc39c82427aeccaf",
+    "tests/test_grounding_preservation.py": "eabe051fa3a28224a98e3b53b90ab62efa162da2"
   },
   "authorized_new": [
     "Documentation/54_controlled_inference_sprint_plan.md",
@@ -41,7 +42,8 @@
     "evals/controlled_acceptance_v1/plan.json",
     "evals/controlled_acceptance_v1/rubric.md",
     "evals/controlled_acceptance_v1/freeze.json",
-    "evals/controlled_acceptance_v1/runner.py"
+    "evals/controlled_acceptance_v1/runner.py",
+    "tests/test_controlled_ai_security_ui.py"
   ],
   "out_of_scope_rule": "Every other baseline path retains its Git blob; exact paths only, no directory exemptions. Historical wrappers retain original bodies at immutable Sprint8 endpoint.",
   "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
@@ -52,5 +54,31 @@
     "Documentation/sprint8_preservation.json",
     "Documentation/cross_pillar_v1/live_readout.json",
     "Documentation/reliability_v1/readout.json"
-  ]
+  ],
+  "historical_migrations": {
+    "tests/test_ai_security_workflow.py": [
+      "test_actual_route_to_validator_provenance_export",
+      "test_no_workspace_grants_and_prompt_quarantine",
+      "test_concurrent_context_and_failure_reset"
+    ],
+    "tests/test_ai_security_ui.py": [
+      "test_page_actual_route_stub_metadata_and_export_render",
+      "test_export_escapes_untrusted_strings_and_rejects_wrong_binding"
+    ],
+    "tests/test_cross_pillar_smoke.py": [
+      "test_three_frontend_backend_paths"
+    ],
+    "tests/test_reliability_fidelity.py": [
+      "test_real_api_uses_visible_variant_contract_and_preserves_raw_status"
+    ],
+    "tests/test_sprint8_preservation.py": [
+      "test_current_paths_and_every_other_base_blob"
+    ],
+    "tests/test_grounding_preservation.py": [
+      "test_prior_evidence_and_unmodified_source_bytes_preserved"
+    ]
+  },
+  "scope_reasons": {
+    "tests/test_grounding_preservation.py": "Original historical source-byte guard pins ollama_client before the authorized workflow-context change. Retain original body at immutable Sprint8 endpoint with AST and actual client-mutation rejection proof."
+  }
 }

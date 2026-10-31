@@ -10,7 +10,11 @@ from dotenv import load_dotenv
 from ollama import Client
 from tenacity import retry, retry_if_not_exception_type, stop_after_attempt, wait_fixed
 
-from app.inference_context import EvidenceBudgetError, complete_context_required
+from app.inference_context import (
+    EvidenceBudgetError,
+    complete_context_required,
+    generation_system_prompt,
+)
 from app.model_metrics import configured_context, finish_attempt, start_attempt
 from app.prompts import SYSTEM_PROMPT
 
@@ -120,12 +124,15 @@ def call_model_json(
     Sends a prompt to the local Ollama model and asks for JSON matching a schema.
     """
     record = start_attempt(user_prompt, response_schema)
+    system_prompt = generation_system_prompt() or SYSTEM_PROMPT
+    if record is not None:
+        record["system_utf8_bytes"] = len(system_prompt.encode("utf-8"))
     started = time.perf_counter()
     options = {"temperature": OLLAMA_TEMPERATURE}
     if configured_context() is not None:
         options["num_ctx"] = configured_context()
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt},
     ]
     try:

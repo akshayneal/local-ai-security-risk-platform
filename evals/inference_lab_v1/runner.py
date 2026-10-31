@@ -57,10 +57,20 @@ def preflight():
         def get(path, payload=None):
             method = session.get if payload is None else session.post
             kwargs = {} if payload is None else {"json": payload}
-            response = method(HOST + path, timeout=5, allow_redirects=False, **kwargs)
-            if response.status_code != 200 or len(response.content) > 256_000:
-                raise ValueError("Read-only provider preflight unavailable")
-            return response.json()
+            response = method(
+                HOST + path, timeout=5, allow_redirects=False, stream=True, **kwargs
+            )
+            try:
+                if response.status_code != 200:
+                    raise ValueError("Read-only provider preflight unavailable")
+                body = bytearray()
+                for chunk in response.iter_content(chunk_size=8192):
+                    if len(body) + len(chunk) > 256_000:
+                        raise ValueError("Read-only provider preflight oversized")
+                    body.extend(chunk)
+                return json.loads(body)
+            finally:
+                response.close()
 
         version, tags = get("/api/version"), get("/api/tags")
         if version.get("version") != "0.40.13":
@@ -98,11 +108,11 @@ def write(budget, path, value):
 
 
 def execute(cases, budget, directory, variant):
-    from app.evidence_ledger import evidence_ledger_mode
     from fastapi.testclient import TestClient
 
     from app import ai_security_api, main, ollama_client
     from app.ai_security_analyzer import candidate_protocol
+    from app.evidence_ledger import evidence_ledger_mode
     from app.inference_context import workflow_model_context
     from app.model_metrics import local_model_metrics
     from app.prompts import SYSTEM_PROMPT

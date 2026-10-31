@@ -29,6 +29,20 @@ DEADLINE = 14_400
 REQUEST_SECONDS = 180
 MAX_BYTES = 12_000_000
 MAX_PROMPT_BYTES = 180_000
+JOURNAL_EVENTS = {
+    "sprint_started",
+    "provider_reserved",
+    "provider_response",
+    "provider_failure",
+    "artifact_stored",
+    "trial_started",
+    "submitted",
+    "audit",
+    "submission_finished",
+    "trial_finished",
+    "trial_interrupted",
+    "author_review",
+}
 
 
 def sha(data: bytes) -> str:
@@ -78,12 +92,28 @@ class SprintBudget:
             if path.exists():
                 if path.stat().st_size > MAX_BYTES:
                     raise BudgetStop()
-                for line in path.read_text(encoding="utf-8").splitlines():
+                lines = path.read_text(encoding="utf-8").splitlines()
+                if not lines or json.loads(lines[0]).get("event") != "sprint_started":
+                    raise BudgetStop()
+                for index, line in enumerate(lines):
                     row = json.loads(line)
+                    if row.get("event") not in JOURNAL_EVENTS:
+                        raise BudgetStop()
                     if row["event"] == "sprint_started":
+                        if index != 0:
+                            raise BudgetStop()
                         self.started_wall = row["unix_seconds"]
+                        self.started = row["monotonic_seconds"]
+                        if time.time() < self.started_wall or clock() < self.started:
+                            raise BudgetStop()
                     elif row["event"] == "provider_reserved":
-                        if self.pending or row["global_index"] != self.count + 1:
+                        if (
+                            self.pending
+                            or row["global_index"] != self.count + 1
+                            or row["attempt"] != f"s9-{self.count + 1:04d}"
+                            or row["track"] not in CAPS
+                            or row["track_index"] != self.counts[row["track"]] + 1
+                        ):
                             raise BudgetStop()
                         self.count += 1
                         self.counts[row["track"]] += 1
@@ -94,17 +124,27 @@ class SprintBudget:
                         self.pending = None
                         self.blocked |= row["event"] == "provider_failure"
                     elif row["event"] == "artifact_stored":
+                        if (
+                            type(row["bytes"]) is not int
+                            or not 0 <= row["bytes"] <= 256_000
+                        ):
+                            raise BudgetStop()
                         self.retained_bytes += row["bytes"]
                 if (
                     self.pending
                     or self.blocked
                     or self.count > 36
+                    or self.retained_bytes + self.journal_bytes > MAX_BYTES
                     or any(self.counts[k] > CAPS[k] for k in CAPS)
                 ):
                     raise BudgetStop()
             self.journal = path.open("a", encoding="utf-8", newline="\n")
             if not self.journal_bytes:
-                self.event(event="sprint_started", unix_seconds=self.started_wall)
+                self.event(
+                    event="sprint_started",
+                    unix_seconds=self.started_wall,
+                    monotonic_seconds=self.started,
+                )
         except BaseException:
             self.lock_file.close()
             self.lock_path.unlink()
@@ -230,6 +270,8 @@ class SprintBudget:
             return
         safe_output(data)
         value = json.loads(data)
+        if status == 200 and value.get("model") != MODEL:
+            raise BudgetStop()
         message = value.get("message", {})
         thinking = message.pop("thinking", None)
         if "thinking" in value:
@@ -237,13 +279,36 @@ class SprintBudget:
         content = message.get("content")
         inline = []
         if isinstance(content, str):
-            inline = re.findall(r"<think>.*?</think>", content, flags=re.DOTALL)
-            if "<think>" in content and not inline:
-                raise BudgetStop()
-            message["content"] = re.sub(
-                r"<think>.*?</think>", "", content, flags=re.DOTALL
+            inline = re.findall(
+                r"<think>.*?</think>", content, flags=re.DOTALL | re.IGNORECASE
             )
-        sanitized = encoded(value)
+            message["content"] = re.sub(
+                r"<think>.*?</think>", "", content, flags=re.DOTALL | re.IGNORECASE
+            )
+            if re.search(r"</?think\b", message["content"], flags=re.IGNORECASE):
+                raise BudgetStop()
+        # Retain only documented answer/usage fields. Unknown provider extensions
+        # cannot accidentally create another hidden-thinking artifact channel.
+        retained = {
+            key: value[key]
+            for key in (
+                "model",
+                "created_at",
+                "done",
+                "done_reason",
+                "total_duration",
+                "load_duration",
+                "prompt_eval_count",
+                "prompt_eval_duration",
+                "eval_count",
+                "eval_duration",
+            )
+            if key in value
+        }
+        retained["message"] = {
+            key: message[key] for key in ("role", "content") if key in message
+        }
+        sanitized = encoded(retained)
         name = attempt + ".json"
         self.store(self.directory / name, sanitized)
         self.event(
@@ -255,6 +320,7 @@ class SprintBudget:
             artifact_sha256=sha(sanitized),
             artifact=name,
             thinking_present=bool(thinking or inline),
+            provider_error_present="error" in value,
             thinking_bytes=len(str(thinking or "").encode())
             + sum(len(v.encode()) for v in inline),
             wall_seconds=round(elapsed, 6),

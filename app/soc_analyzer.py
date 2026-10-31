@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 from app.analysis_trace import AnalysisTrace
+from app.evidence_ledger import build_evidence_ledger, ledger_prompt
 from app.inference_context import microsoft_model_context
 from app.microsoft_evidence import microsoft_evidence
 from app.observables import critical_observables, network_endpoints
@@ -55,6 +56,7 @@ def analyze_soc_alert(
     )
     if evidence is not None:
         prompt = EVIDENCE_INSTRUCTIONS + prompt
+    prompt += ledger_prompt(build_evidence_ledger(request))
 
     original_input = request.model_dump(mode="json")
     structured = microsoft_evidence(original_input)

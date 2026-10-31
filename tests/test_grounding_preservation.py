@@ -2,10 +2,12 @@ import json
 import subprocess
 
 from historical_identity import sprint4_blob, sprint5_blob
+from sprint9_history import historical_test as sprint9_historical_test
 
 from evals.provenance import ROOT
 
 
+@sprint9_historical_test
 def test_prior_evidence_and_unmodified_source_bytes_preserved():
     manifest = json.loads(
         (ROOT / "Documentation/grounding_stabilization_preservation.json").read_bytes()

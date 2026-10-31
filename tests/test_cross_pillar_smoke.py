@@ -11,6 +11,7 @@ from types import SimpleNamespace
 import pytest
 import requests
 from fastapi.testclient import TestClient
+from sprint9_history import historical_test as sprint9_historical_test
 from streamlit.testing.v1 import AppTest
 
 from app import (
@@ -104,6 +105,7 @@ def test_contradictory_model_coverage_is_withheld_without_error_disclosure(monke
         ),
     ],
 )
+@sprint9_historical_test
 def test_three_frontend_backend_paths(monkeypatch, pillar, page, button, endpoint):
     audits, calls = [], []
     monkeypatch.setenv("API_BASE_URL", "http://127.0.0.1:8235")

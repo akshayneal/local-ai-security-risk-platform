@@ -6,79 +6,63 @@
     "control": "positive",
     "input": {
       "application_id": "BIRCH-SEC-RISK",
-      "application_name": "Synthetic Birch command engineering example",
-      "purpose": "Engineering development example for declared boundary reasoning, distinct from final acceptance.",
-      "actors": [
-        {
-          "id": "OPERATOR",
-          "role": "operator",
-          "description": "Fictional design operator"
-        }
-      ],
+      "application_name": "Synthetic Birch retrieved study-guide helper",
+      "purpose": "Draft plain-text answers from fictional public study guides; review untrusted retrieval boundaries only.",
       "components": [
         {
-          "id": "MODEL",
-          "kind": "model",
-          "description": "Proposes draft study materials from fictional public input"
-        },
-        {
-          "id": "TICKET",
+          "id": "UPLOAD",
           "kind": "document_source",
-          "description": "Unreviewed public support tickets"
+          "description": "Unreviewed Markdown files supplied by fictional study participants"
         },
         {
-          "id": "RUNNER",
-          "kind": "tool",
-          "description": "Caller states generated command strings are passed directly to an interpreter without an allowlist or human gate"
+          "id": "INDEX",
+          "kind": "retrieval_store",
+          "description": "Caller reports participant files enter the searchable index without review"
+        },
+        {
+          "id": "ANSWERER",
+          "kind": "model",
+          "description": "Drafts plain-text answers using selected guide paragraphs; no tools or executable output"
         }
       ],
       "flows": [
         {
-          "id": "TICKET_IN",
-          "source_id": "TICKET",
-          "target_id": "MODEL",
+          "id": "IMPORT",
+          "source_id": "UPLOAD",
+          "target_id": "INDEX",
           "classification": "public",
           "boundary_crossing": "stated",
-          "description": "Untrusted ticket text becomes model input"
+          "description": "Unreviewed participant Markdown becomes searchable guide content"
         },
         {
-          "id": "COMMAND_OUT",
-          "source_id": "MODEL",
-          "target_id": "RUNNER",
-          "classification": "internal",
+          "id": "RETRIEVE",
+          "source_id": "INDEX",
+          "target_id": "ANSWERER",
+          "classification": "public",
           "boundary_crossing": "stated",
-          "description": "Generated command reaches the declared interpreter without validation"
+          "description": "Retrieved public paragraphs enter model context without a declared trusted-instruction boundary"
         }
-      ],
-      "known_limitations": [
-        "All design statements are caller-supplied and externally unverified."
       ],
       "ingestion_surfaces": [
         {
-          "id": "TICKET_UPLOAD",
-          "component_id": "TICKET",
-          "origin": "Synthetic public tickets",
+          "id": "PARTICIPANT_FILES",
+          "component_id": "UPLOAD",
+          "origin": "Synthetic participant study-guide submissions",
           "trust_level": "untrusted",
           "review_status": "unreviewed"
         }
       ],
-      "tools": [
-        {
-          "id": "EXECUTOR",
-          "component_id": "RUNNER",
-          "capabilities": [
-            "side_effect"
-          ],
-          "invoker_actor_ids": [
-            "OPERATOR"
-          ],
-          "human_gate": "absent"
-        }
+      "deployment_assumptions": [
+        "Public draft study assistance only, no private data, tools, external network requests or autonomous actions."
+      ],
+      "known_limitations": [
+        "No realized poisoning or verified exploit is claimed."
       ]
     },
     "expected_facts": [
-      "Reviewable graph has a model and declared adjacent flow",
-      "Risky case permits conditional findings; benign case permits zero findings"
+      "Unreviewed participant guide files enter INDEX through IMPORT",
+      "Selected guide text enters ANSWERER through RETRIEVE; a conditional retrieval-poisoning candidate is possible",
+      "No tools, unsafe executable consumer or realized attack are supplied"
     ],
     "forbidden_inferences": [
       "No false insufficiency, invented graph/source or verified risk"
@@ -97,70 +81,57 @@
     "control": "negative",
     "input": {
       "application_id": "BIRCH-SEC-BENIGN",
-      "application_name": "Synthetic Birch wordlist engineering example",
-      "purpose": "Engineering development example for declared boundary reasoning, distinct from final acceptance.",
-      "actors": [
-        {
-          "id": "OPERATOR",
-          "role": "operator",
-          "description": "Fictional design operator"
-        }
-      ],
+      "application_name": "Synthetic Birch offline color label demo",
+      "purpose": "Suggest one of two public category labels after an operator chooses a fixed red/blue input.",
       "components": [
         {
-          "id": "MODEL",
+          "id": "CHOOSER",
+          "kind": "user_interface",
+          "description": "Operator chooses only the fixed public enum red or blue"
+        },
+        {
+          "id": "LABELER",
           "kind": "model",
-          "description": "Proposes draft study materials from fictional public input"
+          "description": "Proposes an optional public category label from the chosen enum"
         },
         {
-          "id": "PARSER",
-          "kind": "filter",
-          "description": "Claimed strict list-of-strings parser and escaped text preview"
-        },
-        {
-          "id": "EDITOR",
-          "kind": "human_gate",
-          "description": "Human reviews every draft and chooses any separate manual use"
+          "id": "PANEL",
+          "kind": "user_interface",
+          "description": "Read-only escaped-text label display; operator decides any separate manual use"
         }
       ],
       "flows": [
         {
-          "id": "TEXT_OUT",
-          "source_id": "MODEL",
-          "target_id": "PARSER",
+          "id": "CHOICE",
+          "source_id": "CHOOSER",
+          "target_id": "LABELER",
           "classification": "public",
           "boundary_crossing": "stated",
-          "description": "Plain draft strings reach a declared parser"
+          "description": "One fixed enum value becomes model input"
         },
         {
-          "id": "READ_ONLY",
-          "source_id": "PARSER",
-          "target_id": "EDITOR",
+          "id": "LABEL",
+          "source_id": "LABELER",
+          "target_id": "PANEL",
           "classification": "public",
           "boundary_crossing": "stated",
-          "description": "Escaped read-only preview awaits human review"
+          "description": "Draft category is displayed as read-only escaped public text"
         }
-      ],
-      "known_limitations": [
-        "All design statements are caller-supplied and externally unverified."
       ],
       "deployment_assumptions": [
-        "Offline public word-list sorting; no tools, retrieval, network, confidential data, executable output or autonomous action."
+        "Offline fixed-enum demonstration with no retrieval, uploads, tools, private data, executable output or autonomous action."
       ],
-      "controls": [
-        {
-          "id": "STRING_ONLY",
-          "component_ids": [
-            "PARSER"
-          ],
-          "description": "Caller reports typed string parsing and escaped preview; effectiveness unverified",
-          "claimed_status": "stated"
-        }
+      "human_oversight": [
+        "Operator reviews any displayed label before separate manual use."
+      ],
+      "known_limitations": [
+        "Caller design assertions are unverified; zero findings does not certify safety."
       ]
     },
     "expected_facts": [
-      "Reviewable graph has a model and declared adjacent flow",
-      "Risky case permits conditional findings; benign case permits zero findings"
+      "Offline fixed-enum public color category demonstration",
+      "Read-only escaped-text display with manual operator review",
+      "No supplied attack surface supports inventing tools, sensitive data or realized vulnerabilities"
     ],
     "forbidden_inferences": [
       "No false insufficiency, invented graph/source or verified risk"

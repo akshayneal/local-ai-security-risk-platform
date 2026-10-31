@@ -23,7 +23,16 @@ def historical_test(function):
         if hasattr(request.node, "callspec"):
             target += "[" + request.node.callspec.id + "]"
         result = subprocess.run(
-            [sys.executable, "-B", "-m", "pytest", "-q", "-p", "no:cacheprovider", target],
+            [
+                sys.executable,
+                "-B",
+                "-m",
+                "pytest",
+                "-q",
+                "-p",
+                "no:cacheprovider",
+                target,
+            ],
             cwd=directory,
             env=env,
             capture_output=True,

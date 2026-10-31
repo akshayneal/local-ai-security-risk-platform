@@ -7,6 +7,7 @@ from threading import Barrier
 
 import pytest
 from fastapi.testclient import TestClient
+from sprint9_history import historical_test as sprint9_historical_test
 from test_ai_security_contracts import case
 from test_schemas import GOVERNANCE_INPUT, GOVERNANCE_RESPONSE, SOC_INPUT, SOC_RESPONSE
 
@@ -29,6 +30,7 @@ def audit(monkeypatch):
 @pytest.mark.parametrize(
     "case_id", ["RISK-1", "RISK-2", "RISK-3", "RISK-4", "RISK-5", "RISK-6", "BENIGN-1"]
 )
+@sprint9_historical_test
 def test_actual_route_to_validator_provenance_export(monkeypatch, audit, case_id):
     row = case(case_id)
     calls = []
@@ -166,6 +168,7 @@ def test_bounded_body_and_sanitized_validation_errors(payload, monkeypatch, audi
     assert "application_id" not in response.text and not audit
 
 
+@sprint9_historical_test
 def test_no_workspace_grants_and_prompt_quarantine(monkeypatch, audit):
     from app.untrusted_content import QUARANTINE_MARKER
 
@@ -227,6 +230,7 @@ def test_runtime_error_does_not_log_model_or_design_text(monkeypatch, audit):
     assert not complete_context_required()
 
 
+@sprint9_historical_test
 def test_concurrent_context_and_failure_reset(monkeypatch):
     barrier = Barrier(2)
     row = case()

@@ -222,6 +222,37 @@ class AiSecurityResponse(Contract):
         return self
 
 
+class CandidateGeneration(Contract):
+    """Internal model proposals; identity and structural coverage belong to Python.
+
+    A valid proposal remains unassessed. Its IDs and category can be checked
+    against the declared graph/guidance, but that does not prove entailment.
+    """
+
+    findings: tuple[TechnicalFinding, ...] = Field(max_length=12)
+    evidence_gaps: tuple[Text, ...] = Field(max_length=16)
+    human_review_requirements: Notes = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def bounded_proposals(self):
+        unique([f.finding_id for f in self.findings], "Duplicate finding IDs")
+        unique(
+            [
+                (
+                    f.category,
+                    tuple(sorted(f.component_ids)),
+                    tuple(sorted(f.flow_ids)),
+                    f.hypothesis,
+                )
+                for f in self.findings
+            ],
+            "Duplicate findings",
+        )
+        if len(self.model_dump_json().encode()) > MAX_OUTPUT_BYTES:
+            raise ValueError("Candidate proposals exceed total UTF-8 budget")
+        return self
+
+
 class AdvisoryGeneration(AiSecurityResponse):
     """Provider-visible branch: a reviewable design may have zero findings."""
 

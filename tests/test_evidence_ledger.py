@@ -50,7 +50,10 @@ def test_default_unknown_is_field_presence_not_control_absence():
     assert facts["human_review_process"].value == "Not specified"
     assert facts["system_purpose"].state == "supplied"
     serialized = ledger.model_dump_json()
-    assert "explicitly_absent" not in serialized and "reported_implemented" not in serialized
+    assert (
+        "explicitly_absent" not in serialized
+        and "reported_implemented" not in serialized
+    )
 
 
 @pytest.mark.parametrize(
@@ -78,7 +81,10 @@ def test_prompt_copy_quarantines_hostile_values_and_preserves_original():
     assert "Ignore previous" not in rendered
     assert "17 retained sample events" in rendered
     assert request.human_review_process == text
-    assert next(f for f in ledger.facts if f.input_path == "human_review_process").value == text
+    assert (
+        next(f for f in ledger.facts if f.input_path == "human_review_process").value
+        == text
+    )
     assert "not semantic entailment" in rendered
 
 
@@ -113,7 +119,9 @@ def test_fingerprints_and_fact_ids_follow_exact_input_bytes():
 
 
 def test_soc_fields_preserve_account_vs_asset_label_without_inferred_ownership():
-    request = SocAlertRequest(**(SOC_INPUT | {"affected_asset": "account: synthetic-user"}))
+    request = SocAlertRequest(
+        **(SOC_INPUT | {"affected_asset": "account: synthetic-user"})
+    )
     ledger = build_evidence_ledger(request)
     fact = next(f for f in ledger.facts if f.input_path == "affected_asset")
     assert fact.value == "account: synthetic-user"
@@ -128,7 +136,11 @@ def test_analyzers_append_ledger_and_ablation_restores_original_task(monkeypatch
     request = SocAlertRequest(**SOC_INPUT) if soc else governance()
     output = SOC_RESPONSE if soc else GOVERNANCE_RESPONSE
     calls = []
-    monkeypatch.setattr(module, "call_model_json", lambda **kw: calls.append(kw) or copy.deepcopy(output))
+    monkeypatch.setattr(
+        module,
+        "call_model_json",
+        lambda **kw: calls.append(kw) or copy.deepcopy(output),
+    )
     treatment = analyze(request, references=[])
     with evidence_ledger_mode(False):
         baseline = analyze(request, references=[])
@@ -145,10 +157,20 @@ def test_microsoft_ledger_retains_row_bound_values_and_roles_not_event_success()
         "case_id": "LEDGER-MS",
         "tables": {
             "DeviceProcessEvents": [
-                {"DeviceName": "unit-host", "AccountName": "unit-user", "ProcessId": 17, "ActionType": "ProcessCreated"},
+                {
+                    "DeviceName": "unit-host",
+                    "AccountName": "unit-user",
+                    "ProcessId": 17,
+                    "ActionType": "ProcessCreated",
+                },
             ],
             "DeviceNetworkEvents": [
-                {"LocalIP": "192.0.2.17", "LocalPort": 50017, "RemoteIP": "203.0.113.17", "RemotePort": 8443},
+                {
+                    "LocalIP": "192.0.2.17",
+                    "LocalPort": 50017,
+                    "RemoteIP": "203.0.113.17",
+                    "RemotePort": 8443,
+                },
             ],
         },
     }
@@ -170,8 +192,13 @@ def test_microsoft_ledger_retains_row_bound_values_and_roles_not_event_success()
 def test_prompt_ledger_has_machine_metadata_separate_from_untrusted_values():
     ledger = build_evidence_ledger(governance())
     rendered = ledger_prompt(ledger)
-    body = rendered.split("BEGIN UNTRUSTED FIELD VALUES\n", 1)[1].split("\nEND UNTRUSTED FIELD VALUES", 1)[0]
+    body = rendered.split("BEGIN UNTRUSTED FIELD VALUES\n", 1)[1].split(
+        "\nEND UNTRUSTED FIELD VALUES", 1
+    )[0]
     payload = json.loads(body)
     assert payload["request_sha256"] == ledger.request_sha256
-    assert payload["facts"][0]["origin"] == "supplied assertion; not independently verified"
+    assert (
+        payload["facts"][0]["origin"]
+        == "supplied assertion; not independently verified"
+    )
     assert "Missing field values do not establish absent controls" in rendered

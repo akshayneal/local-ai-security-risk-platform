@@ -46,7 +46,12 @@ def begin(budget, tmp_path, track="lab"):
 
 
 def complete(budget, attempt):
-    budget.response(attempt, 200, b'{"message":{"content":"{}"},"done":true}', 0.01)
+    budget.response(
+        attempt,
+        200,
+        b'{"model":"qwen3:8b","message":{"content":"{}"},"done":true}',
+        0.01,
+    )
 
 
 def test_fresh_twelve_contracts_controls_and_sealed_literal_bytes():
@@ -161,6 +166,7 @@ def test_response_artifact_excludes_hidden_thinking(tmp_path):
         200,
         encoded(
             {
+                "model": "qwen3:8b",
                 "message": {
                     "content": "<think>hidden alpha</think>{}",
                     "thinking": "hidden beta",
@@ -210,7 +216,7 @@ def test_requests_and_sdk_transport_share_retry_accounting(tmp_path, monkeypatch
         sends.append("sdk")
         return httpx.Response(
             500 if len(sends) == 1 else 200,
-            json={"message": {"content": "{}"}, "done": True},
+            json={"model": "qwen3:8b", "message": {"content": "{}"}, "done": True},
         )
 
     sdk = Client(
@@ -223,14 +229,13 @@ def test_requests_and_sdk_transport_share_retry_accounting(tmp_path, monkeypatch
     sdk._client.close()
 
     def send_requests(adapter, request, **kwargs):
-        assert (
-            adapter.max_retries.total == 0
-            and not kwargs["proxies"]
-        )
+        assert adapter.max_retries.total == 0 and not kwargs["proxies"]
         sends.append("strict")
         response = requests.Response()
         response.status_code, response.url = 200, request.url
-        response.raw = io.BytesIO(b'{"message":{"content":"{}"},"done":true}')
+        response.raw = io.BytesIO(
+            b'{"model":"qwen3:8b","message":{"content":"{}"},"done":true}'
+        )
         return response
 
     monkeypatch.setattr(requests.adapters.HTTPAdapter, "send", send_requests)
@@ -285,3 +290,262 @@ def test_existing_trial_and_acceptance_cannot_be_reused(tmp_path, monkeypatch):
     (tmp_path / "cedar-sprint9-acceptance").mkdir()
     with pytest.raises(FileExistsError):
         runner.run(track="acceptance", trial="different-id")
+
+
+def test_actual_provider_retry_and_soc_repair_consume_same_counter(
+    tmp_path, monkeypatch
+):
+    from app import ollama_client, soc_analyzer
+    from app.analysis_trace import AnalysisTrace
+    from app.model_metrics import local_model_metrics
+    from app.schemas import SocAlertRequest
+
+    budget = SprintBudget(tmp_path / "accounting")
+    begin(budget, tmp_path)
+    generations = []
+    response_body = {
+        "alert_id": "OFFLINE-S9",
+        "severity": "low",
+        "likely_incident_type": "Uncertain observation",
+        "summary": "A synthetic authentication observation was supplied for lab-host-9.",
+        "mitre_mapping": [],
+        "recommended_containment": [],
+        "recommended_investigation_steps": [
+            "Review the supplied record with its owner."
+        ],
+        "false_positive_considerations": ["Routine access is possible."],
+        "evidence_gaps": ["Business purpose unknown."],
+        "analyst_note": "Human review required; no action executed.",
+        "observed_evidence": [
+            "A synthetic authentication observation concerns lab-host-9."
+        ],
+        "analyst_inferences": [],
+        "source_references": [],
+    }
+
+    def send(adapter, request, **kwargs):
+        response = requests.Response()
+        response.url, response.status_code = request.url, 200
+        if request.url.endswith("/api/version"):
+            body = {"version": "0.40.13"}
+        else:
+            generations.append(json.loads(request.body))
+            if len(generations) == 1:
+                response.status_code, body = (
+                    500,
+                    {"error": "Synthetic provider failure"},
+                )
+            else:
+                raw = response_body.copy()
+                if len(generations) == 3:
+                    raw["observed_evidence"] = []  # Forces the real bounded SOC repair.
+                body = {
+                    "model": "qwen3:8b",
+                    "done": True,
+                    "message": {"content": json.dumps(raw)},
+                }
+        response.raw = io.BytesIO(encoded(body))
+        return response
+
+    monkeypatch.setattr(requests.adapters.HTTPAdapter, "send", send)
+    monkeypatch.setattr(requests, "Session", fingerprinted_session_class(budget))
+    monkeypatch.setattr(ollama_client, "OLLAMA_HOST", HOST)
+    monkeypatch.setattr(ollama_client, "complete_context_required", lambda: True)
+    with local_model_metrics(num_ctx=8192):
+        assert (
+            ollama_client.call_model_json(
+                "Synthetic transport retry", {"type": "object"}
+            )["alert_id"]
+            == "OFFLINE-S9"
+        )
+        trace = AnalysisTrace()
+        output = soc_analyzer.analyze_soc_alert(
+            SocAlertRequest(
+                alert_id="OFFLINE-S9",
+                alert_type="Synthetic observation",
+                source_system="Offline test",
+                affected_asset="lab-host-9",
+                raw_log="Synthetic authentication observation concerns lab-host-9.",
+            ),
+            references=[],
+            trace=trace,
+        )
+    assert output.alert_id == "OFFLINE-S9"
+    assert trace.repair_attempted and trace.repair_failed is False
+    assert len(generations) == budget.count == 4
+    assert "APPLICATION OUTPUT REPAIR" in generations[-1]["messages"][-1]["content"]
+    budget.close()
+
+
+def test_ordinary_sdk_route_is_refused_before_any_raw_send(tmp_path, monkeypatch):
+    from ollama import Client
+
+    from app import ollama_client
+
+    budget = SprintBudget(tmp_path / "accounting")
+    begin(budget, tmp_path)
+    provider = Client(
+        host=HOST,
+        transport=FingerprintedHttpx(
+            budget, httpx.MockTransport(lambda r: pytest.fail("non-strict SDK send"))
+        ),
+    )
+    monkeypatch.setattr(ollama_client, "client", provider)
+    monkeypatch.setattr(ollama_client, "complete_context_required", lambda: False)
+    with pytest.raises(BudgetStop):
+        ollama_client.call_model_json(
+            "Synthetic non-strict SDK denial", {"type": "object"}
+        )
+    assert budget.count == 0
+    provider._client.close()
+    budget.close()
+
+
+def test_workflow_system_context_nested_exception_resets():
+    from app.inference_context import generation_system_prompt, workflow_model_context
+
+    assert generation_system_prompt() is None
+    with workflow_model_context("Outer synthetic instruction"):
+        assert generation_system_prompt() == "Outer synthetic instruction"
+        with (
+            pytest.raises(ValueError),
+            workflow_model_context("Inner synthetic instruction"),
+        ):
+            assert generation_system_prompt() == "Inner synthetic instruction"
+            raise ValueError("synthetic")
+        assert generation_system_prompt() == "Outer synthetic instruction"
+    assert generation_system_prompt() is None
+
+
+@pytest.mark.parametrize(
+    "content",
+    [
+        "<think>complete secret</think>{}<think>unclosed secret",
+        "<THINK>unclosed secret",
+        "{} </think>unmatched secret",
+    ],
+)
+def test_malformed_hidden_markers_withhold_without_retention(tmp_path, content):
+    budget = SprintBudget(tmp_path / "accounting")
+    begin(budget, tmp_path)
+
+    def send(request):
+        return httpx.Response(
+            200, json={"model": "qwen3:8b", "message": {"content": content}}
+        )
+
+    with (
+        httpx.Client(
+            transport=FingerprintedHttpx(budget, httpx.MockTransport(send))
+        ) as client,
+        pytest.raises(BudgetStop),
+    ):
+        client.post(HOST + "/api/chat", json=payload())
+    assert budget.count == 1 and budget.blocked
+    budget.close()
+    assert not list(tmp_path.glob("s9-*.json"))
+    assert "secret" not in (tmp_path / "accounting/journal.jsonl").read_text()
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "missing_header",
+        "duplicate_header",
+        "unknown_event",
+        "negative_storage",
+        "wrong_attempt_id",
+    ],
+)
+def test_corrupt_accounting_cannot_reset_budget_or_deadline(tmp_path, mutation):
+    root = tmp_path / "accounting"
+    budget = SprintBudget(root)
+    begin(budget, tmp_path)
+    complete(budget, budget.reserve(HOST + "/api/chat", "POST"))
+    budget.close()
+    path = root / "journal.jsonl"
+    rows = [json.loads(line) for line in path.read_text().splitlines()]
+    if mutation == "missing_header":
+        rows.pop(0)
+    elif mutation == "duplicate_header":
+        rows.append(rows[0])
+    elif mutation == "unknown_event":
+        rows.append({"event": "silently_reset"})
+    elif mutation == "negative_storage":
+        next(row for row in rows if row["event"] == "artifact_stored")["bytes"] = -1
+    else:
+        next(row for row in rows if row["event"] == "provider_reserved")["attempt"] = (
+            "s9-9999"
+        )
+    path.write_bytes(b"\n".join(encoded(row) for row in rows) + b"\n")
+    with pytest.raises(BudgetStop):
+        SprintBudget(root)
+
+
+def test_deadline_persists_across_separate_budget_instances(tmp_path):
+    clock = [0]
+    root = tmp_path / "accounting"
+    first = SprintBudget(root, clock=lambda: clock[0])
+    first.close()
+    clock[0] = 14_300
+    second = SprintBudget(root, clock=lambda: clock[0])
+    begin(second, tmp_path)
+    with pytest.raises(BudgetStop):
+        second.reserve(HOST + "/api/chat", "POST")
+    assert second.count == 0
+    second.close()
+
+
+def test_unexpected_returned_model_stops_without_retry(tmp_path):
+    budget = SprintBudget(tmp_path / "accounting")
+    begin(budget, tmp_path)
+
+    def send(request):
+        return httpx.Response(
+            200, json={"model": "different-model", "message": {"content": "{}"}}
+        )
+
+    with (
+        httpx.Client(
+            transport=FingerprintedHttpx(budget, httpx.MockTransport(send))
+        ) as client,
+        pytest.raises(BudgetStop),
+    ):
+        client.post(HOST + "/api/chat", json=payload())
+    assert budget.count == 1 and budget.blocked
+    budget.close()
+
+
+def test_metadata_preflight_is_bounded_before_json_decode(monkeypatch):
+    responses = []
+
+    class Response:
+        status_code = 200
+        closed = False
+
+        def iter_content(self, chunk_size):
+            assert chunk_size == 8192
+            for _ in range(33):
+                yield b"x" * 8192
+
+        def close(self):
+            self.closed = True
+
+    class Session:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def get(self, url, **kwargs):
+            assert url == HOST + "/api/version"
+            assert kwargs == {"timeout": 5, "allow_redirects": False, "stream": True}
+            response = Response()
+            responses.append(response)
+            return response
+
+    monkeypatch.setattr(requests, "Session", Session)
+    with pytest.raises(ValueError, match="oversized"):
+        runner.preflight()
+    assert len(responses) == 1 and responses[0].closed

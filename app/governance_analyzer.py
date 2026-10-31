@@ -1,6 +1,7 @@
 from typing import Any
 
 from app.analysis_trace import AnalysisTrace
+from app.evidence_ledger import build_evidence_ledger, ledger_prompt
 from app.ollama_client import call_model_json
 from app.output_policy import replace_untrusted_source_ids, untrusted_source_ids
 from app.prompts import build_governance_prompt
@@ -50,6 +51,7 @@ def analyze_governance_risk(
         prompt = EVIDENCE_INSTRUCTIONS + prompt
     else:
         prompt = GUIDANCE_INSTRUCTIONS + prompt
+    prompt += ledger_prompt(build_evidence_ledger(request))
 
     if trace is not None:
         trace.capture("generation_started", None)

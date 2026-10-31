@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import pytest
 import requests
 from fastapi.testclient import TestClient
+from sprint9_history import historical_test as sprint9_historical_test
 from streamlit.testing.v1 import AppTest
 from test_ai_security_contracts import case
 
@@ -42,6 +43,7 @@ def button(page, label):
     return next(b for b in page.button if b.label == label)
 
 
+@sprint9_historical_test
 def test_page_actual_route_stub_metadata_and_export_render(monkeypatch):
     calls, audits = mock_api(monkeypatch)
     page = AppTest.from_file(PAGE, default_timeout=15).run()
@@ -80,6 +82,7 @@ def test_insufficient_example_shows_no_generated_safety_verdict(monkeypatch):
     assert not page.exception
 
 
+@sprint9_historical_test
 def test_export_escapes_untrusted_strings_and_rejects_wrong_binding(monkeypatch):
     row = case()
     row["input"]["application_name"] = (

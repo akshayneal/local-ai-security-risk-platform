@@ -6,6 +6,7 @@ import json
 import pytest
 from fastapi.testclient import TestClient
 from pydantic import ValidationError
+from sprint9_history import historical_test as sprint9_historical_test
 
 from app import ai_security_analyzer as analyzer
 from app import ai_security_api as api
@@ -96,6 +97,7 @@ def test_decoder_schema_encodes_both_publicly_valid_variants():
 
 
 @pytest.mark.parametrize("kind", ["candidate", "benign", "insufficient"])
+@sprint9_historical_test
 def test_real_api_uses_visible_variant_contract_and_preserves_raw_status(
     monkeypatch, kind
 ):
