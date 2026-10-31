@@ -26,3 +26,33 @@ never replace failed requests or frozen facts.
   Focused current tests82 passed; default app source files remain unchanged.
 - D1 has default/off/on order; load/cache/order and stochasticity remain confounds.
   D2/D3 mode selection follows the prospective plan; no invented accuracy rate.
+
+## D1 completed at960f08a9e76503fac4f5b7cf1c073302b5d365b9
+
+Six raw sends, six final done markers: default2 and on2 hit the fixed1280-token cap; off2 completed JSON, positive withheld by endpoint binding, benign returned zero findings but generic/contradictory gaps. No UNKNOWN, retries or repair sends. Off selected for D2/D3 under the prospective operational fallback, not semantic winner. Source/prompt/schema fixed across modes; first default positive includes cold model load. Full raw/model facts remain separate from copied app purpose/inventory; source membership did not prevent irrelevant guideline use. No default change or acceptance gate pass.
+
+## D2/D3 complete, before D4 outcomes
+
+All14 core raw sends have known final completion; zero retries/repairs/UNKNOWN.
+Full/off repeated the missing REPHRASER endpoint and unsupported unsafe-output
+category. Narrow/off returned both internal records in25.31/29.04s, but positive
+said no_finding while recounting unchanged untrusted input through the wrapper.
+Benign described fixed12/24 and escaped preview more faithfully, but omitted
+literal flow IDs and overstated prevention. Raw-model versus app-projected facts
+remain separate. Narrow v1 does not satisfy positive/benign viability.
+
+Ledger-on added SOC PID731 but retained unsupported Network Discovery and a
+PowerShell citation despite no PowerShell. Both SOC arms omitted approval EL-271's
+four-attempt/09:00-09:10 limit. Both governance arms omitted EL-T37/7of7 and described
+unknown retention implementation as lack; on improved external-sharing scope but
+not the state fidelity gate. Ledger stays OFF; no product change.
+
+D4's specific ambiguity: does v1 confuse conditional concern with verified attack
+proof? Keep v1/cases/rubric/schema/runtime unchanged, append one generic explicit
+conditional-decision rule for a new v2 treatment on the same pair, think=false.
+This is the only adaptation; positive/benign decisions remain model-owned. New
+TDD tests first failed2/2 because the rule option did not exist, then passed.
+The new rule contains no case ID, gold label, numeric answer or case-specific
+finding. Original recorded v1 prompts/schema were checked byte-identical after
+adding optional v2. All D4 outcomes, including failure, will be retained; no more
+than2 calls and no Aster tuning. No improvement is claimed before these outcomes.

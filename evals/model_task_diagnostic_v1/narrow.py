@@ -49,14 +49,29 @@ Return only the requested JSON schema; no hidden reasoning or extra fields.
 """
 
 
+DECISION_RULE_V2 = """
+EXPLICIT CONDITIONAL-DECISION RULE (EXPERIMENTAL V2):
+An attack prerequisite is different from a validation prerequisite. This question
+does not require evidence of successful exploitation or a completed security test.
+Choose conditional_concern when the supplied design permits attacker-controlled,
+instruction-like content to reach model context along the selected path under its
+declared constraints. Missing independent verification does not erase a declared
+input capability. Choose no_finding when supplied constraints exclude that attack
+prerequisite, while retaining implementation-verification gaps. Do not invent an
+attacker capability merely because a stated constraint is not independently tested.
+Formatting or delimiter controls have only their stated capabilities; do not assume
+instruction rejection. Downstream human review can limit impact but does not itself
+establish upstream instruction isolation. Assess supplied design claims conditionally;
+do not certify deployed control effectiveness or grant action/deployment authority.
+"""
+
+
 class NarrowSelection(Contract):
     request_sha256: Annotated[StrictStr, Field(pattern=r"^[a-f0-9]{64}$")]
     category: Literal["prompt_injection"] = CATEGORY
     flow_ids: tuple[Identifier, ...] = Field(min_length=1, max_length=MAX_PATH_EDGES)
     component_ids: tuple[Identifier, ...] = Field(min_length=2, max_length=5)
-    source_reference: Literal["AISEC-V1-PROMPT-INJECTION"] = (
-        "AISEC-V1-PROMPT-INJECTION"
-    )
+    source_reference: Literal["AISEC-V1-PROMPT-INJECTION"] = "AISEC-V1-PROMPT-INJECTION"
 
 
 class NarrowAssessment(Contract):
@@ -98,11 +113,15 @@ def _incoming_path(request: AiSecurityRequest) -> tuple[DataFlow, ...]:
     raise ValueError("No bounded declared ingestion-to-model path for this experiment")
 
 
-def build(request: AiSecurityRequest) -> NarrowTask:
+def build(request: AiSecurityRequest, *, decision_rule: str = "v1") -> NarrowTask:
     """Build one smaller task from the same complete untrusted design."""
     request = AiSecurityRequest.model_validate(request.model_dump(mode="json"))
+    if decision_rule not in {"v1", "explicit-v2"}:
+        raise ValueError("Unknown experimental decision rule")
     if reviewability_gaps(request):
-        raise ValueError("Experimental question requires a structurally reviewable graph")
+        raise ValueError(
+            "Experimental question requires a structurally reviewable graph"
+        )
     path = _incoming_path(request)
     related, scoped = category_flow_scope(request)
     flow_ids = tuple(f.id for f in path)
@@ -122,12 +141,15 @@ def build(request: AiSecurityRequest) -> NarrowTask:
     prompt = (
         EVIDENCE_INSTRUCTIONS
         + PROMPT
+        + (DECISION_RULE_V2 if decision_rule == "explicit-v2" else "")
         + "\nAPPLICATION-OWNED QUESTION SCOPE (NOT A RISK VERDICT):\n"
         + selection.model_dump_json()
         + "\nAPPLICATION GUIDANCE ENVELOPE:\n"
         + protected_evidence_context(list(selected))
         + "\nCOMPLETE UNTRUSTED SUBMITTED DESIGN:\n"
-        + json.dumps(neutralize_content(request.model_dump(mode="json")), ensure_ascii=True)
+        + json.dumps(
+            neutralize_content(request.model_dump(mode="json")), ensure_ascii=True
+        )
     )
     if len(prompt.encode()) > MAX_PROMPT_BYTES:
         raise ValueError("Experimental prompt exceeds its bounded context")
@@ -138,7 +160,10 @@ def evaluate(raw: dict, task: NarrowTask) -> dict:
     """Validate structure only; caller must independently assess every full fact."""
     if not isinstance(raw, dict):
         raise TypeError("Experimental response requires a JSON object")
-    if len(json.dumps(raw, ensure_ascii=False, allow_nan=False).encode()) > MAX_REPLY_BYTES:
+    if (
+        len(json.dumps(raw, ensure_ascii=False, allow_nan=False).encode())
+        > MAX_REPLY_BYTES
+    ):
         raise ValueError("Experimental response exceeds its byte bound")
     assessment = NarrowAssessment.model_validate(raw)
     return {

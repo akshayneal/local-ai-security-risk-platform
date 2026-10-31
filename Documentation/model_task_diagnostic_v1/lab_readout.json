@@ -1,0 +1,198 @@
+{
+  "status": "DEVELOPMENT_IN_PROGRESS",
+  "implementation_commit": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+  "D1": {
+    "raw_attempts": 6,
+    "done_frames": 6,
+    "complete_answers": 2,
+    "known_length_withheld": 4,
+    "unknown": 0,
+    "app_returned": 1,
+    "selected_next_mode": "off",
+    "engineering_viable_pair": false,
+    "reviews": [
+      {
+        "attempt": "s10-d-0001",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "trial": "d1-default-v1",
+        "provider_finish": "KNOWN_WITHHELD_LENGTH",
+        "app_returned": false,
+        "full_model_facts": [
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE"
+        ],
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+      },
+      {
+        "attempt": "s10-d-0002",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "trial": "d1-default-v1",
+        "provider_finish": "KNOWN_WITHHELD_LENGTH",
+        "app_returned": false,
+        "full_model_facts": [
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE"
+        ],
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+      },
+      {
+        "attempt": "s10-d-0003",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "trial": "d1-off-v1",
+        "provider_finish": "COMPLETED",
+        "app_returned": false,
+        "raw_candidate_count": 2,
+        "raw_plausible_cores": 1,
+        "unsupported_categories": [
+          "unsafe_output_consumption"
+        ],
+        "full_model_facts": [
+          "PARTIAL",
+          "PARTIAL",
+          "PARTIAL",
+          "OMITTED",
+          "CONTRADICTED",
+          "RETAINED"
+        ],
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Prompt-injection core matches marker-only untrusted input, but WRAPPED-CONTEXT lacks REPHRASER in cited component_ids; whole result correctly withheld. Raw unsafe-output hypothesis asserts lack of human-gate enforcement despite stated escaped read-only trainer preview.",
+        "excerpts": [
+          {
+            "field": "findings[0].component_ids",
+            "text": "QUESTION, WRAPPER",
+            "reason": "WRAPPED-CONTEXT also needs REPHRASER endpoint."
+          },
+          {
+            "field": "findings[1].hypothesis",
+            "text": "The application may be vulnerable to unsafe output consumption due to the lack of validation and human gate enforcement for the generated rephrased text."
+          }
+        ]
+      },
+      {
+        "attempt": "s10-d-0004",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "trial": "d1-off-v1",
+        "provider_finish": "COMPLETED",
+        "app_returned": true,
+        "raw_candidate_count": 0,
+        "unsupported_categories": [],
+        "full_model_facts": [
+          "OMITTED",
+          "OMITTED",
+          "OMITTED",
+          "CONTRADICTED",
+          "OMITTED",
+          "OMITTED"
+        ],
+        "app_projected_facts": "Purpose retains12/24 and typed counts in app summary; not model retention.",
+        "engineering_viable": false,
+        "reason": "Zero findings is appropriate restraint; model instead copies generic guidance checks, doubts explicit classifications and adds out-of-scope tool/retrieval reviews. All six guidance IDs appear in ordinary prose despite citation instructions.",
+        "excerpts": [
+          {
+            "field": "evidence_gaps",
+            "text": "No evidence to confirm that data classification and permitted destinations are explicitly stated for each flow",
+            "reason": "Every declared flow is explicitly public with declared endpoints; independently unverified is distinct from missing declaration."
+          }
+        ]
+      },
+      {
+        "attempt": "s10-d-0005",
+        "case_id": "ELM-SEC-FREETEXT-V1",
+        "trial": "d1-on-v1",
+        "provider_finish": "KNOWN_WITHHELD_LENGTH",
+        "app_returned": false,
+        "full_model_facts": [
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE"
+        ],
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+      },
+      {
+        "attempt": "s10-d-0006",
+        "case_id": "ELM-SEC-NUMERIC-V1",
+        "trial": "d1-on-v1",
+        "provider_finish": "KNOWN_WITHHELD_LENGTH",
+        "app_returned": false,
+        "full_model_facts": [
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE",
+          "UNASSESSABLE"
+        ],
+        "app_projected_facts": "No accepted advisory",
+        "engineering_viable": false,
+        "reason": "Final done=true/length at1280 tokens; incomplete answer withheld, no semantic success or incapability claim."
+      }
+    ]
+  },
+  "lab_budget": {
+    "raw_attempts": 14,
+    "phase_counts": {
+      "D1": 6,
+      "D2": 4,
+      "D3": 4,
+      "D4": 0
+    },
+    "pending": null,
+    "blocked": false,
+    "remaining": 2
+  },
+  "campaign_budget": {
+    "counts": {
+      "lab": 14,
+      "acceptance": 0
+    },
+    "reserved": 14,
+    "pending": null,
+    "blocked": false,
+    "remaining": {
+      "lab": 2,
+      "acceptance": 12
+    }
+  },
+  "A": {
+    "scheduled": 12,
+    "attempted": 0,
+    "status": "NOT RUN; conditional gate not reached"
+  },
+  "independent_review": "PENDING",
+  "D2": {
+    "raw_attempts": 4,
+    "complete_answers": 4,
+    "full_app_returned": 1,
+    "narrow_internal_returned": 2,
+    "positive_narrow_decision": "no_finding: false negative despite reproducing relevant hazard facts",
+    "benign_narrow_decision": "no_finding: appropriate scoped decision, with overconfident prevention wording and missing flow identifiers",
+    "conclusion": "Smaller task removes ID/category burden and generic noise but v1 still fails central positive judgment; no promotion.",
+    "followup": "D4 explicit-v2 generic decision-criterion clarification; same frozen input/schema/settings. Original v1 retained byte-identical."
+  },
+  "D3": {
+    "raw_attempts": 4,
+    "complete_answers": 4,
+    "analyzer_returned": 4,
+    "soc": "Ledger adds PID731; both arms omit exact approval count/window and keep unsupported Discovery + irrelevant PowerShell citation.",
+    "governance": "Both omit reported implemented gate/test and7of7; both turn unknown retention implementation into lack. On improves external-sharing scope wording but does not meet fidelity gate.",
+    "ledger_activation": "NO; defaultOFF"
+  }
+}

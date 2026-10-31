@@ -148,7 +148,18 @@ def selected_cases(contrast, formulation, case_ids, reason):
     return selected
 
 
-def execute(cases, budget, *, trial, contrast, mode, formulation, ledger, reason):
+def execute(
+    cases,
+    budget,
+    *,
+    trial,
+    contrast,
+    mode,
+    formulation,
+    ledger,
+    reason,
+    decision_rule="v1",
+):
     from app import (
         ai_security_analyzer,
         governance_analyzer,
@@ -204,6 +215,7 @@ def execute(cases, budget, *, trial, contrast, mode, formulation, ledger, reason
                 trial=trial,
                 contrast=contrast,
                 formulation=formulation,
+                decision_rule=decision_rule,
                 ledger=ledger,
                 mode=mode,
                 reason=reason,
@@ -219,7 +231,7 @@ def execute(cases, budget, *, trial, contrast, mode, formulation, ledger, reason
                     if case["pillar"] == "ai_security":
                         request = AiSecurityRequest.model_validate(case["input"])
                         if formulation == "narrow":
-                            task = narrow.build(request)
+                            task = narrow.build(request, decision_rule=decision_rule)
                             raw = call_once(task.prompt, task.response_schema)
                             body = narrow.evaluate(raw, task)
                         else:
@@ -243,6 +255,7 @@ def execute(cases, budget, *, trial, contrast, mode, formulation, ledger, reason
                 "contrast": contrast,
                 "mode": mode,
                 "formulation": formulation,
+                "decision_rule": decision_rule,
                 "ledger": ledger,
                 "state": state,
                 "error_type": error_type,
@@ -267,6 +280,7 @@ def run(
     ledger=False,
     case_ids=(),
     reason="",
+    decision_rule="v1",
 ):
     if (
         not trial
@@ -276,6 +290,12 @@ def run(
         raise ValueError("Explicit unique trial ID required")
     if mode not in MODES or (contrast in {"D1", "D2"} and ledger):
         raise ValueError("Invalid fixed diagnostic treatment")
+    if decision_rule != "v1" and (
+        contrast != "D4" or formulation != "narrow" or decision_rule != "explicit-v2"
+    ):
+        raise ValueError(
+            "Explicit decision-rule diagnostic is limited to D4 narrow tasks"
+        )
     os.environ.update(
         PYTHONDONTWRITEBYTECODE="1",
         PYTHON_DOTENV_DISABLED="1",
@@ -305,6 +325,7 @@ def run(
             "contrast": contrast,
             "mode": mode,
             "formulation": formulation,
+            "decision_rule": decision_rule,
             "ledger": ledger,
             "implementation_commit": git("rev-parse", "HEAD"),
             "provider": provider,
@@ -320,6 +341,7 @@ def run(
             formulation=formulation,
             ledger=ledger,
             reason=reason,
+            decision_rule=decision_rule,
         )
         report["lab_budget"] = budget.snapshot()
         report["campaign_budget"] = umbrella.snapshot()
@@ -336,6 +358,7 @@ def main():
     parser.add_argument("--ledger", choices=("off", "on"), default="off")
     parser.add_argument("--case", action="append", default=[])
     parser.add_argument("--reason", default="")
+    parser.add_argument("--decision-rule", choices=("v1", "explicit-v2"), default="v1")
     args = parser.parse_args()
     run(
         trial=args.trial,
@@ -345,6 +368,7 @@ def main():
         ledger=args.ledger == "on",
         case_ids=args.case,
         reason=args.reason,
+        decision_rule=args.decision_rule,
     )
 
 

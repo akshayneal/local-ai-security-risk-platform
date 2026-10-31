@@ -1,8 +1,8 @@
 {
   "format": "sprint10-resumable-checkpoint-v1",
   "branch": "feature/model-task-grounding-diagnostic-sprint10",
-  "observed_head": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
-  "status": "preregistration prepared; commit before inference",
+  "observed_head": "960f08a9e76503fac4f5b7cf1c073302b5d365b9",
+  "status": "14 core attempts complete; explicit-v2 D4 source prepared, commit before remaining2 calls",
   "completed": [
     "Gate0 local/origin equality and inherited hashes",
     "Recovered original scaffolding/preflight without restarting",
@@ -12,15 +12,15 @@
   ],
   "budgets": {
     "D1": {
-      "spent": 0,
+      "spent": 6,
       "max": 6
     },
     "D2": {
-      "spent": 0,
+      "spent": 4,
       "max": 4
     },
     "D3": {
-      "spent": 0,
+      "spent": 4,
       "max": 4
     },
     "D4": {
@@ -32,14 +32,14 @@
       "max": 12
     },
     "aggregate": {
-      "spent": 0,
+      "spent": 14,
       "max": 28
     }
   },
   "unresolved_sprint10_requests": [],
   "historical_sprint9": "UNKNOWN preserved; no loaded model/backend/client currently observed",
-  "roots_created": false,
+  "roots_created": true,
   "defaults": "Unchanged: compact app-owned structural reviewability and graph gates; global/default think; ledgerOFF",
-  "next_safe_command": "Commit exact preregistration paths, verify committed literal bytes, then python -B -m evals.model_task_diagnostic_v1.runner --trial d1-default-v1 --contrast D1 --mode default",
+  "next_safe_command": "Commit D4 explicit-v2 source/checkpoint, then run positive/benign once each under D4 with exact case and reason. Do not rerun D1/D2/D3.",
   "do_not": "Never invoke old Aster runner unconfigured or resume Sprint9 journal; do not reset quota or overwrite trials."
 }

@@ -203,3 +203,21 @@ def test_existing_trial_refused_before_new_budget_or_provider_send(
     with pytest.raises(FileExistsError):
         runner.run(trial="fixed-trial", contrast="D1")
     assert not (runner.LAB / "journal.jsonl").exists()
+
+
+@pytest.mark.parametrize(
+    "contrast,formulation", [("D1", "full"), ("D2", "narrow"), ("D4", "full")]
+)
+def test_explicit_rule_cannot_leak_outside_specific_d4_narrow_diagnostic(
+    contrast, formulation, monkeypatch
+):
+    monkeypatch.setattr(
+        runner, "preflight", lambda: pytest.fail("invalid treatment reached provider")
+    )
+    with pytest.raises(ValueError, match="limited to D4"):
+        runner.run(
+            trial="bad-rule",
+            contrast=contrast,
+            formulation=formulation,
+            decision_rule="explicit-v2",
+        )
