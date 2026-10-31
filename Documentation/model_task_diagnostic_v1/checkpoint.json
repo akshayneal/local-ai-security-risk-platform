@@ -1,0 +1,45 @@
+{
+  "format": "sprint10-resumable-checkpoint-v1",
+  "branch": "feature/model-task-grounding-diagnostic-sprint10",
+  "observed_head": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "status": "preregistration prepared; commit before inference",
+  "completed": [
+    "Gate0 local/origin equality and inherited hashes",
+    "Recovered original scaffolding/preflight without restarting",
+    "67 recovered tests passed",
+    "New phase-cap failing test reproduced fifth-send accounting gap, fixed before live use",
+    "82 focused tests passed; Ruff passed"
+  ],
+  "budgets": {
+    "D1": {
+      "spent": 0,
+      "max": 6
+    },
+    "D2": {
+      "spent": 0,
+      "max": 4
+    },
+    "D3": {
+      "spent": 0,
+      "max": 4
+    },
+    "D4": {
+      "spent": 0,
+      "max": 2
+    },
+    "A": {
+      "spent": 0,
+      "max": 12
+    },
+    "aggregate": {
+      "spent": 0,
+      "max": 28
+    }
+  },
+  "unresolved_sprint10_requests": [],
+  "historical_sprint9": "UNKNOWN preserved; no loaded model/backend/client currently observed",
+  "roots_created": false,
+  "defaults": "Unchanged: compact app-owned structural reviewability and graph gates; global/default think; ledgerOFF",
+  "next_safe_command": "Commit exact preregistration paths, verify committed literal bytes, then python -B -m evals.model_task_diagnostic_v1.runner --trial d1-default-v1 --contrast D1 --mode default",
+  "do_not": "Never invoke old Aster runner unconfigured or resume Sprint9 journal; do not reset quota or overwrite trials."
+}

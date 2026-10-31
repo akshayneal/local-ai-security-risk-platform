@@ -1,0 +1,8 @@
+{
+  "scope": "Prospective development cases/rubric/runtime only; Aster inherited freeze remains untouched. No results inspected, zero raw sends.",
+  "sha256": {
+    "evals/model_task_diagnostic_v1/cases.json": "3e44a5da26ebecbede9507d1bba118232cfae74f00885ad5c70f83d8629ca4b9",
+    "evals/model_task_diagnostic_v1/rubric.md": "b6096c1962a57a3e2c2dabb6c9a410d1b74596f9477e0d6de7f86e7e4ed9cbba",
+    "evals/model_task_diagnostic_v1/plan.json": "4837f770783d07a2ff4c19d6d00361810fd166619188ba55f90a616e11ff63b9"
+  }
+}

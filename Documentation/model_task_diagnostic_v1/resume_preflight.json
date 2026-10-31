@@ -1,0 +1,106 @@
+{
+  "observed_at_utc": "2026-10-31T21:57:19.549995+00:00",
+  "branch": "feature/model-task-grounding-diagnostic-sprint10",
+  "head": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "sprint10_reserved_attempts_before_resume": 0,
+  "experiment_roots_exist": false,
+  "process_snapshot": "Only existing Ollama app PID17584 and serve PID18640; no Python/eval/backend runner observed. TCP inspection showed no established client.",
+  "historical_sprint9_completion": "UNKNOWN; record unchanged",
+  "scaffolding_tests": {
+    "passed": 67,
+    "seconds": 6.18,
+    "provider_calls": 0
+  },
+  "sandbox_attempt": {
+    "passed": 22,
+    "setup_errors": 45,
+    "reason": "pytest temporary directory access denied under previous sandbox; same tests then passed outside sandbox, no source fix"
+  },
+  "/api/version": {
+    "version": "0.40.13"
+  },
+  "/api/tags": {
+    "models": [
+      {
+        "name": "qwen3:8b",
+        "model": "qwen3:8b",
+        "modified_at": "2026-10-25T18:09:29.600096-04:00",
+        "size": 5225388164,
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      }
+    ]
+  },
+  "/api/ps": {
+    "models": []
+  },
+  "/api/show": {
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "8.2B",
+      "quantization_level": "Q4_K_M"
+    },
+    "parameters": "top_p                          0.95\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6\ntop_k                          20"
+  },
+  "versioned_provider_references": [
+    {
+      "url": "https://raw.githubusercontent.com/ollama/ollama/v0.40.13/api/types.go",
+      "status": 200,
+      "bytes": 44623,
+      "sha256": "8e54520d34c312bb6adfccb652b0d1e18bb5c4cdb8ac2eb2eab0c065a508effa",
+      "required_fields_present": [
+        "Think",
+        "Format",
+        "Stream",
+        "Truncate",
+        "Shift",
+        "NumPredict"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ollama/ollama/v0.40.13/server/routes.go",
+      "status": 200,
+      "bytes": 108914,
+      "sha256": "c72c7f751b4d70e18f2dc3a6100993737d8a5334206a59b64764d59265f9f708",
+      "required_fields_present": [
+        "req.Format",
+        "req.Think",
+        "req.Stream"
+      ]
+    }
+  ],
+  "hardware": {
+    "cpu": "AMD Ryzen9 5900HS with Radeon Graphics",
+    "cores": 8,
+    "logical_processors": 16,
+    "physical_memory_bytes": 25131372544,
+    "origin": "read-only CIM inspection; not a performance guarantee"
+  }
+}

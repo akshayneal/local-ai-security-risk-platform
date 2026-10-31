@@ -1,0 +1,67 @@
+{
+  "base_commit": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "authorized_existing": {
+    "tests/test_sprint9_preservation.py": "8f7a74ea06ed6bd7669baffc24dc5d4bb6ea3512"
+  },
+  "authorized_new": [
+    "Documentation/56_model_task_diagnostic_plan.md",
+    "Documentation/57_model_task_diagnostic_readout.md",
+    "Documentation/sprint10_preservation.json",
+    "Documentation/model_task_diagnostic_v1/preflight.json",
+    "Documentation/model_task_diagnostic_v1/resume_preflight.json",
+    "Documentation/model_task_diagnostic_v1/lab_readout.json",
+    "Documentation/model_task_diagnostic_v1/acceptance_status.json",
+    "Documentation/model_task_diagnostic_v1/change_inventory.json",
+    "Documentation/model_task_diagnostic_v1/decision_log.md",
+    "Documentation/model_task_diagnostic_v1/checkpoint.json",
+    "evals/model_task_diagnostic_v1/__init__.py",
+    "evals/model_task_diagnostic_v1/.gitattributes",
+    "evals/model_task_diagnostic_v1/cases.json",
+    "evals/model_task_diagnostic_v1/rubric.md",
+    "evals/model_task_diagnostic_v1/narrow.py",
+    "evals/model_task_diagnostic_v1/transport.py",
+    "evals/model_task_diagnostic_v1/umbrella.py",
+    "evals/model_task_diagnostic_v1/acceptance.py",
+    "evals/model_task_diagnostic_v1/runner.py",
+    "evals/model_task_diagnostic_v1/plan.json",
+    "evals/model_task_diagnostic_v1/freeze.json",
+    "tests/test_model_task_transport.py",
+    "tests/test_model_task_acceptance.py",
+    "tests/test_model_task_diagnostic_cases.py",
+    "tests/test_model_task_diagnostic_narrow.py",
+    "tests/test_model_task_runner.py",
+    "tests/test_sprint10_preservation.py",
+    "tests/sprint10_history.py"
+  ],
+  "scope_reason": "Only the prior current-tree guard is replayed unchanged at its immutable Sprint9 endpoint. New experimental helpers do not change default application behavior. All other base blobs remain protected.",
+  "historical_targets": {
+    "tests/test_sprint9_preservation.py": [
+      "test_current_scope_and_every_other_baseline_blob"
+    ]
+  },
+  "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
+  "protected_raw_manifest_sources": [
+    "Documentation/sprint5_preservation.json",
+    "Documentation/sprint6_preservation.json",
+    "Documentation/sprint7_preservation.json",
+    "Documentation/cross_pillar_v1/live_readout.json",
+    "Documentation/reliability_v1/readout.json",
+    "Documentation/controlled_inference_v1/lab_readout.json"
+  ],
+  "protected_raw_counts": {
+    "s4check": 590,
+    "northstar": 13,
+    "cedar7": 36,
+    "maple8": 14,
+    "birch9": 18
+  },
+  "aster_literal_sha256": {
+    "evals/controlled_acceptance_v1/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "evals/controlled_acceptance_v1/__init__.py": "de5dc998b1e48ec88a769ba2fa8d0a3a48e378ffab72548bbf76d952b48c0ae3",
+    "evals/controlled_acceptance_v1/cases.json": "baf5b4a90f91be10f939fdb8e0e04d1dd15c1b4a2fa2baca0da107c80aed90bd",
+    "evals/controlled_acceptance_v1/freeze.json": "bf9c5089f5203c366fe5133f88073cfd51f57096d8644bf34a2fbb86979f0c43",
+    "evals/controlled_acceptance_v1/plan.json": "b58dec8997f7b7b35b4b81f9a980b8ecc21e38e82d930300f4342576c3fc657a",
+    "evals/controlled_acceptance_v1/rubric.md": "dea662b3976a4e355fa14a19919c6e2af587b63982df08dc7ba8d8a5d0e32e10",
+    "evals/controlled_acceptance_v1/runner.py": "d349e00a566a42dde59cb6633b5f928e8c407c7202e1496be8d3b174c4ccb018"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "format": "model-task-diagnostic-v1",
+  "options": {
+    "temperature": 0.1,
+    "num_ctx": 8192,
+    "num_predict": 1280
+  },
+  "model": "qwen3:8b",
+  "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "modes": {
+    "default": "think key omitted",
+    "off": false,
+    "on": true
+  },
+  "phase_caps": {
+    "D1": 6,
+    "D2": 4,
+    "D3": 4,
+    "D4": 2
+  },
+  "track_caps": {
+    "lab": 16,
+    "acceptance": 12,
+    "aggregate": 28
+  },
+  "runtime": {
+    "stream": true,
+    "truncate": false,
+    "shift": false,
+    "wall_seconds": 360,
+    "connect_seconds": 10,
+    "idle_seconds": 90,
+    "campaign_seconds": 10800,
+    "max_reply_wire_bytes": 256000,
+    "max_retained_lab_bytes": 12000000
+  },
+  "ordering": [
+    "D1 default/full pair",
+    "D1 off/full pair",
+    "D1 on/full pair",
+    "D2 selected-mode full pair",
+    "D2 same-mode narrow pair",
+    "D3 same-mode ledger-off SOC/risk pair",
+    "D3 same-mode ledger-on SOC/risk pair"
+  ],
+  "mode_selection": "Completed pair first, then fewer disqualifying material inventions/contradictions, then full facts, then generation latency. If no mode completes both, off for bounded diagnostic, not claimed semantic winner.",
+  "judgments": "implementation-author; not independent; full facts and selected-path facts separate; no percentages",
+  "promotion": "latest positive and benign must jointly pass strict rubric; ledger activation also needs paired SOC/risk control fidelity; otherwise current defaults unchanged/Aster NOT RUN",
+  "aster": "Inherited bytes, runtime, 12-order, compact/ledgerON/default think and180s retained; test-proven process-local isolation only; never run old runner unconfigured",
+  "roots": {
+    "lab": "knowledge_base/workspaces/elm-sprint10-lab/accounting",
+    "umbrella": "knowledge_base/workspaces/elm-sprint10-campaign",
+    "acceptance": "knowledge_base/workspaces/elm-sprint10-acceptance"
+  },
+  "stop": "Any UNKNOWN/incomplete attempt stops further inference; no health/time-only recovery, no provider restart, no hidden retry."
+}

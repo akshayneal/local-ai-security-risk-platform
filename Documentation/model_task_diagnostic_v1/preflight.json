@@ -1,0 +1,114 @@
+{
+  "protected": {
+    "s4check": {
+      "count": 590,
+      "sha256_match": true,
+      "set_sha256": "4a2a90c3be54b0c34d79a1711f255063addbb7f2ee824003a6fff38bf8d1b3be"
+    },
+    "northstar": {
+      "count": 13,
+      "sha256_match": true,
+      "set_sha256": "1aa0b14c8c25f45e8cf3686cff9b061c495653b7f74e9e59124b1d82d73ba5e6"
+    },
+    "cedar7": {
+      "count": 36,
+      "sha256_match": true,
+      "set_sha256": "70ab4f864d971dedcba8cd424306edf6743a6eb651583c9623ab0575335680e9"
+    },
+    "maple8": {
+      "count": 14,
+      "sha256_match": true,
+      "set_sha256": "ab9cf170f442a3e400ee188c323baf1087be05628a207b780179e2e12ca7c108"
+    },
+    "birch9": {
+      "count": 18,
+      "sha256_match": true,
+      "set_sha256": "3022119f5dbb4dd1a4181f74609c065ee0e66e9de6d51f1c774883ac12d99736"
+    }
+  },
+  "agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
+  "untracked_count": 405,
+  "ignored_count": 17129,
+  "untracked_inventory_sha256": "0428398ba1144a0ba1e1c96e859fc5a15ba51395eb6bf24c1b47c98a6220fa30",
+  "ignored_inventory_sha256": "0c531aac64cfabbe9770603dc765c133b17899390947a2388edd9bbde7db0566",
+  "journals": [
+    "knowledge_base/workspaces/cedar-sprint7-live/sprint7-baseline-001/journal.jsonl",
+    "knowledge_base/workspaces/cedar-sprint9-lab/accounting/journal.jsonl",
+    "knowledge_base/workspaces/maple-sprint8-live/sprint8-primary-001/journal.jsonl"
+  ],
+  "aster_sealed_files": 5,
+  "provider_metadata": {
+    "/api/version": {
+      "version": "0.40.13"
+    },
+    "/api/tags": {
+      "models": [
+        {
+          "name": "qwen3:8b",
+          "model": "qwen3:8b",
+          "modified_at": "2026-10-25T18:09:29.600096-04:00",
+          "size": 5225388164,
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        }
+      ]
+    },
+    "/api/ps": {
+      "models": []
+    },
+    "/api/show": {
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ],
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M"
+      },
+      "parameters": "repeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6\ntop_k                          20\ntop_p                          0.95"
+    }
+  },
+  "start_branch": "feature/controlled-inference-fidelity-sprint9",
+  "start_sha": "b6d84530b6eb9dccbb328a8dcffb0f9b532ef7ab",
+  "origin_equal": true,
+  "tracked_diff": "",
+  "staged_diff": "",
+  "quiescence": {
+    "api_ps_models": [],
+    "tcp_11434_connections": [
+      "LISTEN owned by existing Ollama serve PID30440 only; no established clients"
+    ],
+    "processes": [
+      "existing Ollama app PID30184",
+      "existing Ollama serve PID30440"
+    ],
+    "evaluation_processes": [],
+    "backend_processes": [],
+    "interpretation": "Current no loaded model/no connected generation client/no runner observed; historical Sprint9 request completion remains UNKNOWN. No service mutation."
+  },
+  "python": "CPython3.13.1 AMD64 existing .venv"
+}
