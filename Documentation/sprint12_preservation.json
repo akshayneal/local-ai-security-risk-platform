@@ -1,0 +1,62 @@
+{
+  "base_commit": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+  "authorized_existing": {
+    "tests/test_sprint11_preservation.py": "628d5468a7462c49ea5c0f94a137891a982a853e"
+  },
+  "authorized_new": [
+    "Documentation/60_sprint11_closure_and_sprint12_charter.md",
+    "Documentation/61_evidence_grounded_reasoning_readout.md",
+    "Documentation/sprint12_preservation.json",
+    "Documentation/evidence_reasoning_v1/preflight.json",
+    "Documentation/evidence_reasoning_v1/checkpoint.json",
+    "Documentation/evidence_reasoning_v1/readout.json",
+    "Documentation/evidence_reasoning_v1/decision_log.md",
+    "Documentation/evidence_reasoning_v1/change_inventory.json",
+    "Documentation/evidence_reasoning_v1/review_packet.json",
+    "Documentation/evidence_reasoning_v1/reviewer_key.json",
+    "app/evidence_reasoning.py",
+    "evals/evidence_reasoning_v1/.gitattributes",
+    "evals/evidence_reasoning_v1/__init__.py",
+    "evals/evidence_reasoning_v1/build_suite.py",
+    "evals/evidence_reasoning_v1/dev_cases.json",
+    "evals/evidence_reasoning_v1/diagnostic_cases.json",
+    "evals/evidence_reasoning_v1/scorer_rubric.json",
+    "evals/evidence_reasoning_v1/plan.json",
+    "evals/evidence_reasoning_v1/rubric.md",
+    "evals/evidence_reasoning_v1/freeze.json",
+    "evals/evidence_reasoning_v1/runner.py",
+    "evals/evidence_reasoning_v1/transport.py",
+    "tests/sprint12_history.py",
+    "tests/test_sprint12_preservation.py",
+    "tests/test_evidence_reasoning.py",
+    "tests/test_evidence_reasoning_benchmark.py"
+  ],
+  "scope_reason": "Only the immediately preceding current-tree guard gains one import and one historical-at-final-SHA decorator. Its original AST/assertions are replayed unchanged with an isolated cache and real mutation rejection. Every other baseline Git blob remains exact; new paths are explicitly enumerated.",
+  "installed_agents_sha256": "17269f4f2e115f2b0c161ccbfd8832fa176e9a2bf17a365440b0c7dd16814a3d",
+  "protected_raw_manifest_sources": [
+    "Documentation/sprint5_preservation.json",
+    "Documentation/sprint6_preservation.json",
+    "Documentation/sprint7_preservation.json",
+    "Documentation/sprint10_preservation.json",
+    "Documentation/sprint11_preservation.json",
+    "Documentation/cross_pillar_v1/live_readout.json",
+    "Documentation/reliability_v1/readout.json",
+    "Documentation/controlled_inference_v1/lab_readout.json",
+    "Documentation/deterministic_evidence_v1/lab_readout.json"
+  ],
+  "protected_raw_counts": {
+    "s4check": 590,
+    "northstar": 13,
+    "cedar7": 36,
+    "maple8": 14,
+    "birch9": 18,
+    "elm10": 71,
+    "larch11": 72
+  },
+  "protected_literal_counts": {
+    "aster": 7,
+    "sprint11_freeze": 6
+  },
+  "inherited_visible_untracked": 405,
+  "main_and_peeled_tag": "fde00d0ca5d21eecbc6973cc784550ed453edb7a"
+}

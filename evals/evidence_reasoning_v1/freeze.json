@@ -1,0 +1,29 @@
+{
+  "format": "sprint12-prospective-v1",
+  "base": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+  "sha256": {
+    "app/ai_security_contracts.py": "db59a58545cae18379914861d8bddaacdff59548b172307e598abc3a31804e4f",
+    "app/deterministic_evidence.py": "b33a603652f5bbc38f48d98076cda89eb863549d717283284f60c4dc2503cd2a",
+    "app/evidence_ledger.py": "819868267e39e13bf30af44384cb0a91042bcda0b4670bc49a7fc19eb6da2920",
+    "app/evidence_reasoning.py": "d5233ce6c70241d783acc22b90369d155728eef8197460c2a1876fd8e373c1cd",
+    "app/support_contracts.py": "12055061c6b46be9b3b036b37eec7cc4b0ab44ea6bf5de7970f251ff3e992c09",
+    "evals/deterministic_evidence_v1/runner.py": "fb6fca8030c9a2a37b0d4117c01070b7647c509b000326f21b29c90d8742056c",
+    "evals/deterministic_evidence_v1/transport.py": "4bcca2b9d07b2ad2949284d2a4c55d7ec2b292a57290ae42074aac27b781b001",
+    "evals/evidence_reasoning_v1/.gitattributes": "341779f00b9979e29a872ebf25a9bf797bf440b11e23adf07bad375c01fd9f2c",
+    "evals/evidence_reasoning_v1/__init__.py": "3fa52a23b839ad9d338dac9a67b7924ab2ac32760d7e03e2cd2cabc9f9f136af",
+    "evals/evidence_reasoning_v1/build_suite.py": "301743f2b47db71ad1a9119835b0bb12bab0086be4fde7290225378d630c261d",
+    "evals/evidence_reasoning_v1/dev_cases.json": "25031d0c47bbc67e79c6f583050222f365d0e978bd92f37016359af592f6f829",
+    "evals/evidence_reasoning_v1/diagnostic_cases.json": "d86cd601f6ee697c57d62bdc4096c551e90768f06784e77a6f0f089c00041d84",
+    "evals/evidence_reasoning_v1/plan.json": "0a3d772e80164592f618a72d8b595d2457b0d1e9480ddaa9fde0efd277136bcd",
+    "evals/evidence_reasoning_v1/rubric.md": "b9e66ec74e7d013b2b372b7c1d2b1df6e1b81e96a25fe0a3a9ea489f54144ec9",
+    "evals/evidence_reasoning_v1/runner.py": "7b1ae2552cfb0a736fd80225725763fc520fef2d0f3b9fd73f2f63cef91588fb",
+    "evals/evidence_reasoning_v1/scorer_rubric.json": "909b284718bc6e1579cde11a31c0f53104f10a2a41c9c1bd42ddd8310a8a398b",
+    "evals/evidence_reasoning_v1/transport.py": "d5a6e1da53a45c7f3b560572dd67a431315da8130a16891c01a8b6a3f67e8c64",
+    "evals/model_task_diagnostic_v1/runner.py": "674c65fd3a64e6e03cedfb30b68c03c73cf869d575a49ca6b9a872ab9cc4d822",
+    "tests/test_evidence_reasoning.py": "987afb0152e2f93de2144171857aa035dc810c439c9e6911c2e013e29a7baa66",
+    "tests/test_evidence_reasoning_benchmark.py": "d321cd71a0edd3f5987b964179f440e43830fe886f045fcc9cfa9898dd1de11b"
+  },
+  "protected_git_blobs": {
+    "app/schemas.py": "44402b810c6ec967393d8883cde55927d381cb9d"
+  }
+}

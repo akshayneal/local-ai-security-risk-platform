@@ -1,0 +1,63 @@
+{
+  "version": "0.40.13",
+  "model": "qwen3:8b",
+  "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "capabilities": [
+    "completion",
+    "tools",
+    "thinking"
+  ],
+  "show_sha256": "c242baf63586d5ff82fcfdc3f0607fa8908b72292494fc9b6963b3a14aa386f7",
+  "loaded_models": [],
+  "generation_attempts": 0,
+  "installed_models": [
+    {
+      "name": "embeddinggemma:300m",
+      "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+      "size": 621875917,
+      "details": {
+        "parent_model": "embeddinggemma:300m-bf16",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "307.58M",
+        "quantization_level": "BF16",
+        "context_length": 2048,
+        "embedding_length": 768,
+        "runner": "ggml"
+      }
+    },
+    {
+      "name": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "size": 5225388164,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      }
+    }
+  ],
+  "hardware": {
+    "threads": 16,
+    "cpu": "AMD Ryzen 9 5900HS with Radeon Graphics        ",
+    "free_ram_kib": 12012100,
+    "cores": 8,
+    "total_ram_kib": 24542356
+  },
+  "python": "Python 3.13.1",
+  "base": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+  "branch": "feature/evidence-grounded-reasoning-sprint12",
+  "no_active_evaluation": "Terminal inspection: no python/pythonw/pytest processes; existing Ollama serve preserved; /api/ps empty.",
+  "second_completion_model": "NOT RUN; only qwen3 completion and embeddinggemma embedding model installed"
+}

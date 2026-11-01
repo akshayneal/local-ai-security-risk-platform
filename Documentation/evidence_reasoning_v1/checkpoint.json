@@ -1,0 +1,39 @@
+{
+  "history": [
+    {
+      "stage": "Gate0_and_Sprint11_closure",
+      "branch": "feature/evidence-grounded-reasoning-sprint12",
+      "head": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+      "upstream": null,
+      "tracked_start": "clean",
+      "inherited_visible_untracked": 405,
+      "raw_sends": 0,
+      "old_pending": "Historical Birch UNKNOWN preserved; not reopened",
+      "checks": "Exact remote ref and CI successful; inherited hashes matched; see closure",
+      "next": "Commit freeze and implementation before any generation"
+    },
+    {
+      "stage": "benchmark_freeze_and_deterministic_integration",
+      "head": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+      "raw_sends": 0,
+      "planned": {
+        "D1": 12,
+        "D2": 6,
+        "D3": 0,
+        "H1": 12
+      },
+      "caps": {
+        "development": 24,
+        "diagnostic": 12,
+        "global": 36
+      },
+      "pending": null,
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "freeze_sha256": "9358c146cd903789bc1a5ea0c434a68df15c2854977e058b18bd9b90e493b63e",
+      "focused_tests": "47 passed in9.91s after source-safety audit; earlier47 passed in13.64s",
+      "other_checks": "Generator --check and Ruff passed; every dispatch/schema within conservative bound; no live sends",
+      "staging": "not staged; explicit task-only stage next",
+      "next": "Review diff, commit prospective study, verify committed hashes, then D1 once"
+    }
+  ]
+}

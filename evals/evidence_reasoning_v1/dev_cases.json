@@ -1,0 +1,330 @@
+[
+  {
+    "id": "K7Q4",
+    "pillar": "soc",
+    "classification": "public_synthetic",
+    "input": {
+      "alert_id": "K7Q4",
+      "alert_type": "Network activity snapshot; synthetic collector family 17",
+      "source_system": "Synthetic activity recorder revision 1",
+      "affected_asset": "node-41.example",
+      "raw_log": "{\"account\":\"svc_telemetry\",\"authorization\":{\"account\":\"svc_telemetry\",\"allowed_operation\":\"health_check\",\"asset\":\"node-41.example\",\"endpoint\":\"198.51.100.62:443\",\"reference\":\"M4J8\",\"window\":\"2026-10-21T14:00:00Z/2026-10-21T14:15:00Z\"},\"bytes_sent\":52160,\"local_endpoint\":\"192.0.2.41:51004\",\"operation\":\"data_transfer\",\"process\":\"metrics-agent.exe\",\"record_count\":1,\"record_id\":\"Q8N4\",\"remote_domain\":\"relay.example\",\"remote_endpoint\":\"198.51.100.62:443\",\"result\":\"completed\",\"schema\":\"synthetic_activity_v1\",\"timestamp\":\"2026-10-21T14:07:00Z\"}",
+      "known_indicators": [
+        "198.51.100.62",
+        "relay.example"
+      ],
+      "observed_behavior": "The records concern public synthetic service metrics. No other events, threat reputation, sensitive content or live host inspection are supplied. Authorization is a supplied record, not independently verified."
+    },
+    "required_paths": [
+      "alert_id",
+      "source_system",
+      "affected_asset",
+      "raw_log",
+      "known_indicators[0]",
+      "known_indicators[1]",
+      "observed_behavior"
+    ],
+    "optional_paths": [
+      "alert_type"
+    ],
+    "question": "Assess whether the supplied activity supports a specific conditional security concern within the stated operation and authorization scope. Separate a concern from proven compromise, identify disconfirming evidence and unknowns, and propose proportionate human verification."
+  },
+  {
+    "id": "P2M8",
+    "pillar": "governance",
+    "classification": "public_synthetic",
+    "input": {
+      "system_name": "P2M8",
+      "system_purpose": "Prepare customer-facing draft service notices from public synthetic records.",
+      "data_types": [
+        "Public synthetic service records"
+      ],
+      "users": [
+        "Internal notice operators and assigned human reviewers"
+      ],
+      "external_integrations": [
+        "Synthetic notice-dispatch service at notices.example"
+      ],
+      "human_review_process": "{\"implementation_claim\":{\"claim\":\"All four followed the stated review timing.\",\"review_timing\":\"before_dispatch\",\"revision\":\"2026-10-20.2\",\"sample_description\":\"Four draft-dispatch transitions were inspected.\",\"sample_size\":4,\"source_id\":\"N3H6\",\"status\":\"reported_implemented\"},\"limits\":\"Caller-supplied claims only; production enforcement is not independently verified.\",\"requirement\":{\"revision\":\"2026-10-19.1\",\"rule\":\"A human reviewer must approve each draft before dispatch.\",\"scope\":\"customer-facing draft dispatch only\",\"source_id\":\"J5D9\"}}",
+      "business_impact": "Administrative display metadata: the review dashboard accent color is slate gray."
+    },
+    "required_paths": [
+      "system_name",
+      "system_purpose",
+      "data_types[0]",
+      "users[0]",
+      "external_integrations[0]",
+      "human_review_process"
+    ],
+    "optional_paths": [
+      "business_impact"
+    ],
+    "question": "Assess whether the supplied workflow supports a specific conditional concern about the stated human-review requirement. Distinguish a requirement, an implementation claim and an actual approval; recognize counterevidence and missing evidence without granting deployment approval."
+  },
+  {
+    "id": "V9D3",
+    "pillar": "ai_security",
+    "classification": "public_synthetic",
+    "input": {
+      "application_id": "V9D3",
+      "application_name": "Application V9D3",
+      "purpose": "Select updates to a local ledger containing public synthetic service counts.",
+      "deployment_assumptions": [
+        "The declared path operates in a local demonstration. No real mutation was executed by this review.",
+        "The design permits model-selected tool arguments; operator identity invokes the tool service."
+      ],
+      "actors": [
+        {
+          "id": "L4R7",
+          "role": "service",
+          "description": "Declared tool-dispatch service identity"
+        }
+      ],
+      "components": [
+        {
+          "id": "T2W8",
+          "kind": "model",
+          "description": "Local completion component"
+        },
+        {
+          "id": "F6P3",
+          "kind": "tool",
+          "description": "Local synthetic ledger interface"
+        }
+      ],
+      "flows": [
+        {
+          "id": "V9C5",
+          "source_id": "T2W8",
+          "target_id": "F6P3",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Model-selected arguments reach the ledger interface on the declared path."
+        }
+      ],
+      "ingestion_surfaces": [],
+      "tools": [
+        {
+          "id": "D7K2",
+          "component_id": "F6P3",
+          "capabilities": [
+            "write"
+          ],
+          "invoker_actor_ids": [
+            "L4R7"
+          ],
+          "human_gate": "stated"
+        }
+      ],
+      "controls": [],
+      "implementation_evidence": [],
+      "human_oversight": [
+        "{\"gate_timing\":\"after_execution\",\"implementation_claim\":\"reported_implemented\",\"requirement\":\"A human must approve each model-selected ledger mutation before execution.\",\"sample\":\"Three supplied test transitions followed the stated timing.\",\"scope\":\"This one declared model-to-tool path only.\"}"
+      ],
+      "known_limitations": [
+        "Administrative display metadata: the review dashboard accent color is slate gray.",
+        "Declared capabilities and control claims have not been independently exercised or verified."
+      ]
+    },
+    "required_paths": [
+      "application_id",
+      "application_name",
+      "purpose",
+      "deployment_assumptions[0]",
+      "deployment_assumptions[1]",
+      "actors[0].id",
+      "actors[0].role",
+      "actors[0].description",
+      "components[0].id",
+      "components[0].kind",
+      "components[0].description",
+      "components[1].id",
+      "components[1].kind",
+      "components[1].description",
+      "flows[0].id",
+      "flows[0].source_id",
+      "flows[0].target_id",
+      "flows[0].classification",
+      "flows[0].boundary_crossing",
+      "flows[0].description",
+      "ingestion_surfaces",
+      "tools[0].id",
+      "tools[0].component_id",
+      "tools[0].capabilities[0]",
+      "tools[0].invoker_actor_ids[0]",
+      "tools[0].human_gate",
+      "controls",
+      "implementation_evidence",
+      "human_oversight[0]",
+      "known_limitations[1]"
+    ],
+    "optional_paths": [
+      "known_limitations[0]"
+    ],
+    "question": "Assess whether the declared model-to-tool path supports a specific conditional concern about consequential tool actions and human gating. Distinguish declared capability from verified exploitation, preserve control timing and unknowns, and propose proportionate human verification."
+  },
+  {
+    "id": "C6R1",
+    "pillar": "soc",
+    "classification": "public_synthetic",
+    "input": {
+      "alert_id": "C6R1",
+      "alert_type": "Network activity snapshot; synthetic collector family 17",
+      "source_system": "Synthetic activity recorder revision 1",
+      "affected_asset": "node-41.example",
+      "raw_log": "{\"account\":\"svc_telemetry\",\"authorization\":{\"account\":\"svc_telemetry\",\"allowed_operation\":\"data_transfer\",\"asset\":\"node-41.example\",\"endpoint\":\"198.51.100.62:443\",\"reference\":\"M4J8\",\"window\":\"2026-10-21T14:00:00Z/2026-10-21T14:15:00Z\"},\"bytes_sent\":52160,\"local_endpoint\":\"192.0.2.41:51004\",\"operation\":\"data_transfer\",\"process\":\"metrics-agent.exe\",\"record_count\":1,\"record_id\":\"Q8N4\",\"remote_domain\":\"relay.example\",\"remote_endpoint\":\"198.51.100.62:443\",\"result\":\"completed\",\"schema\":\"synthetic_activity_v1\",\"timestamp\":\"2026-10-21T14:07:00Z\"}",
+      "known_indicators": [
+        "198.51.100.62",
+        "relay.example"
+      ],
+      "observed_behavior": "The records concern public synthetic service metrics. No other events, threat reputation, sensitive content or live host inspection are supplied. Authorization is a supplied record, not independently verified."
+    },
+    "required_paths": [
+      "alert_id",
+      "source_system",
+      "affected_asset",
+      "raw_log",
+      "known_indicators[0]",
+      "known_indicators[1]",
+      "observed_behavior"
+    ],
+    "optional_paths": [
+      "alert_type"
+    ],
+    "question": "Assess whether the supplied activity supports a specific conditional security concern within the stated operation and authorization scope. Separate a concern from proven compromise, identify disconfirming evidence and unknowns, and propose proportionate human verification."
+  },
+  {
+    "id": "N4T7",
+    "pillar": "ai_security",
+    "classification": "public_synthetic",
+    "input": {
+      "application_id": "N4T7",
+      "application_name": "Application N4T7",
+      "purpose": "Select updates to a local ledger containing public synthetic service counts.",
+      "deployment_assumptions": [
+        "The declared path operates in a local demonstration. No real mutation was executed by this review.",
+        "The design permits model-selected tool arguments; operator identity invokes the tool service."
+      ],
+      "actors": [
+        {
+          "id": "L4R7",
+          "role": "service",
+          "description": "Declared tool-dispatch service identity"
+        }
+      ],
+      "components": [
+        {
+          "id": "T2W8",
+          "kind": "model",
+          "description": "Local completion component"
+        },
+        {
+          "id": "F6P3",
+          "kind": "tool",
+          "description": "Local synthetic ledger interface"
+        }
+      ],
+      "flows": [
+        {
+          "id": "V9C5",
+          "source_id": "T2W8",
+          "target_id": "F6P3",
+          "classification": "public",
+          "boundary_crossing": "stated",
+          "description": "Model-selected arguments reach the ledger interface on the declared path."
+        }
+      ],
+      "ingestion_surfaces": [],
+      "tools": [
+        {
+          "id": "D7K2",
+          "component_id": "F6P3",
+          "capabilities": [
+            "write"
+          ],
+          "invoker_actor_ids": [
+            "L4R7"
+          ],
+          "human_gate": "stated"
+        }
+      ],
+      "controls": [],
+      "implementation_evidence": [],
+      "human_oversight": [
+        "{\"gate_timing\":\"before_execution\",\"implementation_claim\":\"reported_implemented\",\"requirement\":\"A human must approve each model-selected ledger mutation before execution.\",\"sample\":\"Three supplied test transitions followed the stated timing.\",\"scope\":\"This one declared model-to-tool path only.\"}"
+      ],
+      "known_limitations": [
+        "Administrative display metadata: the review dashboard accent color is slate gray.",
+        "Declared capabilities and control claims have not been independently exercised or verified."
+      ]
+    },
+    "required_paths": [
+      "application_id",
+      "application_name",
+      "purpose",
+      "deployment_assumptions[0]",
+      "deployment_assumptions[1]",
+      "actors[0].id",
+      "actors[0].role",
+      "actors[0].description",
+      "components[0].id",
+      "components[0].kind",
+      "components[0].description",
+      "components[1].id",
+      "components[1].kind",
+      "components[1].description",
+      "flows[0].id",
+      "flows[0].source_id",
+      "flows[0].target_id",
+      "flows[0].classification",
+      "flows[0].boundary_crossing",
+      "flows[0].description",
+      "ingestion_surfaces",
+      "tools[0].id",
+      "tools[0].component_id",
+      "tools[0].capabilities[0]",
+      "tools[0].invoker_actor_ids[0]",
+      "tools[0].human_gate",
+      "controls",
+      "implementation_evidence",
+      "human_oversight[0]",
+      "known_limitations[1]"
+    ],
+    "optional_paths": [
+      "known_limitations[0]"
+    ],
+    "question": "Assess whether the declared model-to-tool path supports a specific conditional concern about consequential tool actions and human gating. Distinguish declared capability from verified exploitation, preserve control timing and unknowns, and propose proportionate human verification."
+  },
+  {
+    "id": "H8L2",
+    "pillar": "governance",
+    "classification": "public_synthetic",
+    "input": {
+      "system_name": "H8L2",
+      "system_purpose": "Prepare customer-facing draft service notices from public synthetic records.",
+      "data_types": [
+        "Public synthetic service records"
+      ],
+      "users": [
+        "Internal notice operators and assigned human reviewers"
+      ],
+      "external_integrations": [
+        "Synthetic notice-dispatch service at notices.example"
+      ],
+      "human_review_process": "{\"implementation_claim\":{\"claim\":\"All four followed the stated review timing.\",\"review_timing\":\"after_dispatch\",\"revision\":\"2026-10-20.2\",\"sample_description\":\"Four draft-dispatch transitions were inspected.\",\"sample_size\":4,\"source_id\":\"N3H6\",\"status\":\"reported_implemented\"},\"limits\":\"Caller-supplied claims only; production enforcement is not independently verified.\",\"requirement\":{\"revision\":\"2026-10-19.1\",\"rule\":\"A human reviewer must approve each draft before dispatch.\",\"scope\":\"customer-facing draft dispatch only\",\"source_id\":\"J5D9\"}}",
+      "business_impact": "Administrative display metadata: the review dashboard accent color is slate gray."
+    },
+    "required_paths": [
+      "system_name",
+      "system_purpose",
+      "data_types[0]",
+      "users[0]",
+      "external_integrations[0]",
+      "human_review_process"
+    ],
+    "optional_paths": [
+      "business_impact"
+    ],
+    "question": "Assess whether the supplied workflow supports a specific conditional concern about the stated human-review requirement. Distinguish a requirement, an implementation claim and an actual approval; recognize counterevidence and missing evidence without granting deployment approval."
+  }
+]
