@@ -2,9 +2,14 @@
 
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
 
-from sprint8_history import _snapshot
+from sprint8_history import _snapshot as historical_snapshot
+
+# Keep the original archive/validation body; a new SHA must not evict an older
+# session-scoped directory from the inherited four-entry cache.
+_snapshot = lru_cache(maxsize=4)(historical_snapshot.__wrapped__)
 
 END = "564499f0537688b6422f48c51fc5995467f000c6"
 

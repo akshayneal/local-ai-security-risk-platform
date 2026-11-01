@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 import pytest
-from sprint8_history import _snapshot
+from sprint11_history import _snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "564499f0537688b6422f48c51fc5995467f000c6"
@@ -73,6 +73,13 @@ def test_all_elm_bytes_and_installed_agents():
             hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest()
             == manifest["installed_agents_sha256"]
         )
+
+
+def test_new_replay_cache_preserves_original_archive_body_without_eviction():
+    from sprint8_history import _snapshot as original
+
+    assert _snapshot is not original
+    assert _snapshot.__wrapped__ is original.__wrapped__
 
 
 def canonical(tree):
