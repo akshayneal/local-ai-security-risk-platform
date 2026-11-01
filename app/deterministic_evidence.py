@@ -72,6 +72,9 @@ class EvidenceSelection(SupportModel):
         "explicit internal synthetic proof requirements"
     )
     omitted_required: Literal[0] = 0
+    category: Literal["excessive_tool_agency"] | None = None
+    flow_ids: tuple[str, ...] = ()
+    consequential_capability_declared: bool | None = None
 
 
 class ReasoningProposal(SupportModel):
@@ -100,6 +103,8 @@ class ReportProjection(SupportModel):
         "supplied assertions; no independent authentication or verification"
     ] = "supplied assertions; no independent authentication or verification"
     actions_executed: Literal[False] = False
+    category: Literal["excessive_tool_agency"] | None = None
+    flow_ids: tuple[str, ...] = ()
 
 
 def _leaves(value, path=""):
@@ -177,6 +182,35 @@ def select(
     revision, workflow, catalog = _catalog(request, case_id)
     if set(required_paths) - catalog.keys():
         raise ProjectionUnavailable("missing_required")
+    scope = {}
+    if workflow == "ai_security":
+        from app.ai_security_analyzer import category_flow_scope, reachable
+
+        validated = AiSecurityRequest.model_validate(request.model_dump(mode="json"))
+        scope_paths = category_flow_scope(validated)[1].get(
+            "excessive_tool_agency", set()
+        )
+        if not scope_paths:
+            raise ProjectionUnavailable("unsupported_declared_tool_scope")
+        downstream = set().union(
+            *(
+                reachable(c.id, validated.flows)
+                for c in validated.components
+                if c.kind == "model"
+            )
+        )
+        scope = {
+            "category": "excessive_tool_agency",
+            "flow_ids": tuple(sorted(scope_paths)),
+            "consequential_capability_declared": any(
+                tool.component_id in downstream
+                and bool(
+                    set(tool.capabilities)
+                    & {"write", "external_communication", "side_effect"}
+                )
+                for tool in validated.tools
+            ),
+        }
     result = EvidenceSelection(
         case_id=case_id,
         workflow=workflow,
@@ -185,6 +219,7 @@ def select(
         optional_paths=optional_paths,
         omitted_optional=tuple(p for p in optional_paths if p not in catalog),
         facts=tuple(catalog[p] for p in paths if p in catalog),
+        **scope,
     )
     if len(result.model_dump_json().encode()) > MAX_PANEL_BYTES:
         raise ProjectionUnavailable("panel_budget")
@@ -243,6 +278,11 @@ def project(
     if len(encode(raw).encode()) > 24_000:
         raise ProjectionUnavailable("proposal_budget")
     proposal = ReasoningProposal.model_validate(raw)
+    if (
+        proposal.decision == "conditional_concern"
+        and selected.consequential_capability_declared is False
+    ):
+        raise ProjectionUnavailable("declared_prerequisite_missing")
     if len(set(proposal.fact_ids)) != len(proposal.fact_ids) or not set(
         proposal.fact_ids
     ) <= {f.fact_id for f in selected.facts}:
@@ -253,6 +293,8 @@ def project(
         facts=selected.facts,
         omitted_optional=selected.omitted_optional,
         proposal=proposal,
+        category=selected.category,
+        flow_ids=selected.flow_ids,
     )
 
 

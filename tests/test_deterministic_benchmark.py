@@ -337,3 +337,62 @@ def test_socket_deadline_and_real_http_framing_ignore_proxy(tmp_path, monkeypatc
     now[0] = 720
     with pytest.raises(TimeoutError):
         socket.sendall(b"forbidden")
+
+
+def test_d3_only_replaces_suggestive_identity_and_never_dispatches_gold():
+    changed = runner.opaque_governance_cases(CASES)
+    originals = [c for c in CASES if c["pillar"] == "governance"]
+    for old, new in zip(originals, changed, strict=True):
+        assert (
+            new["input"] | {"system_name": old["input"]["system_name"]} == old["input"]
+        )
+        assert (new["question"], new["rule"], new["expected_decision"]) == (
+            old["question"],
+            old["rule"],
+            old["expected_decision"],
+        )
+        for form in ("F1", "F3"):
+
+            class Capture:
+                def chat(self, messages, schema, options, *, think):
+                    self.messages = messages
+                    return {
+                        "message": {
+                            "content": json.dumps(
+                                {
+                                    "decision": "no_finding",
+                                    "explanation": "Synthetic test",
+                                    "fact_ids": [],
+                                    "unknowns": [],
+                                    "validation": [],
+                                }
+                            )
+                        }
+                    }
+
+            client = Capture()
+            runner.execute(new, form, client)
+            wire = json.dumps(client.messages)
+            assert old["id"] not in wire and new["id"] in wire
+            assert all(
+                key not in wire
+                for key in (
+                    "expected_decision",
+                    "parent_case_id",
+                    "expected_facts",
+                    '"control"',
+                )
+            )
+
+
+def test_original_literal_freeze_is_anchored_to_preregistration_commit():
+    import subprocess
+
+    expected = subprocess.check_output(
+        [
+            "git",
+            "show",
+            runner.PREREGISTRATION + ":evals/deterministic_evidence_v1/freeze.json",
+        ]
+    )
+    assert (runner.HERE / "freeze.json").read_bytes() == expected

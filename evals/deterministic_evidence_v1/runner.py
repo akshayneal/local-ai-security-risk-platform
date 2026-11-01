@@ -6,6 +6,7 @@ import json
 import subprocess
 import time
 from contextlib import ExitStack
+from copy import deepcopy
 from pathlib import Path
 from unittest.mock import patch
 
@@ -31,6 +32,7 @@ WORKSPACES = ROOT / "knowledge_base/workspaces"
 LAB = WORKSPACES / "larch-sprint11-lab"
 ACCEPTANCE = WORKSPACES / "juniper-sprint11-acceptance"
 CAMPAIGN = WORKSPACES / "larch-sprint11-campaign"
+PREREGISTRATION = "2cde4804fd56b49e621f4cea7d5e5f9a3781176e"
 
 
 def git(*args):
@@ -38,6 +40,15 @@ def git(*args):
 
 
 def verify_freeze():
+    if (HERE / "freeze.json").read_bytes() != subprocess.check_output(
+        [
+            "git",
+            "show",
+            PREREGISTRATION + ":evals/deterministic_evidence_v1/freeze.json",
+        ],
+        cwd=ROOT,
+    ):
+        raise ValueError("Original prospective freeze identity changed")
     freeze = json.loads((HERE / "freeze.json").read_bytes())
     for path, expected in freeze["sha256"].items():
         if (
@@ -89,6 +100,20 @@ def plain_schema():
         schema["properties"].pop(key)
     schema["required"] = ["decision", "explanation", "unknowns", "validation"]
     return schema
+
+
+def opaque_governance_cases(cases):
+    """D3 v2: remove suggestive identity only; never change original fixtures/gold."""
+    selected = [deepcopy(c) for c in cases if c["pillar"] == "governance"]
+    for case, alias in zip(selected, ("LARCH-C31", "LARCH-C74"), strict=True):
+        case["parent_case_id"] = case["id"]
+        case["id"] = case["input"]["system_name"] = alias
+        case["version"] = 2
+        for fact in case["expected_facts"]:
+            fact["scope"] = alias
+            if fact["path"] == "system_name":
+                fact["value"] = alias
+    return selected
 
 
 def execute(case, formulation, budget):
@@ -204,6 +229,7 @@ def run_suite(*, track, formulation, root, phase):
         ("lab", "paired", "D0"),
         ("lab", "F2", "D1"),
         ("acceptance", "F3", "A"),
+        ("lab", "opaque-paired", "D3"),
     }:
         raise ValueError("Only preregistered blocks may run")
     expected_root = LAB if track == "lab" else ACCEPTANCE
@@ -218,6 +244,8 @@ def run_suite(*, track, formulation, root, phase):
             HERE / ("dev_cases.json" if track == "lab" else "acceptance_cases.json")
         ).read_bytes()
     )
+    if phase == "D3":
+        cases = opaque_governance_cases(cases)
     rows = []
     with (
         CampaignLedger(
@@ -231,7 +259,11 @@ def run_suite(*, track, formulation, root, phase):
         if (expected_root / "trials" / trial).exists():
             raise ValueError("No block reruns")
         for case in cases:
-            for form in ("F1", "F3") if formulation == "paired" else (formulation,):
+            for form in (
+                ("F1", "F3")
+                if formulation in {"paired", "opaque-paired"}
+                else (formulation,)
+            ):
                 if budget.blocked:
                     raise DiagnosticStop()
                 budget.begin(
@@ -240,6 +272,11 @@ def run_suite(*, track, formulation, root, phase):
                     contrast=phase,
                     formulation=form,
                     pillar=case["pillar"],
+                    parent_case_id=case.get("parent_case_id"),
+                    case_version=case.get("version", 1),
+                    treatment="opaque-identities-v2"
+                    if phase == "D3"
+                    else "original-v1",
                     commit=git("rev-parse", "HEAD"),
                     input_sha256=sha(encoded(case["input"])),
                     source_sha256={
@@ -291,11 +328,11 @@ def run_suite(*, track, formulation, root, phase):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("phase", choices=["D0", "D1"])
+    parser.add_argument("phase", choices=["D0", "D1", "D3"])
     args = parser.parse_args()
     run_suite(
         track="lab",
-        formulation="paired" if args.phase == "D0" else "F2",
+        formulation={"D0": "paired", "D1": "F2", "D3": "opaque-paired"}[args.phase],
         root=LAB,
         phase=args.phase,
     )

@@ -1,12 +1,12 @@
 {
-  "time_utc": "2026-10-31T23:53:17.397866+00:00",
+  "time_utc": "2026-11-01T00:05:37.617362+00:00",
   "branch": "feature/deterministic-evidence-benchmark-sprint11",
   "preregistration_commit": "2cde4804fd56b49e621f4cea7d5e5f9a3781176e",
-  "status": "Offline evidence proof implemented; no new inference yet; source commit before D0 required",
+  "status": "Core18/18 known-complete; pending[]; D3 opaque governance identity treatment tested, must commit before4sends",
   "raw_sends": {
-    "dev": 0,
+    "dev": 18,
     "acceptance": 0,
-    "global": 0
+    "global": 18
   },
   "pending": [],
   "protected": "671 inherited +71Elm +7Aster matched; main/tag/AGENTS unchanged",
@@ -22,5 +22,7 @@
     "Initial proof collection failed before module existed",
     "SOC counted repair mock exposed old metric helper rejects32768; moved runtime override into evaluation-only call seam, no old app source changed"
   ],
-  "next_safe": "Wait focused checks, stage only authorized paths, commit source; then D0 counted F1/F3 matched run. Do not run oldjournals or any acceptance before gates."
+  "next_safe": "Commit new source and D3 prospective identity treatment; run exactly4 D3 sends once using existing new journal. Acceptance NOT RUN; no old journal replay.",
+  "observed_head": "c0a9a2eabd9fa28a8ec148c4d7cde8a0b70beba0",
+  "known_complete": 14
 }

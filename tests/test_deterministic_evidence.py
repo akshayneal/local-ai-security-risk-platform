@@ -198,3 +198,16 @@ def test_stale_mutated_duplicate_refs_and_structured_action_are_rejected():
             required_paths=(s.facts[0].input_path,) * 2,
             classification="public_synthetic",
         )
+
+
+def test_typed_read_only_tool_scope_rejects_structured_consequential_concern():
+    case = CASES[-1]
+    raw = {
+        "decision": "conditional_concern",
+        "explanation": "Unsupported consequential tool concern",
+        "fact_ids": [],
+        "unknowns": [],
+        "validation": [],
+    }
+    with pytest.raises(proof.ProjectionUnavailable, match="declared_prerequisite"):
+        proof.project(request(case), selection(case), raw)
