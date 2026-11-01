@@ -1,0 +1,146 @@
+{
+  "base_branch": "feature/model-task-grounding-diagnostic-sprint10",
+  "base_commit": "564499f0537688b6422f48c51fc5995467f000c6",
+  "final_branch": "feature/deterministic-evidence-benchmark-sprint11",
+  "implementation_commits": [
+    {
+      "sha": "2cde4804fd56b49e621f4cea7d5e5f9a3781176e",
+      "subject": "Preregister Sprint 11 evidence ownership protocol and separate holdout"
+    },
+    {
+      "sha": "c0a9a2eabd9fa28a8ec148c4d7cde8a0b70beba0",
+      "subject": "Implement opt-in canonical evidence projection and counted reasoning benchmark"
+    },
+    {
+      "sha": "0f313ef1ff177b0bf47d71e3af6e2651773dca27",
+      "subject": "Preserve core evidence and preregister opaque-identity falsification"
+    },
+    {
+      "sha": "10571eb9d45c7adf2edffc0e5509c43c4aa12663",
+      "subject": "Isolate Sprint 11 replay cache without changing historical assertions"
+    }
+  ],
+  "audit_commit": "Containing final audit commit; exact SHA and hosted CI in final handoff",
+  "changed_path_count": 26,
+  "changed_paths": [
+    {
+      "status": "A",
+      "path": "Documentation/59_deterministic_evidence_benchmark_readout.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/acceptance_status.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/change_inventory.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/checkpoint.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/data_path_audit.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/decision_log.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/lab_readout.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/deterministic_evidence_v1/preflight.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/sprint11_preservation.json"
+    },
+    {
+      "status": "A",
+      "path": "app/deterministic_evidence.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/__init__.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/acceptance.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/acceptance_cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/dev_cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/freeze.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/plan.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/rubric.md"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/runner.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/scoring.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/deterministic_evidence_v1/transport.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/sprint11_history.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_deterministic_benchmark.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_deterministic_evidence.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_sprint10_preservation.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_sprint11_preservation.py"
+    }
+  ],
+  "production_defaults": "UNCHANGED; one new internal app module is not imported by endpoints/UI",
+  "public_schemas_endpoints_exports_corrections_retrieval_launchers": "UNCHANGED",
+  "protected_counts": {
+    "historical_raw": 671,
+    "elm10": 71,
+    "aster_files": 7,
+    "inherited_visible_untracked": 405
+  },
+  "new_ignored_artifacts": {
+    "files": 72,
+    "bytes": 497600,
+    "sha256_in": "Documentation/deterministic_evidence_v1/lab_readout.json"
+  },
+  "source_guard_migration": "Only Sprint10 current-tree guard import/decorator; exact AST/assertions and archived mutation proof",
+  "main_and_peeled_tag": "fde00d0ca5d21eecbc6973cc784550ed453edb7a"
+}

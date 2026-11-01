@@ -1,0 +1,24 @@
+{
+  "status": "NOT RUN",
+  "scheduled": 12,
+  "submitted": 0,
+  "raw_sends": 0,
+  "completed": 0,
+  "not_run": 12,
+  "per_pillar_scheduled": {
+    "soc": 4,
+    "governance": 4,
+    "ai_security": 4
+  },
+  "reason": [
+    "Core F3 SOC-negative false positive and governance-positive false negative fail engineering viability.",
+    "Unsafe validation and unsupported role claims remain.",
+    "Frozen fixture identities expose control types; preserve original freeze, do not repair after outcomes or claim clean holdout."
+  ],
+  "root_exists": false,
+  "method_and_literal_bytes": "UNCHANGED from2cde4804fd56b49e621f4cea7d5e5f9a3781176e",
+  "old_aster": "untouched NOT RUN0/12; old allocation never reused",
+  "independent_review": "PENDING",
+  "user_workflow_final_visual_QA": "PENDING",
+  "release_candidate": "NO-GO"
+}
