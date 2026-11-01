@@ -1,0 +1,153 @@
+{
+  "starting_branch": "feature/deterministic-evidence-benchmark-sprint11",
+  "starting_SHA": "430f20b93836584acc7719a9ed7c946781cdb3d1",
+  "final_branch": "feature/evidence-grounded-reasoning-sprint12",
+  "preregistration_commit": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+  "final_audit_commit": "Containing commit; resolve git log -1 --format=%H -- Documentation/evidence_reasoning_v1/change_inventory.json. Exact SHA, origin equality and CI run are supplied in final handoff after single authorized push.",
+  "changed_path_count": 27,
+  "changed_paths": [
+    {
+      "status": "A",
+      "path": "Documentation/60_sprint11_closure_and_sprint12_charter.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/61_evidence_grounded_reasoning_readout.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/change_inventory.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/checkpoint.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/decision_log.md"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/preflight.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/readout.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/review_packet.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/evidence_reasoning_v1/reviewer_key.json"
+    },
+    {
+      "status": "A",
+      "path": "Documentation/sprint12_preservation.json"
+    },
+    {
+      "status": "A",
+      "path": "app/evidence_reasoning.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/__init__.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/build_suite.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/dev_cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/diagnostic_cases.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/freeze.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/plan.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/rubric.md"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/runner.py"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/scorer_rubric.json"
+    },
+    {
+      "status": "A",
+      "path": "evals/evidence_reasoning_v1/transport.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/sprint12_history.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_evidence_reasoning.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_evidence_reasoning_benchmark.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_sprint11_preservation.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_sprint12_preservation.py"
+    }
+  ],
+  "implementation": "Experimental internal off-by-default evidence-bound three-verdict proposal/report and isolated schema/context diagnostic; no public route import",
+  "production_defaults_routes_retrieval_corrections_exports_launchers_dependencies_services": "UNCHANGED",
+  "existing_file_migration": "Only tests/test_sprint11_preservation.py gains1import+1decorator; exact old AST/assertions and mutation protection retained",
+  "frozen_runtime_after_first_send": "UNCHANGED; only reporting and new preservation tests added later",
+  "actual_new_raw_sends": {
+    "D1": 12,
+    "D2": 6,
+    "D3": 0,
+    "H1_diagnostic": 12,
+    "global": 30,
+    "unused": 6,
+    "UNKNOWN": 0,
+    "retry": 0,
+    "repair": 0,
+    "release_acceptance": 0
+  },
+  "new_ignored_artifacts": {
+    "files": 97,
+    "bytes": 1508130,
+    "sha256_in": "Documentation/evidence_reasoning_v1/readout.json"
+  },
+  "inherited_visible_untracked_preserved": 405,
+  "old_artifact_protection": "All inherited manifests, Sprint11 raw72/497600bytes and frozen6 unchanged; exact checks in new preservation suite",
+  "main_and_peeled_tag": "fde00d0ca5d21eecbc6973cc784550ed453edb7a",
+  "checks": {
+    "focused": "49 passed in12.88s; python -m pytest -q tests/test_evidence_reasoning.py tests/test_evidence_reasoning_benchmark.py tests/test_sprint12_preservation.py",
+    "full_suite": "2315 passed,1 pre-existing StarletteDeprecationWarning in280.22s; python -m pytest -q",
+    "ruff": "python -m ruff check . PASS",
+    "pip_check": "python -m pip check PASS; no broken requirements",
+    "diff_check": "git diff --check PASS",
+    "runtime": "Existing .venv Python3.13.1; no dependency/environment change",
+    "preservation": "Exact frozen20raw source/literal hashes +normalized schemasblob; historical/current baseblobs/AST/mutation proofs and97new raw hashes PASS"
+  },
+  "review_status": "Independent human0/PENDING;USER WORKFLOW / FINAL VISUAL QA PENDING",
+  "release": "NO-GO"
+}

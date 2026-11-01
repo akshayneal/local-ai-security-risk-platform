@@ -34,6 +34,158 @@
       "other_checks": "Generator --check and Ruff passed; every dispatch/schema within conservative bound; no live sends",
       "staging": "not staged; explicit task-only stage next",
       "next": "Review diff, commit prospective study, verify committed hashes, then D1 once"
+    },
+    {
+      "stage": "committed_freeze_and_D1_started",
+      "head": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "branch": "feature/evidence-grounded-reasoning-sprint12",
+      "upstream": null,
+      "worktree": "only documented inherited untracked remnant before campaign; task-owned checkpoint update pending",
+      "preregistration_commit": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "first_model": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "runtime": "0.40.13",
+      "options": {
+        "temperature": 0.1,
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "think": false
+      },
+      "raw_reserved": 2,
+      "finished": 1,
+      "pending": "s11-d-0002",
+      "freeze_sha256": "9358c146cd903789bc1a5ea0c434a68df15c2854977e058b18bd9b90e493b63e",
+      "checks": "47passed10.95s; Ruff all passed; pip check passed; committed20raw hashes + normalized schemas blob verified",
+      "audit_limits": "Compound SOC/governance JSON is unparsed; false prose and irrelevant valid IDs require semantic review. New proposal layer does not apply old tool-prerequisite rejection; old routes unchanged.",
+      "next_safe": "Wait for foreground D1; never duplicate or reset an active/UNKNOWN send."
+    },
+    {
+      "stage": "D1_paired_development_complete",
+      "head": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "raw_sends": 12,
+      "returned": 12,
+      "unknown": 0,
+      "pending": null,
+      "unused_development_cap": 12,
+      "diagnostic_reserved_cap": 12,
+      "state": {
+        "blocked": false,
+        "pending": null,
+        "phase_counts": {
+          "A": 0,
+          "D0": 12,
+          "D1": 0,
+          "D3": 0
+        },
+        "raw_attempts": 12,
+        "remaining": 12
+      },
+      "protected": "Frozen source/literal identity verified; historical bytes not modified",
+      "semantic_finding": "Development reasoning viability FAIL: wrong authorization-state interpretation, timing/counterevidence omissions, false positives/negatives; ancillary full schema errors. Author review only.",
+      "staging": "Checkpoint/decision log task edits not staged; inherited405 visible files preserved",
+      "next_safe": "D2 predeclared optional-only ablation once, then full-context linked H1; no retuning."
+    },
+    {
+      "stage": "D2_optional_context_ablation_complete",
+      "head": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "D2_raw_sends": 6,
+      "development_total": 18,
+      "D2_returned": 6,
+      "D2_core_matches": 2,
+      "unknown": 0,
+      "pending": null,
+      "unused_development_cap": 6,
+      "diagnostic_remaining": 12,
+      "state": {
+        "blocked": false,
+        "pending": null,
+        "phase_counts": {
+          "A": 0,
+          "D0": 12,
+          "D1": 6,
+          "D3": 0
+        },
+        "raw_attempts": 18,
+        "remaining": 6
+      },
+      "semantic_finding": "Context reduction did not rescue mechanism; legitimate SOC became false positive. Predeclared uniform-improvement explanation falsified on these authored examples.",
+      "new_tests_only": "Added2 preservation checks outside frozen runtime; no model/fixture/rubric/config change",
+      "staging": "Task-owned checkpoint/decision log/new preservation tests unstaged; inherited material preserved",
+      "next_safe": "Run exactly12 fresh H1 full-context linked diagnostic once. No prior Aster/Juniper, no retuning."
+    },
+    {
+      "stage": "H1_diagnostic_and_integration_complete",
+      "head": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "raw_sends": {
+        "D1": 12,
+        "D2": 6,
+        "D3": 0,
+        "H1_diagnostic": 12,
+        "global": 30,
+        "cap": 36,
+        "unused": 6,
+        "completed": 30,
+        "unknown": 0,
+        "pending": null,
+        "censored": 0,
+        "timeouts": 0,
+        "retries": 0,
+        "repairs": 0,
+        "D3_reason": "No second completion model installed",
+        "release_acceptance_raw_sends": 0,
+        "historical_Aster_Juniper_raw_sends": 0
+      },
+      "engineering": {
+        "records_checked": 30,
+        "required_fields_matched": 431,
+        "required_fields_total": 431,
+        "selected_report_fields_matched": 461,
+        "selected_report_fields_total": 461,
+        "delivered_context_fields_matched": 455,
+        "delivered_context_fields_total": 455,
+        "optional_context_exclusions": 6,
+        "reports_retain_excluded_optional_facts": true,
+        "wire_schema_matches_frozen_builder": true,
+        "JSON_and_escaped_Markdown_revalidated": true,
+        "all_canonical_approval_false": true,
+        "all_canonical_actions_unexecuted": true,
+        "coverage_limit": "All selected leaves of these bounded validated requests, not all semantic facts. Compound SOC/governance/oversight JSON stays unparsed; source identity/revision in body text is untrusted. No general semantic conflict or new typed mechanism-prerequisite enforcement."
+      },
+      "diagnostic_primary_verdict_matches": "4/12;SOC1/4,governance1/4,AI Security2/4;0 alternative additions",
+      "pending": null,
+      "protected": "Frozen source identities exact; raw manifest created; old artifacts untouched",
+      "staging": "Task-owned reports/tests pending; inherited405 visible files preserved",
+      "next_safe": "Finish author/reviewerpacket, focused+full deterministic suite, Ruff/pip/diff and final normal feature push/exactcommitCI. No further inference."
+    },
+    {
+      "stage": "final_local_verification_complete",
+      "branch": "feature/evidence-grounded-reasoning-sprint12",
+      "head_before_audit_commit": "ca9ddad86b679e35326d2ac0aafa77b9f90607ee",
+      "upstream": null,
+      "checks": {
+        "focused": "49 passed in12.88s; python -m pytest -q tests/test_evidence_reasoning.py tests/test_evidence_reasoning_benchmark.py tests/test_sprint12_preservation.py",
+        "full_suite": "2315 passed,1 pre-existing StarletteDeprecationWarning in280.22s; python -m pytest -q",
+        "ruff": "python -m ruff check . PASS",
+        "pip_check": "python -m pip check PASS; no broken requirements",
+        "diff_check": "git diff --check PASS",
+        "runtime": "Existing .venv Python3.13.1; no dependency/environment change",
+        "preservation": "Exact frozen20raw source/literal hashes +normalized schemasblob; historical/current baseblobs/AST/mutation proofs and97new raw hashes PASS"
+      },
+      "raw_sends": {
+        "D1": 12,
+        "D2": 6,
+        "D3": 0,
+        "H1": 12,
+        "total": 30,
+        "UNKNOWN": 0,
+        "pending": null,
+        "unused": 6
+      },
+      "artifact_files": 97,
+      "artifact_bytes": 1508130,
+      "protected": "All historical/current guards PASS; main/tag/Sprint11 local and live refs unchanged;405visible inherited untracked files preserved",
+      "staging": "Task-owned reporting/new preservation checks to stage explicitly; inheritedremnant excluded",
+      "next_safe": "Commit final audit, one normal authorized featurepush, exact-final-SHA CI. No further model calls, acceptance, source changes or release."
     }
   ]
 }

@@ -73,9 +73,14 @@ def test_inherited_raw_artifacts_and_installed_agents_remain_exact():
     test_all_elm_bytes_and_installed_agents()
     manifest = load("Documentation/sprint12_preservation.json")
     assert (
-        hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest()
-        == manifest["installed_agents_sha256"]
+        git("hash-object", "--path=AGENTS.md", "AGENTS.md").strip()
+        == git("rev-parse", BASE + ":AGENTS.md").strip()
     )
+    if (ROOT / "knowledge_base/workspaces/elm-sprint10-lab").exists():
+        assert (
+            hashlib.sha256((ROOT / "AGENTS.md").read_bytes()).hexdigest()
+            == manifest["installed_agents_sha256"]
+        )
 
 
 def test_sprint11_raw_artifacts_and_frozen_literals_remain_exact():
@@ -102,6 +107,55 @@ def test_sprint11_raw_artifacts_and_frozen_literals_remain_exact():
     assert len(freeze) == 6
     for path, digest in freeze.items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+
+
+def test_sprint12_prospective_freeze_identity_and_executable_sources():
+    from evals.evidence_reasoning_v1.runner import verify_freeze
+
+    # This checks original-added Git identity as well as both working-tree and
+    # committed bytes. Reading frozen hashes does not execute an evaluation.
+    freeze = verify_freeze()
+    history = git(
+        "log",
+        "--diff-filter=A",
+        "--format=%H",
+        "--",
+        "evals/evidence_reasoning_v1/freeze.json",
+    ).splitlines()
+    assert history[-1] == "ca9ddad86b679e35326d2ac0aafa77b9f90607ee"
+    assert len(freeze["sha256"]) == 20
+    assert freeze["protected_git_blobs"] == {
+        "app/schemas.py": "44402b810c6ec967393d8883cde55927d381cb9d"
+    }
+
+
+def test_sprint12_final_raw_artifact_inventory_and_bytes():
+    hashes = load("Documentation/evidence_reasoning_v1/readout.json")[
+        "artifact_sha256"
+    ]
+    assert hashes
+    directories = [
+        ROOT / "knowledge_base/workspaces" / name
+        for name in (
+            "spruce-sprint12-development",
+            "spruce-sprint12-diagnostic",
+            "spruce-sprint12-campaign",
+        )
+    ]
+    if any(directory.exists() for directory in directories):
+        actual = {
+            path.relative_to(ROOT).as_posix()
+            for directory in directories
+            for path in directory.rglob("*")
+            if path.is_file()
+        }
+        # The final manifest determines the count. Missing or extra artifacts
+        # fail, including an incompletely preserved development/holdout track.
+        assert actual == set(hashes)
+        for path, digest in hashes.items():
+            assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest
+    # A clean hosted checkout may omit all ignored roots; this establishes no
+    # local preservation claim for that checkout.
 
 
 def test_new_replay_cache_preserves_original_archive_body_without_eviction():
