@@ -130,3 +130,53 @@ Initial paired allocation is split into D0 six mismatch/alignment cases ?M/H
 Pre-freeze probes are unqualified authoring diagnostics; some exact prototype
 source revisions were not pinned. Their inputs/failures remain regression
 evidence, not frozen study results or semantic improvement denominators.
+
+H4 prospective (D0 still running; no source change): DEV-F28 H says matching
+scope premises may affect alignment. The flat counterevidence list has no
+explicit allegation target. Rival: generic hedging/sampling may persist even with
+clear metadata. After D0, add explicit scope text, keep outcome semantics fixed,
+and repeat matched H/M cases without counting repeats as new discoveries.
+Separately, denial applicability must be scoped: denial of X/assetB is not proof
+of denial for Y/assetA. Register matched/mismatched denial-scope deterministic
+controls before repair; retain all D0 sources/results and frozen keys.
+
+Post-D0 prospective deterministic cycles S9-S10. D0 finished12known-complete;
+no provider activity is initiated here. S9 observation: reported_denied returns
+mismatch before checking whether the denied operation/principal/asset/endpoint/
+window is the observed event's scope. Hypothesis: require exact known same scope
+before a declared denial mismatch; unrelated or unknown denial scope must be
+underdetermined. Positive control same scope denied remains mismatch, including
+failed attempts; single-variable wrong operation/principal/asset/endpoint/time,
+null scopes, and boundary/offset controls discriminate applicability. Competing
+explanation: denial means universal denial, but this synthetic schema declares
+specific scope and no wildcard semantics, so universal reading is unsupported.
+
+S10 observation: Text min_length1 accepts whitespace-only operations and sample
+scope, permitting meaningless alignment. Hypothesis: reject text whose Unicode
+strip is empty without stripping or changing retained bytes. Matching ordinary
+and nonblank Unicode/internal-whitespace strings remain exact literals. Failure
+conditions: blank scope yields alignment, or normalization changes original text.
+Source revision whitespace is also invalid typed metadata. This is schema
+validation, not natural-language policy or operation interpretation.
+
+The existing disconfirming_premise_ids field will gain description/docstring only:
+its premises limit broader adverse allegations or oppose primary assertions,
+not the final typed result by default. No serialized Assessment field is added;
+all12 D0 reports/exports must reproduce exactly on their six canonical cases.
+H4 model-context scope text is a separate root-owned prospective ablation.
+
+S9/S10 prerepair deterministic controls: 27 failures and147 passes (3.58s).
+Failures comprise11 unrelated/missing-denial-scope outcomes,15 blank scope/sample
+values and1 blank revision validator. Same-scope denial/result/time controls
+and nonblank Unicode literal preservation already passed. No frozen key changed.
+
+S9/S10 repair:174 focused tests pass (2.85s); scoped Ruff passes. Text validation
+rejects Unicode whitespace-only values while preserving every nonblank original
+literal, including internal whitespace and Unicode composition. Denial applies
+only at known matching operation/principal/asset/endpoint/time scope. Existing
+Assessment field description adds no serialized value. Read-only exact replay
+of D0 after changes reproduced all11 stored reports and Markdown exports across
+all6 distinct cases (the12th record was structurally withheld and has no report;
+it remains withheld). Aggregate original/reproduced report+Markdown SHA256:
+9d234b17eddb090ead85781e406ffa497e84b7e45282a9a096b13bd510872af5.
+No D0 input/key/output, journal, reporter byte or prior source revision changed.

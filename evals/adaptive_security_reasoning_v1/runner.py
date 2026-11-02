@@ -60,6 +60,27 @@ SYSTEM = (
     "questions for a human, never disruptive action. If an application comparison is supplied, "
     "it owns the authoritative relationship; your explanation remains unverified commentary."
 )
+COUNTEREVIDENCE_SCOPE = {
+    "soc": (
+        "Matching scope dimensions limit a broader allegation that the event is wholly out of "
+        "reported scope. Failed/attempted/unknown results and zero amount limit claims of a "
+        "completed or harmful operation. These values do not negate the final typed relationship "
+        "or authenticate permission. Explicit differing typed counterclaims oppose their primary "
+        "assertion and produce conflicting_claims."
+    ),
+    "governance": (
+        "The bounded sample and reported state limit universal or verified-deployment allegations. "
+        "They do not negate a known same-action before/after timing mismatch. A proposed/unknown "
+        "implementation is not proof of an absent or implemented control. Explicit differing "
+        "typed counterclaims oppose their primary assertion and produce conflicting_claims."
+    ),
+    "ai_security": (
+        "Gate presence/unknown state, read-only capability or a non-model invoker limit broader "
+        "absent-gate or consequential-execution allegations. They do not automatically negate "
+        "the final typed timing relationship. A declared path is not execution or exploit proof. "
+        "Explicit differing typed counterclaims oppose their primary assertion and produce conflict."
+    ),
+}
 Id = Annotated[StrictStr, Field(pattern=r"^PREM-[a-f0-9]{20}$")]
 Note = Annotated[StrictStr, Field(min_length=1, max_length=300)]
 
@@ -130,9 +151,11 @@ def verify_batch(name):
     return manifest
 
 
-def dispatch_spec(case, arm):
+def dispatch_spec(case, arm, *, scope_mode="legacy"):
     if arm not in {"M", "H"}:
         raise ValueError("Unknown comparison arm")
+    if scope_mode not in {"legacy", "scoped"} or arm == "M" and scope_mode != "legacy":
+        raise ValueError("Invalid counterevidence scope comparison")
     context = ReviewedContext.model_validate(case["context"])
     if case["id"] != context.case_id or case["pillar"] != context.pillar:
         raise ValueError("Outer case identity does not match reviewed context")
@@ -152,6 +175,10 @@ def dispatch_spec(case, arm):
         payload["application_comparison"] = assessment.model_dump(
             mode="json", exclude={"raw", "premises"}
         )
+        if scope_mode == "scoped":
+            payload["application_comparison"]["counterevidence_scope"] = (
+                COUNTEREVIDENCE_SCOPE[case["pillar"]]
+            )
     messages = [
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": encoded(payload).decode()},
@@ -198,7 +225,11 @@ def run(batch):
             "Existing batch artifacts; preserve and refuse automatic rerun"
         )
     for row in manifest["schedule"]:
-        dispatch_spec(cases[row["case_id"]], row["arm"])
+        dispatch_spec(
+            cases[row["case_id"]],
+            row["arm"],
+            scope_mode=row.get("scope_mode", "legacy"),
+        )
     records = []
     with (
         CampaignLedger(
@@ -210,12 +241,15 @@ def run(batch):
     ):
         for index, row in enumerate(manifest["schedule"]):
             case = cases[row["case_id"]]
-            context, assessment, messages, schema = dispatch_spec(case, row["arm"])
+            context, assessment, messages, schema = dispatch_spec(
+                case, row["arm"], scope_mode=row.get("scope_mode", "legacy")
+            )
             budget.begin(
                 case["id"],
                 trial=batch.lower(),
                 contrast=batch,
                 arm=row["arm"],
+                scope_mode=row.get("scope_mode", "legacy"),
                 ordinal=index + 1,
                 source_commit=git("rev-parse", "HEAD"),
                 preregistration_commit=preregistration,
@@ -246,6 +280,7 @@ def run(batch):
                 "case_id": case["id"],
                 "pillar": case["pillar"],
                 "arm": row["arm"],
+                "scope_mode": row.get("scope_mode", "legacy"),
                 "d_outcome": assessment.outcome,
                 "message_bytes": len(encoded(messages)),
                 "schema_bytes": len(encoded(schema)),

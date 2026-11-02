@@ -138,3 +138,25 @@ def test_all_model_pointers_survive_commentary_quarantine_without_truncation():
         ]
         == "withheld_unverified_model_prose"
     )
+
+
+@pytest.mark.parametrize("case", cases(), ids=lambda c: c["id"])
+def test_scope_clarification_changes_only_one_application_context_field(case):
+    _, old, baseline, schema = runner.dispatch_spec(case, "H", scope_mode="legacy")
+    _, new, clarified, clarified_schema = runner.dispatch_spec(
+        case, "H", scope_mode="scoped"
+    )
+    assert old.model_dump_json() == new.model_dump_json()
+    assert schema == clarified_schema and baseline[0] == clarified[0]
+    before = json.loads(baseline[1]["content"])
+    after = json.loads(clarified[1]["content"])
+    assert (
+        after["application_comparison"].pop("counterevidence_scope")
+        == runner.COUNTEREVIDENCE_SCOPE[case["pillar"]]
+    )
+    assert before == after
+
+
+def test_model_owned_arm_cannot_silently_receive_hybrid_scope_metadata():
+    with pytest.raises(ValueError, match="Invalid counterevidence scope"):
+        runner.dispatch_spec(cases()[0], "M", scope_mode="scoped")

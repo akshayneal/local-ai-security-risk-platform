@@ -11,14 +11,31 @@ from copy import deepcopy
 from datetime import datetime
 from typing import Annotated, Literal
 
-from pydantic import Field, StrictBool, StrictInt, StrictStr, ValidationError
+from pydantic import (
+    AfterValidator,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    ValidationError,
+)
 
 from app.ai_security_analyzer import reachable
 from app.support_contracts import SupportModel
 
 MAX_RAW_BYTES = 16_000
 MAX_PREMISES = 256
-Text = Annotated[StrictStr, Field(min_length=1, max_length=256)]
+
+
+def _nonblank_text(value: str) -> str:
+    if not value.strip():
+        raise ValueError("Typed text must contain a non-whitespace character")
+    return value
+
+
+Text = Annotated[
+    StrictStr, Field(min_length=1, max_length=256), AfterValidator(_nonblank_text)
+]
 Identifier = Annotated[StrictStr, Field(pattern=r"^[A-Za-z0-9_-]{1,80}$")]
 Pillar = Literal["soc", "governance", "ai_security"]
 Timing = Literal["before", "after", "unknown"]
@@ -178,7 +195,16 @@ class Assessment(SupportModel):
     outcome: Outcome
     reason_codes: tuple[StrictStr, ...]
     decisive_premise_ids: tuple[StrictStr, ...]
-    disconfirming_premise_ids: tuple[StrictStr, ...]
+    disconfirming_premise_ids: tuple[StrictStr, ...] = Field(
+        description=(
+            "Premises limiting broader adverse allegations, not votes against the final "
+            "typed relationship. Matching SOC scope limits wholly out-of-scope claims; "
+            "noncompletion limits completed-action claims. Bounded implementation samples "
+            "limit universal violation claims. Gate presence, read-only capability or "
+            "nonmodel invocation limits absent-gate/consequential-action claims. Explicit "
+            "differing typed counterclaims oppose their cited primary assertion."
+        )
+    )
     unassessed_conditions: tuple[StrictStr, ...]
     report_sentence: StrictStr
     source_status: Literal["supplied assertions; not independently verified"] = (
@@ -300,13 +326,6 @@ def _soc(data):
             decisive,
             disconfirming,
         )
-    if auth.status == "reported_denied":
-        return (
-            "declared_mismatch",
-            ["reported_authorization_denied"],
-            decisive,
-            disconfirming,
-        )
     unknown, mismatches = [], []
     for field in ("operation", "principal", "asset", "endpoint"):
         decisive += [observed + field, allowed + field]
@@ -322,6 +341,20 @@ def _soc(data):
         unknown.append("time_scope_unknown")
     elif not times[1] <= times[0] <= times[2]:
         mismatches.append("outside_reported_time_window")
+    if auth.status == "reported_denied":
+        if unknown or mismatches:
+            return (
+                "underdetermined",
+                ["denial_scope_not_established", *mismatches, *unknown],
+                decisive,
+                disconfirming,
+            )
+        return (
+            "declared_mismatch",
+            ["reported_authorization_denied"],
+            decisive,
+            disconfirming,
+        )
     if mismatches:
         return "declared_mismatch", mismatches + unknown, decisive, disconfirming
     return (
@@ -449,15 +482,18 @@ def _ai(data, reviewed):
     for node_index, node in enumerate(data.nodes):
         if node.id in relevant_nodes:
             graph_pointers += [
-                f"/data/nodes/{node_index}/id", f"/data/nodes/{node_index}/kind"
+                f"/data/nodes/{node_index}/id",
+                f"/data/nodes/{node_index}/kind",
             ]
     for edge_index, edge in enumerate(data.edges):
         if not path or edge.source in downstream and edge.target in upstream:
             graph_pointers += [
-                f"/data/edges/{edge_index}/source", f"/data/edges/{edge_index}/target"
+                f"/data/edges/{edge_index}/source",
+                f"/data/edges/{edge_index}/target",
             ]
     decisive = graph_pointers + [
-        p for p, _ in _leaves(data.model_dump(mode="json"), "/data")
+        p
+        for p, _ in _leaves(data.model_dump(mode="json"), "/data")
         if p.startswith("/data/requirement")
     ]
     decisive += [

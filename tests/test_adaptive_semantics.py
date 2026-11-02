@@ -582,7 +582,9 @@ def test_timezone_offset_components_are_not_silently_normalized(offset):
 def test_disconnected_graph_kind_counterclaim_is_not_a_decisive_conflict():
     case = specimen("ai_security")
     case["data"]["nodes"].append({"id": "DISCONNECTED", "kind": "other"})
-    case["counterclaims"] = [{"pointer": "/data/nodes/2/kind", "value": "tool", "source": case["source"]}]
+    case["counterclaims"] = [
+        {"pointer": "/data/nodes/2/kind", "value": "tool", "source": case["source"]}
+    ]
     result = assess(case)
     assert result.outcome == "declared_alignment"
     pointer = next(p.id for p in result.premises if p.pointer == "/data/nodes/2/kind")
@@ -591,5 +593,94 @@ def test_disconnected_graph_kind_counterclaim_is_not_a_decisive_conflict():
 
 def test_selected_path_model_kind_counterclaim_is_a_decisive_conflict():
     case = specimen("ai_security")
-    case["counterclaims"] = [{"pointer": "/data/nodes/0/kind", "value": "other", "source": case["source"]}]
+    case["counterclaims"] = [
+        {"pointer": "/data/nodes/0/kind", "value": "other", "source": case["source"]}
+    ]
     assert assess(case).outcome == "conflicting_claims"
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("operation", "bulk_export"),
+        ("principal", "svc-different"),
+        ("asset", "different.example.invalid"),
+        ("endpoint", "other.example.invalid"),
+        ("time", "2026-11-01T10:11:00Z"),
+    ],
+)
+def test_denial_of_a_different_scope_does_not_prove_denial_of_the_observed_event(
+    field, value
+):
+    case = specimen()
+    case["data"]["authorization"]["status"] = "reported_denied"
+    case["data"]["event"][field] = value
+    assert assess(case).outcome == "underdetermined"
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["operation", "principal", "asset", "endpoint", "window_start", "window_end"],
+)
+def test_denial_scope_requires_explicit_known_values(field):
+    case = specimen()
+    case["data"]["authorization"].update(status="reported_denied")
+    case["data"]["authorization"][field] = None
+    assert assess(case).outcome == "underdetermined"
+
+
+@pytest.mark.parametrize("result", ["completed", "failed", "attempted", "unknown"])
+@pytest.mark.parametrize(
+    "instant",
+    ["2026-11-01T10:00:00Z", "2026-11-01T10:10:00Z", "2026-11-01T05:05:00-05:00"],
+)
+def test_exact_scope_denial_remains_declared_mismatch_with_result_retained(
+    result, instant
+):
+    case = specimen()
+    case["data"]["authorization"]["status"] = "reported_denied"
+    case["data"]["event"].update(result=result, time=instant)
+    output = assess(case)
+    assert output.outcome == "declared_mismatch"
+    assert output.reason_codes == ("reported_authorization_denied",)
+    assert f"reported_event_result={result}" in output.unassessed_conditions
+
+
+@pytest.mark.parametrize("field", ["operation", "principal", "asset", "endpoint"])
+@pytest.mark.parametrize("blank", [" ", "\t\n", "\u00a0\u3000"])
+def test_matching_whitespace_only_scope_strings_are_not_meaningful_alignment(
+    field, blank
+):
+    case = specimen()
+    case["data"]["event"][field] = blank
+    case["data"]["authorization"][field] = blank
+    assert assess(case).outcome == "projection_unavailable"
+
+
+@pytest.mark.parametrize("blank", [" ", "\t\n", "\u00a0\u3000"])
+def test_whitespace_only_governance_sample_scope_is_rejected(blank):
+    case = specimen("governance")
+    case["data"]["implementation"]["sample_scope"] = blank
+    assert assess(case).outcome == "projection_unavailable"
+
+
+def test_whitespace_only_source_revision_is_invalid_typed_metadata():
+    with pytest.raises(ValueError):
+        semantic.SourceRef(id="SYNTHETIC", revision=" ")
+
+
+@pytest.mark.parametrize(
+    "literal", [" op \tvalue ", "库存_读取", "caf\u00e9", "cafe\u0301"]
+)
+def test_nonblank_unicode_and_internal_whitespace_are_preserved_without_normalization(
+    literal,
+):
+    case = specimen()
+    case["data"]["event"]["operation"] = literal
+    case["data"]["authorization"]["operation"] = literal
+    result = assess(case)
+    assert result.outcome == "declared_alignment"
+    assert (
+        next(p.value for p in result.premises if p.pointer == "/data/event/operation")
+        == literal
+    )

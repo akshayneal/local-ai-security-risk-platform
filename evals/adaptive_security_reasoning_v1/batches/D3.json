@@ -1,0 +1,64 @@
+{
+  "batch": "D3",
+  "question": "Does explicit counterevidence-target metadata improve explanation scope beyond stochastic repeated legacyH?",
+  "hypotheses": [
+    "H4"
+  ],
+  "schedule": [
+    {
+      "case_id": "DEV-F28",
+      "arm": "H",
+      "scope_mode": "legacy"
+    },
+    {
+      "case_id": "DEV-F28",
+      "arm": "H",
+      "scope_mode": "scoped"
+    },
+    {
+      "case_id": "DEV-F28",
+      "arm": "H",
+      "scope_mode": "scoped"
+    },
+    {
+      "case_id": "DEV-F28",
+      "arm": "H",
+      "scope_mode": "legacy"
+    },
+    {
+      "case_id": "DEV-K17",
+      "arm": "H",
+      "scope_mode": "scoped"
+    },
+    {
+      "case_id": "DEV-K17",
+      "arm": "H",
+      "scope_mode": "legacy"
+    },
+    {
+      "case_id": "DEV-K17",
+      "arm": "H",
+      "scope_mode": "legacy"
+    },
+    {
+      "case_id": "DEV-K17",
+      "arm": "H",
+      "scope_mode": "scoped"
+    }
+  ],
+  "source_git_blobs": {
+    "app/adaptive_semantics.py": "ef88bfe05c0277e61aae2cbb451a39228d154de3",
+    "app/adaptive_reports.py": "985a2c82477c0ea1ebe0e90218bb629c48c53548",
+    "evals/adaptive_security_reasoning_v1/runner.py": "6f32a927d2490131e5230a95ad33c6082b550ef2",
+    "evals/adaptive_security_reasoning_v1/transport.py": "3beb9309e35a63659edd692de5f59d02c1281363",
+    "evals/adaptive_security_reasoning_v1/preservation.py": "e1b7054693eba5e3eb238c7896c24cb191d41180"
+  },
+  "score_revision": 1,
+  "one_variable": "only application_comparison.counterevidence_scope is added in scopedH; all other wire fields/schema/runtime/source equal",
+  "prospective_success": "correct mechanism/counterevidence scope and useful conditional humancheck; matching labels/echoingfieldalone insufficient",
+  "failure": "any misleading scope/authority/control/action claim or tautologicalquestion precludes composite usefulness",
+  "case_order": "alignmentABBA then mismatchBAAB; repeatedcellsnotindependentcases",
+  "seed": "not fixed; no seed guarantee",
+  "stopping": "UNKNOWN/integrity/provider drift stops; no retries",
+  "allocation": "8rawdevelopment sends;4legacy4scoped;2distinctcases"
+}
