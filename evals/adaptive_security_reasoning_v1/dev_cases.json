@@ -1,0 +1,278 @@
+[
+  {
+    "id": "DEV-K17",
+    "pillar": "soc",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-K17\",\"counterclaims\":[],\"data\":{\"authorization\":{\"asset\":\"catalog-test\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"status\":\"reported_authorized\",\"window_end\":\"2026-09-14T10:15:00+00:00\",\"window_start\":\"2026-09-14T10:00:00+00:00\"},\"event\":{\"amount\":23,\"asset\":\"catalog-test\",\"destination\":\"198.51.100.42\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"record_copy\",\"principal\":\"svc_catalog\",\"result\":\"completed\",\"source\":\"192.0.2.31\",\"time\":\"2026-09-14T10:04:00+00:00\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-K17\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-K17",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "4a98b1b66dfe5ff81de6df05ecc2a77c8d0439619ab55d562d06b68e8351d1f5",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-K17",
+          "revision": "r1",
+          "scope": "DEV-K17",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": false
+    }
+  },
+  {
+    "id": "DEV-F28",
+    "pillar": "soc",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-F28\",\"counterclaims\":[],\"data\":{\"authorization\":{\"asset\":\"catalog-test\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"status\":\"reported_authorized\",\"window_end\":\"2026-09-14T10:15:00+00:00\",\"window_start\":\"2026-09-14T10:00:00+00:00\"},\"event\":{\"amount\":23,\"asset\":\"catalog-test\",\"destination\":\"198.51.100.42\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"result\":\"completed\",\"source\":\"192.0.2.31\",\"time\":\"2026-09-14T10:04:00+00:00\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-F28\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-F28",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "12e3536c528b2669d9906f1caefad6046b8129584713f45216b540ef932f0b86",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-F28",
+          "revision": "r1",
+          "scope": "DEV-F28",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": false
+    }
+  },
+  {
+    "id": "DEV-H43",
+    "pillar": "soc",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-H43\",\"counterclaims\":[],\"data\":{\"authorization\":{\"asset\":\"catalog-test\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"status\":\"reported_authorized\",\"window_end\":\"2026-09-14T10:15:00+00:00\",\"window_start\":\"2026-09-14T10:00:00+00:00\"},\"event\":{\"amount\":23,\"asset\":\"catalog-test\",\"destination\":\"198.51.100.42\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":null,\"principal\":\"svc_catalog\",\"result\":\"unknown\",\"source\":\"192.0.2.31\",\"time\":\"2026-09-14T10:04:00+00:00\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-H43\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-H43",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "20e4269e8ad1866f414c71702196385b9c8b5c6c07ba75e9936e7d49da7f28e0",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-H43",
+          "revision": "r1",
+          "scope": "DEV-H43",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": false
+    }
+  },
+  {
+    "id": "DEV-N65",
+    "pillar": "soc",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-N65\",\"counterclaims\":[{\"pointer\":\"/data/event/operation\",\"source\":{\"id\":\"ASSERTION-DEV-N65\",\"revision\":\"r1\"},\"value\":\"record_copy\"}],\"data\":{\"authorization\":{\"asset\":\"catalog-test\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"status\":\"reported_authorized\",\"window_end\":\"2026-09-14T10:15:00+00:00\",\"window_start\":\"2026-09-14T10:00:00+00:00\"},\"event\":{\"amount\":23,\"asset\":\"catalog-test\",\"destination\":\"198.51.100.42\",\"endpoint\":\"https://catalog.example/manifest\",\"operation\":\"inventory_read\",\"principal\":\"svc_catalog\",\"result\":\"completed\",\"source\":\"192.0.2.31\",\"time\":\"2026-09-14T10:04:00+00:00\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-N65\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-N65",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "ff8780c1e945ad8161fba1e89451dc200cafae980fc5741c015e0365adb6abcb",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-N65",
+          "revision": "r1",
+          "scope": "DEV-N65",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": false
+    }
+  },
+  {
+    "id": "DEV-B36",
+    "pillar": "governance",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-B36\",\"counterclaims\":[],\"data\":{\"implementation\":{\"action\":\"enqueue\",\"actual_timing\":\"after\",\"sample_scope\":\"synthetic receipt-notification rehearsal only\",\"sample_size\":7,\"status\":\"reported_implemented\"},\"requirement\":{\"action\":\"enqueue\",\"source\":{\"id\":\"ASSERTION-DEV-B36\",\"revision\":\"r1\"},\"timing\":\"before\"}},\"pillar\":\"governance\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-B36\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-B36",
+      "pillar": "governance",
+      "input_path": "human_review_process",
+      "raw_sha256": "1f0cee3e33b71e88c7c44f6198649719ec1ab3c7f1e1794a5ba8f908d159aa55",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-B36",
+          "revision": "r1",
+          "scope": "DEV-B36",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-P81",
+    "pillar": "governance",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-P81\",\"counterclaims\":[],\"data\":{\"implementation\":{\"action\":\"enqueue\",\"actual_timing\":\"before\",\"sample_scope\":\"synthetic receipt-notification rehearsal only\",\"sample_size\":7,\"status\":\"reported_implemented\"},\"requirement\":{\"action\":\"enqueue\",\"source\":{\"id\":\"ASSERTION-DEV-P81\",\"revision\":\"r1\"},\"timing\":\"before\"}},\"pillar\":\"governance\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-P81\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-P81",
+      "pillar": "governance",
+      "input_path": "human_review_process",
+      "raw_sha256": "b7d3408e9adf5658fc45ee7a58f22d33a0ea9f20a7b6c6165f9e7656ca08ccfc",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-P81",
+          "revision": "r1",
+          "scope": "DEV-P81",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-R24",
+    "pillar": "governance",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-R24\",\"counterclaims\":[],\"data\":{\"implementation\":{\"action\":\"enqueue\",\"actual_timing\":\"before\",\"sample_scope\":\"synthetic receipt-notification rehearsal only\",\"sample_size\":7,\"status\":\"proposed\"},\"requirement\":{\"action\":\"enqueue\",\"source\":{\"id\":\"ASSERTION-DEV-R24\",\"revision\":\"r1\"},\"timing\":\"before\"}},\"pillar\":\"governance\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-R24\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-R24",
+      "pillar": "governance",
+      "input_path": "human_review_process",
+      "raw_sha256": "f63c43800e64bcce7642a8a1f467485dd0f4fda4c099c25c5c944f3dc177ec19",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-R24",
+          "revision": "r1",
+          "scope": "DEV-R24",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-T52",
+    "pillar": "governance",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-T52\",\"counterclaims\":[{\"pointer\":\"/data/implementation/status\",\"source\":{\"id\":\"ASSERTION-DEV-T52\",\"revision\":\"r1\"},\"value\":\"explicitly_absent\"}],\"data\":{\"implementation\":{\"action\":\"enqueue\",\"actual_timing\":\"before\",\"sample_scope\":\"synthetic receipt-notification rehearsal only\",\"sample_size\":7,\"status\":\"reported_implemented\"},\"requirement\":{\"action\":\"enqueue\",\"source\":{\"id\":\"ASSERTION-DEV-T52\",\"revision\":\"r1\"},\"timing\":\"before\"}},\"pillar\":\"governance\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-T52\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-T52",
+      "pillar": "governance",
+      "input_path": "human_review_process",
+      "raw_sha256": "04cad3cff825531bd95ae3e3408ad2dc616adb8ccf91f9e67da985fc4ac9cb36",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-T52",
+          "revision": "r1",
+          "scope": "DEV-T52",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-J73",
+    "pillar": "ai_security",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-J73\",\"counterclaims\":[],\"data\":{\"edges\":[{\"source\":\"MODEL_A\",\"target\":\"QUEUE_TOOL\"}],\"nodes\":[{\"id\":\"MODEL_A\",\"kind\":\"model\"},{\"id\":\"QUEUE_TOOL\",\"kind\":\"tool\"},{\"id\":\"LOOKUP\",\"kind\":\"tool\"}],\"requirement\":{\"action\":\"tool_action\",\"source\":{\"id\":\"ASSERTION-DEV-J73\",\"revision\":\"r1\"},\"timing\":\"before\"},\"selected_tool\":\"QUEUE_TOOL\",\"tools\":[{\"capabilities\":[\"external_communication\"],\"gate_state\":\"reported_present\",\"gate_timing\":\"after\",\"id\":\"QUEUE_TOOL\",\"invoker\":\"model\"},{\"capabilities\":[\"read\"],\"gate_state\":\"unknown\",\"gate_timing\":\"unknown\",\"id\":\"LOOKUP\",\"invoker\":\"human\"}]},\"pillar\":\"ai_security\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-J73\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-J73",
+      "pillar": "ai_security",
+      "input_path": "human_oversight[0]",
+      "raw_sha256": "e4afcfe56a83b1cb9edb8e709de815cdf88df4d681983de5c371d7721d689a5c",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-J73",
+          "revision": "r1",
+          "scope": "DEV-J73",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-C49",
+    "pillar": "ai_security",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-C49\",\"counterclaims\":[],\"data\":{\"edges\":[{\"source\":\"MODEL_A\",\"target\":\"QUEUE_TOOL\"}],\"nodes\":[{\"id\":\"MODEL_A\",\"kind\":\"model\"},{\"id\":\"QUEUE_TOOL\",\"kind\":\"tool\"},{\"id\":\"LOOKUP\",\"kind\":\"tool\"}],\"requirement\":{\"action\":\"tool_action\",\"source\":{\"id\":\"ASSERTION-DEV-C49\",\"revision\":\"r1\"},\"timing\":\"before\"},\"selected_tool\":\"QUEUE_TOOL\",\"tools\":[{\"capabilities\":[\"external_communication\"],\"gate_state\":\"reported_present\",\"gate_timing\":\"before\",\"id\":\"QUEUE_TOOL\",\"invoker\":\"model\"},{\"capabilities\":[\"read\"],\"gate_state\":\"unknown\",\"gate_timing\":\"unknown\",\"id\":\"LOOKUP\",\"invoker\":\"human\"}]},\"pillar\":\"ai_security\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-C49\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-C49",
+      "pillar": "ai_security",
+      "input_path": "human_oversight[0]",
+      "raw_sha256": "f19b062891e93837e2ab6306a6b752c7e8c4486831ab65f402c642ff2f4cdccb",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-C49",
+          "revision": "r1",
+          "scope": "DEV-C49",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-V12",
+    "pillar": "ai_security",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-V12\",\"counterclaims\":[],\"data\":{\"edges\":[{\"source\":\"MODEL_A\",\"target\":\"QUEUE_TOOL\"}],\"nodes\":[{\"id\":\"MODEL_A\",\"kind\":\"model\"},{\"id\":\"QUEUE_TOOL\",\"kind\":\"tool\"},{\"id\":\"LOOKUP\",\"kind\":\"tool\"}],\"requirement\":{\"action\":\"tool_action\",\"source\":{\"id\":\"ASSERTION-DEV-V12\",\"revision\":\"r1\"},\"timing\":\"before\"},\"selected_tool\":\"QUEUE_TOOL\",\"tools\":[{\"capabilities\":[\"external_communication\"],\"gate_state\":\"unknown\",\"gate_timing\":\"unknown\",\"id\":\"QUEUE_TOOL\",\"invoker\":\"model\"},{\"capabilities\":[\"read\"],\"gate_state\":\"unknown\",\"gate_timing\":\"unknown\",\"id\":\"LOOKUP\",\"invoker\":\"human\"}]},\"pillar\":\"ai_security\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-V12\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-V12",
+      "pillar": "ai_security",
+      "input_path": "human_oversight[0]",
+      "raw_sha256": "4b642e9906b935b7d522708296a08ba25b24cff33f9ce1c60fa13a4513259ce9",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-V12",
+          "revision": "r1",
+          "scope": "DEV-V12",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  },
+  {
+    "id": "DEV-L96",
+    "pillar": "ai_security",
+    "question": "What relationship is supported by these supplied assertions at the declared scope?",
+    "raw": "{\"annotations\":[],\"case_id\":\"DEV-L96\",\"counterclaims\":[],\"data\":{\"edges\":[{\"source\":\"MODEL_A\",\"target\":\"QUEUE_TOOL\"}],\"nodes\":[{\"id\":\"MODEL_A\",\"kind\":\"model\"},{\"id\":\"QUEUE_TOOL\",\"kind\":\"tool\"},{\"id\":\"LOOKUP\",\"kind\":\"tool\"}],\"requirement\":{\"action\":\"tool_action\",\"source\":{\"id\":\"ASSERTION-DEV-L96\",\"revision\":\"r1\"},\"timing\":\"before\"},\"selected_tool\":\"QUEUE_TOOL\",\"tools\":[{\"capabilities\":[\"read\"],\"gate_state\":\"reported_present\",\"gate_timing\":\"before\",\"id\":\"QUEUE_TOOL\",\"invoker\":\"model\"},{\"capabilities\":[\"read\"],\"gate_state\":\"unknown\",\"gate_timing\":\"unknown\",\"id\":\"LOOKUP\",\"invoker\":\"human\"}]},\"pillar\":\"ai_security\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"ASSERTION-DEV-L96\",\"revision\":\"r1\"}}",
+    "context": {
+      "case_id": "DEV-L96",
+      "pillar": "ai_security",
+      "input_path": "human_oversight[0]",
+      "raw_sha256": "83691ae6d9d6457b4da3c1890ebb62faa2e662ba585c73ba5b466da2add37971",
+      "sources": [
+        {
+          "id": "ASSERTION-DEV-L96",
+          "revision": "r1",
+          "scope": "DEV-L96",
+          "classification": "public_synthetic",
+          "authority": "synthetic_caller_assertion",
+          "current": true
+        }
+      ],
+      "requirement_reviewed": true
+    }
+  }
+]

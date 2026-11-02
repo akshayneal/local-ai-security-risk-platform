@@ -1,0 +1,70 @@
+{
+  "batch": "D0",
+  "question": "Does supplying the computed relationship improve the same narrow model explanation on mismatches and legitimate controls?",
+  "hypotheses": [
+    "H1",
+    "H3"
+  ],
+  "schedule": [
+    {
+      "case_id": "DEV-K17",
+      "arm": "M"
+    },
+    {
+      "case_id": "DEV-K17",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-F28",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-F28",
+      "arm": "M"
+    },
+    {
+      "case_id": "DEV-B36",
+      "arm": "M"
+    },
+    {
+      "case_id": "DEV-B36",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-P81",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-P81",
+      "arm": "M"
+    },
+    {
+      "case_id": "DEV-J73",
+      "arm": "M"
+    },
+    {
+      "case_id": "DEV-J73",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-C49",
+      "arm": "H"
+    },
+    {
+      "case_id": "DEV-C49",
+      "arm": "M"
+    }
+  ],
+  "source_git_blobs": {
+    "app/adaptive_semantics.py": "27dd08350784439a62936f0be431d93339f9d724",
+    "app/adaptive_reports.py": "985a2c82477c0ea1ebe0e90218bb629c48c53548",
+    "evals/adaptive_security_reasoning_v1/runner.py": "77401c9c2413b0712520287408bcc738379342c5",
+    "evals/adaptive_security_reasoning_v1/transport.py": "3beb9309e35a63659edd692de5f59d02c1281363",
+    "evals/adaptive_security_reasoning_v1/preservation.py": "e1b7054693eba5e3eb238c7896c24cb191d41180"
+  },
+  "score_revision": 1,
+  "stopping": "any UNKNOWN/integrity/provider drift stops; no retries",
+  "expected_controls": "3 mismatches and3 alignments across3pillars;12 paired sends",
+  "seed": "not fixed",
+  "author_review": "PENDING; no results seen"
+}

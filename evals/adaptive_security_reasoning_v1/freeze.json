@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "sha256": {
+    "evals/adaptive_security_reasoning_v1/dev_cases.json": "8a555bf6259e1dc7fe81fd407dfddae1559555b5b9e5fe96295ac35fdc9756b2",
+    "evals/adaptive_security_reasoning_v1/dev_key.json": "b13b393459a06a9e872eae37d008fdb001a83b9347fac6240159e55dbbce9e2c",
+    "evals/adaptive_security_reasoning_v1/protocol.json": "928f275ddb2435aa9aaa86123c26e0b6998df553dd317b68a9bdf662532e9868",
+    "evals/adaptive_security_reasoning_v1/rubric.md": "d0e0ec85f10dcec951b19d9af6a59d77894590c8914a05ac8b0db1bfa42855f2"
+  },
+  "diagnostic_git_blobs": {
+    "evals/adaptive_security_holdout_v1/cases.json": "36cf0c46da2b2d9e40b324298186530f92c3dcb7",
+    "evals/adaptive_security_holdout_v1/author_key.json": "7b8c0a2a7c329679a10700e6795f2ade60f42b50",
+    "evals/adaptive_security_holdout_v1/freeze.json": "0913cdad3f16df66d774d50b9bfabd8b145523ca",
+    "evals/adaptive_security_holdout_v1/author_suite.py": "d89ccaed7c439b07c0809176615fe83e3dd25593"
+  },
+  "no_diagnostic_content_read_by_development_runner": true
+}

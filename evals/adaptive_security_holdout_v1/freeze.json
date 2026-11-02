@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "status": "locked before development generation",
+  "independent_review": "PENDING",
+  "sha256": {
+    "evals/adaptive_security_holdout_v1/cases.json": "af9b147bb34663a4234ad8e4cc85a7539e27ae64550536292746269500a9f04b",
+    "evals/adaptive_security_holdout_v1/author_key.json": "727bf42297d50819d07ee5b14e9fa0931e9c940927b8254a68cb4f6acfd7c29b",
+    "evals/adaptive_security_reasoning_v1/protocol.json": "928f275ddb2435aa9aaa86123c26e0b6998df553dd317b68a9bdf662532e9868",
+    "evals/adaptive_security_reasoning_v1/rubric.md": "d0e0ec85f10dcec951b19d9af6a59d77894590c8914a05ac8b0db1bfa42855f2"
+  },
+  "input_schema_git_blobs": {
+    "app/adaptive_semantics.py": "27dd08350784439a62936f0be431d93339f9d724",
+    "app/adaptive_reports.py": "985a2c82477c0ea1ebe0e90218bb629c48c53548"
+  },
+  "authoring_code_git_blob": "d89ccaed7c439b07c0809176615fe83e3dd25593"
+}

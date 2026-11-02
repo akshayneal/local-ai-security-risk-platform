@@ -1,0 +1,12 @@
+{
+  "stage": "prospective_frozen_ready_to_commit",
+  "branch": "feature/adaptive-typed-security-reasoning-sprint13",
+  "head": "95fdfbe1d5f5cacf0d814e7c3a67bb56ce18f57a",
+  "development_raw_sends": 0,
+  "diagnostic_raw_sends": 0,
+  "diagnostic_cases": 24,
+  "independent_review": "PENDING",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "next_safe_step": "commit prospective state; verify no foreign evaluation; D0 once"
+}
