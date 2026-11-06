@@ -1,0 +1,10 @@
+{
+  "batch": "D3",
+  "status": "NOT RUN",
+  "raw_model_sends": 0,
+  "authored_review_count": 0,
+  "reason": "Usage interruption followed by original14400s persisted campaign cap expiration; no reset/reidentification or borrowed budgets",
+  "prospective_manifest_preserved": "evals/adaptive_security_reasoning_v1/batches/D3.json",
+  "hypothesis_H4": "UNTESTED model effect; no improvements/generalization claims",
+  "independent_review": "PENDING"
+}

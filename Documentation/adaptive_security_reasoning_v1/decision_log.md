@@ -180,3 +180,16 @@ all6 distinct cases (the12th record was structurally withheld and has no report;
 it remains withheld). Aggregate original/reproduced report+Markdown SHA256:
 9d234b17eddb090ead85781e406ffa497e84b7e45282a9a096b13bd510872af5.
 No D0 input/key/output, journal, reporter byte or prior source revision changed.
+
+2026-11-06 recovery: retained local branch at e11645b and its two additive
+commits, plus expected interrupted readout/reviewhelper edits. No active Python
+evaluation was observed. Durable tracks/global journal record D0=12,D1=12,
+all24 COMPLETED, no pending/UNKNOWN. D1 finished within its original bounded
+foreground process after the authoring interruption. No experiment is rerun.
+The original shared14,400second clock has expired; generation is closed without
+changing timestamps, identifiers or caps. D3 is NOT RUN, H4 remains untested.
+The unused60development and24diagnostic sends remain unspent ceilings.
+Offline deterministic diagnostic remains authorized by the original protocol,
+with committed selection before input/key execution and zero model requests.
+The resume prompt separately authorizes restoring the missing Demo shortcut via
+the existing installer; no launcher source/app startup is authorized or needed.

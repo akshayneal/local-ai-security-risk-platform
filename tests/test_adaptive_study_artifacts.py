@@ -258,6 +258,86 @@ def test_changed_dispatch_source_export_or_frozen_key_is_rejected(tmp_path, chan
         review.development_readout(root, suite=suite)
 
 
+@pytest.mark.parametrize(
+    "malformation", ["duplicate_premise", "duplicate_json_key", "oversized_text"]
+)
+def test_rejected_visible_output_remains_in_packet_without_becoming_valid(
+    tmp_path, malformation
+):
+    root, suite, source, rows = development_artifacts(tmp_path)
+    directory = root / "trials/d0"
+    answer_path = directory / "s13-d-0001.json"
+    original = json.loads(answer_path.read_bytes())
+    rejected = json.loads(original["message"]["content"])
+    rejected["relationship"] = "declared_mismatch"
+    rejected["rationale"] = (
+        "ORIGINAL_REJECTED_WORDS; declared scope allegedly mismatches."
+    )
+    premise = rejected["support_premise_ids"][0]
+    rejected["support_premise_ids"] = [premise, premise]
+    if malformation == "duplicate_json_key":
+        text = '{"relationship":"declared_alignment","relationship":"declared_mismatch","rationale":"ORIGINAL_REJECTED_WORDS"}'
+    elif malformation == "oversized_text":
+        text = "X" * (review.MAX_VISIBLE_PROPOSAL_BYTES + 1)
+    else:
+        text = encoded(rejected).decode()
+    original["message"]["content"] = text
+    failed_path = directory / "01-T9X4-M.json"
+    failed = json.loads(failed_path.read_bytes())
+    for field in ("proposal", "report", "markdown"):
+        failed.pop(field)
+    failed.update(structural_status="withheld", error_type="ValueError")
+    for path, value in ((answer_path, original), (failed_path, failed)):
+        data = encoded(value) + b"\n"
+        path.write_bytes(data)
+        for row in rows:
+            if row.get("path") == "trials/d0/" + path.name:
+                row.update(bytes=len(data), sha256=sha(data))
+    (root / "journal.jsonl").write_bytes(b"".join(encoded(row) + b"\n" for row in rows))
+    preserved = answer_path.read_bytes(), failed_path.read_bytes()
+    result = review.development_readout(root, suite=suite)
+    assert (
+        result["raw_accounting"]["COMPLETED"]
+        == result["raw_accounting"]["structural_withheld"]
+        == 1
+    )
+    assert result["label_only_metrics"] == {}
+    assert result["integrity"]["reports_checked"] == 0
+    assert len(result["records"]) == 1
+    packet, key = review.reviewer_packet(
+        result["records"],
+        [source],
+        authored_key=[{"id": source["id"], "outcome": "EXPECTED_KEY_SENTINEL"}],
+    )
+    output = packet["items"][0]["unverified_interpretation"]
+    assert (
+        output["output_status"]
+        == "structurally_withheld; original unverified provider text"
+    )
+    assert output["raw_visible_sha256"] == sha(text.encode())
+    if malformation == "duplicate_premise":
+        assert output["relationship"] == "declared_mismatch"
+        assert output["support_premise_ids"] == [premise, premise]
+        assert "ORIGINAL_REJECTED_WORDS" in output["rationale"]
+    elif malformation == "duplicate_json_key":
+        assert output["relationship"] is None
+        assert output["raw_visible_text"] == text
+        assert "unique-key parser rejected" in output["raw_visible_status"]
+    else:
+        assert output["relationship"] is None
+        assert "raw_visible_text" not in output
+        assert "not truncated" in output["raw_visible_status"]
+        assert output["raw_visible_bytes"] == len(text.encode())
+    assert b"EXPECTED_KEY_SENTINEL" not in encoded(packet)
+    assert all(
+        field not in packet["items"][0]
+        for field in ("arm", "phase", "generator", "authored_judgment")
+    )
+    assert key["items"][0]["arm"] == "M"
+    assert key["items"][0]["provider_artifact_path"].endswith("s13-d-0001.json")
+    assert preserved == (answer_path.read_bytes(), failed_path.read_bytes())
+
+
 def test_packet_masks_metadata_and_key_without_changing_literal_inputs():
     inputs = [case(), case("J8R2")]
     records = [record(inputs[0], "M"), record(inputs[0], "H"), record(inputs[1], "M")]

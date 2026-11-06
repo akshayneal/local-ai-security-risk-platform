@@ -35,6 +35,7 @@ from evals.adaptive_security_reasoning_v1.transport import (
 HERE = Path(__file__).resolve().parent
 DEFAULT_SEED = 13013
 MAX_PACKET_BYTES = 32_000_000
+MAX_VISIBLE_PROPOSAL_BYTES = 24_000
 REVIEW_STATUS = "implementation_authored; independent_human_review_PENDING"
 
 
@@ -191,6 +192,41 @@ def _strata(attempts, labels, fields):
     return result
 
 
+def _rejected_visible(content):
+    """Preserve rejected visible output without repairing its shape or duplicate IDs."""
+    raw = content.encode("utf-8")
+    value = {
+        "raw_visible_proposal": None,
+        "raw_visible_text": None,
+        "raw_visible_bytes": len(raw),
+        "raw_visible_sha256": sha(raw),
+    }
+    if len(raw) > MAX_VISIBLE_PROPOSAL_BYTES:
+        value["raw_visible_status"] = (
+            "budget_withheld; original provider artifact retained, not truncated"
+        )
+        return value
+    try:
+        parsed = parse_proposal(content)
+    except (ValueError, TypeError):
+        value.update(
+            raw_visible_text=content,
+            raw_visible_status="json_parse_failed; unique-key parser rejected original text",
+        )
+    else:
+        if isinstance(parsed, dict):
+            value.update(
+                raw_visible_proposal=parsed,
+                raw_visible_status="parsed_unvalidated; original schema or premise validation failed",
+            )
+        else:
+            value.update(
+                raw_visible_text=content,
+                raw_visible_status="non_object_json; original visible text retained",
+            )
+    return value
+
+
 def development_readout(development_root: Path, *, suite: Path = HERE) -> dict:
     """Verify finished development artifacts and count labels separately from usefulness.
 
@@ -294,8 +330,19 @@ def development_readout(development_root: Path, *, suite: Path = HERE) -> dict:
             "schema_sha256"
         ] != sha(encoded(schema)):
             raise ValueError("result_dispatch_identity_changed")
+        item = deepcopy(record)
+        item.update(
+            phase=row["contrast"],
+            scope_mode=scope_mode,
+            attempt=row["attempt"],
+            source_commit=row.get("source_commit"),
+            artifact_path=name,
+        )
         if record["structural_status"] != "valid":
             counts["structural_withheld"] += 1
+            item.update(_rejected_visible(answer["message"]["content"]))
+            item["provider_artifact_path"] = prefix + row["attempt"] + ".json"
+            records.append(item)
             continue
         proposal = validate_proposal(
             parse_proposal(answer["message"]["content"]), assessment
@@ -351,14 +398,6 @@ def development_readout(development_root: Path, *, suite: Path = HERE) -> dict:
         for group in (by_pillar[case["pillar"]], by_arm[arm]):
             group["valid_proposals"] += 1
             group["primary_matches"] += match
-        item = deepcopy(record)
-        item.update(
-            phase=row["contrast"],
-            scope_mode=scope_mode,
-            attempt=row["attempt"],
-            source_commit=row.get("source_commit"),
-            artifact_path=name,
-        )
         records.append(item)
     return {
         "status": "development_only; no diagnostic inputs loaded",
@@ -422,6 +461,30 @@ def development_readout(development_root: Path, *, suite: Path = HERE) -> dict:
 
 
 def _normalized(record):
+    if record.get("structural_status") == "withheld":
+        rejected = record.get("raw_visible_proposal")
+        fields = (
+            "relationship",
+            "rationale",
+            "support_premise_ids",
+            "counterevidence_premise_ids",
+            "questions",
+        )
+        value = {
+            name: deepcopy(rejected.get(name)) if isinstance(rejected, dict) else None
+            for name in fields
+        }
+        value.update(
+            output_status="structurally_withheld; original unverified provider text",
+            raw_visible_status=record.get(
+                "raw_visible_status", "original visible output unavailable"
+            ),
+            raw_visible_bytes=record.get("raw_visible_bytes"),
+            raw_visible_sha256=record.get("raw_visible_sha256"),
+        )
+        if record.get("raw_visible_text") is not None:
+            value["raw_visible_text"] = record["raw_visible_text"]
+        return value
     proposal = record.get("proposal")
     if proposal is not None:
         return {
@@ -529,6 +592,7 @@ def reviewer_packet(
                 ),
                 "attempt": record.get("attempt"),
                 "artifact_path": record.get("artifact_path"),
+                "provider_artifact_path": record.get("provider_artifact_path"),
                 "source_commit": record.get("source_commit"),
                 "record_sha256": sha(encoded(record)),
                 "raw_input_sha256": sha(case["raw"].encode()),

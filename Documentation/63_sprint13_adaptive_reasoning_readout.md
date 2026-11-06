@@ -118,7 +118,51 @@ protects all other original blobs and exact new paths.
 
 ## Results and final validation
 
-Pending campaign completion and selected-candidate diagnostic. Initial focused
+The first frozen batch is complete. Denominators below are attempts, not just
+valid proposals. H received the computed result, so its label match is not an
+independent model derivation or a measure of all explanatory claims.
+
+| D0 arm | Raw sends, known complete | Structurally valid | Frozen label matches / attempts | Authored core mechanism acceptance | Authored composite usefulness |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| M | 6 | 5 | 3/6 | 3/5 valid | 0/6 |
+| H, legacy counterevidence metadata | 6 | 6 | 6/6 | 4/6 | 0/6 |
+| D, distinct typed cases | 0 | not a generation measure | 6/6 | comparison/report only | analyst workflow unqualified |
+
+The [D0 author review](adaptive_security_reasoning_v1/author_review_D0.json)
+retains exact raw/result/request hashes, excerpts and bound premise values.
+Questions primarily re-asked already supplied values and comparisons. The
+composite's requirement for a useful conditional human check is an authored
+interpretation, not an independently adjudicated fact; a reviewer can dispute
+it without changing the frozen original labels or raw outputs.
+
+Examples: K17 M recognizes `record_copy` versus `inventory_read` but calls it
+underdetermined and invents a source/destination comparison absent from the
+authorization. B36 M calls reported after-enqueue review aligned with a before
+requirement and repeats citation IDs; it is withheld without repair. J73 M also
+misses the before/after gate relationship. H supplies the correct core contrast
+for these, but F28 H treats matching fields as weakening alignment and C49 H
+imports an unrelated lookup tool's unknown gate into the selected tool's result.
+No actual approval/action/verified-exploit grant was observed in these twelve;
+logical and scope errors remain material and unverified prose stays withheld.
+
+D0 used1,138.072681 provider seconds,30,785 reported prompt tokens and6,275 output
+tokens. All12 completed with known outcomes; one application proposal was
+structurally withheld, distinct from a provider-censored outcome. The integrity
+readout verifies38 stored artifacts,11 canonical reports and260 exact delivered/
+report premise occurrences. The withheld M proposal has no analyst report; its
+request and raw reply remain retained. Six distinct D cases matched their typed
+labels; repeat field occurrences are not independent security findings.
+
+After D0, commit `e11645b052aea01fb07c7571cf815e176f22cddc` preserves its
+failures, narrows scoped-denial applicability, rejects whitespace-only typed
+values, and preregisters D1/D3. All11 existing D0 report/Markdown pairs remain
+byte-equivalent on replay; aggregate SHA-256 is
+`9d234b17eddb090ead85781e406ffa497e84b7e45282a9a096b13bd510872af5`.
+Original input/rubric/runtime freezes remain unchanged. The
+[addendum](adaptive_security_reasoning_v1/protocol_addendum_v2.md) records the
+counterevidence-target hypothesis and controlled legacy/scoped ABBA repeat.
+
+Pending remaining campaign and selected-candidate diagnostic. Initial focused
 software gates:228 passed in29.79s, scoped Ruff passed, diff check passed. These
 are software checks, not evidence of true security conclusions or model safety.
 Final deterministic suite, cost/semantic tables, exact commits/changed paths,

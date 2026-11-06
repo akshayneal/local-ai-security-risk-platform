@@ -1,0 +1,111 @@
+{
+    "schema_version":  "demo-shortcut-recovery/1",
+    "recorded_at_utc":  "2026-11-06T18:58:00.5425242Z",
+    "authorization":  "User resume instructions section 8: narrowly authorized terminal restoration using existing installer",
+    "branch":  "feature/adaptive-typed-security-reasoning-sprint13",
+    "head":  "e11645b052aea01fb07c7571cf815e176f22cddc",
+    "status":  "RESTORED_AND_TARGET_ARGUMENTS_VERIFIED",
+    "command":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\demo\\Install-DemoShortcut.ps1",
+    "command_exit_code":  0,
+    "installer_output":  "Desktop shortcuts installed. Bootstrap: C:\\Users\\aksha\\AppData\\Local\\LocalAISecurityRiskPlatformDemo\\launcher",
+    "inspection":  {
+                       "known_desktop":  "C:\\Users\\aksha\\OneDrive\\Desktop",
+                       "desktop_redirection_observed":  "Known Desktop resolves to OneDrive Desktop",
+                       "classic_user_desktop_exists":  false,
+                       "common_desktop_inspected":  true,
+                       "inspection_scope":  "Shallow known/common Desktop shortcut metadata including hidden files; no arbitrary directory walk",
+                       "demo_start_shortcut_missing_before":  true,
+                       "renamed_or_hidden_demo_start_found":  false,
+                       "existing_demo_stop_shortcut_verified_related_before":  true,
+                       "existing_demo_stop_before_sha256":  "529ca3b253e74fef2164cc72b7d51a39ed5af8d59c275e069e98369e85905591",
+                       "demo_root_ownership_marker_matched_repository":  true
+                   },
+    "verified_after":  [
+                           {
+                               "name":  "Local AI Security Risk Platform - Demo.lnk",
+                               "path":  "C:\\Users\\aksha\\OneDrive\\Desktop\\Local AI Security Risk Platform - Demo.lnk",
+                               "target":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                               "arguments":  "-NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\aksha\\AppData\\Local\\LocalAISecurityRiskPlatformDemo\\launcher\\Start-Demo.ps1\"",
+                               "working_directory":  "C:\\Users\\aksha\\AppData\\Local\\LocalAISecurityRiskPlatformDemo",
+                               "sha256":  "cc4c42d558e452ee83b5d134bd205df41ff4e019ed41346ccadc6ba64130ba61",
+                               "hidden":  false
+                           },
+                           {
+                               "name":  "Stop Local AI Security Demo.lnk",
+                               "path":  "C:\\Users\\aksha\\OneDrive\\Desktop\\Stop Local AI Security Demo.lnk",
+                               "target":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                               "arguments":  "-NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\aksha\\AppData\\Local\\LocalAISecurityRiskPlatformDemo\\launcher\\Stop-Demo.ps1\"",
+                               "working_directory":  "C:\\Users\\aksha\\AppData\\Local\\LocalAISecurityRiskPlatformDemo",
+                               "sha256":  "529ca3b253e74fef2164cc72b7d51a39ed5af8d59c275e069e98369e85905591",
+                               "hidden":  false
+                           },
+                           {
+                               "name":  "Local AI Security Platform - Development.lnk",
+                               "path":  "C:\\Users\\aksha\\OneDrive\\Desktop\\Local AI Security Platform - Development.lnk",
+                               "target":  "C:\\Users\\aksha\\OneDrive\\Documents\\github-personal\\local-ai-security-risk-platform\\scripts\\development\\Start-Development.cmd",
+                               "arguments":  "",
+                               "working_directory":  "C:\\Users\\aksha\\OneDrive\\Documents\\github-personal\\local-ai-security-risk-platform",
+                               "sha256":  "eb15a9e02a9ba4bf3b1a316428cdf1dff0bd649b10aec8f579e8b499c6f327db",
+                               "hidden":  false
+                           },
+                           {
+                               "name":  "Stop Local AI Security Platform - Development.lnk",
+                               "path":  "C:\\Users\\aksha\\OneDrive\\Desktop\\Stop Local AI Security Platform - Development.lnk",
+                               "target":  "C:\\Users\\aksha\\OneDrive\\Documents\\github-personal\\local-ai-security-risk-platform\\scripts\\development\\Stop-Development.cmd",
+                               "arguments":  "",
+                               "working_directory":  "C:\\Users\\aksha\\OneDrive\\Documents\\github-personal\\local-ai-security-risk-platform",
+                               "sha256":  "2989c28e13ecc4186851dc5f6246a4d311d0602faefee6f426c7e0940bd7cd49",
+                               "hidden":  false
+                           }
+                       ],
+    "development_shortcuts_preserved":  {
+                                            "start_before_sha256":  "eb15a9e02a9ba4bf3b1a316428cdf1dff0bd649b10aec8f579e8b499c6f327db",
+                                            "stop_before_sha256":  "2989c28e13ecc4186851dc5f6246a4d311d0602faefee6f426c7e0940bd7cd49",
+                                            "both_hashes_unchanged":  true
+                                        },
+    "repository_demo_sources":  [
+                                    {
+                                        "path":  "scripts/demo/Demo.Common.ps1",
+                                        "before_sha256":  "aa330492343b968ef1ba17548ff2833bde193241d0f6c3beefc4e944d0893c86",
+                                        "after_sha256":  "aa330492343b968ef1ba17548ff2833bde193241d0f6c3beefc4e944d0893c86",
+                                        "unchanged":  true
+                                    },
+                                    {
+                                        "path":  "scripts/demo/Stop-Demo.ps1",
+                                        "before_sha256":  "875104e39810192511c4b531e3d8c64f22ddb89aed204ba801529eb8681eb489",
+                                        "after_sha256":  "875104e39810192511c4b531e3d8c64f22ddb89aed204ba801529eb8681eb489",
+                                        "unchanged":  true
+                                    },
+                                    {
+                                        "path":  "scripts/demo/Start-Demo.ps1",
+                                        "before_sha256":  "0c64aa911137655c0f0a9e38aed94bbae2ed21ca6c6121f834c1b90e7e4a60dc",
+                                        "after_sha256":  "0c64aa911137655c0f0a9e38aed94bbae2ed21ca6c6121f834c1b90e7e4a60dc",
+                                        "unchanged":  true
+                                    },
+                                    {
+                                        "path":  "scripts/demo/Install-DemoShortcut.ps1",
+                                        "before_sha256":  "8c3d66f17ab823a131c0ac52236f17124790ac90741ec972555a973d22a63df5",
+                                        "after_sha256":  "8c3d66f17ab823a131c0ac52236f17124790ac90741ec972555a973d22a63df5",
+                                        "unchanged":  true
+                                    }
+                                ],
+    "bootstrap_copies_verified_exact":  [
+                                            "Demo.Common.ps1",
+                                            "Start-Demo.ps1",
+                                            "Stop-Demo.ps1"
+                                        ],
+    "causal_assessment":  {
+                              "disappearance_cause":  "UNKNOWN",
+                              "evidence":  "The Demo start shortcut was absent at inspection while the related stop and Development shortcuts remained. Available metadata does not establish who or what removed it.",
+                              "sprint13_causation_established":  false
+                          },
+    "boundaries":  {
+                       "applications_started":  false,
+                       "launcher_source_modified":  false,
+                       "demo_clone_fetched_or_updated":  false,
+                       "packages_or_models_installed":  false,
+                       "gui_automation_used":  false,
+                       "services_or_settings_changed":  false
+                   },
+    "qa_status":  "USER VISUAL QA PENDING: shortcut presence/targets verified by terminal; application not launched"
+}
