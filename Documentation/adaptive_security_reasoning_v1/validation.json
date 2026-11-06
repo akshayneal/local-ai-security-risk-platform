@@ -1,0 +1,164 @@
+{
+  "date": "2026-11-06",
+  "recorded_utc": "2026-11-06T19:27:12.849333+00:00",
+  "branch": "feature/adaptive-typed-security-reasoning-sprint13",
+  "pre_final_commit_head": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+  "selected_diagnostic_commit": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+  "python_executable": "C:\\Users\\aksha\\OneDrive\\Documents\\github-personal\\local-ai-security-risk-platform\\.venv\\Scripts\\python.exe",
+  "python_version": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "commands": {
+    "pytest": {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest",
+      "exit_code": 0,
+      "passed": 2629,
+      "warnings": 1,
+      "pytest_reported_seconds": 297.57,
+      "foreground_wrapper_seconds": 298.902673,
+      "warning": "Starlette/httpx deprecation; no package change"
+    },
+    "ruff": {
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check -- <all301git-ls-files-Pythonpaths>",
+      "exit_code": 0,
+      "tracked_python_files": 301,
+      "scope": "all trackedPython; privateuntrackeds4check notparsed"
+    },
+    "pip_check": {
+      "command": ".\\.venv\\Scripts\\python.exe -m pip check",
+      "exit_code": 0,
+      "result": "No broken requirements found."
+    },
+    "diff_check": {
+      "commands": [
+        "git diff --check",
+        "git diff --cached --check"
+      ],
+      "exit_code": 0
+    },
+    "focused": {
+      "passed": 44,
+      "seconds": 12.77,
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest tests/test_adaptive_completion.py tests/test_adaptive_study_artifacts.py tests/test_sprint13_preservation.py -q"
+    }
+  },
+  "verification_logs": {
+    "final_pytest.txt": {
+      "sha256": "b5ff0d470e793b65b4ca1bfb28cfe33eadd9938106165ff0d1e8a07ace4bacec",
+      "bytes": 12673
+    },
+    "final_ruff.txt": {
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    "final_pip_check.txt": {
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "bytes": 31
+    }
+  },
+  "inventory": {
+    "saved_data_files_checked": 25,
+    "local_raw_files_checked": 79,
+    "absent_local_roots_not_claimed_preserved": [],
+    "source_files_checked": 301
+  },
+  "preservation": {
+    "protected_original_blobs": 645,
+    "historical_raw": {
+      "local_raw_files_checked": 911,
+      "absent_groups_not_claimed_preserved": []
+    },
+    "original_guard_replay_and_actual_negative_mutation": "passed in focused+fullsuite",
+    "installed_AGENTS": "unchanged",
+    "inherited_visible_s4check_count": 405
+  },
+  "development_raw_sends": 24,
+  "COMPLETED": 24,
+  "UNKNOWN": 0,
+  "PENDING": 0,
+  "structural_withheld": 1,
+  "diagnostic_cases": 24,
+  "diagnostic_model_sends": 0,
+  "diagnostic_typed_matches": 24,
+  "diagnostic_integrity": 24,
+  "D3": "NOT RUN; expiredoriginalcampaignclock; noreset",
+  "prior_sprint_commits": [
+    "f6312f6b8529783bf4e950c0e9bda38467a7a5fe Preregister Sprint 13 typed relationship study and isolated integrity gates",
+    "e11645b052aea01fb07c7571cf815e176f22cddc Preserve D0 failures and preregister scoped counterevidence repeats",
+    "c3b82a17c27bc3101cb14ae9c6852a3d7084b761 Recover 24 completed attempts and select deterministic diagnostic candidate"
+  ],
+  "exact_changed_paths": [
+    "Documentation/62_sprint13_adaptive_reasoning_plan.md",
+    "Documentation/63_sprint13_adaptive_reasoning_readout.md",
+    "Documentation/adaptive_security_reasoning_v1/.gitattributes",
+    "Documentation/adaptive_security_reasoning_v1/artifact_manifest.json",
+    "Documentation/adaptive_security_reasoning_v1/author_review_D0.json",
+    "Documentation/adaptive_security_reasoning_v1/author_review_D1.json",
+    "Documentation/adaptive_security_reasoning_v1/author_review_D3.json",
+    "Documentation/adaptive_security_reasoning_v1/checkpoint.json",
+    "Documentation/adaptive_security_reasoning_v1/decision_log.jsonl",
+    "Documentation/adaptive_security_reasoning_v1/decision_log.md",
+    "Documentation/adaptive_security_reasoning_v1/demo_shortcut_recovery.json",
+    "Documentation/adaptive_security_reasoning_v1/development_readout.json",
+    "Documentation/adaptive_security_reasoning_v1/development_readout_D0.json",
+    "Documentation/adaptive_security_reasoning_v1/diagnostic_outputs.json",
+    "Documentation/adaptive_security_reasoning_v1/diagnostic_run.json",
+    "Documentation/adaptive_security_reasoning_v1/diagnostic_scores.json",
+    "Documentation/adaptive_security_reasoning_v1/final_pip_check.txt",
+    "Documentation/adaptive_security_reasoning_v1/final_pytest.txt",
+    "Documentation/adaptive_security_reasoning_v1/final_ruff.txt",
+    "Documentation/adaptive_security_reasoning_v1/historical_failure_map.md",
+    "Documentation/adaptive_security_reasoning_v1/preservation_baseline.json",
+    "Documentation/adaptive_security_reasoning_v1/protocol_addendum_v2.md",
+    "Documentation/adaptive_security_reasoning_v1/readout.json",
+    "Documentation/adaptive_security_reasoning_v1/recovery_accounting.json",
+    "Documentation/adaptive_security_reasoning_v1/review_packet.json",
+    "Documentation/adaptive_security_reasoning_v1/reviewer_key.json",
+    "Documentation/adaptive_security_reasoning_v1/scope.json",
+    "Documentation/adaptive_security_reasoning_v1/selection.json",
+    "Documentation/adaptive_security_reasoning_v1/transport_adaptation.md",
+    "Documentation/adaptive_security_reasoning_v1/validation.json",
+    "app/adaptive_reports.py",
+    "app/adaptive_semantics.py",
+    "evals/adaptive_security_holdout_v1/.gitattributes",
+    "evals/adaptive_security_holdout_v1/__init__.py",
+    "evals/adaptive_security_holdout_v1/author_key.json",
+    "evals/adaptive_security_holdout_v1/author_suite.py",
+    "evals/adaptive_security_holdout_v1/cases.json",
+    "evals/adaptive_security_holdout_v1/freeze.json",
+    "evals/adaptive_security_holdout_v1/runner.py",
+    "evals/adaptive_security_reasoning_v1/.gitattributes",
+    "evals/adaptive_security_reasoning_v1/__init__.py",
+    "evals/adaptive_security_reasoning_v1/batches/D0.json",
+    "evals/adaptive_security_reasoning_v1/batches/D1.json",
+    "evals/adaptive_security_reasoning_v1/batches/D3.json",
+    "evals/adaptive_security_reasoning_v1/dev_cases.json",
+    "evals/adaptive_security_reasoning_v1/dev_key.json",
+    "evals/adaptive_security_reasoning_v1/freeze.json",
+    "evals/adaptive_security_reasoning_v1/preservation.py",
+    "evals/adaptive_security_reasoning_v1/protocol.json",
+    "evals/adaptive_security_reasoning_v1/readout.py",
+    "evals/adaptive_security_reasoning_v1/review.py",
+    "evals/adaptive_security_reasoning_v1/rubric.md",
+    "evals/adaptive_security_reasoning_v1/runner.py",
+    "evals/adaptive_security_reasoning_v1/transport.py",
+    "tests/sprint13_history.py",
+    "tests/test_adaptive_completion.py",
+    "tests/test_adaptive_development.py",
+    "tests/test_adaptive_holdout_protocol.py",
+    "tests/test_adaptive_reports.py",
+    "tests/test_adaptive_semantics.py",
+    "tests/test_adaptive_study_artifacts.py",
+    "tests/test_adaptive_transport.py",
+    "tests/test_sprint12_preservation.py",
+    "tests/test_sprint13_preservation.py"
+  ],
+  "changed_path_count": 64,
+  "production_defaults": "all existing app/dashboard/launcher sources baseline-identical; internalfeatureoffdefault",
+  "post_diagnostic_app_source_changes": false,
+  "repo_launcher_source_changes": false,
+  "shortcut": "RESTORED; targets/arguments verified; actualstartup andvisualQA notperformed",
+  "format_note": "Initial diffcheck treated retained CRLF shortcutreportbytes as trailingCR; new artifact-specific cr-at-eol retains all default whitespace checks, preserving originalbytes. Finalplain+cacheddiffchecks pass.",
+  "independent_review": "PENDING;0completed",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "CI": "ExactfinalSHA andrunstatus recorded afterfinalfeaturecommit/push in finalhandoff; no self-referentialSHA claim"
+}

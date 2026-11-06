@@ -1,0 +1,1621 @@
+{
+  "format": "sprint13-recovery-accounting-v1",
+  "captured_utc": "2026-11-06T18:58:35.319118+00:00",
+  "recovery_date_user_context": "2026-11-06",
+  "branch": "feature/adaptive-typed-security-reasoning-sprint13",
+  "HEAD": "e11645b052aea01fb07c7571cf815e176f22cddc",
+  "method": "Read-only reconstruction of new Willow journals/manifests, every journaled artifact, actual serialized request, final provider response, batch manifest/source identities and summary; no provider contact, no live inference, no historical case regeneration, no holdout input/key content review.",
+  "recovered_counts": {
+    "development_raw_sends": 24,
+    "D0": 12,
+    "D1": 12,
+    "D3": 0,
+    "diagnostic_raw_sends": 0,
+    "global_raw_sends": 24,
+    "provider_completed": 24,
+    "provider_known_withheld": 0,
+    "provider_pending": 0,
+    "provider_UNKNOWN": 0,
+    "structurally_valid": 23,
+    "structurally_withheld": 1,
+    "structural_withheld_attempts": [
+      "s13-d-0005"
+    ],
+    "hidden_retries_or_repairs_recorded": 0
+  },
+  "remaining_raw_send_allocations": {
+    "development": 60,
+    "diagnostic": 24,
+    "global": 84,
+    "interpretation": "Arithmetic residual ceilings only. The original 14400-second campaign wall allowance is expired and is not reset by resumption; these counts do not authorize dispatch after that wall-time gate."
+  },
+  "campaign_clock": {
+    "manifest_path": "knowledge_base/workspaces/willow-sprint13-campaign/manifest.json",
+    "manifest_sha256": "8795bd5d45e12ddedf54a021c47d9514a264d9cac20a4b707c8a6b8ebc5cfa25",
+    "original_started_unix_seconds": 1793578942.0900002,
+    "original_started_utc": "2026-11-02T00:22:22.090000+00:00",
+    "original_started_monotonic_seconds": 158446.4977792,
+    "campaign_seconds_cap": 14400,
+    "wall_elapsed_seconds_at_recovery": 412573.22911787033,
+    "expired": true,
+    "remaining_dispatch_seconds": 0,
+    "reset_or_new_namespace_created": false,
+    "clock_limit": "Wall expiry alone blocks new sends. Monotonic continuity after interruption/reboot is not assumed or altered."
+  },
+  "journal_reconciliation": {
+    "track_reservations": 24,
+    "track_completions": 24,
+    "campaign_reservations": 24,
+    "campaign_completions": 24,
+    "matching_order_and_attempt_track_pairs": true,
+    "pending_attempts": [],
+    "unknown_attempts": [],
+    "journaled_artifacts_verified": 76,
+    "unexplained_missing_or_extra_artifacts": [],
+    "willow_total_files": 79,
+    "willow_total_bytes": 1018944,
+    "active_lock_files": [],
+    "diagnostic_root_exists": false,
+    "d3_trial_exists": false
+  },
+  "phase_summaries": {
+    "D0": {
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "summary_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/summary.json",
+      "summary_sha256": "d9c2863e304932d6b47dc53c4f37af142e22d27eff01b43d7d6b4c0e092d2cf9",
+      "scheduled": 12,
+      "actual_raw_sends": 12,
+      "provider_completed": 12,
+      "provider_withheld": 0,
+      "pending": 0,
+      "UNKNOWN": 0,
+      "structurally_valid": 11,
+      "structurally_withheld": 1,
+      "scope_mode": "legacy for every M and H request; new counterevidence_scope ablation was not executed",
+      "phase_wire_seconds": 1138.072681,
+      "prompt_tokens": 30785,
+      "output_tokens": 6275
+    },
+    "D1": {
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "summary_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/summary.json",
+      "summary_sha256": "a1bfd3731067ad06a0397c4111df87bfba8005f6e319c602fc1aeb33b845bdbb",
+      "scheduled": 12,
+      "actual_raw_sends": 12,
+      "provider_completed": 12,
+      "provider_withheld": 0,
+      "pending": 0,
+      "UNKNOWN": 0,
+      "structurally_valid": 12,
+      "structurally_withheld": 0,
+      "scope_mode": "legacy for every M and H request; new counterevidence_scope ablation was not executed",
+      "phase_wire_seconds": 1552.003605,
+      "prompt_tokens": 31647,
+      "output_tokens": 7161
+    }
+  },
+  "frozen_source_identity": {
+    "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+    "freeze_path": "evals/adaptive_security_reasoning_v1/freeze.json",
+    "freeze_sha256": "8351109acee12b1b593acc2ec43155afb93a690801365be417c4711c14ff87c9",
+    "original_added_bytes_equal": true,
+    "development_frozen_literal_hashes": {
+      "evals/adaptive_security_reasoning_v1/dev_cases.json": "8a555bf6259e1dc7fe81fd407dfddae1559555b5b9e5fe96295ac35fdc9756b2",
+      "evals/adaptive_security_reasoning_v1/dev_key.json": "b13b393459a06a9e872eae37d008fdb001a83b9347fac6240159e55dbbce9e2c",
+      "evals/adaptive_security_reasoning_v1/protocol.json": "928f275ddb2435aa9aaa86123c26e0b6998df553dd317b68a9bdf662532e9868",
+      "evals/adaptive_security_reasoning_v1/rubric.md": "d0e0ec85f10dcec951b19d9af6a59d77894590c8914a05ac8b0db1bfa42855f2"
+    },
+    "working_and_HEAD_literals_verified": true,
+    "diagnostic_identity_checks_hash_only": [
+      {
+        "path": "evals/adaptive_security_holdout_v1/cases.json",
+        "expected_git_blob": "36cf0c46da2b2d9e40b324298186530f92c3dcb7",
+        "HEAD_git_blob": "36cf0c46da2b2d9e40b324298186530f92c3dcb7",
+        "working_tree_normalized_git_blob": "36cf0c46da2b2d9e40b324298186530f92c3dcb7",
+        "content_opened_for_review": false
+      },
+      {
+        "path": "evals/adaptive_security_holdout_v1/author_key.json",
+        "expected_git_blob": "7b8c0a2a7c329679a10700e6795f2ade60f42b50",
+        "HEAD_git_blob": "7b8c0a2a7c329679a10700e6795f2ade60f42b50",
+        "working_tree_normalized_git_blob": "7b8c0a2a7c329679a10700e6795f2ade60f42b50",
+        "content_opened_for_review": false
+      },
+      {
+        "path": "evals/adaptive_security_holdout_v1/freeze.json",
+        "expected_git_blob": "0913cdad3f16df66d774d50b9bfabd8b145523ca",
+        "HEAD_git_blob": "0913cdad3f16df66d774d50b9bfabd8b145523ca",
+        "working_tree_normalized_git_blob": "0913cdad3f16df66d774d50b9bfabd8b145523ca",
+        "content_opened_for_review": false
+      },
+      {
+        "path": "evals/adaptive_security_holdout_v1/author_suite.py",
+        "expected_git_blob": "d89ccaed7c439b07c0809176615fe83e3dd25593",
+        "HEAD_git_blob": "d89ccaed7c439b07c0809176615fe83e3dd25593",
+        "working_tree_normalized_git_blob": "d89ccaed7c439b07c0809176615fe83e3dd25593",
+        "content_opened_for_review": false
+      }
+    ],
+    "D1_manifest_and_current_source_blobs_at_dispatch_commit_verified": true,
+    "protocol_addendum_committed_at": "e11645b052aea01fb07c7571cf815e176f22cddc",
+    "D1_is_scoped_ablation": false,
+    "D3_scoped_repeatability_track_status": "NOT RUN; no result or send inferred"
+  },
+  "preservation": {
+    "baseline_path": "Documentation/adaptive_security_reasoning_v1/preservation_baseline.json",
+    "baseline_sha256": "408946e0105165932f4efa2d57108d797419d2d9be3843e346728576ebe742d8",
+    "protected_original_Git_blobs_verified": 645,
+    "raw_result": {
+      "local_raw_files_checked": 911,
+      "absent_groups_not_claimed_preserved": []
+    },
+    "raw_group_counts": {
+      "birch9": 18,
+      "cedar7": 36,
+      "elm10": 71,
+      "larch11": 72,
+      "maple8": 14,
+      "northstar": 13,
+      "s4check": 590,
+      "spruce12": 97
+    },
+    "historical_Birch9_UNKNOWN": "unknown_no_retry retained unchanged; current quiescence is not retroactive cancellation or completion",
+    "s4check_handling": "hash-only verification from prior trusted manifest; no inherited source parsing/import/execution"
+  },
+  "missing_or_stale_statuses": {
+    "checkpoint": "Existing checkpoint still says D0 complete at f6312f6b and omits completed D1; preserved as interrupted state, not used as actual accounting.",
+    "independent_human_semantic_review": "PENDING for both phases",
+    "author_D1_review": "NEW separate recovery author_review_D1.json; original raw records/summary review-status fields remain unchanged",
+    "D3": "NOT RUN; time allowance expired",
+    "diagnostic": "No provider sends; no runtime artifacts/root existed during this recovery accounting",
+    "wire_hash_limit": "Original NDJSON wire bytes were intentionally not retained. Recorded wire hashes/byte counts cannot be recomputed from final-answer JSON; all retained final answers, requests, results and journals were verified against their stored hashes. Hidden thinking count/hash is retained, not thought content."
+  },
+  "attempts": [
+    {
+      "attempt_id": "s13-d-0001",
+      "phase": "D0",
+      "case_id": "DEV-K17",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "4a98b1b66dfe5ff81de6df05ecc2a77c8d0439619ab55d562d06b68e8351d1f5",
+      "request_sha256": "ef6a9366a9a17f4030718061979e8e5eeab4746fce827cccfb2a00086b769f69",
+      "prompt_sha256": "dfb6fd34c9f6699abe83a7c57ce07a462a2b0a62d994ee6d59b1ae7f210d9546",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 102.654335,
+      "usage": {
+        "eval_count": 535,
+        "eval_duration": 87667425000,
+        "load_duration": 10773001400,
+        "prompt_eval_count": 2297,
+        "prompt_eval_duration": 4165959000,
+        "total_duration": 102638990900
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 67238,
+      "wire_response_sha256_recorded": "7a26a11e531d91f0e2915b8fa8853501d6fd23c0c6751df2b80e80e9e0ad1f38",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0001-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0001.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/01-DEV-K17-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0002",
+      "phase": "D0",
+      "case_id": "DEV-K17",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "4a98b1b66dfe5ff81de6df05ecc2a77c8d0439619ab55d562d06b68e8351d1f5",
+      "request_sha256": "c5d2d885f4660f9040db464fdc75f895236f2dc196c52e044e909038fd765a58",
+      "prompt_sha256": "ef752e8412495c5fb68ba3aaccee13414de9ebadbad956781fcdca2f83090200",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 109.306677,
+      "usage": {
+        "eval_count": 589,
+        "eval_duration": 104456724000,
+        "load_duration": 11007500,
+        "prompt_eval_count": 2966,
+        "prompt_eval_duration": 4678136000,
+        "total_duration": 109275095300
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 73462,
+      "wire_response_sha256_recorded": "0e0a83aea41e883eaacdcd4b3b20482a98214e313440f8e1b2de84d44e9ebd46",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0002-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0002.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/02-DEV-K17-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0003",
+      "phase": "D0",
+      "case_id": "DEV-F28",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "12e3536c528b2669d9906f1caefad6046b8129584713f45216b540ef932f0b86",
+      "request_sha256": "2ba93bc2d6ce8e00f68a86c1f0050376947bc8eb5c32cb202cb855bbf62f9129",
+      "prompt_sha256": "fc1d8f3aec1f1ff605a136c2e7cf7c1091f4cb561cfba20f328682fdfa264685",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 140.853295,
+      "usage": {
+        "eval_count": 745,
+        "eval_duration": 135954217000,
+        "load_duration": 10868100,
+        "prompt_eval_count": 3017,
+        "prompt_eval_duration": 4675263000,
+        "total_duration": 140807305400
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 93058,
+      "wire_response_sha256_recorded": "cd4b7b8a51e8d4c4bd5a94823ac30b8ff01b9d809a05d8a0be49595c4ba08716",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0003-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0003.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/03-DEV-F28-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0004",
+      "phase": "D0",
+      "case_id": "DEV-F28",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "12e3536c528b2669d9906f1caefad6046b8129584713f45216b540ef932f0b86",
+      "request_sha256": "5480e718392f663a4fba1c58d8103f2b06d715d57a01c81b5152cb3a81935c51",
+      "prompt_sha256": "b89770c2e26ff3c229e5b1e40acd119252a90768249bde2979b4922113441cd0",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 116.076472,
+      "usage": {
+        "eval_count": 657,
+        "eval_duration": 112629766000,
+        "load_duration": 9216200,
+        "prompt_eval_count": 2303,
+        "prompt_eval_duration": 3254764000,
+        "total_duration": 116047513500
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 82177,
+      "wire_response_sha256_recorded": "3cd07c1caf1e137da448ac08af02d9d21a44dae669d2fddd3f0438ae51228fbc",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0004-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0004.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/04-DEV-F28-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0005",
+      "phase": "D0",
+      "case_id": "DEV-B36",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "1f0cee3e33b71e88c7c44f6198649719ec1ab3c7f1e1794a5ba8f908d159aa55",
+      "request_sha256": "70f52ebaa54afe0c02b24e6319d24fa6cb6d52c70f18cd7fc528b11ddbcf194c",
+      "prompt_sha256": "729c4b112c8c4ee4548222a071c1196d9961b39f3de67a73d23935e08ff713b1",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "withheld",
+      "wire_seconds": 133.255766,
+      "usage": {
+        "eval_count": 812,
+        "eval_duration": 130757455000,
+        "load_duration": 11701100,
+        "prompt_eval_count": 1640,
+        "prompt_eval_duration": 2320901000,
+        "total_duration": 133230459100
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 101266,
+      "wire_response_sha256_recorded": "99ec1a4305c195323d894804319a1cb3fd3793d71fbd1882e7d628d177637575",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0005-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0005.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/05-DEV-B36-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0006",
+      "phase": "D0",
+      "case_id": "DEV-B36",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "1f0cee3e33b71e88c7c44f6198649719ec1ab3c7f1e1794a5ba8f908d159aa55",
+      "request_sha256": "e2ca7a66c22c3cb8179f73ebe8f67f5365fbd3592e274c467e61d203ee4e06fa",
+      "prompt_sha256": "b929b2977062385b8a140b5b502985f0df368979a0c0574d34e2388510b2ad5b",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 72.1184,
+      "usage": {
+        "eval_count": 419,
+        "eval_duration": 68904807000,
+        "load_duration": 9754800,
+        "prompt_eval_count": 2088,
+        "prompt_eval_duration": 3082897000,
+        "total_duration": 72080836200
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 52706,
+      "wire_response_sha256_recorded": "283dfebda0782cd5454f4c08e385ad60079f3e2166e04b3a1866dd7d69da941f",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0006-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0006.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/06-DEV-B36-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0007",
+      "phase": "D0",
+      "case_id": "DEV-P81",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "b7d3408e9adf5658fc45ee7a58f22d33a0ea9f20a7b6c6165f9e7656ca08ccfc",
+      "request_sha256": "ee30321f5a1b328c0e0ffbe0639494d330104fa610244de0b3dcff2c1cfe4b79",
+      "prompt_sha256": "eb21582f14706d1661d64ff3afb5166445da9892b90a836a1394f0b046adb598",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 69.721796,
+      "usage": {
+        "eval_count": 407,
+        "eval_duration": 66438204000,
+        "load_duration": 12149000,
+        "prompt_eval_count": 2119,
+        "prompt_eval_duration": 3145976000,
+        "total_duration": 69697631000
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 51188,
+      "wire_response_sha256_recorded": "d920b479bc39131774f4fd3f3213b8698a31cb86b538dce865bfe61c79fc6f21",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0007-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0007.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/07-DEV-P81-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0008",
+      "phase": "D0",
+      "case_id": "DEV-P81",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "b7d3408e9adf5658fc45ee7a58f22d33a0ea9f20a7b6c6165f9e7656ca08ccfc",
+      "request_sha256": "83f366d1328ee0e2a93c0d0558a1435dfe8ea9798c54c709209b36d84ffeb915",
+      "prompt_sha256": "a91a10957bb28333dfdda1f823d3614b90e6d3cffac79c670c2c0fda3c048d4d",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 66.022501,
+      "usage": {
+        "eval_count": 410,
+        "eval_duration": 63561573000,
+        "load_duration": 13945100,
+        "prompt_eval_count": 1646,
+        "prompt_eval_duration": 2316022000,
+        "total_duration": 65981879400
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 51867,
+      "wire_response_sha256_recorded": "9d01b34ba06bf25a84104bf853caf2d538095df4788448edbcfa7611bde255e1",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0008-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0008.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/08-DEV-P81-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0009",
+      "phase": "D0",
+      "case_id": "DEV-J73",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "e4afcfe56a83b1cb9edb8e709de815cdf88df4d681983de5c371d7721d689a5c",
+      "request_sha256": "a5505e4f0ffbc690fc0f1153fb9ec9846784fa46343c983b3ed1276838fdfd7e",
+      "prompt_sha256": "2b2dcea3cec9daa22a1261c7a6e29fad6b6c9382df3b8624603016167bbbecbc",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 77.391051,
+      "usage": {
+        "eval_count": 415,
+        "eval_duration": 73242463000,
+        "load_duration": 13281300,
+        "prompt_eval_count": 2851,
+        "prompt_eval_duration": 4046309000,
+        "total_duration": 77377452700
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 52164,
+      "wire_response_sha256_recorded": "d713b7a70cacc0ee9c29d40e560a269dbdd94345f955f40bef5d413a2e0a80a8",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0009-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0009.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/09-DEV-J73-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0010",
+      "phase": "D0",
+      "case_id": "DEV-J73",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "e4afcfe56a83b1cb9edb8e709de815cdf88df4d681983de5c371d7721d689a5c",
+      "request_sha256": "3ab33b1da4bc2bb07b8d5fea6fae4cdfccc45442561960d3e77f5ea7425d333f",
+      "prompt_sha256": "e259275afc74e56b9801e57bb45ce310a320d6627f72cb31491964cd5cec429b",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 109.923888,
+      "usage": {
+        "eval_count": 557,
+        "eval_duration": 104321759000,
+        "load_duration": 9270500,
+        "prompt_eval_count": 3489,
+        "prompt_eval_duration": 5445122000,
+        "total_duration": 109885431300
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 69814,
+      "wire_response_sha256_recorded": "a9b5fa08a5f0696f07cb04d49f3431fd4712ea442dd00f021cd765266bb104b6",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0010-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0010.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/10-DEV-J73-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0011",
+      "phase": "D0",
+      "case_id": "DEV-C49",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "f19b062891e93837e2ab6306a6b752c7e8c4486831ab65f402c642ff2f4cdccb",
+      "request_sha256": "04dfcc1b4596ae22b2c76d69705bd31f901a0743052b35960f0584af629cf2b5",
+      "prompt_sha256": "e5ab61dfac8e101890559b1aca32cb137276a0978e25e7704f3f010ec9e428fb",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 83.271088,
+      "usage": {
+        "eval_count": 424,
+        "eval_duration": 77630632000,
+        "load_duration": 10432000,
+        "prompt_eval_count": 3513,
+        "prompt_eval_duration": 5438799000,
+        "total_duration": 83224149700
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 53461,
+      "wire_response_sha256_recorded": "fa3c5ff0684eb64d3dd44167268f63fcc823091085eddec186111611894f0b3f",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0011-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0011.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/11-DEV-C49-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0012",
+      "phase": "D0",
+      "case_id": "DEV-C49",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "f74b603736e1b82f97fa012847c882c0e2fb8d0cd6d15a982a47744f7d89c018",
+      "raw_input_sha256": "f19b062891e93837e2ab6306a6b752c7e8c4486831ab65f402c642ff2f4cdccb",
+      "request_sha256": "e2783c638b49acb7533097c694240452665ac0df8af7b3a92c15f8d6d8f85aec",
+      "prompt_sha256": "269ce8e5d7b1c5f84bfd22a45dc65a9527897db0a8de713bcc70f462b88514c3",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 57.477412,
+      "usage": {
+        "eval_count": 305,
+        "eval_duration": 53163474000,
+        "load_duration": 10561900,
+        "prompt_eval_count": 2856,
+        "prompt_eval_duration": 4105314999,
+        "total_duration": 57447057700
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 38589,
+      "wire_response_sha256_recorded": "7a56b2e355804e0f4c79b46b39339aa030a5d0df0dbffaf79b178bda19619dfc",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0012-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0012.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d0/12-DEV-C49-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0013",
+      "phase": "D1",
+      "case_id": "DEV-H43",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "20e4269e8ad1866f414c71702196385b9c8b5c6c07ba75e9936e7d49da7f28e0",
+      "request_sha256": "c1f3f1b27f1d36fdd80f8df645f2fb8e1e5c55b62f3a22d22210d386045d8761",
+      "prompt_sha256": "f37a2191dcc174eaa267066b063da0d21b91c63ad5fb88ca68f305e060a33536",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 141.56066,
+      "usage": {
+        "eval_count": 660,
+        "eval_duration": 124577107000,
+        "load_duration": 13037713400,
+        "prompt_eval_count": 2309,
+        "prompt_eval_duration": 3901438000,
+        "total_duration": 141541082500
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 82485,
+      "wire_response_sha256_recorded": "1c52bd1f149637077b9cacde66829e89edecfa49aaf38eedb4b9f9fd9eb1fbba",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0013-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0013.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/01-DEV-H43-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0014",
+      "phase": "D1",
+      "case_id": "DEV-H43",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "20e4269e8ad1866f414c71702196385b9c8b5c6c07ba75e9936e7d49da7f28e0",
+      "request_sha256": "71e310d1202ba73944699e17a546529528bbf03cf4a2d1d0f06a8bd365c3253c",
+      "prompt_sha256": "cd846b090fb93c56f52fc1d973985c497baf66d283a826868cabebb52b92caa5",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 56.162229,
+      "usage": {
+        "eval_count": 269,
+        "eval_duration": 52073618000,
+        "load_duration": 10657000,
+        "prompt_eval_count": 2666,
+        "prompt_eval_duration": 3925187000,
+        "total_duration": 56147309300
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 34080,
+      "wire_response_sha256_recorded": "97447d64e31e8df9e53429cfcc53f85614fbb54df9d64dbff9d5f9ef5c56874a",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0014-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0014.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/02-DEV-H43-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0015",
+      "phase": "D1",
+      "case_id": "DEV-N65",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "ff8780c1e945ad8161fba1e89451dc200cafae980fc5741c015e0365adb6abcb",
+      "request_sha256": "71af069d2552d7ac62c14c8159ace87838a5f2a16164b93ae11f60f66206a72c",
+      "prompt_sha256": "371de190b4672a391614025fe6b8da9865c47118f9da0b44de7b7d7e51a7b339",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 165.117229,
+      "usage": {
+        "eval_count": 717,
+        "eval_duration": 158521350000,
+        "load_duration": 13811400,
+        "prompt_eval_count": 3320,
+        "prompt_eval_duration": 6414629000,
+        "total_duration": 165087488300
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 89725,
+      "wire_response_sha256_recorded": "28ccc98aae8d0adb52b1b305ab0d9028b1218a633f63417cf3e01daf70f96d2a",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0015-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0015.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/03-DEV-N65-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0016",
+      "phase": "D1",
+      "case_id": "DEV-N65",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "ff8780c1e945ad8161fba1e89451dc200cafae980fc5741c015e0365adb6abcb",
+      "request_sha256": "c84cbabedac71dfe911c28a564463135320f1b4959fba0daa61fb7b2e7e4b8f9",
+      "prompt_sha256": "c7580fced89a91b15a7d6e7350e900ef902210045a6bcbd7a5218b3a69b15660",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 300.814202,
+      "usage": {
+        "eval_count": 1408,
+        "eval_duration": 295441362000,
+        "load_duration": 14642800,
+        "prompt_eval_count": 2558,
+        "prompt_eval_duration": 5048654000,
+        "total_duration": 300765944800
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 174766,
+      "wire_response_sha256_recorded": "34308230854c90ea9c9b471e15c0632d576d44e8387d3081f79fb5409005bb34",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0016-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0016.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/04-DEV-N65-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0017",
+      "phase": "D1",
+      "case_id": "DEV-R24",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "f63c43800e64bcce7642a8a1f467485dd0f4fda4c099c25c5c944f3dc177ec19",
+      "request_sha256": "36493c9bef14ffe94d8e8e65472afefc724c43c6f094c5b3b9818cb844f303ca",
+      "prompt_sha256": "50488410eb71c51a3d8c051025d68930d54bffd21814dcb111c9f4513cd8f179",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 60.539185,
+      "usage": {
+        "eval_count": 337,
+        "eval_duration": 57122562000,
+        "load_duration": 14377200,
+        "prompt_eval_count": 1644,
+        "prompt_eval_duration": 2981980000,
+        "total_duration": 60505089700
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 42688,
+      "wire_response_sha256_recorded": "5988d1f27cb530e3a2bdfabab7a0a66150fcb766bd3c1b0d8c876d964bdabd19",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0017-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0017.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/05-DEV-R24-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0018",
+      "phase": "D1",
+      "case_id": "DEV-R24",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "f63c43800e64bcce7642a8a1f467485dd0f4fda4c099c25c5c944f3dc177ec19",
+      "request_sha256": "8757c14816da32a2baf7978d5da7f566e9146c8dd0bed9e6b11530f22215b3dd",
+      "prompt_sha256": "f01b2857725f8f206333b0349bf042493fc4fe063424bceeaeb240d01a9a751c",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 82.58317,
+      "usage": {
+        "eval_count": 422,
+        "eval_duration": 78125499000,
+        "load_duration": 13304400,
+        "prompt_eval_count": 2143,
+        "prompt_eval_duration": 4298611000,
+        "total_duration": 82554116600
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 52895,
+      "wire_response_sha256_recorded": "f2a35d242e38803886750ab8851eb3397d653e1a70b8d16087f86db827d251f5",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0018-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0018.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/06-DEV-R24-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0019",
+      "phase": "D1",
+      "case_id": "DEV-T52",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "04cad3cff825531bd95ae3e3408ad2dc616adb8ccf91f9e67da985fc4ac9cb36",
+      "request_sha256": "ee6ad5e35f9e049fdf1b189357b522f411597e854847d339b590ff84b91e4cf3",
+      "prompt_sha256": "25b981fa8c05b99d919861d2f809ded454b4258aee061113af3b4f830986788d",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 106.703933,
+      "usage": {
+        "eval_count": 520,
+        "eval_duration": 100906400000,
+        "load_duration": 14492600,
+        "prompt_eval_count": 2422,
+        "prompt_eval_duration": 5660918000,
+        "total_duration": 106674168000
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 65175,
+      "wire_response_sha256_recorded": "13ec3551cd8663008faf3f009c3ab07ca05bb93cae5d9563695079acd6e23a42",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0019-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0019.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/07-DEV-T52-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0020",
+      "phase": "D1",
+      "case_id": "DEV-T52",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "04cad3cff825531bd95ae3e3408ad2dc616adb8ccf91f9e67da985fc4ac9cb36",
+      "request_sha256": "4d496b4255d5b5ac96ec8d17609d273d3c39e5473e6dbb0c3bb122a6f713dd5a",
+      "prompt_sha256": "faebf6db9f767c2b2c85f84e16277e676b0b4b28477bd0685585fcf167815ba2",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 88.090826,
+      "usage": {
+        "eval_count": 465,
+        "eval_duration": 83699604000,
+        "load_duration": 14394500,
+        "prompt_eval_count": 1905,
+        "prompt_eval_duration": 4247136000,
+        "total_duration": 88073459500
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 58512,
+      "wire_response_sha256_recorded": "448561b5f60ef7c007821ecbd7f1fea08adc017c728745e4b224974b5282a708",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0020-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0020.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/08-DEV-T52-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0021",
+      "phase": "D1",
+      "case_id": "DEV-V12",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "4b642e9906b935b7d522708296a08ba25b24cff33f9ce1c60fa13a4513259ce9",
+      "request_sha256": "30b3ea82ebcacde9f00b71e0c05dc4c676174ce3c2d4557f4b5c4f681cfad012",
+      "prompt_sha256": "1d250d3445231c9548850f51d10c6a4384998be1c1772531e015ec965df5b20d",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 105.448177,
+      "usage": {
+        "eval_count": 477,
+        "eval_duration": 99331090000,
+        "load_duration": 11800000,
+        "prompt_eval_count": 2848,
+        "prompt_eval_duration": 5979191000,
+        "total_duration": 105411220700
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 59730,
+      "wire_response_sha256_recorded": "972589d486e40d252827dc50327663741f172031fb9b36a74c58111f4bf5a9a4",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0021-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0021.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/09-DEV-V12-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0022",
+      "phase": "D1",
+      "case_id": "DEV-V12",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "4b642e9906b935b7d522708296a08ba25b24cff33f9ce1c60fa13a4513259ce9",
+      "request_sha256": "0fdf68e33dca45aafa5ede3d61f300ed1fc2d9ac27f08145a93d60602075d19e",
+      "prompt_sha256": "7959cd7e0aa2c30d13e7ffb9bebfeef10b5b5b961cbb92e6a7eb5f0bf8f401f1",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 120.355428,
+      "usage": {
+        "eval_count": 491,
+        "eval_duration": 112171113000,
+        "load_duration": 13462100,
+        "prompt_eval_count": 3497,
+        "prompt_eval_duration": 7991977000,
+        "total_duration": 120304432600
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 61515,
+      "wire_response_sha256_recorded": "50bed997347688c80c2d04b478af1a5b1e4f60e8f1b53593739ea3fceb79f437",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0022-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0022.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/10-DEV-V12-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0023",
+      "phase": "D1",
+      "case_id": "DEV-L96",
+      "arm": "H",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "83691ae6d9d6457b4da3c1890ebb62faa2e662ba585c73ba5b466da2add37971",
+      "request_sha256": "e8da43f6bf37d5711aa7f3243775789d60242f192e3eca3e8725ef6a14e38bb7",
+      "prompt_sha256": "82fa4a703ddc7cda14f77d99ce319bf0dd4b8d1faae9361ca1ee18e62f7c38c1",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 169.211191,
+      "usage": {
+        "eval_count": 693,
+        "eval_duration": 161042529000,
+        "load_duration": 13874400,
+        "prompt_eval_count": 3503,
+        "prompt_eval_duration": 7967736000,
+        "total_duration": 169174204900
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 86598,
+      "wire_response_sha256_recorded": "045a62aac1fcaa27c6283ec27fd87d10a731dfba8f5a000f7a5f7b50be7d1364",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0023-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0023.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/11-DEV-L96-H.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    },
+    {
+      "attempt_id": "s13-d-0024",
+      "phase": "D1",
+      "case_id": "DEV-L96",
+      "arm": "M",
+      "scope_mode": "legacy",
+      "source_commit": "e11645b052aea01fb07c7571cf815e176f22cddc",
+      "preregistration_commit": "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "batch_sha256": "cd5b9988fee731a0a6dd649340a989ab800d26ae95d3dbea002193753247ca41",
+      "raw_input_sha256": "83691ae6d9d6457b4da3c1890ebb62faa2e662ba585c73ba5b466da2add37971",
+      "request_sha256": "133aede9aa22cd4ac8a9276f7388beebbc251e67d3905277afc68fe796c2bebf",
+      "prompt_sha256": "e30408ca41546d859cdd96353e28863ac84233fb135300397ed0161281e8fdba",
+      "schema_sha256": "3d9f0c95f1562a4503713fa6c1550dbfd2654bfc5e359d7e825f596cceef3f61",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "options": {
+        "num_ctx": 32768,
+        "num_predict": 4096,
+        "temperature": 0.1
+      },
+      "reservation_present_in_track_and_campaign": true,
+      "raw_send_evidence": "completed matching local-provider final response plus matching durable track/global reservation/completion; not an independent network capture",
+      "provider_outcome": "COMPLETED",
+      "done_reason": "stop",
+      "provider_unknown": false,
+      "provider_withheld": false,
+      "structural_status": "valid",
+      "wire_seconds": 155.417375,
+      "usage": {
+        "eval_count": 702,
+        "eval_duration": 149073503000,
+        "load_duration": 13403400,
+        "prompt_eval_count": 2832,
+        "prompt_eval_duration": 6014409000,
+        "total_duration": 155388149600
+      },
+      "thinking_present": false,
+      "thinking_bytes": 0,
+      "thinking_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wire_response_bytes_recorded": 87772,
+      "wire_response_sha256_recorded": "7541ed7f1aebfb7b06f905a4bc08689ee05d0ed213039b9f8f61d1d3b7d0acff",
+      "request_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0024-request.json",
+      "answer_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0024.json",
+      "result_path": "knowledge_base/workspaces/willow-sprint13-development/trials/d1/12-DEV-L96-M.json",
+      "author_review_status": "D0 reviewed in immutable author_review_D0.json; D1 reviewed separately during recovery",
+      "independent_review": "PENDING"
+    }
+  ],
+  "artifact_sha256": {
+    "knowledge_base/workspaces/willow-sprint13-development/journal.jsonl": {
+      "sha256": "d5ef4f7044c64c99049af287fdd800c3c666d407519b3286773c411d2e7f945d",
+      "bytes": 48275
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/01-DEV-K17-M.json": {
+      "sha256": "066b98c2ce653b87b318a1038c8e5e22e7d66e18e6be674f8fc09664e0df5b5b",
+      "bytes": 13777
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/02-DEV-K17-H.json": {
+      "sha256": "ac4096c6195c21d7553a99384174f8dddcbbe324abdc8b992956823afc7a755f",
+      "bytes": 13576
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/03-DEV-F28-H.json": {
+      "sha256": "e09e5c220cb7435786abcdd7992c102844fc9d21d032d76f7bd77bbcb724b119",
+      "bytes": 14212
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/04-DEV-F28-M.json": {
+      "sha256": "c0a7d18060c64bdcc167c18ad32a2a4a4b5f4fc26f49effac02777e80136615d",
+      "bytes": 13880
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/05-DEV-B36-M.json": {
+      "sha256": "585f875497fc4f7f9120786b9281343153dc9ed368363bc189fd3b029c74c6d0",
+      "bytes": 440
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/06-DEV-B36-H.json": {
+      "sha256": "8700db6bc446bb072d3d79f06becd60dc97e00dd9990899be7c76ddf018a0781",
+      "bytes": 10902
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/07-DEV-P81-H.json": {
+      "sha256": "60b2a2470668474b03a73448d9815f7609acbbfd55a6605d8ec1473ab5349606",
+      "bytes": 10899
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/08-DEV-P81-M.json": {
+      "sha256": "a8424dbdd315973cc75ad3f8e7bf704502001c4be280b03046e3815fcc2fd426",
+      "bytes": 11083
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/09-DEV-J73-M.json": {
+      "sha256": "28689a96bbc68bc558c8763f623f947474a48d3b822a888ab7b98a0218d74700",
+      "bytes": 16328
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/10-DEV-J73-H.json": {
+      "sha256": "5e15a816bcf2dd9fd05068db5ce760e22b13c01b843d33805f3d7a898714b04a",
+      "bytes": 16731
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/11-DEV-C49-H.json": {
+      "sha256": "eb4eae2701a385fb094f90f0e43ec0349a41047ed32b6ac7faf2a022d613f10c",
+      "bytes": 16635
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/12-DEV-C49-M.json": {
+      "sha256": "8c039051a56d1ddf05213ad40eb2b7c67a15e84bd2b74a4f3980383efe5c92fc",
+      "bytes": 16175
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/preflight.json": {
+      "sha256": "19d3aca337192d938a125ff1050aca2935d52a040f3cfa5803b3600f353b0e8c",
+      "bytes": 2357
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0001-request.json": {
+      "sha256": "8dd3148acff9486710ab74dc0a382b5a72e610b4552102f4134902fa9844072c",
+      "bytes": 9872
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0001.json": {
+      "sha256": "3dd046b98034200f52c5da5921bd1a5eb91f38a128269144d76d77dcf7f0edac",
+      "bytes": 2078
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0002-request.json": {
+      "sha256": "b29006ea9acc9b1c7a9e648b5d674b58e57e1321b2a8d2f2667b8e5b51d8e006",
+      "bytes": 11662
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0002.json": {
+      "sha256": "6ef4e9645eb8bf3b7e9aab5e4e99008eaceef207fbd2473a891734d91b321214",
+      "bytes": 1715
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0003-request.json": {
+      "sha256": "27566a91c45267b25728e2640c455f9ce95bc2c1096cadfd44d3026dde3f489c",
+      "bytes": 11727
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0003.json": {
+      "sha256": "53fa66cf40bd3be9f9d6081f717758ddc0a74f5104009beec6ecaf7432f1a99c",
+      "bytes": 2293
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0004-request.json": {
+      "sha256": "323ff1bbefd5b2e6f546d75502d44046caded445fc13c12f69f4148189ba9844",
+      "bytes": 9878
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0004.json": {
+      "sha256": "e3545c353f5219053aa48ac51b01276313dbb19b78685859afd95d9ffd466128",
+      "bytes": 2126
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0005-request.json": {
+      "sha256": "6aff7193fac202fd9e11e5a36613a194a0c399ee8f7141fbbb4ce3154929aaa7",
+      "bytes": 8080
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0005.json": {
+      "sha256": "74f87cd0aabb116a26e8d03ed16af3db17d268b1d5c201002307f62292149361",
+      "bytes": 2363
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0006-request.json": {
+      "sha256": "1ed7344a976a9c150d4413c809037d5e8dbd1a0d9eb5318c3108b7d6627511e4",
+      "bytes": 9538
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0006.json": {
+      "sha256": "f392e05510ceef5215f8e77ecdde03eb5af5fe835a715e0d76ab89066086eebd",
+      "bytes": 1673
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0007-request.json": {
+      "sha256": "91536791db4586be425cef8b1eb8ef9aa5907aaf1306e3fdeeeabcc2b29972d6",
+      "bytes": 9569
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0007.json": {
+      "sha256": "578c8d71bc1313857d25dba90fef8f1cd150a42d73a7539ac85eccbc01c4b812",
+      "bytes": 1624
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0008-request.json": {
+      "sha256": "5ed7caec9cef46a1612b1bcd656bef9e79ca70bf848321d70b760bfba67067ac",
+      "bytes": 8082
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0008.json": {
+      "sha256": "40cf3dfbfa0d3c3980d46c4aceec0b4c63e3f935b49a811aa3cf96e8af10074d",
+      "bytes": 1937
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0009-request.json": {
+      "sha256": "e7266e3da368c85773200d70927f11fa80f02111a6903525e9ff98d9d19a5564",
+      "bytes": 11858
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0009.json": {
+      "sha256": "6240d1310f989e56d18e489f76ca87a79d0fbc7df17aafbac7134a06ebf3f8f9",
+      "bytes": 1634
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0010-request.json": {
+      "sha256": "7c2b8faf0090620122e81b2a34b37ef14abfc06fd608909d98a4a9f2f11a495d",
+      "bytes": 13604
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0010.json": {
+      "sha256": "65ae1215f8af34406b8645d87a5538640a6e1d630f273ea5d384edb4d1793b71",
+      "bytes": 1975
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0011-request.json": {
+      "sha256": "d2769110716b4a7610de721d0b825f69ad596038ca7f11cf6bc246eaa2e85c76",
+      "bytes": 13635
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0011.json": {
+      "sha256": "294a808db3c46b1fcc0660d83092b1ff6d2a3a953e57e844e5b884d5534a3390",
+      "bytes": 1821
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0012-request.json": {
+      "sha256": "2f7e3fe617e9161f5d85e6381f3aec2f85f3f51a3be2dd0b04f60d79fbd774a8",
+      "bytes": 11860
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/s13-d-0012.json": {
+      "sha256": "0168d4519a19ef9ae1417f41d1a360c3cb94a6f0e32522caf5db72aa0611cf76",
+      "bytes": 1456
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d0/summary.json": {
+      "sha256": "d9c2863e304932d6b47dc53c4f37af142e22d27eff01b43d7d6b4c0e092d2cf9",
+      "bytes": 155173
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/01-DEV-H43-M.json": {
+      "sha256": "710999b81c1efb286d349cc69ab9389a6bfbe944c9c2608060874e89db7e7012",
+      "bytes": 13294
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/02-DEV-H43-H.json": {
+      "sha256": "d02bcf44539f94002f518a660151493ce25f3262568cc309c09a9234271a12fc",
+      "bytes": 12762
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/03-DEV-N65-H.json": {
+      "sha256": "f3aeda03e4b0efe74fe0acc9ddbee8192c59e8dda9ac7a61e362648cffafcba4",
+      "bytes": 15666
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/04-DEV-N65-M.json": {
+      "sha256": "480edbbe525206fb9ff1a4a89be689a9b448a7b9af923401937c7b7a37d2128a",
+      "bytes": 16322
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/05-DEV-R24-M.json": {
+      "sha256": "55a2eb8913f4b02d44c797fd4dbe162542b37f58eef05eb471302bc077f062e9",
+      "bytes": 10805
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/06-DEV-R24-H.json": {
+      "sha256": "0dab40b551e9d69baf0ca7d0c572463dc5fe30f6871ca6b6b3d0ddbda1847a24",
+      "bytes": 10755
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/07-DEV-T52-H.json": {
+      "sha256": "1030d6b3234a56559c650aa9de8041140823ef59aca312078549b96b8bb3450d",
+      "bytes": 12601
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/08-DEV-T52-M.json": {
+      "sha256": "a33cb17ccfc0fb2cca7d889ea717c52e3ab388ecc646d01068ff93f19713467e",
+      "bytes": 12562
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/09-DEV-V12-M.json": {
+      "sha256": "375e22a91dd450a40de7a28c31f5a1841025a6200e0525d7c255f9ce2bb65b83",
+      "bytes": 16239
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/10-DEV-V12-H.json": {
+      "sha256": "9b1f559f158da53646c52bc1510544de2262f255680b85f1f7024abdb51d5d6c",
+      "bytes": 16473
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/11-DEV-L96-H.json": {
+      "sha256": "3b20e7298150b5db86d09214b1ed8fef63ac5b9cdb52ac1ccee2feef8ff475cb",
+      "bytes": 16945
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/12-DEV-L96-M.json": {
+      "sha256": "50d8d2b769f93ca417941b71962e526a4b7d9a65569493809d5da838e86ce4aa",
+      "bytes": 16919
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/preflight.json": {
+      "sha256": "4752b84d5b4bfe1df4e97cb6973ba8e0a6329c69156149df8af7f603673050f5",
+      "bytes": 2830
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0013-request.json": {
+      "sha256": "e1d3efb78c2ff73453ea9c0a523d2a7f87ec91010aaf54953dcf8956128bb9ad",
+      "bytes": 9842
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0013.json": {
+      "sha256": "f67829208f43dc755c70604a95e534b162e38f42aed80ef56fb3c18594b386a1",
+      "bytes": 2084
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0014-request.json": {
+      "sha256": "5cfd9c34c4f7b67b08dc5f2e167f720eacb58c5aa00392049d5f7fb98e979c8b",
+      "bytes": 11177
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0014.json": {
+      "sha256": "f5c7927ad17ef7909bfdacdf1b648f8af21ff9f28d2526de9dd74d46077674a1",
+      "bytes": 1330
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0015-request.json": {
+      "sha256": "e33c3a2dfb646bf6d656a499d73379473ef8274af5aca16b54ec842a9c17e182",
+      "bytes": 12712
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0015.json": {
+      "sha256": "53f70d4b747ae8ad060782a7c87c53cc244b51eee2c29f2c904f9cd3fc83477a",
+      "bytes": 2355
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0016-request.json": {
+      "sha256": "f650f88618eb1fb59ec50a2123f441febd5fd3ea2129d0586829c967568593fc",
+      "bytes": 10802
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0016.json": {
+      "sha256": "54934263abf5cb0e3bbb36eaf6b3f8defbdf919919a64dc689f973b9cd0ba39a",
+      "bytes": 3199
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0017-request.json": {
+      "sha256": "3d67fc8a707c2d6aef2e2643e016957df4e6b5948fcd44407995e6e753761766",
+      "bytes": 8058
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0017.json": {
+      "sha256": "b7138eaaaa8147bdc13f077fb534b2dcc000f0bd508cd1034045b56b43381187",
+      "bytes": 1661
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0018-request.json": {
+      "sha256": "682752334ec5673e022c0ead18f838f069bc1aeb755b9951f1e2643876e50797",
+      "bytes": 9581
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0018.json": {
+      "sha256": "bf18fba7606def3fb309b6ad83c5f504507f8440bb3ce22fb31cde0272c56258",
+      "bytes": 1488
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0019-request.json": {
+      "sha256": "ecc0ffc2335a6e6efcd5cd5d1059aa01004327e36ef5c04a0b70783962886b7c",
+      "bytes": 10601
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0019.json": {
+      "sha256": "ee91623a939152b5382484ebae044f08f005d48f88fb607b80c87b620048a0a3",
+      "bytes": 1850
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0020-request.json": {
+      "sha256": "e647667323960ba92e5c71ec692e71a2d01cc7067bd013bbec22eaf161c03b8d",
+      "bytes": 9069
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0020.json": {
+      "sha256": "451b8a5e8fec9c308f49126fdeec15ba736ba282104137f34770394d63c369c9",
+      "bytes": 1883
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0021-request.json": {
+      "sha256": "90c86525f4e2042612a122b2f999bec2a18dd95990dbce59926725cee7879476",
+      "bytes": 11844
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0021.json": {
+      "sha256": "0d0f7e9ea9e63629d47c3e93d6ac24f8664abc8b4e04be62573cc0af792223b4",
+      "bytes": 1635
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0022-request.json": {
+      "sha256": "3e31735a42dbe79d7589712b033e86b9871f7ae6f159393ee44be97b9f926a16",
+      "bytes": 13605
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0022.json": {
+      "sha256": "dad35f732f824d3fe88c4cd84d6cad56caa2935579b1a32e37e2caea7567d7a2",
+      "bytes": 1726
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0023-request.json": {
+      "sha256": "4d43eef9bb0cc1105a44a0f5729394f9325c670f28223b00a3c1d279277d4df0",
+      "bytes": 13637
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0023.json": {
+      "sha256": "0ff367e3dcce273308eeea6aabdf254783b780e98546a833d95d20a11959e3be",
+      "bytes": 2183
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0024-request.json": {
+      "sha256": "fa99fe273828ae9431bdb7899b749f8ba147d94c2628a36af91455c9d1f7549a",
+      "bytes": 11824
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/s13-d-0024.json": {
+      "sha256": "e269b490fedcbe9d6d1a86478c42d7efe26a942a43529d8034e1a50390c5d4ca",
+      "bytes": 2256
+    },
+    "knowledge_base/workspaces/willow-sprint13-development/trials/d1/summary.json": {
+      "sha256": "a1bfd3731067ad06a0397c4111df87bfba8005f6e319c602fc1aeb33b845bdbb",
+      "bytes": 171878
+    },
+    "knowledge_base/workspaces/willow-sprint13-campaign/journal.jsonl": {
+      "sha256": "51e2635278ada4a5beafc001ee8977f8db47733a5c5ef6dfd56e851fdbbf899c",
+      "bytes": 3615
+    },
+    "knowledge_base/workspaces/willow-sprint13-campaign/manifest.json": {
+      "sha256": "8795bd5d45e12ddedf54a021c47d9514a264d9cac20a4b707c8a6b8ebc5cfa25",
+      "bytes": 373
+    }
+  }
+}

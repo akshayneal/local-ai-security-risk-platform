@@ -1,0 +1,242 @@
+{
+  "source_commit": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+  "outcomes_sha256": "99f351bec38cfffab50b2665c68d1b5df477aeee8dd3bddbe02f1a1b95af5f7a",
+  "typed_matches": 24,
+  "denominator": 24,
+  "integrity_matches": 24,
+  "per_pillar": {
+    "soc": {
+      "typed_matches": 8,
+      "denominator": 8
+    },
+    "governance": {
+      "typed_matches": 8,
+      "denominator": 8
+    },
+    "ai_security": {
+      "typed_matches": 8,
+      "denominator": 8
+    }
+  },
+  "model_sends": 0,
+  "records": [
+    {
+      "case_id": "U8A4",
+      "pillar": "soc",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Completed attachment_relay differs from permitted heartbeat, despite matching identity/time/endpoint."
+    },
+    {
+      "case_id": "E2N7",
+      "pillar": "soc",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Permission assertion changed to attachment_relay; reported scope now aligns without authentication."
+    },
+    {
+      "case_id": "P6D3",
+      "pillar": "soc",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Failed attempt used a different principal than reported permitted; no successful transfer inferred."
+    },
+    {
+      "case_id": "K9R5",
+      "pillar": "soc",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Equivalent offset time equals inclusive upper bound; reported scope aligns."
+    },
+    {
+      "case_id": "A3V8",
+      "pillar": "soc",
+      "expected": "underdetermined",
+      "actual": "underdetermined",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Observed operation/endpoint unknown; permission assertion cannot fill either."
+    },
+    {
+      "case_id": "N7F2",
+      "pillar": "soc",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Failed zero-amount matching inventory_read supports declared scope alignment, not an actual completed action."
+    },
+    {
+      "case_id": "D4C6",
+      "pillar": "soc",
+      "expected": "conflicting_claims",
+      "actual": "conflicting_claims",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Primary in-window and secondary outside-window event times conflict; no chosen truth."
+    },
+    {
+      "case_id": "R1H9",
+      "pillar": "soc",
+      "expected": "projection_unavailable",
+      "actual": "projection_unavailable",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Body source revision is stale against reviewed current r1; reject without fallback."
+    },
+    {
+      "case_id": "F5W1",
+      "pillar": "governance",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Reported after-publication review conflicts with before-publication typed requirement."
+    },
+    {
+      "case_id": "J2Q8",
+      "pillar": "governance",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Before-publication implementation claim aligns within eleven fictional sandbox examples."
+    },
+    {
+      "case_id": "T8B4",
+      "pillar": "governance",
+      "expected": "underdetermined",
+      "actual": "underdetermined",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Proposed before-publication process is not implemented evidence."
+    },
+    {
+      "case_id": "C6M9",
+      "pillar": "governance",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Explicitly absent review differs from known typed requirement; only a supplied assertion."
+    },
+    {
+      "case_id": "V3L7",
+      "pillar": "governance",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Explicit after-archive requirement and reported after-archive implementation align; before is not universally mandatory."
+    },
+    {
+      "case_id": "M9E2",
+      "pillar": "governance",
+      "expected": "underdetermined",
+      "actual": "underdetermined",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Missing typed requirement is not permission or a rule inferred from policy prose."
+    },
+    {
+      "case_id": "B7S5",
+      "pillar": "governance",
+      "expected": "conflicting_claims",
+      "actual": "conflicting_claims",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Primary reported implemented state and secondary proposed state disagree."
+    },
+    {
+      "case_id": "H4Y6",
+      "pillar": "governance",
+      "expected": "underdetermined",
+      "actual": "underdetermined",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Actual behavior action differs from requirement action; no same-action timing conclusion."
+    },
+    {
+      "case_id": "Q1Z4",
+      "pillar": "ai_security",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Reported after-action gate on reachable model-invoked external communication differs from before requirement."
+    },
+    {
+      "case_id": "L8U3",
+      "pillar": "ai_security",
+      "expected": "declared_alignment",
+      "actual": "declared_alignment",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Reported before-action gate aligns for one declared external communication path."
+    },
+    {
+      "case_id": "W6G9",
+      "pillar": "ai_security",
+      "expected": "not_applicable",
+      "actual": "not_applicable",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Read-only selected capability fails consequential-tool prerequisite even with after timing."
+    },
+    {
+      "case_id": "S3K2",
+      "pillar": "ai_security",
+      "expected": "not_applicable",
+      "actual": "not_applicable",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Reversed edge yields no declared directed model-to-selected-tool path; do not infer actual unreachable deployment."
+    },
+    {
+      "case_id": "G7P5",
+      "pillar": "ai_security",
+      "expected": "underdetermined",
+      "actual": "underdetermined",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Gate state/timing unknown despite consequential capability; no absent-control inference."
+    },
+    {
+      "case_id": "Y2T8",
+      "pillar": "ai_security",
+      "expected": "declared_mismatch",
+      "actual": "declared_mismatch",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Explicitly absent gate differs from reviewed before-action requirement on declared consequential path."
+    },
+    {
+      "case_id": "Z5J1",
+      "pillar": "ai_security",
+      "expected": "conflicting_claims",
+      "actual": "conflicting_claims",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Two gate timing assertions disagree; source-looking injection cannot select either."
+    },
+    {
+      "case_id": "O9A6",
+      "pillar": "ai_security",
+      "expected": "not_applicable",
+      "actual": "not_applicable",
+      "typed_match": true,
+      "integrity": true,
+      "authored_mechanism": "Selected tool is explicitly human invoked; unrelated reachable write tool cannot supply model-invocation premise."
+    }
+  ],
+  "independent_review": "PENDING",
+  "release": "NO-GO"
+}

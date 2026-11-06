@@ -193,3 +193,12 @@ Offline deterministic diagnostic remains authorized by the original protocol,
 with committed selection before input/key execution and zero model requests.
 The resume prompt separately authorizes restoring the missing Demo shortcut via
 the existing installer; no launcher source/app startup is authorized or needed.
+
+Final local verification2026-11-06:2629passed,1Starlette/httpxwarning,297.57s;
+all301trackedPythonfilesRuffPASS,pipcheckPASS,diffchecksPASS. All911historical
+rawfiles,645protectedoriginalblobs,79newrawartifacts,25saveddatafiles andsource
+inventory verified. The restoredshortcutrecordretainsoriginalCRLFbytes; Git
+file-specific cr-at-eol recognizes thatlineending while retaining normalwhitespace
+checks, rather than rewritingtheoriginalrecord. No app/holdoutrunnersourcechanged
+aftertheonce-only24case diagnostic. Next safe step:normalfeaturecommit/push and
+exactfinalSHA CI. No newinference ordiagnosticexecution is permitted/needed.

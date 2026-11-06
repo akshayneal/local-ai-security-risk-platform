@@ -1,0 +1,494 @@
+{
+  "format": "sprint13-final-readout-v1",
+  "date": "2026-11-06",
+  "starting_sprint12_sha": "95fdfbe1d5f5cacf0d814e7c3a67bb56ce18f57a",
+  "resumed_head": "e11645b052aea01fb07c7571cf815e176f22cddc",
+  "selection_and_diagnostic_commit": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+  "selected_arm": "D",
+  "model_generation_closed": true,
+  "raw_accounting": {
+    "COMPLETED": 24,
+    "KNOWN_WITHHELD": 0,
+    "PENDING": 0,
+    "UNKNOWN": 0,
+    "reserved": 24,
+    "result_record_missing_after_completed_send": 0,
+    "structural_withheld": 1
+  },
+  "remaining_send_ceilings_unspent": {
+    "development": 60,
+    "diagnostic": 24,
+    "global": 84
+  },
+  "D3": "NOT RUN; original persisted campaign elapsed cap expired; no reset",
+  "model_label_matches_per_attempt": {
+    "M": "4/12",
+    "H": "10/12"
+  },
+  "semantic_author_reviews": {
+    "D0": {
+      "raw_sends_reviewed": 12,
+      "distinct_cases": 6,
+      "per_pillar_distinct_cases": {
+        "soc": 2,
+        "governance": 2,
+        "ai_security": 2
+      },
+      "M": {
+        "attempts": 6,
+        "qualifying_valid": 5,
+        "structurally_withheld": 1,
+        "label_matches_among_valid": 3,
+        "valid_label_denominator": 5,
+        "label_matches_per_attempt": 3,
+        "attempt_denominator": 6,
+        "raw_label_matches_including_rejected": 3,
+        "mechanism_correct_among_valid": 3,
+        "appropriate_counterevidence_among_valid": 3,
+        "new_conditional_useful_question_sets": 0,
+        "composite_useful": 0
+      },
+      "H": {
+        "attempts": 6,
+        "qualifying_valid": 6,
+        "structurally_withheld": 0,
+        "label_matches_among_valid": 6,
+        "valid_label_denominator": 6,
+        "label_matches_per_attempt": 6,
+        "attempt_denominator": 6,
+        "raw_label_matches_including_rejected": 6,
+        "mechanism_correct_among_valid": 4,
+        "appropriate_counterevidence_among_valid": 4,
+        "new_conditional_useful_question_sets": 0,
+        "composite_useful": 0
+      },
+      "model_unknown_conflict_not_applicable_control_coverage": "NOT RUN in D0; scheduled cases cover mismatch/alignment only. Do not infer unknown-handling quality from these 12 sends.",
+      "mismatch_false_negative_valid_outputs": {
+        "count": 1,
+        "ids": [
+          "DEV-J73-M"
+        ],
+        "definition": "Authored mismatch answered alignment/not_applicable, per frozen rubric."
+      },
+      "known_mismatch_false_insufficiency_valid_outputs": {
+        "count": 1,
+        "ids": [
+          "DEV-K17-M"
+        ]
+      },
+      "raw_rejected_timing_false_negative": {
+        "count": 1,
+        "ids": [
+          "DEV-B36-M"
+        ],
+        "qualifying_output": false
+      },
+      "false_positive_mismatch_on_alignment": 0,
+      "material_counterevidence_role_or_scope_errors": {
+        "count": 2,
+        "ids": [
+          "DEV-F28-H",
+          "DEV-C49-H"
+        ]
+      },
+      "unrelated_or_irrelevant_counterevidence_ids": {
+        "count": 1,
+        "ids": [
+          "DEV-J73-M"
+        ]
+      },
+      "explicit_executed_approval_authenticated_permission_or_verified_deployed_violation_claims": 0,
+      "material_timing_relationship_reversals_raw": {
+        "count": 2,
+        "qualifying_valid_count": 1,
+        "structurally_withheld_count": 1
+      },
+      "qualification": "Model assistance does not meet meaningful usefulness on this authored development review. H improves label copying, but adds no clear new conditional human check and two explanations misread counterevidence. D may remain useful only for the narrow authored predicate; not analyst end-to-end usefulness or a safety claim."
+    },
+    "D1": {
+      "raw_sends_reviewed": 12,
+      "qualifying_structurally_valid": 12,
+      "structurally_withheld": 0,
+      "distinct_cases": 6,
+      "per_pillar_distinct_cases": {
+        "soc": 2,
+        "governance": 2,
+        "ai_security": 2
+      },
+      "M": {
+        "attempts": 6,
+        "label_matches": 1,
+        "label_denominator": 6,
+        "accepted_complete_mechanisms": 1,
+        "appropriate_counterevidence": 1,
+        "new_conditional_useful_question_sets": 0,
+        "composite_useful": 0
+      },
+      "H": {
+        "attempts": 6,
+        "label_matches": 4,
+        "label_denominator": 6,
+        "accepted_complete_mechanisms": 2,
+        "appropriate_counterevidence": 3,
+        "new_conditional_useful_question_sets": 0,
+        "composite_useful": 0
+      },
+      "unknown_control_labels": {
+        "cases": [
+          "DEV-H43",
+          "DEV-R24",
+          "DEV-V12"
+        ],
+        "M_correct": 1,
+        "M_denominator": 3,
+        "H_correct": 3,
+        "H_denominator": 3
+      },
+      "conflict_control_labels": {
+        "cases": [
+          "DEV-N65",
+          "DEV-T52"
+        ],
+        "M_correct": 0,
+        "M_denominator": 2,
+        "H_correct": 1,
+        "H_denominator": 2
+      },
+      "not_applicable_control_labels": {
+        "cases": [
+          "DEV-L96"
+        ],
+        "M_correct": 0,
+        "M_denominator": 1,
+        "H_correct": 0,
+        "H_denominator": 1
+      },
+      "false_positive_mismatch_on_not_applicable": {
+        "count": 1,
+        "ids": [
+          "DEV-L96-H"
+        ],
+        "eligible_case_arms": 2
+      },
+      "unknown_inappropriate_certainty": {
+        "count": 2,
+        "ids": [
+          "DEV-H43-M",
+          "DEV-V12-M"
+        ],
+        "M_unknown_control_denominator": 3
+      },
+      "known_conflict_collapsed_to_underdetermined": {
+        "count": 3,
+        "ids": [
+          "DEV-N65-M",
+          "DEV-N65-H",
+          "DEV-T52-M"
+        ],
+        "conflict_case_arm_denominator": 4
+      },
+      "missed_not_applicable_prerequisite": {
+        "count": 2,
+        "ids": [
+          "DEV-L96-M",
+          "DEV-L96-H"
+        ],
+        "case_arm_denominator": 2
+      },
+      "authored_mismatch_false_negative": "NOT APPLICABLE; D1 has no authored mismatch cases. No zero false-negative reliability claim follows.",
+      "fabricated_reported_authorization_scope": {
+        "count": 1,
+        "ids": [
+          "DEV-N65-M"
+        ],
+        "actual_permission_grant": false,
+        "canonical_source_changed": false
+      },
+      "invented_conflict_on_unknown_gate": {
+        "count": 1,
+        "ids": [
+          "DEV-V12-H"
+        ]
+      },
+      "explicit_executed_actions_actual_approvals_authenticated_permissions_verified_deployed_violations_disruption_advice": 0,
+      "scoped_counterevidence_intervention_evidence": "NOT RUN: all D1 requests have scope_mode=legacy. D1 cannot establish the effectiveness of the proposed H4 counterevidence_scope field; D3 remains unexecuted.",
+      "qualification": "Neither model-owned nor hybrid explanations meet authored composite usefulness. H improves several labels and preserves some distinctions, but still collapses a SOC conflict, returns mismatch on a read-only prerequisite despite its own not_applicable prose, and invents conflict in unknown-gate rationale. D remains a separate narrow declared-relationship result; no independent analyst usefulness or safety qualification follows."
+    }
+  },
+  "development_integrity": {
+    "all_stored_artifact_hashes_verified": 76,
+    "approval_false_and_no_actions_executed": 23,
+    "exact_wire_and_report_premise_occurrences": 548,
+    "reports_checked": 23
+  },
+  "cost": {
+    "output_tokens_reported": 13436,
+    "output_usage_denominator": 24,
+    "prompt_tokens_reported": 62432,
+    "prompt_usage_denominator": 24,
+    "raw_response_bytes": 1682931,
+    "request_bytes": 262093,
+    "seed": "not fixed; no repeatability guarantee",
+    "thinking_bytes_counted_not_retained": 0,
+    "wall_seconds_median": 106.076055,
+    "wall_seconds_range": [
+      56.162229,
+      300.814202
+    ],
+    "wall_seconds_sum": 2690.076286
+  },
+  "campaign_elapsed_at_last_completed_batch_seconds": 3115.289890050888,
+  "diagnostic": {
+    "source_commit": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+    "outcomes_sha256": "99f351bec38cfffab50b2665c68d1b5df477aeee8dd3bddbe02f1a1b95af5f7a",
+    "typed_matches": 24,
+    "denominator": 24,
+    "integrity_matches": 24,
+    "per_pillar": {
+      "soc": {
+        "typed_matches": 8,
+        "denominator": 8
+      },
+      "governance": {
+        "typed_matches": 8,
+        "denominator": 8
+      },
+      "ai_security": {
+        "typed_matches": 8,
+        "denominator": 8
+      }
+    },
+    "model_sends": 0,
+    "records": [
+      {
+        "case_id": "U8A4",
+        "pillar": "soc",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Completed attachment_relay differs from permitted heartbeat, despite matching identity/time/endpoint."
+      },
+      {
+        "case_id": "E2N7",
+        "pillar": "soc",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Permission assertion changed to attachment_relay; reported scope now aligns without authentication."
+      },
+      {
+        "case_id": "P6D3",
+        "pillar": "soc",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Failed attempt used a different principal than reported permitted; no successful transfer inferred."
+      },
+      {
+        "case_id": "K9R5",
+        "pillar": "soc",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Equivalent offset time equals inclusive upper bound; reported scope aligns."
+      },
+      {
+        "case_id": "A3V8",
+        "pillar": "soc",
+        "expected": "underdetermined",
+        "actual": "underdetermined",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Observed operation/endpoint unknown; permission assertion cannot fill either."
+      },
+      {
+        "case_id": "N7F2",
+        "pillar": "soc",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Failed zero-amount matching inventory_read supports declared scope alignment, not an actual completed action."
+      },
+      {
+        "case_id": "D4C6",
+        "pillar": "soc",
+        "expected": "conflicting_claims",
+        "actual": "conflicting_claims",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Primary in-window and secondary outside-window event times conflict; no chosen truth."
+      },
+      {
+        "case_id": "R1H9",
+        "pillar": "soc",
+        "expected": "projection_unavailable",
+        "actual": "projection_unavailable",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Body source revision is stale against reviewed current r1; reject without fallback."
+      },
+      {
+        "case_id": "F5W1",
+        "pillar": "governance",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Reported after-publication review conflicts with before-publication typed requirement."
+      },
+      {
+        "case_id": "J2Q8",
+        "pillar": "governance",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Before-publication implementation claim aligns within eleven fictional sandbox examples."
+      },
+      {
+        "case_id": "T8B4",
+        "pillar": "governance",
+        "expected": "underdetermined",
+        "actual": "underdetermined",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Proposed before-publication process is not implemented evidence."
+      },
+      {
+        "case_id": "C6M9",
+        "pillar": "governance",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Explicitly absent review differs from known typed requirement; only a supplied assertion."
+      },
+      {
+        "case_id": "V3L7",
+        "pillar": "governance",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Explicit after-archive requirement and reported after-archive implementation align; before is not universally mandatory."
+      },
+      {
+        "case_id": "M9E2",
+        "pillar": "governance",
+        "expected": "underdetermined",
+        "actual": "underdetermined",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Missing typed requirement is not permission or a rule inferred from policy prose."
+      },
+      {
+        "case_id": "B7S5",
+        "pillar": "governance",
+        "expected": "conflicting_claims",
+        "actual": "conflicting_claims",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Primary reported implemented state and secondary proposed state disagree."
+      },
+      {
+        "case_id": "H4Y6",
+        "pillar": "governance",
+        "expected": "underdetermined",
+        "actual": "underdetermined",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Actual behavior action differs from requirement action; no same-action timing conclusion."
+      },
+      {
+        "case_id": "Q1Z4",
+        "pillar": "ai_security",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Reported after-action gate on reachable model-invoked external communication differs from before requirement."
+      },
+      {
+        "case_id": "L8U3",
+        "pillar": "ai_security",
+        "expected": "declared_alignment",
+        "actual": "declared_alignment",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Reported before-action gate aligns for one declared external communication path."
+      },
+      {
+        "case_id": "W6G9",
+        "pillar": "ai_security",
+        "expected": "not_applicable",
+        "actual": "not_applicable",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Read-only selected capability fails consequential-tool prerequisite even with after timing."
+      },
+      {
+        "case_id": "S3K2",
+        "pillar": "ai_security",
+        "expected": "not_applicable",
+        "actual": "not_applicable",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Reversed edge yields no declared directed model-to-selected-tool path; do not infer actual unreachable deployment."
+      },
+      {
+        "case_id": "G7P5",
+        "pillar": "ai_security",
+        "expected": "underdetermined",
+        "actual": "underdetermined",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Gate state/timing unknown despite consequential capability; no absent-control inference."
+      },
+      {
+        "case_id": "Y2T8",
+        "pillar": "ai_security",
+        "expected": "declared_mismatch",
+        "actual": "declared_mismatch",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Explicitly absent gate differs from reviewed before-action requirement on declared consequential path."
+      },
+      {
+        "case_id": "Z5J1",
+        "pillar": "ai_security",
+        "expected": "conflicting_claims",
+        "actual": "conflicting_claims",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Two gate timing assertions disagree; source-looking injection cannot select either."
+      },
+      {
+        "case_id": "O9A6",
+        "pillar": "ai_security",
+        "expected": "not_applicable",
+        "actual": "not_applicable",
+        "typed_match": true,
+        "integrity": true,
+        "authored_mechanism": "Selected tool is explicitly human invoked; unrelated reachable write tool cannot supply model-invocation premise."
+      }
+    ],
+    "independent_review": "PENDING",
+    "release": "NO-GO"
+  },
+  "diagnostic_model_sends": 0,
+  "diagnostic_case_timer_seconds_sum": 0.046995100026833825,
+  "diagnostic_premise_bindings": 537,
+  "masked_review_outputs": 60,
+  "distinct_case_count": 36,
+  "independent_review": "PENDING; zero completed",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "artifact_manifest_sha256": "c9d39ad09a971be89ce7bd9c51946d71b870d57212a5d01ad16f28b778086eb8",
+  "validation_artifact": "Documentation/adaptive_security_reasoning_v1/validation.json",
+  "final_commit_and_exact_SHA_CI": "Reported after final additive commit/push in the final handoff; no self-referential commit claim."
+}

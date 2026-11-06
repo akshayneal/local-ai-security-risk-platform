@@ -13,7 +13,21 @@ from copy import deepcopy
 from pathlib import Path
 
 from app.adaptive_reports import build_report, export_json, export_markdown
-from app.adaptive_semantics import ReviewedContext, project
+from app.adaptive_semantics import (
+    MAX_PREMISES,
+    MAX_RAW_BYTES,
+    Assessment,
+    Envelope,
+    Premise,
+    ProjectionError,
+    ReviewedContext,
+    SourceRef,
+    _leaves,
+    _metadata,
+    _parse,
+    _source,
+    project,
+)
 from evals.adaptive_security_reasoning_v1.runner import (
     dispatch_spec,
     parse_proposal,
@@ -518,14 +532,106 @@ def _normalized(record):
     }
 
 
+def _saved_assessment(case, context, saved):
+    """Validate artifact/source binding only; never recompute a relationship.
+
+    The caller must first verify sealed hashes for trusted application artifacts.
+    This structural check does not authenticate a model-supplied assessment or
+    certify the saved decision, rationale, reason codes, or semantic usefulness.
+    """
+    if not isinstance(saved, dict) or len(encoded(saved)) > 1_000_000:
+        raise ValueError("saved_assessment_budget_or_shape")
+    assessment = Assessment.model_validate(saved)
+    raw = case["raw"]
+    if not isinstance(raw, str) or len(raw.encode()) > MAX_RAW_BYTES:
+        raise ValueError("saved_assessment_source_budget")
+    digest = sha(raw.encode())
+    if (
+        assessment.case_id != context.case_id
+        or assessment.pillar != context.pillar
+        or assessment.input_path != context.input_path
+        or assessment.raw != raw
+        or assessment.raw_sha256 != digest
+        or context.raw_sha256 != digest
+    ):
+        raise ValueError("saved_assessment_source_identity")
+    sources = _metadata(context)
+    original = _parse(raw)
+    envelope = Envelope.model_validate(original)
+    if envelope.case_id != context.case_id or envelope.pillar != context.pillar:
+        raise ValueError("saved_assessment_envelope_identity")
+    requirement_source = None
+    try:
+        _source(envelope.source, sources)
+        requirement = envelope.data.get("requirement")
+        if requirement is not None:
+            requirement_source = SourceRef.model_validate(requirement["source"])
+            _source(requirement_source, sources)
+        for claim in envelope.counterclaims:
+            _source(claim.source, sources)
+    except ProjectionError as exc:
+        # Package an existing refusal only. Metadata eligibility was checked
+        # above; an unknown/stale body reference cannot become typed evidence.
+        if (
+            str(exc) != "unknown_or_stale_source"
+            or assessment.outcome != "projection_unavailable"
+            or assessment.reason_codes != (str(exc),)
+            or assessment.premises
+            or assessment.decisive_premise_ids
+            or assessment.disconfirming_premise_ids
+        ):
+            raise ValueError("saved_declined_source_mismatch") from exc
+        return assessment
+    if assessment.outcome == "projection_unavailable":
+        raise ValueError("saved_unavailable_without_declined_source")
+    expected = []
+    for pointer, value in _leaves(original):
+        ref = envelope.source
+        if pointer.startswith("/data/requirement/") and requirement_source is not None:
+            ref = requirement_source
+        elif pointer.startswith("/counterclaims/"):
+            ref = envelope.counterclaims[int(pointer.split("/")[2])].source
+        expected.append(
+            Premise(
+                id="PREM-" + sha((digest + "\n" + pointer).encode())[:20],
+                pointer=pointer,
+                input_path=context.input_path,
+                value=value,
+                source_id=ref.id,
+                source_revision=ref.revision,
+            ).model_dump(mode="json")
+        )
+    # JSON equality preserves int/bool distinctions that Python's == conflates.
+    if len(expected) > MAX_PREMISES or encoded(expected) != encoded(
+        [p.model_dump(mode="json") for p in assessment.premises]
+    ):
+        raise ValueError("saved_assessment_premise_binding")
+    available = {p.id for p in assessment.premises}
+    for pointers in (
+        assessment.decisive_premise_ids,
+        assessment.disconfirming_premise_ids,
+    ):
+        if len(pointers) != len(set(pointers)) or not set(pointers) <= available:
+            raise ValueError("saved_assessment_pointer_membership")
+    return assessment
+
+
 def reviewer_packet(
     records: list[dict],
     inputs: list[dict],
     *,
     authored_key: list[dict] | None = None,
     seed: int = DEFAULT_SEED,
+    canonical_assessments: dict[str, dict] | None = None,
 ) -> tuple[dict, dict]:
-    """Normalize caller-supplied records without loading a suite or exposing its key."""
+    """Normalize caller-supplied records without loading a suite or exposing its key.
+
+    Supply canonical_assessments from already sealed, hash-verified application
+    artifacts to package a completed diagnostic without evaluating it again.
+    That route checks source/premise binding and never invokes the comparator.
+    The caller owns artifact-hash verification; model proposals are not a trusted
+    source of these canonical assessments. Default development behavior is unchanged.
+    """
     if type(seed) is not int or not 0 <= seed <= 2**32 or not 0 < len(records) <= 200:
         raise ValueError("review_packet_bound")
     cases = {case["id"]: deepcopy(case) for case in inputs}
@@ -534,14 +640,21 @@ def reviewer_packet(
         raise ValueError("review_packet_duplicate_identity")
     order = list(range(len(records)))
     random.Random(seed).shuffle(order)
-    items, links = [], []
+    items, links, saved = [], [], {}
     for index in order:
         record = records[index]
         case = cases[record["case_id"]]
         context = ReviewedContext.model_validate(case["context"])
         if case["id"] != context.case_id or case["pillar"] != context.pillar:
             raise ValueError("review_packet_case_identity")
-        assessment = project(case["raw"], context)
+        if canonical_assessments is None:
+            assessment = project(case["raw"], context)
+        else:
+            if case["id"] not in saved:
+                saved[case["id"]] = _saved_assessment(
+                    case, context, canonical_assessments[case["id"]]
+                )
+            assessment = saved[case["id"]]
         review_id = (
             "R13-"
             + sha(

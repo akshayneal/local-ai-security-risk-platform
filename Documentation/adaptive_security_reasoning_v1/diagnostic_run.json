@@ -1,0 +1,34 @@
+{
+  "source_commit": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
+  "status": "reserved_not_completion",
+  "model_sends": 0,
+  "selection": {
+    "arm": "D",
+    "capability_status": "experimental_internal_off_by_default",
+    "diagnostic_model_sends": 0,
+    "selection_date": "2026-11-06",
+    "source_git_blobs": {
+      "app/adaptive_semantics.py": "ef88bfe05c0277e61aae2cbb451a39228d154de3",
+      "app/adaptive_reports.py": "985a2c82477c0ea1ebe0e90218bb629c48c53548",
+      "evals/adaptive_security_holdout_v1/runner.py": "dac06a9c3ff6687c4944be9cb0de4f20bf1d9cd2"
+    },
+    "development_source_commits": [
+      "f6312f6b8529783bf4e950c0e9bda38467a7a5fe",
+      "e11645b052aea01fb07c7571cf815e176f22cddc"
+    ],
+    "development_raw_sends": 24,
+    "development_typed_labels": "12/12 distinct authored synthetic cases",
+    "model_label_matches_all_attempts": {
+      "M": "4/12",
+      "H": "10/12"
+    },
+    "reason": "Python retains declared relationship/evidence ownership; H can copy result yet add wrong scope/counterevidence and contradict it. No arbitrary model prose is certified. Select minimal deterministic comparison/report for diagnostic only.",
+    "D3": "NOT RUN; original campaign elapsed cap expired across usage interruption; no reset or replacementgeneration",
+    "H4_status": "UNTESTED model effect; deterministic wire contrast tested only",
+    "holdout_use_for_selection": "NONE; frozen literals/key unchanged, no diagnostic outputs existed at selection",
+    "qualification_limit": "Single-author synthetic narrow predicate; no source authenticity, deployed violation, authority, severity, permission, approval, or safety qualification",
+    "prospective_failure": "Any wrong supported typed outcome or source/report/export integrity failure blocks provisional gate; preserve failure and do not tune to diagnostic",
+    "release": "NO-GO",
+    "independent_review": "PENDING"
+  }
+}

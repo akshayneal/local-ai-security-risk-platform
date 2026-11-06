@@ -1,25 +1,38 @@
 {
-  "stage": "resumed_accounting_reconciled_generation_closed",
+  "stage": "final_local_verification_passed_ready_commit_push_CI",
   "date": "2026-11-06",
   "branch": "feature/adaptive-typed-security-reasoning-sprint13",
-  "head": "e11645b052aea01fb07c7571cf815e176f22cddc",
+  "head": "c3b82a17c27bc3101cb14ae9c6852a3d7084b761",
   "development_raw_sends": 24,
-  "development_completed": 24,
-  "provider_withheld": 0,
-  "structural_withheld": 1,
+  "completed": 24,
   "UNKNOWN": 0,
-  "PENDING": 0,
-  "diagnostic_raw_sends": 0,
-  "D3": "NOT RUN; campaignclockexpired",
-  "remaining_raw_send_ceilings": {
+  "PENDING_model": 0,
+  "structural_withheld": 1,
+  "diagnostic_model_sends": 0,
+  "diagnostic_typed_matches": "24/24",
+  "diagnostic_integrity": "24/24",
+  "diagnostic_run_once_barrier": "Documentation/adaptive_security_reasoning_v1/diagnostic_run.json",
+  "D3": "NOT RUN; originalcampaignexpired",
+  "model_generation_closed": true,
+  "remaining_send_ceilings": {
     "development": 60,
     "diagnostic": 24,
     "global": 84
   },
-  "model_generation_closed": true,
+  "source_git_blobs": {
+    "app/adaptive_semantics.py": "ef88bfe05c0277e61aae2cbb451a39228d154de3",
+    "app/adaptive_reports.py": "985a2c82477c0ea1ebe0e90218bb629c48c53548",
+    "evals/adaptive_security_holdout_v1/runner.py": "dac06a9c3ff6687c4944be9cb0de4f20bf1d9cd2"
+  },
   "protocol_sha256": "928f275ddb2435aa9aaa86123c26e0b6998df553dd317b68a9bdf662532e9868",
+  "final_pytest_session": null,
+  "final_pytest_log": "Documentation/adaptive_security_reasoning_v1/final_pytest.txt",
   "independent_review": "PENDING",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "next_safe_step": "D1 authored review; commit selectedD before offline diagnostic once"
+  "next_safe_step": "stagefinalhandoff;normalfeaturecommit+nonforcepush;verifyexactfinalSHA CI;no model/diagnostic rerun",
+  "full_pytest": "2629passed1warning297.57s",
+  "ruff": "PASS301trackedfiles",
+  "pip_check": "PASS",
+  "validation_sha256": "174cff5fb2bc5322eb6bf2f0df3ca68814e45a58b61b1055f1845895ab79a742"
 }

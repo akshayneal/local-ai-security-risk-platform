@@ -418,6 +418,211 @@ def test_exclusive_packet_and_separate_key_preserve_existing_evidence(tmp_path):
         review.write_packet(tmp_path / "same.json", tmp_path / "same.json", packet, key)
 
 
+def test_saved_assessment_packet_never_invokes_project_or_comparators(monkeypatch):
+    source = case()
+    saved = project(
+        source["raw"], ReviewedContext.model_validate(source["context"])
+    ).model_dump(mode="json")
+    records = [{"case_id": source["id"], "arm": "D", "assessment": saved}]
+    original = deepcopy((source, saved, records))
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Packaging sealed assessments must not reevaluate a relationship")
+
+    monkeypatch.setattr(review, "project", forbidden)
+    for function in ("project", "_soc", "_governance", "_ai"):
+        monkeypatch.setattr("app.adaptive_semantics." + function, forbidden)
+    packet, key = review.reviewer_packet(
+        records,
+        [source],
+        authored_key=[{"id": source["id"], "outcome": "EXPECTED_SAVED_KEY_SENTINEL"}],
+        canonical_assessments={source["id"]: saved},
+    )
+    assert (source, saved, records) == original
+    assert packet["items"][0]["canonical_premises"] == saved["premises"]
+    assert packet["items"][0]["original_canonical_input"]["raw"] == source["raw"]
+    assert b"EXPECTED_SAVED_KEY_SENTINEL" not in encoded(packet)
+    assert "generator" not in packet["items"][0] and "arm" not in packet["items"][0]
+    assert key["items"][0]["arm"] == "D"
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        "value",
+        "source",
+        "revision",
+        "pointer",
+        "input_path",
+        "raw",
+        "raw_sha",
+        "classification",
+        "current",
+        "scope",
+    ],
+)
+def test_saved_assessment_source_or_premise_mutation_rejected_without_comparator(
+    monkeypatch, change
+):
+    source = case()
+    raw = json.loads(source["raw"])
+    raw["data"]["event"]["amount"] = 1
+    source["raw"] = encoded(raw).decode()
+    source["context"]["raw_sha256"] = sha(source["raw"].encode())
+    saved = project(
+        source["raw"], ReviewedContext.model_validate(source["context"])
+    ).model_dump(mode="json")
+    record = {"case_id": source["id"], "arm": "D", "assessment": deepcopy(saved)}
+    premise = next(
+        item for item in saved["premises"] if item["pointer"] == "/data/event/amount"
+    )
+    if change == "value":
+        premise["value"] = (
+            True  # Python True == 1; source binding must distinguish types.
+        )
+    elif change == "source":
+        premise["source_id"] = "FORGED-SOURCE"
+    elif change == "revision":
+        premise["source_revision"] = "r2"
+    elif change == "pointer":
+        premise["pointer"] = "/data/authorization/amount"
+    elif change == "input_path":
+        saved["input_path"] = "human_review_process"
+    elif change == "raw":
+        saved["raw"] += " "
+    elif change == "raw_sha":
+        saved["raw_sha256"] = "f" * 64
+    elif change == "classification":
+        source["context"]["sources"][0]["classification"] = "private"
+    elif change == "current":
+        source["context"]["sources"][0]["current"] = False
+    else:
+        source["context"]["sources"][0]["scope"] = "OTHER-CASE"
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Invalid saved artifact must not trigger another evaluation")
+
+    monkeypatch.setattr(review, "project", forbidden)
+    with pytest.raises(ValueError):
+        review.reviewer_packet(
+            [record], [source], canonical_assessments={source["id"]: saved}
+        )
+
+
+def declined_source_fixture():
+    source = case()
+    raw = json.loads(source["raw"])
+    raw["source"]["revision"] = "r0"
+    source["raw"] = encoded(raw).decode()
+    source["context"]["raw_sha256"] = sha(source["raw"].encode())
+    saved = project(
+        source["raw"], ReviewedContext.model_validate(source["context"])
+    ).model_dump(mode="json")
+    assert saved["outcome"] == "projection_unavailable"
+    assert saved["reason_codes"] == ["unknown_or_stale_source"]
+    assert saved["premises"] == []
+    return source, saved
+
+
+def test_saved_stale_source_refusal_is_packaged_without_facts_or_comparator(
+    monkeypatch,
+):
+    source, saved = declined_source_fixture()
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("A saved source refusal must not run another comparison")
+
+    monkeypatch.setattr(review, "project", forbidden)
+    for function in ("project", "_soc", "_governance", "_ai"):
+        monkeypatch.setattr("app.adaptive_semantics." + function, forbidden)
+    packet, _key = review.reviewer_packet(
+        [{"case_id": source["id"], "arm": "D", "assessment": saved}],
+        [source],
+        canonical_assessments={source["id"]: saved},
+    )
+    item = packet["items"][0]
+    assert item["canonical_premises"] == []
+    assert item["original_canonical_input"]["raw"] == source["raw"]
+    assert item["unverified_interpretation"]["relationship"] == "projection_unavailable"
+    assert item["unverified_interpretation"]["support_premise_ids"] == []
+    assert item["unverified_interpretation"]["counterevidence_premise_ids"] == []
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        "outcome",
+        "reason",
+        "premises",
+        "decisive",
+        "disconfirming",
+        "classification",
+        "current",
+        "scope",
+    ],
+)
+def test_saved_declined_source_requires_exact_failure_and_empty_evidence(
+    monkeypatch, change
+):
+    valid_source = case()
+    valid = project(
+        valid_source["raw"], ReviewedContext.model_validate(valid_source["context"])
+    ).model_dump(mode="json")
+    source, saved = declined_source_fixture()
+    if change == "outcome":
+        saved["outcome"] = "declared_alignment"
+    elif change == "reason":
+        saved["reason_codes"] = ["invalid_typed_schema"]
+    elif change == "premises":
+        saved["premises"] = valid["premises"][:1]
+    elif change == "decisive":
+        saved["decisive_premise_ids"] = [valid["premises"][0]["id"]]
+    elif change == "disconfirming":
+        saved["disconfirming_premise_ids"] = [valid["premises"][0]["id"]]
+    elif change == "classification":
+        source["context"]["sources"][0]["classification"] = "private"
+    elif change == "current":
+        source["context"]["sources"][0]["current"] = False
+    else:
+        source["context"]["sources"][0]["scope"] = "OTHER-CASE"
+
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("Invalid saved refusal must not trigger evaluation")
+
+    monkeypatch.setattr(review, "project", forbidden)
+    with pytest.raises(ValueError):
+        review.reviewer_packet(
+            [{"case_id": source["id"], "arm": "D", "assessment": saved}],
+            [source],
+            canonical_assessments={source["id"]: saved},
+        )
+
+
+def test_valid_source_cannot_forge_saved_unavailable_with_zero_premises(monkeypatch):
+    source = case()
+    saved = project(
+        source["raw"], ReviewedContext.model_validate(source["context"])
+    ).model_dump(mode="json")
+    saved.update(
+        outcome="projection_unavailable",
+        reason_codes=["unknown_or_stale_source"],
+        premises=[],
+        decisive_premise_ids=[],
+        disconfirming_premise_ids=[],
+    )
+    monkeypatch.setattr(
+        review,
+        "project",
+        lambda *_args, **_kwargs: pytest.fail("No comparison permitted"),
+    )
+    with pytest.raises(ValueError, match="without_declined_source"):
+        review.reviewer_packet(
+            [{"case_id": source["id"], "arm": "D", "assessment": saved}],
+            [source],
+            canonical_assessments={source["id"]: saved},
+        )
+
+
 def test_review_module_has_no_diagnostic_content_loader_or_semantic_keyword_scorer():
     source = Path(review.__file__).read_text()
     assert "adaptive_security_holdout_v1" not in source
