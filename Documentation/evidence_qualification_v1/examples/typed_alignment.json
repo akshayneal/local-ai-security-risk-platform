@@ -1,0 +1,687 @@
+{
+  "schema_version": "qualified-soc-report/1",
+  "case_id": "V3L9",
+  "question_id": "Q-V3L9",
+  "status": "assessed",
+  "relationship": "declared_alignment",
+  "reason_codes": [
+    "reported_scope_matches"
+  ],
+  "association_status": "associated",
+  "sources": [
+    {
+      "source_id": "SRC-V3L9-E",
+      "revision": "r1",
+      "role": "event_observation",
+      "source_format": "synthetic_event",
+      "source_path": "synthetic/V3L9/E",
+      "raw_sha256": "7afe6000e9ef0ea729c2718b62a375e7f43e069515bb67149909f989e59b0024",
+      "raw_text": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"asset-v3l9\",\n    \"destination\": \"198.51.100.31\",\n    \"endpoint\": \"vault-v3l9.example\",\n    \"operation\": \"inventory_read\",\n    \"principal\": \"operator-v3l9@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"192.0.2.21\",\n    \"time\": \"2026-11-06T17:30:00Z\"\n  },\n  \"event_id\": \"EV-V3L9\",\n  \"process_created_at\": \"2026-11-06T17:00:00Z\",\n  \"process_id\": 2180,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "SRC-V3L9-E",
+        "revision": "r1",
+        "current_revision": "r1",
+        "raw_sha256": "7afe6000e9ef0ea729c2718b62a375e7f43e069515bb67149909f989e59b0024",
+        "source_format": "synthetic_event",
+        "role": "event_observation",
+        "case_id": "V3L9",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q-V3L9"
+        ],
+        "source_path": "synthetic/V3L9/E",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": false,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T16:00:00Z",
+        "effective_at": "2026-11-06T16:00:00Z",
+        "expires_at": "2026-11-07T16:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "V3L9",
+        "workflow": "soc_investigation",
+        "question_id": "Q-V3L9",
+        "question": "Compare the reported operation with the separately reviewed synthetic rule at this event scope",
+        "as_of": "2026-11-06T18:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "revision": "r1",
+      "role": "authorization_assertion",
+      "source_format": "synthetic_authorization",
+      "source_path": "synthetic/V3L9/R",
+      "raw_sha256": "36f64445e73545173c8f556763c1b6754629a4fa2d44353aff46376376f7be18",
+      "raw_text": "{\n  \"authorization\": {\n    \"asset\": \"asset-v3l9\",\n    \"endpoint\": \"vault-v3l9.example\",\n    \"operation\": \"inventory_read\",\n    \"principal\": \"operator-v3l9@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-11-06T18:00:00Z\",\n    \"window_start\": \"2026-11-06T17:00:00Z\"\n  },\n  \"event_id\": \"EV-V3L9\",\n  \"event_time\": \"2026-11-06T17:30:00Z\",\n  \"process_created_at\": \"2026-11-06T17:00:00Z\",\n  \"process_id\": 2180,\n  \"question_id\": \"Q-V3L9\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "SRC-V3L9-R",
+        "revision": "r1",
+        "current_revision": "r1",
+        "raw_sha256": "36f64445e73545173c8f556763c1b6754629a4fa2d44353aff46376376f7be18",
+        "source_format": "synthetic_authorization",
+        "role": "authorization_assertion",
+        "case_id": "V3L9",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q-V3L9"
+        ],
+        "source_path": "synthetic/V3L9/R",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": true,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T16:00:00Z",
+        "effective_at": "2026-11-06T16:00:00Z",
+        "expires_at": "2026-11-07T16:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "V3L9",
+        "workflow": "soc_investigation",
+        "question_id": "Q-V3L9",
+        "question": "Compare the reported operation with the separately reviewed synthetic rule at this event scope",
+        "as_of": "2026-11-06T18:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    }
+  ],
+  "canonical_bundle": null,
+  "original_bundle": null,
+  "observations": [
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/schema_version",
+      "value": "qualified-event/1",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event_id",
+      "value": "EV-V3L9",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/process_id",
+      "value": 2180,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/process_created_at",
+      "value": "2026-11-06T17:00:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/operation",
+      "value": "inventory_read",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/result",
+      "value": "completed",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/principal",
+      "value": "operator-v3l9@example.test",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/asset",
+      "value": "asset-v3l9",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/source",
+      "value": "192.0.2.21",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/destination",
+      "value": "198.51.100.31",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/endpoint",
+      "value": "vault-v3l9.example",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/time",
+      "value": "2026-11-06T17:30:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/amount",
+      "value": 0,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization",
+      "value": {
+        "asset": "asset-v3l9",
+        "endpoint": "vault-v3l9.example",
+        "operation": "inventory_read",
+        "principal": "operator-v3l9@example.test",
+        "status": "reported_authorized",
+        "window_end": "2026-11-06T18:00:00Z",
+        "window_start": "2026-11-06T17:00:00Z"
+      },
+      "original_type": "dict",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/event_id",
+      "value": "EV-V3L9",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/event_time",
+      "value": "2026-11-06T17:30:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/process_created_at",
+      "value": "2026-11-06T17:00:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/process_id",
+      "value": 2180,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/question_id",
+      "value": "Q-V3L9",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/schema_version",
+      "value": "qualified-authorization/1",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    }
+  ],
+  "lineage": [
+    {
+      "target_path": "/data/event/operation",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/operation",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/result",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/result",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/principal",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/principal",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/asset",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/asset",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/source",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/source",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/destination",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/destination",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/endpoint",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/endpoint",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/time",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/time",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/amount",
+      "source_id": "SRC-V3L9-E",
+      "source_revision": "r1",
+      "original_path": "/event/amount",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/status",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/status",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/operation",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/operation",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/principal",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/principal",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/asset",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/asset",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/endpoint",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/endpoint",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/window_start",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/window_start",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/window_end",
+      "source_id": "SRC-V3L9-R",
+      "source_revision": "r1",
+      "original_path": "/authorization/window_end",
+      "state": "unverified",
+      "transformation": "identity"
+    }
+  ],
+  "coverage": {
+    "total_rows": 1,
+    "selected_rows": 1,
+    "omitted_rows": 0,
+    "unsupported_rows": 0,
+    "invalid_fields": [],
+    "unknown_fields": []
+  },
+  "comparison": {
+    "assessment": {
+      "case_id": "V3L9",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "b627376682f14fda3a4cb052e20a27fe1e7a538716ca51f8737f35b4275b5553",
+      "raw": "{\"annotations\":[],\"case_id\":\"V3L9\",\"counterclaims\":[],\"data\":{\"authorization\":{\"asset\":\"asset-v3l9\",\"endpoint\":\"vault-v3l9.example\",\"operation\":\"inventory_read\",\"principal\":\"operator-v3l9@example.test\",\"status\":\"reported_authorized\",\"window_end\":\"2026-11-06T18:00:00Z\",\"window_start\":\"2026-11-06T17:00:00Z\"},\"event\":{\"amount\":0,\"asset\":\"asset-v3l9\",\"destination\":\"198.51.100.31\",\"endpoint\":\"vault-v3l9.example\",\"operation\":\"inventory_read\",\"principal\":\"operator-v3l9@example.test\",\"result\":\"completed\",\"source\":\"192.0.2.21\",\"time\":\"2026-11-06T17:30:00Z\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"DERIVED_PROJECTION\",\"revision\":\"derived-1\"}}",
+      "premises": [
+        {
+          "id": "PREM-8e01b8d4c7cdf1fb172d",
+          "pointer": "/annotations",
+          "input_path": "raw_log",
+          "value": [],
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-bbb9914fad4cca2e1aae",
+          "pointer": "/case_id",
+          "input_path": "raw_log",
+          "value": "V3L9",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-8aacdfd16f353a76174d",
+          "pointer": "/counterclaims",
+          "input_path": "raw_log",
+          "value": [],
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-a06b801d5cd76c776f50",
+          "pointer": "/data/authorization/asset",
+          "input_path": "raw_log",
+          "value": "asset-v3l9",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-49f81ff9120219e2d8c1",
+          "pointer": "/data/authorization/endpoint",
+          "input_path": "raw_log",
+          "value": "vault-v3l9.example",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-6a659aa8549450da0ba2",
+          "pointer": "/data/authorization/operation",
+          "input_path": "raw_log",
+          "value": "inventory_read",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-97c2777017d5ad722633",
+          "pointer": "/data/authorization/principal",
+          "input_path": "raw_log",
+          "value": "operator-v3l9@example.test",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-0077be5f79a39a9c0f08",
+          "pointer": "/data/authorization/status",
+          "input_path": "raw_log",
+          "value": "reported_authorized",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-06998e3893dcc4ef0eb2",
+          "pointer": "/data/authorization/window_end",
+          "input_path": "raw_log",
+          "value": "2026-11-06T18:00:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-1b6ae59fa703bc08975e",
+          "pointer": "/data/authorization/window_start",
+          "input_path": "raw_log",
+          "value": "2026-11-06T17:00:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-604f7d88b3f527bf16d9",
+          "pointer": "/data/event/amount",
+          "input_path": "raw_log",
+          "value": 0,
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-ecf27d2b024171a5b61f",
+          "pointer": "/data/event/asset",
+          "input_path": "raw_log",
+          "value": "asset-v3l9",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-0438a8a4c5058873109a",
+          "pointer": "/data/event/destination",
+          "input_path": "raw_log",
+          "value": "198.51.100.31",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-12e95b3a7554e37c3945",
+          "pointer": "/data/event/endpoint",
+          "input_path": "raw_log",
+          "value": "vault-v3l9.example",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-08d83e7d991609ebe5ec",
+          "pointer": "/data/event/operation",
+          "input_path": "raw_log",
+          "value": "inventory_read",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-a008f797e898f2ef5bff",
+          "pointer": "/data/event/principal",
+          "input_path": "raw_log",
+          "value": "operator-v3l9@example.test",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-3f22563a932c52fc0791",
+          "pointer": "/data/event/result",
+          "input_path": "raw_log",
+          "value": "completed",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-a04ed435ba9866b1873e",
+          "pointer": "/data/event/source",
+          "input_path": "raw_log",
+          "value": "192.0.2.21",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-e887185d71d2ab73cee6",
+          "pointer": "/data/event/time",
+          "input_path": "raw_log",
+          "value": "2026-11-06T17:30:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-8c96b500acd9daf498b6",
+          "pointer": "/pillar",
+          "input_path": "raw_log",
+          "value": "soc",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-90f367b7f26412777090",
+          "pointer": "/schema_version",
+          "input_path": "raw_log",
+          "value": "adaptive-security/1",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-0ed3ce9b67f7e16e6c9f",
+          "pointer": "/source/id",
+          "input_path": "raw_log",
+          "value": "DERIVED_PROJECTION",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-a03ebd55a570a6a83665",
+          "pointer": "/source/revision",
+          "input_path": "raw_log",
+          "value": "derived-1",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        }
+      ],
+      "outcome": "declared_alignment",
+      "reason_codes": [
+        "reported_scope_matches"
+      ],
+      "decisive_premise_ids": [
+        "PREM-0077be5f79a39a9c0f08",
+        "PREM-08d83e7d991609ebe5ec",
+        "PREM-3f22563a932c52fc0791",
+        "PREM-6a659aa8549450da0ba2",
+        "PREM-a008f797e898f2ef5bff",
+        "PREM-97c2777017d5ad722633",
+        "PREM-ecf27d2b024171a5b61f",
+        "PREM-a06b801d5cd76c776f50",
+        "PREM-12e95b3a7554e37c3945",
+        "PREM-49f81ff9120219e2d8c1",
+        "PREM-e887185d71d2ab73cee6",
+        "PREM-1b6ae59fa703bc08975e",
+        "PREM-06998e3893dcc4ef0eb2"
+      ],
+      "disconfirming_premise_ids": [
+        "PREM-604f7d88b3f527bf16d9",
+        "PREM-08d83e7d991609ebe5ec",
+        "PREM-6a659aa8549450da0ba2",
+        "PREM-a008f797e898f2ef5bff",
+        "PREM-97c2777017d5ad722633",
+        "PREM-ecf27d2b024171a5b61f",
+        "PREM-a06b801d5cd76c776f50",
+        "PREM-12e95b3a7554e37c3945",
+        "PREM-49f81ff9120219e2d8c1"
+      ],
+      "unassessed_conditions": [
+        "source authenticity",
+        "real deployment",
+        "security severity",
+        "all other relationships",
+        "reported_event_result=completed",
+        "event result is not inferred from scope alignment or mismatch",
+        "amount is preserved; no transfer-content or maliciousness inference"
+      ],
+      "report_sentence": "The supplied typed assertions declare alignment for soc: reported_scope_matches. Reported operation \"inventory_read\" has result \"completed\" and amount 0; reported authorization operation is \"inventory_read\". This checks supplied assertions only; it verifies no deployed behavior, source authenticity, permission, violation, compromise, or safety outcome.",
+      "source_status": "supplied assertions; not independently verified",
+      "capability_status": "experimental_internal_off_by_default",
+      "action_status": "no_actions_executed",
+      "approval_granted": false
+    },
+    "commentary_status": "not_requested",
+    "commentary_sha256": null,
+    "commentary_note": "Schema and premise membership do not establish entailment; generated prose is withheld.",
+    "independent_review": "PENDING"
+  },
+  "comparator_source_status": "derived_synthetic_projection",
+  "capability_status": "experimental_internal_off_by_default",
+  "source_authenticity": "unverified; hashes do not authenticate",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "independent_review": "PENDING"
+}

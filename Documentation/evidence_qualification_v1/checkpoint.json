@@ -1,5 +1,5 @@
 {
-  "stage": "historical_inventory_guard_compatibility_recovered",
+  "stage": "selected_candidate_software_gates_passed",
   "baseline": "285a6b5130e849daaea48406e1c9e1d7bc65ddf1",
   "branch": "feature/evidence-qualified-ingestion-sprint14",
   "diagnostic": "NOT RUN",
@@ -7,7 +7,9 @@
   "independent_human_review": "PENDING (0 completed)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "next": "Full deterministic validation,development evidence,candidate freeze then diagnostic once",
+  "next": "Commit freeze-only manifest then diagnostic once; do not tune after exposure",
   "focused_tests": "181 passed in23.60s",
-  "first_full_suite": "1 failed,2803 passed,1 warning in297.40s; source inventory guard only; original output retained"
+  "first_full_suite": "1 failed,2803 passed,1 warning in297.40s; source inventory guard only; original output retained",
+  "source_commit": "8b7c07d2a17e3070a530446dfecea8a81532ddfb",
+  "full_tests": "2807passed1warning297.06s"
 }

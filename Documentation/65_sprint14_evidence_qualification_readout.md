@@ -74,6 +74,11 @@ differs. Missing evidence differs from explicit denial or a safe outcome.
 Metamorphic tests change one relevant value at a time and verify which conclusion
 must change; irrelevant annotations/rows cannot manufacture a permission or join.
 
+Ready-to-inspect development examples include both JSON and escaped Markdown in
+`evidence_qualification_v1/examples/`: `native_observation`, `typed_alignment`,
+`ambiguous_context` and `refused_injection`. They were generated from committed
+development inputs, with zero inference. They are not diagnostic reruns.
+
 ## Evaluation and review status
 
 Fifteen new development situations and twelve separately frozen diagnostic cases
@@ -157,3 +162,14 @@ Resolve timeout unknown/duplicate lifecycle behavior before increasing waits.
 UI integration needs a separately scoped opt-in design and actual user visual QA.
 No release, general detector or broader policy authority should be claimed from
 this internal slice.
+
+User-only visual QA steps remain pending:
+
+1. Open the four example Markdown files in your own editor/preview and compare
+   source labels, eligibility basis, unknown/refusal state and no-action notice
+   with the adjacent JSON. Confirm supplied text displays as data.
+2. For existing application regression review, manually use the development
+   launcher, confirm its checkout branch/SHA, inspect navigation and the Microsoft
+   file preview. Do not use the separate released demo to assess this branch.
+3. Record your observations separately. This internal slice has no new UI route;
+   automated tests and generated examples do not complete visual QA.

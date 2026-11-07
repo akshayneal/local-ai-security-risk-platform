@@ -1,0 +1,31 @@
+{
+  "schema_version": "qualified-soc-report/1",
+  "case_id": "Q2F9",
+  "question_id": "Q-Q2F9",
+  "status": "unavailable",
+  "relationship": "projection_unavailable",
+  "reason_codes": [
+    "source_content_authority_injection"
+  ],
+  "association_status": "not_assessed",
+  "sources": [],
+  "canonical_bundle": null,
+  "original_bundle": null,
+  "observations": [],
+  "lineage": [],
+  "coverage": {
+    "total_rows": 0,
+    "selected_rows": 0,
+    "omitted_rows": 0,
+    "unsupported_rows": 0,
+    "invalid_fields": [],
+    "unknown_fields": []
+  },
+  "comparison": null,
+  "comparator_source_status": "not_used",
+  "capability_status": "experimental_internal_off_by_default",
+  "source_authenticity": "unverified; hashes do not authenticate",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "independent_review": "PENDING"
+}

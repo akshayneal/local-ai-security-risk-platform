@@ -1,0 +1,227 @@
+{
+  "schema_version": "qualified-soc-report/1",
+  "case_id": "D8K4",
+  "question_id": "Q-D8K4",
+  "status": "unassessable",
+  "relationship": "unassessable",
+  "reason_codes": [
+    "unsupported_native_operation_outcome"
+  ],
+  "association_status": "not_assessed",
+  "sources": [
+    {
+      "source_id": "SRC-D8K4-E",
+      "revision": "r1",
+      "role": "event_observation",
+      "source_format": "microsoft_json",
+      "source_path": "synthetic/D8K4/E",
+      "raw_sha256": "3ca7257e837d6cdbdd678e66a432a3558337858dbdf2ebbc5ec067b2904fbe3a",
+      "raw_text": "{\n  \"case_id\": \"D8K4\",\n  \"tables\": {\n    \"DeviceNetworkEvents\": [\n      {\n        \"ActionType\": \"ConnectionSuccess\",\n        \"DeviceId\": \"device-D8K4\",\n        \"InitiatingProcessAccountUpn\": \"operator-d8k4@example.test\",\n        \"InitiatingProcessCreationTime\": \"2026-11-06T17:00:00Z\",\n        \"InitiatingProcessId\": 2180,\n        \"LocalIP\": \"192.0.2.21\",\n        \"Protocol\": \"Tcp\",\n        \"RemoteIP\": \"198.51.100.31\",\n        \"RemotePort\": 443,\n        \"ReportId\": 1007,\n        \"Timestamp\": \"2026-11-06T17:30:00Z\"\n      }\n    ]\n  }\n}\n",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "SRC-D8K4-E",
+        "revision": "r1",
+        "current_revision": "r1",
+        "raw_sha256": "3ca7257e837d6cdbdd678e66a432a3558337858dbdf2ebbc5ec067b2904fbe3a",
+        "source_format": "microsoft_json",
+        "role": "event_observation",
+        "case_id": "D8K4",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q-D8K4"
+        ],
+        "source_path": "synthetic/D8K4/E",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": false,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T16:00:00Z",
+        "effective_at": "2026-11-06T16:00:00Z",
+        "expires_at": "2026-11-07T16:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "D8K4",
+        "workflow": "soc_investigation",
+        "question_id": "Q-D8K4",
+        "question": "Compare the reported operation with the separately reviewed synthetic rule at this event scope",
+        "as_of": "2026-11-06T18:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    }
+  ],
+  "canonical_bundle": "{\n\"case_id\":\"D8K4\",\n\"tables\":{\n\"DeviceNetworkEvents\":[\n{\n\"ActionType\":\"ConnectionSuccess\",\n\"DeviceId\":\"device-D8K4\",\n\"InitiatingProcessAccountUpn\":\"operator-d8k4@example.test\",\n\"InitiatingProcessCreationTime\":\"2026-11-06T17:00:00Z\",\n\"InitiatingProcessId\":2180,\n\"LocalIP\":\"192.0.2.21\",\n\"Protocol\":\"Tcp\",\n\"RemoteIP\":\"198.51.100.31\",\n\"RemotePort\":443,\n\"ReportId\":1007,\n\"Timestamp\":\"2026-11-06T17:30:00Z\"\n}\n]\n}\n}",
+  "original_bundle": {
+    "case_id": "D8K4",
+    "tables": {
+      "DeviceNetworkEvents": [
+        {
+          "ActionType": "ConnectionSuccess",
+          "DeviceId": "device-D8K4",
+          "InitiatingProcessAccountUpn": "operator-d8k4@example.test",
+          "InitiatingProcessCreationTime": "2026-11-06T17:00:00Z",
+          "InitiatingProcessId": 2180,
+          "LocalIP": "192.0.2.21",
+          "Protocol": "Tcp",
+          "RemoteIP": "198.51.100.31",
+          "RemotePort": 443,
+          "ReportId": 1007,
+          "Timestamp": "2026-11-06T17:30:00Z"
+        }
+      ]
+    }
+  },
+  "observations": [
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].ActionType",
+      "value": "ConnectionSuccess",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].DeviceId",
+      "value": "device-D8K4",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessAccountUpn",
+      "value": "operator-d8k4@example.test",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessCreationTime",
+      "value": "2026-11-06T17:00:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessId",
+      "value": 2180,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].LocalIP",
+      "value": "192.0.2.21",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].Protocol",
+      "value": "Tcp",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].RemoteIP",
+      "value": "198.51.100.31",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].RemotePort",
+      "value": 443,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].ReportId",
+      "value": 1007,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "SRC-D8K4-E",
+      "source_revision": "r1",
+      "original_path": "DeviceNetworkEvents[0].Timestamp",
+      "value": "2026-11-06T17:30:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    }
+  ],
+  "lineage": [
+    {
+      "target_path": "/event/operation",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "unknown",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/result",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "unknown",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/source",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_applicable",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/destination",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_applicable",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/amount",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_supplied",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    }
+  ],
+  "coverage": {
+    "total_rows": 1,
+    "selected_rows": 1,
+    "omitted_rows": 0,
+    "unsupported_rows": 0,
+    "invalid_fields": [],
+    "unknown_fields": []
+  },
+  "comparison": null,
+  "comparator_source_status": "not_used",
+  "capability_status": "experimental_internal_off_by_default",
+  "source_authenticity": "unverified; hashes do not authenticate",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "independent_review": "PENDING"
+}

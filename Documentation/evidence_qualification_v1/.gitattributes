@@ -2,3 +2,7 @@
 *.jsonl text eol=lf
 *.md text eol=lf
 *.txt text eol=lf
+first_full_pytest.txt whitespace=-blank-at-eol
+examples/native_observation.md whitespace=-blank-at-eol
+examples/typed_alignment.md whitespace=-blank-at-eol
+examples/ambiguous_context.md whitespace=-blank-at-eol

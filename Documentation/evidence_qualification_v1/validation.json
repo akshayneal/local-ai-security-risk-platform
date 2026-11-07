@@ -1,0 +1,83 @@
+{
+  "format": "sprint14-validation/1",
+  "date_user_context": "2026-11-06",
+  "tested_source_commit": "8b7c07d2a17e3070a530446dfecea8a81532ddfb",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "executable": "existing repository .venv/Scripts/python.exe",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "pytest": "9.1.1",
+    "ruff": "0.17.2",
+    "pydantic": "2.13.4",
+    "fastapi": "0.138.0",
+    "requests": "2.34.2",
+    "streamlit": "1.58.0"
+  },
+  "focused": [
+    {
+      "command": "python -B -m pytest tests/test_qualified_soc.py tests/test_evidence_qualification.py tests/test_evidence_qualification_study.py tests/test_sprint14_preservation.py tests/test_sprint13_preservation.py -q",
+      "result": "181 passed in23.60s; before final guard/scorer hardening"
+    },
+    {
+      "command": "python -B -m pytest tests/test_sprint14_preservation.py tests/test_sprint13_preservation.py tests/test_adaptive_completion.py -q",
+      "result": "20 passed in32.98s after exact guard migration"
+    },
+    {
+      "command": "python -B -m pytest tests/test_evidence_qualification_study.py -q",
+      "result": "11 passed in3.13s after scorer input schema check"
+    }
+  ],
+  "first_full_suite": {
+    "result": "1 failed,2803 passed,1 warning in297.40s",
+    "cause": "Historical inventory compares all new Python files to frozen301; original guard-only replay migration",
+    "log": "Documentation/evidence_qualification_v1/first_full_pytest.txt"
+  },
+  "final_full_suite": {
+    "command": "python -B -m pytest -q",
+    "passed": 2807,
+    "warnings": 1,
+    "seconds": 297.06,
+    "log": "Documentation/evidence_qualification_v1/final_pytest.txt",
+    "warning": "Existing Starlette/httpx testclient deprecation; no environment change"
+  },
+  "ruff": {
+    "command": "python -m ruff check <all tracked Python paths from git ls-files>",
+    "tracked_files": 312,
+    "result": "PASS"
+  },
+  "pip_check": "PASS: No broken requirements found",
+  "preservation": {
+    "protected_original_blobs": 707,
+    "raw": {
+      "local_raw_files_checked": 990,
+      "absent_groups_not_claimed_preserved": []
+    },
+    "saved_sprint13_data_checked": 25
+  },
+  "diff_check": "PASS across complete feature diff; exact-file blank-at-eol attributes preserve emitted trailing spaces in first failed pytest log and three generated source-preview Markdown examples; code and other whitespace checks unchanged",
+  "development": {
+    "cases": 15,
+    "extraction": {
+      "passed": 10,
+      "assessed": 10,
+      "not_evaluated": 5
+    },
+    "export": {
+      "passed": 14,
+      "assessed": 14,
+      "not_evaluated": 1
+    },
+    "no_grant": {
+      "passed": 15,
+      "assessed": 15
+    }
+  },
+  "diagnostic": "NOT RUN at selection checkpoint",
+  "model_sends": 0,
+  "embedding_sends": 0,
+  "historical_experiment_runs": 0,
+  "independent_human_review": "PENDING (0 completed)",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "CI": "Exact final pushed SHA will be checked and reported in final session handoff; no self-referential commit claim"
+}
