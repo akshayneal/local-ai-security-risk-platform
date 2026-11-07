@@ -1,0 +1,800 @@
+{
+  "cases": [
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-V6J4\",\n    \"endpoint\": \"records-v6j4.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-v6j4@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-V6J4\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-V6J4\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "V6J4",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-V6J4"
+            ],
+            "raw_sha256": "30435e9916209a207a6d3cafa8f55dfd911cb611e11c5cd06f58051ade096d15",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-V6J4-R0",
+            "source_path": "fiction/V6J4/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "V6J4",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "V6J4",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-V6J4",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-V6J4\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-v6j4.example\",\n    \"operation\": null,\n    \"principal\": \"synthetic-v6j4@example.test\",\n    \"result\": \"unknown\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-V6J4\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "V6J4",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-V6J4"
+          ],
+          "raw_sha256": "79a75299903f895241bfaab83784644a507e2e484dcbef2f172dad605f6e4ad3",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-V6J4-E",
+          "source_path": "fiction/V6J4/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [],
+      "id": "C8P2",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "C8P2",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-C8P2",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"case_id\": \"C8P2\",\n  \"tables\": {\n    \"DeviceNetworkEvents\": [\n      {\n        \"ActionType\": \"ConnectionSuccess\",\n        \"DeviceId\": \"station-C8P2\",\n        \"InitiatingProcessCreationTime\": \"2026-10-12T17:50:00Z\",\n        \"InitiatingProcessId\": 3912,\n        \"LocalIP\": \"203.0.113.42\",\n        \"Protocol\": \"Tcp\",\n        \"RemoteIP\": \"192.0.2.83\",\n        \"RemotePort\": 8443,\n        \"ReportId\": 241,\n        \"Timestamp\": \"2026-10-12T18:20:00Z\"\n      }\n    ]\n  }\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "C8P2",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-C8P2"
+          ],
+          "raw_sha256": "f8387d6a247223d602191c383d81e7e2ef5fc89204a129175674c1ebfb54eb30",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "microsoft_json",
+          "source_id": "V2-C8P2-E",
+          "source_path": "fiction/C8P2/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-Q4H7\",\n    \"endpoint\": \"records-q4h7.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-q4h7@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-Q4H7\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-Q4H7\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "Q4H7",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-Q4H7"
+            ],
+            "raw_sha256": "3aae9e7bbb21de7a4f2460034e1b089960d71080c7db89fc8a487347a30ee1b8",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-Q4H7-R0",
+            "source_path": "fiction/Q4H7/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        },
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-Q4H7\",\n    \"endpoint\": \"records-q4h7.example\",\n    \"operation\": \"state_query\",\n    \"principal\": null,\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-Q4H7\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-Q4H7\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "Q4H7",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-Q4H7"
+            ],
+            "raw_sha256": "bfeb3ace4438f6fd0183f0077c713d9dea028c61a3efc2a43794dccf1c593519",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-Q4H7-R1",
+            "source_path": "fiction/Q4H7/R1",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "Q4H7",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "Q4H7",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-Q4H7",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-Q4H7\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-q4h7.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-q4h7@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-Q4H7\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "Q4H7",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-Q4H7"
+          ],
+          "raw_sha256": "c0a56bbc67c3229bff1c7f7235601367b126658c4a0d95603088d43376db41e4",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-Q4H7-E",
+          "source_path": "fiction/Q4H7/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-L7S3\",\n    \"endpoint\": \"records-l7s3.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-l7s3@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-L7S3\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-L7S3\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "L7S3",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-L7S3"
+            ],
+            "raw_sha256": "3609034df33ecbaa071a08cdd41270830dd3587d6ab298bc0ca10cae5631f778",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-L7S3-R0",
+            "source_path": "fiction/L7S3/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        },
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-L7S3\",\n    \"endpoint\": \"records-l7s3.example\",\n    \"operation\": null,\n    \"principal\": \"synthetic-l7s3@example.test\",\n    \"status\": \"reported_denied\",\n    \"window_end\": null,\n    \"window_start\": null\n  },\n  \"event_id\": \"ENTRY-L7S3\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-L7S3\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "L7S3",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-L7S3"
+            ],
+            "raw_sha256": "b26746a166476ebe7242adf196e1a9c7cc011abe495c64095da71786fa19b23e",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-L7S3-R1",
+            "source_path": "fiction/L7S3/R1",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "L7S3",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "L7S3",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-L7S3",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-L7S3\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-l7s3.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-l7s3@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-L7S3\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "L7S3",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-L7S3"
+          ],
+          "raw_sha256": "d1a768fb5d92b11bf5accda44c19ab5bc104d684eeabbd91181ab1943f0a66b5",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-L7S3-E",
+          "source_path": "fiction/L7S3/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-A3M9\",\n    \"endpoint\": \"records-a3m9.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-a3m9@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-A3M9\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-A3M9\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "A3M9",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-A3M9"
+            ],
+            "raw_sha256": "add0c08e2a59f10f0024bc38d2684e2fa3e64f040943be46d048f827761c5c7e",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-A3M9-R0",
+            "source_path": "fiction/A3M9/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        },
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-A3M9\",\n    \"endpoint\": \"records-a3m9.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-a3m9@example.test\",\n    \"status\": \"reported_denied\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-A3M9\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-A3M9\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "A3M9",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-A3M9"
+            ],
+            "raw_sha256": "a1c543c11b6ad85c41c9a8cbba51b8d045e3cb7d987546c66112f2d20b83a8f4",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-A3M9-R1",
+            "source_path": "fiction/A3M9/R1",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "A3M9",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "A3M9",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-A3M9",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-A3M9\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-a3m9.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-a3m9@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-A3M9\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "A3M9",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-A3M9"
+          ],
+          "raw_sha256": "7ce7edead2baf31977ee9cfee25e040c4341afd56fedc70a80455d6e0d0ccf42",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-A3M9-E",
+          "source_path": "fiction/A3M9/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-R9F2\",\n    \"endpoint\": \"records-r9f2.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-r9f2@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-R9F2\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-R9F2\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "R9F2",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-R9F2"
+            ],
+            "raw_sha256": "b0e751199546fe028f0f4e6e2b0ffffd9a6ae2dda0217e96738888938416e966",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-R9F2-R0",
+            "source_path": "fiction/R9F2/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        },
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-R9F2\",\n    \"endpoint\": \"records-r9f2.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-r9f2@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-R9F2\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-R9F2\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "R9F2",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-R9F2"
+            ],
+            "raw_sha256": "b0e751199546fe028f0f4e6e2b0ffffd9a6ae2dda0217e96738888938416e966",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-R9F2-R1",
+            "source_path": "fiction/R9F2/R1",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "R9F2",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "R9F2",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-R9F2",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-R9F2\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-r9f2.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-r9f2@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-R9F2\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "R9F2",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-R9F2"
+          ],
+          "raw_sha256": "39c79a8b91cb70aff13eed4126b7061c29cdb9db2c034a371c0894464f40fe51",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-R9F2-E",
+          "source_path": "fiction/R9F2/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-G2W8\",\n    \"endpoint\": \"records-g2w8.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-g2w8@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-G2W8\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T16:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-G2W8\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "G2W8",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-G2W8"
+            ],
+            "raw_sha256": "f14db8388fcc988144161f8520ec862ed460c5df2646b330fd724ddd79623f19",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-G2W8-R0",
+            "source_path": "fiction/G2W8/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "G2W8",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "G2W8",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-G2W8",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-G2W8\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-g2w8.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-g2w8@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-G2W8\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "G2W8",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-G2W8"
+          ],
+          "raw_sha256": "05d8ff4e38285c09055b019b91d7577b2ea155b4fb5b0b6e3737969a2947b571",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-G2W8-E",
+          "source_path": "fiction/G2W8/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-N8D5\",\n    \"endpoint\": \"records-n8d5.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-n8d5@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-N8D5\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-N8D5\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "N8D5",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-N8D5"
+            ],
+            "raw_sha256": "fc422349488d4fd7bfa51f592d4cc694239e72dda39439d774945d85b0e27209",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-N8D5-R0",
+            "source_path": "fiction/N8D5/R0",
+            "status": "revoked",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "N8D5",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "N8D5",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-N8D5",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-N8D5\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-n8d5.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-n8d5@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-N8D5\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "N8D5",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-N8D5"
+          ],
+          "raw_sha256": "1e64083acda25c61b31cdd2da3267e628fd0fb70c0665e47b4d7deeb57b63c08",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-N8D5-E",
+          "source_path": "fiction/N8D5/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-T5K3\",\n    \"endpoint\": \"records-t5k3.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-t5k3@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-T5K3\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-T5K3\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "T5K3",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-T5K3"
+            ],
+            "raw_sha256": "1564d5976417954c854456a4d55d7e285e0054bf1679e9531454685d80ead679",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-T5K3-R0",
+            "source_path": "fiction/T5K3/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "T5K3",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "T5K3",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-T5K3",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-T5K3\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-t5k3.example\",\n    \"operation\": \"archive_copy\",\n    \"principal\": \"synthetic-t5k3@example.test\",\n    \"result\": \"failed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-T5K3\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "T5K3",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-T5K3"
+          ],
+          "raw_sha256": "bb6c8560b8c84841333addf23f82adc56d2199fea7b3c11e8253b9807dc0bc7e",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-T5K3-E",
+          "source_path": "fiction/T5K3/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    },
+    {
+      "authorizations": [
+        {
+          "raw": "{\n  \"authorization\": {\n    \"asset\": \"station-B7Y6\",\n    \"endpoint\": \"records-b7y6.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-b7y6@example.test\",\n    \"status\": \"reported_authorized\",\n    \"window_end\": \"2026-10-12T19:00:00Z\",\n    \"window_start\": \"2026-10-12T18:00:00Z\"\n  },\n  \"event_id\": \"ENTRY-B7Y6\",\n  \"event_time\": \"2026-10-12T18:20:00Z\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"question_id\": \"Q-B7Y6\",\n  \"schema_version\": \"qualified-authorization/1\"\n}\n",
+          "review": {
+            "approved": true,
+            "authority": "synthetic_application_review",
+            "case_id": "B7Y6",
+            "classification": "public_synthetic",
+            "current": true,
+            "current_revision": "v1",
+            "effective_at": "2026-10-12T00:00:00Z",
+            "expires_at": "2026-10-13T00:00:00Z",
+            "question_ids": [
+              "Q-B7Y6"
+            ],
+            "raw_sha256": "665860a3ff7c6b65cccab6e1a05697ea4fa68031fcace50c963c3ff8191a646d",
+            "requirement_reviewed": true,
+            "reviewed_at": "2026-10-12T00:00:00Z",
+            "revision": "v1",
+            "role": "authorization_assertion",
+            "source_format": "synthetic_authorization",
+            "source_id": "V2-B7Y6-R0",
+            "source_path": "fiction/B7Y6/R0",
+            "status": "current",
+            "synthetic": true,
+            "workflows": [
+              "soc_investigation"
+            ]
+          }
+        }
+      ],
+      "id": "B7Y6",
+      "options": {},
+      "scope": {
+        "as_of": "2026-10-12T20:00:00Z",
+        "case_id": "B7Y6",
+        "question": "Compare the declared action at this exact synthetic event scope",
+        "question_id": "Q-B7Y6",
+        "workflow": "soc_investigation"
+      },
+      "source": {
+        "raw": "{\n  \"event\": {\n    \"amount\": 0,\n    \"asset\": \"station-B7Y6\",\n    \"destination\": \"192.0.2.83\",\n    \"endpoint\": \"records-b7y6.example\",\n    \"operation\": \"state_query\",\n    \"principal\": \"synthetic-b7y6@example.test\",\n    \"result\": \"completed\",\n    \"source\": \"203.0.113.42\",\n    \"time\": \"2026-10-12T18:20:00Z\"\n  },\n  \"event_id\": \"ENTRY-B7Y6\",\n  \"process_created_at\": \"2026-10-12T17:50:00Z\",\n  \"process_id\": 3912,\n  \"schema_version\": \"qualified-event/1\"\n}\n",
+        "review": {
+          "approved": true,
+          "authority": "synthetic_application_review",
+          "case_id": "B7Y6",
+          "classification": "public_synthetic",
+          "current": true,
+          "current_revision": "v1",
+          "effective_at": "2026-10-12T00:00:00Z",
+          "expires_at": "2026-10-13T00:00:00Z",
+          "question_ids": [
+            "Q-B7Y6"
+          ],
+          "raw_sha256": "f855778f277b0abc791e27036e5dca35bcc6985985d62340ec71940f9f0b49ec",
+          "requirement_reviewed": false,
+          "reviewed_at": "2026-10-12T00:00:00Z",
+          "revision": "v1",
+          "role": "event_observation",
+          "source_format": "synthetic_event",
+          "source_id": "V2-B7Y6-E",
+          "source_path": "fiction/B7Y6/E",
+          "status": "current",
+          "synthetic": true,
+          "workflows": [
+            "soc_investigation"
+          ]
+        }
+      }
+    }
+  ]
+}

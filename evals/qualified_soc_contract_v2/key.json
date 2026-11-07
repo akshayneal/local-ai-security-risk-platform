@@ -1,0 +1,104 @@
+{
+  "authored_expectations": {
+    "A3M9": {
+      "accepted_alternatives": [],
+      "association_state": "conflicting",
+      "class": "opposed",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "association_resolved",
+      "relationship": "conflicting_claims",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "B7Y6": {
+      "accepted_alternatives": [],
+      "association_state": "unique",
+      "class": "alignment",
+      "comparator_invocations": 1,
+      "execution_state": "completed",
+      "processing_state": "comparison_returned",
+      "relationship": "declared_alignment",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "C8P2": {
+      "accepted_alternatives": [],
+      "association_state": "not_assessed",
+      "class": "native",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "observations_projected",
+      "relationship": "unassessable",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "G2W8": {
+      "accepted_alternatives": [],
+      "association_state": "no_match",
+      "class": "creation",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "association_resolved",
+      "relationship": "underdetermined",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "L7S3": {
+      "accepted_alternatives": [],
+      "association_state": "ambiguous",
+      "class": "partial_denial",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "association_resolved",
+      "relationship": "underdetermined",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "N8D5": {
+      "accepted_alternatives": [],
+      "association_state": "not_assessed",
+      "class": "revoked",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "source_refused",
+      "relationship": "projection_unavailable",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "Q4H7": {
+      "accepted_alternatives": [],
+      "association_state": "ambiguous",
+      "class": "partial_actor",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "association_resolved",
+      "relationship": "underdetermined",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "R9F2": {
+      "accepted_alternatives": [],
+      "association_state": "ambiguous",
+      "class": "equivalent",
+      "comparator_invocations": 0,
+      "execution_state": "not_executed",
+      "processing_state": "association_resolved",
+      "relationship": "underdetermined",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "T5K3": {
+      "accepted_alternatives": [],
+      "association_state": "unique",
+      "class": "failed_mismatch",
+      "comparator_invocations": 1,
+      "execution_state": "completed",
+      "processing_state": "comparison_returned",
+      "relationship": "declared_mismatch",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    },
+    "V6J4": {
+      "accepted_alternatives": [],
+      "association_state": "unique",
+      "class": "unknown",
+      "comparator_invocations": 1,
+      "execution_state": "completed",
+      "processing_state": "comparison_returned",
+      "relationship": "underdetermined",
+      "rubric": "Supplied synthetic assertions only; no source-body authority, grant or action"
+    }
+  }
+}

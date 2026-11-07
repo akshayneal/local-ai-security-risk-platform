@@ -1,0 +1,13 @@
+{
+  "cases": 10,
+  "date": "2026-11-06",
+  "format": "qualified-soc-v2-input-freeze/1",
+  "independent_review": "PENDING (0 completed)",
+  "model_sends": 0,
+  "sha256": {
+    "C:/Users/aksha/OneDrive/Documents/github-personal/local-ai-security-risk-platform/evals/qualified_soc_contract_v2/author_cases.py": "1a573b3f1989c4e9479249778f0317af8162c989a80596e4ae3edc7b011296d5",
+    "C:/Users/aksha/OneDrive/Documents/github-personal/local-ai-security-risk-platform/evals/qualified_soc_contract_v2/cases.json": "d4542903ec4babca80546eed50dd755d22ad9f23dbb94251332b386aafc82db8",
+    "C:/Users/aksha/OneDrive/Documents/github-personal/local-ai-security-risk-platform/evals/qualified_soc_contract_v2/key.json": "c6b09978034f70ba76c1291126d4195efe9d864bb7f45456a1690624c0dc1cd2",
+    "C:/Users/aksha/OneDrive/Documents/github-personal/local-ai-security-risk-platform/evals/qualified_soc_contract_v2/rubric.md": "92fa581bc900f6a94c5f8848921f01639a6ecf7acfcbe4baf881f0bcb4c669b8"
+  }
+}
