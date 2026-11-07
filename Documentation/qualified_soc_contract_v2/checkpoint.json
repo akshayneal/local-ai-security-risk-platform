@@ -1,1 +1,45 @@
-{"stage":"prospective_plan_before_core_implementation","baseline":"130c95454378394ca197d8851a7bae99adf8439a","branch":"feature/qualified-soc-contract-hardening-sprint14b","historical_diagnostic":"one run,11/12 retained; never rerun","new_diagnostic":"NOT RUN","model_sends":0,"embedding_sends":0,"independent_human_review":"PENDING (0 completed)","visual_qa":"USER VISUAL QA PENDING","release":"NO-GO","next":"Implement additive v2 and new development counterexamples; preserve all v1source/artifacts"}
+{
+  "stage": "recovered_existing_implementation_before_diagnostic",
+  "baseline": "130c95454378394ca197d8851a7bae99adf8439a",
+  "branch": "feature/qualified-soc-contract-hardening-sprint14b",
+  "historical_diagnostic": "one run,11/12 retained; never rerun",
+  "new_diagnostic": {
+    "input_literals": "committed0801266; unchanged",
+    "portable_freeze": "additive and verified",
+    "candidate_freeze": false,
+    "reservation": false,
+    "journal": false,
+    "results": false,
+    "status": "NOT RUN"
+  },
+  "model_sends": 0,
+  "embedding_sends": 0,
+  "independent_human_review": "PENDING (0 completed)",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "next": "Finish14B validation before candidatefreeze; do not regeneratecase/key or rerunoldN2A6",
+  "recovery_date": "2026-11-07",
+  "head": "08012665b2cbd26f630bc177f0599ad8d9ac8be6",
+  "local_commits": [
+    "f95d4d4",
+    "0801266"
+  ],
+  "observed_changes": {
+    "tracked_modified": [
+      "Documentation/qualified_soc_contract_v2/decision_log.md",
+      "tests/test_sprint14_preservation.py"
+    ],
+    "new_owned_files": 14,
+    "inherited_untracked_s4check": 405
+  },
+  "preservation": {
+    "original_blobs": 757,
+    "raw_files": 990
+  },
+  "remaining": [
+    "focused and full deterministic14B validation",
+    "freeze candidate and run mini-diagnostic once if safe",
+    "readout/commit/push exactCI",
+    "branch from finalized14B into earlySprint15 typed native observation and opt-in API/UI"
+  ]
+}

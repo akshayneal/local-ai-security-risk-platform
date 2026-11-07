@@ -8,10 +8,12 @@ import sys
 
 import pytest
 from sprint14_history import _snapshot
+from sprint14b_history import historical_test as sprint14b_historical_test
 
 from evals.evidence_qualification_v1 import preservation as guard
 
 
+@sprint14b_historical_test
 def test_current_exact_paths_and_all_original_blobs():
     assert guard.verify_scope()["protected_blobs"] == 707
 
