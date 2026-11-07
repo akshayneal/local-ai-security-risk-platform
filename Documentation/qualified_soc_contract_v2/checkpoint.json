@@ -1,23 +1,15 @@
 {
-  "stage": "recovered_existing_implementation_before_diagnostic",
+  "stage": "14B_full_deterministic_gate_passed_ready_to_freeze",
   "baseline": "130c95454378394ca197d8851a7bae99adf8439a",
   "branch": "feature/qualified-soc-contract-hardening-sprint14b",
   "historical_diagnostic": "one run,11/12 retained; never rerun",
-  "new_diagnostic": {
-    "input_literals": "committed0801266; unchanged",
-    "portable_freeze": "additive and verified",
-    "candidate_freeze": false,
-    "reservation": false,
-    "journal": false,
-    "results": false,
-    "status": "NOT RUN"
-  },
+  "new_diagnostic": "NOT RUN; no reservation; candidatefreeze next",
   "model_sends": 0,
   "embedding_sends": 0,
   "independent_human_review": "PENDING (0 completed)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "next": "Finish14B validation before candidatefreeze; do not regeneratecase/key or rerunoldN2A6",
+  "next": "Commit selection evidence;freeze-only manifest;run existing mini-diagnostic once;final14Breadout/push;thenearlySprint15",
   "recovery_date": "2026-11-07",
   "head": "08012665b2cbd26f630bc177f0599ad8d9ac8be6",
   "local_commits": [
@@ -41,5 +33,10 @@
     "freeze candidate and run mini-diagnostic once if safe",
     "readout/commit/push exactCI",
     "branch from finalized14B into earlySprint15 typed native observation and opt-in API/UI"
-  ]
+  ],
+  "source_commit": "46ce403a425fdc49cd75fd3950d5ad871902799f",
+  "focused": "117 passed13.41s",
+  "full_tests": "2924passed1warning350.74s",
+  "ruff": "322trackedPythonPASS",
+  "pip_check": "PASS"
 }

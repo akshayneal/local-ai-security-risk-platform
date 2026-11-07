@@ -1,0 +1,956 @@
+{
+  "schema_version": "qualified-soc-report/2",
+  "case_id": "DEV2_UNKNOWN_OPERATION",
+  "question_id": "Q_DEV2_UNKNOWN_OPERATION",
+  "processing_state": "comparison_returned",
+  "execution_state": "completed",
+  "comparator_invocations": 1,
+  "relationship": "underdetermined",
+  "association_state": "unique",
+  "reason_codes": [
+    "authorization_or_operation_unknown"
+  ],
+  "sources": [
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "revision": "v2-dev-r1",
+      "role": "event_observation",
+      "source_format": "synthetic_event",
+      "source_path": "synthetic/v2/OBS_DEV2_UNKNOWN_OPERATION",
+      "raw_sha256": "88e8156c3413e9095f3cf90f9f3555d35e57231f4b744f56c7e9f10798ec6170",
+      "raw_text": "{\"schema_version\":\"qualified-event/1\",\"event_id\":\"EVENT_DEV2_UNKNOWN_OPERATION\",\"process_id\":4510,\"process_created_at\":\"2026-11-06T13:40:00Z\",\"event\":{\"operation\":null,\"result\":\"attempted\",\"principal\":\"svc-jade\",\"asset\":\"jade-node.example.invalid\",\"source\":\"192.0.2.143\",\"destination\":\"203.0.113.143\",\"endpoint\":\"catalog.example.invalid\",\"time\":\"2026-11-06T14:10:00Z\",\"amount\":0},\"annotations\":[]}",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "revision": "v2-dev-r1",
+        "current_revision": "v2-dev-r1",
+        "raw_sha256": "88e8156c3413e9095f3cf90f9f3555d35e57231f4b744f56c7e9f10798ec6170",
+        "source_format": "synthetic_event",
+        "role": "event_observation",
+        "case_id": "DEV2_UNKNOWN_OPERATION",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q_DEV2_UNKNOWN_OPERATION"
+        ],
+        "source_path": "synthetic/v2/OBS_DEV2_UNKNOWN_OPERATION",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": false,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T12:00:00Z",
+        "effective_at": "2026-11-06T00:00:00Z",
+        "expires_at": "2026-11-20T00:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "DEV2_UNKNOWN_OPERATION",
+        "workflow": "soc_investigation",
+        "question_id": "Q_DEV2_UNKNOWN_OPERATION",
+        "question": "Compare the declared catalog operation with separately reviewed synthetic scope",
+        "as_of": "2026-11-06T16:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "revision": "v2-dev-r1",
+      "role": "authorization_assertion",
+      "source_format": "synthetic_authorization",
+      "source_path": "synthetic/v2/AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "raw_sha256": "fe9a0196bdae449a10e446f367eb90e6218b945fd0b54acb2f00e91f26bb6829",
+      "raw_text": "{\"schema_version\":\"qualified-authorization/1\",\"event_id\":\"EVENT_DEV2_UNKNOWN_OPERATION\",\"process_id\":4510,\"process_created_at\":\"2026-11-06T13:40:00Z\",\"event_time\":\"2026-11-06T14:10:00Z\",\"question_id\":\"Q_DEV2_UNKNOWN_OPERATION\",\"authorization\":{\"status\":\"reported_authorized\",\"operation\":\"catalog_check\",\"principal\":\"svc-jade\",\"asset\":\"jade-node.example.invalid\",\"endpoint\":\"catalog.example.invalid\",\"window_start\":\"2026-11-06T14:00:00Z\",\"window_end\":\"2026-11-06T14:20:00Z\"}}",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+        "revision": "v2-dev-r1",
+        "current_revision": "v2-dev-r1",
+        "raw_sha256": "fe9a0196bdae449a10e446f367eb90e6218b945fd0b54acb2f00e91f26bb6829",
+        "source_format": "synthetic_authorization",
+        "role": "authorization_assertion",
+        "case_id": "DEV2_UNKNOWN_OPERATION",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q_DEV2_UNKNOWN_OPERATION"
+        ],
+        "source_path": "synthetic/v2/AUTH_DEV2_UNKNOWN_OPERATION_1",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": true,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T12:00:00Z",
+        "effective_at": "2026-11-06T00:00:00Z",
+        "expires_at": "2026-11-20T00:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "DEV2_UNKNOWN_OPERATION",
+        "workflow": "soc_investigation",
+        "question_id": "Q_DEV2_UNKNOWN_OPERATION",
+        "question": "Compare the declared catalog operation with separately reviewed synthetic scope",
+        "as_of": "2026-11-06T16:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    }
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "source_sha256": "fe9a0196bdae449a10e446f367eb90e6218b945fd0b54acb2f00e91f26bb6829",
+      "state": "complete",
+      "reason_codes": [
+        "identity_scope_complete"
+      ],
+      "checked_paths": [
+        "/event_id",
+        "/process_id",
+        "/process_created_at",
+        "/event_time",
+        "/question_id",
+        "/authorization/principal",
+        "/authorization/asset",
+        "/authorization/endpoint"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/schema_version",
+      "value": "qualified-event/1",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event_id",
+      "value": "EVENT_DEV2_UNKNOWN_OPERATION",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/process_id",
+      "value": 4510,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/process_created_at",
+      "value": "2026-11-06T13:40:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/annotations",
+      "value": [],
+      "original_type": "list",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/operation",
+      "value": null,
+      "original_type": "NoneType",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/result",
+      "value": "attempted",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/principal",
+      "value": "svc-jade",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/asset",
+      "value": "jade-node.example.invalid",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/source",
+      "value": "192.0.2.143",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/destination",
+      "value": "203.0.113.143",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/endpoint",
+      "value": "catalog.example.invalid",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/time",
+      "value": "2026-11-06T14:10:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/amount",
+      "value": 0,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/schema_version",
+      "value": "qualified-authorization/1",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event_id",
+      "value": "EVENT_DEV2_UNKNOWN_OPERATION",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/process_id",
+      "value": 4510,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/process_created_at",
+      "value": "2026-11-06T13:40:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event_time",
+      "value": "2026-11-06T14:10:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/question_id",
+      "value": "Q_DEV2_UNKNOWN_OPERATION",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization",
+      "value": {
+        "status": "reported_authorized",
+        "operation": "catalog_check",
+        "principal": "svc-jade",
+        "asset": "jade-node.example.invalid",
+        "endpoint": "catalog.example.invalid",
+        "window_start": "2026-11-06T14:00:00Z",
+        "window_end": "2026-11-06T14:20:00Z"
+      },
+      "original_type": "dict",
+      "semantic_status": "supplied_unverified"
+    }
+  ],
+  "lineage": [
+    {
+      "target_path": "/data/event/operation",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/operation",
+      "state": "unknown",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/result",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/result",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/principal",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/principal",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/asset",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/asset",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/source",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/source",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/destination",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/destination",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/endpoint",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/endpoint",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/time",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/time",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/event/amount",
+      "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/event/amount",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/status",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/status",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/operation",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/operation",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/principal",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/principal",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/asset",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/asset",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/endpoint",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/endpoint",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/window_start",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/window_start",
+      "state": "unverified",
+      "transformation": "identity"
+    },
+    {
+      "target_path": "/data/authorization/window_end",
+      "source_id": "AUTH_DEV2_UNKNOWN_OPERATION_1",
+      "source_revision": "v2-dev-r1",
+      "original_path": "/authorization/window_end",
+      "state": "unverified",
+      "transformation": "identity"
+    }
+  ],
+  "baseline": {
+    "schema_version": "qualified-soc-report/1",
+    "case_id": "DEV2_UNKNOWN_OPERATION",
+    "question_id": "Q_DEV2_UNKNOWN_OPERATION",
+    "status": "unassessable",
+    "relationship": "underdetermined",
+    "reason_codes": [
+      "eligible_authorization_not_supplied"
+    ],
+    "association_status": "missing",
+    "sources": [
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "revision": "v2-dev-r1",
+        "role": "event_observation",
+        "source_format": "synthetic_event",
+        "source_path": "synthetic/v2/OBS_DEV2_UNKNOWN_OPERATION",
+        "raw_sha256": "88e8156c3413e9095f3cf90f9f3555d35e57231f4b744f56c7e9f10798ec6170",
+        "raw_text": "{\"schema_version\":\"qualified-event/1\",\"event_id\":\"EVENT_DEV2_UNKNOWN_OPERATION\",\"process_id\":4510,\"process_created_at\":\"2026-11-06T13:40:00Z\",\"event\":{\"operation\":null,\"result\":\"attempted\",\"principal\":\"svc-jade\",\"asset\":\"jade-node.example.invalid\",\"source\":\"192.0.2.143\",\"destination\":\"203.0.113.143\",\"endpoint\":\"catalog.example.invalid\",\"time\":\"2026-11-06T14:10:00Z\",\"amount\":0},\"annotations\":[]}",
+        "review": {
+          "schema_version": "source-review/1",
+          "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+          "revision": "v2-dev-r1",
+          "current_revision": "v2-dev-r1",
+          "raw_sha256": "88e8156c3413e9095f3cf90f9f3555d35e57231f4b744f56c7e9f10798ec6170",
+          "source_format": "synthetic_event",
+          "role": "event_observation",
+          "case_id": "DEV2_UNKNOWN_OPERATION",
+          "workflows": [
+            "soc_investigation"
+          ],
+          "question_ids": [
+            "Q_DEV2_UNKNOWN_OPERATION"
+          ],
+          "source_path": "synthetic/v2/OBS_DEV2_UNKNOWN_OPERATION",
+          "classification": "public_synthetic",
+          "synthetic": true,
+          "authority": "synthetic_application_review",
+          "approved": true,
+          "requirement_reviewed": false,
+          "current": true,
+          "status": "current",
+          "reviewed_at": "2026-11-06T12:00:00Z",
+          "effective_at": "2026-11-06T00:00:00Z",
+          "expires_at": "2026-11-20T00:00:00Z"
+        },
+        "scope": {
+          "schema_version": "qualification-scope/1",
+          "case_id": "DEV2_UNKNOWN_OPERATION",
+          "workflow": "soc_investigation",
+          "question_id": "Q_DEV2_UNKNOWN_OPERATION",
+          "question": "Compare the declared catalog operation with separately reviewed synthetic scope",
+          "as_of": "2026-11-06T16:00:00Z"
+        },
+        "assertion_status": "supplied_unverified",
+        "eligibility_status": "application_reviewed_synthetic_only"
+      }
+    ],
+    "canonical_bundle": null,
+    "original_bundle": null,
+    "observations": [
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/schema_version",
+        "value": "qualified-event/1",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event_id",
+        "value": "EVENT_DEV2_UNKNOWN_OPERATION",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/process_id",
+        "value": 4510,
+        "original_type": "int",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/process_created_at",
+        "value": "2026-11-06T13:40:00Z",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/annotations",
+        "value": [],
+        "original_type": "list",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/operation",
+        "value": null,
+        "original_type": "NoneType",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/result",
+        "value": "attempted",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/principal",
+        "value": "svc-jade",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/asset",
+        "value": "jade-node.example.invalid",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/source",
+        "value": "192.0.2.143",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/destination",
+        "value": "203.0.113.143",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/endpoint",
+        "value": "catalog.example.invalid",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/time",
+        "value": "2026-11-06T14:10:00Z",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/amount",
+        "value": 0,
+        "original_type": "int",
+        "semantic_status": "supplied_unverified"
+      }
+    ],
+    "lineage": [
+      {
+        "target_path": "/data/event/operation",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/operation",
+        "state": "unknown",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/result",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/result",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/principal",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/principal",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/asset",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/asset",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/source",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/source",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/destination",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/destination",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/endpoint",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/endpoint",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/time",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/time",
+        "state": "unverified",
+        "transformation": "identity"
+      },
+      {
+        "target_path": "/data/event/amount",
+        "source_id": "OBS_DEV2_UNKNOWN_OPERATION",
+        "source_revision": "v2-dev-r1",
+        "original_path": "/event/amount",
+        "state": "unverified",
+        "transformation": "identity"
+      }
+    ],
+    "coverage": {
+      "total_rows": 1,
+      "selected_rows": 1,
+      "omitted_rows": 0,
+      "unsupported_rows": 0,
+      "invalid_fields": [],
+      "unknown_fields": []
+    },
+    "comparison": null,
+    "comparator_source_status": "not_used",
+    "capability_status": "experimental_internal_off_by_default",
+    "source_authenticity": "unverified; hashes do not authenticate",
+    "approval_granted": false,
+    "action_status": "no_actions_executed",
+    "independent_review": "PENDING"
+  },
+  "baseline_provenance": "event_only_v1",
+  "comparison": {
+    "assessment": {
+      "case_id": "DEV2_UNKNOWN_OPERATION",
+      "pillar": "soc",
+      "input_path": "raw_log",
+      "raw_sha256": "226521acf47c67acba89d03518ef073e45a2b38c300b4b5b5103437bd375a070",
+      "raw": "{\"annotations\":[],\"case_id\":\"DEV2_UNKNOWN_OPERATION\",\"counterclaims\":[],\"data\":{\"authorization\":{\"asset\":\"jade-node.example.invalid\",\"endpoint\":\"catalog.example.invalid\",\"operation\":\"catalog_check\",\"principal\":\"svc-jade\",\"status\":\"reported_authorized\",\"window_end\":\"2026-11-06T14:20:00Z\",\"window_start\":\"2026-11-06T14:00:00Z\"},\"event\":{\"amount\":0,\"asset\":\"jade-node.example.invalid\",\"destination\":\"203.0.113.143\",\"endpoint\":\"catalog.example.invalid\",\"operation\":null,\"principal\":\"svc-jade\",\"result\":\"attempted\",\"source\":\"192.0.2.143\",\"time\":\"2026-11-06T14:10:00Z\"}},\"pillar\":\"soc\",\"schema_version\":\"adaptive-security/1\",\"source\":{\"id\":\"DERIVED_PROJECTION\",\"revision\":\"derived-1\"}}",
+      "premises": [
+        {
+          "id": "PREM-a4ae89702d159aaac3e8",
+          "pointer": "/annotations",
+          "input_path": "raw_log",
+          "value": [],
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-f1a5534654676a5051b1",
+          "pointer": "/case_id",
+          "input_path": "raw_log",
+          "value": "DEV2_UNKNOWN_OPERATION",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-a8b87c7dfbf14b7581b1",
+          "pointer": "/counterclaims",
+          "input_path": "raw_log",
+          "value": [],
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-5893dec0edc63f0f9476",
+          "pointer": "/data/authorization/asset",
+          "input_path": "raw_log",
+          "value": "jade-node.example.invalid",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-9e35b326677ba060c140",
+          "pointer": "/data/authorization/endpoint",
+          "input_path": "raw_log",
+          "value": "catalog.example.invalid",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-923cbffffa4e63f37d28",
+          "pointer": "/data/authorization/operation",
+          "input_path": "raw_log",
+          "value": "catalog_check",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-09392a57a97eb4c1a632",
+          "pointer": "/data/authorization/principal",
+          "input_path": "raw_log",
+          "value": "svc-jade",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-e5751c43455fd3b2649d",
+          "pointer": "/data/authorization/status",
+          "input_path": "raw_log",
+          "value": "reported_authorized",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-b330be8abd561bc226e5",
+          "pointer": "/data/authorization/window_end",
+          "input_path": "raw_log",
+          "value": "2026-11-06T14:20:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-529d0bfc247b31ed71de",
+          "pointer": "/data/authorization/window_start",
+          "input_path": "raw_log",
+          "value": "2026-11-06T14:00:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-b3fd41a887553363b4f6",
+          "pointer": "/data/event/amount",
+          "input_path": "raw_log",
+          "value": 0,
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-711689eb4ffe30e7978c",
+          "pointer": "/data/event/asset",
+          "input_path": "raw_log",
+          "value": "jade-node.example.invalid",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-cd044c47b65739380792",
+          "pointer": "/data/event/destination",
+          "input_path": "raw_log",
+          "value": "203.0.113.143",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-cfd66b259b19db12afbe",
+          "pointer": "/data/event/endpoint",
+          "input_path": "raw_log",
+          "value": "catalog.example.invalid",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-9bf76116415a5701a263",
+          "pointer": "/data/event/operation",
+          "input_path": "raw_log",
+          "value": null,
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-84736ee4f2f912a344bb",
+          "pointer": "/data/event/principal",
+          "input_path": "raw_log",
+          "value": "svc-jade",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-80dde94f1afba5845343",
+          "pointer": "/data/event/result",
+          "input_path": "raw_log",
+          "value": "attempted",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-812b88475e01434029ac",
+          "pointer": "/data/event/source",
+          "input_path": "raw_log",
+          "value": "192.0.2.143",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-d793217d2e26fb1c9f6d",
+          "pointer": "/data/event/time",
+          "input_path": "raw_log",
+          "value": "2026-11-06T14:10:00Z",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-8e85f1a422c4e09bdb93",
+          "pointer": "/pillar",
+          "input_path": "raw_log",
+          "value": "soc",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-426fb86b64f92767226b",
+          "pointer": "/schema_version",
+          "input_path": "raw_log",
+          "value": "adaptive-security/1",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-3e1d6c6cb6df8966bb1b",
+          "pointer": "/source/id",
+          "input_path": "raw_log",
+          "value": "DERIVED_PROJECTION",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        },
+        {
+          "id": "PREM-d6a81c2241393cfb1d49",
+          "pointer": "/source/revision",
+          "input_path": "raw_log",
+          "value": "derived-1",
+          "source_id": "DERIVED_PROJECTION",
+          "source_revision": "derived-1",
+          "assertion_status": "supplied_unverified"
+        }
+      ],
+      "outcome": "underdetermined",
+      "reason_codes": [
+        "authorization_or_operation_unknown"
+      ],
+      "decisive_premise_ids": [
+        "PREM-e5751c43455fd3b2649d",
+        "PREM-9bf76116415a5701a263",
+        "PREM-80dde94f1afba5845343"
+      ],
+      "disconfirming_premise_ids": [
+        "PREM-80dde94f1afba5845343",
+        "PREM-b3fd41a887553363b4f6"
+      ],
+      "unassessed_conditions": [
+        "source authenticity",
+        "real deployment",
+        "security severity",
+        "all other relationships",
+        "reported_event_result=attempted",
+        "event result is not inferred from scope alignment or mismatch",
+        "amount is preserved; no transfer-content or maliciousness inference"
+      ],
+      "report_sentence": "The declared relationship is underdetermined for soc: authorization_or_operation_unknown. Reported operation null has result \"attempted\" and amount 0; reported authorization operation is \"catalog_check\". This checks supplied assertions only; it verifies no deployed behavior, source authenticity, permission, violation, compromise, or safety outcome.",
+      "source_status": "supplied assertions; not independently verified",
+      "capability_status": "experimental_internal_off_by_default",
+      "action_status": "no_actions_executed",
+      "approval_granted": false
+    },
+    "commentary_status": "not_requested",
+    "commentary_sha256": null,
+    "commentary_note": "Schema and premise membership do not establish entailment; generated prose is withheld.",
+    "independent_review": "PENDING"
+  },
+  "capability_status": "experimental_internal_off_by_default",
+  "source_status": "application reviewed synthetic assertions; authenticity unverified",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "independent_review": "PENDING"
+}

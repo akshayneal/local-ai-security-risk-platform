@@ -1,0 +1,329 @@
+{
+  "schema_version": "qualified-soc-report/2",
+  "case_id": "DEV2_NATIVE",
+  "question_id": "Q_DEV2_NATIVE",
+  "processing_state": "observations_projected",
+  "execution_state": "not_executed",
+  "comparator_invocations": 0,
+  "relationship": "unassessable",
+  "association_state": "not_assessed",
+  "reason_codes": [
+    "unsupported_native_operation_outcome"
+  ],
+  "sources": [
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "revision": "v2-dev-r1",
+      "role": "event_observation",
+      "source_format": "microsoft_json",
+      "source_path": "synthetic/v2/OBS_DEV2_NATIVE",
+      "raw_sha256": "8084870aea77663f940e466d1d42dcc429c437cc291c12269799f5292478bedf",
+      "raw_text": "{\"case_id\":\"DEV2_NATIVE\",\"tables\":{\"DeviceNetworkEvents\":[{\"Timestamp\":\"2026-11-06T14:10:00Z\",\"ActionType\":\"ConnectionSuccess\",\"DeviceId\":\"synthetic-jade-native\",\"RemoteIP\":\"203.0.113.143\",\"RemotePort\":443}]}}",
+      "review": {
+        "schema_version": "source-review/1",
+        "source_id": "OBS_DEV2_NATIVE",
+        "revision": "v2-dev-r1",
+        "current_revision": "v2-dev-r1",
+        "raw_sha256": "8084870aea77663f940e466d1d42dcc429c437cc291c12269799f5292478bedf",
+        "source_format": "microsoft_json",
+        "role": "event_observation",
+        "case_id": "DEV2_NATIVE",
+        "workflows": [
+          "soc_investigation"
+        ],
+        "question_ids": [
+          "Q_DEV2_NATIVE"
+        ],
+        "source_path": "synthetic/v2/OBS_DEV2_NATIVE",
+        "classification": "public_synthetic",
+        "synthetic": true,
+        "authority": "synthetic_application_review",
+        "approved": true,
+        "requirement_reviewed": false,
+        "current": true,
+        "status": "current",
+        "reviewed_at": "2026-11-06T12:00:00Z",
+        "effective_at": "2026-11-06T00:00:00Z",
+        "expires_at": "2026-11-20T00:00:00Z"
+      },
+      "scope": {
+        "schema_version": "qualification-scope/1",
+        "case_id": "DEV2_NATIVE",
+        "workflow": "soc_investigation",
+        "question_id": "Q_DEV2_NATIVE",
+        "question": "Compare the declared catalog operation with separately reviewed synthetic scope",
+        "as_of": "2026-11-06T16:00:00Z"
+      },
+      "assertion_status": "supplied_unverified",
+      "eligibility_status": "application_reviewed_synthetic_only"
+    }
+  ],
+  "candidates": [],
+  "observations": [
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "source_revision": "v2-dev-r1",
+      "original_path": "DeviceNetworkEvents[0].ActionType",
+      "value": "ConnectionSuccess",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "source_revision": "v2-dev-r1",
+      "original_path": "DeviceNetworkEvents[0].DeviceId",
+      "value": "synthetic-jade-native",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "source_revision": "v2-dev-r1",
+      "original_path": "DeviceNetworkEvents[0].RemoteIP",
+      "value": "203.0.113.143",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "source_revision": "v2-dev-r1",
+      "original_path": "DeviceNetworkEvents[0].RemotePort",
+      "value": 443,
+      "original_type": "int",
+      "semantic_status": "supplied_unverified"
+    },
+    {
+      "source_id": "OBS_DEV2_NATIVE",
+      "source_revision": "v2-dev-r1",
+      "original_path": "DeviceNetworkEvents[0].Timestamp",
+      "value": "2026-11-06T14:10:00Z",
+      "original_type": "str",
+      "semantic_status": "supplied_unverified"
+    }
+  ],
+  "lineage": [
+    {
+      "target_path": "/event/operation",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "unknown",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/result",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "unknown",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/source",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_applicable",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/destination",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_applicable",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    },
+    {
+      "target_path": "/event/amount",
+      "source_id": null,
+      "source_revision": null,
+      "original_path": null,
+      "state": "not_supplied",
+      "transformation": "not mapped: native field semantics do not establish this predicate"
+    }
+  ],
+  "baseline": {
+    "schema_version": "qualified-soc-report/1",
+    "case_id": "DEV2_NATIVE",
+    "question_id": "Q_DEV2_NATIVE",
+    "status": "unassessable",
+    "relationship": "unassessable",
+    "reason_codes": [
+      "unsupported_native_operation_outcome"
+    ],
+    "association_status": "not_assessed",
+    "sources": [
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "revision": "v2-dev-r1",
+        "role": "event_observation",
+        "source_format": "microsoft_json",
+        "source_path": "synthetic/v2/OBS_DEV2_NATIVE",
+        "raw_sha256": "8084870aea77663f940e466d1d42dcc429c437cc291c12269799f5292478bedf",
+        "raw_text": "{\"case_id\":\"DEV2_NATIVE\",\"tables\":{\"DeviceNetworkEvents\":[{\"Timestamp\":\"2026-11-06T14:10:00Z\",\"ActionType\":\"ConnectionSuccess\",\"DeviceId\":\"synthetic-jade-native\",\"RemoteIP\":\"203.0.113.143\",\"RemotePort\":443}]}}",
+        "review": {
+          "schema_version": "source-review/1",
+          "source_id": "OBS_DEV2_NATIVE",
+          "revision": "v2-dev-r1",
+          "current_revision": "v2-dev-r1",
+          "raw_sha256": "8084870aea77663f940e466d1d42dcc429c437cc291c12269799f5292478bedf",
+          "source_format": "microsoft_json",
+          "role": "event_observation",
+          "case_id": "DEV2_NATIVE",
+          "workflows": [
+            "soc_investigation"
+          ],
+          "question_ids": [
+            "Q_DEV2_NATIVE"
+          ],
+          "source_path": "synthetic/v2/OBS_DEV2_NATIVE",
+          "classification": "public_synthetic",
+          "synthetic": true,
+          "authority": "synthetic_application_review",
+          "approved": true,
+          "requirement_reviewed": false,
+          "current": true,
+          "status": "current",
+          "reviewed_at": "2026-11-06T12:00:00Z",
+          "effective_at": "2026-11-06T00:00:00Z",
+          "expires_at": "2026-11-20T00:00:00Z"
+        },
+        "scope": {
+          "schema_version": "qualification-scope/1",
+          "case_id": "DEV2_NATIVE",
+          "workflow": "soc_investigation",
+          "question_id": "Q_DEV2_NATIVE",
+          "question": "Compare the declared catalog operation with separately reviewed synthetic scope",
+          "as_of": "2026-11-06T16:00:00Z"
+        },
+        "assertion_status": "supplied_unverified",
+        "eligibility_status": "application_reviewed_synthetic_only"
+      }
+    ],
+    "canonical_bundle": "{\n\"case_id\":\"DEV2_NATIVE\",\n\"tables\":{\n\"DeviceNetworkEvents\":[\n{\n\"ActionType\":\"ConnectionSuccess\",\n\"DeviceId\":\"synthetic-jade-native\",\n\"RemoteIP\":\"203.0.113.143\",\n\"RemotePort\":443,\n\"Timestamp\":\"2026-11-06T14:10:00Z\"\n}\n]\n}\n}",
+    "original_bundle": {
+      "case_id": "DEV2_NATIVE",
+      "tables": {
+        "DeviceNetworkEvents": [
+          {
+            "Timestamp": "2026-11-06T14:10:00Z",
+            "ActionType": "ConnectionSuccess",
+            "DeviceId": "synthetic-jade-native",
+            "RemoteIP": "203.0.113.143",
+            "RemotePort": 443
+          }
+        ]
+      }
+    },
+    "observations": [
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "source_revision": "v2-dev-r1",
+        "original_path": "DeviceNetworkEvents[0].ActionType",
+        "value": "ConnectionSuccess",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "source_revision": "v2-dev-r1",
+        "original_path": "DeviceNetworkEvents[0].DeviceId",
+        "value": "synthetic-jade-native",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "source_revision": "v2-dev-r1",
+        "original_path": "DeviceNetworkEvents[0].RemoteIP",
+        "value": "203.0.113.143",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "source_revision": "v2-dev-r1",
+        "original_path": "DeviceNetworkEvents[0].RemotePort",
+        "value": 443,
+        "original_type": "int",
+        "semantic_status": "supplied_unverified"
+      },
+      {
+        "source_id": "OBS_DEV2_NATIVE",
+        "source_revision": "v2-dev-r1",
+        "original_path": "DeviceNetworkEvents[0].Timestamp",
+        "value": "2026-11-06T14:10:00Z",
+        "original_type": "str",
+        "semantic_status": "supplied_unverified"
+      }
+    ],
+    "lineage": [
+      {
+        "target_path": "/event/operation",
+        "source_id": null,
+        "source_revision": null,
+        "original_path": null,
+        "state": "unknown",
+        "transformation": "not mapped: native field semantics do not establish this predicate"
+      },
+      {
+        "target_path": "/event/result",
+        "source_id": null,
+        "source_revision": null,
+        "original_path": null,
+        "state": "unknown",
+        "transformation": "not mapped: native field semantics do not establish this predicate"
+      },
+      {
+        "target_path": "/event/source",
+        "source_id": null,
+        "source_revision": null,
+        "original_path": null,
+        "state": "not_applicable",
+        "transformation": "not mapped: native field semantics do not establish this predicate"
+      },
+      {
+        "target_path": "/event/destination",
+        "source_id": null,
+        "source_revision": null,
+        "original_path": null,
+        "state": "not_applicable",
+        "transformation": "not mapped: native field semantics do not establish this predicate"
+      },
+      {
+        "target_path": "/event/amount",
+        "source_id": null,
+        "source_revision": null,
+        "original_path": null,
+        "state": "not_supplied",
+        "transformation": "not mapped: native field semantics do not establish this predicate"
+      }
+    ],
+    "coverage": {
+      "total_rows": 1,
+      "selected_rows": 1,
+      "omitted_rows": 0,
+      "unsupported_rows": 0,
+      "invalid_fields": [],
+      "unknown_fields": [
+        "DeviceNetworkEvents[0].InitiatingProcessId",
+        "DeviceNetworkEvents[0].InitiatingProcessCreationTime"
+      ]
+    },
+    "comparison": null,
+    "comparator_source_status": "not_used",
+    "capability_status": "experimental_internal_off_by_default",
+    "source_authenticity": "unverified; hashes do not authenticate",
+    "approval_granted": false,
+    "action_status": "no_actions_executed",
+    "independent_review": "PENDING"
+  },
+  "baseline_provenance": "native_v1",
+  "comparison": null,
+  "capability_status": "experimental_internal_off_by_default",
+  "source_status": "application reviewed synthetic assertions; authenticity unverified",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "independent_review": "PENDING"
+}

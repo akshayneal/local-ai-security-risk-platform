@@ -103,3 +103,11 @@ accounting controls passed9 tests. ScopedRuff is clean after correcting only the
 new study import layout. No diagnostic inputs/key were regenerated; no reservation
 exists. Next: commit coherent source, focusedfinal/full deterministic gate, then
 freeze candidate and execute the existing ten-case mini-diagnostic once.
+
+## Candidate selection after deterministic gate (2026-11-07)
+
+Finalsource46ce403 passes117 focusedtests and2924 fulltests,1 existingwarning,
+350.74seconds. Ruff322 trackedPython files,pipcheck and757/990 preservationpass.
+Select current v2 unchanged for the existing ten-case prospective diagnostic.
+No newcase/key/rubric is regenerated; source and evaluator freeze precede one
+offline invocation. Retain any failure and stop tuning afterward.
