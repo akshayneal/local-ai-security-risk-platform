@@ -100,8 +100,16 @@ states, mutation rejection and new-input v1 export compatibility. Root study
 accounting tests additionally check original observation inventories, lineage,
 actual call counts, freeze portability and exclusive reservation behavior.
 
-New diagnostic status and final verification counts are recorded after the pending
-candidate freeze/run in the final version of this readout. Existing ten-case
+The new mini-diagnostic ran exactly once at ec6289c5ce1dedacaaa68dbe476773f5ad4e41ed. All10
+complete authored expectations matched: qualification,association,actual call
+counts,execution/processing,relationship,exports and no-grant fields each10/10.
+Source/lineage checks passed9/9; one refused source is honestly not evaluated.
+Each class contains one authored case; these are not accuracy estimates or
+independent human judgments. Original14N2A6 remains11/12,unchanged.
+
+Final local checks:2924passed,1existingwarning,350.74seconds on CPython3.13.1;
+Ruff322trackedPython files,pipcheck and full-feature diffcheck pass. Focused
+finalv2/study/newpreservation:117passed13.41seconds. Existing ten-case
 inputs/key/rubric/generator remain byte-exact. An additive portable freeze binds
 their same hashes to relative repository paths while preserving the original
 Windows-path freeze; no diagnostic outcome was inspected to make that change.

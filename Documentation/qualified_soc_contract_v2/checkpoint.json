@@ -1,15 +1,22 @@
 {
-  "stage": "14B_full_deterministic_gate_passed_ready_to_freeze",
+  "stage": "14B_COMPLETE_ready_for_normal_push_and_early15",
   "baseline": "130c95454378394ca197d8851a7bae99adf8439a",
   "branch": "feature/qualified-soc-contract-hardening-sprint14b",
   "historical_diagnostic": "one run,11/12 retained; never rerun",
-  "new_diagnostic": "NOT RUN; no reservation; candidatefreeze next",
+  "new_diagnostic": {
+    "runs": 1,
+    "cases": 10,
+    "matching_authored": 10,
+    "frozen_commit": "ec6289c5ce1dedacaaa68dbe476773f5ad4e41ed",
+    "journal_entries": 21,
+    "rerun": "FORBIDDEN"
+  },
   "model_sends": 0,
   "embedding_sends": 0,
   "independent_human_review": "PENDING (0 completed)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "next": "Commit selection evidence;freeze-only manifest;run existing mini-diagnostic once;final14Breadout/push;thenearlySprint15",
+  "next": "Push14Bnormally,recordexactSHA/CI,thenbranchfeature/native-evidence-workflow-sprint15;never rerun eitherdiagnostic",
   "recovery_date": "2026-11-07",
   "head": "08012665b2cbd26f630bc177f0599ad8d9ac8be6",
   "local_commits": [
@@ -29,10 +36,9 @@
     "raw_files": 990
   },
   "remaining": [
-    "focused and full deterministic14B validation",
-    "freeze candidate and run mini-diagnostic once if safe",
-    "readout/commit/push exactCI",
-    "branch from finalized14B into earlySprint15 typed native observation and opt-in API/UI"
+    "normal14Bpush/exactCI",
+    "createearly15fromfinal14BHEAD",
+    "nativeobservationcontract andoffdefaultAPI/UI"
   ],
   "source_commit": "46ce403a425fdc49cd75fd3950d5ad871902799f",
   "focused": "117 passed13.41s",

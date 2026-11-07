@@ -1,0 +1,103 @@
+{
+  "format": "sprint14b-validation/1",
+  "date": "2026-11-07",
+  "tested_source_commit": "46ce403a425fdc49cd75fd3950d5ad871902799f",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "focused": {
+    "passed": 117,
+    "seconds": 13.41
+  },
+  "full_suite": {
+    "passed": 2924,
+    "warnings": 1,
+    "seconds": 350.74,
+    "log": "final_pytest.txt"
+  },
+  "ruff": {
+    "tracked_python_files": 322,
+    "result": "PASS"
+  },
+  "pip_check": "PASS",
+  "diff_check": "PASS",
+  "preservation": {
+    "protected_blobs": 757,
+    "raw": {
+      "local_raw_files_checked": 990,
+      "absent_groups_not_claimed_preserved": []
+    },
+    "old_sprint14_artifacts_exact": 49,
+    "old_artifact_approved_scope_migration": 1
+  },
+  "mini_diagnostic": {
+    "runs": 1,
+    "completed": 10,
+    "matching_authored": 10,
+    "frozen_commit": "ec6289c5ce1dedacaaa68dbe476773f5ad4e41ed",
+    "candidate_source_commit": "61d5319f361689d668141d31c45ebeb0923cf807",
+    "layers": {
+      "actual_comparator_calls": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "association_state": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "comparator_invocations": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "execution_state": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "export_integrity": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "lineage_integrity": {
+        "passed": 9,
+        "assessed": 9,
+        "not_evaluated": 1
+      },
+      "no_grant": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "processing_state": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "qualification": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "relationship": {
+        "passed": 10,
+        "assessed": 10,
+        "not_evaluated": 0
+      },
+      "source_integrity": {
+        "passed": 9,
+        "assessed": 9,
+        "not_evaluated": 1
+      }
+    },
+    "journal_entries": 21
+  },
+  "historical_sprint14": "unchanged one run11/12;no replay/rescore",
+  "model_sends": 0,
+  "embedding_sends": 0,
+  "independent_human_review": "PENDING (0 verified)",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "CI": "Exactfinal14B commit checkedafterpush;recorded in session/early15handoff"
+}

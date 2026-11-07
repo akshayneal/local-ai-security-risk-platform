@@ -111,3 +111,13 @@ Finalsource46ce403 passes117 focusedtests and2924 fulltests,1 existingwarning,
 Select current v2 unchanged for the existing ten-case prospective diagnostic.
 No newcase/key/rubric is regenerated; source and evaluator freeze precede one
 offline invocation. Retain any failure and stop tuning afterward.
+
+## Once-only diagnostic complete; stable14B handoff (2026-11-07)
+
+Existing ten-case mini-diagnostic completed once atec6289c5ce1dedacaaa68dbe476773f5ad4e41ed;
+10/10 complete authored expectations matched,9/9 applicable source/lineage
+checks,10/10 actual dispatch/export/no-grant checks. One refusedsource is N/A
+for lineage/source content. Journal has21 durableentries. No post-exposure
+source/key edits; old14N2A6 remains11/12. No models/embeddings/historical reruns.
+CompleteP0A/B plusP0C decisionMORE_EVIDENCE_REQUIRED. Next: normal14Bpush/CI,
+then branch from final14B into authorizednative observation/API/UI work.

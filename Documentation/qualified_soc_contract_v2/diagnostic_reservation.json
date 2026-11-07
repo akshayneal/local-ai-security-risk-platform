@@ -1,0 +1,7 @@
+{
+  "source_commit": "ec6289c5ce1dedacaaa68dbe476773f5ad4e41ed",
+  "candidate_source_commit": "61d5319f361689d668141d31c45ebeb0923cf807",
+  "state": "RESERVED, not proof of completion",
+  "model_sends": 0,
+  "recovery": "Never rerun; inspect journal/results read-only"
+}
