@@ -1,0 +1,33 @@
+{
+  "schema_version": "sprint15-ci-failure/1",
+  "run_id": 42413016721,
+  "job_id": 128524993321,
+  "head_sha": "7c62379d8b4882eb35df7f2dd69c43d3604670d6",
+  "url": "https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/42413016721",
+  "conclusion": "failure",
+  "test_result": {
+    "failed": 2,
+    "passed": 3167,
+    "skipped": 38,
+    "seconds": 122.48
+  },
+  "ruff": "skipped after test failure",
+  "hosted_python": "3.13.18",
+  "hosted_streamlit": "1.67.0",
+  "first_failing_layer": "new AppTest test-helper API compatibility",
+  "failing_test": "tests/test_lifecycle_dashboard.py::test_real_route_to_lifecycle_client_page_and_exports_with_no_auto_submit[True/False]",
+  "error": "AttributeError: filtered_state not found in session_state.",
+  "hypotheses": [
+    "test helper no longer exposes filtered_state",
+    "product guard failed to clear"
+  ],
+  "discriminating_fix": "Use public mapping membership to assert the guard key is absent; preserve product behavior and assertion strength.",
+  "local_recheck": {
+    "passed": 30,
+    "warnings": 1,
+    "seconds": 6.03
+  },
+  "historical_result_rewritten": false,
+  "environment_changed": false,
+  "live_sends": 0
+}

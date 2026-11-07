@@ -182,7 +182,7 @@ def test_real_route_to_lifecycle_client_page_and_exports_with_no_auto_submit(
         assert calls[0][2]["timeout"] == (5, 930)
         assert len(app.get("download_button")) == 2
         assert analyzer_calls == (["soc"] if soc else ["governance"])
-        assert not app.session_state.filtered_state.get(client.GUARD_KEY)
+        assert client.GUARD_KEY not in app.session_state
         app.run()
         assert not app.exception and len(calls) == 1
         assert len(app.get("download_button")) == 2

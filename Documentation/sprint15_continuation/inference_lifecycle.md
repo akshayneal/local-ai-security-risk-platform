@@ -35,6 +35,16 @@ incomplete output, a callback error or an exhausted elapsed budget never trigger
 an automatic retry. No AI Security lifecycle route or UI opt-in is implemented;
 its existing path remains unchanged.
 
+Final causal review additionally found that Tenacity catches `BaseException`:
+the earlier exclusion predicate could retry an interruption signal even though
+ordinary errors were wrapped. Two synthetic interruption regressions reproduced
+two POST attempts before the fix. The retry predicate now disables **all**
+Tenacity retry while a lifecycle context is active, and keeps the exact legacy
+predicate outside that context. Interruptions propagate to the gateway's existing
+interruption handler, retaining unknown/known-failure metadata and context cleanup.
+Three new tests cover POST interruption, post-response callback interruption and
+unchanged legacy interruption retry. No real signal or provider call was used.
+
 ## Contract and budget
 
 The separate foreground composition is `app.lifecycle_api:app`; it mounts the

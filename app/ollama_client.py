@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 import requests
 from dotenv import load_dotenv
 from ollama import Client
-from tenacity import retry, retry_if_not_exception_type, stop_after_attempt, wait_fixed
+from tenacity import retry, retry_if_exception, stop_after_attempt, wait_fixed
 
 from app.inference_context import (
     EvidenceBudgetError,
@@ -113,10 +113,15 @@ def _complete_context_chat(
         raise RuntimeError("Local complete-context request failed") from exc
 
 
+def _legacy_retry_allowed(error: BaseException) -> bool:
+    """Active executions never retry, including non-Exception interruptions."""
+    return current_execution() is None and not isinstance(error, EvidenceBudgetError)
+
+
 @retry(
     stop=stop_after_attempt(2),
     wait=wait_fixed(1),
-    retry=retry_if_not_exception_type(EvidenceBudgetError),
+    retry=retry_if_exception(_legacy_retry_allowed),
 )
 def call_model_json(
     user_prompt: str, response_schema: dict[str, Any]

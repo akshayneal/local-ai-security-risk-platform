@@ -7,6 +7,7 @@ from uuid import uuid4
 import pytest
 import requests
 from fastapi.testclient import TestClient
+from tenacity import wait_none
 from test_schemas import (
     GOVERNANCE_INPUT,
     GOVERNANCE_RESPONSE,
@@ -342,6 +343,62 @@ def test_callback_failure_is_wrapped_and_never_retries(
     with execution_scope(execution), pytest.raises(InferenceLifecycleError):
         ollama_client.call_model_json("synthetic", {})
     assert execution.state == "failed_known" and len(transport["posts"]) == 1
+
+
+@pytest.mark.parametrize("stage", ["post", "finish_callback"])
+def test_interruption_propagates_without_retry_and_gateway_records_status(
+    transport, monkeypatch, clock, stage
+):
+    class SyntheticInterruption(BaseException):
+        """No operating-system signal or real process interruption occurs."""
+
+    def interrupt(*args):
+        raise SyntheticInterruption("synthetic interruption")
+
+    if stage == "post":
+        transport["body"] = interrupt
+    else:
+        monkeypatch.setattr("app.inference_lifecycle.finish_attempt", interrupt)
+    registry = ExecutionRegistry(clock=lambda: clock[0])
+    monkeypatch.setattr(lifecycle_api, "REGISTRY", registry)
+    attempt_id = attempt()
+    # Keep the production retry predicate/stop unchanged; remove test-only wait.
+    generate = ollama_client.call_model_json.retry_with(wait=wait_none())
+    with pytest.raises(BaseException) as caught:
+        lifecycle_api._run(
+            attempt_id,
+            2,
+            lambda: generate("Synthetic interruption test", {}),
+            object,
+        )
+    assert len(transport["posts"]) == 1
+    assert isinstance(caught.value, SyntheticInterruption)
+    status = registry.status(attempt_id)
+    assert status.raw_sends == 1
+    assert status.state == (
+        "unknown_post_dispatch" if stage == "post" else "failed_known"
+    )
+    assert status.reason_code == "analysis_interrupted"
+    assert current_execution() is None
+
+
+def test_legacy_interruption_retry_predicate_remains_unchanged(monkeypatch):
+    class SyntheticInterruption(BaseException):
+        pass
+
+    calls = []
+
+    def legacy_chat(**kwargs):
+        calls.append(kwargs)
+        if len(calls) == 1:
+            raise SyntheticInterruption("synthetic legacy interruption")
+        return {"message": {"content": json.dumps(SOC_RESPONSE)}}
+
+    monkeypatch.setattr(ollama_client.client, "chat", legacy_chat)
+    generate = ollama_client.call_model_json.retry_with(wait=wait_none())
+    assert current_execution() is None
+    assert generate("Synthetic legacy predicate test", {}) == SOC_RESPONSE
+    assert len(calls) == 2
 
 
 @pytest.mark.parametrize("callback", ["start_attempt", "cleaner"])
