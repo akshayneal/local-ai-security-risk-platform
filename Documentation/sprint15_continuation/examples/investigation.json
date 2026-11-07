@@ -984,21 +984,21 @@
         "DeviceNetworkEvents[1].ResultType"
       ],
       "state": "not_comparable",
-      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown."
+      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. This establishes no causal/process association or contradiction about one real event."
     },
     {
       "field": "LocalIP",
       "selected_path": "DeviceNetworkEvents[0].LocalIP",
       "other_paths": [],
       "state": "not_comparable",
-      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown."
+      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event."
     },
     {
       "field": "LocalPort",
       "selected_path": "DeviceNetworkEvents[0].LocalPort",
       "other_paths": [],
       "state": "not_comparable",
-      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown."
+      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event."
     },
     {
       "field": "RemoteIP",
@@ -1023,7 +1023,7 @@
       "selected_path": "DeviceNetworkEvents[0].Protocol",
       "other_paths": [],
       "state": "not_comparable",
-      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown."
+      "explanation": "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event."
     }
   ],
   "gaps": [

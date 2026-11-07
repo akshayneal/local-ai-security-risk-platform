@@ -86,17 +86,17 @@ literal/type representation only; no event association
 
 - DeviceNetworkEvents\[0\].ActionType versus DeviceNetworkEvents\[1\].ActionType: different_representation. At least one other supplied network row has a different literal value or JSON type; different events may legitimately differ. This establishes no causal/process association or contradiction about one real event.
 
-- DeviceNetworkEvents\[0\].ResultType versus DeviceNetworkEvents\[1\].ResultType: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown.
+- DeviceNetworkEvents\[0\].ResultType versus DeviceNetworkEvents\[1\].ResultType: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. This establishes no causal/process association or contradiction about one real event.
 
-- DeviceNetworkEvents\[0\].LocalIP versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown.
+- DeviceNetworkEvents\[0\].LocalIP versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event.
 
-- DeviceNetworkEvents\[0\].LocalPort versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown.
+- DeviceNetworkEvents\[0\].LocalPort versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event.
 
 - DeviceNetworkEvents\[0\].RemoteIP versus DeviceNetworkEvents\[1\].RemoteIP: same_representation. All other supplied network rows have the same literal value and JSON type. This establishes no causal/process association or contradiction about one real event.
 
 - DeviceNetworkEvents\[0\].RemotePort versus DeviceNetworkEvents\[1\].RemotePort: different_representation. At least one other supplied network row has a different literal value or JSON type; different events may legitimately differ. This establishes no causal/process association or contradiction about one real event.
 
-- DeviceNetworkEvents\[0\].Protocol versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown.
+- DeviceNetworkEvents\[0\].Protocol versus no other supplied field: not_comparable. No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown. 1 other rows have absent or invalid representations and were not compared. This establishes no causal/process association or contradiction about one real event.
 
 ## Insufficient evidence
 

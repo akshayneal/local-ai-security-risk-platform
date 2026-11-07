@@ -181,6 +181,28 @@ def test_absent_endpoint_does_not_fill_from_other_row(backend):
     )
 
 
+@pytest.mark.parametrize("length,state", [(256, "unverified"), (257, "invalid_shape")])
+def test_action_label_shape_agrees_with_original_observation(backend, length, state):
+    bundle = json.loads(SAMPLE.read_bytes())
+    bundle["tables"]["DeviceNetworkEvents"][0]["ActionType"] = "A" * length
+    report = via_route(backend, request(bundle)).report
+    for fields in (report.snapshot, report.observation.selected_fields):
+        assert (
+            next(field for field in fields if field.name == "ActionType").status
+            == state
+        )
+
+
+def test_incomplete_unrelated_row_cannot_hide_known_differing_representations(backend):
+    bundle = json.loads(SAMPLE.read_bytes())
+    bundle["tables"]["DeviceNetworkEvents"][1]["ActionType"] = "DifferentLiteral"
+    bundle["tables"]["DeviceNetworkEvents"].append({"RemotePort": False})
+    report = via_route(backend, request(bundle)).report
+    comparison = next(item for item in report.comparisons if item.field == "ActionType")
+    assert comparison.state == "different_representation"
+    assert "1 other rows have absent or invalid" in comparison.explanation
+
+
 def test_csv_bom_crlf_string_types_and_unknown_fields_survive(backend):
     raw = '\ufeffTimestamp,RemotePort,approved,annotation\r\n2026-11-07T14:00:00Z,00443,true,"<script>approve</script>"\r\n'
     req = native.NativeInvestigationRequest(

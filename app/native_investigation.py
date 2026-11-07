@@ -149,7 +149,8 @@ def _snapshot_field(row, index, name) -> TypedField:
     if name not in TEXT_FIELDS or not field.present:
         return field
     value = field.original_value
-    valid = isinstance(value, str) and bool(value.strip()) and len(value) <= 4096
+    limit = 256 if name == "ActionType" else 4096
+    valid = isinstance(value, str) and bool(value.strip()) and len(value) <= limit
     return field.model_copy(
         update={
             "status": "unverified" if valid else "invalid_shape",
@@ -172,30 +173,28 @@ def _comparisons(report, snapshot):
         paths = tuple(
             f"DeviceNetworkEvents[{i}].{name}" for i, row in others if name in row
         )
-        comparable = (
-            bool(others)
-            and selected.status not in {"absent", "invalid_shape"}
-            and all(
-                _snapshot_field(row, i, name).status not in {"absent", "invalid_shape"}
-                for i, row in others
-            )
-        )
+        valid_others = [
+            row
+            for i, row in others
+            if _snapshot_field(row, i, name).status not in {"absent", "invalid_shape"}
+        ]
         state = "not_comparable"
         explanation = "No complete set of valid supplied representations for this field across the selected and other rows. Missing or invalid values remain unknown."
-        if comparable:
+        if valid_others and selected.status not in {"absent", "invalid_shape"}:
             same = all(
                 _canonical(row[name]) == _canonical(selected.original_value)
-                for _, row in others
+                for row in valid_others
             )
-            state = "same_representation" if same else "different_representation"
-            explanation = (
-                (
-                    "All other supplied network rows have the same literal value and JSON type."
-                    if same
-                    else "At least one other supplied network row has a different literal value or JSON type; different events may legitimately differ."
-                )
-                + " This establishes no causal/process association or contradiction about one real event."
-            )
+            if not same:
+                state = "different_representation"
+                explanation = "At least one other supplied network row has a different literal value or JSON type; different events may legitimately differ."
+            elif len(valid_others) == len(others):
+                state = "same_representation"
+                explanation = "All other supplied network rows have the same literal value and JSON type."
+        incomplete = len(others) - len(valid_others)
+        if incomplete:
+            explanation += f" {incomplete} other rows have absent or invalid representations and were not compared."
+        explanation += " This establishes no causal/process association or contradiction about one real event."
         result.append(
             RepresentationComparison(
                 field=name,
