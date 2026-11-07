@@ -9,7 +9,7 @@
     "ci_status": "success"
   },
   "working_branch": "feature/sprint15-analyst-utility-and-request-lifecycle",
-  "final_implementation_source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+  "final_implementation_source": "fb111d7bb9b8f3245c236eecdcd29134db720bb8",
   "handoff_commit_scope": "documentation and logs only; exact final pushed SHA/origin/CI proof reported in session handoff",
   "python": "3.13.1",
   "runtime": "existing Windows CPython venv",
@@ -40,7 +40,7 @@
     },
     {
       "command": ".\\.venv\\Scripts\\python.exe -B -m ruff check <all git ls-files *.py>",
-      "source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+      "source": "fb111d7bb9b8f3245c236eecdcd29134db720bb8",
       "files": 346,
       "status": "PASS",
       "log": "final_ruff.txt"
@@ -58,6 +58,14 @@
     {
       "command": "read-only temporary starting inventory hash comparison and original preservation.verify_raw()",
       "status": "PASS"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m pytest -q",
+      "source": "fb111d7bb9b8f3245c236eecdcd29134db720bb8",
+      "passed": 3210,
+      "warnings": 1,
+      "seconds": 385.22,
+      "log": "final_pytest_after_interruption_guard.txt"
     }
   ],
   "focused_gates": {
@@ -66,7 +74,10 @@
     "backend_lifecycle_and_required_legacy_seams": 279,
     "new_backend_cases": 55,
     "dashboard_and_native_regressions_before_final_polish": 92,
-    "final_lifecycle_dashboard": 30
+    "final_lifecycle_dashboard": 30,
+    "final_backend_lifecycle_and_required_legacy_seams": 282,
+    "final_new_backend_cases": 58,
+    "final_lifecycle_dashboard_after_hosted_fix": 30
   },
   "warning": "One inherited Starlette TestClient/httpx deprecation; packages unchanged.",
   "preservation": {
@@ -132,17 +143,21 @@
     "Existing Pydantic envelopes reserialized and revalidated before completion.",
     "API serialization/byte budget checked before completed state.",
     "Windows oversized test IDs and AppTest release callback harness failures corrected; no frozen gold changes.",
-    "Initial full-feature whitespace failure preserved in readout; new Markdown ending fixed and full suite repeated."
+    "Initial full-feature whitespace failure preserved in readout; new Markdown ending fixed and full suite repeated.",
+    "Final Tenacity causal review: active lifecycle context disables every retry, including BaseException interruption; original interrupt propagates.",
+    "First hosted CI failed two new AppTest helper API checks; public mapping key absence assertion fixes compatibility without changing dependencies or product behavior."
   ],
   "changed_files": [
     "Documentation/70_sprint15_continuation_plan.md",
     "Documentation/71_sprint15_continuation_readout.md",
     "Documentation/sprint15_continuation/checkpoint.md",
+    "Documentation/sprint15_continuation/ci_7c62379_failure.json",
     "Documentation/sprint15_continuation/examples/investigation.json",
     "Documentation/sprint15_continuation/examples/investigation.md",
     "Documentation/sprint15_continuation/final_pip_check.txt",
     "Documentation/sprint15_continuation/final_pytest.txt",
     "Documentation/sprint15_continuation/final_pytest_after_export_ending.txt",
+    "Documentation/sprint15_continuation/final_pytest_after_interruption_guard.txt",
     "Documentation/sprint15_continuation/final_ruff.txt",
     "Documentation/sprint15_continuation/inference_lifecycle.md",
     "Documentation/sprint15_continuation/manual_qa.md",
@@ -167,5 +182,26 @@
     "tests/test_native_investigation_dashboard.py",
     "tests/test_sprint15_continuation_preservation.py",
     "tests/test_sprint15_preservation.py"
-  ]
+  ],
+  "local_streamlit": "1.58.0",
+  "prior_failed_ci": "ci_7c62379_failure.json",
+  "interruption_regression": {
+    "before_fix": {
+      "failed": 2,
+      "deselected": 55,
+      "warnings": 1,
+      "seconds": 3.34,
+      "observed_mocked_post_attempts_each": 2
+    },
+    "after_fix": {
+      "interruption_cases_passed": 3,
+      "full_provider_legacy_focused_passed": 282,
+      "warnings": 1,
+      "seconds": 12.73
+    },
+    "source": "fb111d7bb9b8f3245c236eecdcd29134db720bb8",
+    "real_os_signals": 0,
+    "actual_inference_sends": 0,
+    "legacy_predicate_preserved": true
+  }
 }

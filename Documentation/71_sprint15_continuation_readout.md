@@ -162,8 +162,8 @@ handoff reports the exact pushed feature SHA, origin equality and its CI URL.
 ## Final local validation
 
 CPython **3.13.1**, existing Windows virtual environment. Final implementation
-source: `610ff40a150e0ad1b8120e66d4e3bc2242997895`; subsequent handoff changes
-contain documentation/logs only. **3,207 passed, 1 inherited warning, 356.85s**
+source: `fb111d7bb9b8f3245c236eecdcd29134db720bb8`; subsequent handoff changes
+contain documentation/logs only. **3,210 passed, 1 inherited warning, 385.22s**
 with `python -B -m pytest -q`. All **346 tracked Python files** pass Ruff;
 `python -B -m pip check` reports no broken requirements; full-feature
 `git diff --check 9be773070f2176d40e3e80beccf65feaefdc03c0` passes.
@@ -171,20 +171,40 @@ The remaining warning is Starlette's inherited TestClient/httpx deprecation;
 no package was installed or upgraded to suppress it.
 
 Focused gates: 181 combined native tests before review polish; 45 native tests
-after the final export fix; 14 preservation tests; 279 backend/required legacy
-seam tests (55 new backend cases); 92 dashboard/native regressions before final
-UI polish and 30 final lifecycle dashboard cases. New authored cases total 137;
+after the final export fix; 14 preservation tests; 279 early and 282 final
+backend/required legacy seam tests (58 final new backend cases); 92 dashboard/native
+regressions before final UI polish and 30 final lifecycle dashboard cases.
+New authored cases total 140;
 the reported early baseline was 3,070. These are software checks, not accuracy.
 
 The initial full run at `3efc852` also passed 3,207 tests in 364.89s. Its log is
 preserved separately. The full-feature whitespace check then exposed an extra
 blank line at the end of the new generated Markdown example; `610ff40` normalizes
 the exporter ending and updates that example. Focused checks and the full suite
-were repeated against the corrected source. Both complete logs are retained.
+were repeated against the corrected source (3,207 passed in 356.85s).
+All three complete local logs are retained, including the final interruption fix.
 Earlier focused harness issues were also corrected: Windows pytest auto-generated
 an oversized fixture filename (explicit test IDs fixed it), and AppTest exposed
 a stale widget after a release rerun (a guarded pre-render callback fixed it).
 No frozen expectation, case denominator or historical result was changed.
+
+The first pushed head `7c62379` failed hosted CI
+[42413016721](https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/42413016721):
+2 failed, 3167 passed, 38 skipped. Hosted Python 3.13.18 / Streamlit 1.67.0 differs
+from local Python 3.13.1 / Streamlit 1.58.0. Both failures were the new test helper
+accessing removed `AppTest.session_state.filtered_state`; public mapping membership
+keeps the stronger guard-key-absence assertion. No package or product behavior
+changed for this compatibility fix. The failure metadata remains committed;
+hosted missing-artifact skips do not establish local raw-file preservation.
+
+Final causal review also exposed a real interruption retry defect: Tenacity catches
+BaseException, and two synthetic interruption tests each observed two mocked POSTs
+before the fix. `fb111d7` gates every retry off within an active lifecycle context
+while preserving the exact legacy predicate outside it. Three new tests verify
+one dispatch plus original interruption propagation and legacy compatibility.
+The pre-fix regression outcome (2 failed) and the after-fix focused outcome
+(282 passed) are retained in the validation record. No OS signal or model send
+was used. The complete 3,210-case final run validates both corrections.
 
 All 990 local historical raw files were verified, with no absent groups. Hash-only
 starting inventories confirm all 405 inherited untracked and 452 ignored files

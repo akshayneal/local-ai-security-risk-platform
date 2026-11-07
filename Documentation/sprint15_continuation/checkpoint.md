@@ -53,3 +53,26 @@ remaining local commit material. Final normal push and exact-commit CI are check
 in the session handoff. On resumption first run `git status --short`,
 `git rev-parse HEAD` and inspect origin/CI for that exact tip; do not repeat any
 frozen diagnostic or infer completion/cancellation from missing Activity/status.
+
+Final challenge follow-up (supersedes the prior final-source marker):
+`7c62379` was pushed normally and origin equality verified, but its CI run
+42413016721 failed two new UI test cases (3167 passed, 38 skipped). The new hosted
+Streamlit AppTest removed `filtered_state`; public mapping membership preserves
+the guard-absence assertion. The failure metadata remains in
+`ci_7c62379_failure.json`; no environment or production behavior changed for it.
+Separately, final causal review reproduced interruption retries: Tenacity catches
+BaseException, so two synthetic interruptions each made two mocked POSTs. A
+context-aware retry predicate now disables every retry in the opt-in context
+while preserving the exact legacy predicate. Three interruption tests pass, and
+the required provider/accounting focused suite passes 282 tests; UI passes 30.
+
+Final frozen implementation source is
+`fb111d7bb9b8f3245c236eecdcd29134db720bb8`. The full run finished:
+**3210 passed, 1 inherited warning, 385.22s**. Its separate new log is
+`final_pytest_after_interruption_guard.txt`. All 346 tracked Python files pass
+Ruff; dependency/diff checks pass. All prior logs/results retained. Actual
+model/embedding sends remain zero. No test/evaluation process remains active.
+Only documentation/log commit, normal feature push and exact-final-head CI remain
+at this checkpoint. The session handoff records the actual resulting SHA/run.
+For any later resumption, first inspect Git status/HEAD/origin and exact-head CI;
+do not repeat a frozen diagnostic or dispatch inference to re-create old results.
