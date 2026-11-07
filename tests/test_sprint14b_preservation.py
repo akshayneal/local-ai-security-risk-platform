@@ -6,10 +6,12 @@ import sys
 
 import pytest
 from sprint14b_history import _snapshot
+from sprint15_history import historical_test as sprint15_historical_test
 
 from evals.qualified_soc_contract_v2 import preservation as guard
 
 
+@sprint15_historical_test
 def test_current_exact_paths_and_all_original_blobs():
     assert guard.verify_scope()["protected_blobs"] == 757
 

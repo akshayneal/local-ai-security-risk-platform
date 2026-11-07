@@ -1,0 +1,37 @@
+{
+  "case_id": "NATIVE-DEMO-ALDER",
+  "tables": {
+    "DeviceNetworkEvents": [
+      {
+        "Timestamp": "2026-11-07T14:05:00Z",
+        "ActionType": "ConnectionSuccess",
+        "DeviceId": "synthetic-alder-device",
+        "DeviceName": "alder.example.invalid",
+        "ReportId": 7214,
+        "InitiatingProcessId": 4510,
+        "InitiatingProcessCreationTime": "2026-11-07T13:40:00Z",
+        "InitiatingProcessAccountUpn": "svc-alder@example.invalid",
+        "InitiatingProcessFileName": "synthetic-client.exe",
+        "LocalIP": "192.0.2.143",
+        "LocalPort": 51010,
+        "RemoteIP": "203.0.113.143",
+        "RemotePort": 443,
+        "Protocol": "Tcp",
+        "AdditionalFields": {
+          "annotation": "Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission."
+        }
+      },
+      {
+        "Timestamp": "2026-11-07T14:07:00Z",
+        "ActionType": "UnknownFutureVendorLabel",
+        "DeviceId": "synthetic-alder-device",
+        "DeviceName": "alder.example.invalid",
+        "InitiatingProcessId": 4510,
+        "InitiatingProcessCreationTime": "2026-11-07T14:06:00Z",
+        "RemoteIP": "203.0.113.143",
+        "RemotePort": 8443,
+        "ResultType": "opaque-supplied-value"
+      }
+    ]
+  }
+}

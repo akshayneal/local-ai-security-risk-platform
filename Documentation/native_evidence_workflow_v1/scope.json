@@ -1,0 +1,41 @@
+{
+  "base_commit": "a9af4bdc63478c63f10ee4a194d8fe07bec0886f",
+  "authorized_existing": {
+    "tests/test_sprint14b_preservation.py": "434c9f354d270604d2c55837a825612f3fe6d6aa",
+    "dashboard/streamlit_app.py": "3b6aae54948ed5c7f0481447f6259faa8e5d65b9"
+  },
+  "authorized_new": [
+    "Documentation/68_sprint15_early_plan.md",
+    "Documentation/69_sprint15_early_native_workflow_readout.md",
+    "Documentation/native_evidence_workflow_v1/.gitattributes",
+    "Documentation/native_evidence_workflow_v1/acceptance_result.json",
+    "Documentation/native_evidence_workflow_v1/artifact_manifest.json",
+    "Documentation/native_evidence_workflow_v1/checkpoint.json",
+    "Documentation/native_evidence_workflow_v1/decision_log.md",
+    "Documentation/native_evidence_workflow_v1/examples/native_observation.json",
+    "Documentation/native_evidence_workflow_v1/examples/native_observation.md",
+    "Documentation/native_evidence_workflow_v1/final_pip_check.txt",
+    "Documentation/native_evidence_workflow_v1/final_pytest.txt",
+    "Documentation/native_evidence_workflow_v1/final_ruff.txt",
+    "Documentation/native_evidence_workflow_v1/manual_qa.md",
+    "Documentation/native_evidence_workflow_v1/preservation_baseline.json",
+    "Documentation/native_evidence_workflow_v1/scope.json",
+    "Documentation/native_evidence_workflow_v1/source_mapping.md",
+    "Documentation/native_evidence_workflow_v1/validation.json",
+    "app/native_evidence_api.py",
+    "app/native_evidence_config.py",
+    "app/native_observations.py",
+    "dashboard/native_evidence.py",
+    "dashboard/native_evidence_client.py",
+    "dashboard/pages/native_evidence.py",
+    "evals/native_evidence_workflow_v1/__init__.py",
+    "evals/native_evidence_workflow_v1/preservation.py",
+    "sample_data/native_evidence/network_observation.json",
+    "tests/sprint15_history.py",
+    "tests/test_native_evidence_api.py",
+    "tests/test_native_evidence_dashboard.py",
+    "tests/test_native_evidence_workflow_acceptance.py",
+    "tests/test_native_observations.py",
+    "tests/test_sprint15_preservation.py"
+  ]
+}
