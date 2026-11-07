@@ -7,6 +7,16 @@ from urllib.parse import urlsplit
 import requests
 
 from app.native_evidence_config import ENDPOINT, INVALID_INPUT, WITHHELD
+from app.native_investigation import (
+    ENDPOINT as INVESTIGATION_ENDPOINT,
+)
+from app.native_investigation import (
+    NativeInvestigationEnvelope,
+    NativeInvestigationRequest,
+)
+from app.native_investigation import (
+    validate_response as validate_investigation_response,
+)
 from app.native_observations import (
     MAX_RESPONSE_BYTES,
     NativeObservationEnvelope,
@@ -54,12 +64,31 @@ def _reject_constant(_):
 def post_native_observations(
     base_url: str, request: NativeObservationRequest
 ) -> tuple[NativeObservationEnvelope | None, str | None]:
+    return _post_native(
+        base_url, request, NativeObservationRequest, ENDPOINT, validate_response
+    )
+
+
+def post_native_investigation(
+    base_url: str, request: NativeInvestigationRequest
+) -> tuple[NativeInvestigationEnvelope | None, str | None]:
+    return _post_native(
+        base_url,
+        request,
+        NativeInvestigationRequest,
+        INVESTIGATION_ENDPOINT,
+        validate_investigation_response,
+    )
+
+
+def _post_native(base_url, request, request_model, endpoint, validate):
+    """One bounded loopback request; each version reconstructs its own response."""
     try:
         base = _local_base(base_url)
     except (ValueError, TypeError, AttributeError):
         return None, LOCAL_ONLY
     try:
-        request = NativeObservationRequest.model_validate(
+        request = request_model.model_validate(
             request.model_dump(mode="json", warnings=False)
         )
     except (ValueError, TypeError, AttributeError):
@@ -70,7 +99,7 @@ def post_native_observations(
             # must not be forwarded away from the explicitly selected loopback IP.
             transport.trust_env = False
             with transport.post(
-                base + ENDPOINT,
+                base + endpoint,
                 json=request.model_dump(mode="json"),
                 timeout=(3, 15),
                 stream=True,
@@ -92,7 +121,7 @@ def post_native_observations(
             object_pairs_hook=_unique_pairs,
             parse_constant=_reject_constant,
         )
-        return validate_response(request, decoded), None
+        return validate(request, decoded), None
     except requests.exceptions.Timeout:
         return (
             None,

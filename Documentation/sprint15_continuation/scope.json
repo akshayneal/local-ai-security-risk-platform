@@ -1,0 +1,36 @@
+{
+  "base_commit": "9be773070f2176d40e3e80beccf65feaefdc03c0",
+  "authorized_existing": {
+    "app/native_evidence_api.py": "13f246dca991bcf473dc5edcf02d443884dcb46f",
+    "app/ollama_client.py": "568c3b500701bd5a6e4d83de4204dba22529c943",
+    "dashboard/api_client.py": "478a783f759b2e5a34ef1953c39421a61122a375",
+    "dashboard/native_evidence.py": "a6005150a0870025e49e2b1673e4ae6cc499fba4",
+    "dashboard/native_evidence_client.py": "1b0c07cdb3b0022aa6bec1e29b1ce79008ec87b2",
+    "dashboard/workflows.py": "cd81c8b8e558bba60204daa2ab6c63708fe3b7c0",
+    "tests/test_sprint15_preservation.py": "3cb0f82246bd58d396415613179172d359a4719d"
+  },
+  "authorized_new": [
+    "Documentation/70_sprint15_continuation_plan.md",
+    "Documentation/71_sprint15_continuation_readout.md",
+    "Documentation/sprint15_continuation/checkpoint.md",
+    "Documentation/sprint15_continuation/examples/investigation.json",
+    "Documentation/sprint15_continuation/examples/investigation.md",
+    "Documentation/sprint15_continuation/inference_lifecycle.md",
+    "Documentation/sprint15_continuation/manual_qa.md",
+    "Documentation/sprint15_continuation/native_semantics.md",
+    "Documentation/sprint15_continuation/reviewer_form.md",
+    "Documentation/sprint15_continuation/reviewer_guide.md",
+    "Documentation/sprint15_continuation/scope.json",
+    "Documentation/sprint15_continuation/validation.json",
+    "app/inference_lifecycle.py",
+    "app/lifecycle_api.py",
+    "app/native_investigation.py",
+    "dashboard/lifecycle.py",
+    "tests/sprint15_continuation_history.py",
+    "tests/test_inference_lifecycle.py",
+    "tests/test_lifecycle_dashboard.py",
+    "tests/test_native_investigation.py",
+    "tests/test_native_investigation_dashboard.py",
+    "tests/test_sprint15_continuation_preservation.py"
+  ]
+}

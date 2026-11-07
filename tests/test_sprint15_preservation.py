@@ -5,11 +5,15 @@ import subprocess
 import sys
 
 import pytest
+from sprint15_continuation_history import (
+    historical_test as sprint15_continuation_historical_test,
+)
 from sprint15_history import _snapshot
 
 from evals.native_evidence_workflow_v1 import preservation as guard
 
 
+@sprint15_continuation_historical_test
 def test_current_exact_paths_and_all_original_blobs():
     assert guard.verify_scope()["protected_blobs"] == 795
 

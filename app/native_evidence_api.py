@@ -7,6 +7,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.routing import APIRoute
 
+from app import native_investigation
 from app.ai_security_api import app as original_gateway
 from app.native_evidence_config import (
     ENDPOINT,
@@ -111,6 +112,29 @@ def native_observations(request: NativeObservationRequest):
             raise ValueError("response_byte_budget")
         return response
     except Exception:  # noqa: BLE001 -- unvalidated result must never escape
+        raise HTTPException(500, detail=WITHHELD) from None
+
+
+@router.post(
+    native_investigation.ENDPOINT,
+    response_model=native_investigation.NativeInvestigationEnvelope,
+)
+def native_investigation_report(
+    request: native_investigation.NativeInvestigationRequest,
+):
+    try:
+        result = native_investigation.build_response(request)
+    except NativeObservationError:
+        raise HTTPException(422, detail=INVALID_INPUT) from None
+    except Exception:  # noqa: BLE001 -- fixed boundary; never echo source/errors
+        raise HTTPException(500, detail=WITHHELD) from None
+    try:
+        result = native_investigation.validate_response(request, result)
+        response = JSONResponse(result.model_dump(mode="json"))
+        if len(response.body) > native_investigation.MAX_RESPONSE_BYTES:
+            raise ValueError("response_byte_budget")
+        return response
+    except Exception:  # noqa: BLE001 -- reject mutated reports and either export
         raise HTTPException(500, detail=WITHHELD) from None
 
 
