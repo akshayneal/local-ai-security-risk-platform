@@ -1,0 +1,14 @@
+{
+  "format": "evidence-qualification-input-freeze/1",
+  "date": "2026-11-06",
+  "model_sends": 0,
+  "diagnostic_run_count": 0,
+  "authoring_limit": "Implementation-authored synthetic expectations; no independent human judgment",
+  "sha256": {
+    "evals/evidence_qualification_v1/development_cases.json": "086ca6d2b399f7171a3f5ab14f84006ca5346d09f7fda620a2f1fb74c407e40a",
+    "evals/evidence_qualification_v1/diagnostic_cases.json": "e74793cbc7120215f6bfe719bdb44b910fbd4519649cca438fa3bf74e358a7c2",
+    "evals/evidence_qualification_v1/diagnostic_key.json": "6faa2654d7ad80a2b4ee0f9f5b62bd73d70543dca9eadeb3318e387bea713a81",
+    "evals/evidence_qualification_v1/rubric.md": "c59261ade3023e4badfc1c408f207c730e77a92575c63a417511c5233565678f",
+    "evals/evidence_qualification_v1/author_suite.py": "311d9ab0cff37d8e1bdd20f883d679a7c24f99c8e01b407c846d8a7797cc4ad0"
+  }
+}
