@@ -1,5 +1,5 @@
 {
-  "stage": "typed_native_core_complete_ready_for_integration",
+  "stage": "API_UI_integrated_focused_validation_passed",
   "date": "2026-11-07",
   "baseline14b": "a9af4bdc63478c63f10ee4a194d8fe07bec0886f",
   "branch": "feature/native-evidence-workflow-sprint15",
@@ -16,10 +16,12 @@
   "native_mapping": "observation-only;MORE_EVIDENCE_REQUIRED for completion/permission",
   "model_sends": 0,
   "embedding_sends": 0,
-  "next": "Commit nativecore/preservation;thenimplementgatedAPI/UIactualworkflow",
+  "next": "Commitintegration;oldcompatibilitythenfullsuite/Ruff/pip/diff/preservation;save actualrouteexample/readout;push exactCI",
   "independent_human_review": "PENDING (0 verified)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
   "native_core_tests": "75passed;combinednative+Microsoft179passed3.12s",
-  "native_semantics": "reported shapes/labels only;no completion/permission mapping"
+  "native_semantics": "reported shapes/labels only;no completion/permission mapping",
+  "focused_tests": "146passed1warning19.31s",
+  "workflow": "defaultoff experimentalASGI+Streamlit;actualTestClient/AppTestrenderanddownloads"
 }

@@ -10,7 +10,9 @@ from dotenv import load_dotenv
 # Streamlit also executes this file with dashboard/ as the script directory.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from app.native_evidence_config import native_evidence_enabled
 from dashboard.api_client import get_data
+from dashboard.native_evidence import navigation_groups
 from dashboard.navigation import PAGE_GROUPS
 
 load_dotenv()
@@ -23,7 +25,7 @@ page = st.navigation(
             st.Page(path, title=title, default=title == "Overview")
             for path, title in pages
         ]
-        for group, pages in PAGE_GROUPS.items()
+        for group, pages in navigation_groups(PAGE_GROUPS, enabled=native_evidence_enabled()).items()
     },
     expanded=True,
 )

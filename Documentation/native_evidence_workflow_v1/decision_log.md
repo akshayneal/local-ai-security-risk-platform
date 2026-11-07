@@ -34,3 +34,19 @@ reused unchanged; no review flags or original v1/v2 bytes are modified.
 14Bfinala9af4bdc63478c63f10ee4a194d8fe07bec0886f equalsorigin. ExactCI
 42347233153 completed successfully,includingtests andRuff. Continueon15from
 thatHEAD. No newhistoricalsource/evaluationchanges or modelcalls occurred.
+
+## 3 ? API/UI acceptance and bounded transport (2026-11-07)
+
+Newcomposition gateway enables only the observation route with the exactprocess
+flag; oldgateway/main/navigationfiles remainunchanged. Client acceptsloopbackIP
+only,ignoresproxy/netrcenvironment,disallowsredirects and streamsbounded4MBresponse
+with no retry. Fullresponse/request/export reconstruction precedes rendering.
+Actualclient?TestClient?AppTest cases rendertwo downloads and submitonlyonBuild;
+inputchanges,invalid replacements andtampered savedreports removeexports.
+
+Initialharnessfailure referenced nonexistentprivate AppTest._page_hashes; public
+navigationcapture isolated this as a testadapter issue,not productroutefailure.
+A separate smallproductbug lost sample-loaderror during inputfingerprint clearing:
+retain that safeerror after invalidation; missing-sample andnormal-loadcontrols pass.
+No historicalscore or sourcewas tuned. Finalnewcore/API/UI/acceptance/preservation
+focus:146passed,1existingwarning,19.31seconds; scopedRuffpasses.
