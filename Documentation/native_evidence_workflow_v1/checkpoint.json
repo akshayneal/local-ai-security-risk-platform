@@ -1,5 +1,5 @@
 {
-  "stage": "API_UI_integrated_focused_validation_passed",
+  "stage": "EARLY_SPRINT15_COMPLETE_local_gates_ready_for_push_CI",
   "date": "2026-11-07",
   "baseline14b": "a9af4bdc63478c63f10ee4a194d8fe07bec0886f",
   "branch": "feature/native-evidence-workflow-sprint15",
@@ -16,12 +16,29 @@
   "native_mapping": "observation-only;MORE_EVIDENCE_REQUIRED for completion/permission",
   "model_sends": 0,
   "embedding_sends": 0,
-  "next": "Commitintegration;oldcompatibilitythenfullsuite/Ruff/pip/diff/preservation;save actualrouteexample/readout;push exactCI",
+  "next": "Normalfeaturecommit/push,verifyoriginandexactfinalSHA CI;no diagnosticreruns ormodelcalls",
   "independent_human_review": "PENDING (0 verified)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
   "native_core_tests": "75passed;combinednative+Microsoft179passed3.12s",
   "native_semantics": "reported shapes/labels only;no completion/permission mapping",
   "focused_tests": "146passed1warning19.31s",
-  "workflow": "defaultoff experimentalASGI+Streamlit;actualTestClient/AppTestrenderanddownloads"
+  "workflow": "defaultoff experimentalASGI+Streamlit;actualTestClient/AppTestrenderanddownloads",
+  "source_commit": "4b67025ef60c2d3deb787d3c3327500a7f024fff",
+  "full_validation": {
+    "state": "PASSED",
+    "passed": 3070,
+    "warnings": 1,
+    "seconds": 325.79,
+    "log": "Documentation/native_evidence_workflow_v1/final_pytest.txt"
+  },
+  "ruff": "PASS336trackedPython",
+  "pip_check": "PASS",
+  "preservation": {
+    "blobs": 795,
+    "raw": 990,
+    "s4check_visible": 405
+  },
+  "new_diagnostic": "NOT RUN;no newdiagnosticneeded",
+  "runtime_lifecycle": "DEFERRED;legacytimeouts/retriesunchanged"
 }

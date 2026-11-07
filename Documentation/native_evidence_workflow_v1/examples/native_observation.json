@@ -1,0 +1,598 @@
+{
+  "schema_version": "native-observation-report/1",
+  "request_fingerprint": "aa255874600ea5a124b01d789ceba2dfd5febd245fd4bb01b4d0a4d3ce09c022",
+  "upload_id": "UPLOAD-c2f3faeea95874510a8a361e",
+  "source_sha256": "c2f3faeea95874510a8a361e7d3e328e571d4809ed14cfd91b15b4cc93620ded",
+  "source_revision": "sha256:c2f3faeea95874510a8a361e7d3e328e571d4809ed14cfd91b15b4cc93620ded",
+  "source_bytes": 1297,
+  "source_format": "microsoft_json",
+  "source_profile": "microsoft-projected-native-observation/1",
+  "source_status": "supplied_unverified",
+  "currentness": "submitted_snapshot_only",
+  "external_currentness": "unchecked",
+  "authority": "observation_only",
+  "review_status": "not_reviewed",
+  "case_id": "NATIVE-DEMO-ALDER",
+  "case_label_status": "supplied_unverified",
+  "row_index": 0,
+  "row_identity": "UPLOAD-c2f3faeea95874510a8a361e/DeviceNetworkEvents/0",
+  "row_identity_status": "upload_locator; not authenticated event identity",
+  "reported_event_class": "supplied_DeviceNetworkEvents_row",
+  "original_source_text": "{\n  \"case_id\": \"NATIVE-DEMO-ALDER\",\n  \"tables\": {\n    \"DeviceNetworkEvents\": [\n      {\n        \"Timestamp\": \"2026-11-07T14:05:00Z\",\n        \"ActionType\": \"ConnectionSuccess\",\n        \"DeviceId\": \"synthetic-alder-device\",\n        \"DeviceName\": \"alder.example.invalid\",\n        \"ReportId\": 7214,\n        \"InitiatingProcessId\": 4510,\n        \"InitiatingProcessCreationTime\": \"2026-11-07T13:40:00Z\",\n        \"InitiatingProcessAccountUpn\": \"svc-alder@example.invalid\",\n        \"InitiatingProcessFileName\": \"synthetic-client.exe\",\n        \"LocalIP\": \"192.0.2.143\",\n        \"LocalPort\": 51010,\n        \"RemoteIP\": \"203.0.113.143\",\n        \"RemotePort\": 443,\n        \"Protocol\": \"Tcp\",\n        \"AdditionalFields\": {\n          \"annotation\": \"Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission.\"\n        }\n      },\n      {\n        \"Timestamp\": \"2026-11-07T14:07:00Z\",\n        \"ActionType\": \"UnknownFutureVendorLabel\",\n        \"DeviceId\": \"synthetic-alder-device\",\n        \"DeviceName\": \"alder.example.invalid\",\n        \"InitiatingProcessId\": 4510,\n        \"InitiatingProcessCreationTime\": \"2026-11-07T14:06:00Z\",\n        \"RemoteIP\": \"203.0.113.143\",\n        \"RemotePort\": 8443,\n        \"ResultType\": \"opaque-supplied-value\"\n      }\n    ]\n  }\n}\n",
+  "original_bundle": {
+    "case_id": "NATIVE-DEMO-ALDER",
+    "tables": {
+      "DeviceNetworkEvents": [
+        {
+          "Timestamp": "2026-11-07T14:05:00Z",
+          "ActionType": "ConnectionSuccess",
+          "DeviceId": "synthetic-alder-device",
+          "DeviceName": "alder.example.invalid",
+          "ReportId": 7214,
+          "InitiatingProcessId": 4510,
+          "InitiatingProcessCreationTime": "2026-11-07T13:40:00Z",
+          "InitiatingProcessAccountUpn": "svc-alder@example.invalid",
+          "InitiatingProcessFileName": "synthetic-client.exe",
+          "LocalIP": "192.0.2.143",
+          "LocalPort": 51010,
+          "RemoteIP": "203.0.113.143",
+          "RemotePort": 443,
+          "Protocol": "Tcp",
+          "AdditionalFields": {
+            "annotation": "Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission."
+          }
+        },
+        {
+          "Timestamp": "2026-11-07T14:07:00Z",
+          "ActionType": "UnknownFutureVendorLabel",
+          "DeviceId": "synthetic-alder-device",
+          "DeviceName": "alder.example.invalid",
+          "InitiatingProcessId": 4510,
+          "InitiatingProcessCreationTime": "2026-11-07T14:06:00Z",
+          "RemoteIP": "203.0.113.143",
+          "RemotePort": 8443,
+          "ResultType": "opaque-supplied-value"
+        }
+      ]
+    }
+  },
+  "canonical_bundle": "{\n\"case_id\":\"NATIVE-DEMO-ALDER\",\n\"tables\":{\n\"DeviceNetworkEvents\":[\n{\n\"ActionType\":\"ConnectionSuccess\",\n\"AdditionalFields\":{\n\"annotation\":\"Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission.\"\n},\n\"DeviceId\":\"synthetic-alder-device\",\n\"DeviceName\":\"alder.example.invalid\",\n\"InitiatingProcessAccountUpn\":\"svc-alder@example.invalid\",\n\"InitiatingProcessCreationTime\":\"2026-11-07T13:40:00Z\",\n\"InitiatingProcessFileName\":\"synthetic-client.exe\",\n\"InitiatingProcessId\":4510,\n\"LocalIP\":\"192.0.2.143\",\n\"LocalPort\":51010,\n\"Protocol\":\"Tcp\",\n\"RemoteIP\":\"203.0.113.143\",\n\"RemotePort\":443,\n\"ReportId\":7214,\n\"Timestamp\":\"2026-11-07T14:05:00Z\"\n},\n{\n\"ActionType\":\"UnknownFutureVendorLabel\",\n\"DeviceId\":\"synthetic-alder-device\",\n\"DeviceName\":\"alder.example.invalid\",\n\"InitiatingProcessCreationTime\":\"2026-11-07T14:06:00Z\",\n\"InitiatingProcessId\":4510,\n\"RemoteIP\":\"203.0.113.143\",\n\"RemotePort\":8443,\n\"ResultType\":\"opaque-supplied-value\",\n\"Timestamp\":\"2026-11-07T14:07:00Z\"\n}\n]\n}\n}",
+  "observations": [
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "ActionType",
+      "original_path": "DeviceNetworkEvents[0].ActionType",
+      "value": "ConnectionSuccess",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "AdditionalFields",
+      "original_path": "DeviceNetworkEvents[0].AdditionalFields",
+      "value": {
+        "annotation": "Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission."
+      },
+      "original_type": "dict",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "DeviceId",
+      "original_path": "DeviceNetworkEvents[0].DeviceId",
+      "value": "synthetic-alder-device",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "DeviceName",
+      "original_path": "DeviceNetworkEvents[0].DeviceName",
+      "value": "alder.example.invalid",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "InitiatingProcessAccountUpn",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessAccountUpn",
+      "value": "svc-alder@example.invalid",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "InitiatingProcessCreationTime",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessCreationTime",
+      "value": "2026-11-07T13:40:00Z",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "InitiatingProcessFileName",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessFileName",
+      "value": "synthetic-client.exe",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "InitiatingProcessId",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessId",
+      "value": 4510,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "LocalIP",
+      "original_path": "DeviceNetworkEvents[0].LocalIP",
+      "value": "192.0.2.143",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "LocalPort",
+      "original_path": "DeviceNetworkEvents[0].LocalPort",
+      "value": 51010,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "Protocol",
+      "original_path": "DeviceNetworkEvents[0].Protocol",
+      "value": "Tcp",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "RemoteIP",
+      "original_path": "DeviceNetworkEvents[0].RemoteIP",
+      "value": "203.0.113.143",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "RemotePort",
+      "original_path": "DeviceNetworkEvents[0].RemotePort",
+      "value": 443,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "ReportId",
+      "original_path": "DeviceNetworkEvents[0].ReportId",
+      "value": 7214,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 0,
+      "field": "Timestamp",
+      "original_path": "DeviceNetworkEvents[0].Timestamp",
+      "value": "2026-11-07T14:05:00Z",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "ActionType",
+      "original_path": "DeviceNetworkEvents[1].ActionType",
+      "value": "UnknownFutureVendorLabel",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "DeviceId",
+      "original_path": "DeviceNetworkEvents[1].DeviceId",
+      "value": "synthetic-alder-device",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "DeviceName",
+      "original_path": "DeviceNetworkEvents[1].DeviceName",
+      "value": "alder.example.invalid",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "InitiatingProcessCreationTime",
+      "original_path": "DeviceNetworkEvents[1].InitiatingProcessCreationTime",
+      "value": "2026-11-07T14:06:00Z",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "InitiatingProcessId",
+      "original_path": "DeviceNetworkEvents[1].InitiatingProcessId",
+      "value": 4510,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "RemoteIP",
+      "original_path": "DeviceNetworkEvents[1].RemoteIP",
+      "value": "203.0.113.143",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "RemotePort",
+      "original_path": "DeviceNetworkEvents[1].RemotePort",
+      "value": 8443,
+      "original_type": "int",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "ResultType",
+      "original_path": "DeviceNetworkEvents[1].ResultType",
+      "value": "opaque-supplied-value",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "table": "DeviceNetworkEvents",
+      "row": 1,
+      "field": "Timestamp",
+      "original_path": "DeviceNetworkEvents[1].Timestamp",
+      "value": "2026-11-07T14:07:00Z",
+      "original_type": "str",
+      "assertion_status": "supplied_unverified"
+    }
+  ],
+  "selected_fields": [
+    {
+      "name": "Timestamp",
+      "expected_path": "DeviceNetworkEvents[0].Timestamp",
+      "original_path": "DeviceNetworkEvents[0].Timestamp",
+      "present": true,
+      "original_value": "2026-11-07T14:05:00Z",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "2026-11-07T14:05:00Z",
+      "normalization": "aware_time_to_utc",
+      "reason_code": "aware_timestamp_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "ActionType",
+      "expected_path": "DeviceNetworkEvents[0].ActionType",
+      "original_path": "DeviceNetworkEvents[0].ActionType",
+      "present": true,
+      "original_value": "ConnectionSuccess",
+      "original_type": "str",
+      "status": "unverified",
+      "normalized_value": "ConnectionSuccess",
+      "normalization": "identity_text",
+      "reason_code": "reported_label_native_semantics_unverified",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "ResultType",
+      "expected_path": "DeviceNetworkEvents[0].ResultType",
+      "original_path": null,
+      "present": false,
+      "original_value": null,
+      "original_type": null,
+      "status": "absent",
+      "normalized_value": null,
+      "normalization": "none",
+      "reason_code": "not_supplied",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "DeviceId",
+      "expected_path": "DeviceNetworkEvents[0].DeviceId",
+      "original_path": "DeviceNetworkEvents[0].DeviceId",
+      "present": true,
+      "original_value": "synthetic-alder-device",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "synthetic-alder-device",
+      "normalization": "identity_text",
+      "reason_code": "reported_identifier_not_authenticated",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "DeviceName",
+      "expected_path": "DeviceNetworkEvents[0].DeviceName",
+      "original_path": "DeviceNetworkEvents[0].DeviceName",
+      "present": true,
+      "original_value": "alder.example.invalid",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "alder.example.invalid",
+      "normalization": "identity_text",
+      "reason_code": "reported_identifier_not_authenticated",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "ReportId",
+      "expected_path": "DeviceNetworkEvents[0].ReportId",
+      "original_path": "DeviceNetworkEvents[0].ReportId",
+      "present": true,
+      "original_value": 7214,
+      "original_type": "int",
+      "status": "valid_shape",
+      "normalized_value": 7214,
+      "normalization": "identity_integer",
+      "reason_code": "reported_number_not_unique_identity",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "InitiatingProcessId",
+      "expected_path": "DeviceNetworkEvents[0].InitiatingProcessId",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessId",
+      "present": true,
+      "original_value": 4510,
+      "original_type": "int",
+      "status": "valid_shape",
+      "normalized_value": 4510,
+      "normalization": "identity_integer",
+      "reason_code": "pid_shape_only_no_process_join",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "InitiatingProcessCreationTime",
+      "expected_path": "DeviceNetworkEvents[0].InitiatingProcessCreationTime",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessCreationTime",
+      "present": true,
+      "original_value": "2026-11-07T13:40:00Z",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "2026-11-07T13:40:00Z",
+      "normalization": "aware_time_to_utc",
+      "reason_code": "aware_timestamp_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "InitiatingProcessAccountUpn",
+      "expected_path": "DeviceNetworkEvents[0].InitiatingProcessAccountUpn",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessAccountUpn",
+      "present": true,
+      "original_value": "svc-alder@example.invalid",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "svc-alder@example.invalid",
+      "normalization": "identity_text",
+      "reason_code": "reported_identifier_not_authenticated",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "InitiatingProcessFileName",
+      "expected_path": "DeviceNetworkEvents[0].InitiatingProcessFileName",
+      "original_path": "DeviceNetworkEvents[0].InitiatingProcessFileName",
+      "present": true,
+      "original_value": "synthetic-client.exe",
+      "original_type": "str",
+      "status": "unverified",
+      "normalized_value": null,
+      "normalization": "not_normalized",
+      "reason_code": "field_semantics_not_established",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "InitiatingProcessCommandLine",
+      "expected_path": "DeviceNetworkEvents[0].InitiatingProcessCommandLine",
+      "original_path": null,
+      "present": false,
+      "original_value": null,
+      "original_type": null,
+      "status": "absent",
+      "normalized_value": null,
+      "normalization": "none",
+      "reason_code": "not_supplied",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "LocalIP",
+      "expected_path": "DeviceNetworkEvents[0].LocalIP",
+      "original_path": "DeviceNetworkEvents[0].LocalIP",
+      "present": true,
+      "original_value": "192.0.2.143",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "192.0.2.143",
+      "normalization": "canonical_ip_text",
+      "reason_code": "endpoint_role_preserved_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "LocalPort",
+      "expected_path": "DeviceNetworkEvents[0].LocalPort",
+      "original_path": "DeviceNetworkEvents[0].LocalPort",
+      "present": true,
+      "original_value": 51010,
+      "original_type": "int",
+      "status": "valid_shape",
+      "normalized_value": 51010,
+      "normalization": "identity_integer",
+      "reason_code": "port_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "RemoteIP",
+      "expected_path": "DeviceNetworkEvents[0].RemoteIP",
+      "original_path": "DeviceNetworkEvents[0].RemoteIP",
+      "present": true,
+      "original_value": "203.0.113.143",
+      "original_type": "str",
+      "status": "valid_shape",
+      "normalized_value": "203.0.113.143",
+      "normalization": "canonical_ip_text",
+      "reason_code": "endpoint_role_preserved_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "RemotePort",
+      "expected_path": "DeviceNetworkEvents[0].RemotePort",
+      "original_path": "DeviceNetworkEvents[0].RemotePort",
+      "present": true,
+      "original_value": 443,
+      "original_type": "int",
+      "status": "valid_shape",
+      "normalized_value": 443,
+      "normalization": "identity_integer",
+      "reason_code": "port_shape_only",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "Protocol",
+      "expected_path": "DeviceNetworkEvents[0].Protocol",
+      "original_path": "DeviceNetworkEvents[0].Protocol",
+      "present": true,
+      "original_value": "Tcp",
+      "original_type": "str",
+      "status": "unverified",
+      "normalized_value": null,
+      "normalization": "not_normalized",
+      "reason_code": "field_semantics_not_established",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "RemoteUrl",
+      "expected_path": "DeviceNetworkEvents[0].RemoteUrl",
+      "original_path": null,
+      "present": false,
+      "original_value": null,
+      "original_type": null,
+      "status": "absent",
+      "normalized_value": null,
+      "normalization": "none",
+      "reason_code": "not_supplied",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "Severity",
+      "expected_path": "DeviceNetworkEvents[0].Severity",
+      "original_path": null,
+      "present": false,
+      "original_value": null,
+      "original_type": null,
+      "status": "absent",
+      "normalized_value": null,
+      "normalization": "none",
+      "reason_code": "not_supplied",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "ProcessId",
+      "expected_path": "DeviceNetworkEvents[0].ProcessId",
+      "original_path": null,
+      "present": false,
+      "original_value": null,
+      "original_type": null,
+      "status": "absent",
+      "normalized_value": null,
+      "normalization": "none",
+      "reason_code": "not_supplied",
+      "assertion_status": "supplied_unverified"
+    },
+    {
+      "name": "AdditionalFields",
+      "expected_path": "DeviceNetworkEvents[0].AdditionalFields",
+      "original_path": "DeviceNetworkEvents[0].AdditionalFields",
+      "present": true,
+      "original_value": {
+        "annotation": "Fictional demonstration. This reported label does not prove a completed handshake, transferred data or permission."
+      },
+      "original_type": "dict",
+      "status": "unverified",
+      "normalized_value": null,
+      "normalization": "not_normalized",
+      "reason_code": "field_semantics_not_established",
+      "assertion_status": "supplied_unverified"
+    }
+  ],
+  "coverage": {
+    "total_rows": 2,
+    "selected_rows": 1,
+    "omitted_rows": 1,
+    "unsupported_rows": 0,
+    "duplicate_network_rows": 0,
+    "selected_field_count": 15,
+    "invalid_fields": [],
+    "absent_fields": [
+      "DeviceNetworkEvents[0].ResultType",
+      "DeviceNetworkEvents[0].InitiatingProcessCommandLine",
+      "DeviceNetworkEvents[0].RemoteUrl",
+      "DeviceNetworkEvents[0].Severity",
+      "DeviceNetworkEvents[0].ProcessId"
+    ],
+    "unverified_fields": [
+      "DeviceNetworkEvents[0].ActionType",
+      "DeviceNetworkEvents[0].InitiatingProcessFileName",
+      "DeviceNetworkEvents[0].Protocol",
+      "DeviceNetworkEvents[0].AdditionalFields"
+    ],
+    "unknown_vendor_fields": [
+      "AdditionalFields"
+    ]
+  },
+  "untrusted_authority_paths": [],
+  "warnings": [
+    "Vendor classifications are observations, not the platform assessment. Missing projected fields remain unknown; identifier matches do not prove causality.",
+    "Uploads are unreviewed supplied observations; source authenticity and external currentness are unchecked.",
+    "Valid field shape does not establish source truth, completed access, permission or security consequences.",
+    "No process/event association or authorization comparison was performed; unsupported native semantics remain explicit."
+  ],
+  "unsupported_predicates": [
+    "completed_connection_or_handshake",
+    "completed_data_transfer",
+    "data_flow_source_destination",
+    "permission_or_policy_authority",
+    "process_or_event_causal_association",
+    "https_from_port_443",
+    "compromise_or_attacker_intent",
+    "attack_technique",
+    "control_effectiveness"
+  ],
+  "execution_state": "not_executed",
+  "comparator_invocations": 0,
+  "association_state": "not_assessed",
+  "relationship": "unassessable",
+  "reason_codes": [
+    "native_semantics_unverified"
+  ],
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "capability_status": "experimental_off_by_default",
+  "independent_review": "PENDING"
+}

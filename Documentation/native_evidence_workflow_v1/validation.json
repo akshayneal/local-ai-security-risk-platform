@@ -1,0 +1,66 @@
+{
+  "format": "early15-validation/1",
+  "date": "2026-11-07",
+  "baseline14b": "a9af4bdc63478c63f10ee4a194d8fe07bec0886f",
+  "tested_source_commit": "4b67025ef60c2d3deb787d3c3327500a7f024fff",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "commands": {
+    "focused_new": "python -B -m pytest tests/test_native_observations.py tests/test_native_evidence_api.py tests/test_native_evidence_dashboard.py tests/test_native_evidence_workflow_acceptance.py tests/test_sprint15_preservation.py -q",
+    "full": "python -B -m pytest -q",
+    "ruff": "python -m ruff check <336 trackedPython paths from git ls-files>",
+    "pip": "python -m pip check",
+    "preservation": "python -B -m evals.native_evidence_workflow_v1.preservation",
+    "diff": "git diff a9af4bdc63478c63f10ee4a194d8fe07bec0886f --check"
+  },
+  "focused_new": {
+    "passed": 146,
+    "warnings": 1,
+    "seconds": 19.31
+  },
+  "old_compatibility": {
+    "passed": 41,
+    "seconds": 6.76,
+    "command": "python -m pytest -q tests/test_dashboard.py tests/test_microsoft_dashboard.py tests/test_ui_api.py --tb=short"
+  },
+  "full_suite": {
+    "passed": 3070,
+    "warnings": 1,
+    "seconds": 325.79,
+    "log": "final_pytest.txt",
+    "warning": "Existing FastAPI/Starlette httpx deprecation;no environment change"
+  },
+  "ruff": {
+    "tracked_python_files": 336,
+    "result": "PASS"
+  },
+  "pip_check": "PASS",
+  "diff_check": "PASS",
+  "preservation": {
+    "protected_original_blobs": 795,
+    "raw": {
+      "local_raw_files_checked": 990,
+      "absent_groups_not_claimed_preserved": []
+    },
+    "old14b_artifact_count": 39,
+    "old14b_artifact_approved_exception": [
+      "tests/test_sprint14b_preservation.py"
+    ],
+    "user_visible_untracked_s4check": 405,
+    "ignored_private_cache_files": 185
+  },
+  "historical_diagnostics": {
+    "sprint14": "one run11/12 unchanged",
+    "sprint14b": "one run10/10 unchanged",
+    "reruns_this_phase": 0
+  },
+  "new_diagnostic": "NOT RUN;softwarecontract/integrationtests appropriate",
+  "product_acceptance": "actualTestClient+client/AppTest,+JSON/Markdownexports;seeacceptance_result.json",
+  "runtime_lifecycle": "DEFERRED;oldmodel300s/retry/repair unchanged",
+  "model_sends": 0,
+  "embedding_sends": 0,
+  "independent_human_review": "PENDING (0 verified)",
+  "visual_qa": "USER VISUAL QA PENDING",
+  "release": "NO-GO",
+  "14b_CI": "success:https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/42347233153",
+  "early15_CI": "ExactfinalSHA verifiedafterpushinfinalhandoff;no self-referentialcommitclaim"
+}

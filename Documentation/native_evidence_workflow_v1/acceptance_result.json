@@ -1,0 +1,31 @@
+{
+  "format": "native-evidence-product-acceptance/1",
+  "method": "Actual experimentalASGI POST through FastAPI TestClient;no service/GUI started",
+  "endpoint": "/experimental/native-evidence",
+  "default": "disabled;processflag exact1 required",
+  "sample": "sample_data/native_evidence/network_observation.json",
+  "source_sha256": "c2f3faeea95874510a8a361e7d3e328e571d4809ed14cfd91b15b4cc93620ded",
+  "response_status": 200,
+  "report_schema": "native-observation-report/1",
+  "rows_retained": 2,
+  "selected_rows": 1,
+  "execution_state": "not_executed",
+  "comparator_invocations": 0,
+  "association_state": "not_assessed",
+  "relationship": "unassessable",
+  "review_status": "not_reviewed",
+  "approval_granted": false,
+  "action_status": "no_actions_executed",
+  "source_rebind_and_export_validation": "PASS",
+  "UI_evidence": "test_actual_client_api_page_render_exports_and_no_automatic_resubmit: actualclient/TestClient/AppTest renders2downloads; GUIvisualQA remainsPENDING",
+  "focused_tests": {
+    "new_core_api_ui_acceptance_preservation": 146,
+    "warnings": 1,
+    "seconds": 19.31
+  },
+  "model_sends": 0,
+  "embedding_sends": 0,
+  "new_frozen_diagnostic": "NOT RUN;not needed for this softwareintegration",
+  "independent_human_review": "PENDING (0 verified)",
+  "visual_qa": "USER VISUAL QA PENDING"
+}

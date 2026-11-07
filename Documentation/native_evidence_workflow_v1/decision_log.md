@@ -50,3 +50,19 @@ A separate smallproductbug lost sample-loaderror during inputfingerprint clearin
 retain that safeerror after invalidation; missing-sample andnormal-loadcontrols pass.
 No historicalscore or sourcewas tuned. Finalnewcore/API/UI/acceptance/preservation
 focus:146passed,1existingwarning,19.31seconds; scopedRuffpasses.
+
+## 4 ? Final bounded milestone and runtime deferral (2026-11-07)
+
+Fullfinalsuite3070passed,1existingwarning,325.79seconds. Ruff336trackedPython,
+pip/diff and795originalblobs/990raw preservepass. ActualAPI200samplekeeps2rows,
+notexecuted/unassessable and source-boundJSON/Markdown; AppTestproves2downloads,
+notvisualQA. Bothhistoricaldiagnostics stayone-run11/12 and10/10. No new15study
+isneeded; no models/embeddings/performance measurement. ECS/OCSF naming was
+consideredbutcannotestablishmissingvendorsemantics; no cross-schema mapping.
+
+Runtime supportingtask remainsdeferred: oldtransporthasuncertainpost-sendoutcome,
+no durable request-ID/completionlookup anddifferentSDK/repair/retrybudgets.
+A correctmonotonicdeadline/nonretry/unknowncontract needs a separatebounded
+transportdesign preservingfrozenaccounting; changingtwo300literals oraddinga
+workerwouldnot establishit. No partiallyimplementedlifecycleservice leftbehind.
+Next: finalfeaturecommit/push andexactSHA CI; human/visualreview remainsPENDING.
