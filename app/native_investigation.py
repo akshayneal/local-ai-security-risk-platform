@@ -455,7 +455,7 @@ def export_markdown(request, report) -> str:
     # The unchanged v1 appendix also retains unknown fields, exact source, warnings
     # and complete row/field observations. Its exporter independently revalidates.
     lines += [observations.export_markdown(request.observation_request(), source)]
-    return "\n\n".join(lines) + "\n"
+    return "\n\n".join(lines).rstrip("\n") + "\n"
 
 
 def build_response(request: NativeInvestigationRequest) -> NativeInvestigationEnvelope:
