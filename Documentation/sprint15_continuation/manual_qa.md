@@ -67,3 +67,63 @@ For default-off QA, remove the native flag in those terminals before restarting:
 The page should be absent and both experimental POST routes return 404. Original
 gateway routes remain available. Record your observations separately using the
 blank reviewer form; no automated result certifies the telemetry or model safety.
+
+## Optional lifecycle QA (separate, bounded user procedure)
+
+Codex used **zero model sends**. The automated mocked lifecycle tests are the
+first check; they need no provider, long sleep or service change:
+
+```powershell
+.\.venv\Scripts\python.exe -B -m pytest tests/test_inference_lifecycle.py tests/test_lifecycle_dashboard.py -q
+```
+
+To inspect the opt-in UI yourself, use unused ports and the same two foreground
+terminals as above, replacing the API entrypoint with `app.lifecycle_api:app`.
+Set these process variables in **both** terminals before starting them:
+
+```powershell
+$env:ENABLE_INFERENCE_LIFECYCLE = '1'
+$env:ANALYSIS_BUDGET_SECONDS = '900'
+$env:ANALYSIS_CONNECT_SECONDS = '5'
+$env:ANALYSIS_READ_SECONDS = '900'
+$env:ANALYSIS_UI_MARGIN_SECONDS = '30'
+```
+
+Keep the native flag if checking native reports too. The lifecycle gateway mounts
+the native gateway and the original routes; the launchers remain unchanged.
+Use one API worker: metadata/duplicate suppression are process-local.
+
+The lifecycle notice should appear on **generic SOC** and **AI System Risk
+Review**. Microsoft upload and AI Security UI retain legacy transport; the notice
+states that limitation. These pages do not gain cancellation or durable recovery.
+No model call is needed merely to inspect navigation, input forms and notices.
+
+If deliberately choosing a runtime smoke check later, use **one fictional generic
+SOC sample, one click, at most two raw generations including repair**. Verify no
+inherited evaluation is active and use the existing provider without any restart,
+pull or configuration change. Do not test by repeatedly submitting while a prior
+request might still run. This is a future user-run check, not a completed sprint
+evaluation or automatic diagnostic.
+
+After a timeout/disconnect, inspect the attempt ID and use **Check analysis attempt
+status**. Rerun within the same active Streamlit session, change inputs, load a
+sample and switch SOC/AI Risk pages: the guard in those workspaces must remain
+until an explicit decision. Full browser reload, a new session/tab or server
+restart can lose session state; record the attempt ID before leaving. There is
+no cross-session duplicate prevention. A completed
+status with a lost reply cannot recover the result. Missing status/Activity does
+not prove no dispatch. Read the warning before explicitly acknowledging a fresh
+request; that acknowledgment does not stop the old request. Prefer recording the
+finding and ending the check rather than generating overlapping work.
+
+The default is a 900-second cooperative elapsed budget and 30-second UI margin.
+Socket timeouts limit inactivity; they cannot guarantee a hard wall-clock stop or
+provider cancellation. Slow reads may outlive the target. Status records contain
+metadata only and at most 64 retained entries; restart/eviction loses history,
+and unresolved running/unknown records can fill the registry. Do not clear status
+or restart a process as proof that provider work has stopped.
+
+Stop only your own foreground processes when finished. Remove the lifecycle flag
+before restarting to verify the extra routes are absent. Report actual runtime
+send counts and visual findings separately; preparing these instructions is not
+successful runtime or visual validation.

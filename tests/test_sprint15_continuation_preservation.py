@@ -27,7 +27,6 @@ AUTHORIZED_EXISTING = {
     "dashboard/native_evidence.py",
     "dashboard/native_evidence_client.py",
     "app/ollama_client.py",
-    "dashboard/api_client.py",
     "dashboard/workflows.py",
 }
 

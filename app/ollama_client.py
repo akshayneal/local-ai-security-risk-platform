@@ -15,6 +15,7 @@ from app.inference_context import (
     complete_context_required,
     generation_system_prompt,
 )
+from app.inference_lifecycle import bounded_model_json, current_execution
 from app.model_metrics import configured_context, finish_attempt, start_attempt
 from app.prompts import SYSTEM_PROMPT
 
@@ -123,6 +124,15 @@ def call_model_json(
     """
     Sends a prompt to the local Ollama model and asks for JSON matching a schema.
     """
+    if current_execution() is not None:
+        return bounded_model_json(
+            user_prompt,
+            response_schema,
+            host=OLLAMA_HOST,
+            model=OLLAMA_MODEL,
+            temperature=OLLAMA_TEMPERATURE,
+            cleaner=_clean_model_json,
+        )
     record = start_attempt(user_prompt, response_schema)
     system_prompt = generation_system_prompt() or SYSTEM_PROMPT
     if record is not None:

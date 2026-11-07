@@ -10,6 +10,11 @@ from dashboard.api_client import GENERIC_ERROR, post_analysis
 from dashboard.evidence_inspector import correction_history, display_evidence_inspector
 from dashboard.exports import export_document, json_export, markdown_export
 from dashboard.knowledge_workspace import knowledge_checkbox
+from dashboard.lifecycle import (
+    lifecycle_enabled,
+    lifecycle_panel,
+    submit_lifecycle_analysis,
+)
 from dashboard.presentation import SOURCE_CAVEAT, TRUST_CAVEAT, integrity_rows
 from dashboard.sample_loader import (
     SampleLoadError,
@@ -159,6 +164,7 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
     )
     st.caption("Human review required · local inference · recommendations only")
     st.caption("SOC pillar" if soc else "AI Safety, Assurance & Policy pillar")
+    lifecycle_blocked = lifecycle_panel()
     if soc:
         from dashboard.microsoft_input import clear_soc_profile, microsoft_workspace
 
@@ -169,6 +175,11 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             on_change=clear_soc_profile,
         )
         if profile == "Microsoft Security telemetry":
+            if lifecycle_blocked:
+                st.warning(
+                    "Resolve the earlier analysis attempt before entering the Microsoft upload workflow."
+                )
+                return
             microsoft_workspace(base_url)
             return
     try:
@@ -220,9 +231,11 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             values[field] = widget(title, key=f"{prefix}_{field}")
         include_knowledge = knowledge_checkbox(prefix)
         submitted = st.form_submit_button(
-            "Analyze SOC alert" if soc else "Review AI system", type="primary"
+            "Analyze SOC alert" if soc else "Review AI system",
+            type="primary",
+            disabled=lifecycle_blocked,
         )
-    if submitted:
+    if submitted and not lifecycle_blocked:
         st.session_state.pop(f"{prefix}_result", None)
         st.session_state.pop(f"{prefix}_error", None)
         st.session_state.pop(f"{prefix}_evidence_reviews", None)
@@ -242,14 +255,20 @@ def workflow_page(base_url: str, *, soc: bool) -> None:
             )
         else:
             with st.spinner("Analyzing with the local model..."):
-                body, error = post_analysis(
-                    base_url,
-                    "/ui/analyze/soc-alert" if soc else "/ui/analyze/governance",
-                    {
-                        **request.model_dump(mode="json"),
-                        **({"local_knowledge": True} if include_knowledge else {}),
-                    },
-                )
+                analysis_payload = {
+                    **request.model_dump(mode="json"),
+                    **({"local_knowledge": True} if include_knowledge else {}),
+                }
+                if lifecycle_enabled():
+                    body, error = submit_lifecycle_analysis(
+                        base_url, soc=soc, payload=analysis_payload
+                    )
+                else:
+                    body, error = post_analysis(
+                        base_url,
+                        "/ui/analyze/soc-alert" if soc else "/ui/analyze/governance",
+                        analysis_payload,
+                    )
             if error:
                 st.session_state[f"{prefix}_error"] = error
             else:
