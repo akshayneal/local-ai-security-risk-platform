@@ -1,7 +1,8 @@
 {
   "base_commit": "285a6b5130e849daaea48406e1c9e1d7bc65ddf1",
   "authorized_existing": {
-    "tests/test_sprint13_preservation.py": "fce57d358ca6abfbbbbdcb1fe02d2e7287b57bc0"
+    "tests/test_sprint13_preservation.py": "fce57d358ca6abfbbbbdcb1fe02d2e7287b57bc0",
+    "tests/test_adaptive_completion.py": "372307e5732b16318a3617486bce9ef52f20b27c"
   },
   "authorized_new": [
     "Documentation/64_sprint14_plan.md",
@@ -19,6 +20,7 @@
     "Documentation/evidence_qualification_v1/final_pip_check.txt",
     "Documentation/evidence_qualification_v1/final_pytest.txt",
     "Documentation/evidence_qualification_v1/final_ruff.txt",
+    "Documentation/evidence_qualification_v1/first_full_pytest.txt",
     "Documentation/evidence_qualification_v1/preservation_baseline.json",
     "Documentation/evidence_qualification_v1/reviewer_guide.md",
     "Documentation/evidence_qualification_v1/runtime_observations.json",

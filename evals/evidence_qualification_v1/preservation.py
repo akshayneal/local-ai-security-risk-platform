@@ -10,6 +10,7 @@ BASE = "285a6b5130e849daaea48406e1c9e1d7bc65ddf1"
 BASELINE = "Documentation/evidence_qualification_v1/preservation_baseline.json"
 SCOPE = "Documentation/evidence_qualification_v1/scope.json"
 MIGRATED = "tests/test_sprint13_preservation.py"
+MIGRATED_INVENTORY = "tests/test_adaptive_completion.py"
 BASELINE_SHA256 = "af25266d2d742c54199c151c52828784264415ea14b94169c3a2d912fe363c03"
 
 
@@ -45,9 +46,10 @@ def verify_scope() -> dict:
     baseline = load_baseline()
     scope = json.loads((ROOT / SCOPE).read_bytes())
     if scope["base_commit"] != BASE or scope["authorized_existing"] != {
-        MIGRATED: baseline["git_blobs"][MIGRATED]
+        MIGRATED: baseline["git_blobs"][MIGRATED],
+        MIGRATED_INVENTORY: baseline["git_blobs"][MIGRATED_INVENTORY],
     }:
-        raise AssertionError("Only the immediately preceding guard may migrate")
+        raise AssertionError("Only the two exact historical source guards may migrate")
     new_paths = scope["authorized_new"]
     if len(new_paths) != len(set(new_paths)) or set(new_paths) & set(
         baseline["git_blobs"]
@@ -61,7 +63,9 @@ def verify_scope() -> dict:
     changed = git("diff", BASE, "--name-only").splitlines() + untracked
     assert_scope(changed, set(scope["authorized_existing"]) | set(new_paths))
     protected = {
-        path: value for path, value in baseline["git_blobs"].items() if path != MIGRATED
+        path: value
+        for path, value in baseline["git_blobs"].items()
+        if path not in {MIGRATED, MIGRATED_INVENTORY}
     }
     actual = subprocess.check_output(
         ["git", "hash-object", "--stdin-paths"],

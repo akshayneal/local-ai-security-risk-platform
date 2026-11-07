@@ -13,7 +13,7 @@ from evals.evidence_qualification_v1 import preservation as guard
 
 
 def test_current_exact_paths_and_all_original_blobs():
-    assert guard.verify_scope()["protected_blobs"] == 708
+    assert guard.verify_scope()["protected_blobs"] == 707
 
 
 def test_all_inherited_raw_files_remain_exact_and_unknown_stays_unknown():
@@ -53,8 +53,15 @@ def canonical(tree):
     return imports, body
 
 
-def test_immediate_guard_migration_adds_only_import_and_decorator():
-    original = ast.parse(guard.git("show", guard.BASE + ":" + guard.MIGRATED))
+@pytest.mark.parametrize(
+    "path,function",
+    [
+        (guard.MIGRATED, "test_current_exact_paths_and_all_original_blobs"),
+        (guard.MIGRATED_INVENTORY, "test_final_saved_artifact_and_source_inventory"),
+    ],
+)
+def test_historical_guard_migration_adds_only_import_and_decorator(path, function):
+    original = ast.parse(guard.git("show", guard.BASE + ":" + path))
     original.body.append(
         ast.ImportFrom(
             module="sprint14_history",
@@ -65,13 +72,13 @@ def test_immediate_guard_migration_adds_only_import_and_decorator():
     for node in original.body:
         if (
             isinstance(node, ast.FunctionDef)
-            and node.name == "test_current_exact_paths_and_all_original_blobs"
+            and node.name == function
         ):
             node.decorator_list.append(
                 ast.Name(id="sprint14_historical_test", ctx=ast.Load())
             )
     assert canonical(
-        ast.parse((guard.ROOT / guard.MIGRATED).read_text(encoding="utf-8"))
+        ast.parse((guard.ROOT / path).read_text(encoding="utf-8"))
     ) == canonical(original)
 
 
@@ -83,7 +90,22 @@ def test_history_cache_is_separate_and_archive_body_is_unchanged():
     assert _snapshot.__wrapped__ is original.__wrapped__ is previous.__wrapped__
 
 
-def test_unlisted_path_and_real_original_source_mutation_are_rejected(tmp_path):
+@pytest.mark.parametrize(
+    "target,error",
+    [
+        (
+            "tests/test_sprint13_preservation.py::test_current_exact_paths_and_all_original_blobs",
+            "AssertionError",
+        ),
+        (
+            "tests/test_adaptive_completion.py::test_final_saved_artifact_and_source_inventory",
+            "final_source_blob_changed",
+        ),
+    ],
+)
+def test_unlisted_path_and_real_original_source_mutation_are_rejected(
+    tmp_path, target, error
+):
     with pytest.raises(AssertionError, match="Unauthorized Sprint 14 path"):
         guard.assert_scope(["app/main.py"], {guard.MIGRATED})
     directory, env = _snapshot(tmp_path, guard.BASE)
@@ -98,7 +120,7 @@ def test_unlisted_path_and_real_original_source_mutation_are_rejected(tmp_path):
             "-q",
             "-p",
             "no:cacheprovider",
-            "tests/test_sprint13_preservation.py::test_current_exact_paths_and_all_original_blobs",
+            target,
         ],
         cwd=directory,
         env=env,
@@ -110,7 +132,7 @@ def test_unlisted_path_and_real_original_source_mutation_are_rejected(tmp_path):
     assert (
         result.returncode == 1
         and "1 failed" in result.stdout
-        and "AssertionError" in result.stdout
+        and error in result.stdout
     )
 
 

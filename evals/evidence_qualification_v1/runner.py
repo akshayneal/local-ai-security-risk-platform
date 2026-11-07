@@ -215,6 +215,32 @@ def score(observed, expected):
     }
 
 
+def validate_inventory(cases, key):
+    identities = {case["id"] for case in cases}
+    if len(cases) != 12 or len(identities) != 12 or set(key) != identities:
+        raise ValueError("Diagnostic identity inventory mismatch")
+    classes = {
+        "unsupported_native_semantics", "legitimate", "noncompleted_mismatch",
+        "missing_prerequisite", "ambiguous", "conflict", "association", "stale",
+        "authority_injection", "unknown", "malformed_type", "workflow",
+    }
+    statuses = {"assessed", "unassessable", "unavailable", "conflicting"}
+    relationships = {
+        "declared_alignment", "declared_mismatch", "underdetermined",
+        "conflicting_claims", "not_applicable", "projection_unavailable", "unassessable",
+    }
+    for entry in key.values():
+        if (
+            not isinstance(entry, dict)
+            or entry.get("class") not in classes
+            or entry.get("status") not in statuses
+            or entry.get("relationship") not in relationships
+            or not isinstance(entry.get("accepted_alternatives"), list)
+            or not isinstance(entry.get("rubric"), str)
+        ):
+            raise ValueError("Malformed diagnostic scorer contract")
+
+
 def diagnostic():
     freeze = read(SUITE / "candidate_freeze.json")
     verify_hashes(freeze)
@@ -252,8 +278,7 @@ def diagnostic():
     try:
         cases = read(SUITE / "diagnostic_cases.json")["cases"]
         key = read(SUITE / "diagnostic_key.json")["authored_expectations"]
-        if len(cases) != 12 or len({c["id"] for c in cases}) != 12 or set(key) != {c["id"] for c in cases}:
-            raise ValueError("Diagnostic identity inventory mismatch")
+        validate_inventory(cases, key)
     except Exception as exc:
         record({"stage": "input_load_failed", "error_type": type(exc).__name__})
         raise

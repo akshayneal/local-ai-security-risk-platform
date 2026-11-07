@@ -129,3 +129,10 @@ def test_invalid_review_is_unavailable_with_unassessed_layers():
     assert result["unavailability_stage"] == "review_contract_validation"
     assert result["export_integrity"] is result["extraction_integrity"] is None
     assert result["report"] is None
+
+
+def test_malformed_scorer_entry_is_refused_before_dispatch():
+    cases = [{"id": f"OPAQUE_{index}"} for index in range(12)]
+    key = {row["id"]: {} for row in cases}
+    with pytest.raises(ValueError, match="Malformed diagnostic scorer contract"):
+        runner.validate_inventory(cases, key)

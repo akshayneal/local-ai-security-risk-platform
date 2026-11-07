@@ -1,10 +1,12 @@
 """Saved result/provenance checks; never rerun the diagnostic or model."""
 
 import pytest
+from sprint14_history import historical_test as sprint14_historical_test
 
 from evals.adaptive_security_reasoning_v1 import readout
 
 
+@sprint14_historical_test
 def test_final_saved_artifact_and_source_inventory():
     result = readout.verify_inventory()
     assert result["saved_data_files_checked"] == len(readout.DATA_FILES)
