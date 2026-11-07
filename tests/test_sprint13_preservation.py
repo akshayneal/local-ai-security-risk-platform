@@ -6,10 +6,12 @@ import sys
 
 import pytest
 from sprint13_history import _snapshot
+from sprint14_history import historical_test as sprint14_historical_test
 
 from evals.adaptive_security_reasoning_v1 import preservation as guard
 
 
+@sprint14_historical_test
 def test_current_exact_paths_and_all_original_blobs():
     guard.verify_scope()
 
