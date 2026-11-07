@@ -1,15 +1,26 @@
 {
-  "stage": "selected_candidate_software_gates_passed",
+  "stage": "final_documentation_ready_for_commit_push_CI",
   "baseline": "285a6b5130e849daaea48406e1c9e1d7bc65ddf1",
   "branch": "feature/evidence-qualified-ingestion-sprint14",
-  "diagnostic": "NOT RUN",
+  "diagnostic": {
+    "runs": 1,
+    "completed_cases": 12,
+    "complete_authored_expectations_matched": 11,
+    "retained_failure": "N2A6 status assessed versusunassessable; relationship underdetermined matches"
+  },
   "model_sends": 0,
   "independent_human_review": "PENDING (0 completed)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "next": "Commit freeze-only manifest then diagnostic once; do not tune after exposure",
+  "next": "Commit final handoff artifacts,push normally to authorizedfeature,verify origin andexactfinalSHA CI;no model/diagnostic rerun",
   "focused_tests": "181 passed in23.60s",
   "first_full_suite": "1 failed,2803 passed,1 warning in297.40s; source inventory guard only; original output retained",
   "source_commit": "8b7c07d2a17e3070a530446dfecea8a81532ddfb",
-  "full_tests": "2807passed1warning297.06s"
+  "full_tests": "2807passed1warning297.06s",
+  "candidate_source_commit": "1334d15c4261328a69433b79a2c2ced8f02bd8f9",
+  "frozen_candidate_commit": "84f8e00e4cefb0f386c7b341735dc5139d90f07d",
+  "scored_source_changes_after_exposure": false,
+  "frozen_python_blobs_matched": 312,
+  "preserved_raw_files": 990,
+  "protected_original_blobs": 707
 }

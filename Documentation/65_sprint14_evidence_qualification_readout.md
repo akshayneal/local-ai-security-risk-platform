@@ -88,9 +88,63 @@ identity and a create-once barrier separate development iteration from the sole
 offline diagnostic. A durable per-case journal retains progress/failures through
 interruption. Saved diagnostic results must be inspected, never regenerated.
 
-Diagnostic result and final verification: **pending in this checkpoint**. The
-final version of this readout will record the actual observations without
-changing the scored candidate or authored key.
+The selected source/evidence commit is
+`1334d15c4261328a69433b79a2c2ced8f02bd8f9`; the same identity is retained in
+`candidate_freeze.json`.
+The freeze-only commit and actual diagnostic identity is
+`84f8e00e4cefb0f386c7b341735dc5139d90f07d`. The diagnostic ran **exactly once**,
+offline, with **zero model sends**. Its reservation remains unchanged and its
+append-only journal contains 12 starts, 12 case results and one completion.
+
+**11/12 complete authored expectations matched. One failure is retained.** Case
+`N2A6` (unknown operation) expected `status=assessed`; the implementation returned
+`status=unassessable`. Both expected and observed relationships were
+`underdetermined`, with association established and exact source/export checks
+passing. The first disagreement is the report status taxonomy: the authored key
+can mean that comparison ran, while the wrapper reserves assessed for a declared
+alignment/mismatch. This is a competing explanation, not a post-hoc change to
+gold. No scored code, fixture, key, rubric or scorer changed after exposure.
+Resolve the taxonomy prospectively or through separate real review; do not rerun
+this diagnostic or turn its retained failure into a passing original result.
+
+| Layer | Passed / assessed | Not evaluated | Meaning |
+| --- | --- | --- | --- |
+| Extraction/source inventory | 8/8 | 4 unavailable inputs | Exact original bytes, fields/types and source revisions |
+| Eligibility/refusal | 12/12 | 0 | Available versus unavailable at the declared boundary |
+| Association | 12/12 | 0 | Exact matching, absence, ambiguity and conflict states |
+| Scoped relationship | 12/12 | 0 | Authored relationship expectations, not population truth |
+| Report status | 11/12 | 0 | Retained unknown-case taxonomy mismatch |
+| Specific refusal provenance | 4/4 | 8 other classes | Expected refusal reason, not any error |
+| JSON/Markdown integrity | 11/11 | 1 invalid review contract | Canonical JSON types and escaped source/boundary text |
+| No approval/action grant | 12/12 | 0 | Deterministic boundary fields only |
+
+Each of the twelve authored classes has one case. Eleven classes match 1/1;
+the unknown class matches 0/1 complete expectations. Case-level expected and
+observed states, hashes, reason codes and failure provenance remain in
+`diagnostic_results.json`; this is not an accuracy estimate. An invalid workflow
+review fails the strict metadata schema before report assembly, so its export
+layer is honestly not evaluated. Unavailable input is never counted as safe.
+
+Gate A's scoped software trust boundary and Gate B's honest native observation
+path are implemented and tested. Gate C's prospective, once-only evaluation
+protocol is complete; **full authored outcome qualification was not met** because
+of the retained status mismatch. Independent human semantic qualification remains
+pending for every case. The release decision remains NO-GO.
+
+Final local deterministic verification: **2807 passed, one existing deprecation
+warning, 297.06 seconds**, CPython **3.13.1**. Ruff passes all **312 tracked Python
+files**; pip check and complete-feature diff checks pass. The initial full run's
+single historical-inventory guard failure is retained separately; original guard
+assertions now replay at immutable Sprint 13 source, with real negative mutation
+proof. The active guard checks **707 other original blobs and 990 raw files**;
+both migrated test bodies are checked exactly. All 25 Sprint 13 saved evidence
+hashes match. Exact-file whitespace attributes retain emitted whitespace in the
+failed pytest log and three generated source-preview Markdown examples; source
+code and other whitespace checks remain active.
+
+The diagnostic's sum of local case execution plus recomputed exports was about
+0.035 seconds, median about 0.003 seconds/case in this run. This excludes import,
+human review and UI/provider lifecycle; it is not an inference speed measurement.
 
 The unchanged Sprint 13 60-output masked packet now has a printable reviewer
 guide and a separate hash-bound blank adjudication template. No semantic verdict,

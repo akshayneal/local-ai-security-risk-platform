@@ -72,12 +72,80 @@
       "assessed": 15
     }
   },
-  "diagnostic": "NOT RUN at selection checkpoint",
+  "diagnostic": {
+    "runs": 1,
+    "frozen_candidate_commit": "84f8e00e4cefb0f386c7b341735dc5139d90f07d",
+    "candidate_source_commit": "1334d15c4261328a69433b79a2c2ced8f02bd8f9",
+    "completed_cases": 12,
+    "matching_complete_authored_expectations": 11,
+    "layers": {
+      "extraction_integrity": {
+        "passed": 8,
+        "assessed": 8,
+        "not_evaluated": 4
+      },
+      "eligibility": {
+        "passed": 12,
+        "assessed": 12,
+        "not_evaluated": 0
+      },
+      "association": {
+        "passed": 12,
+        "assessed": 12,
+        "not_evaluated": 0
+      },
+      "comparison": {
+        "passed": 12,
+        "assessed": 12,
+        "not_evaluated": 0
+      },
+      "state_reporting": {
+        "passed": 11,
+        "assessed": 12,
+        "not_evaluated": 0
+      },
+      "refusal_provenance": {
+        "passed": 4,
+        "assessed": 4,
+        "not_evaluated": 8
+      },
+      "export_integrity": {
+        "passed": 11,
+        "assessed": 11,
+        "not_evaluated": 1
+      },
+      "no_authority_or_action_grant": {
+        "passed": 12,
+        "assessed": 12,
+        "not_evaluated": 0
+      }
+    },
+    "retained_failure": {
+      "case_id": "N2A6",
+      "class": "unknown",
+      "expected_status": "assessed",
+      "observed_status": "unassessable",
+      "expected_and_observed_relationship": "underdetermined",
+      "post_exposure_tuning": false,
+      "gold_rewritten": false
+    },
+    "journal_entries": 25,
+    "model_sends": 0,
+    "sum_offline_case_seconds": 0.03458180002053268,
+    "median_offline_case_seconds": 0.0031170500005828217,
+    "timing_limit": "Local deterministic pipeline plus recomputation/exports, not inference or UI latency"
+  },
   "model_sends": 0,
   "embedding_sends": 0,
   "historical_experiment_runs": 0,
   "independent_human_review": "PENDING (0 completed)",
   "visual_qa": "USER VISUAL QA PENDING",
   "release": "NO-GO",
-  "CI": "Exact final pushed SHA will be checked and reported in final session handoff; no self-referential commit claim"
+  "CI": "Exact final pushed SHA will be checked and reported in final session handoff; no self-referential commit claim",
+  "post_diagnostic_source_integrity": {
+    "frozen_python_blobs_matched": 312,
+    "frozen_hashes_matched": 13,
+    "source_changes_after_exposure": 0,
+    "key_or_case_changes_after_exposure": 0
+  }
 }

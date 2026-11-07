@@ -1,0 +1,9 @@
+{
+  "format": "evidence-qualification-diagnostic-reservation/1",
+  "source_commit": "84f8e00e4cefb0f386c7b341735dc5139d90f07d",
+  "candidate_source_commit": "1334d15c4261328a69433b79a2c2ced8f02bd8f9",
+  "candidate_freeze_sha256": "76499014bd0f705fd83949cc6744a6e3517d07ba517ec8fc005e9bf733a025cf",
+  "state": "RESERVED; not proof of completion",
+  "model_sends": 0,
+  "recovery_rule": "Never rerun; inspect separate results read-only if present"
+}
