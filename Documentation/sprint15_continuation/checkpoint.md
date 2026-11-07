@@ -38,8 +38,18 @@ the final exact guard protects 823 of 829 baseline blobs, with six existing path
 listed for this continuation. Original main, legacy API client, analyzers and all
 historical runner sources remain protected. No live inference reserved or sent.
 
-Next safe action: commit the tested lifecycle milestone after final UI polish,
-then run full deterministic pytest, all tracked/new Python Ruff, pip check,
-diff check and inherited hash verification. Record results in new validation logs;
-do not overwrite a failure or rerun any frozen diagnostic. Final normal push and
-exact-commit CI remain required.
+Lifecycle committed at `3efc852`; final UI polish passed 30 tests. Initial full
+suite passed 3207/1 warning in 364.89s. A full-feature diff check found a trailing
+blank line in the generated Markdown example; `610ff40` fixes its exporter ending.
+Final source `610ff40a150e0ad1b8120e66d4e3bc2242997895`: 45 focused native tests
+and **3207 full tests passed**, 1 inherited warning, final full runtime 356.85s.
+All 346 tracked Python files pass Ruff, pip check passes, full-feature diff check
+passes, all 990 raw/405 inherited untracked/452 ignored inventory hashes match.
+Both full logs retained; no historical run or model/embedding send occurred.
+
+Implementation complete, experimental/default off; human review zero verified,
+USER VISUAL QA PENDING, RELEASE NO-GO. Handoff documentation/logs are the only
+remaining local commit material. Final normal push and exact-commit CI are checked
+in the session handoff. On resumption first run `git status --short`,
+`git rev-parse HEAD` and inspect origin/CI for that exact tip; do not repeat any
+frozen diagnostic or infer completion/cancellation from missing Activity/status.

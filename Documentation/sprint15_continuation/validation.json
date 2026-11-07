@@ -1,0 +1,171 @@
+{
+  "schema_version": "sprint15-continuation-validation/1",
+  "date": "2026-11-07",
+  "baseline": {
+    "branch": "feature/native-evidence-workflow-sprint15",
+    "sha": "9be773070f2176d40e3e80beccf65feaefdc03c0",
+    "origin_equal_verified": true,
+    "ci_url": "https://github.com/akshayneal/local-ai-security-risk-platform/actions/runs/42349043310",
+    "ci_status": "success"
+  },
+  "working_branch": "feature/sprint15-analyst-utility-and-request-lifecycle",
+  "final_implementation_source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+  "handoff_commit_scope": "documentation and logs only; exact final pushed SHA/origin/CI proof reported in session handoff",
+  "python": "3.13.1",
+  "runtime": "existing Windows CPython venv",
+  "capability_status": "experimental_default_off_unmerged",
+  "commands": [
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m pytest -q",
+      "source": "3efc852dcbcba4d4292f84a41af57ac2e6ffed81",
+      "passed": 3207,
+      "warnings": 1,
+      "seconds": 364.89,
+      "log": "final_pytest.txt"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m pytest tests/test_native_investigation.py tests/test_native_investigation_dashboard.py -q",
+      "source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+      "passed": 45,
+      "warnings": 1,
+      "seconds": 8.63
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m pytest -q",
+      "source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+      "passed": 3207,
+      "warnings": 1,
+      "seconds": 356.85,
+      "log": "final_pytest_after_export_ending.txt"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m ruff check <all git ls-files *.py>",
+      "source": "610ff40a150e0ad1b8120e66d4e3bc2242997895",
+      "files": 346,
+      "status": "PASS",
+      "log": "final_ruff.txt"
+    },
+    {
+      "command": ".\\.venv\\Scripts\\python.exe -B -m pip check",
+      "status": "PASS",
+      "result": "No broken requirements found.",
+      "log": "final_pip_check.txt"
+    },
+    {
+      "command": "git diff --check 9be773070f2176d40e3e80beccf65feaefdc03c0",
+      "status": "PASS after normalizing new Markdown ending"
+    },
+    {
+      "command": "read-only temporary starting inventory hash comparison and original preservation.verify_raw()",
+      "status": "PASS"
+    }
+  ],
+  "focused_gates": {
+    "native_before_review": 181,
+    "preservation": 14,
+    "backend_lifecycle_and_required_legacy_seams": 279,
+    "new_backend_cases": 55,
+    "dashboard_and_native_regressions_before_final_polish": 92,
+    "final_lifecycle_dashboard": 30
+  },
+  "warning": "One inherited Starlette TestClient/httpx deprecation; packages unchanged.",
+  "preservation": {
+    "baseline_tracked_blobs": 829,
+    "protected_baseline_blobs": 823,
+    "explicit_existing_edit_paths": [
+      "app/native_evidence_api.py",
+      "app/ollama_client.py",
+      "dashboard/native_evidence.py",
+      "dashboard/native_evidence_client.py",
+      "dashboard/workflows.py",
+      "tests/test_sprint15_preservation.py"
+    ],
+    "local_raw_files_checked": 990,
+    "absent_raw_groups": [],
+    "inherited_untracked_hashes_unchanged": 405,
+    "inherited_ignored_inventory_hashes_unchanged": 452,
+    "earlier_ignored_s4check_subset": 185,
+    "unknown_private_work_overwritten": false,
+    "main_tag_sha_unchanged": "fde00d0ca5d21eecbc6973cc784550ed453edb7a"
+  },
+  "evaluation": {
+    "new_scored_diagnostics": 0,
+    "historical_diagnostic_reruns": 0,
+    "local_model_raw_sends": 0,
+    "embedding_sends": 0,
+    "optional_six_send_budget_reserved": false,
+    "sprint14_original": "11/12 unchanged",
+    "sprint14b": "10/10 unchanged",
+    "independent_human_reviews_verified": 0,
+    "visual_qa": "USER VISUAL QA PENDING",
+    "release": "NO-GO"
+  },
+  "lifecycle": {
+    "flag": "ENABLE_INFERENCE_LIFECYCLE=1",
+    "defaults": {
+      "total_seconds": 900,
+      "connect_seconds": 5,
+      "read_seconds": 900,
+      "ui_margin_seconds": 30
+    },
+    "maximum_raw_post_attempts": {
+      "new_soc": 2,
+      "new_governance": 1,
+      "legacy_soc": 4,
+      "legacy_governance": 2,
+      "legacy_ai_security": 2
+    },
+    "guarantees_absent": [
+      "hard elapsed interruption",
+      "provider cancellation",
+      "persistent result recovery",
+      "cross-session duplicate prevention",
+      "durable exactly-once execution"
+    ],
+    "registry": "64 metadata-only entries in one process; retained running/unknown entries not evicted",
+    "ui_scope": "generic SOC and AI System Risk; Microsoft upload and AI Security UI remain legacy"
+  },
+  "fixes_and_limits": [
+    "ActionType shape limit aligned with original 256-character contract.",
+    "Incomplete rows no longer hide known differing valid representations.",
+    "Strict provider/model JSON rejects duplicate keys and nonfinite values.",
+    "Existing Pydantic envelopes reserialized and revalidated before completion.",
+    "API serialization/byte budget checked before completed state.",
+    "Windows oversized test IDs and AppTest release callback harness failures corrected; no frozen gold changes.",
+    "Initial full-feature whitespace failure preserved in readout; new Markdown ending fixed and full suite repeated."
+  ],
+  "changed_files": [
+    "Documentation/70_sprint15_continuation_plan.md",
+    "Documentation/71_sprint15_continuation_readout.md",
+    "Documentation/sprint15_continuation/checkpoint.md",
+    "Documentation/sprint15_continuation/examples/investigation.json",
+    "Documentation/sprint15_continuation/examples/investigation.md",
+    "Documentation/sprint15_continuation/final_pip_check.txt",
+    "Documentation/sprint15_continuation/final_pytest.txt",
+    "Documentation/sprint15_continuation/final_pytest_after_export_ending.txt",
+    "Documentation/sprint15_continuation/final_ruff.txt",
+    "Documentation/sprint15_continuation/inference_lifecycle.md",
+    "Documentation/sprint15_continuation/manual_qa.md",
+    "Documentation/sprint15_continuation/native_semantics.md",
+    "Documentation/sprint15_continuation/reviewer_form.md",
+    "Documentation/sprint15_continuation/reviewer_guide.md",
+    "Documentation/sprint15_continuation/scope.json",
+    "Documentation/sprint15_continuation/validation.json",
+    "app/inference_lifecycle.py",
+    "app/lifecycle_api.py",
+    "app/native_evidence_api.py",
+    "app/native_investigation.py",
+    "app/ollama_client.py",
+    "dashboard/lifecycle.py",
+    "dashboard/native_evidence.py",
+    "dashboard/native_evidence_client.py",
+    "dashboard/workflows.py",
+    "tests/sprint15_continuation_history.py",
+    "tests/test_inference_lifecycle.py",
+    "tests/test_lifecycle_dashboard.py",
+    "tests/test_native_investigation.py",
+    "tests/test_native_investigation_dashboard.py",
+    "tests/test_sprint15_continuation_preservation.py",
+    "tests/test_sprint15_preservation.py"
+  ]
+}
